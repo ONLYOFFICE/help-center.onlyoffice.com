@@ -1,54 +1,62 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# helpcenter.onlyoffice.com
 
-## 🚀 Quick start
 
-1.  **Create a Gatsby site.**
+## How to install
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+You must have yarn and latest node.js installed.
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+### Installs Node.js (npm and npx are included in the installation)
 
-2.  **Start developing.**
+You need to install LTS version
 
-    Navigate into your new site’s directory and start it up.
+[Node.js](https://nodejs.org/)
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+### Installs yarn globally
 
-3.  **Open the code and start customizing!**
+npm i -g yarn
 
-    Your site is now running at http://localhost:8000!
+### It should respond with a version number
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+yarn -v
+node -v
 
-4.  **Learn more**
+### To install dependencies:
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+```bash
+yarn
+```
 
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+### Run the development server:
 
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+```bash
+yarn develop
+```
 
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+or
 
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+```bash
+gatsby develop
+```
 
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+Open [http://localhost:9000](http://localhost:9000) with your browser to see the result.
 
-## 🚀 Quick start (Gatsby Cloud)
+### Build
 
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
+Run:
 
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+```bash
+yarn build
+```
+
+to build website into /public folder with one page per locale automatically generated.
+
+Open [http://localhost:9000](http://localhost:9000) with your browser to see the result.
+
+## Project info
+
+### The stack we are using:
+
+- [Gatsbyjs](https://www.gatsbyjs.com) - The static site generator
+- [styled-components](https://styled-components.com/) - Visual primitives for the component age
+
+Official website: [https://www.onlyoffice.com](https://www.onlyoffice.com/?utm_source=github&utm_medium=cpc&utm_campaign=AppServer "https://www.onlyoffice.com/?utm_source=github&utm_medium=cpc&utm_campaign=AppServer")
