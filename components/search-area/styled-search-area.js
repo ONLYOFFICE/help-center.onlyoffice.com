@@ -9,7 +9,7 @@ const StyledSearchArea = styled.div`
 
   .search_container {
     margin: 72px auto 0;
-    max-width: 624px;
+    max-width: 682px;
   }
 
   .presearch_title {
