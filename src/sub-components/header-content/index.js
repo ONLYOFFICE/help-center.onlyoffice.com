@@ -9,7 +9,7 @@ const HeadingContent = ({ t, template, currentLanguage }) => {
   return (
     <StyledHeadingContent template={template}>
       <Menu t={t} template={template} currentLanguage={currentLanguage} />
-      {!template ? <SearchContent t={t} /> : null}
+      <SearchContent t={t} />
     </StyledHeadingContent>
   );
 };
