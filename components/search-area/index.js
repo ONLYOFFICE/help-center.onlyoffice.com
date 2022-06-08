@@ -3,6 +3,7 @@ import React from "react";
 import Text from "../text";
 import Box from "../box";
 import TextInput from "../text-input/";
+import Heading from "../heading";
 
 import StyledSearchArea from "./styled-search-area";
 
@@ -12,22 +13,22 @@ import CloseIcon from "../../static/images/icons/close-icon.react.svg";
 const SearchArea = ({ clearValueSearch, valueSearch, callback, t }) => {
   return (
     <StyledSearchArea>
-      <Box className="search_container" alignItems="center">
-        <Text
+    <Heading
           className="presearch_title"
-          overflow="unset"
-          textOverflow="clip"
-          label={t("SearchForms")}
-          color="#F5F5F5"
-          fontWeight={600}
+          label={t("Welcome to Help Center")}
+          color="#333"
+          level={1}
+          textAlign="center"
+          fontWeight={700}
         />
+      <Box className="search_container" alignItems="center">
         <TextInput
           onChange={callback}
           value={valueSearch}
           type="text"
           className="search_input"
-          backgroundColor="#333"
-          color="#F5F5F5"
+          backgroundColor="#fffff"
+          color="#333333"
           placeholder={t("SearchIputPlaceholder")}
           fontSize="16px"
           colorHover="#CCCCCC"
