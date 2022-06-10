@@ -50,22 +50,23 @@ const StyledNav = styled.nav`
     }
   }
 
+  #navitem_contribution, #navitem_development, #navitem_user, #navitem_integrations, #navitem_installation, #navitem_administration {
+    .heading-nav-item {
+      border-bottom: 1px solid transparent;
+    }
+  }
+
+  #navitem_contribution, #navitem_development {
+    .heading-nav-item {
+      &:hover {
+        border-bottom: 1px solid #ff6f3d;
+      }
+    }
+  }
+
   @media (min-width: 1050px) {
-    #navitem_download .menu-items-wrapper {
-      left: calc(50% - 280px);
-    }
-    #navitem_features .menu-items-wrapper {
+    #navitem_user .menu-items-wrapper {
       left: calc(50% - 395px);
-    }
-    #navitem_integrations .menu-items-wrapper {
-      left: calc(50% - 426px);
-    }
-    #navitem_partners .menu-items-wrapper,
-    #navitem_prices .menu-items-wrapper {
-      left: calc(50% - 102px);
-    }
-    #navitem_about .menu-items-wrapper {
-      left: calc(50% - 202px);
     }
   }
 

@@ -2,8 +2,8 @@ import React from "react";
 
 import StyledResultSearch from "./styled-result";
 
-import Link from "../../../../components/internal-link";
-import Text from "../../../../components/text";
+import Link from "../../../../../../components/internal-link";
+import Text from "../../../../../../components/text";
 
 const SearchResult = ({
   onMouseLeaveSearchResult,

@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import Section from "../section";
 
-const StyledAccordionContent = styled.div`
+const StyledAccordionContent = styled(Section)`
   .text-trans-accordion {
     vertical-align: bottom;
     .link-trans-acc {

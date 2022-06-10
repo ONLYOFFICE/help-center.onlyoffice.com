@@ -4,7 +4,8 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 
 import Layout from "../../components/layout";
 import HeadingContent from "../sub-components/header-content";
-import MainContent from "../sub-components/main-content";
+import InfoContent from "../sub-components/main-content/info-content";
+import GuidesCards from "../sub-components/main-content/guides-cards";
 import Accordion from "../sub-components/accordion";
 import Footer from "../sub-components/footer-content";
 
@@ -18,10 +19,11 @@ const IndexPage = () => {
     <Layout>
       <Layout.PageHead></Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={true} />
+        <HeadingContent t={t} template={true} currentLanguage={language} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <MainContent t={t} />
+        <InfoContent t={t} />
+        <GuidesCards t={t} />
         <Accordion t={t} currentLanguage={language} />
       </Layout.SectionMain>
       <Layout.PageFooter>
@@ -34,7 +36,7 @@ const IndexPage = () => {
 export default IndexPage;
 
 export const query = graphql`
-  query ($language: String!) {
+  query($language: String!) {
     locales: allLocale(filter: { language: { in: [$language, "en"] } }) {
       edges {
         node {

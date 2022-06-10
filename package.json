@@ -35,7 +35,7 @@
     "gatsby-transformer-json": "^4.8.0",
     "gatsby-transformer-remark": "^4.6.0",
     "gatsby-transformer-sharp": "^3.9.0",
-    "i18next": "^20.3.2",
+    "i18next": "^21.8.9",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-custom-scrollbars": "^4.2.1",

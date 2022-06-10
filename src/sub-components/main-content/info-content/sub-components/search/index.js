@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
-import Search from "../../../../components/search-area";
+import Search from "../../../../../../components/search-area";
 
 import SearchResult from "./search-result";
 

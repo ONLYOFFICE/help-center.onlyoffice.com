@@ -5,7 +5,7 @@ const StyledSearchArea = styled.div`
   background-color: #f5f5f5;
   position: relative;
   width: 100%;
-  padding: 100px 0 90px;
+  padding: 180px 0 90px;
 
   .search_container {
     margin: 72px auto 0;
