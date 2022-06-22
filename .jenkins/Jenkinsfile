@@ -1,0 +1,61 @@
+switch(BRANCH_NAME) {
+  case "test.deploy":
+    region="us-east-1"
+    FindNameBucket="test-helpcenter.onlyoffice.com"
+    CloudFrontID="E3DCOH2ZTE42J5"
+    OriginName="test-helpcenter.onlyoffice.com.s3.us-east-1.amazonaws.com"
+    MESSAGE="test-helpcenter.onlyoffice.com is deployed to amazon."
+    break
+  case "production.deploy":
+    region="us-east-1"
+    FindNameBucket="helpcenter.onlyoffice.com"
+    CloudFrontID=""
+    OriginName=""
+    MESSAGE="helpcenter.onlyoffice.com is deployed to amazon."
+    break
+  default:
+    println("Branch: ${BRANCH_NAME} do not for deploy.")
+    break
+}
+
+pipeline {
+  agent { label 'ubuntu' }
+  triggers {
+    githubPush()
+  }
+    options {
+    disableConcurrentBuilds()
+    buildDiscarder (logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+  }
+  stages {
+        stage('deploy') {
+      when { 
+        anyOf { branch 'test.deploy'; branch 'production.deploy' }
+      }
+      environment {
+        region = "${region}"
+        FindNameBucket = "${FindNameBucket}"
+        CloudFrontID = "${CloudFrontID}"
+        OriginName = "${OriginName}"
+        CHAT_ID = "${CHAT_ID}"
+        MESSAGE = "${MESSAGE}"
+        CHAT_ID="${chat_id_dao}" 
+      }
+      steps {
+        withCredentials([
+                string(credentialsId: 'token_bot_jenkins_notifier', 
+                variable: 'TEL_TOKEN'), 
+                usernamePassword(credentialsId: 'helpcenter_robot', 
+                usernameVariable: 'AccessKeyProd', 
+                passwordVariable: 'SecretKeyProd')
+                ]) {
+          sh '''
+            echo "Deploy from ${BRANCH_NAME} is starting."
+            
+            bash $WORKSPACE/.jenkins/deploy.sh "$AccessKeyProd" "$SecretKeyProd" "$FindNameBucket" "$CloudFrontID" "$region" "$OriginName" "$TEL_TOKEN" "$CHAT_ID" "$MESSAGE"
+          '''	          							
+        }
+      }
+    }
+  }
+}
