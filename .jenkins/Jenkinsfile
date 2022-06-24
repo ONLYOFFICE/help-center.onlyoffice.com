@@ -37,7 +37,6 @@ pipeline {
         FindNameBucket = "${FindNameBucket}"
         CloudFrontID = "${CloudFrontID}"
         OriginName = "${OriginName}"
-        CHAT_ID = "${CHAT_ID}"
         MESSAGE = "${MESSAGE}"
         CHAT_ID="${chat_id_dao}" 
       }
