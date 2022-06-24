@@ -1,11 +1,4 @@
 import styled from "styled-components";
-import menu_icons from "../../../../../static/images/menu-pics/menu_logo_icons.svg";
-import menu_oforms from "../../../../../static/images/menu-pics/menu_oforms.svg";
-import menu_reseller from "../../../../../static/images/menu-pics/menu_reseller.svg";
-import menu_latest_events from "../../../../../static/images/menu-pics/onlyoffice_linux_foundation_member.jpg";
-import menu_latest_news from "../../../../../static/images/menu-pics/onlyoffice_7.0.png";
-import menu_for_developers from "../../../../../static/images/menu-pics/menu_for_developers.png";
-import menu_compare from "../../../../../static/images/menu-pics/menu_compare_edition.svg";
 import arrow_gray from "../../../../../static/images/icons/arrow-gray.svg";
 import { device } from "../../../../../components/utils/devices";
 
@@ -13,32 +6,16 @@ const StyledNavMenu = styled.div`
   .dropdown-item {
     display: block;
     border: 0;
-    color: #444;
-    font-size: 16px;
-    font-weight: 700;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    line-height: 1.6em;
-    margin: 0 0 24px;
-    padding: 0 32px 0 68px;
+    line-height: 1.4em;
+    padding: 8px 25px;
     text-decoration: none;
     white-space: nowrap;
     position: relative;
-    &:before {
-      content: "";
-      display: block;
-      width: 24px;
-      height: 24px;
-      position: absolute;
-      left: 32px;
-      top: 0px;
-      background-image: url(${menu_icons});
-      background-repeat: no-repeat;
-    }
-  }
-
-  #navitem_features_editors,
-  #navitem_features_workspace {
-    margin-bottom: 0px;
+    text-transform: uppercase;
   }
 
   .heading-nav-item {
@@ -59,234 +36,6 @@ const StyledNavMenu = styled.div`
     }
   }
 
-  .latest_news_date {
-    color: #808080;
-    font-size: 13px;
-    line-height: 1.6em;
-    margin: 0;
-  }
-
-  #navitem_features_clients_apps {
-    &:before {
-      background-position-y: -52px;
-    }
-  }
-
-  #navitem_features_clients_mobile_ios {
-    &:before {
-      background-position-y: -78px;
-    }
-  }
-
-  #navitem_features_clients_mobile_android {
-    &:before {
-      background-position-y: -104px;
-    }
-  }
-
-  #navitem_features_workspace {
-    &:before {
-      background-position-y: -25px;
-    }
-  }
-
-  #navitem_features_security {
-    &:before {
-      background-position-y: -650px;
-    }
-  }
-
-  #navitem_download_desktop {
-    &:before {
-      background-position-y: -155px;
-    }
-  }
-
-  #navitem_download_products {
-    &:before {
-      background-position-y: -130px;
-    }
-  }
-
-  #navitem_download_personal {
-    &:before {
-      background-position-y: -570px;
-    }
-  }
-
-  #navitem_hosters {
-    &:before {
-      background-position-y: -182px;
-    }
-  }
-
-  #navitem_resellers {
-    &:before {
-      background-position-y: -208px;
-    }
-  }
-
-  #navitem_find_partners {
-    &:before {
-      background-position-y: -233px;
-    }
-  }
-
-  #navitem_submit_request {
-    &:before {
-      background-position-y: -262px;
-    }
-  }
-
-  #navitem_about_about {
-    &:before {
-      background-position-y: -286px;
-    }
-  }
-  #navitem_about_blog {
-    &:before {
-      background-position-y: -312px;
-    }
-  }
-
-  #navitem_about_contribute {
-    &:before {
-      background-position-y: -337px;
-    }
-  }
-
-  #navitem_about_customers {
-    &:before {
-      background-position-y: -361px;
-    }
-  }
-
-  #navitem_about_awards {
-    &:before {
-      background-position-y: -390px;
-    }
-  }
-
-  #navitem_about_events {
-    &:before {
-      background-position-y: -468px;
-    }
-  }
-
-  #navitem_about_pressdownloads {
-    &:before {
-      background-position-y: -416px;
-    }
-  }
-
-  #navitem_about_whitepapers {
-    &:before {
-      background-position-y: -442px;
-    }
-  }
-
-  #navitem_about_trainingcourses {
-    &:before {
-      background-position-y: -493px;
-    }
-  }
-
-  #navitem_about_giftshop {
-    &:before {
-      background-position-y: -519px;
-    }
-  }
-
-  #navitem_about_contacts {
-    &:before {
-      background-position-y: -546px;
-    }
-  }
-
-  #navitem_about_helpcenter {
-    &:before {
-      background-position-y: -625px;
-    }
-  }
-
-  #navitem_about_webinars {
-    &:before {
-      background-position-y: -595px;
-    }
-  }
-
-  #navitem_latest_events,
-  #navitem_features_latest_releases,
-  #navitem_download_compare,
-  #navitem_features_oforms,
-  #navitem_integrations_jira,
-  #navitem_integrations_nextcloud,
-  #navitem_integrations_owncloud,
-  #navitem_integrations_confluence,
-  #navitem_integrations_alfresco,
-  #navitem_integrations_sharepoint,
-  #navitem_integrations_liferay,
-  #navitem_integrations_humhub,
-  #navitem_integrations_plone,
-  #navitem_integrations_nuxeo,
-  #navitem_integrations_chamilo,
-  #navitem_integrations_redmine,
-  #navitem_integrations_connectors,
-  #navitem_integration_for_developers,
-  #navitem_prices_reseller {
-    padding: 0 32px;
-    &:before {
-      display: none;
-    }
-
-    @media (max-width: 1050px) {
-      padding: 7px 16px;
-    }
-  }
-
-  .menu_pic_div {
-    cursor: pointer;
-    padding: 12px 32px 0 32px;
-    .menu_pic_header {
-      color: #444;
-      font-size: 14px;
-      line-height: 1.6em;
-      padding-bottom: 10px;
-      &:hover {
-        color: #ff6f3d;
-      }
-    }
-    .menu_pic_img {
-      background-repeat: no-repeat;
-      background-size: contain;
-      height: 88px;
-      margin-bottom: 16px;
-      width: 180px;
-    }
-  }
-
-  .mobile_no_link {
-    background-color: #f5f5f5;
-    margin: 0 32px;
-    color: #666;
-    font-weight: 600;
-    font-size: 13px;
-    padding: 6px 32px 6px 12px;
-    text-transform: uppercase;
-    width: -webkit-fill-available;
-    &:before {
-      display: none;
-    }
-    &:hover {
-      color: #666;
-      cursor: default;
-    }
-  }
-
-  #navitem_about_resources {
-    margin: 0 32px 24px;
-  }
-
   .nav_2nd_menu_link {
     display: block;
     text-transform: none;
@@ -297,7 +46,7 @@ const StyledNavMenu = styled.div`
     cursor: pointer;
     line-height: 1.6em;
     margin: 0;
-    padding: 4px 32px 4px 72px;
+    padding: 8px 40px;
     text-decoration: none;
   }
 
@@ -317,14 +66,6 @@ const StyledNavMenu = styled.div`
     &:first-child {
       border-bottom-left-radius: 9px;
     }
-    &.integrations {
-      min-width: 180px;
-    }
-    &:last-child {
-      background-color: #f9f9f9;
-      border-bottom-right-radius: 9px;
-      max-width: 244px;
-    }
     &.with_border {
       border-right: 1px solid #f5f5f5;
     }
@@ -342,38 +83,6 @@ const StyledNavMenu = styled.div`
           padding: 4px 0;
         }
       }
-    }
-  }
-
-  #compare_img {
-    background-image: url(${menu_compare});
-  }
-
-  #for_developers_img {
-    background-image: url(${menu_for_developers});
-  }
-
-  #oforms_img {
-    background-image: url(${menu_oforms});
-  }
-
-  #reseller_img {
-    background-image: url(${menu_reseller});
-  }
-
-  #latest_events_img {
-    background-image: url(${menu_latest_events});
-  }
-
-  #latest_news_img {
-    background-image: url(${menu_latest_news});
-  }
-
-  @media screen and (min-width: 1050px) {
-    #navitem_prices_reseller {
-      line-height: 1.33em;
-      padding-top: 10px;
-      white-space: initial;
     }
   }
 

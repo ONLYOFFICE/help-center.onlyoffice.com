@@ -36,12 +36,11 @@ const StyledPanelView = styled.div`
   position: absolute;
   display: ${(props) => (props.isOpen ? "block" : "none")};
   width: max-content;
-  max-width: 43px;
+  max-width: 106px;
   background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 20%);
   z-index: 100;
-  padding: 6px 6px 6px 12px;
+  padding: 6px 12px;
   top: 20px;
   right: 10px;
 `;
@@ -50,14 +49,21 @@ const StyledItem = styled.div`
   outline: none;
   -webkit-tap-highlight-color: transparent;
   .language-item-image {
+    height: 18px;
     margin-top: -1px;
   }
   .language-item-link {
-    display: block;
-    margin: 2px 0 8px;
-    padding: 1px 8px 1px 1px;
-    width: 100%;
+    align-items: center;
+    display: flex;
+    height: 30px;
+    gap: 0 10px;
+    padding: 10px 0 0;
+    width: 106px;
     text-decoration: none;
+  }
+
+  .language-item-title {
+    font-size: 13px;
   }
   .title-lng:hover {
     color: #ff865c;

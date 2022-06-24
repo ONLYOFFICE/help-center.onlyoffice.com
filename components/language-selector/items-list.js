@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { StyledItem, StyledPanelView } from "./styled-language-selector";
 import { Link } from "gatsby";
 import languages from "../../languages";
+import Text from "../text";
 export default function LangsList(props) {
   const { t, isOpen, currentLanguage, onCloseSelector } = props;
 
@@ -27,7 +28,7 @@ export default function LangsList(props) {
 
   const renderItemList = () => {
     return languages.map((language) => {
-      const { shortKey, iconName, key } = language;
+      const { shortKey, iconName, key, name } = language;
       let localizedPath;
       if (currentLanguage === "en") {
         if (path.includes("en")) {
@@ -48,6 +49,7 @@ export default function LangsList(props) {
               width="18px"
               className="language-item-image"
             />
+            <Text className="language-item-title">{name}</Text>
           </Link>
         </StyledItem>
       );

@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 
 import Layout from "../../components/layout";
 import HeadingContent from "../sub-components/header-content";
+import InfoContent from "../sub-components/main-content/info-content";
+import GuidesCards from "../sub-components/main-content/guides-cards";
+import Accordion from "../sub-components/accordion";
+import Footer from "../sub-components/footer-content";
 
 const IndexPage = () => {
   const {
@@ -14,12 +19,32 @@ const IndexPage = () => {
     <Layout>
       <Layout.PageHead></Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={true}/>
+        <HeadingContent t={t} template={true} currentLanguage={language} />
       </Layout.PageHeader>
-      <Layout.SectionMain></Layout.SectionMain>
-      <Layout.PageFooter></Layout.PageFooter>
+      <Layout.SectionMain>
+        <InfoContent t={t} currentLanguage={language}/>
+        <GuidesCards t={t} />
+        <Accordion t={t} currentLanguage={language} />
+      </Layout.SectionMain>
+      <Layout.PageFooter>
+        <Footer t={t} language={language} />
+      </Layout.PageFooter>
     </Layout>
   );
 };
 
 export default IndexPage;
+
+export const query = graphql`
+  query($language: String!) {
+    locales: allLocale(filter: { language: { in: [$language, "en"] } }) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;

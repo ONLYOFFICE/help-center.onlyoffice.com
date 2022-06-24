@@ -2,32 +2,33 @@ import styled from "styled-components";
 import { device } from "../../components/utils/devices";
 
 const StyledSearchArea = styled.div`
-  background-color: #333;
+  background-color: #f5f5f5;
   position: relative;
   width: 100%;
+  padding: 180px 0 90px;
 
   .search_container {
-    margin: 24px auto 0;
-    max-width: 1120px;
-    border-bottom: 1px solid #666;
+    margin: 72px auto 0;
+    max-width: 682px;
   }
 
   .presearch_title {
-    display: inline-block;
     line-height: 1em;
-    padding-right: 24px;
-    border-right: 1px solid #aaa;
     overflow: unset;
-    white-space: nowrap;
+    white-space: nowrap;  
   }
 
   .search_input {
-    border: none;
-    padding: 21px 118px 21px 15px;
+    border: 1px solid #c2c2c2;
+    border-radius: 32px;
+    padding: 5px 30px 5px 30px;
     white-space: normal;
+    height: 64px;
+    box-sizing: unset;
   }
   .search_icon {
     padding: 16px;
+    z-index: 2;
 
     svg {
       cursor: pointer;

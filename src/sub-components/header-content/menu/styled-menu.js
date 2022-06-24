@@ -41,10 +41,6 @@ const StyledMenuTablet = css`
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 1;
-
-    .nav-item-tel {
-      display: none;
-    }
   }
 `;
 
@@ -58,13 +54,12 @@ const StyledMenu = styled.div`
   -ms-grid-rows: 1fr;
   grid-template-rows: 1fr;
   margin: 0 auto;
-  padding: 0 18px;
+  padding: 0 20px;
   box-sizing: border-box;
   height: auto;
-
   font-size: 12px;
-  color: ${(props) => (!props.template ? `#fff` : `#333`)};
-  background-color: ${(props) => (!props.template ? `#3d3d3d` : `#f5f5f5`)};
+  color: #333;
+  background-color: #f5f5f5;
 
   .nav-item-logo {
     grid-column-start: 1;
@@ -72,25 +67,22 @@ const StyledMenu = styled.div`
   }
 
   .nav-item-links {
-    grid-column-start: 2;
-    grid-column-end: 3;
+    margin: 0 auto;
     .nav-item .heading-nav-item {
-      color: #fff;
+      color: #333;
       &:hover {
         color: #ff6f3d;
       }
-      @media (max-width: 1050px) {
-        color: #333;
-      }
     }
-    &.dark {
-      .nav-item .heading-nav-item {
-        color: #333;
-        &:hover {
-          color: #ff6f3d;
-        }
-      }
-    }
+  }
+
+  .site-logo {
+    background: url(../images/logo/logonew.png) no-repeat 0 50%;
+    margin: 0 0 0 24px;
+    position: relative;
+    width: 180px;
+    height: 71px;
+    z-index: 100;
   }
 
   .nav-item-lng {
@@ -99,12 +91,6 @@ const StyledMenu = styled.div`
     display: flex;
     column-gap: 22px;
     align-items: center;
-
-    .nav-item-tel {
-      color: ${(props) => (!props.template ? `#fff` : `#333`)};
-      font-weight: 600;
-      text-decoration: none;
-    }
   }
 
   .nav-items-mobile {

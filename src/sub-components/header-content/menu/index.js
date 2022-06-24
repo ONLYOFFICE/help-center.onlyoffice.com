@@ -4,9 +4,8 @@ import { ReactSVG } from "react-svg";
 import LanguageSelector from "../../../../components/language-selector";
 import Link from "../../../../components/link";
 import InternalLink from "../../../../components/internal-link";
+import IconButton from "../../../../components/icon-button";
 
-import LogoWhite from "../../../../static/images/logo/logo-white.react.svg";
-import LogoBlack from "../../../../static/images/logo/logo-black.react.svg";
 import MobileMenu from "../../../../static/images/icons/mob_menu.svg";
 
 import { StyledMenu } from "./styled-menu";
@@ -43,9 +42,7 @@ const Menu = ({ t, currentLanguage, template, ...rest }) => {
     }
   };
 
-  const NavTemplateClassName = template
-    ? "nav-item-links dark"
-    : "nav-item-links";
+  const curLang = currentLanguage === "en" ? "/" : `/${currentLanguage}/`;
 
   return (
     <StyledMenu
@@ -53,12 +50,11 @@ const Menu = ({ t, currentLanguage, template, ...rest }) => {
       className="navbar"
       onMouseLeave={onCloseMenu}
     >
-      <InternalLink className="nav-item-logo" href="/">
-        {template ? (
-          <LogoBlack className="site-logo" />
-        ) : (
-          <LogoWhite className="site-logo" />
-        )}
+      <InternalLink className="nav-item-logo" href={curLang}>
+      <IconButton
+            isClickable={false}
+            className="site-logo"
+          />
       </InternalLink>
       <ReactSVG
         src={MobileMenu}
@@ -66,16 +62,12 @@ const Menu = ({ t, currentLanguage, template, ...rest }) => {
         onClick={toggleMobile}
       />
       <Nav
-        className={NavTemplateClassName}
+        currentLanguage={currentLanguage}
+        className="nav-item-links"
         stateMobilePND={stateMobile}
         t={t}
       />
       <div className="nav-item-lng">
-        {!windowCheck && (
-          <Link className="nav-item-tel" href="tel:+371 660 164 25">
-            +371 660 164 25
-          </Link>
-        )}
         <LanguageSelector t={t} currentLanguage={currentLanguage} />
       </div>
     </StyledMenu>
