@@ -50,7 +50,7 @@ pipeline {
                 passwordVariable: 'SecretKeyProd')
                 ]) {
           sh '''
-            echo "Deploy from ${BRANCH_NAME} is starting."
+            echo "Deploy from ${BRANCH_NAME} is starting. "
             
             bash $WORKSPACE/.jenkins/deploy.sh "$AccessKeyProd" "$SecretKeyProd" "$FindNameBucket" "$CloudFrontID" "$region" "$OriginName" "$TEL_TOKEN" "$CHAT_ID" "$MESSAGE"
           '''	          							
