@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../utils/devices";
 
 export default styled.div`
   align-items: center;
@@ -27,13 +28,13 @@ export default styled.div`
     padding-left: 10px;
   }
 
-  @media (max-width: 1245px) {
+  @media ${device.laptopM} {
     .lang-name, .language-item-title {
       display: none;
     }
   }
 
-  @media (max-width: 500px) {
+  @media ${device.mobileL} {
     width: 44px;
     grid-template-columns: 18px 24px;
   }
@@ -51,11 +52,11 @@ const StyledPanelView = styled.div`
   top: 40px;
   left: -13%;
 
-  @media (max-width: 1245px) {
+  @media ${device.laptopM} {
     left: 30%;
   }
 
-  @media (max-width: 500px) {
+  @media ${device.mobileL} {
     left: 0;
   }
 `;
@@ -85,7 +86,7 @@ const StyledItem = styled.div`
     }
   }
 
-  @media (max-width: 1245px) {
+  @media ${device.laptopM} {
     .language-item-link {
       width: 20px;
     }

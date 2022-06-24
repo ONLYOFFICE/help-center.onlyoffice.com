@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { device } from "../../../../components/utils/devices";
 
 const StyledMenuTablet = css`
   grid-template-columns: 20px 50px auto 170px 104px;
@@ -53,7 +54,7 @@ const StyledMenuTablet = css`
     width: 50px;
   }
 
-  @media (max-width: 500px) {
+  @media ${device.mobileL} {
     grid-template-columns: 1fr 1fr 2fr auto 2fr 1fr 1fr;
     height: 106px;
     padding: 0;
@@ -156,7 +157,7 @@ const StyledMenu = styled.div`
     }
   }
 
-  @media (max-width: 1245px) {
+  @media ${device.laptopM} {
     .nav-item-btn {
       margin-right: unset;
     }
