@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { ReactSVG } from "react-svg";
 
 import LanguageSelector from "../../../../components/language-selector";
-import Link from "../../../../components/link";
 import InternalLink from "../../../../components/internal-link";
-import IconButton from "../../../../components/icon-button";
+import Button from "../../../../components/button";
 
 import MobileMenu from "../../../../static/images/icons/mob_menu.svg";
 
@@ -15,7 +14,7 @@ const Menu = ({ t, currentLanguage, template, ...rest }) => {
   const [windowCheck, setWindowCheck] = useState("undefined");
   useEffect(() => {
     if (typeof window !== windowCheck) {
-      setWindowCheck(window.innerWidth <= 1050);
+      setWindowCheck(window.innerWidth <= 1190);
     }
   }, [windowCheck]);
 
@@ -51,10 +50,7 @@ const Menu = ({ t, currentLanguage, template, ...rest }) => {
       onMouseLeave={onCloseMenu}
     >
       <InternalLink className="nav-item-logo" href={curLang}>
-      <IconButton
-            isClickable={false}
-            className="site-logo"
-          />
+        <div className="site-logo"></div>
       </InternalLink>
       <ReactSVG
         src={MobileMenu}
@@ -67,6 +63,7 @@ const Menu = ({ t, currentLanguage, template, ...rest }) => {
         stateMobilePND={stateMobile}
         t={t}
       />
+      <Button label="Try in the cloud" height="48px" className="nav-item-btn" />
       <div className="nav-item-lng">
         <LanguageSelector t={t} currentLanguage={currentLanguage} />
       </div>
