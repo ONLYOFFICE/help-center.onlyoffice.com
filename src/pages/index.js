@@ -22,7 +22,7 @@ const IndexPage = () => {
         <HeadingContent t={t} template={true} currentLanguage={language} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <InfoContent t={t} />
+        <InfoContent t={t} currentLanguage={language}/>
         <GuidesCards t={t} />
         <Accordion t={t} currentLanguage={language} />
       </Layout.SectionMain>
