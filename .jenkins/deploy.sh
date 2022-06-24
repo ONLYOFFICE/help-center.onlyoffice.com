@@ -82,7 +82,6 @@ create_new_bucket () {
 
 buildSite () {
     echo "=== build site ==="
-    cd $WORKSPACE/Client
     yarn
     yarn build
 }
