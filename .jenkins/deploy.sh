@@ -89,9 +89,9 @@ buildSite () {
 
 deploySite () {
     echo "=== deploy site ==="
-    if [ -d $WORKSPACE/Client/public ]; then
+    if [ -d $WORKSPACE/public ]; then
         echo "=== write files to bucket ==="
-        aws s3 cp $WORKSPACE/Client/public/ s3://$NameNewBucket/ --recursive
+        aws s3 cp $WORKSPACE/public/ s3://$NameNewBucket/ --recursive
     else
         echo 'No directory'
     fi
@@ -163,7 +163,7 @@ deploySite
 check_deploy
 modify_cloud_front
 
-# delete_old_bucket
+delete_old_bucket
 echo "$MESSAGE"
 # notifyTelegram $CHAT_ID "$MESSAGE"
 
