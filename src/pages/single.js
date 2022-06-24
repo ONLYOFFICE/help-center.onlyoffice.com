@@ -18,7 +18,7 @@ const SinglePage = () => {
     <Layout>
       <Layout.PageHead></Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={true} currentLanguage={language} />
+        <HeadingContent t={t} template={false} currentLanguage={language} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <SingleContent t={t}/>

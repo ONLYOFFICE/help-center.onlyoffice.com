@@ -5,7 +5,7 @@ const StyledLeftMenu = styled.div`
     position: relative;
     width: 264px;
     z-index: 100;
-    margin-left: -376px;
+    margin-left: -314px;
 
 
     .external-link {

@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import { device } from "../../../components/utils/devices";
-import Section from "../section";
 
-const StyledSingleContent = styled(Section)`
-  margin-top: 100px;
+const StyledSingleContent = styled.div`
+  margin: 100px 0 20px 304px;
+  max-width: 1300px;
+  padding: 0 10% 0 24px;
+  position: relative;
+  width: auto;
+
   .section-page {
-    display: flex;
-    gap: 0px 20px;
-
     .cell_container {
       display: flex;
       flex-direction: column;
