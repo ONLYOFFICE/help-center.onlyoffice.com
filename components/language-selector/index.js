@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import StyledLanguageSelector from "./styled-language-selector";
-// import ArrowDown from "../../static/images/icons/arrow-drop-down.react.svg";
-// import ArrowUp from "../../static/images/icons/arrow-drop-up.react.svg";
-// import ItemsList from "./items-list";
+import ArrowDown from "../../static/images/icons/arrow-drop-down.react.svg";
+import ArrowUp from "../../static/images/icons/arrow-drop-up.react.svg";
+import ItemsList from "./items-list";
 
 const LanguageSelector = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,7 +47,7 @@ const LanguageSelector = (props) => {
     setIsOpen(false);
   };
 
-  // const { currentLanguage, t } = props;
+  const { currentLanguage, t } = props;
 
   return (
     <StyledLanguageSelector
@@ -58,10 +58,11 @@ const LanguageSelector = (props) => {
       <img
         className="flag-image"
         alt="flag"
-        src={`/images/flags/en.svg`}
+        src={`/images/flags/${currentLanguage}.svg`}
         width={"18px"}
       />
-      {/* <div className="arrow-image">
+      <p>{currentLanguage}</p>
+      <div className="arrow-image">
         {isOpen ? <ArrowUp alt="arrow-up" /> : <ArrowDown alt="arrow-down" />}
       </div>
       <ItemsList
@@ -72,7 +73,7 @@ const LanguageSelector = (props) => {
         isOpen={isOpen}
         currentLanguage={currentLanguage}
         onCloseSelector={onCloseSelector}
-      /> */}
+      /> 
     </StyledLanguageSelector>
   );
 };
