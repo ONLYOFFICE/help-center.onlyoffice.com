@@ -103,7 +103,7 @@ const StyledMenu = styled.div`
   height: auto;
   font-size: 12px;
   color: #333;
-  background-color: #f5f5f5;
+  background-color: ${(props) => (props.template ? "#f5f5f5" : "white")};
   transition: 0.3s;
 
   &.active {

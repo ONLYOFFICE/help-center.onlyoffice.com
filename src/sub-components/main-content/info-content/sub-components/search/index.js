@@ -60,6 +60,7 @@ const SearchContent = ({ t }) => {
         callback={onSearch}
         valueSearch={searchItem}
         clearValueSearch={clearValueSearch}
+        label={t("WelcomeToHelpCenter")}
       />
       <SearchResult
         searchItem={searchItem}
