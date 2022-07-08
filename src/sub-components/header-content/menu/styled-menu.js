@@ -104,6 +104,12 @@ const StyledMenu = styled.div`
   font-size: 12px;
   color: #333;
   background-color: #f5f5f5;
+  transition: 0.3s;
+
+  &.active {
+    background-color: #ffffff;
+    border-bottom: 1px solid #d9d9d9;
+  }
 
   .nav-item-logo {
     grid-column-start: 1;
@@ -113,6 +119,7 @@ const StyledMenu = styled.div`
 
   .nav-item-links {
     margin: 0 auto;
+    height: 55px;
     .nav-item .heading-nav-item {
       color: #333;
       &:hover {

@@ -23,9 +23,10 @@ const StyledNavMenu = styled.div`
     display: block;
     font-size: 12px;
     font-weight: 600;
+    height: 32px;
     line-height: 29px;
     letter-spacing: 0.04em;
-    padding: 13px;
+    padding: 13px 13px 20px;
     cursor: pointer;
     margin: 0px;
     text-transform: uppercase;
