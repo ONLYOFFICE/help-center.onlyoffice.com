@@ -4,15 +4,14 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 
 import Layout from "../../components/layout";
 import HeadingContent from "../sub-components/header-content";
-import Accordion from "../sub-components/accordion";
 import Footer from "../sub-components/footer-content";
 import SingleContent from "../sub-components/single-content";
 
 const SinglePage = () => {
-    const {
-        t,
-        i18n: { language },
-      } = useTranslation();
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation();
 
   return (
     <Layout>
@@ -21,7 +20,7 @@ const SinglePage = () => {
         <HeadingContent t={t} template={false} currentLanguage={language} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <SingleContent t={t}/>
+        <SingleContent t={t} currentLanguage={language} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={language} />

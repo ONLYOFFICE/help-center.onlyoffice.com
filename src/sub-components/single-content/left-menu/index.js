@@ -1,10 +1,12 @@
 import React from "react";
 import StyledLeftMenu from "./styled-left-menu";
 import InternalLink from "../../../../components/internal-link";
+import SearchContent from "./sub-components/search";
 
-const LeftMenu = ({ t }) => {
+const LeftMenu = ({ t, ...rest }) => {
     return (
     <StyledLeftMenu>
+        <SearchContent t={t} />
         <InternalLink
             label="Installation guides"
             className="external-link"

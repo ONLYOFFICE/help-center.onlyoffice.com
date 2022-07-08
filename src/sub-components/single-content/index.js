@@ -3,11 +3,11 @@ import StyledSingleContent from "./styled-single-content";
 import LeftMenu from "./left-menu";
 import CenterContent from "./content";
 
-const SingleContent = ({ t }) => {
+const SingleContent = ({ t, ...rest }) => {
     return (
         <StyledSingleContent>
-            <LeftMenu/>
-            <CenterContent/>
+            <LeftMenu t={t} />
+            <CenterContent t={t} />
         </StyledSingleContent>
     )
 }
