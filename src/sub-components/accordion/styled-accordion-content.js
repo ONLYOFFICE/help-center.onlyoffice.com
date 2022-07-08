@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Section from "../section";
+import { device } from "../../../components/utils/devices";
 
 const StyledAccordionContent = styled(Section)`
   .text-trans-accordion {
@@ -19,7 +20,7 @@ const StyledAccordionContent = styled(Section)`
     padding: 48px;
     text-align: center;
 
-    @media (max-width: 500px) {
+    @media ${device.mobileL} {
       padding: 0 0 40px;
     }
   }

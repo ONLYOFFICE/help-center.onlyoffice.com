@@ -1,10 +1,12 @@
 import styled from "styled-components";
+import { device } from "../utils/devices";
 
 export default styled.div`
-  width: 48px;
+  align-items: center;
+  width: 104px;
   display: grid;
-  grid-template-columns: 18px 6px;
-  grid-column-gap: 2px;
+  grid-template-columns: 18px auto 24px auto;
+  justify-content: end;
   position: relative;
   outline: none;
   -webkit-tap-highlight-color: transparent;
@@ -16,19 +18,25 @@ export default styled.div`
     -webkit-tap-highlight-color: transparent;
   }
   .arrow-image {
-    margin-top: -1px;
+    margin-top: 8px;
     outline: none;
     -webkit-tap-highlight-color: transparent;
   }
-  .title-lng {
-    display: inline-block;
-    font-size: 14px;
-    font-family: "Open Sans", sans-serif;
-    color: #333;
-    padding-left: 8px;
-    vertical-align: middle;
-    text-transform: uppercase;
-    width: fit-content;
+
+  .lang-name {
+    font-size: 13px;
+    padding-left: 10px;
+  }
+
+  @media ${device.laptopM} {
+    .lang-name, .language-item-title {
+      display: none;
+    }
+  }
+
+  @media ${device.mobileL} {
+    width: 44px;
+    grid-template-columns: 18px 24px;
   }
 `;
 
@@ -41,8 +49,16 @@ const StyledPanelView = styled.div`
   box-shadow: 0 1px 1px rgb(0 0 0 / 20%);
   z-index: 100;
   padding: 6px 12px;
-  top: 20px;
-  right: 10px;
+  top: 40px;
+  left: -13%;
+
+  @media ${device.laptopM} {
+    left: 30%;
+  }
+
+  @media ${device.mobileL} {
+    left: 0;
+  }
 `;
 
 const StyledItem = styled.div`
@@ -64,10 +80,16 @@ const StyledItem = styled.div`
 
   .language-item-title {
     font-size: 13px;
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
-  .title-lng:hover {
-    color: #ff865c;
-    cursor: pointer;
+
+  @media ${device.laptopM} {
+    .language-item-link {
+      width: 20px;
+    }
   }
 `;
 

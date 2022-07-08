@@ -2,84 +2,84 @@
   {
     "position": "installation",
     "header": "Installation Guides",
-    "header_href": "https://helpcenter.onlyoffice.com/installation.aspx",
+    "header_href": "/installation.aspx",
     "text": "Guides for installing, updating ONLYOFFICE products and configuring while installation",
     "data": [
       {
         "title": "ONLYOFFICE Workspace",
-        "href": "https://helpcenter.onlyoffice.com/installation/workspace-index.aspx",
+        "href": "/installation/workspace-index.aspx",
         "isBold": true,
         "line": "1"
       },
       {
         "title": "Workspace",
-        "href": "https://helpcenter.onlyoffice.com/installation/workspace-community-index.aspx",
+        "href": "/installation/workspace-community-index.aspx",
         "isBold": false,
         "line": "1"
       },
       {
         "title": "Workspace Enterprise Edition",
-        "href": "https://helpcenter.onlyoffice.com/installation/workspace-enterprise-index.aspx",
+        "href": "/installation/workspace-enterprise-index.aspx",
         "isBold": false,
         "line": "1"
       },
       {
         "title": "Workspace Cloud Service",
-        "href": "https://helpcenter.onlyoffice.com/installation/workspace-saas-index.aspx",
+        "href": "/installation/workspace-saas-index.aspx",
         "isBold": false,
         "line": "1"
       },
       {
         "title": "ONLYOFFICE Groups",
-        "href": "https://helpcenter.onlyoffice.com/installation/groups-index.aspx",
+        "href": "/installation/groups-index.aspx",
         "isBold": true,
         "line": "1"
       },
       {
         "title": "ONLYOFFICE Mail",
-        "href": "https://helpcenter.onlyoffice.com/installation/mail-index.aspx",
+        "href": "/installation/mail-index.aspx",
         "isBold": true,
         "line": "1"
       },
       {
         "title": "ONLYOFFICE Talk",
-        "href": "https://helpcenter.onlyoffice.com/installation/talk-index.aspx",
+        "href": "/installation/talk-index.aspx",
         "isBold": true,
         "line": "1"
       },
       {
         "title": "ONLYOFFICE Docs",
-        "href": "https://helpcenter.onlyoffice.com/installation/docs-index.aspx",
+        "href": "/installation/docs-index.aspx",
         "isBold": true,
         "line": "2"
       },
       {
         "title": "Community Edition",
-        "href": "https://helpcenter.onlyoffice.com/installation/workspace-community-index.aspx",
+        "href": "/installation/workspace-community-index.aspx",
         "isBold": false,
         "line": "2"
       },
       {
         "title": "Enterprise Edition",
-        "href": "https://helpcenter.onlyoffice.com/installation/workspace-enterprise-index.aspx",
+        "href": "/installation/workspace-enterprise-index.aspx",
         "isBold": false,
         "line": "2"
       },
       {
         "title": "Developer Edition",
-        "href": "https://helpcenter.onlyoffice.com/installation/workspace-saas-index.aspx",
+        "href": "/installation/workspace-saas-index.aspx",
         "isBold": false,
         "line": "2"
       },
       {
         "title": "ONLYOFFICE Desktop Editors",
-        "href": "https://helpcenter.onlyoffice.com/installation/groups-index.aspx",
+        "href": "/installation/groups-index.aspx",
         "isBold": true,
         "line": "2"
       },
       {
         "title": "ONLYOFFICE mobile apps",
-        "href": "https://helpcenter.onlyoffice.com/installation/mail-index.aspx",
+        "href": "/installation/mail-index.aspx",
         "isBold": true,
         "line": "2"
       }
@@ -88,96 +88,96 @@
   {
     "position": "integration",
     "header": "Integration Guides",
-    "header_href": "https://helpcenter.onlyoffice.com/integration.aspx",
+    "header_href": "/integration.aspx",
     "text": "Guides for integrating ONLYOFFICE Docs with popular cloud platforms using official connectors",
     "data": [
       {
         "title": "Alfresco",
-        "href": "https://helpcenter.onlyoffice.com/integration/alfresco.aspx",
+        "href": "/integration/alfresco.aspx",
         "isBold": true,
         "line": "1"
       },
       {
         "title": "Chamilo",
-        "href": "https://helpcenter.onlyoffice.com/integration/chamilo.aspx",
+        "href": "/integration/chamilo.aspx",
         "isBold": true,
         "line": "1"
       },
       {
         "title": "Confluence",
-        "href": "https://helpcenter.onlyoffice.com/integration/confluence.aspx",
+        "href": "/integration/confluence.aspx",
         "isBold": true,
         "line": "1"
       },
       {
         "title": "Humhub",
-        "href": "https://helpcenter.onlyoffice.com/integration/humhub.aspx",
+        "href": "/integration/humhub.aspx",
         "isBold": true,
         "line": "1"
       },
       {
         "title": "Jira",
-        "href": "https://helpcenter.onlyoffice.com/integration/jira.aspx",
+        "href": "/integration/jira.aspx",
         "isBold": true,
         "line": "1"
       },
       {
         "title": "Liferay",
-        "href": "https://helpcenter.onlyoffice.com/integration/liferay.aspx",
+        "href": "/integration/liferay.aspx",
         "isBold": true,
         "line": "1"
       },
       {
         "title": "Moodle",
-        "href": "https://helpcenter.onlyoffice.com/integration/moodle.aspx",
+        "href": "/integration/moodle.aspx",
         "isBold": true,
         "line": "1"
       },
       {
         "title": "Nextcloud",
-        "href": "https://helpcenter.onlyoffice.com/integration/nextcloud.aspxx",
+        "href": "/integration/nextcloud.aspx",
         "isBold": true,
         "line": "2"
       },
       {
         "title": "Nuxeo",
-        "href": "https://helpcenter.onlyoffice.com/integration/nuxeo.aspx",
+        "href": "/integration/nuxeo.aspx",
         "isBold": true,
         "line": "2"
       },
       {
         "title": "ownCloud",
-        "href": "https://helpcenter.onlyoffice.com/integration/owncloud.aspx",
+        "href": "/integration/owncloud.aspx",
         "isBold": true,
         "line": "2"
       },
       {
         "title": "Plone",
-        "href": "https://helpcenter.onlyoffice.com/integration/plone.aspx",
+        "href": "/integration/plone.aspx",
         "isBold": true,
         "line": "2"
       },
       {
         "title": "Redmine",
-        "href": "https://helpcenter.onlyoffice.com/integration/redmine.aspx",
+        "href": "/integration/redmine.aspx",
         "isBold": true,
         "line": "2"
       },
       {
         "title": "Sharepoint",
-        "href": "https://helpcenter.onlyoffice.com/integration/sharepoint.aspx",
+        "href": "/integration/sharepoint.aspx",
         "isBold": true,
         "line": "2"
       },
       {
         "title": "Strapi",
-        "href": "https://helpcenter.onlyoffice.com/integration/strapi.aspx",
+        "href": "/integration/strapi.aspx",
         "isBold": true,
         "line": "2"
       },
       {
         "title": "WordPress",
-        "href": "https://helpcenter.onlyoffice.com/integration/wordpress.aspx",
+        "href": "/integration/wordpress.aspx",
         "isBold": true,
         "line": "2"
       }
@@ -186,54 +186,54 @@
   {
     "position": "administration",
     "header": "Administration Guides",
-    "header_href": "https://helpcenter.onlyoffice.com/administration.aspx",
+    "header_href": "/administration.aspx",
     "text": "Guides for managing and configuring ONLYOFFICE products",
     "data": [
       {
         "title": "ONLYOFFICE Workspace",
-        "href": "https://helpcenter.onlyoffice.com/integration/alfresco.aspx",
+        "href": "/administration.aspx",
         "isBold": true,
         "line": "1"
       },
       {
         "title": "Managing portals",
-        "href": "https://helpcenter.onlyoffice.com/integration/chamilo.aspx",
+        "href": "/administration/portal-management.aspx",
         "isBold": false,
         "line": "1"
       },
       {
         "title": "Reinforcing security",
-        "href": "https://helpcenter.onlyoffice.com/integration/confluence.aspx",
+        "href": "/administration/reinforcing-security.aspx",
         "isBold": false,
         "line": "1"
       },
       {
         "title": "Configuring modules and tools",
-        "href": "https://helpcenter.onlyoffice.com/integration/humhub.aspx",
+        "href": "/administration/configuring-modules.aspx",
         "isBold": false,
         "line": "1"
       },
       {
         "title": "Customizing modules and tools",
-        "href": "https://helpcenter.onlyoffice.com/integration/jira.aspx",
+        "href": "/administration/customizing-modules.aspx",
         "isBold": false,
         "line": "2"
       },
       {
         "title": "Managing users",
-        "href": "https://helpcenter.onlyoffice.com/integration/liferay.aspx",
+        "href": "/administration/managing-users.aspx",
         "isBold": false,
         "line": "2"
       },
       {
         "title": "Connecting external services",
-        "href": "https://helpcenter.onlyoffice.com/integration/moodle.aspx",
+        "href": "/administration/external-services.aspx",
         "isBold": false,
         "line": "2"
       },
       {
         "title": "ONLYOFFICE Control Panel",
-        "href": "https://helpcenter.onlyoffice.com/integration/nextcloud.aspxx",
+        "href": "/administration/control-panel.aspx",
         "isBold": false,
         "line": "2"
       }
@@ -242,150 +242,150 @@
   {
     "position": "user",
     "header": "User Guides",
-    "header_href": "https://helpcenter.onlyoffice.com/userguides.aspx",
+    "header_href": "/userguides.aspx",
     "text": "Guides for using main ONLYOFFICE features and tools",
     "data": [
       {
         "title": "ONLYOFFICE Workspace",
-        "href": "https://helpcenter.onlyoffice.com/integration/alfresco.aspx",
+        "href": "/userguides/workspace-index.aspx",
         "isBold": true,
         "line": "1"
       },
       {
         "title": "General questions",
-        "href": "https://helpcenter.onlyoffice.com/integration/chamilo.aspx",
+        "href": "/userguides/workspace-general-questions.aspx",
         "isBold": false,
         "line": "1"
       },
       {
         "title": "ONLYOFFICE Groups",
-        "href": "https://helpcenter.onlyoffice.com/integration/confluence.aspx",
+        "href": "/userguides/groups-index.aspx",
         "isBold": true,
         "line": "1"
       },
       {
         "title": "Documents",
-        "href": "https://helpcenter.onlyoffice.com/integration/humhub.aspx",
+        "href": "/userguides/documents.aspx",
         "isBold": false,
         "line": "1"
       },
       {
         "title": "People",
-        "href": "https://helpcenter.onlyoffice.com/integration/jira.aspx",
+        "href": "/userguides/people.aspx",
         "isBold": false,
         "line": "1"
       },
       {
         "title": "Community",
-        "href": "https://helpcenter.onlyoffice.com/integration/liferay.aspx",
+        "href": "/userguides/community.aspx",
         "isBold": false,
         "line": "1"
       },
       {
         "title": "CRM",
-        "href": "https://helpcenter.onlyoffice.com/integration/moodle.aspx",
+        "href": "/userguides/crm.aspx",
         "isBold": false,
         "line": "1"
       },
       {
         "title": "Projects",
-        "href": "https://helpcenter.onlyoffice.com/integration/nextcloud.aspxx",
+        "href": "/userguides/projects.aspx",
         "isBold": false,
         "line": "1"
       },
       {
         "title": "Mail",
-        "href": "https://helpcenter.onlyoffice.com/integration/liferay.aspx",
+        "href": "/userguides/mail.aspx",
         "isBold": false,
         "line": "1"
       },
       {
         "title": "Calendar",
-        "href": "https://helpcenter.onlyoffice.com/integration/moodle.aspx",
+        "href": "/userguides/calendar.aspx",
         "isBold": false,
         "line": "1"
       },
       {
         "title": "Feed",
-        "href": "https://helpcenter.onlyoffice.com/integration/nextcloud.aspxx",
+        "href": "/userguides/feed.aspx",
         "isBold": false,
         "line": "1"
       },
       {
         "title": "ONLYOFFICE Mail",
-        "href": "https://helpcenter.onlyoffice.com/integration/confluence.aspx",
+        "href": "/userguides/workspace-mail.aspx",
         "isBold": true,
         "line": "1"
       }, 
       {
         "title": "ONLYOFFICE Talk",
-        "href": "https://helpcenter.onlyoffice.com/integration/confluence.aspx",
+        "href": "/userguides/talk.aspx",
         "isBold": true,
         "line": "1"
       },
       {
         "title": "ONLYOFFICE Personal",
-        "href": "https://helpcenter.onlyoffice.com/integration/confluence.aspx",
+        "href": "/userguides/workspace-personal.aspx",
         "isBold": true,
         "line": "1"
       }, 
       {
         "title": "ONLYOFFICE Docs",
-        "href": "https://helpcenter.onlyoffice.com/integration/alfresco.aspx",
+        "href": "/userguides/docs-index.aspx",
         "isBold": true,
         "line": "2"
       },
       {
         "title": "Document Editor",
-        "href": "https://helpcenter.onlyoffice.com/integration/chamilo.aspx",
+        "href": "/userguides/docs-de.aspx",
         "isBold": false,
         "line": "2"
       },
       {
         "title": "Spreadsheet Editor",
-        "href": "https://helpcenter.onlyoffice.com/integration/confluence.aspx",
+        "href": "/userguides/docs-se.aspx",
         "isBold": false,
         "line": "2"
       },
       {
         "title": "Presentation Editor",
-        "href": "https://helpcenter.onlyoffice.com/integration/humhub.aspx",
+        "href": "/userguides/docs-pe.aspx",
         "isBold": false,
         "line": "2"
       },
       {
         "title": "ONLYOFFICE mobile apps",
-        "href": "https://helpcenter.onlyoffice.com/integration/jira.aspx",
+        "href": "/userguides/mobile-index.aspx",
         "isBold": true,
         "line": "2"
       },
       {
         "title": "Documents for iOS",
-        "href": "https://helpcenter.onlyoffice.com/integration/liferay.aspx",
+        "href": "/userguides/mobile-ios.aspx",
         "isBold": false,
         "line": "2"
       },
       {
         "title": "Documents for Android",
-        "href": "https://helpcenter.onlyoffice.com/integration/moodle.aspx",
+        "href": "/userguides/mobile-android.aspx",
         "isBold": false,
         "line": "2"
       },
       {
         "title": "Projects for iOS",
-        "href": "https://helpcenter.onlyoffice.com/integration/nextcloud.aspxx",
+        "href": "/userguides/mobile-projects.aspx",
         "isBold": false,
         "line": "2"
       },
       {
         "title": "Projects for Android",
-        "href": "https://helpcenter.onlyoffice.com/integration/liferay.aspx",
+        "href": "/userguides/mobile-projects-android.aspx",
         "isBold": false,
         "line": "2"
       },
       {
         "title": "Web Editors",
-        "href": "https://helpcenter.onlyoffice.com/integration/moodle.aspx",
+        "href": "/userguides/mobile-web.aspx",
         "isBold": false,
         "line": "2"
       }
@@ -395,36 +395,42 @@
     "position": "developer",
     "header": "Developer Guides",
     "header_href": "https://api.onlyoffice.com/",
+    "isExternal": true,
     "text": "Guides for developing and modifying ONLYOFFICE code",
     "data": [
       {
         "title": "ONLYOFFICE on GitHub",
-        "href": "https://helpcenter.onlyoffice.com/integration/alfresco.aspx",
+        "href": "https://github.com/ONLYOFFICE",
         "isBold": true,
+        "isExternal": true,
         "line": "1"
       },
       {
         "title": "ONLYOFFICE Docs API",
-        "href": "https://helpcenter.onlyoffice.com/integration/chamilo.aspx",
+        "href": "https://api.onlyoffice.com/editors/basic",
         "isBold": true,
+        "isExternal": true,
         "line": "1"
       },
       {
         "title": "ONLYOFFICE Groups API",
-        "href": "https://helpcenter.onlyoffice.com/integration/confluence.aspx",
+        "href": "https://api.onlyoffice.com/portals/basic",
         "isBold": true,
+        "isExternal": true,
         "line": "1"
       },
       {
         "title": "ONLYOFFICE Document Builder",
-        "href": "https://helpcenter.onlyoffice.com/integration/humhub.aspx",
+        "href": "https://api.onlyoffice.com/docbuilder/basic",
         "isBold": true,
+        "isExternal": true,
         "line": "2"
       },
       {
         "title": "Plugins and macros",
-        "href": "https://helpcenter.onlyoffice.com/integration/jira.aspx",
+        "href": "https://api.onlyoffice.com/plugin/basic",
         "isBold": true,
+        "isExternal": true,
         "line": "2"
       }
     ]
@@ -432,18 +438,18 @@
   {
     "position": "contribution",
     "header": "Contribution Guides",
-    "header_href": "https://helpcenter.onlyoffice.com/guides/become-translator.aspx",
+    "header_href": "/guides/become-translator.aspx",
     "text": "Guides for contributing to ONLYOFFICE project",
     "data": [
       {
         "title": "Translation",
-        "href": "https://helpcenter.onlyoffice.com/integration/alfresco.aspx",
+        "href": "/guides/become-translator.aspx",
         "isBold": true,
         "line": "1"
       },
       {
         "title": "Reporting issues",
-        "href": "https://helpcenter.onlyoffice.com/integration/chamilo.aspx",
+        "href": "/guides/report-issues.aspx",
         "isBold": true,
         "line": "1"
       }

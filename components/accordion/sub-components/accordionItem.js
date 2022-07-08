@@ -7,15 +7,16 @@ const AccordionItem = ({
   children,
   isCollapsed,
   onClick,
+  isMenu,
+  isMobMenu,
   ...rest
 }) => {
   const content = useRef();
   const [active, setActive] = useState(false);
-
   return (
     <StyledAccordionItem {...rest} onClick={() => setActive(!active)}>
       <div className="accordion">
-        <div className="accordion__icon">{!active ? "+" : "−"}</div>
+        <div className="accordion__icon">{!isMobMenu && (!active ? "+" : "−")}</div>
         <Heading
           level={4}
           style={{ cursor: "pointer" }}
@@ -27,7 +28,7 @@ const AccordionItem = ({
       <div
         ref={content}
         style={{
-          maxHeight: `${active ? `${content.current.scrollHeight}px` : "0px"}`,
+          maxHeight: `${isMenu && !isMobMenu ? "fit-content" : (active ? `${content.current.scrollHeight}px` : "0px")}`,
         }}
         className="accordion__content"
       >

@@ -23,6 +23,7 @@ const StyledGuidesCell = styled.div`
 
     .cell_header_links {
       display: block;
+      text-align: left;
 
       span {
         display: block;
@@ -53,7 +54,7 @@ const StyledGuidesCell = styled.div`
 
     .links_area {
         display: block;
-        .internal-link {
+        .internal-link, .external-link {
             display: block;
             font-weight: 600;
             text-decoration: none;

@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import arrow_red from "../../../../../static/images/icons/arrow-red.svg";
-import phone from "../../../../../static/images/icons/phone.svg";
 import { device } from "../../../../../components/utils/devices";
 
 const StyledNav = styled.nav`
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
   justify-content: center;
 
   .navitem_features_menu {
@@ -64,13 +64,13 @@ const StyledNav = styled.nav`
     }
   }
 
-  @media (min-width: 1050px) {
+  @media (min-width: 1190px) {
     #navitem_user .menu-items-wrapper {
       left: calc(50% - 395px);
     }
   }
 
-  @media (max-width: 1050px) {
+  @media (max-width: 1190px) {
     padding: 0;
     background-color: #fff;
     min-height: 100px;
@@ -83,10 +83,10 @@ const StyledNav = styled.nav`
     text-align: center;
     font-size: 16px;
     transition: right 0.5s;
-    width: 429px;
+    width: 300px;
     z-index: 5;
     display: block;
-    padding-top: 8px;
+    padding-top: 16px;
     box-sizing: border-box;
     overflow-x: hidden;
 
@@ -95,9 +95,11 @@ const StyledNav = styled.nav`
     }
 
     .mobile-heading-nav-item {
+      border-bottom: 1px solid #f2f2f2;
+      color: #ff6f3d;
       cursor: pointer;
       display: block;
-      font-size: 18px;
+      font-size: 16px;
       letter-spacing: 0.03em;
       line-height: 1.33em;
       margin: 0 auto;
@@ -135,35 +137,21 @@ const StyledNav = styled.nav`
       padding: 0;
     }
 
-    .nav-item-mobile-tel {
-      box-sizing: border-box;
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 22px;
-      background-color: #f6f6f6;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      letter-spacing: 0.02em;
-      padding: 15px 16px 15px 20px;
-      text-decoration: none;
+    #navitem_contribution, #navitem_development, #navitem_user, #navitem_integrations, #navitem_installation, #navitem_administration {
+      .heading-nav-item {
+        border-bottom: 1px solid #f2f2f2;
+      }
+    }
+    #navitem_contribution, #navitem_development {
+      .heading-nav-item {
+        &:hover {
+          border-bottom: 1px solid #f2f2f2;
+        }
+      }
+    }
+
+    .no-box-inside {
       width: 100%;
-      &:before {
-        background-image: url(${phone});
-        background-repeat: no-repeat;
-        background-position: 50% 50%;
-        background-size: 18px 18px;
-        content: "";
-        display: inline-block;
-        height: 18px;
-        margin: 0 13px 4px 0;
-        padding: 0;
-        vertical-align: middle;
-        width: 18px;
-      }
-      &:hover {
-        color: #333;
-      }
     }
   }
 
