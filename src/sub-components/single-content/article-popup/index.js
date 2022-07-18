@@ -2,18 +2,17 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { CloseButton, StyledArticlePopup } from "./styled-article-popup";
 import Text from "../../../../components/text";
-import Button from "../../../../components/button";
 import InternalLink from "../../../../components/internal-link";
+import Tag from "../../../../components/tag";
 
-const MailPopup = ({ t, language, active, setActive, submitForm, ...rest }) => {
-  const [formComplete, setFormComplete] = useState(false);
-
+const ArticlePopup = ({ t, language, active, setActive, tag, ...rest }) => {
+  const tagEl = (<Tag t={t} type={"heading"}>{tag}</Tag>);
   return (
     <StyledArticlePopup active={active} onClick={() => setActive(false)} {...rest}>
       <div onClick={(e) => e.stopPropagation()} className="popup-content">
         <div className="PopupPanelCaptionItems">
           <div className="PopupPanelCaption">
-            <Text className="popupPanelText" label={t("Article with a tag:")} />
+            <span className="popupPanelText">{t("Article with the {{tagEl}} tag:", tagEl )}</span>
             <CloseButton onClick={() => setActive(false)} />
           </div>
             <InternalLink className="tagsLink" href="/tags">{t("Browse all tags")}</InternalLink>
@@ -25,7 +24,7 @@ const MailPopup = ({ t, language, active, setActive, submitForm, ...rest }) => {
   );
 };
 
-MailPopup.propTypes = {
+ArticlePopup.propTypes = {
   /** */
   active: PropTypes.bool,
   /** */
@@ -42,6 +41,6 @@ MailPopup.propTypes = {
   className: PropTypes.string,
 };
 
-MailPopup.defaultProps = {};
+ArticlePopup.defaultProps = {};
 
-export default MailPopup;
+export default ArticlePopup;
