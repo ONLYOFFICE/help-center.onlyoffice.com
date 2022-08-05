@@ -6,7 +6,7 @@ import InternalLink from "../../../../components/internal-link";
 import Tag from "../../../../components/tag";
 
 const ArticlePopup = ({ t, language, active, setActive, tag, ...rest }) => {
-  const tagEl = (<Tag t={t} type={"heading"}>{tag}</Tag>);
+  const tagEl = (<Tag t={t} type={"popup"}>{tag}</Tag>);
   return (
     <StyledArticlePopup active={active} onClick={() => setActive(false)} {...rest}>
       <div onClick={(e) => e.stopPropagation()} className="popup-content">

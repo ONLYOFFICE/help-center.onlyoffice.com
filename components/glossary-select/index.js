@@ -1,25 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import StyledTag from "./styled-tag";
+import StyledGlossarySelect from "./styled-glossary-select";
 
-const Tag = ({
-  label,
-  type,
-  id,
-  ...rest
-
-}) => {
-
+const GlossarySelect = ({ id, label, isDisabled, active, ...rest }) => {
+  
   return (
-    <StyledTag type={type} id={id} {...rest}>
-       {label}
-    </StyledTag>
+    <StyledGlossarySelect
+      isDisabled={isDisabled}
+      active={active}
+      id={"gloss_" + id}
+      // onClick={() => (!isDisabled ? {onClick} : () => undefined)}
+      {...rest}
+    >
+      {label}
+    </StyledGlossarySelect>
   );
 };
 
-Tag.propTypes = {
-  /** The tag type: page - in article, popup - in popup heading, list - in all tags page */
-  type: PropTypes.oneOf(["page", "popup", "list"]),
+GlossarySelect.propTypes = {
+  /** The glossary state */
+  isActive: PropTypes.bool,
+  /** The glossary type */
+  isDisabled: PropTypes.bool,
   /** Text color */
   color: PropTypes.string,
   /** Text font-size */
@@ -44,10 +46,13 @@ Tag.propTypes = {
   id: PropTypes.string,
   /** Accepts class */
   className: PropTypes.string,
+  /** Label */
+  label: PropTypes.string,
 };
 
-Tag.defaultProps = {
+GlossarySelect.defaultProps = {
   tabIndex: -1,
+  isDisabled: false,
 };
 
-export default Tag;
+export default GlossarySelect;

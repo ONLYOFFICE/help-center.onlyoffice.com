@@ -1,25 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
-import StyledTag from "./styled-tag";
+import StyledUpArrow from "./styled-up-arrow";
+import IconButton from "../icon-button";
 
-const Tag = ({
-  label,
-  type,
-  id,
-  ...rest
+const UpArrow = ({ ...rest }) => {
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
 
-}) => {
-
-  return (
-    <StyledTag type={type} id={id} {...rest}>
-       {label}
-    </StyledTag>
-  );
+  return <StyledUpArrow title="Scroll up" {...rest} onClick={() => topFunction()} />;
 };
 
-Tag.propTypes = {
-  /** The tag type: page - in article, popup - in popup heading, list - in all tags page */
-  type: PropTypes.oneOf(["page", "popup", "list"]),
+UpArrow.propTypes = {
   /** Text color */
   color: PropTypes.string,
   /** Text font-size */
@@ -46,8 +40,8 @@ Tag.propTypes = {
   className: PropTypes.string,
 };
 
-Tag.defaultProps = {
+UpArrow.defaultProps = {
   tabIndex: -1,
 };
 
-export default Tag;
+export default UpArrow;

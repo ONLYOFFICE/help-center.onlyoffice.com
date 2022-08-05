@@ -8,6 +8,21 @@ const StyledSingleContent = styled.div`
   position: relative;
   width: auto;
 
+  .alert-enter {
+    opacity: 0;
+  }
+  .alert-enter-active {
+    opacity: 1;
+    transition: opacity .1s fadein;
+  }
+  .alert-exit {
+    opacity: 1;
+  }
+  .alert-exit-active {
+    opacity: 0;
+    transition: opacity .1s fadeout;
+  }
+
   .section-page {
     .cell_container {
       display: flex;
@@ -20,6 +35,11 @@ const StyledSingleContent = styled.div`
       .cell_container {
       }
     }
+  }
+    
+  @media (max-width: 1190px) {
+    margin: 100px 0 20px 0px;
+    padding: 0 20px;
   }
 `;
 

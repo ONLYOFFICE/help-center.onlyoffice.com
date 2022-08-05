@@ -13,21 +13,6 @@ const {
   grayLight,
   grayTag,
   shuttleGrey,
-  saas,
-  videoGuide,
-  controlPanel,
-  onlineEditors,
-  iOSApp,
-  androidApp,
-  serverDocker,
-  serverAll,
-  serverWindows,
-  iOSWeb,
-  androidWeb,
-  integration,
-  faq,
-  serverLinux,
-  desktopAll,
 } = globalColors;
 
 const Base = {
@@ -166,22 +151,15 @@ const Base = {
 
   tag : {
     borderColorPage: "#d9d9d9",
-    backgroundColorHeading: "#999",
-    colorLetter: orangeLetters,
-    colorWhite: white, //list, heading
+    backgroundColorPopup: "#999",
+    colorWhite: white,
     colorPage: grayTag,
-    fontSizeHeading: "18px",
-    fontSizeLetter: "16px", 
-    fontSizeList: "12px", 
-    fontSizePage: "13px",
+    colorList: orangeLetters,
+    fontSizePopup: "18px",
+    fontSizeList: "14px", 
     fontWeightBold: "600",
-    paddingLetter: "1px 5px",
-    paddingHeading: "1px 5px 3px",
+    paddingPopup: "1px 5px 3px",
     paddingPage: "0px 5px",
-    paddingList: "0px 8px",
-    heightList: "18px",
-    textTransformLetter: "uppercase",
-    widthList: "120px",
   },
 
   text: {
