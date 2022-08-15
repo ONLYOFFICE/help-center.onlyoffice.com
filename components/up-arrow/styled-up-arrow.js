@@ -21,6 +21,16 @@ width: 40px;
 &:hover {
     background-color: rgba(61,74,107,0.7);
 }
+
+@media (max-width: 1190px) {
+    bottom: 100px;
+    height: 50px;
+    left: auto;
+    margin: 0;
+    padding: 0;
+    right: 20px;
+    width: 50px;
+  }
 `
 
 export default StyledUpArrow;

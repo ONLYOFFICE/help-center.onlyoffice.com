@@ -6,6 +6,7 @@ import CenterContent from "./content";
 import TagsContent from "./content/tags-content";
 import GlossaryContent from "./content/glossary-content";
 import UpArrow from "../../../components/up-arrow";
+import AlsoPopup from "./also-popup";
 
 const SingleContent = ({ t, ...rest }) => {
   const [isUp, setIsUp] = useState(false);
@@ -31,6 +32,7 @@ const SingleContent = ({ t, ...rest }) => {
       {/* <CenterContent t={t} /> */}
       <TagsContent t={t} />
       <GlossaryContent t={t} />
+      <AlsoPopup t={t} id={"become_translator"} />
       <CSSTransition in={isUp} timeout={300} classNames="alert" unmountOnExit>
         <UpArrow />
       </CSSTransition>

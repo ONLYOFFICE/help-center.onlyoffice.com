@@ -3,13 +3,11 @@ import PropTypes from "prop-types";
 import StyledGlossarySelect from "./styled-glossary-select";
 
 const GlossarySelect = ({ id, label, isDisabled, active, ...rest }) => {
-  
   return (
     <StyledGlossarySelect
       isDisabled={isDisabled}
       active={active}
       id={"gloss_" + id}
-      // onClick={() => (!isDisabled ? {onClick} : () => undefined)}
       {...rest}
     >
       {label}

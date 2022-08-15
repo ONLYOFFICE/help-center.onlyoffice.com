@@ -38,10 +38,10 @@ padding: ${(props) =>
       : props.type === "popup"
       ? props.theme.tag.paddingPopup
       : "0px"};
-text-align: ${(props) => props.type != "list" ? "center" : "left"};
+text-align: ${(props) => props.type !== "list" ? "center" : "left"};
 text-decoration: none;
-white-space: ${(props) => props.type != "list" ? "nowrap" : "unset"};
-width: ${(props) => props.type != "list" ? "fit-content" : "unset"};
+white-space: ${(props) => props.type !== "list" ? "nowrap" : "unset"};
+width: ${(props) => props.type !== "list" ? "fit-content" : "unset"};
 
 :hover {
     border-color: ${(props) =>

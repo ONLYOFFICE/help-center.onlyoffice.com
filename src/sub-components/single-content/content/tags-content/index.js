@@ -9,9 +9,9 @@ import StyledHeading from "../../../../../components/heading";
 
 const TagsContent = ({ t, ...rest }) => {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
-  const [values, setValues] = useState(TagsInfo);
+  //const [values, setValues] = useState(TagsInfo);
   const [modalActive, setModalActive] = useState(false);
-  const [tag, setTag] = useState(null);
+  //const [tag, setTag] = useState(null);
   const handlerSetModal = (active) => {
     setModalActive(active);
   };
@@ -26,7 +26,7 @@ const TagsContent = ({ t, ...rest }) => {
   });
 
   const filteredAlph = (alphabet.split("").map((y) => { return ((TagsInfo.filter((item) => (item.title.toLowerCase().startsWith(y)))).length !== 0) ? y : null })).filter(function (el) {
-    return (el != null );
+    return (el !== null );
   });
   
   return (
@@ -35,7 +35,7 @@ const TagsContent = ({ t, ...rest }) => {
       <div className="glossContent">
         {filteredAlph.map((c) => {
           return (
-            <Box className="glossLetter" id={"box_" + c}>
+            <Box className="glossLetter" id={"gloss_" + c + "_block"}>
               <StyledHeading
                 fontSize={"25px"}
                 fontWeight={"300"}
