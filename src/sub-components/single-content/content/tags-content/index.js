@@ -1,24 +1,17 @@
 import React, { useState } from "react";
-import StyledTags from "./styled-tags-content";
 import ArticlePopup from "../../article-popup";
-import Tag from "../../../../../components/tag";
-import GlossarySelector from "../sub-components/glossary-selector";
 import { TagsInfo } from "../../../../../static/data/alpha-tags";
-import Box from "../../../../../components/box";
-import StyledHeading from "../../../../../components/heading";
+import AlphabetContainer from "../sub-components/aplhabet-container";
+import NoteHelp from "../sub-components/note-help";
 
 const TagsContent = ({ t, ...rest }) => {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
-  //const [values, setValues] = useState(TagsInfo);
   const [modalActive, setModalActive] = useState(false);
-  //const [tag, setTag] = useState(null);
+  const [tag, setTag] = useState();
   const handlerSetModal = (active) => {
     setModalActive(active);
-  };
-
-  const makeTagID = (text) => {
-    const tagID = "tag_" + text.toLowerCase().replace(/[\s.'-]/g, "");
-    return tagID;
+    setTag(active);
+    //console.log(tag);
   };
 
   TagsInfo.sort(function (a, b) {
@@ -30,41 +23,11 @@ const TagsContent = ({ t, ...rest }) => {
   });
   
   return (
-    <StyledTags>
-      <GlossarySelector t={t} content={filteredAlph} />
-      <div className="glossContent">
-        {filteredAlph.map((c) => {
-          return (
-            <Box className="glossLetter" id={"gloss_" + c + "_block"}>
-              <StyledHeading
-                fontSize={"25px"}
-                fontWeight={"300"}
-                textTransform={"uppercase"}
-                id={"gc_" + c}
-              >
-                {c}
-              </StyledHeading>
-              <ul className="glossTagsArea">
-                {TagsInfo.filter((item) =>
-                  item.title.toLowerCase().startsWith(c)
-                ).map((item, index) => (
-                  <Tag
-                    key={index}
-                    t={t}
-                    type={"list"}
-                    label={item.title}
-                    className="tags"
-                    onClick={() => handlerSetModal(true)}
-                    id={makeTagID(item.title)}
-                  />
-                ))}
-              </ul>
-            </Box>
-          );
-        })}
-      </div>
-      <ArticlePopup t={t} active={modalActive} setActive={setModalActive} />
-    </StyledTags>
+    <>
+      <AlphabetContainer selectorContent={filteredAlph} pageContent={TagsInfo} isTagPage={true} onClickFunction={handlerSetModal} />
+      <NoteHelp className="nh_notice" t={t} label={t("The supported browsers are: Microsoft Internet Explorer version 8 or higher, Mozilla Firefox version 4 or higher, Google Chrome version 11 or higher, Apple Safari version 4 or higher or Opera version 11 or higher.")} />
+      <ArticlePopup t={t} active={modalActive} tag={tag} setActive={setModalActive} />
+    </>
   );
 };
 export default TagsContent;

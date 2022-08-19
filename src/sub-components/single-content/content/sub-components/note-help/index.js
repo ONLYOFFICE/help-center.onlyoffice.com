@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Text from "../../../../../../components/text";
 import StyledNoteHelp from "./styled-note-help";
 
-const NoteHelp = ({ t, label, ...rest }) => {
+const NoteHelp = ({ t, label, className, ...rest }) => {
   return (
-    <StyledNoteHelp>
+    <StyledNoteHelp className={className}>
       <Text className="note-text" label={label} />
     </StyledNoteHelp>
   );

@@ -13,6 +13,21 @@ text-align: justify;
 border-left: 5px solid gray;
 border-right: 5px solid gray;
 
+&.nh_notice {
+    border-color: #fc4;
+    &:before {
+        border-bottom: #fc4 3px solid;
+        padding: 0 4px 1px 0;
+    }
+}
+&.nh_important {
+    border-color: #ff642e;
+    padding-left: 30px;
+    &:before, &:after {
+        display: none;
+    }
+}
+
 &:before {
     color: #808080;
     content: 'N';

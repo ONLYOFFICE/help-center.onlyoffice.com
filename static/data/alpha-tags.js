@@ -1,15 +1,121 @@
 export const TagsInfo = [
   {
     title: "access level",
+    articles: [{
+      text: "Calendar. Getting Started",
+      link: "/userguides/groups-gettingstarted-calendar.aspx",
+      mark: "SaaS",
+      module: "Calendar Module"
+    },
+    {
+      text: "Documents. Getting Started",
+      link: "/userguides/groups-gettingstarted-documents.aspx",
+      mark: "SaaS",
+      module: "Documents Module"
+    },
+    {
+      text: "Managing company documentation",
+      link: "/administration/organize-company-documentation.aspx",
+      mark: "SaaS",
+      module: "Documents Module"
+    },
+    {
+      text: "How to share your event with other portal users?",
+      link: "/video/share-event.aspx",
+      mark: "Video Guide",
+      module: "Calendar Module"
+    },
+    {
+      text: "How to share your Calendar?",
+      link: "/video/share-calendar.aspx",
+      mark: "Video Guide",
+      module: "Calendar Module"
+    },
+    {
+      text: "People. Getting Started",
+      link: "/userguides/groups-gettingstarted-people.aspx",
+      mark: "SaaS",
+      module: "People Module"
+    },
+    {
+      text: "Changing the user status to \"Guest\"",
+      link: "/administration/change-to-guest.aspx",
+      mark: "SaaS",
+      module: "People Module"
+    },
+    {
+      text: "Sharing documents",
+      link: "/userguides/workspace-guides-personal-share-documents.aspx",
+      mark: "SaaS",
+      module: "ONLYOFFICE Personal"
+    }]
   },
   {
     title: "AD FS",
+    articles: [{
+      text: "ONLYOFFICE Single Sign-on overview",
+      link: "/administration/control-panel-sso-description.aspx",
+      mark: "Control Panel"
+    },
+    {
+      text: "Configuring ONLYOFFICE SP and AD FS IdP",
+      link: "/administration/control-panel-sso-adfs.aspx",
+      mark: "Control Panel"
+    }]
   },
   {
     title: "add additional fields to fill in",
   },
   {
     title: "add and format borders",
+    articles: [{
+      text: "Add borders",
+      link: "/ONLYOFFICE-Editors/ONLYOFFICE-Document-Editor/UsageInstructions/AddBorders.aspx",
+      mark: "Online Editors",
+      editor: "Document Editor"
+    },
+    {
+      text: "Add borders",
+      link: "/ONLYOFFICE-Editors/ONLYOFFICE-Spreadsheet-Editor/UsageInstructions/AddBorders.aspx",
+      mark: "Online Editors",
+      editor: "Spreadsheet Editor"
+    },
+    {
+      text: "Insert and format tables",
+      link: "/ONLYOFFICE-Editors/ONLYOFFICE-Presentation-Editor/UsageInstructions/InsertTables.aspx",
+      mark: "Online Editors",
+      editor: "Presentation Editor"
+    },
+    {
+      text: "Insert tables",
+      link: "/ONLYOFFICE-Editors/ONLYOFFICE-Document-Editor/UsageInstructions/InsertTables.aspx",
+      mark: "Online Editors",
+      editor: "Document Editor"
+    },
+    {
+      text: "Insert tables",
+      link: "/mobile-applications/documents/document-editor/operations-on-objects/insert-tables.aspx",
+      mark: "iOS Mobile App",
+      editor: "Mobile Document Editor"
+    },
+    {
+      text: "Insert tables",
+      link: "/mobile-applications/documents/spreadsheet-editor/editing-cell-properties/add-cell-borders.aspx",
+      mark: "iOS Mobile App",
+      editor: "Mobile Document Editor"
+    },
+    {
+      text: "Insert and format tables",
+      link: "/mobile-applications/documents/presentation-editor/operations-on-objects/insert-tables.aspx",
+      mark: "iOS Mobile App",
+      editor: "Mobile Presentation Editor"
+    },
+    {
+      text: "Insert tables",
+      link: "/mobile-applications/documents/android/android-de/operations-on-objects/insert-tables.aspx",
+      mark: "Android Mobile App",
+      editor: "Mobile Document Editor"
+    }]
   },
   {
     title: "add bookmark",

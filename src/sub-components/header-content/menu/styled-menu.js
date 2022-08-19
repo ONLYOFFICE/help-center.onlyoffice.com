@@ -22,6 +22,7 @@ const StyledMenuTablet = css`
 
   .nav-item-links {
     border-right: 1px solid #e5e5e5;
+    height: 100vh;
   }
 
   .nav-item-logo {
@@ -119,6 +120,7 @@ const StyledMenu = styled.div`
 
   .nav-item-links {
     margin: 0 auto;
+    height: 55px;
     .nav-item .heading-nav-item {
       color: #333;
       &:hover {

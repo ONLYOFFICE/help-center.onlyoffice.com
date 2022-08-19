@@ -19,10 +19,15 @@ z-index: 1001;
   .popupPanelText {
     background-color: transparent;
     color: #333;
+    display: inline-flex;
     font-size: 18px;
     font-weight: 300;
     margin: 0 0 0 20px;
     text-align: left;
+
+    li {
+      margin: 0 5px;
+    }
   }
 
   .tagsLink {
@@ -36,9 +41,21 @@ z-index: 1001;
   }
 
   .textContent {
+    display: block;
     max-height: 500px;
     overflow-y: auto;
+    margin: 30px 40px 30px;
     padding: 0 15px 15px;
+    width: auto;
+    .markLink {
+      display: block;
+      font-size: 13px;
+      line-height: 2em;
+    }
+
+    .postlinkText {
+      font-size: 13px;
+    }
   }
 
   ${(props) =>
@@ -51,7 +68,6 @@ z-index: 1001;
   .popup-content {
     background-color: #fff;
     box-shadow: 0 7px 25px rgb(0, 0, 0, 0.1);
-    height: 633px;
     width: 780px;
 
     .PopupPanelCaption {

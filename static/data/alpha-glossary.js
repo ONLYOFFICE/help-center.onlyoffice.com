@@ -37,5 +37,9 @@ export const GlossaryInfo =  [
   {
     "title": "Case",
     "definition": "a complex of the different information on a common event with multiple customers in the CRM module. It can be used to organize and track seminars, meetings with your clients."
+  },
+  {
+    "title": "Disabled Users",
+    "definition": "the users whose status has been changed to Disabled by the administrator. They can't log in to the portal and carry out actions on it any more. Their profiles are visible in the Disabled users list and can be permanently deleted or re-enabled by the administrator. All the content created by disabled users remains on the portal.",
   }
 ]

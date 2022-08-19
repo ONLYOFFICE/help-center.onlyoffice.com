@@ -22,6 +22,10 @@ width: fit-content;
 :hover {
     background-color: ${(props) => !props.isDisabled ? globalColors.hoverBlue : "unset"};
 }
+
+@media (max-width: 608px) {
+    display: inline-block;
+}
 `
 
 StyledGlossary.defaultProps = { };

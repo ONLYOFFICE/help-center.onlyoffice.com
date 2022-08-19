@@ -4,14 +4,13 @@ import StyledSingleContent from "./styled-single-content";
 import LeftMenu from "./left-menu";
 import CenterContent from "./content";
 import TagsContent from "./content/tags-content";
-import GlossaryContent from "./content/glossary-content";
 import UpArrow from "../../../components/up-arrow";
 import AlsoPopup from "./also-popup";
 
 const SingleContent = ({ t, ...rest }) => {
   const [isUp, setIsUp] = useState(false);
 
-  function scrollTopShow() {
+  const scrollTopShow = () => {
     if (
       document.body.scrollTop > 100 ||
       document.documentElement.scrollTop > 100
@@ -31,8 +30,7 @@ const SingleContent = ({ t, ...rest }) => {
       <LeftMenu t={t} />
       {/* <CenterContent t={t} /> */}
       <TagsContent t={t} />
-      <GlossaryContent t={t} />
-      <AlsoPopup t={t} id={"become_translator"} />
+      <AlsoPopup t={t} id={"administrationworkspacepage"} />
       <CSSTransition in={isUp} timeout={300} classNames="alert" unmountOnExit>
         <UpArrow />
       </CSSTransition>

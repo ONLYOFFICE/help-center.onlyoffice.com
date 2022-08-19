@@ -41,6 +41,9 @@ const StyledSingleContent = styled.div`
     margin: 100px 0 20px 0px;
     padding: 0 20px;
   }
+  @media (max-width: 500px) {
+    margin: 106px 0 20px 0px;
+  }
 `;
 
 export default StyledSingleContent;
