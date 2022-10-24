@@ -5,7 +5,7 @@ import Search from "../../../../../../components/search-area";
 
 import SearchResult from "./search-result";
 
-const SearchContent = ({ t }) => {
+const SearchContent = ({ t, article }) => {
   const data = useStaticQuery(graphql`
     {
       allDirectory {
@@ -53,6 +53,8 @@ const SearchContent = ({ t }) => {
     setFocusOnSearch(false);
   };
 
+  console.log(article[0].Title);
+
   return (
     <>
       <Search
@@ -60,7 +62,7 @@ const SearchContent = ({ t }) => {
         callback={onSearch}
         valueSearch={searchItem}
         clearValueSearch={clearValueSearch}
-        label={t("WelcomeToHelpCenter")}
+        label={article[0].Title}
       />
       <SearchResult
         searchItem={searchItem}
@@ -71,5 +73,12 @@ const SearchContent = ({ t }) => {
     </>
   );
 };
+
+export const query = graphql`
+  fragment TextCard on STRAPI_TEXT {
+    id
+    Title
+  }
+`
 
 export default SearchContent;
