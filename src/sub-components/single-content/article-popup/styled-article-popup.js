@@ -46,6 +46,7 @@ z-index: 1001;
     overflow-y: auto;
     margin: 30px 40px 30px;
     padding: 0 15px 15px;
+    text-align: center;
     width: auto;
     .markLink {
       display: block;
@@ -55,6 +56,10 @@ z-index: 1001;
 
     .postlinkText {
       font-size: 13px;
+    }
+
+    .loadButton {
+      margin: 24px 0 0;
     }
   }
 

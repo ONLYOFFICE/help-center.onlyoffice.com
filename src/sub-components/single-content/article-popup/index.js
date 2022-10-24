@@ -7,10 +7,17 @@ import Tag from "../../../../components/tag";
 import Mark from "../../../../components/mark";
 import { TagsInfo } from "../../../../static/data/alpha-tags";
 import Box from "../../../../components/box";
+import Button from "../../../../components/button";
 
 const ArticlePopup = ({ t, language, active, setActive, tag, ...rest }) => {
+  const maxShown = 8;
+  const [next, setNext] = useState(maxShown);
   const tagsData = TagsInfo.find((it) => it.title === tag);
-  console.log(tagsData?.articles);
+  const tagsLength = tagsData?.articles.length;
+  
+  const handleMoreImage = () => {
+    setNext(next + maxShown);
+  };
   return (
     <StyledArticlePopup
       tag={tag}
@@ -32,7 +39,7 @@ const ArticlePopup = ({ t, language, active, setActive, tag, ...rest }) => {
             {t("Browse all tags")}
           </InternalLink>
           <div className="textContent">
-              {tagsData?.articles.map((it, index) => {
+              {tagsData?.articles.slice(0, next)?.map((it, index) => {
                 return (
                   <Box>
                   <InternalLink className="markLink" href={it.link}>
@@ -44,6 +51,14 @@ const ArticlePopup = ({ t, language, active, setActive, tag, ...rest }) => {
                    </Box>
                 );
               })}
+              {next < tagsLength && (
+                <Button
+                  onClick={handleMoreImage}
+                  label={"More articles"}
+                  typeButton="secondary"
+                  className="loadButton"
+                />
+              )}
           </div>
         </div>
       </div>

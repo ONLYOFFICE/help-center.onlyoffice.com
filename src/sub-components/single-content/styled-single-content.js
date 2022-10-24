@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { device } from "../../../components/utils/devices";
 
 const StyledSingleContent = styled.div`
+  display: inline-block;
   margin: 100px 0 20px 304px;
   max-width: 1300px;
   padding: 0 10% 0 24px;

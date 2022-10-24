@@ -115,6 +115,12 @@ export const TagsInfo = [
       link: "/mobile-applications/documents/android/android-de/operations-on-objects/insert-tables.aspx",
       mark: "Android Mobile App",
       editor: "Mobile Document Editor"
+    },
+    {
+      text: "Add cell borders",
+      link: "/mobile-applications/documents/android/android-se/editing-cell-properties/add-cell-borders.aspx",
+      mark: "Android Mobile App",
+      editor: "Mobile Spreadsheet Editor"
     }]
   },
   {
