@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import Section from "../section";
+import { device } from "../../../components/utils/devices";
 
 const Styled404 = styled(Section)`
-  top: 100px;
+  padding: 107px 0 177px;
 
   .section-page {
     display: flex;
@@ -12,9 +13,10 @@ const Styled404 = styled(Section)`
   }
 
   .page-error-404-image {
-    max-height: 424px;
+    max-height: 412px;
     margin: 0 auto;
     width: 100%;
+    filter: grayscale(100%);
   }
 
   .page-error-404-container {
@@ -40,6 +42,10 @@ const Styled404 = styled(Section)`
     line-height: 22px;
     text-align: center;
     color: #555555;
+  }
+
+  @media ${device.mobileL} {
+    padding: 100px 0;
   }
 `;
 
