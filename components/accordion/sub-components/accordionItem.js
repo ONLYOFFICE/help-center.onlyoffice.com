@@ -14,8 +14,8 @@ const AccordionItem = ({
   const content = useRef();
   const [active, setActive] = useState(false);
   return (
-    <StyledAccordionItem {...rest} onClick={() => setActive(!active)}>
-      <div className="accordion">
+    <StyledAccordionItem {...rest}>
+      <div className="accordion" onClick={() => setActive(!active)}>
         <div className="accordion__icon">{!isMobMenu && (!active ? "+" : "−")}</div>
         <Heading
           level={4}
