@@ -2,8 +2,13 @@ import styled from "styled-components";
 import Box from "../../../../../../../../components/box";
 
 const StyledCategoryBox = styled(Box)`
-    display: block;
+    display: flex;
+    flex-direction: column;
     text-align: center;
+
+    a {
+        display: inline-flex;
+    }
     
     .icon{
         display: inline-block;
@@ -15,7 +20,8 @@ const StyledCategoryBox = styled(Box)`
         font-weight: 600;
         line-height: 1.5em;
         letter-spacing: 0.08em;
-        padding-top: 15px;
+        margin-top: 10px;
+        padding: 10px 0;
 
         &:hover{
             text-decoration: underline;
@@ -37,6 +43,7 @@ const StyledCategoryBox = styled(Box)`
     @media (max-width: 600px){
         .link{
             font-size:12px;
+            padding-top: 33px;
         }
     }
 `;
