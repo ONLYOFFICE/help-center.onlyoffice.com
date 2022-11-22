@@ -26,6 +26,7 @@ export default styled.div`
   .lang-name {
     font-size: 13px;
     padding-left: 10px;
+    cursor: pointer;
   }
 
   @media ${device.laptopM} {

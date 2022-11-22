@@ -38,11 +38,8 @@ const LanguageSelector = (props) => {
   };
 
   const onClickHandler = (e) => {
-    e.stopPropagation();
-    if (e.target.closest(".flag-image") || e.target.closest(".arrow-image")) {
-      setIsOpen(!isOpen);
-      props.onClick && props.onClick(e);
-    }
+    setIsOpen(!isOpen);
+    props.onClick && props.onClick(e);
   };
 
   const onCloseSelector = () => {
