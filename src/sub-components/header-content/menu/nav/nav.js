@@ -378,9 +378,26 @@ const Nav = ({ onClick, t, stateMobilePND, ...rest }) => {
         </Box>
       </MenuItem>
 
-      <Link className="no-box-inside" href="/guides/become-translator.aspx">
-        <MenuItem heading="Contribution" id="navitem_contribution"></MenuItem>
-      </Link>
+      <MenuItem heading="Contribution" id="navitem_contribution">
+        <Box className="menu_wrapper">
+          <Box className="outer-box">
+          <AccordionItem heading={t("Guides")} className="menu-acc" isMenu={true} isMobMenu={stateMobilePND ? true : false}>
+            <Link href="/guides/become-translator.aspx" className="dropdown-item">
+              Translating
+            </Link>
+            <Link href="/guides/testing.aspx" className="dropdown-item">
+              Testing
+            </Link>
+            <Link href="/guides/writing-documentation.aspx" className="dropdown-item">
+              Writing documentation
+            </Link>
+            <Link href="/guides/report-issues.aspx" className="dropdown-item">
+              Reporting issues
+            </Link>
+            </AccordionItem>
+          </Box>
+        </Box>
+      </MenuItem>
 
       <ExternalLink className="no-box-inside" href="https://api.onlyoffice.com/">
         <MenuItem heading="Development" id="navitem_development"></MenuItem>

@@ -51,16 +51,12 @@ const StyledNav = styled.nav`
   }
 
   #navitem_contribution, #navitem_development, #navitem_user, #navitem_integrations, #navitem_installation, #navitem_administration {
-    .heading-nav-item {
       border-bottom: 1px solid transparent;
-    }
   }
 
   #navitem_contribution, #navitem_development {
-    .heading-nav-item {
       &:hover {
         border-bottom: 1px solid #ff6f3d;
-      }
     }
   }
 

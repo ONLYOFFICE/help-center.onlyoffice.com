@@ -29,49 +29,49 @@ const TransAccorionItem = ({ t, currentLanguage }) => {
         You can use
         <Link
           className="link-trans-acc"
-          href={`https://helpcenter.onlyoffice.com${lng}`}
+          href={`/${lng}`}
         >
           {{ AccordionDescriptionOtherQuestionsHCLink }}
         </Link>
         <Link
           className="link-trans-acc"
-          href={`https://helpcenter.onlyoffice.com${lng}/installation/docs-index.aspx`}
+          href={`/${lng}/installation/docs-index.aspx`}
         >
           {{ AccordionDescriptionOtherQuestionsOODocsLink }}
         </Link>
         <Link
           className="link-trans-acc"
-          href={`https://helpcenter.onlyoffice.com${lng}/faq/server-opensource.aspx`}
+          href={`/${lng}/faq/server-opensource.aspx`}
         >
           {{ AccordionDescriptionOtherQuestionsOOGroupsLink }}
         </Link>
         <Link
           className="link-trans-acc"
-          href={`https://helpcenter.onlyoffice.com${lng}/installation/mail-index.aspx`}
+          href={`/${lng}/installation/mail-index.aspx`}
         >
           {{ AccordionDescriptionOtherQuestionsOOMailLink }}
         </Link>
         <Link
           className="link-trans-acc"
-          href={`https://helpcenter.onlyoffice.com${lng}/installation/talk-index.aspx`}
+          href={`/${lng}/installation/talk-index.aspx`}
         >
           {{ AccordionDescriptionOtherQuestionsOOTalkLink }}
         </Link>
         <Link
           className="link-trans-acc"
-          href={`https://helpcenter.onlyoffice.com${lng}/faq/server-enterprise.aspx`}
+          href={`/${lng}/faq/server-enterprise.aspx`}
         >
           {{ AccordionDescriptionOtherQuestionsOOWorkspaceLink }}
         </Link>
         <Link
           className="link-trans-acc"
-          href={`https://helpcenter.onlyoffice.com${lng}/installation/desktop-index.aspx`}
+          href={`/${lng}/installation/desktop-index.aspx`}
         >
           {{ AccordionDescriptionOtherQuestionsOODesktopLink }}
         </Link>
         <Link
           className="link-trans-acc"
-          href={`https://helpcenter.onlyoffice.com${lng}/faq/pricing.aspx`}
+          href={`/${lng}/faq/pricing.aspx`}
         >
           {{ AccordionDescriptionOtherQuestionsOOPricingLink }}
         </Link>

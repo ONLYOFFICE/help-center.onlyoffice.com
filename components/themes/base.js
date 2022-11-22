@@ -6,10 +6,12 @@ const {
   grayHover,
   orangeMain,
   orangeHover,
+  orangeLetters,
   graySecnodary,
   gray,
   grayTextInput,
   grayLight,
+  grayTag,
   shuttleGrey,
 } = globalColors;
 
@@ -145,6 +147,19 @@ const Base = {
       width: "100%",
       fontSize: "13px",
     },
+  },
+
+  tag : {
+    borderColorPage: "#d9d9d9",
+    backgroundColorPopup: "#999",
+    colorWhite: white,
+    colorPage: grayTag,
+    colorList: orangeLetters,
+    fontSizePopup: "18px",
+    fontSizeList: "14px", 
+    fontWeightBold: "600",
+    paddingPopup: "1px 5px 3px",
+    paddingPage: "0px 5px",
   },
 
   text: {

@@ -4,7 +4,6 @@ import StyledFooter from "./styled-footer";
 import Social from "./data/social-items";
 import Items from "./data/footer-items";
 import FooterItem from "./sub-components/footer-item";
-import MailPopup from "./sub-components/mail-popup";
 import ExternalLink from "../../../components/link";
 import IconButton from "../../../components/icon-button";
 import Text from "../../../components/text";
@@ -78,12 +77,6 @@ const Footer = ({ t, language }) => {
                 alt={item.title}
                 target="_blank"
                 key={item.title}
-                as={item.title === "OnlyOffice" ? "div" : "a"}
-                onClick={
-                  item.title === "OnlyOffice"
-                    ? () => handlerSetModal(true)
-                    : null
-                }
               >
                 <IconButton
                   className={item.className}
@@ -103,7 +96,6 @@ const Footer = ({ t, language }) => {
           />
         </div>
       </div>
-      <MailPopup t={t} active={modalActive} setActive={setModalActive} />
     </StyledFooter>
   );
 };

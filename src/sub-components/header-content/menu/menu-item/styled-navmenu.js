@@ -23,9 +23,10 @@ const StyledNavMenu = styled.div`
     display: block;
     font-size: 12px;
     font-weight: 600;
+    height: 32px;
     line-height: 29px;
     letter-spacing: 0.04em;
-    padding: 13px;
+    padding: 13px 13px 20px;
     cursor: pointer;
     margin: 0px;
     text-transform: uppercase;
@@ -101,6 +102,7 @@ const StyledNavMenu = styled.div`
       cursor: pointer;
       font-size: 16px;
       font-weight: 600;
+      height: fit-content;
       line-height: 16px;
       padding: 15px 25px 15px 40px;
       margin: 0px;

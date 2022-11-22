@@ -112,6 +112,12 @@ module.exports = {
           {
             singularName: "text",
           },
+          {
+            singularName: "tag",
+          },
+          {
+            singularName: "glossary",
+          },
         ],
         singleTypes: [
           {

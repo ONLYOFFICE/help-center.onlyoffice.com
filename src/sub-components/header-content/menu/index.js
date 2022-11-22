@@ -40,13 +40,27 @@ const Menu = ({ t, currentLanguage, template, ...rest }) => {
       onCloseMenu();
     }
   };
+  const [navbar, setNavbar] = useState(false)
+  const changeBackground = () => {
+    if (window.scrollY >= 76) {
+      setNavbar(true)
+    } else {
+      setNavbar(false)
+    }
+  }
+
+  useEffect(() => {
+    changeBackground()
+    // adding the event when scroll change background
+    window.addEventListener("scroll", changeBackground)
+  })
 
   const curLang = currentLanguage === "en" ? "/" : `/${currentLanguage}/`;
 
   return (
     <StyledMenu
       template={template}
-      className="navbar"
+      className={navbar ? "navbar active" : "navbar"}
       onMouseLeave={onCloseMenu}
     >
       <InternalLink className="nav-item-logo" href={curLang}>

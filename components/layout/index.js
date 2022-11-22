@@ -13,6 +13,7 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
     font-family: "Open Sans", sans-serif;
     overflow-x: hidden;
+    scroll-behavior: smooth;
   }
 
   body {

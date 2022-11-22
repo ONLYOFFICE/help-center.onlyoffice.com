@@ -53,8 +53,6 @@ const SearchContent = ({ t, article }) => {
     setFocusOnSearch(false);
   };
 
-  console.log(article[0].Title);
-
   return (
     <>
       <Search
@@ -62,7 +60,7 @@ const SearchContent = ({ t, article }) => {
         callback={onSearch}
         valueSearch={searchItem}
         clearValueSearch={clearValueSearch}
-        label={article[0].Title}
+        label={t("WelcomeToHelpCenter")}
       />
       <SearchResult
         searchItem={searchItem}
@@ -73,12 +71,5 @@ const SearchContent = ({ t, article }) => {
     </>
   );
 };
-
-export const query = graphql`
-  fragment TextCard on STRAPI_TEXT {
-    id
-    Title
-  }
-`
 
 export default SearchContent;

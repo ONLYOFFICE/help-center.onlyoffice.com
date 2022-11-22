@@ -22,6 +22,7 @@ const StyledMenuTablet = css`
 
   .nav-item-links {
     border-right: 1px solid #e5e5e5;
+    height: 100vh;
   }
 
   .nav-item-logo {
@@ -104,6 +105,12 @@ const StyledMenu = styled.div`
   font-size: 12px;
   color: #333;
   background-color: ${(props) => (props.template ? "#f5f5f5" : "white")};
+  transition: 0.3s;
+
+  &.active {
+    background-color: #ffffff;
+    border-bottom: 1px solid #d9d9d9;
+  }
 
   .nav-item-logo {
     grid-column-start: 1;
@@ -113,6 +120,7 @@ const StyledMenu = styled.div`
 
   .nav-item-links {
     margin: 0 auto;
+    height: 55px;
     .nav-item .heading-nav-item {
       color: #333;
       &:hover {
