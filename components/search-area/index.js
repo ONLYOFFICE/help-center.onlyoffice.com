@@ -10,7 +10,7 @@ import StyledSearchArea from "./styled-search-area";
 import SearchIcon from "../../static/images/icons/search-icon.react.svg";
 import CloseIcon from "../../static/images/icons/close-icon.react.svg";
 
-const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label }) => {
+const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeholder }) => {
   return (
     <StyledSearchArea>
       {label && 
@@ -27,6 +27,7 @@ const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label }) => {
         <TextInput
           onChange={callback}
           value={valueSearch}
+          placeholder={placeholder}
           type="text"
           className="search_input"
           backgroundColor="#fffff"

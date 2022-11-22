@@ -5,30 +5,43 @@ const StyledSearchArea = styled.div`
   background-color: #f5f5f5;
   position: relative;
   width: 100%;
-  padding: 180px 0 90px;
+  padding: 166px 0 101px;
 
   .search_container {
-    margin: 72px auto 0;
-    max-width: 682px;
+    position: relative;
+    margin: 60px auto 0;
+    max-width: 688px;
   }
 
   .presearch_title {
-    line-height: 1em;
+    line-height: 1.5em;
     overflow: unset;
-    white-space: nowrap;  
   }
 
   .search_input {
+    position: relative;
     border: 1px solid #c2c2c2;
     border-radius: 32px;
-    padding: 5px 30px 5px 30px;
+    padding: 5px 2px 5px 60px;
     white-space: normal;
-    height: 64px;
-    box-sizing: unset;
+    height: 76px;
+
+    &::placeholder {
+      font-size: 14px;
+    }
+
+    &:hover {
+      border-color: #c2c2c2;
+    }
   }
+
   .search_icon {
-    padding: 16px;
+    position: absolute;
+    top: 50%;
+    left: 21px;
+    display: flex;
     z-index: 2;
+    transform: translateY(-50%);
 
     svg {
       cursor: pointer;
@@ -43,17 +56,20 @@ const StyledSearchArea = styled.div`
   }
   @media ${device.laptop} {
     .search_container {
-      max-width: none;
-      width: 90vw;
+      margin: 76px auto 0;
+      padding: 0 12px;
+    }
+
+    .search_icon {
+      left: 31px;
+    }
+
+    .search_input {
+      height: 68px;
     }
   }
   @media (max-width: 600px) {
-    .presearch_title {
-      display: none;
-    }
-    .search_input {
-      padding: 16px 40px 16px 8px;
-    }
+    padding: 100px 0 55px;
 
     .input-label {
       padding: 0 8px;
