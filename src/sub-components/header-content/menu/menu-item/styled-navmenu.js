@@ -26,7 +26,7 @@ const StyledNavMenu = styled.div`
     height: 32px;
     line-height: 29px;
     letter-spacing: 0.04em;
-    padding: 13px 13px 20px;
+    padding: 13px 13px 16px;
     cursor: pointer;
     margin: 0px;
     text-transform: uppercase;
@@ -46,14 +46,14 @@ const StyledNavMenu = styled.div`
     color: #444;
     font-size: 14px;
     cursor: pointer;
-    line-height: 1.6em;
+    line-height: 1.4em;
     margin: 0;
     padding: 8px 40px;
     text-decoration: none;
   }
 
   .outer-box {
-    margin: 27px 0;
+    margin: 30px 0;
     &:first-child {
       border-bottom-left-radius: 9px;
     }
@@ -75,6 +75,10 @@ const StyledNavMenu = styled.div`
     .accordion__text {
       padding: 0;
     }
+  }
+
+  .inner-box {
+    align-items: initial;
   }
 
   @media screen and (max-width: 1190px) {

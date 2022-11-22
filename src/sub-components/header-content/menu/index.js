@@ -3,7 +3,7 @@ import { ReactSVG } from "react-svg";
 
 import LanguageSelector from "../../../../components/language-selector";
 import InternalLink from "../../../../components/internal-link";
-import Button from "../../../../components/button";
+import Link from "../../../../components/link";
 
 import MobileMenu from "../../../../static/images/icons/mob_menu.svg";
 
@@ -77,7 +77,13 @@ const Menu = ({ t, currentLanguage, template, ...rest }) => {
         stateMobilePND={stateMobile}
         t={t}
       />
-      <Button label="Try in the cloud" height="48px" className="nav-item-btn" />
+      <Link
+        display="contents"
+        className="nav-item-btn"
+        href="https://www.onlyoffice.com/registration.aspx?from=helpcenter"
+      >
+        {t("Try in the cloud")}
+      </Link>
       <div className="nav-item-lng">
         <LanguageSelector t={t} currentLanguage={currentLanguage} />
       </div>

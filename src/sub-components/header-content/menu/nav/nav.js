@@ -158,7 +158,7 @@ const Nav = ({ onClick, t, stateMobilePND, ...rest }) => {
         </Box>
       </MenuItem>
 
-      <MenuItem heading="Integrations" id="navitem_integrations">
+      <MenuItem heading="Integration" id="navitem_integrations">
         <Box className="menu_wrapper">
           <Box className="outer-box">
           <AccordionItem heading={t("Packages")} className="menu-acc" isMenu={true} isMobMenu={stateMobilePND ? true : false}>
@@ -384,12 +384,6 @@ const Nav = ({ onClick, t, stateMobilePND, ...rest }) => {
           <AccordionItem heading={t("Guides")} className="menu-acc" isMenu={true} isMobMenu={stateMobilePND ? true : false}>
             <Link href="/guides/become-translator.aspx" className="dropdown-item">
               Translating
-            </Link>
-            <Link href="/guides/testing.aspx" className="dropdown-item">
-              Testing
-            </Link>
-            <Link href="/guides/writing-documentation.aspx" className="dropdown-item">
-              Writing documentation
             </Link>
             <Link href="/guides/report-issues.aspx" className="dropdown-item">
               Reporting issues
