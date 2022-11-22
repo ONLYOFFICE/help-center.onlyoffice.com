@@ -64,7 +64,7 @@ const TextInput = ({
           onChange={onChangeHandler}
           ref={inputTextRef}
           withButton={withButton}
-          isPlaceholder={!!placeholder}
+          placeholder={placeholder}
           backgroundColor={backgroundColor}
           autoComplete={autoComplete}
           {...rest}
@@ -79,7 +79,6 @@ const TextInput = ({
             isEmpty={isEmpty}
             className="input-label"
           >
-            {placeholder}
           </Label>
         )}
         {isError && errorText && (
