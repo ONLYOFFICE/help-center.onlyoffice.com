@@ -20,6 +20,10 @@ const StyledGuidesCards = styled(Section)`
       }
     }
   }
+
+  @media ${device.tabletM} {
+    margin-top: 50px;
+  }
 `;
 
 export default StyledGuidesCards;

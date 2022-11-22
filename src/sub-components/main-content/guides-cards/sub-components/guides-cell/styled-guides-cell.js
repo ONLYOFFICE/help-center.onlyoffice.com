@@ -49,25 +49,30 @@ const StyledGuidesCell = styled.div`
     align-items: start;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 32px;
     padding: 28px 32px;
 
     .links_area {
+      flex-direction: column;
+      justify-content: start;
+      align-items: start;
+
+      .internal-link, .external-link {
         display: block;
-        .internal-link, .external-link {
-            display: block;
-            font-weight: 600;
-            text-decoration: none;
-            padding: 6px 0;
-            width: 90%;
-            &.not_bold {
-              font-weight: 400;
-              padding-left: 32px;
-            }
-            &:hover {
-              text-decoration: underline;
-            }
-          }
+        font-weight: 600;
+        text-decoration: none;
+        padding: 6px 0;
+        &.not_bold {
+          font-weight: 400;
+          padding-left: 32px;
+        }
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      &:last-child {
+        padding-left: 32px;
+      }
     }
   }
 
@@ -78,6 +83,12 @@ const StyledGuidesCell = styled.div`
   @media ${device.tabletL} {
    .cell_links {
      display: block;
+
+     .links_area {
+      &:last-child {
+        padding-left: 0;
+      }
+    }
    }
   }
 
