@@ -15,11 +15,6 @@ const Items = [
         href: "/document-builder.aspx",
       },
       {
-        localize: true,
-        label: "Groups",
-        href: "/groups.aspx",
-      },
-      {
         localize: false,
         label: "API",
         href: "https://api.onlyoffice.com/",
@@ -69,66 +64,59 @@ const Items = [
     ],
   },
   {
-    className: "bysize",
+    className: "integrations",
     position: 2,
-    heading: "By Size",
+    heading: "integrations",
     link: [
       {
         localize: true,
-        label: "SMBs",
-        href: "/for-small-business.aspx",
+        label: "Nextcloud",
+        href: "/office-for-nextcloud.aspx",
       },
       {
         localize: true,
-        label: "Enterprises",
-        href: "/for-enterprises.aspx",
+        label: "ownCloud",
+        href: "/office-for-owncloud.aspx",
       },
       {
         localize: true,
-        label: "Home use",
-        href: "/home-use.aspx",
-      },
-    ],
-  },
-  {
-    className: "byindustry",
-    position: 2,
-    heading: "By industry",
-    link: [
-      {
-        localize: true,
-        label: "Developers",
-        href: "/for-developers.aspx",
+        label: "Confluence",
+        href: "/office-for-confluence.aspx",
       },
       {
         localize: true,
-        label: "Hosting providers",
-        href: "/for-hosting-providers.aspx",
+        label: "Alfresco",
+        href: "/office-for-alfresco.aspx",
       },
       {
         localize: true,
-        label: "Government",
-        href: "/for-government.aspx",
+        label: "SharePoint",
+        href: "/office-for-sharepoint.aspx",
       },
       {
         localize: true,
-        label: "Healthcare",
-        href: "/healthcare.aspx",
+        label: "Liferay",
+        href: "/office-for-liferay.aspx",
       },
       {
         localize: true,
-        label: "Research",
-        href: "/for-research.aspx",
+        label: "HumHub",
+        href: "/office-for-humhub.aspx",
       },
       {
         localize: true,
-        label: "Education",
-        href: "/education.aspx",
+        label: "Plone",
+        href: "/office-for-plone.aspx",
       },
       {
         localize: true,
-        label: "Nonprofits",
-        href: "/nonprofit-organizations.aspx",
+        label: "Nuxeo",
+        href: "/office-for-nuxeo.aspx",
+      },
+      {
+        localize: true,
+        label: "Others",
+        href: "/all-connectors.aspx",
       },
     ],
   },
@@ -137,6 +125,11 @@ const Items = [
     position: 3,
     heading: "Support",
     link: [
+      {
+        localize: true,
+        label: "Premium support",
+        href: "/support.aspx",
+      },
       {
         localize: true,
         label: "Support contact form",
@@ -152,16 +145,6 @@ const Items = [
         label: "Order demo",
         href: "/demo-order.aspx",
       },
-      {
-        localize: true,
-        label: "Webinars",
-        href: "/webinars.aspx",
-      },
-      {
-        localize: true,
-        label: "Training courses",
-        href: "/training-courses.aspx",
-      },
     ],
   },
   {
@@ -169,11 +152,6 @@ const Items = [
     position: 3,
     heading: "Resources",
     link: [
-      {
-        localize: false,
-        label: "Help Center",
-        href: "https://helpcenter.onlyoffice.com/index.aspx?_ga=2.167303997.225528032.1638777037-363335557.1617705318",
-      },
       {
         localize: true,
         label: "App Directory",
@@ -189,82 +167,16 @@ const Items = [
         label: "Contribute",
         href: "/contribute.aspx",
       },
-
+      {
+        localize: true,
+        label: "Webinars",
+        href: "/webinars.aspx",
+      },
       {
         localize: true,
         label: "Legal notice",
         href: "/legalterms.aspx",
       },
-    ],
-  },
-  {
-    className: "comparison",
-    position: 4,
-    heading: "Comparison",
-    link: [
-      {
-        localize: true,
-        label: "ONLYOFFICE Docs vs MS Office Online",
-        href: "/best-microsoft-office-alternative.aspx",
-      },
-      {
-        localize: true,
-        label: "ONLYOFFICE Docs vs Google Docs",
-        href: "/best-google-docs-alternative.aspx",
-      },
-      {
-        localize: true,
-        label: "ONLYOFFICE Docs vs Zoho Docs",
-        href: "/best-zoho-docs-alternative.aspx",
-      },
-      {
-        localize: true,
-        label: "ONLYOFFICE Docs vs LibreOffice",
-        href: "/best-libreoffice-alternative.aspx",
-      },
-      {
-        localize: true,
-        label: "ONLYOFFICE Docs vs WPS",
-        href: "/best-wps-alternative.aspx",
-      },
-      {
-        localize: true,
-        label: "ONLYOFFICE Docs vs Adobe Acrobat",
-        href: "/best-adobe-alternative.aspx",
-      }
-    ],
-  },
-  {
-    className: "contacts",
-    position: 4,
-    heading: "Contact us",
-    link: [
-      {
-        localize: true,
-        label: "Sales Questions",
-        mail: "sales@onlyoffice.com",
-        href: "mailto:sales@onlyoffice.com",
-        isContact: true,
-      },
-      {
-        localize: true,
-        label: "Partner Inquiries",
-        mail: "partners@onlyoffice.com",
-        href: "mailto:partners@onlyoffice.com",
-        isContact: true,
-      },
-      {
-        localize: true,
-        label: "Press Inquiries",
-        mail: "press@onlyoffice.com",
-        href: "mailto:press@onlyoffice.com",
-        isContact: true,
-      },
-      {
-        localize: true,
-        label: "Request a Call",
-        href: "/call-back-form.aspx",
-      }
     ],
   },
 ];

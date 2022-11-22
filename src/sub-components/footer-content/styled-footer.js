@@ -2,31 +2,24 @@ import styled, { css } from "styled-components";
 import { device } from "../../../components/utils/devices";
 
 const StyledFooterTablet = css`
-  display: contents;
-  padding: 0px;
-  margin: 0px;
+  padding: 0 17px;
+  margin: 0;
 
   grid-template-columns: 1fr;
   -ms-grid-columns: 1fr;
 
+  .footer-social-links {
+    justify-content: space-between;
+    width: 100%;
+  }
+
   .footer-item-follow {
     height: 100%;
-    padding: 0px 0px 10px;
+    padding: 0 0 10px;
     border: none;
 
-    .footer-social-links {
-      gap: 20px 24px;
-      margin: 0 auto;
-      max-width: 100%;
-      justify-content: center;
-
-      .footer-social {
-        padding-right: 0px;
-      }
-    }
-
     .footer-copyright {
-      padding: 10px 0px 50px 0px;
+      padding: 10px 0 50px 0;
     }
 
     .footer-items-group {
@@ -43,18 +36,47 @@ const StyledFooterTablet = css`
     }
   }
 
+  .footer-item-group {
+    margin-top: 0;
+
+    &.last {
+      .footer-item-group {
+        margin-top: 19px;
+
+        .footer-item-heading {
+          margin: 0 0 12px;
+          text-align: left;
+        }
+      }
+  
+      .footer-item-follow {
+        padding: 3px 0;
+        margin: 6px 0 9px;
+      }
+    }
+  }
+
+  .footer-item-contacts {
+    padding: 17px 0;
+  }
+
   .contact-text {
     display: flex;
+    flex-direction: initial;
   }
 
   .footer-copyright-block {
     display: flex;
     justify-content: center;
-    padding: 20px 0;
+    margin: 0 -17px;
+    padding: 20px 0 21px;
+    background-color: #f9f9f9;
   }
 
   .footer-copyright {
-    font-size: 12px;
+    font-size: 13px;
+    line-height: 13px;
+    color: #aaa;
   }
 `;
 
@@ -64,21 +86,29 @@ const StyledFooter = styled.div`
   position: relative;
   max-width: 1120px;
   min-width: 769px;
-  padding-top: 70px;
-  padding-bottom: 62px;
-  margin-bottom: 25px;
+  padding-top: 56px;
   height: auto;
   display: grid;
-  display: -ms-inline-grid;
   grid-template-columns: 0.8fr 0.8fr 0.8fr 1fr;
-  -ms-grid-columns: 0.8fr 32px 0.8fr 32px 0.8fr 32px 1fr;
-  grid-column-gap: 15px;
+  grid-column-gap: 32px;
 
   .footer-item-group {
     position: relative;
+    margin-top: 19px;
+
     &.last {
-      grid-column: 1 / span 4;
+      .footer-item-group {
+        margin-top: 0;
+      }
+
+      .footer-item-follow {
+        padding: 0 0 6px;
+      }
     }
+  }
+
+  .footer-item-contacts {
+    padding: 0 0 32px;
   }
 
   .footer-link-contact {
@@ -94,64 +124,57 @@ const StyledFooter = styled.div`
   }
 
   .footer-social-links {
-    display: -ms-flexbox;
     display: flex;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    max-width: 100%;
-    align-items: baseline;
+    margin-left: 14px;
 
     .footer-social {
-      list-style-type: none;
       display: inline-block;
-      width: 22px;
+      margin: 0 24px 18px 0;
+      list-style-type: none;
+      width: 26px;
       height: 24px;
-      margin: 0;
-      padding-right: 32px;
       vertical-align: middle;
     }
   }
+
   .footer-copyright-block {
-    display: flex;
-    justify-content: center;
-    background-color: #ffffff;
-    padding: 0px 0;
-    margin-top: -5px;
+    margin: 0 0 7px;
   }
 
   .footer-copyright {
-    color: #aaaaaa;
     font-size: 13px;
-    margin: 0 0 7px;
     line-height: 1.4em;
   }
 
-  .footer-item-follow {
-    justify-content: center;
-    .footer-item-heading {
-      text-align: center;
-    }
-  }
-
-  @media (max-width: 1060px) {
+  @media (max-width: 1100px) {
     .contact-text {
-      display: contents;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-copyright-block {
+      padding: 0px 0 0 20px;
     }
   }
 
   @media ${device.laptop} {
     width: auto;
     max-width: 928px;
-    padding: 0 48px 46px;
+    padding: 56px 35px 50px;
     vertical-align: top;
     min-width: unset;
-    padding-top: 70px;
     margin-bottom: 0;
   }
 
   @media ${device.tablet} {
     ${StyledFooterTablet};
+  }
+
+  @media (max-width: 500px) {
+    .footer-social-links {
+      justify-content: center;
+    }
   }
 `;
 

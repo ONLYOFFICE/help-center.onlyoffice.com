@@ -12,7 +12,7 @@ const date = new Date();
 const currentYear = date.getFullYear();
 
 const Footer = ({ t, language }) => {
-  const POSITION_ELEMENTS_ITEM = [1, 2, 3, 4];
+  const POSITION_ELEMENTS_ITEM = [1, 2, 3];
 
   const [modalActive, setModalActive] = useState(false);
   const handlerSetModal = (active) => {
@@ -66,34 +66,75 @@ const Footer = ({ t, language }) => {
         </div>
       ))}
       <div className="footer-item-group last">
-        <FooterItem heading={t("Follow us")} className="follow">
-          <div className="footer-social-links">
-            {Social.map((item) => (
-              <ExternalLink
-                className="footer-social"
-                href={item.href}
-                title={item.title}
-                rel={item.rel}
-                alt={item.title}
-                target="_blank"
-                key={item.title}
-              >
-                <IconButton
-                  className={item.className}
-                  iconName={item.src}
-                  size={item.size}
-                  grayed={item.filter}
-                  key={item.title}
-                />
-              </ExternalLink>
-            ))}
-          </div>
-        </FooterItem>
-        <div className="footer-copyright-block">
-          <Text
-            className="footer-copyright"
-            label={t("FooterCopyright", { currentYear })}
+        <FooterItem
+          dis
+          heading={t("Contact us")}
+          className="contacts"
+        >
+          <Text className="contact-text">
+            {t("Sales questions")}
+            &nbsp;
+            <ExternalLink
+              className="footer-link-contact"
+              label="sales@onlyoffice.com"
+              href="mailto:sales@onlyoffice.com"
+            />
+          </Text>
+          <Text className="contact-text">
+            {t("Partner inquiries")}
+            &nbsp;
+            <ExternalLink
+              className="footer-link-contact"
+              label="partners@onlyoffice.com"
+              href="mailto:partners@onlyoffice.com"
+            />
+          </Text>
+          <Text className="contact-text">
+            {t("Press inquiries")}
+            &nbsp;
+            <ExternalLink
+              className="footer-link-contact"
+              label="press@onlyoffice.com"
+              href="mailto:press@onlyoffice.com"
+            />
+          </Text>
+          <ExternalLink
+            className="footer-link"
+            label={t("Request a call")}
+            href={onlyoffice + "/call-back-form.aspx"}
           />
+        </FooterItem>
+
+        <div className="footer-item-group">
+          <FooterItem heading={t("Follow us on:")} className="follow">
+            <div className="footer-social-links">
+              {Social.map((item) => (
+                <ExternalLink
+                  className="footer-social"
+                  href={item.href}
+                  title={item.title}
+                  rel={item.rel}
+                  alt={item.title}
+                  target="_blank"
+                  key={item.title}
+                >
+                  <IconButton
+                    className={item.className}
+                    iconName={item.src}
+                    size={item.size}
+                    grayed={item.filter}
+                    key={item.title}
+                  />
+                </ExternalLink>
+              ))}
+            </div>
+          </FooterItem>
+          <div className="footer-copyright-block">
+            <Text
+              className="footer-copyright"
+              label={t("FooterCopyright", { currentYear })}
+            />
+          </div>
         </div>
       </div>
     </StyledFooter>
