@@ -2,10 +2,10 @@ import React from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 
-import Layout from "../../components/layout";
-import HeadingContent from "../sub-components/header-content";
-import Footer from "../sub-components/footer-content";
-import SingleContent from "../sub-components/single-content";
+import Layout from "@components/layout";
+import HeadingContent from "@components/screens/header-content";
+import Footer from "@components/screens/footer-content";
+import SingleContent from "@components/screens/single-content";
 
 const SinglePage = () => {
   const {
