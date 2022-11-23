@@ -5,7 +5,7 @@ import Search from "../../../../../../components/search-area";
 
 import SearchResult from "./search-result";
 
-const SearchContent = ({ t }) => {
+const SearchContent = ({ t, article }) => {
   const data = useStaticQuery(graphql`
     {
       allDirectory {
