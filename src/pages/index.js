@@ -6,7 +6,7 @@ import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import InfoContent from "@components/screens/main-content/info-content";
 import GuidesCards from "@components/screens/main-content/guides-cards";
-import Accordion from "@components/screens/accordion";
+import Accordion from "@components/screens/common/accordion";
 import Footer from "@components/screens/footer-content";
 
 const IndexPage = () => {

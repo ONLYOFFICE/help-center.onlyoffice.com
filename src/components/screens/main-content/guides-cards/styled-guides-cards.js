@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
-import Section from "../../section";
+import Section from "@components/screens/common/section";
 
 const StyledGuidesCards = styled(Section)`
   margin-top: 100px;

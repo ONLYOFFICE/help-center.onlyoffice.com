@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Section from "../section";
+import Section from "@components/screens/common/section";
 import { device } from "@components/utils/devices";
 
 const Styled404 = styled(Section)`
