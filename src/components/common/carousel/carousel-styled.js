@@ -13,7 +13,7 @@ const StyledCarousel = styled.div`
       }
     }
     .slick-list{
-      margin: 40px 0;
+      margin: 24px 0;
     }
     ${(props) =>
       props.arrows
@@ -40,7 +40,6 @@ const StyledCarousel = styled.div`
             }
             .slick-prev, .slick-next {
               z-index: 1;
-              margin-top: 28px;
               transform: none !important;
               right: auto;
               top: auto;

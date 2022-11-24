@@ -21,7 +21,7 @@ const Carousel = ({
 }) => {
   const settings =  {
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: items.length > 3 ? 3 : items.length > 2 ? 2 : 1,
     slidesToScroll: 1,
     vertical: true,
     verticalSwiping: true,
