@@ -53,6 +53,10 @@ const Menu = ({ t, currentLanguage, template, ...rest }) => {
     changeBackground()
     // adding the event when scroll change background
     window.addEventListener("scroll", changeBackground)
+
+    return () => {
+      window.removeEventListener("scroll", changeBackground);
+    };
   })
 
   const curLang = currentLanguage === "en" ? "/" : `/${currentLanguage}/`;
