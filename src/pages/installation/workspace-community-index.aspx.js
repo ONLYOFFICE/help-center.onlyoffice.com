@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
-import InfoContent from "@components/screens/main-content/info-content";
-import GuidesCards from "@components/screens/main-content/guides-cards";
-import Accordion from "@components/screens/common/accordion";
 import Footer from "@components/screens/footer-content";
+import WorkspaceCommunityIndexContent from "@components/screens/single-content/installation-content/workspace-community-index";
 
-const IndexPage = () => {
+const WorkspaceCommunityIndexPage = () => {
   const {
     t,
     i18n: { language },
@@ -19,12 +17,10 @@ const IndexPage = () => {
     <Layout>
       <Layout.PageHead></Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={true} currentLanguage={language} />
+        <HeadingContent t={t} template={false} currentLanguage={language} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <InfoContent t={t} currentLanguage={language}/>
-        <GuidesCards t={t} />
-        <Accordion t={t} currentLanguage={language} />
+        <WorkspaceCommunityIndexContent t={t} currentLanguage={language} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={language} />
@@ -33,7 +29,7 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+export default WorkspaceCommunityIndexPage;
 
 export const query = graphql`
   query($language: String!) {
