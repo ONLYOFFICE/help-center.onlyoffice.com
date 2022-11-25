@@ -4,7 +4,6 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     resolve: {
       alias: {
         "@base": path.resolve(__dirname),
-        "@src": path.resolve(__dirname, "src/components"),
         "@components": path.resolve(__dirname, "src/components"),
         "@static": path.resolve(__dirname, "static")
       }
