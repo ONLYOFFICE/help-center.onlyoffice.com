@@ -15,6 +15,9 @@ const StyledCarousel = styled.div`
     .slick-list{
       margin: 24px 0;
     }
+    .slick-slide {
+      margin-bottom: 1px;
+    }
     ${(props) =>
       props.arrows
         ? css`
