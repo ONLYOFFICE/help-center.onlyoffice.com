@@ -5,9 +5,9 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
-import WorkspaceSassIndexContent from "@components/screens/single-content/installation-content/workspace-saas-index";
+import SingleContent from "@components/screens/single-content";
 
-const WorkspaceSassIndexPage = () => {
+const SinglePage = () => {
   const {
     t,
     i18n: { language },
@@ -20,7 +20,7 @@ const WorkspaceSassIndexPage = () => {
         <HeadingContent t={t} template={false} currentLanguage={language} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <WorkspaceSassIndexContent t={t} currentLanguage={language} />
+        <SingleContent t={t} currentLanguage={language} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={language} />
@@ -29,7 +29,7 @@ const WorkspaceSassIndexPage = () => {
   );
 };
 
-export default WorkspaceSassIndexPage;
+export default SinglePage;
 
 export const query = graphql`
   query($language: String!) {

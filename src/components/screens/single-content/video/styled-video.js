@@ -13,7 +13,6 @@ const StyledVideo = styled.div`
         line-height: 1.3em;
         margin: 25px 0 10px;
     }
-
 `
 
 export default StyledVideo;
