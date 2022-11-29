@@ -38,6 +38,7 @@
     "i18next": "^21.8.9",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
+    "react-cookie-consent": "^8.0.1",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
