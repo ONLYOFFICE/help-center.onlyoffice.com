@@ -5,6 +5,7 @@ import Header from "./sub-components/header";
 import Main from "./sub-components/main";
 import Footer from "./sub-components/footer";
 import Head from "./sub-components/head";
+import CookieNotify from "@components/common/cookie-notify";
 
 import { createGlobalStyle } from "styled-components";
 
@@ -92,6 +93,7 @@ class Layout extends React.Component {
             {footerContent ? footerContent.props.children : null}
           </Footer>
         }
+        <CookieNotify />
       </StyledLayout>
     );
   }
