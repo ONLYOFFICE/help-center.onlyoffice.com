@@ -32,6 +32,7 @@ const StyledSlide = styled.div`
   }
 
   .title-template{
+    box-sizing: border-box;
     height: 60px;
     padding: 5px;
     color: #333;
