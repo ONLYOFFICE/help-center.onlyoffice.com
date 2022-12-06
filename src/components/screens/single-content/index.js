@@ -25,15 +25,6 @@ const SingleContent = ({ t, ...rest }) => {
   //     }
   //   }
   // `)
-  // const { allStrapiArticles } = useStaticQuery(graphql`
-  //   query {
-  //     allStrapiArticles {
-  //       nodes {
-  //         ...ArticleCard
-  //       }
-  //     }
-  //   }
-  // `)
 
   const scrollTopShow = () => {
     if (

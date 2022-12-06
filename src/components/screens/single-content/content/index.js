@@ -16,11 +16,14 @@ const CenterContent = ({ t }) => {
   //       console.log(data.data);
   //   })
   // }, []);
-    const { allStrapiArticles } = useStaticQuery(graphql`
+    const { articles } = useStaticQuery(graphql`
     query {
-        allStrapiArticles {
-        nodes {
-          ...ArticleCard
+      articles {
+        data {
+          id,
+          attributes {
+            title
+          }
         }
       }
     }
@@ -52,23 +55,23 @@ const CenterContent = ({ t }) => {
                     label="Installation Guides"
                 />
                 {/* <div>{blogs.data[0].attributes.title}</div> */}
-                <div>{allStrapiArticles.nodes}</div>
+                <div>{articles.data}</div>
             </div>
             <Video t={t} />
         </StyledContent>
     );
 }
 
-export const query = graphql`
-  fragment ArticleCard on STRAPI_ARTICLE {
-    data {
-      id,
-      attributes {
-        title
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   fragment ArticleCard on STRAPI_ARTICLE {
+//     data {
+//       id,
+//       attributes {
+//         title
+//       }
+//     }
+//   }
+// `
 
 // export const getServerSideProps = async () => {
 //     const res = await fetch(
