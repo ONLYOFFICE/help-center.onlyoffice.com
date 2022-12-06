@@ -8,6 +8,12 @@ const StyledCookieNotify = styled.div`
   z-index: 100000;
   text-align: center;
   pointer-events: none;
+  transition: opacity 0.3s, visibility 0.3s;
+
+  &.hide {
+    opacity: 0;
+    visibility: hidden;
+  }
 
   .cookie-notify {
     display: inline-flex;
