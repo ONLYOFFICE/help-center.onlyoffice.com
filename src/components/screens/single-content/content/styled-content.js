@@ -6,7 +6,7 @@ const StyledContent = styled.div`
 
   .wrapper-content {
     flex: 1 1 auto;
-    padding: 16px 52px 0 49px;
+    padding: 16px 0 0 49px;
     font-size: 14px;
     line-height: 1.5em;
 

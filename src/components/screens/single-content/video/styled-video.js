@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledVideo = styled.div`
-    padding-top: 91px;
+    padding: 91px 0 0 52px;
     text-align: center;
     width: 246px;
 
