@@ -2,8 +2,8 @@ import React from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 
-import Layout from "../../components/layout";
-import Error404 from "../sub-components/404-page";
+import Layout from "@components/layout";
+import Error404 from "@components/screens/404-page";
 
 const Error404Page = () => {
   const { t } = useTranslation();

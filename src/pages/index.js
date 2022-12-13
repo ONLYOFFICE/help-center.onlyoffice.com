@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 
-import Layout from "../../components/layout";
-import HeadingContent from "../sub-components/header-content";
-import InfoContent from "../sub-components/main-content/info-content";
-import GuidesCards from "../sub-components/main-content/guides-cards";
-import Accordion from "../sub-components/accordion";
-import Footer from "../sub-components/footer-content";
+import Layout from "@components/layout";
+import HeadingContent from "@components/screens/header-content";
+import InfoContent from "@components/screens/main-content/info-content";
+import GuidesCards from "@components/screens/main-content/guides-cards";
+import Accordion from "@components/screens/common/accordion";
+import Footer from "@components/screens/footer-content";
 
 const IndexPage = () => {
   const {
