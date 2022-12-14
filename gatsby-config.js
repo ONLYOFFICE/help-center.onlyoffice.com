@@ -9,7 +9,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://helpcenter.onlyoffice.com",
+    siteUrl: "HELPCENTER_URL",
     title: "helpcenter-gatsby",
   },
   plugins: [
@@ -49,7 +49,7 @@ module.exports = {
         localeJsonSourceName: "locale",
         languages: availableLanguages,
         defaultLanguage,
-        siteUrl: "https://helpcenter.onlyoffice.com",
+        siteUrl: "HELPCENTER_URL",
         redirect: false,
         i18nextOptions: {
           fallbackLng: defaultLanguage,
@@ -87,7 +87,7 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
-        apiURL: process.env.STRAPI_API_URL || "http://localhost:1337",
+        apiURL: "STRAPI_API_URL" || "http://localhost:1337",
         accessToken: process.env.STRAPI_TOKEN,
         collectionTypes: [
           {

@@ -5,6 +5,8 @@ switch(BRANCH_NAME) {
     CloudFrontID="E3DCOH2ZTE42J5"
     OriginName="test-helpcenter.onlyoffice.com.s3.us-east-1.amazonaws.com"
     MESSAGE="test-helpcenter.onlyoffice.com is deployed to amazon."
+    cms_url="https://cmshelpcenter.teamlab.info"
+    helpcenter_url="https://testnew-helpcenter.onlyoffice.com/"
     break
   case "production.deploy":
     region="us-east-1"
@@ -12,6 +14,8 @@ switch(BRANCH_NAME) {
     CloudFrontID=""
     OriginName=""
     MESSAGE="helpcenter.onlyoffice.com is deployed to amazon."
+    cms_url=""
+    helpcenter_url="https://helpcenter.onlyoffice.com"
     break
   default:
     println("Branch: ${BRANCH_NAME} do not for deploy.")
@@ -28,7 +32,7 @@ pipeline {
     buildDiscarder (logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
   }
   stages {
-        stage('deploy') {
+    stage('deploy') {
       when { 
         anyOf { branch 'test.deploy'; branch 'production.deploy' }
       }
@@ -38,7 +42,9 @@ pipeline {
         CloudFrontID = "${CloudFrontID}"
         OriginName = "${OriginName}"
         MESSAGE = "${MESSAGE}"
-        CHAT_ID="${chat_id_dao}" 
+        CHAT_ID="${chat_id_dao}"
+        cms_url="${cms_url}"
+        helpcenter_url="${helpcenter_url}"
       }
       steps {
         withCredentials([
@@ -50,6 +56,9 @@ pipeline {
                 ]) {
           sh '''
             echo "Deploy from ${BRANCH_NAME} is starting. "
+            
+            sed -i "s^STRAPI_API_URL^$cms_url^" gatsby-config.js
+            sed -i "s^HELPCENTER_URL^$helpcenter_url^" gatsby-config.js
             
             bash $WORKSPACE/.jenkins/deploy.sh "$AccessKeyProd" "$SecretKeyProd" "$FindNameBucket" "$CloudFrontID" "$region" "$OriginName" "$TEL_TOKEN" "$CHAT_ID" "$MESSAGE"
           '''	          							
