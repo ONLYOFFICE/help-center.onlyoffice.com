@@ -84,6 +84,15 @@ buildSite () {
     echo "=== build site ==="
     yarn
     yarn build
+    
+    if [ $? -eq 0 ]; then
+        echo "build OK"
+    else
+        echo "build failed"
+        echo "=== delete new bucket ==="
+        delete_bucket "${name_new_bucket}"
+        exit 1;
+    fi
 }
 
 deploySite () {
@@ -104,6 +113,8 @@ check_deploy () {
         echo "site OK"
     else
         echo "site is not available"
+        echo "=== delete new bucket ==="
+        delete_bucket "${name_new_bucket}"
         exit 1;
     fi
     
