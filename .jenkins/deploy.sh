@@ -90,7 +90,7 @@ buildSite () {
     else
         echo "build failed"
         echo "=== delete new bucket ==="
-        delete_bucket "${name_new_bucket}"
+        delete_bucket "${NameNewBucket}"
         exit 1;
     fi
 }
@@ -114,7 +114,7 @@ check_deploy () {
     else
         echo "site is not available"
         echo "=== delete new bucket ==="
-        delete_bucket "${name_new_bucket}"
+        delete_bucket "${NameNewBucket}"
         exit 1;
     fi
     
@@ -147,9 +147,9 @@ delete_bucket() {
 }
 
 delete_old_bucket() {
-  if [[ "${name_old_bucket}" != "${FIND_NAME_BUCKET}" ]]; then
+  if [[ "${NameOldBucket}" != "${FindNameBucket}" ]]; then
     echo "=== delete old bucket ==="
-    delete_bucket "${name_old_bucket}"
+    delete_bucket "${NameOldBucket}"
   fi
 }
 
