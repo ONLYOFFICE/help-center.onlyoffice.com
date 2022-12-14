@@ -9,7 +9,7 @@ require("dotenv").config({
 
 const strapiConfig = {
   apiURL: "STRAPI_API_URL",
-  accessToken: process.env.STRAPI_TOKEN,
+  accessToken: process.env.STRAPI_TOKEN, 
   collectionTypes: ['article', 'tag', 'glossary'],
   singleTypes: [],
 };
