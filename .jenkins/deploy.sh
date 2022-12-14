@@ -142,12 +142,15 @@ modify_cloud_front () {
     aws cloudfront create-invalidation --distribution-id $CloudFrontID --paths "/*"
 }
 
-delete_old_bucket () {
+delete_bucket() {
+  aws s3 rb s3://${1} --force
+}
 
-    if [[ "$NameOldBucket" != $FindNameBucket ]]; then
-        echo "=== delete old bucket ==="
-        aws s3 rb s3://$NameOldBucket --force
-    fi
+delete_old_bucket() {
+  if [[ "${name_old_bucket}" != "${FIND_NAME_BUCKET}" ]]; then
+    echo "=== delete old bucket ==="
+    delete_bucket "${name_old_bucket}"
+  fi
 }
 
 notifyTelegram () {
