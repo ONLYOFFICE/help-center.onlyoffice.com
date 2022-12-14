@@ -23,8 +23,8 @@ const data = useStaticQuery(graphql`
     }
   }
 `);
-
 const allArticles = data.allStrapiArticle.nodes;
+
 console.log(allArticles);
     return (
         <StyledContent>

@@ -7,6 +7,13 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+const strapiConfig = {
+  apiURL: "STRAPI_API_URL",
+  accessToken: process.env.STRAPI_TOKEN,
+  collectionTypes: ['article', 'tag', 'glossary'],
+  singleTypes: [],
+};
+
 module.exports = {
   siteMetadata: {
     siteUrl: "HELPCENTER_URL",
@@ -86,63 +93,7 @@ module.exports = {
     "gatsby-plugin-postcss",
     {
       resolve: "gatsby-source-strapi",
-      options: {
-        apiURL: "STRAPI_API_URL" || "http://localhost:1337",
-        accessToken: process.env.STRAPI_TOKEN,
-        collectionTypes: [
-          {
-            singularName: "article",
-            queryParams: {
-              publicationState:
-                process.env.GATSBY_IS_PREVIEW === "true" ? "preview" : "live",
-              populate: {
-                cover: "*",
-                blocks: {
-                  populate: "*",
-                },
-              },
-            },
-          },
-          {
-            singularName: "author",
-          },
-          {
-            singularName: "category",
-          },
-          {
-            singularName: "text",
-          },
-          {
-            singularName: "tag",
-          },
-          {
-            singularName: "glossary",
-          },
-        ],
-        singleTypes: [
-          {
-            singularName: "about",
-            queryParams: {
-              populate: {
-                blocks: {
-                  populate: "*",
-                },
-              },
-            },
-          },
-          {
-            singularName: "global",
-            queryParams: {
-              populate: {
-                favicon: "*",
-                defaultSeo: {
-                  populate: "*",
-                },
-              },
-            },
-          },
-        ],
-      },
+      options: strapiConfig,
     },
     "gatsby-plugin-image",
     "gatsby-transformer-sharp",
