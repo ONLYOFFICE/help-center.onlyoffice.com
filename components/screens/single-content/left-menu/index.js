@@ -5,7 +5,7 @@ import SearchContent from "./sub-components/search";
 import Items from "./data/items";
 
 const LeftMenu = ({ t, ...rest }) => {
-  const path = window.location.href.replace(window.location.hash, "").toLowerCase();
+  // const path = window.location.href.replace(window.location.hash, "").toLowerCase();
   const leftMenuListRef = useRef();
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const LeftMenu = ({ t, ...rest }) => {
                 <InternalLink
                   href={it.href}
                   label={t(it.label)}
-                  className={`external-link ${path.includes(it.href) ? "selected" : ""}`}
+                  // className={`external-link ${path.includes(it.href) ? "selected" : ""}`}
                 />
                 {it.subitems &&
                 <ul className="expanded-menu">
@@ -34,7 +34,7 @@ const LeftMenu = ({ t, ...rest }) => {
                       <InternalLink
                         href={subitem.href}
                         label={t(subitem.label)}
-                        className={`external-link ${path.includes(subitem.href) ? "selected" : ""}`}
+                        // className={`external-link ${path.includes(subitem.href) ? "selected" : ""}`}
                       />
                     </li>
                   )}
