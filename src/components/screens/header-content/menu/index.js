@@ -71,7 +71,7 @@ const Menu = ({ t, currentLanguage, template, ...rest }) => {
         <div className="site-logo"></div>
       </InternalLink>
       <ReactSVG
-        src={MobileMenu}
+        src={MobileMenu.src}
         className="nav-items-mobile"
         onClick={toggleMobile}
       />

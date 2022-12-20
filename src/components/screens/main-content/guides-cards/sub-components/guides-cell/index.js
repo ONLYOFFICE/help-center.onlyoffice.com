@@ -10,12 +10,12 @@ const GuidesCell = ({ pic, headData, t }) => {
   const firstLine = headData.data.filter((item) => item.line === "1");
   const secondLine = headData.data.filter((item) => item.line === "2");
   return (
-    <StyledGuidesCell pic={pic} headData={headData}>
+    <StyledGuidesCell pic={pic.src} headData={headData}>
       <Box className="cell_header">
         <Box className="cell_icon" alignItems="center">
           <IconButton
             isClickable={false}
-            iconName={pic}
+            iconName={pic.src}
             size={80}
           />
         </Box>
