@@ -31,12 +31,9 @@ yarn-error.log*
 .vercel
 node_modules
 
-# linaria cache
-/.linaria-cache/
+# next.js
+/.next/
+/out/
 
-# gatsby cache 
-/.cache/
-
-# gatsby build bundle
-/public/
-/.env.development
+# jenkins
+/.jenkins/

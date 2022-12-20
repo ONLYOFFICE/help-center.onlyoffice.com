@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import VideoPlay from "@static/images/icons/video.png"
+import VideoPlay from "@public/images/icons/video.png"
 
 const StyledSlide = styled.div`
   .video-image{

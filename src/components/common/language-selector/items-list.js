@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { StyledItem, StyledPanelView } from "./styled-language-selector";
-import { Link } from "gatsby";
-import languages from "@base/languages";
+import Link from 'next/link'
+import languages from "@config/languages";
 import Text from "@components/common/text";
 export default function LangsList(props) {
   const { t, isOpen, currentLanguage, onCloseSelector } = props;
@@ -42,7 +42,7 @@ export default function LangsList(props) {
 
       return (
         <StyledItem key={key}>
-          <Link to={`${localizedPath}`} className="language-item-link">
+          <Link href={`${localizedPath}`} className="language-item-link">
             <img
               src={`/images/flags/${iconName}`}
               alt={key}

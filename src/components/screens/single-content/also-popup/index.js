@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { CloseButton, StyledAlsoPopup } from "./styled-also-popup";
 import Caption from "./caption";
-import { SeeAlsoInfo } from "@static/data/see-also";
+import { SeeAlsoInfo } from "@public/data/see-also";
 
 const AlsoPopup = ({ t, language, active, setActive, tag, id, ...rest }) => {
 const content = SeeAlsoInfo.find((item) => item.pageID === id).data;

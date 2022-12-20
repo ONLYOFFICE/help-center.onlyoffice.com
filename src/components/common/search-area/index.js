@@ -7,10 +7,29 @@ import Heading from "@components/common/heading";
 
 import StyledSearchArea from "./styled-search-area";
 
-import SearchIcon from "@static/images/icons/search-icon.react.svg";
-import CloseIcon from "@static/images/icons/close-icon.react.svg";
+import SearchIcon from "@public/images/icons/search-icon.react.svg";
+import CloseIcon from "@public/images/icons/close-icon.react.svg";
 
 const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeholder }) => {
+  /*eslint-disable*/
+  const imgSearch = !valueSearch ? (
+    <img className="search_img"
+      src={SearchIcon}
+      style={{ cursor: "default" }}
+      alt="search"
+      width="24px"
+      height="24px"
+    />
+  ) : (
+    <img
+      src={CloseIcon}
+      onClick={clearValueSearch}
+      alt="close"
+      width="24px"
+      height="24px"
+    />
+  );
+  /*eslint-enable*/
   return (
     <StyledSearchArea>
       {label && 
@@ -36,13 +55,7 @@ const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeho
           colorHover="#CCCCCC"
           labelColor={!valueSearch ? "#808080" : "#CCCCCC"}
         />
-        <div className="search_icon">
-          {!valueSearch ? (
-            <SearchIcon style={{ cursor: "default" }} />
-          ) : (
-            <CloseIcon onClick={clearValueSearch} />
-          )}
-        </div>
+        <div className="search_icon">{imgSearch}</div>
       </Box>
     </StyledSearchArea>
   );

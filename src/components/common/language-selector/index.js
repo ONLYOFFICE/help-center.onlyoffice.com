@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useMemo } from "react";
 import StyledLanguageSelector from "./styled-language-selector";
-import ArrowDown from "@static/images/icons/arrow-drop-down.react.svg";
-import ArrowUp from "@static/images/icons/arrow-drop-up.react.svg";
+import ArrowDown from "@public/images/icons/arrow-drop-down.react.svg";
+import ArrowUp from "@public/images/icons/arrow-drop-up.react.svg";
 import ItemsList from "./items-list";
 import Text from "@components/common/text";
-import languages from "@base/languages";
+import languages from "@config/languages";
 
 const LanguageSelector = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,9 +68,11 @@ const LanguageSelector = (props) => {
         width={"18px"}
       />
       <Text className="lang-name">{langName}</Text>
+       {/*eslint-disable*/}
       <div className="arrow-image">
-        {isOpen ? <ArrowUp alt="arrow-up" /> : <ArrowDown alt="arrow-down" />}
+        {/* { isOpen ? <ArrowUp alt="arrow-up" /> : <ArrowDown alt="arrow-down" /> } */}
       </div>
+       {/*eslint-enable*/}
       <ItemsList
         className={`languages-list lng-selector ${
           isOpen ? "language-selector-open" : "language-selector-closed"

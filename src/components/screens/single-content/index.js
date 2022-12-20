@@ -7,24 +7,9 @@ import TagsContent from "./content/tags-content";
 import GlossaryContent from "./content/glossary-content";
 import UpArrow from "@components/common/up-arrow";
 import AlsoPopup from "./also-popup";
-import { useStaticQuery, graphql } from "gatsby";
 
 const SingleContent = ({ t, ...rest }) => {
   const [isUp, setIsUp] = useState(false);
-  // const { allStrapiTag, allStrapiGlossary } = useStaticQuery(graphql`
-  //   query {
-  //     allStrapiTag {
-  //       nodes {
-  //         ...TagCard
-  //       }
-  //     }, 
-  //     allStrapiGlossary {
-  //       nodes {
-  //         ...GlossaryCard
-  //       }
-  //     }
-  //   }
-  // `)
 
   const scrollTopShow = () => {
     if (
@@ -54,15 +39,5 @@ const SingleContent = ({ t, ...rest }) => {
     </StyledSingleContent>
   );
 };
-// export const query = graphql`
-//   fragment TagCard on STRAPI_TAG {
-//     id
-//     title
-//   },
-//   fragment GlossaryCard on STRAPI_GLOSSARY {
-//     title
-//     subtitle
-//   }
-// `
 
 export default SingleContent;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import arrow_red from "@static/images/icons/arrow-red.svg";
+import arrow_red from "@public/images/icons/arrow-red.svg";
 import { device } from "@components/utils/devices";
 
 const StyledNav = styled.nav`

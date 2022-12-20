@@ -1,5 +1,5 @@
 import React from "react";
-import { Trans } from "gatsby-plugin-react-i18next";
+import { Trans } from "next-i18next";
 import Link from "@components/common/link";
 import Text from "@components/common/text";
 

@@ -5,7 +5,7 @@ import Text from "@components/common/text";
 import InternalLink from "@components/common/internal-link";
 import Tag from "@components/common/tag";
 import Mark from "@components/common/mark";
-import { TagsInfo } from "@static/data/alpha-tags";
+import { TagsInfo } from "@public/data/alpha-tags";
 import Box from "@components/common/box";
 import Button from "@components/common/button";
 

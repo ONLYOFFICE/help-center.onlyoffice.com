@@ -1,6 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslation } from "next-i18next";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
@@ -30,17 +29,3 @@ const SinglePage = () => {
 };
 
 export default SinglePage;
-
-export const query = graphql`
-  query($language: String!) {
-    locales: allLocale(filter: { language: { in: [$language, "en"] } }) {
-      edges {
-        node {
-          ns
-          data
-          language
-        }
-      }
-    }
-  }
-`;

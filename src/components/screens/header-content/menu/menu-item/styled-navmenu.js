@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import arrow_gray from "@static/images/icons/arrow-gray.svg";
-import arrow_red from "@static/images/icons/arrow-red.svg";
+import arrow_gray from "@public/images/icons/arrow-gray.svg";
+import arrow_red from "@public/images/icons/arrow-red.svg";
 import { device } from "@components/utils/devices";
 
 const StyledNavMenu = styled.div`

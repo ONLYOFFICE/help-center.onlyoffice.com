@@ -1,7 +1,7 @@
 import React from "react";
-import Link from "@components/common/link";
+import ExternalLink from "@components/common/link";
 import PropTypes from "prop-types";
-import { Link as GatsbyLink } from "gatsby";
+import Link from 'next/link'
 
 const InternalLink = ({
   children,
@@ -17,16 +17,16 @@ const InternalLink = ({
     : "internal-link";
 
   return (
-    <GatsbyLink
-      to={href}
+    <Link
+      href={href}
       style={{ ...style, outline: "none", textDecoration: "none" }}
       tabIndex={tabIndex}
       {...rest}
     >
-      <Link as="span" className={linkClassName} tabIndex={tabIndex} {...rest}>
+      <ExternalLink as="span" className={linkClassName} tabIndex={tabIndex} {...rest}>
         {children || label}
-      </Link>
-    </GatsbyLink>
+      </ExternalLink>
+    </Link>
   );
 };
 

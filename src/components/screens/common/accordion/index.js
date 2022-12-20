@@ -1,5 +1,5 @@
 import React from "react";
-import { Trans } from "gatsby-plugin-react-i18next";
+import { Trans } from "next-i18next";
 
 import { AccordionItem } from "@components/common/accordion";
 

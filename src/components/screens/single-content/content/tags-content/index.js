@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ArticlePopup from "../../article-popup";
-import { TagsInfo } from "@static/data/alpha-tags";
+import { TagsInfo } from "@public/data/alpha-tags";
 import AlphabetContainer from "../sub-components/aplhabet-container";
 import NoteHelp from "../sub-components/note-help";
 

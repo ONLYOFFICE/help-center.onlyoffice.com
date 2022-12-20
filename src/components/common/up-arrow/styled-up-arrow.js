@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import StyledIconButton from "@components/common/icon-button/styled-icon-button";
 import globalColors from "@components/utils/global-colors";
-import arrow_gray from "@static/images/icons/arrowup.png"
+import arrow_gray from "@public/images/icons/arrowup.png"
 
 const StyledUpArrow = styled(StyledIconButton)`
 background-color: #9ea4b5;

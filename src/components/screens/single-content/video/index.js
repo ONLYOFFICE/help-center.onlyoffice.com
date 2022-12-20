@@ -3,8 +3,8 @@ import StyledVideo from "./styled-video";
 import Carousel from "@components/common/carousel"
 import Heading from "@components/common/heading";
 
-import PrivateRooms from "@static/images/video-preview/private_rooms.png"
-import ConnectSeafile from "@static/images/video-preview/desktop_connect_seafile.png"
+import PrivateRooms from "@public/images/video-preview/private_rooms.png"
+import ConnectSeafile from "@public/images/video-preview/desktop_connect_seafile.png"
 
 const Video = ({ t }) => {
     const items = [{

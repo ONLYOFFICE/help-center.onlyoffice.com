@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import video_icn from "@static/images/icons/video-guides.png";
-import start_icn from "@static/images/icons/start.png";
-import idea_icn from "@static/images/icons/idea.png";
-import docs_icn from "@static/images/icons/doc.png";
-import guides_icn from "@static/images/icons/guides.png";
-import editors_icn from "@static/images/icons/editors.png";
-import faq_icn from "@static/images/icons/faq.png";
+import video_icn from "@public/images/icons/video-guides.png";
+import start_icn from "@public/images/icons/start.png";
+import idea_icn from "@public/images/icons/idea.png";
+import docs_icn from "@public/images/icons/doc.png";
+import guides_icn from "@public/images/icons/guides.png";
+import editors_icn from "@public/images/icons/editors.png";
+import faq_icn from "@public/images/icons/faq.png";
 
 const StyledCaption = styled.div`
   background-repeat: no-repeat;

@@ -5,7 +5,7 @@ import LanguageSelector from "@components/common/language-selector";
 import InternalLink from "@components/common/internal-link";
 import Link from "@components/common/link";
 
-import MobileMenu from "@static/images/icons/mob_menu.svg";
+import MobileMenu from "@public/images/icons/mob_menu.svg";
 
 import { StyledMenu } from "./styled-menu";
 import Nav from "./nav/nav";

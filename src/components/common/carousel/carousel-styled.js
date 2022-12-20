@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import arrow_gray from "@static/images/icons/slideshow_next-prev.png"
+import arrow_gray from "@public/images/icons/slideshow_next-prev.png"
 
 const StyledCarousel = styled.div`
   margin: 0 auto;

@@ -1,5 +1,5 @@
 import React from "react";
-import { GlossaryInfo } from "@static/data/alpha-glossary";
+import { GlossaryInfo } from "@public/data/alpha-glossary";
 import AlphabetContainer from "../sub-components/aplhabet-container";
 import Text from "@components/common/text";
 

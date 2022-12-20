@@ -2,12 +2,12 @@ import React from "react";
 
 import StyledCategory from "./styled-category";
 import CategoryBox from "./sub-components/category-box";
-import IntegrationPic from "@static/images/icons/integration.svg";
-import InstallationPic from "@static/images/icons/installation.svg";
-import AdministrationPic from "@static/images/icons/administration.svg";
-import UserPic from "@static/images/icons/user-guides.svg";
-import DeveloperPic from "@static/images/icons/development.svg";
-import ContributionPic from "@static/images/icons/contribution.svg";
+import IntegrationPic from "@public/images/icons/integration.svg";
+import InstallationPic from "@public/images/icons/installation.svg";
+import AdministrationPic from "@public/images/icons/administration.svg";
+import UserPic from "@public/images/icons/user-guides.svg";
+import DeveloperPic from "@public/images/icons/development.svg";
+import ContributionPic from "@public/images/icons/contribution.svg";
 
 const Category = ({ t, template, currentLanguage }) => {
 

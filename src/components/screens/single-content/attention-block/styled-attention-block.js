@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import CloseBtnIcon from "@static/images/icons/close-icon.svg";
+import CloseBtnIcon from "@public/images/icons/close-icon.svg";
 
 const StyledAttentionBlock = styled.div`
   position: relative;

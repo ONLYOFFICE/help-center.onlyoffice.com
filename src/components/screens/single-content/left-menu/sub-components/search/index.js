@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import TextInput from "@components/common/text-input";
 import StyledSearch from "./styled-search";
-import SearchIcon from "@static/images/icons/search-icon.react.svg";
+import SearchIcon from "@public/images/icons/search-icon.react.svg";
 
 const MiniSearch = ({ valueSearch, callback, t, label }) => {
 
