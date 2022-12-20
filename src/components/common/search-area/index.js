@@ -14,7 +14,7 @@ const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeho
   /*eslint-disable*/
   const imgSearch = !valueSearch ? (
     <img className="search_img"
-      src={SearchIcon}
+      src={SearchIcon.src}
       style={{ cursor: "default" }}
       alt="search"
       width="24px"
@@ -22,7 +22,7 @@ const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeho
     />
   ) : (
     <img
-      src={CloseIcon}
+      src={CloseIcon.src}
       onClick={clearValueSearch}
       alt="close"
       width="24px"
