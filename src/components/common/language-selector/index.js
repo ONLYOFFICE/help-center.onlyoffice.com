@@ -55,6 +55,11 @@ const LanguageSelector = (props) => {
     }
   }), []);
 
+  const srcArrow = isOpen
+  ? {ArrowUp}
+  : {ArrowDown};
+  const srcAlt = isOpen ? "arrow-up" : "arrow-down";
+
   return (
     <StyledLanguageSelector
       {...props}
@@ -70,7 +75,7 @@ const LanguageSelector = (props) => {
       <Text className="lang-name">{langName}</Text>
        {/*eslint-disable*/}
       <div className="arrow-image">
-        {/* { isOpen ? <ArrowUp alt="arrow-up" /> : <ArrowDown alt="arrow-down" /> } */}
+        <img src={srcArrow} alt={srcAlt} />
       </div>
        {/*eslint-enable*/}
       <ItemsList
