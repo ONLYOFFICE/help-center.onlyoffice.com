@@ -56,8 +56,8 @@ const LanguageSelector = (props) => {
   }), []);
 
   const srcArrow = isOpen
-  ? {ArrowUp}
-  : {ArrowDown};
+  ? ArrowUp.src
+  : ArrowDown.src;
   const srcAlt = isOpen ? "arrow-up" : "arrow-down";
 
   return (
