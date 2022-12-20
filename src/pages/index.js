@@ -12,7 +12,7 @@ const IndexPage = () => {
   const {
     t,
     i18n: { language },
-  } = useTranslation();
+  } = useTranslation("translations");
 
   return (
     <Layout>
