@@ -9,22 +9,22 @@ import UpArrow from "@components/common/up-arrow";
 import AlsoPopup from "./also-popup";
 
 const SingleContent = ({ t, ...rest }) => {
-  const [isUp, setIsUp] = useState(false);
+  // const [isUp, setIsUp] = useState(false);
 
-  const scrollTopShow = () => {
-    if (
-      document.body.scrollTop > 100 ||
-      document.documentElement.scrollTop > 100
-    ) {
-      setIsUp(true);
-    } else {
-      setIsUp(false);
-    }
-  }
+  // const scrollTopShow = () => {
+  //   if (
+  //     document.body.scrollTop > 100 ||
+  //     document.documentElement.scrollTop > 100
+  //   ) {
+  //     setIsUp(true);
+  //   } else {
+  //     setIsUp(false);
+  //   }
+  // }
 
-  window.onscroll = function () {
-    scrollTopShow();
-  };
+  // window.onscroll = function () {
+  //   scrollTopShow();
+  // };
 
   return (
     <StyledSingleContent>
