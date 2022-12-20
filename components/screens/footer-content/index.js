@@ -106,7 +106,7 @@ const Footer = ({ t, language }) => {
         </FooterItem>
 
         <div className="footer-item-group">
-          <FooterItem heading={t("Follow us on:")} className="follow">
+          <FooterItem heading={`${t("Follow us on")}:`} className="follow">
             <div className="footer-social-links">
               {Social.map((item) => (
                 <ExternalLink

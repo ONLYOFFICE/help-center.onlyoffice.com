@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import getAllArticles from "@lib/strapi/getArticles";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
@@ -22,7 +21,7 @@ const IndexPage = ({ locale }) => {
       <Layout.SectionMain>
         <InfoContent t={t} currentLanguage={locale}/>
         <GuidesCards t={t} />
-        {/* <Accordion t={t} currentLanguage={language} /> */}
+        <Accordion t={t} currentLanguage={locale} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />
@@ -31,17 +30,13 @@ const IndexPage = ({ locale }) => {
   );
 };
 
-export const getServerSideProps = async ({ locale }) => {
-  const articles = await getAllArticles(locale);
- 
+export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, "common")),
-      locale,
-      articles
-      
+      ...(await serverSideTranslations(locale, 'common')),
+      locale
     },
-  };
-};
+  }
+}
 
 export default IndexPage;

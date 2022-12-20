@@ -19,7 +19,7 @@ const LanguageSelector = (props) => {
       window.removeEventListener("click", handleClickOutside);
       window.removeEventListener("resize", resizeHandler);
     };
-  });
+  }, []);
 
   const handleClickOutside = (e) => {
     if (
