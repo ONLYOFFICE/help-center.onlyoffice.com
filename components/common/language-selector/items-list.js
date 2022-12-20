@@ -42,7 +42,7 @@ export default function LangsList(props) {
 
       return (
         <StyledItem key={key}>
-          <Link href={`${localizedPath}`} className="language-item-link">
+          <Link href="/" locale={language.shortKey} className="language-item-link">
             <img
               src={`/images/flags/${iconName}`}
               alt={key}

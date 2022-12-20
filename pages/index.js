@@ -21,7 +21,7 @@ const IndexPage = ({ locale }) => {
       <Layout.SectionMain>
         <InfoContent t={t} currentLanguage={locale}/>
         <GuidesCards t={t} />
-        {/* <Accordion t={t} currentLanguage={language} /> */}
+        <Accordion t={t} currentLanguage={locale} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />
@@ -30,13 +30,13 @@ const IndexPage = ({ locale }) => {
   );
 };
 
-export const getServerSideProps = async ({ locale }) => {
+export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, "common")),
-      locale,
+      ...(await serverSideTranslations(locale, 'common')),
+      locale
     },
-  };
-};
+  }
+}
 
 export default IndexPage;

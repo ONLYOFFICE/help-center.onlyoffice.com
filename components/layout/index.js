@@ -1,29 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import StyledLayout from "./styled-layout";
 import Header from "./sub-components/header";
 import Main from "./sub-components/main";
 import Footer from "./sub-components/footer";
 import Head from "./sub-components/head";
-import CookieNotify from "@components/common/cookie-notify";
-
-import { createGlobalStyle } from "styled-components";
-
-const GlobalStyles = createGlobalStyle`
-  html {
-    height: 100%;
-    font-family: "Open Sans", sans-serif;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-  }
-
-  body {
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
-    position: relative;
-  }
-`;
 
 function PageHead() {
   return null;
@@ -44,6 +26,7 @@ function PageFooter() {
   return null;
 }
 PageFooter.displayName = "PageFooter";
+
 class Layout extends React.Component {
   static PageHeader = PageHeader;
   static SectionMain = SectionMain;
@@ -81,26 +64,30 @@ class Layout extends React.Component {
 
     return (
       <StyledLayout id="page-layout" className="layout">
-        <GlobalStyles />
         {children}
-        <Head>{headContent ? headContent.props.children : null}</Head>
-
-        <Header>{headerContent ? headerContent.props.children : null}</Header>
+        {headContent && <Head>{headContent.props.children}</Head>}
+        {headerContent && <Header>{headerContent.props.children}</Header>}
         <Main>{mainContent ? mainContent.props.children : null}</Main>
-        {
-          footerContent &&
-          <Footer className="footer">
-            {footerContent ? footerContent.props.children : null}
-          </Footer>
-        }
-        <CookieNotify />
+        {footerContent && (
+          <Footer className="footer">{footerContent.props.children}</Footer>
+        )}
       </StyledLayout>
     );
   }
 }
 
-Layout.propTypes = {};
+Layout.propTypes = {
+  headContent: PropTypes.bool,
+  headerContent: PropTypes.bool,
+  footerContent: PropTypes.bool,
+};
 
-Layout.defaultProps = {};
+Layout.defaultProps = {
+  headContent: true,
+  headerContent: true,
+  footerContent: true,
+};
 
 export default Layout;
+
+
