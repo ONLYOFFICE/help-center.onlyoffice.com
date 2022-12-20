@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import getAllArticles from "@lib/strapi/getArticles";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
@@ -32,14 +31,10 @@ const IndexPage = ({ locale }) => {
 };
 
 export const getServerSideProps = async ({ locale }) => {
-  const articles = await getAllArticles(locale);
- 
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      articles
-      
     },
   };
 };
