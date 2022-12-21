@@ -5,29 +5,31 @@ const StyledSearchArea = styled.div`
   background-color: #f5f5f5;
   position: relative;
   width: 100%;
-  padding: 166px 0 101px;
+  padding: 164px 0 80px;
 
   .search_container {
     position: relative;
-    margin: 60px auto 0;
+    margin: 48px auto 0;
     max-width: 688px;
   }
 
   .presearch_title {
-    line-height: 1.5em;
+    line-height: 53px;
+    letter-spacing: -0.02em;
+    font-feature-settings: 'pnum' on, 'lnum' on;
     overflow: unset;
   }
 
   .search_input {
     position: relative;
-    border: 1px solid #c2c2c2;
+    border: 1px solid #CCCCCC;
     border-radius: 32px;
-    padding: 5px 2px 5px 60px;
+    padding: 19px 28px;
     white-space: normal;
-    height: 76px;
+    height: 64px;
 
     &::placeholder {
-      font-size: 14px;
+      font-size: 16px;
     }
 
     &:hover {
@@ -36,12 +38,9 @@ const StyledSearchArea = styled.div`
   }
 
   .search_icon {
-    position: absolute;
-    top: 50%;
-    left: 21px;
     display: flex;
     z-index: 2;
-    transform: translateY(-50%);
+    transform: translateX(12px);
 
     svg {
       cursor: pointer;
