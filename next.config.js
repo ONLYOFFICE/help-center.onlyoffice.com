@@ -30,18 +30,6 @@ const nextConfig = {
   },
   reactStrictMode: true,
   i18n,
-  images: {
-    formats: ["image/webp"],
-    domains: ["nextconfig_domains"],
-    minimumCacheTTL: 31536000,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'nextconfig_domains.**',
-        
-      },
-    ] ,
-  },
   compiler: {
     styledComponents: true,
   },
