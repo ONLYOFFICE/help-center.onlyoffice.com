@@ -3,8 +3,6 @@ import StyledLanguageSelector from "./styled-language-selector";
 import ArrowDown from "@public/images/icons/arrow-drop-down.react.svg";
 import ArrowUp from "@public/images/icons/arrow-drop-up.react.svg";
 import ItemsList from "./items-list";
-import Text from "@components/common/text";
-import languages from "@config/languages";
 
 const LanguageSelector = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,13 +46,6 @@ const LanguageSelector = (props) => {
 
   const { currentLanguage, t } = props;
 
-  const langName = useMemo(() => languages.map((language) => {
-    const { shortKey, name } = language;
-    if (shortKey === currentLanguage) {
-      return name;
-    }
-  }), []);
-
   const srcArrow = isOpen
   ? ArrowUp.src
   : ArrowDown.src;
@@ -72,7 +63,6 @@ const LanguageSelector = (props) => {
         src={`/images/flags/${currentLanguage}.svg`}
         width={"18px"}
       />
-      <Text className="lang-name">{langName}</Text>
        {/*eslint-disable*/}
       <div className="arrow-image">
         <img src={srcArrow} alt={srcAlt} />
