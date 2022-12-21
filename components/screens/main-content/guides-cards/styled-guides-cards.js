@@ -3,10 +3,11 @@ import { device } from "@components/utils/devices";
 import Section from "@components/screens/common/section";
 
 const StyledGuidesCards = styled(Section)`
-  margin-top: 100px;
+  padding: 80px 0 56px;
+
   .section-page {
     display: flex;
-    gap: 0px 20px;
+    gap: 0px 32px;
 
     .cell_container {
       display: flex;

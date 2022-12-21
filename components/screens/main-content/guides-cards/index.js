@@ -4,50 +4,50 @@ import StyledGuidesCards from "./styled-guides-cards";
 import { LinksInfo } from "@public/data/main-page-links";
 import Box from "@components/common/box";
 
+import DocsPic from "@public/images/icons/documents.svg";
+import DesktopPic from "@public/images/icons/desktop-editors.svg";
+import WorkspacePic from "@public/images/icons/workspace.svg";
+import MobilePic from "@public/images/icons/mobile.svg";
 import IntegrationPic from "@public/images/icons/integration.svg";
-import InstallationPic from "@public/images/icons/installation.svg";
-import AdministrationPic from "@public/images/icons/administration.svg";
-import UserPic from "@public/images/icons/user-guides.svg";
-import DeveloperPic from "@public/images/icons/development.svg";
-import ContributionPic from "@public/images/icons/contribution.svg";
+import PersonalPic from "@public/images/icons/personal.svg"
 
 const GuidesCards = ({ t }) => {
-  const installationData = useMemo(
-    () => LinksInfo.find((it) => it.position === "installation"),
+  const docsData = useMemo(
+    () => LinksInfo.find((it) => it.position === "docs"),
     [LinksInfo]
   );
-  const integationData = useMemo(
-    () => LinksInfo.find((item) => item.position === "integration"),
+  const desktopData = useMemo(
+    () => LinksInfo.find((item) => item.position === "desktop"),
     [LinksInfo]
   );
-  const administrationData = useMemo(
-    () => LinksInfo.find((item) => item.position === "administration"),
+  const workspaceData = useMemo(
+    () => LinksInfo.find((item) => item.position === "workspace"),
     [LinksInfo]
   );
-  const userData = useMemo(
-    () => LinksInfo.find((item) => item.position === "user"),
+  const mobileData = useMemo(
+    () => LinksInfo.find((item) => item.position === "mobile"),
     [LinksInfo]
   );
-  const developerData = useMemo(
-    () => LinksInfo.find((item) => item.position === "developer"),
+  const integrationsData = useMemo(
+    () => LinksInfo.find((item) => item.position === "integrations"),
     [LinksInfo]
   );
-  const contributionData = useMemo(
-    () => LinksInfo.find((item) => item.position === "contribution"),
+  const personalData = useMemo(
+    () => LinksInfo.find((item) => item.position === "personal"),
     [LinksInfo]
   );
 
   return (
     <StyledGuidesCards>
       <Box className="cell_container">
-        <GuidesCell pic={InstallationPic} headData={installationData} t={t} />
-        <GuidesCell pic={AdministrationPic} headData={administrationData} t={t} />
-        <GuidesCell pic={DeveloperPic} headData={developerData} t={t} />
+        <GuidesCell pic={DocsPic} headData={docsData} t={t} />
+        <GuidesCell pic={WorkspacePic} headData={workspaceData} t={t} />
+        <GuidesCell pic={IntegrationPic} headData={integrationsData} t={t} />
       </Box>
       <Box className="cell_container">
-        <GuidesCell pic={IntegrationPic} headData={integationData} t={t} />
-        <GuidesCell pic={UserPic} headData={userData} t={t} />
-        <GuidesCell pic={ContributionPic} headData={contributionData} t={t} />
+        <GuidesCell pic={DesktopPic} headData={desktopData} t={t} />
+        <GuidesCell pic={MobilePic} headData={mobileData} t={t} />
+        <GuidesCell pic={PersonalPic} headData={personalData} t={t} />
       </Box>
     </StyledGuidesCards>
   );

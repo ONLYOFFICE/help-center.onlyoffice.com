@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 
+import apple from "@public/images/icons/apple.svg";
+import android from "@public/images/icons/android.svg";
+
 const StyledGuidesCell = styled.div`
   background-color: white;  
-  border: 1px solid rgba(85, 85, 85, 0.15);
-  border-radius: 5px;
-  box-shadow: 0 7px 25px rgb(0 0 0 / 10%);
+  border-radius: 3px;
+  box-shadow: 0px 7px 25px rgba(85, 85, 85, 0.15);
   display: inline-block;
   height: fit-content;
   margin: 0;
@@ -18,15 +20,19 @@ const StyledGuidesCell = styled.div`
   .cell_header {
     border-bottom: 1px solid #ccc;
     display: flex;
-    gap: 20px;
-    padding: 32px;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 32px 32px 24px;
 
     .cell_header_links {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
       text-align: left;
 
       span {
         display: block;
+        line-height: 22px;
         width: 100%;
       }
 
@@ -34,10 +40,12 @@ const StyledGuidesCell = styled.div`
         color: #333;
         font-weight: 700;
         font-size: 18px;
-        line-height: 1.2em;
+        line-height: 24px;
         padding: 0 0 16px;
         text-align: left;
         text-decoration: none;
+        letter-spacing: -0.02em;
+
         &:hover {
           text-decoration: underline;
         }
@@ -49,29 +57,87 @@ const StyledGuidesCell = styled.div`
     align-items: start;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 28px 32px;
+    padding: 24px 32px 32px;
+    gap: 32px;
 
     .links_area {
       flex-direction: column;
-      justify-content: start;
-      align-items: start;
+      align-items: initial;
 
-      .internal-link, .external-link {
-        display: block;
-        font-weight: 600;
-        text-decoration: none;
-        padding: 6px 0;
-        &.not_bold {
-          font-weight: 400;
-          padding-left: 32px;
+      .cell_link {
+        .internal-link, .external-link {
+          display: block;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 0.04em;
+          text-decoration: none;
+          color: #333333;
+
+          &:hover {
+            text-decoration: underline;
+          }
         }
-        &:hover {
-          text-decoration: underline;
+
+        &:not(.not_bold) {
+          margin-bottom: 16px;
+
+          &:not(:first-child) {
+            margin-top: 24px;
+          }
+
+          .internal-link, .external-link {
+            text-transform: uppercase;
+          }
+        }
+
+        &.not_bold {
+          .internal-link, .external-link {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 19px;
+            font-feature-settings: 'tnum' on, 'lnum' on;
+          }
+
+          &:not(:last-child) {
+            margin-bottom: 15px;
+          }
+
+          &.cell_heading {
+            &:not(:last-child) {
+              margin-bottom: -6px;
+            }
+          }
         }
       }
 
-      &:last-child {
-        padding-left: 32px;
+      .cell_heading {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        font-feature-settings: 'tnum' on, 'lnum' on;
+        color: #FF6F3D;
+        text-align: initial;
+
+        &.iOS,
+        &.Android {
+          &:before {
+            margin-right: 8px;
+            width: 16px;
+          }
+        }
+
+        &.iOS {
+          &::before {
+            content: url(${apple.src});
+          }
+        }
+
+        &.Android {
+          &:before {
+            content: url(${android.src});
+          }
+        }
       }
     }
   }
