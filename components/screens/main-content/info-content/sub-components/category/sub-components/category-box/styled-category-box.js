@@ -12,16 +12,18 @@ const StyledCategoryBox = styled(Box)`
     
     .icon{
         display: inline-block;
+        width: 80px;
     }
 
     .link{
         text-transform: uppercase;
         text-decoration: none;
+        font-size: 12px;
         font-weight: 600;
-        line-height: 1.5em;
-        letter-spacing: 0.08em;
-        margin-top: 10px;
-        padding: 10px 0;
+        line-height: 16px;
+        letter-spacing: 0.04em;
+        margin-top: 24px;
+        color: #444444;
 
         &:hover{
             text-decoration: underline;

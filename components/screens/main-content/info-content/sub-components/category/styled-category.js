@@ -2,9 +2,12 @@ import styled from "styled-components";
 import Box from "@components/common/box";
 
 const StyledCategory = styled(Box)`
-    justify-content: space-between;
-    padding-bottom: 65px;
-
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 32px;
+    padding-bottom: 103px;
+    margin: 0 auto;
+    max-width: 880px;
 
     @media (max-width: 1200px){
         display: grid;
