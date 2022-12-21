@@ -6,6 +6,7 @@ import InternalLink from "@components/common/internal-link";
 import Link from "@components/common/link";
 
 import MobileMenu from "@public/images/icons/mob_menu.svg";
+import SearchIcon from "@public/images/icons/search-icon.react.svg";
 
 import { StyledMenu } from "./styled-menu";
 import Nav from "./nav/nav";
@@ -75,18 +76,22 @@ const Menu = ({ t, currentLanguage, template, ...rest }) => {
         className="nav-items-mobile"
         onClick={toggleMobile}
       />
-      <Nav
+      {/* <Nav
         currentLanguage={currentLanguage}
         className="nav-item-links"
         stateMobilePND={stateMobile}
         t={t}
+      /> */}
+      <ReactSVG
+        src={SearchIcon.src}
+        className="nav-item-search"
       />
       <Link
         display="contents"
         className="nav-item-btn"
         href="https://www.onlyoffice.com/registration.aspx?from=helpcenter"
       >
-        {t("Try in the cloud")}
+        {t("Get ONLYOFFICE")}
       </Link>
       <div className="nav-item-lng">
         <LanguageSelector t={t} currentLanguage={currentLanguage} />
