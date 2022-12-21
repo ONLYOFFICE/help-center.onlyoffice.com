@@ -1,5 +1,14 @@
 const Social = [
   {
+    className: "OnlyOffice",
+    title: "OnlyOffice",
+    target: "_blank",
+    rel: "",
+    src: "/images/social-icons/mail.react.svg",
+    size: "24px",
+    filter: true,
+  },
+  {
     href: "https://www.facebook.com/pages/OnlyOffice/833032526736775",
     className: "faceBook",
     title: "Facebook",

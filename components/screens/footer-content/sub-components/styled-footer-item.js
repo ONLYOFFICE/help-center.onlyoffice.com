@@ -52,20 +52,19 @@ const StyledFooterTablet = css`
 const StyledFooterItem = styled.div`
   display: grid;
   position: relative;
-  padding: 0 0 35px;
+  padding: 0 0 25px;
   white-space: break-spaces;
 
   .footer-items-group {
     display: grid;
-    justify-items: start;
     max-height: 100%;
   }
 
   .footer-link {
     color: #333;
     font-size: 13px;
-    line-height: 1.4em;
-    margin: 0px 0px 7px;
+    line-height: 18px;
+    margin: 0px 0px 8px;
     text-decoration: none;
     -webkit-transition: color 0.2s, border 0.5s;
     -moz-transition: color 0.2s, border 0.5s;
@@ -78,12 +77,12 @@ const StyledFooterItem = styled.div`
   }
 
   .footer-item-heading {
-    padding: 6px 0 16px;
+    padding: 0 0 16px;
     font-size: 12px;
-    line-height: 12px;
+    line-height: 16px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
   }
 
   .footer-item-heading-arrow {
