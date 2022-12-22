@@ -1,25 +1,20 @@
 println("Branch name: ${BRANCH_NAME}")
 
 switch(BRANCH_NAME) {
-  case "test_deploy":
+  case "test.deploy":
     aws_region="us-east-1"
     region="info"
-    name_bucket="static-helpcenter.teamlab.info"
-    cloud_front_distribution_id="EPKKT2R6YC1YW"
-    site_url="https://cmshelpcenter.teamlab.info"
-    db_host="rds.teamlab.info"
-    db_name="cms_helpcenter"
-    cdn_url="https://static-helpcenter.teamlab.info"
+    cloud_front_distribution_id="E3DCOH2ZTE42J5"
+    site_url="https://testnew-helpcenter.onlyoffice.com/" 
+    cms="https://cmshelpcenter.teamlab.info"
     break
-  case "production_deploy":
-    aws_region="us-west-2"
+  case "production.deploy111":
+    aws_region="us-east-1"
     region="com"
-    MONITOR_ID = ''
-    name_bucket="static-helpcenter.onlyoffice.com"
-    cloud_front_distribution_id=""
-    site_url="https://cmshelpcenter.onlyoffice.com"
-    db_host="rds.onlyoffice.com"
-    db_name="cms_helpcenter"
+    MONITOR_ID = '8888888888888'
+    cloud_front_distribution_id="9999999999"
+    site_url="https://testnew-helpcenter.onlyoffice.com/"
+    cms="https://cmshelpcenter.teamlab.info"
     break
   default:
     println("Branch: ${BRANCH_NAME} do not for deploy.")
@@ -37,7 +32,7 @@ pipeline {
   }
   stages {
     stage('stop_monitor') {
-      when { branch 'production_deploy!!!!!!!!!!!!!!' }
+      when { branch 'production_deploy' }
       steps {
         build job: 'monitor.24x7.start.stop', 
           parameters: [string(name: 'monitor_id', value: "${MONITOR_ID}"), 
@@ -47,95 +42,61 @@ pipeline {
     
     stage('deploy') {
       when { 
-        anyOf { branch 'test_deploy'; 
-                branch 'production_deploy!!!!!!!!!!!!!!!' }
+        anyOf { branch 'test.deploy';
+                branch 'production_deploy' }
       }
       environment {
-        aws_region = "${aws_region}"
         region = "${region}"
-        name_bucket = "${name_bucket}"
-        cloud_front_distribution_id = "${cloud_front_distribution_id}"
-        site_url = "${site_url}"
-        db_host = "${db_host}"
-        db_name = "${db_name}"
+        cms="${cms}"
       }
       steps {
-        withCredentials([usernamePassword(credentialsId: 'cmsoforms-user', 
-                          passwordVariable: 'secret_key', 
-                          usernameVariable: 'access_key'),
-                        usernamePassword(credentialsId: 'cms_helpcenter_db_user', 
-                          passwordVariable: 'CMS_DB_PASS', 
-                          usernameVariable: 'CMS_DB_USER'),
-                        string(credentialsId: 'jwt_secret_docs_info', 
-                          variable: 'jwt_docs_info'),
-                        string(credentialsId: 'jwt_secret_docs', 
-                          variable: 'jwt_docs')]) {
-          sh '''
-            aws_url="https://s3.amazonaws.com/${name_bucket}"
-            
-            if [[ "$region" == "com" ]]; then
-              jwt_docs_var="${jwt_docs}"
-            else
-              jwt_docs_var="${jwt_docs_info}"
-            fi
-            
-            sed -i "s^cms_url^$site_url^" config.json
-            sed -i "s^cms_aws_url^$aws_url^" config.json
-            sed -i "s^cms_jwt^$jwt_docs_var^" config.json
-            sed -i "s^cms_db_host^$db_host^" config.json
-            sed -i "s^cms_db_name^$db_name^" config.json
-            sed -i "s^cms_db_user^$CMS_DB_USER^" config.json
-            sed -i "s^cms_db_pass^$CMS_DB_PASS^" config.json
-            sed -i "s^cms_access_key^$access_key^" config.json
-            sed -i "s^cms_secret_key^$secret_key^" config.json
-            sed -i "s^cms_aws_region^$aws_region^" config.json
-            sed -i "s^cms_bucket^$name_bucket^" config.json
-            
-            tar -czpf .jenkins/cms_helpcenter.tar.gz \
-              --exclude ".git" \
-              --exclude ".gitignore" \
-              --exclude ".jenkins" \
-              --exclude "README.md" .
-            
-            echo "Deploy from ${BRANCH_NAME} is starting."
-          '''
+        sh '''
+        
+          sed -i "s^config_cms^$cms^" config/config.json
+      
+          tar -czpf .jenkins/helpcenter.tar.gz \
+            --exclude ".git" \
+            --exclude ".gitignore" \
+            --exclude ".jenkins" \
+            --exclude "README.md" .
           
-          sshPublisher(publishers: [sshPublisherDesc(configName: "strapi_oforms@${region}", 
-            transfers: [sshTransfer(cleanRemote: false, 
-              excludes: '', 
-              execCommand: '''
-                sudo bash /home/ubuntu/deploy/.jenkins/build.sh |& tee -a > /home/ubuntu/deploy/cms_helpcenter_deploy.log
-              ''', 
-              execTimeout: 600000, 
-              flatten: false, 
-              makeEmptyDirs: false, 
-              noDefaultExcludes: false, 
-              patternSeparator: '[, ]+', 
-              remoteDirectory: '', 
-              remoteDirectorySDF: false, 
-              removePrefix: '', 
-              sourceFiles: '.jenkins/cms_helpcenter.tar.gz,.jenkins/build.sh')], 
-            usePromotionTimestamp: false, 
-            useWorkspaceInPromotion: false, 
-            verbose: false)])
-            
-        }
+          echo "Deploy from ${BRANCH_NAME} is starting."
+        '''
+        
+        sshPublisher(publishers: [sshPublisherDesc(configName: "strapi_oforms@${region}", 
+          transfers: [sshTransfer(cleanRemote: false, 
+            excludes: '', 
+            execCommand: '''
+              sudo bash /home/ubuntu/deploy/.jenkins/build.sh |& tee -a > /home/ubuntu/deploy/helpcenter_deploy.log
+            ''', 
+            execTimeout: 600000, 
+            flatten: false, 
+            makeEmptyDirs: false, 
+            noDefaultExcludes: false, 
+            patternSeparator: '[, ]+', 
+            remoteDirectory: '', 
+            remoteDirectorySDF: false, 
+            removePrefix: '', 
+            sourceFiles: '.jenkins/helpcenter.tar.gz,.jenkins/build.sh')], 
+          usePromotionTimestamp: false, 
+          useWorkspaceInPromotion: false, 
+          verbose: false)])
       }
     }
-    
     stage('invalidation') {
       when { 
-        anyOf { branch 'test_deploy'; 
-                branch 'production_deploy!!!!!!!!!!!!!!!!!!' }
+        anyOf { branch 'test.deploy';
+                branch 'production_deploy' }
       }
       environment {
         aws_region = "${aws_region}"
         cloud_front_distribution_id = "${cloud_front_distribution_id}"
       }
       steps {
-        withCredentials([usernamePassword(credentialsId: 'cmsoforms-user', 
-                          passwordVariable: 'secret_key', 
-                          usernameVariable: 'access_key')]) {
+        withCredentials([
+                usernamePassword(credentialsId: 'aws_build_robot', 
+                passwordVariable: 'secret_key', 
+                usernameVariable: 'access_key')]) {
           sh '''
             export AWS_ACCESS_KEY_ID="$access_key"
             export AWS_SECRET_ACCESS_KEY="$secret_key"
@@ -150,7 +111,7 @@ pipeline {
     }
     
     stage('start_monitor') {
-      when { branch 'production_deploy!!!!!!!!!!!!!!!!!!11' }
+      when { branch 'production_deploy' }
       steps {
         build job: 'monitor.24x7.start.stop', 
           parameters: [string(name: 'monitor_id', value: "${MONITOR_ID}"), 
@@ -159,4 +120,3 @@ pipeline {
     }
   }
 }
-

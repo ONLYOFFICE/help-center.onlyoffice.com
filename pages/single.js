@@ -11,7 +11,7 @@ import SingleContent from "@components/screens/single-content";
 const SinglePage = ({ locale, articles }) => {
   const { t } = useTranslation();
 
-  console.log(articles)
+ // console.log(articles.data)
 
   return (
     <Layout>
@@ -20,7 +20,7 @@ const SinglePage = ({ locale, articles }) => {
         <HeadingContent t={t} template={false} currentLanguage={locale} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <SingleContent t={t} currentLanguage={locale} />
+        <SingleContent t={t} currentLanguage={locale} articles={articles.data} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />

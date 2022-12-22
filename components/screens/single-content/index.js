@@ -8,7 +8,7 @@ import GlossaryContent from "./content/glossary-content";
 import UpArrow from "@components/common/up-arrow";
 import AlsoPopup from "./also-popup";
 
-const SingleContent = ({ t, ...rest }) => {
+const SingleContent = ({ t, articles, ...rest }) => {
   // const [isUp, setIsUp] = useState(false);
 
   // const scrollTopShow = () => {
@@ -29,7 +29,7 @@ const SingleContent = ({ t, ...rest }) => {
   return (
     <StyledSingleContent>
       <LeftMenu t={t} />
-      <CenterContent t={t} />
+      <CenterContent t={t} articles={articles} />
       {/* <TagsContent t={t} content={allStrapiTag.nodes} /> */}
       {/* <GlossaryContent t={t} content={allStrapiGlossary.nodes} /> */}
       {/* <AlsoPopup t={t} id={"administrationworkspacepage"} />
