@@ -3,8 +3,12 @@ import { Base } from "@components/themes";
 
 const StyledAccordionItem = styled.div`
 position: relative;
-border-top: 1px solid #E5E5E5;
-padding: 20px 0 20px 40px;
+border-top: 1px solid #D2D6DB;
+padding: 19px 0 19px 40px;
+
+&:last-child {
+  border-bottom: 1px solid #D2D6DB;
+}
 
 .accordion {
   display: flex;
@@ -33,11 +37,13 @@ padding: 20px 0 20px 40px;
 .accordion__text {
   font-weight: 400;
   font-size: 14px;
-  padding: 24px 0 8px;
+  line-height: 22px;
+  padding-top: 16px;
 }
 
 .accordion__heading {
   outline: none;
+  letter-spacing: -0.02em;
 }
 
 @media (max-width: 600px) {

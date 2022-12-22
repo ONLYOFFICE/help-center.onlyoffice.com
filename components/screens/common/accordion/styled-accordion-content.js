@@ -18,9 +18,8 @@ const StyledAccordionContent = styled(Section)`
     }
   }
   .titleAccordion {
-    margin-bottom: 20px;
-    padding: 48px;
-    text-align: center;
+    margin-bottom: 56px;
+    letter-spacing: -0.02em;
 
     @media ${device.mobileL} {
       margin-bottom: 8px;

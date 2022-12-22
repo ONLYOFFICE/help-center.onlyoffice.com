@@ -1,182 +1,178 @@
 const Items = [
   {
-    className: "developers",
+    className: "products",
     position: 1,
-    heading: "Developers",
+    heading: "products",
     link: [
       {
         localize: true,
-        label: "Developer Edition",
-        href: "/developer-edition.aspx",
+        label: "Docs",
+        href: "",
       },
       {
         localize: true,
-        label: "Document Builder",
-        href: "/document-builder.aspx",
+        label: "Desktop apps",
+        href: "",
       },
       {
         localize: false,
-        label: "API",
-        href: "https://api.onlyoffice.com/",
+        label: "Workspace",
+        href: "",
       },
       {
         localize: false,
-        label: "Code on GitHub",
-        href: "https://github.com/ONLYOFFICE/",
+        label: "Mobile apps",
+        href: "",
+      },
+      {
+        localize: false,
+        label: "Personal",
+        href: "",
       },
     ],
   },
   {
-    className: "security",
-    position: 1,
-    heading: "Security",
-    link: [
-      {
-        localize: true,
-        label: "Authentication and access control",
-        href: "/security.aspx#access_control",
-      },
-      {
-        localize: true,
-        label: "Data protection",
-        href: "/security.aspx#data_protection",
-      },
-      {
-        localize: true,
-        label: "Data encryption",
-        href: "/security.aspx#data_encryption",
-      },
-      {
-        localize: true,
-        label: "Private rooms",
-        href: "/private-rooms.aspx",
-      },
-      {
-        localize: false,
-        label: "GDPR compliance",
-        href: "https://www.onlyoffice.com/blog/2018/05/how-onlyoffice-complies-with-gdpr/",
-      },
-      {
-        localize: false,
-        label: "HIPAA compliance",
-        href: "https://www.onlyoffice.com/blog/2020/10/how-onlyoffice-complies-with-hipaa/",
-      },
-    ],
-  },
-  {
-    className: "integrations",
+    className: "intergrations",
     position: 2,
-    heading: "integrations",
+    heading: "intergrations",
     link: [
       {
         localize: true,
         label: "Nextcloud",
-        href: "/office-for-nextcloud.aspx",
+        href: "",
       },
       {
         localize: true,
         label: "ownCloud",
-        href: "/office-for-owncloud.aspx",
+        href: "",
       },
       {
         localize: true,
         label: "Confluence",
-        href: "/office-for-confluence.aspx",
+        href: "",
       },
       {
         localize: true,
         label: "Alfresco",
-        href: "/office-for-alfresco.aspx",
-      },
-      {
-        localize: true,
-        label: "SharePoint",
-        href: "/office-for-sharepoint.aspx",
-      },
-      {
-        localize: true,
-        label: "Liferay",
-        href: "/office-for-liferay.aspx",
-      },
-      {
-        localize: true,
-        label: "HumHub",
-        href: "/office-for-humhub.aspx",
-      },
-      {
-        localize: true,
-        label: "Plone",
-        href: "/office-for-plone.aspx",
-      },
-      {
-        localize: true,
-        label: "Nuxeo",
-        href: "/office-for-nuxeo.aspx",
-      },
-      {
-        localize: true,
-        label: "Others",
-        href: "/all-connectors.aspx",
-      },
-    ],
-  },
-  {
-    className: "support",
-    position: 3,
-    heading: "Support",
-    link: [
-      {
-        localize: true,
-        label: "Premium support",
-        href: "/support.aspx",
-      },
-      {
-        localize: true,
-        label: "Support contact form",
-        href: "/support-contact-form.aspx",
+        href: "",
       },
       {
         localize: false,
-        label: "Forum",
-        href: "https://forum.onlyoffice.com/?_ga=2.55252008.225528032.1638777037-363335557.1617705318",
+        label: "SharePoint",
+        href: "",
       },
       {
-        localize: true,
-        label: "Order demo",
-        href: "/demo-order.aspx",
+        localize: false,
+        label: "Liferay",
+        href: "",
+      },
+      {
+        localize: false,
+        label: "HumHub",
+        href: "",
+      },
+      {
+        localize: false,
+        label: "Plone",
+        href: "",
+      },
+      {
+        localize: false,
+        label: "Nuxeo",
+        href: "",
+      },
+      {
+        localize: false,
+        label: "Others",
+        href: "",
       },
     ],
   },
   {
-    className: "resources",
+    className: "administration",
     position: 3,
-    heading: "Resources",
+    heading: "administration",
     link: [
       {
         localize: true,
-        label: "App Directory",
-        href: "/app-directory.aspx",
+        label: "Managing Portals",
+        href: "",
       },
       {
         localize: true,
-        label: "Compare to other suites",
-        href: "/document-editor-comparison.aspx",
+        label: "Reinforcing Security",
+        href: "",
       },
       {
         localize: true,
-        label: "Contribute",
-        href: "/contribute.aspx",
+        label: "Configuring modules and tools",
+        href: "",
       },
       {
         localize: true,
-        label: "Webinars",
-        href: "/webinars.aspx",
+        label: "Customizing modules and tools",
+        href: "",
       },
       {
         localize: true,
-        label: "Legal notice",
-        href: "/legalterms.aspx",
+        label: "Managing Users",
+        href: "",
       },
+      {
+        localize: true,
+        label: "Connecting external services",
+        href: "",
+      },
+      {
+        localize: true,
+        label: "ONLYOFFICE Control panel",
+        href: "",
+      },
+    ],
+  },
+  {
+    className: "Contribution",
+    position: 4,
+    heading: "contribution",
+    link: [
+      {
+        localize: true,
+        label: "All contributions",
+        href: "",
+      },
+    ],
+  },
+  {
+    className: "contacts",
+    position: 4,
+    heading: "Contact us",
+    link: [
+      {
+        localize: true,
+        label: "Sales Questions",
+        mail: "sales@onlyoffice.com",
+        href: "mailto:sales@onlyoffice.com",
+        isContact: true,
+      },
+      {
+        localize: true,
+        label: "Partner Inquiries",
+        mail: "partners@onlyoffice.com",
+        href: "mailto:partners@onlyoffice.com",
+        isContact: true,
+      },
+      {
+        localize: true,
+        label: "Press Inquiries",
+        mail: "press@onlyoffice.com",
+        href: "mailto:press@onlyoffice.com",
+        isContact: true,
+      },
+      {
+        localize: true,
+        label: "Request a Call",
+        href: "/call-back-form.aspx",
+      }
     ],
   },
 ];

@@ -133,12 +133,12 @@ const AccordionContent = ({ t, currentLanguage }) => {
     <StyledAccordionContent>
       <Section
         background="#FFFFFF"
-        padding="40px 0 112px"
+        padding="56px 0 112px"
         tabletPadding="80px 0 78px"
         mobileLPadding="48px 0 51px"
       >
         <Heading className="titleAccordion" level={3}>
-          {t("FAQ")}
+          {t("Frequently Asked Questions")}
         </Heading>
         <AccordionItem heading={t("AccordionHeadingOOLicense")}>
           {AccordionDescriptionOOLicense}

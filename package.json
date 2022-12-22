@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 9000",
-    "start": "next start -p 9000",
+    "dev": "next dev -p 30006",
+    "start": "next start -p 30006",
     "build": "next build",
     "storybook": "start-storybook -p 8082 -s ./static"
   },

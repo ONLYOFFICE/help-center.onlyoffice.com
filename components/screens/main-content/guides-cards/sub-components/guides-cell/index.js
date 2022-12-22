@@ -33,11 +33,21 @@ const GuidesCell = ({ pic, headData, t }) => {
         {firstLine.map((it, index) => {
           if (it.isExternal) {
             return (
-              <ExternalLink key={index} label={t(it.title)} className={`${ !it.isBold && "not_bold" }`} href={it.href} />
+              <div className={`cell_link ${ !it.isBold ? "not_bold" : "" }`} key={index}>
+                <ExternalLink label={t(it.title)} href={it.href} />
+              </div>
+            )
+          } else if (it.heading) {
+            return (
+              <div className={`cell_link cell_heading ${it.title} ${ !it.isBold ? "not_bold" : "" }`} key={index}>
+                {t(it.title)}
+              </div>
             )
           } else {
             return (
-              <InternalLink key={index} label={t(it.title)} className={`${ !it.isBold && "not_bold" }`} href={it.href} />
+              <div className={`cell_link ${ !it.isBold ? "not_bold" : "" }`} key={index}>
+                <InternalLink label={t(it.title)} href={it.href} />
+              </div>
             )
           }
           })}
@@ -46,11 +56,21 @@ const GuidesCell = ({ pic, headData, t }) => {
         {secondLine.map((it, index) => {
           if (it.isExternal) {
             return (
-              <ExternalLink key={index} label={t(it.title)} className={`${ !it.isBold && "not_bold" }`} href={it.href} />
+              <div className={`cell_link ${ !it.isBold ? "not_bold" : "" }`} key={index}>
+                <ExternalLink label={t(it.title)} href={it.href} />
+              </div>
+            )
+          } else if (it.heading) {
+            return (
+              <div className={`cell_link cell_heading ${it.title} ${ !it.isBold ? "not_bold" : "" }`} key={index}>
+                {t(it.title)}
+              </div>
             )
           } else {
             return (
-              <InternalLink key={index} label={t(it.title)} className={`${ !it.isBold && "not_bold" }`} href={it.href} />
+              <div className={`cell_link ${ !it.isBold ? "not_bold" : "" }`} key={index}>
+                <InternalLink label={t(it.title)} href={it.href} />
+              </div>
             )
           }
           })}

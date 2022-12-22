@@ -1,21 +1,20 @@
+println("Branch name: ${BRANCH_NAME}")
+
 switch(BRANCH_NAME) {
   case "test.deploy":
-    region="us-east-1"
-    FindNameBucket="test-helpcenter.onlyoffice.com"
-    CloudFrontID="E3DCOH2ZTE42J5"
-    OriginName="test-helpcenter.onlyoffice.com.s3.us-east-1.amazonaws.com"
-    MESSAGE="test-helpcenter.onlyoffice.com is deployed to amazon."
-    cms_url="https://cmshelpcenter.teamlab.info"
-    helpcenter_url="https://testnew-helpcenter.onlyoffice.com/"
+    aws_region="us-east-1"
+    region="info"
+    cloud_front_distribution_id="E3DCOH2ZTE42J5"
+    site_url="https://testnew-helpcenter.onlyoffice.com/" 
+    cms="https://cmshelpcenter.teamlab.info"
     break
-  case "production.deploy":
-    region="us-east-1"
-    FindNameBucket="helpcenter.onlyoffice.com"
-    CloudFrontID=""
-    OriginName=""
-    MESSAGE="helpcenter.onlyoffice.com is deployed to amazon."
-    cms_url=""
-    helpcenter_url="https://helpcenter.onlyoffice.com"
+  case "production.deploy111":
+    aws_region="us-east-1"
+    region="com"
+    MONITOR_ID = '8888888888888'
+    cloud_front_distribution_id="9999999999"
+    site_url="https://testnew-helpcenter.onlyoffice.com/"
+    cms="https://cmshelpcenter.teamlab.info"
     break
   default:
     println("Branch: ${BRANCH_NAME} do not for deploy.")
@@ -27,43 +26,97 @@ pipeline {
   triggers {
     githubPush()
   }
-    options {
+  options {
     disableConcurrentBuilds()
     buildDiscarder (logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
   }
   stages {
+    stage('stop_monitor') {
+      when { branch 'production_deploy' }
+      steps {
+        build job: 'monitor.24x7.start.stop', 
+          parameters: [string(name: 'monitor_id', value: "${MONITOR_ID}"), 
+          string(name: 'action', value: 'suspend')]
+      }    
+    }
+    
     stage('deploy') {
       when { 
-        anyOf { branch 'test.deploy'; branch 'production.deploy' }
+        anyOf { branch 'test.deploy';
+                branch 'production_deploy' }
       }
       environment {
         region = "${region}"
-        FindNameBucket = "${FindNameBucket}"
-        CloudFrontID = "${CloudFrontID}"
-        OriginName = "${OriginName}"
-        MESSAGE = "${MESSAGE}"
-        CHAT_ID="${chat_id_dao}"
-        cms_url="${cms_url}"
-        helpcenter_url="${helpcenter_url}"
+        cms="${cms}"
+      }
+      steps {
+        sh '''
+        
+          sed -i "s^config_cms^$cms^" config/config.json
+      
+          tar -czpf .jenkins/helpcenter.tar.gz \
+            --exclude ".git" \
+            --exclude ".gitignore" \
+            --exclude ".jenkins" \
+            --exclude "README.md" .
+          
+          echo "Deploy from ${BRANCH_NAME} is starting."
+        '''
+        
+        sshPublisher(publishers: [sshPublisherDesc(configName: "strapi_oforms@${region}", 
+          transfers: [sshTransfer(cleanRemote: false, 
+            excludes: '', 
+            execCommand: '''
+              sudo bash /home/ubuntu/deploy/.jenkins/build.sh |& tee -a > /home/ubuntu/deploy/helpcenter_deploy.log
+            ''', 
+            execTimeout: 600000, 
+            flatten: false, 
+            makeEmptyDirs: false, 
+            noDefaultExcludes: false, 
+            patternSeparator: '[, ]+', 
+            remoteDirectory: '', 
+            remoteDirectorySDF: false, 
+            removePrefix: '', 
+            sourceFiles: '.jenkins/helpcenter.tar.gz,.jenkins/build.sh')], 
+          usePromotionTimestamp: false, 
+          useWorkspaceInPromotion: false, 
+          verbose: false)])
+      }
+    }
+    stage('invalidation') {
+      when { 
+        anyOf { branch 'test.deploy';
+                branch 'production_deploy' }
+      }
+      environment {
+        aws_region = "${aws_region}"
+        cloud_front_distribution_id = "${cloud_front_distribution_id}"
       }
       steps {
         withCredentials([
-                string(credentialsId: 'token_bot_jenkins_notifier', 
-                variable: 'TEL_TOKEN'), 
-                usernamePassword(credentialsId: 'helpcenter_robot', 
-                usernameVariable: 'AccessKeyProd', 
-                passwordVariable: 'SecretKeyProd')
-                ]) {
+                usernamePassword(credentialsId: 'aws_build_robot', 
+                passwordVariable: 'secret_key', 
+                usernameVariable: 'access_key')]) {
           sh '''
-            echo "Deploy from ${BRANCH_NAME} is starting. "
+            export AWS_ACCESS_KEY_ID="$access_key"
+            export AWS_SECRET_ACCESS_KEY="$secret_key"
+            export AWS_DEFAULT_aws_region="$aws_region"
             
-            sed -i "s^STRAPI_API_URL^$cms_url^" gatsby-config.js
-            sed -i "s^HELPCENTER_URL^$helpcenter_url^" gatsby-config.js
-            
-            bash $WORKSPACE/.jenkins/deploy.sh "$AccessKeyProd" "$SecretKeyProd" "$FindNameBucket" "$CloudFrontID" "$region" "$OriginName" "$TEL_TOKEN" "$CHAT_ID" "$MESSAGE"
-          '''	          							
+            echo "=== start invalidation ==="
+            aws cloudfront create-invalidation --distribution-id ${cloud_front_distribution_id} --paths "/*" || \
+            aws cloudfront create-invalidation --distribution-id ${cloud_front_distribution_id} --paths "/*"
+          '''
         }
       }
+    }
+    
+    stage('start_monitor') {
+      when { branch 'production_deploy' }
+      steps {
+        build job: 'monitor.24x7.start.stop', 
+          parameters: [string(name: 'monitor_id', value: "${MONITOR_ID}"), 
+          string(name: 'action', value: 'activate')]
+      }    
     }
   }
 }
