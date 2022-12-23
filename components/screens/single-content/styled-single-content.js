@@ -6,8 +6,9 @@ const StyledSingleLayout = styled.div`
   position: relative;
   display: flex;
   width: 100%;
-  max-width: 100%;
-  padding: 115px 153px 70px 0;
+  max-width: 1152px;
+  padding: 72px 16px 0;
+  margin: 0 auto;
 
   .alert-enter {
     opacity: 0;
