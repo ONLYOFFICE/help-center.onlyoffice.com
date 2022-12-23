@@ -1,113 +1,110 @@
 const Items = [
   {
-    label: "Installation guides",
-    href: "/installation.aspx",
+    label: "Docs",
+    href: "",
+    items: [
+      {
+        label: "Installation Guides",
+        href: "",
+        subitems: [
+          {
+            label: "Docs Community Edition",
+            href: "",
+            subsubitems: [
+              {
+                label: "Changelog",
+                href: ""
+              },
+              {
+                label: "Roadmap",
+                href: ""
+              },
+              {
+                label: "For Windows",
+                href: ""
+              },
+              {
+                label: "For Linux",
+                href: ""
+              },
+              {
+                label: "For Docker",
+                href: ""
+              },
+            ]
+          },
+          {
+            label: "Docs Enterprise Edition",
+            href: "",
+          },
+          {
+            label: "Docs Developer Edition",
+            href: "",
+          },
+        ]
+      },
+      {
+        label: "User Guieds",
+        href: "",
+        subitems: [
+          {
+            label: "Document Editor",
+            href: "",
+          },
+          {
+            label: "Spreadsheet Editor",
+            href: "",
+          },
+          {
+            label: "Presentation Editor",
+            href: "",
+          },
+          {
+            label: "Form Editor",
+            href: ""
+          },
+        ]
+      }
+    ]
   },
   {
-    label: "ONLYOFFICE Workspace",
-    href: "/installation/workspace-index.aspx",
-    subitems: [
-      {
-        label: "ONLYOFFICE Workspace",
-        href: "/installation/workspace-community-index.aspx",
-      },
-      {
-        label: "ONLYOFFICE Workspace Enterprise Edition",
-        href: "/installation/workspace-enterprise-index.aspx",
-      },
-      {
-        label: "ONLYOFFICE Workspace Cloud Service",
-        href: "/installation/workspace-saas-index.aspx",
-      },
-    ],
+    label: "Desktop apps",
+    href: "",
   },
   {
     label: "ONLYOFFICE Groups",
-    href: "/installation/groups-index.aspx",
+    href: "",
   },
   {
-    label: "ONLYOFFICE Mail",
-    href: "/installation/mail-index.aspx",
+    label: "Workspace",
+    href: "",
   },
   {
-    label: "ONLYOFFICE Talk",
-    href: "/installation/talk-index.aspx",
+    label: "Mobile Apps",
+    href: "",
   },
   {
-    label: "ONLYOFFICE Docs",
-    href: "/installation/docs-index.aspx",
-    subitems: [
-      {
-        label: "ONLYOFFICE Docs Community Edition",
-        href: "/installation/docs-community-index.aspx",
-      },
-      {
-        label: "ONLYOFFICE Docs Enterprise Edition",
-        href: "/installation/docs-enterprise-index.aspx",
-      },
-      {
-        label: "ONLYOFFICE Docs Developer Edition",
-        href: "/installation/docs-developer-index.aspx",
-      },
-    ],
+    label: "Personal",
+    href: "",
   },
   {
-    label: "ONLYOFFICE Desktop Editors",
-    href: "/installation/desktop-index.aspx",
-  },
-  {
-    label: "ONLYOFFICE Mobile Apps",
-    href: "/installation/mobile-index.aspx",
+    label: "Integrations",
+    href: "",
   },
   {
     label: "Glossary",
+    className: "glossary",
     href: "/glossary.aspx",
   },
   {
     label: "Video",
+    className: "video",
     href: "/video.aspx",
   },
   {
     label: "FAQ",
+    className: "faq",
     href: "/faq/faq.aspx",
-    subitems: [
-      {
-        label: "General",
-        href: "/faq/faq.aspx",
-      },
-      {
-        label: "Technology",
-        href: "/faq/technology.aspx",
-      },
-      {
-        label: "Pricing",
-        href: "/faq/pricing.aspx",
-      },
-      {
-        label: "Workspace Enterprise Edition",
-        href: "/faq/server-enterprise.aspx",
-      },
-      {
-        label: "Docs Enterprise Edition",
-        href: "/faq/docs-enterprise.aspx",
-      },
-      {
-        label: "Docs Developer Edition",
-        href: "/faq/developer.aspx",
-      },
-      {
-        label: "ONLYOFFICE Groups",
-        href: "/faq/server-opensource.aspx",
-      },
-      {
-        label: "Connectors",
-        href: "/faq/connectors.aspx",
-      },
-      {
-        label: "Trial period",
-        href: "/faq/trial.aspx",
-      },
-    ],
   },
 ]
 
