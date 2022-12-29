@@ -2,11 +2,12 @@ import React from "react";
 import StyledContent from "./styled-content";
 import ReactHtmlParser from 'react-html-parser';
 
-const CenterContent = ({ t, articles }) => {
+const CenterContent = ({ t, articles, children }) => {
   console.log(articles[0]);
   return (
     <StyledContent>
-      <div className="wrapper">
+      {children}
+      {/* <div className="wrapper">
         <h3>Installation Guides</h3>
         
         <div className="category-item">
@@ -95,7 +96,7 @@ const CenterContent = ({ t, articles }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </StyledContent>
   );
 }

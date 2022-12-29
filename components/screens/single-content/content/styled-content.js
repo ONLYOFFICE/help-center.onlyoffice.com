@@ -3,13 +3,59 @@ import attention from "@public/images/icons/attention.svg";
 
 const StyledContent = styled.div`
   box-sizing: border-box;
-  padding: 32px 0 94px 29px;
+  padding: 32px 0 112px 29px;
   width: 100%;
+  max-width: 861px;
   color: #333333;
 
   .wrapper {
     font-size: 14px;
     line-height: 19px;
+
+    ul, li {
+      padding: 0;
+      margin: 0;
+    }
+
+    ul {
+      list-style-type: disc;
+
+      &:not(:last-child) {
+        margin-bottom: 24px;
+      }
+
+      li {
+        margin: 0 0 0 21px;
+        line-height: 22px;
+      }
+
+      &.ul-category {
+        list-style-type: none;
+  
+        > li {
+          list-style-type: none;
+          margin: 0;
+  
+          &:not(:last-child) {
+            margin-bottom: 32px;
+          }
+  
+          > ul {
+            > li {
+              &:not(:last-child) {
+                margin-bottom: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .border-content {
+      margin-bottom: 24px;
+      padding-bottom: 23px;
+      border-bottom: 1px solid #CCCCCC;
+    }
 
     a {
       display: inline-flex;
@@ -35,7 +81,17 @@ const StyledContent = styled.div`
     }
 
     p {
-      margin-bottom: 16px;
+      margin: 0;
+
+      &:not(:last-child) {
+        margin: 0 0 16px;
+      }
+
+      a {
+        &:not(:last-child) {
+          margin-bottom: 0;
+        }
+      }
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -43,7 +99,7 @@ const StyledContent = styled.div`
       padding: 0;
 
       &:not(:last-child) {
-        margin: 0 0 24px;
+        margin: 0 0 16px;
       }
     }
 
@@ -61,6 +117,11 @@ const StyledContent = styled.div`
 
     h5 {
       margin-bottom: 16px;
+      font-size: 14px;
+      line-height: 19px;
+    }
+
+    h6 {
       font-size: 14px;
       line-height: 19px;
     }
@@ -133,6 +194,7 @@ const StyledContent = styled.div`
     }
 
     .tag {
+      display: inline-flex;
       margin: 0 8px 8px 0;
       border-radius: 2px;
       padding: 4px 8px;
@@ -190,19 +252,120 @@ const StyledContent = styled.div`
     }
 
     .notehelp {
-      display: flex;
-      align-items: center;
+      position: relative;
       border-radius: 3px;
-      padding: 16px;
+      margin-bottom: 16px;
+      padding: 16px 16px 16px 42px;
       font-size: 14px;
       line-height: 22px;
       background-color: #F5F5F5;
 
       &::before {
-        content: url(${attention.src});
-        margin-right: 10px;
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        width: 16px;
+        height: 16px;
+        background-image: url(${attention.src});
+        transform: translateY(-50%);
       }
     }
+
+    .gs_submenu {
+      padding: 16px 0;
+    }
+
+    img.screen_guides {
+      border: 1px solid #e0e0e0;
+      cursor: pointer;
+      display: inline-block;
+      height: auto;
+      margin: 15px 0;
+      position: relative;
+      width: 350px;
+    }
+
+    img {
+      vertical-align: middle;
+    }
+
+    .prettyprint {
+      padding: 2px;
+      background: #f4f4f4;
+      font-family: "Roboto Mono", Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+      border: 0;
+      font-size: 14px;
+
+      > code {
+        white-space: pre-wrap;
+        display: block;
+        line-height: 18px;
+        padding: 15px;
+
+        span {
+          margin: 0;
+          padding: 0;
+        }
+
+        > .pln {
+          color: #000;
+        }
+
+        > .pun {
+          color: #660;
+        }
+      }
+    }
+
+    code {
+      background: #f4f4f4;
+      font-family: "Roboto Mono",Consolas,Monaco,'Andale Mono',monospace;
+      padding: 1px 5px;
+      word-break: break-all;
+    }
+  }
+
+  .page_download_button {
+    position: relative;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    padding: 30px 0 0;
+    margin: 40px 30px 0 0;
+    border-top: 1px solid #d9d9d9;
+
+    .button {
+      border-radius: 4px;
+      padding: 13px 24px;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #ffffff;
+      transition: background-color 0.3s;
+      
+      &.gray {
+        background-color: #444444;
+
+        &:hover {
+          background-color: #565656;
+        }
+      }
+    }
+
+    .download_button_description {
+      font-size: 13px;
+      display: block;
+      margin: 0 0 0 20px;
+      line-height: 1.3em;
+    }
+  }
+
+  .download-area {
+    margin: 40px 0 16px;
   }
 `
 
