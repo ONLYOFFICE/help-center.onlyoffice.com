@@ -376,7 +376,7 @@ export const LinksInfo = [
       },
       {
         title: "Alfresco",
-        href: "",
+        href: "/integrations/alfresco",
         isBold: false,
         line: "2"
       }
