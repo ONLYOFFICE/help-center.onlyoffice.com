@@ -4,9 +4,9 @@ import Text from "@components/common/text";
 import ExternalLink from "@components/common/link";
 import StyledDownloadArea from "./styled-download-area";
 
-const DownloadArea = ({ t }) => {
+const DownloadArea = ({ t, ...rest }) => {
   return (
-    <StyledDownloadArea>
+    <StyledDownloadArea {...rest}>
       <div className="download-wrapper">
         <div className="download-content">
           <Heading level={3} className="download-title" label={t("Host on your own server")} />

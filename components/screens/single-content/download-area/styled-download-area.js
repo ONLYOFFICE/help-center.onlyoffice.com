@@ -17,6 +17,8 @@ const StyledDownloadArea = styled.div`
   }
 
   .download-content {
+    display: flex;
+    flex-direction: column;
     max-width: 586px;
     margin: 0 auto;
   }
