@@ -28,40 +28,40 @@ const LeftMenu = ({ t, ...rest }) => {
             <InternalLink
               href={it.href}
               label={t(it.label)}
-              className={`item ${router.route === it.href ? "selected" : ""}`}
+              className={`item ${router.route.includes(it.label.toLowerCase()) ? "selected" : ""}`}
             />
             {
               it.items &&
-              <ul className={`expanded-menu expanded-menu-first ${router.route === it.href ? "open" : ""}`}>
+              <ul className={`expanded-menu expanded-menu-first ${router.route.includes(it.label.toLowerCase()) ? "open" : ""}  ${it.items ? "no-subitems" : ""}`}>
                 {
                   it.items.map((item, idx_item) =>
-                  <li className={`${router.route === item.href ? "active" : ""}`} key={idx_item}>
+                  <li className={`${router.route.includes(item.label.toLowerCase()) ? "active" : ""}`} key={idx_item}>
                     <InternalLink
                       href={item.href}
                       label={t(item.label)}
-                      className={`expanded-item ${router.route === item.href ? "selected" : ""}`}
+                      className={`expanded-item ${router.route.includes(item.label.toLowerCase()) ? "selected" : ""}`}
                     />
                     {
                       item.subitems &&
-                      <ul className={`expanded-menu expanded-menu-second ${router.route === item.href ? "open" : ""}`}>
+                      <ul className={`expanded-menu expanded-menu-second ${router.route.includes(item.label.toLowerCase()) ? "open" : ""}`}>
                         {
                           item.subitems.map((subitem, idx_subitem) =>
-                          <li className={`${router.route === subitem.href ? "active" : ""}`} key={idx_subitem}>
+                          <li className={`${router.route.includes(subitem.label.toLowerCase()) ? "active" : ""}`} key={idx_subitem}>
                             <InternalLink
                               href={subitem.href}
                               label={t(subitem.label)}
-                              className={`expanded-subitem ${router.route === subitem.href ? "selected" : ""}`}
+                              className={`expanded-subitem ${router.route.includes(subitem.label.toLowerCase()) ? "selected" : ""}`}
                             />
                             {
                               subitem.subsubitems &&
-                              <ul className={`expanded-menu expanded-menu-third ${router.route === subitem.href ? "open" : ""}`}>
+                              <ul className={`expanded-menu expanded-menu-third ${router.route.includes(subitem.label.toLowerCase()) ? "open" : ""}`}>
                                 {
                                   subitem.subsubitems.map((subsubitem, idx_subsubitem) =>
                                   <li key={idx_subsubitem}>
                                     <InternalLink
                                       href={subsubitem.href}
                                       label={t(subsubitem.label)}
-                                      className={`expanded-subsubitem ${router.route === subsubitem.href ? "selected" : ""}`}
+                                      className={`expanded-subsubitem ${router.route.includes(subsubitem.label.toLowerCase()) ? "selected" : ""}`}
                                     />
                                   </li>
                                 )}

@@ -1,67 +1,67 @@
 const Items = [
   {
     label: "Docs",
-    href: "",
+    href: "#",
     items: [
       {
         label: "Installation Guides",
-        href: "",
+        href: "#",
         subitems: [
           {
             label: "Docs Community Edition",
-            href: "",
+            href: "#",
             subsubitems: [
               {
                 label: "Changelog",
-                href: ""
+                href: "#"
               },
               {
                 label: "Roadmap",
-                href: ""
+                href: "#"
               },
               {
                 label: "For Windows",
-                href: ""
+                href: "#"
               },
               {
                 label: "For Linux",
-                href: ""
+                href: "#"
               },
               {
                 label: "For Docker",
-                href: ""
+                href: "#"
               },
             ]
           },
           {
             label: "Docs Enterprise Edition",
-            href: "",
+            href: "#",
           },
           {
             label: "Docs Developer Edition",
-            href: "",
+            href: "#",
           },
         ]
       },
       {
         label: "User Guieds",
-        href: "",
+        href: "#",
         subitems: [
           {
             label: "Document Editor",
-            href: "",
+            href: "#",
           },
           {
             label: "Spreadsheet Editor",
-            href: "",
+            href: "#",
           },
           {
             label: "Presentation Editor",
-            href: "",
+            href: "#",
           },
           {
             label: "Form Editor",
-            href: ""
+            href: "#"
           },
         ]
       }
@@ -69,27 +69,77 @@ const Items = [
   },
   {
     label: "Desktop apps",
-    href: "",
+    href: "#",
   },
   {
     label: "ONLYOFFICE Groups",
-    href: "",
+    href: "#",
   },
   {
     label: "Workspace",
-    href: "",
+    href: "#",
   },
   {
     label: "Mobile Apps",
-    href: "",
+    href: "#",
   },
   {
     label: "Personal",
-    href: "",
+    href: "#",
   },
   {
     label: "Integrations",
-    href: "",
+    href: "#",
+    items: [
+      {
+        label: "Chamilo",
+        href: "#",
+      },
+      {
+        label: "Confluence",
+        href: "#",
+      },
+      {
+        label: "HumHub",
+        href: "#",
+      },
+      {
+        label: "Jira",
+        href: "#",
+      },
+      {
+        label: "Liferay",
+        href: "#",
+      },
+      {
+        label: "Nextcloud",
+        href: "#",
+      },
+      {
+        label: "Nuxeo",
+        href: "#",
+      },
+      {
+        label: "ownCloud",
+        href: "#",
+      },
+      {
+        label: "Plone",
+        href: "#",
+      },
+      {
+        label: "Redmine",
+        href: "#",
+      },
+      {
+        label: "SharePoint",
+        href: "#",
+      },
+      {
+        label: "Alfresco",
+        href: "/integrations/alfresco",
+      },
+    ]
   },
   {
     label: "Glossary",

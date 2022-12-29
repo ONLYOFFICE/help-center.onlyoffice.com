@@ -5,12 +5,13 @@ import video from "@public/images/icons/video-icon.svg";
 import faq from "@public/images/icons/faq-icon.svg";
 
 const StyledLeftMenu = styled.ul`
+  box-sizing: border-box;
   position: relative;
   border-right: 1px solid #EFEFEF;
   margin: 0;
-  padding: 32px 32px 32px 0;
-  width: 232px;
-  min-width: 232px;
+  padding: 32px 23px 64px 0;
+  width: 259px;
+  min-width: 259px;
   z-index: 100;
   background-color: #F5F5F5;
 
@@ -57,6 +58,12 @@ const StyledLeftMenu = styled.ul`
 
     &.open {
       display: block;
+    }
+
+    &.no-subitems {
+      .expanded-item::before {
+        content: none;
+      }
     }
 
     li {
@@ -127,7 +134,7 @@ const StyledLeftMenu = styled.ul`
   }
 
   .glossary {
-    margin-top: 40px;
+    margin-top: 26px;
 
     .item {
       &::before {
