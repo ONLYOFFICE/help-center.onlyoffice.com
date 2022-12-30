@@ -4,35 +4,6 @@
       "shortKey": "en",
       "iconName": "en.svg",
       "name": "English"
-    },
-    {
-      "key": "de",
-      "shortKey": "de",
-      "iconName": "de.svg",
-      "name": "Deutsch"
-    },
-    {
-      "key": "fr",
-      "shortKey": "fr",
-      "iconName": "fr.svg",
-      "name": "Français"
-    },
-    {
-      "key": "es",
-      "shortKey": "es",
-      "iconName": "es.svg",
-      "name": "Español"
-    },
-    {
-      "key": "ru",
-      "shortKey": "ru",
-      "iconName": "ru.svg",
-      "name": "Русский"
-    },
-    {
-      "key": "it",
-      "shortKey": "it",
-      "iconName": "it.svg",
-      "name": "Italiano"
     }
+    
   ]
