@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
@@ -12,6 +13,7 @@ import HeadSEO from "@components/screens/head-content";
 
 const IndexPage = ({ locale }) => {
   const { t } = useTranslation();
+  const query = useRouter();
 
   return (
     <Layout>
