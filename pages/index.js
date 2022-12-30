@@ -15,26 +15,8 @@ const Index = ({ locale }) => {
   
   return (
     <Layout>
-      <Layout.PageHead>
-      <HeadSEO
-          title={t("titleIndexPage")}
-          metaSiteNameOg={t("metaSiteNameOg")}
-          metaDescription={t("titleIndexPage")}
-          metaDescriptionOg={t("metaDescriptionOgIndexPage")}
-          metaKeywords={t("metaKeywordsIndexPage")}
-        />
-      </Layout.PageHead>
-      <Layout.PageHeader>
-        <HeadingContent t={t} template={true} currentLanguage={locale} />
-      </Layout.PageHeader>
-      <Layout.SectionMain>
-        <InfoContent t={t} currentLanguage={locale}/>
-        <GuidesCards t={t} />
-        <Accordion t={t} currentLanguage={locale} />
-      </Layout.SectionMain>
-      <Layout.PageFooter>
-        <Footer t={t} language={locale} />
-      </Layout.PageFooter>
+     
+      Test
     </Layout>
   );
 };
