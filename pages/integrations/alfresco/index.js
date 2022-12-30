@@ -34,7 +34,7 @@ const AlfrescoPage = ({ locale, articles }) => {
                 <h5>About the ONLYOFFICE and Alfresco integration</h5>
                 <ul className="ul-category">
                   <li><InternalLink href="/integrations/gettingstarted-alfresco#MainFeatures_block">Main features</InternalLink></li>
-                  <li><InternalLink href="/integrations/gettingstarted-alfrescox#SupportedFormats_block">Supported formats</InternalLink></li>
+                  <li><InternalLink href="/integrations/gettingstarted-alfresco#SupportedFormats_block">Supported formats</InternalLink></li>
                   <li><InternalLink href="/integrations/gettingstarted-alfresco#Whatsnew_block">What's new</InternalLink></li>
                 </ul>
               </li>
