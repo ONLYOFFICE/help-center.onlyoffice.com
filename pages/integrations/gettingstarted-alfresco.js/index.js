@@ -10,13 +10,21 @@ import Footer from "@components/screens/footer-content";
 import SingleContent from "@components/screens/single-content";
 import DownloadArea from "@components/screens/single-content/download-area";
 import QuestionArea from "@components/screens/single-content/question-area";
+import HeadSEO from "@components/screens/head-content";
 
 const GettingStartedAlfrescoPage = ({ locale, articles }) => {
   const { t } = useTranslation();
 
   return (
     <Layout>
-      <Layout.PageHead></Layout.PageHead>
+      <Layout.PageHead><HeadSEO
+          title={t("titleIndexPage")}
+          metaSiteNameOg={t("metaSiteNameOg")}
+          metaDescription={t("titleIndexPage")}
+          metaDescriptionOg={t("metaDescriptionOgIndexPage")}
+          metaKeywords={t("metaKeywordsIndexPage")}
+        />
+        </Layout.PageHead>
       <Layout.PageHeader>
         <HeadingContent t={t} template={false} currentLanguage={locale} />
       </Layout.PageHeader>

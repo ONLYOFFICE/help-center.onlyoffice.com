@@ -8,13 +8,22 @@ import InfoContent from "@components/screens/main-content/info-content";
 import GuidesCards from "@components/screens/main-content/guides-cards";
 import Accordion from "@components/screens/common/accordion";
 import Footer from "@components/screens/footer-content";
+import HeadSEO from "@components/screens/head-content";
 
 const IndexPage = ({ locale }) => {
   const { t } = useTranslation();
 
   return (
     <Layout>
-      <Layout.PageHead></Layout.PageHead>
+      <Layout.PageHead>
+      <HeadSEO
+          title={t("titleIndexPage")}
+          metaSiteNameOg={t("metaSiteNameOg")}
+          metaDescription={t("titleIndexPage")}
+          metaDescriptionOg={t("metaDescriptionOgIndexPage")}
+          metaKeywords={t("metaKeywordsIndexPage")}
+        />
+      </Layout.PageHead>
       <Layout.PageHeader>
         <HeadingContent t={t} template={true} currentLanguage={locale} />
       </Layout.PageHeader>

@@ -9,13 +9,22 @@ import Footer from "@components/screens/footer-content";
 import SingleContent from "@components/screens/single-content";
 import InternalLink from "@components/common/internal-link";
 import ExternalLink from "@components/common/link";
+import HeadSEO from "@components/screens/head-content";
 
 const AlfrescoPage = ({ locale, articles }) => {
   const { t } = useTranslation();
 
   return (
     <Layout>
-      <Layout.PageHead></Layout.PageHead>
+      <Layout.PageHead>
+      <HeadSEO
+          title={t("titleIndexPage")}
+          metaSiteNameOg={t("metaSiteNameOg")}
+          metaDescription={t("titleIndexPage")}
+          metaDescriptionOg={t("metaDescriptionOgIndexPage")}
+          metaKeywords={t("metaKeywordsIndexPage")}
+        />
+      </Layout.PageHead>
       <Layout.PageHeader>
         <HeadingContent t={t} template={false} currentLanguage={locale} />
       </Layout.PageHeader>

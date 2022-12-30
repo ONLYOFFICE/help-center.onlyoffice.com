@@ -4,13 +4,21 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import Layout from "@components/layout";
 import Error404 from "@components/screens/404-page";
+import HeadSEO from "@components/screens/head-content";
 
 const Error404Page = () => {
   const { t } = useTranslation();
 
   return (
     <Layout>
-      <Layout.PageHead></Layout.PageHead>
+      <Layout.PageHead>
+      <HeadSEO
+          title={t("Page 404")}
+          metaSiteNameOg={t("Page 404")}
+          metaDescription={t("Page 404")}
+          metaDescriptionOg={t("Page 404")}
+        />
+      </Layout.PageHead>
       <Layout.SectionMain>
         <Error404 t={t} />
       </Layout.SectionMain>
