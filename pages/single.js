@@ -29,7 +29,7 @@ const SinglePage = ({ locale, articles }) => {
   );
 };
 
-export async function getStaticProps({ locale }) {
+export const getServerSideProps = async ({ locale }) => {
   const articles = await getAllArticles(locale);
 
   return {
@@ -38,7 +38,7 @@ export async function getStaticProps({ locale }) {
       locale,
       articles
     },
-  }
-}
+  };
+};
 
 export default SinglePage;

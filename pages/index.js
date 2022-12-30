@@ -30,13 +30,13 @@ const IndexPage = ({ locale }) => {
   );
 };
 
-export async function getStaticProps({ locale }) {
+export const getStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, 'common')),
+      ...(await serverSideTranslations(locale, "common")),
       locale
     },
-  }
-}
+  };
+};
 
 export default IndexPage;
