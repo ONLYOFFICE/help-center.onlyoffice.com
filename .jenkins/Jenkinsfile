@@ -50,6 +50,7 @@ pipeline {
       environment {
         region = "${region}"
         cms="${cms}"
+        appServer="${appServer}"
       }
       steps {
         sh '''
