@@ -7,6 +7,7 @@ switch(BRANCH_NAME) {
     cloud_front_distribution_id="E3DCOH2ZTE42J5"
     site_url="https://testnew-helpcenter.onlyoffice.com/" 
     cms="https://cmshelpcenter.teamlab.info"
+    appServer="https://testnew-helpcenter.onlyoffice.com/"
     break
   case "production.deploy111":
     aws_region="us-east-1"
@@ -15,6 +16,7 @@ switch(BRANCH_NAME) {
     cloud_front_distribution_id="9999999999"
     site_url="https://testnew-helpcenter.onlyoffice.com/"
     cms="https://cmshelpcenter.teamlab.info"
+    appServer="https://helpcenter.onlyoffice.com/"
     break
   default:
     println("Branch: ${BRANCH_NAME} do not for deploy.")
@@ -53,7 +55,7 @@ pipeline {
         sh '''
         
           sed -i "s^config_cms^$cms^" config/config.json
-      
+          sed -i "s^config_appServer^$appServer^" config/config.json
           tar -czpf .jenkins/helpcenter.tar.gz \
             --exclude ".git" \
             --exclude ".gitignore" \
