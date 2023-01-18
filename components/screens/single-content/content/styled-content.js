@@ -87,7 +87,7 @@ const StyledContent = styled.div`
         border-bottom: 0px;
         padding-bottom: 0px;
       }
-      ::before {
+      &::before {
         content: "";
         display: block;
         height: 72px; /* fixed header height*/
