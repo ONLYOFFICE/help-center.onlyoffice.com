@@ -12,7 +12,27 @@ const StyledContent = styled.div`
     font-size: 14px;
     line-height: 19px;
 
-    ul, li {
+    &.main {
+      .block-editor {
+        list-style-type: none;
+        li {
+          margin: 0;
+          h6 {
+            margin: 20px 0 16px;
+          }
+          ul {
+            list-style-type: none;
+            li {
+              margin: 0 0 10px;
+            }
+          }
+        }
+        
+      }
+    }
+
+    ul,
+    li {
       padding: 0;
       margin: 0;
     }
@@ -31,15 +51,15 @@ const StyledContent = styled.div`
 
       &.ul-category {
         list-style-type: none;
-  
+
         > li {
           list-style-type: none;
           margin: 0;
-  
+
           &:not(:last-child) {
             margin-bottom: 32px;
           }
-  
+
           > ul {
             > li {
               &:not(:last-child) {
@@ -54,15 +74,64 @@ const StyledContent = styled.div`
     .border-content {
       margin-bottom: 24px;
       padding-bottom: 23px;
-      border-bottom: 1px solid #CCCCCC;
+      border-bottom: 1px solid #cccccc;
+    }
+
+    .gs_content {
+      border-bottom: 1px solid #d1dce2;
+      height: auto;
+      margin-bottom: 15px;
+      margin-top: 15px;
+      padding-bottom: 30px;
+      &:last-child {
+        border-bottom: 0px;
+        padding-bottom: 0px;
+      }
+      ::before {
+        content: "";
+        display: block;
+        height: 72px; /* fixed header height*/
+        margin: -72px 0 0; /* negative fixed header height */
+      }
+    }
+
+    .gs_submenu {
+      border-bottom: 0px;
+      padding-bottom: 0px;
+    }
+
+    .bigphoto_screen {
+      display: none;
+    }
+
+    .items {
+      margin: 24px 0 0;
+      padding: 32px;
+      background: #FFFFFF;
+      border: 1px solid #EFEFEF;
+      box-shadow: 0px 7px 25px rgb(85 85 85 / 15%);
+      border-radius: 3px;
     }
 
     a {
       display: inline-flex;
       align-items: center;
-      color: #FF6F3D;
+      color: #ff6f3d;
       text-decoration: none;
 
+      span {
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+        h1, h2, h3, h4, h5 {
+          color: #ff6f3d;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+      
       img {
         margin-right: 8px;
       }
@@ -94,7 +163,12 @@ const StyledContent = styled.div`
       }
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       margin: 0;
       padding: 0;
 
@@ -130,7 +204,7 @@ const StyledContent = styled.div`
       border-radius: 3px;
       padding: 32px;
       box-shadow: 0px 7px 25px rgba(85, 85, 85, 0.15);
-      background: #FFFFFF;
+      background: #ffffff;
 
       &:not(:last-child) {
         margin-bottom: 16px;
@@ -156,7 +230,7 @@ const StyledContent = styled.div`
 
       &:hover {
         h4 {
-          color: #FF6F3D;
+          color: #ff6f3d;
         }
       }
     }
@@ -177,7 +251,7 @@ const StyledContent = styled.div`
     .category-subitems {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      border-top: 1px solid #CCCCCC;
+      border-top: 1px solid #cccccc;
       padding-top: 15px;
       gap: 32px;
 
@@ -201,7 +275,7 @@ const StyledContent = styled.div`
       font-size: 12px;
       line-height: 19px;
       color: #333333;
-      background-color: #EFEFEF;
+      background-color: #efefef;
       cursor: pointer;
 
       &:hover {
@@ -216,7 +290,7 @@ const StyledContent = styled.div`
       margin-right: 8px;
       font-size: 12px;
       line-height: 19px;
-      color: #FFFFFF;
+      color: #ffffff;
       cursor: pointer;
 
       .tag-version-product,
@@ -229,7 +303,7 @@ const StyledContent = styled.div`
       }
 
       .tag-version-num {
-        background: #FF6F3D;
+        background: #ff6f3d;
       }
 
       &:hover {
@@ -242,8 +316,8 @@ const StyledContent = styled.div`
       padding: 4px 8px;
       font-size: 12px;
       line-height: 19px;
-      color: #FFFFFF;
-      background-color: #8BB825;
+      color: #ffffff;
+      background-color: #8bb825;
       cursor: pointer;
 
       &:hover {
@@ -258,7 +332,7 @@ const StyledContent = styled.div`
       padding: 16px 16px 16px 42px;
       font-size: 14px;
       line-height: 22px;
-      background-color: #F5F5F5;
+      background-color: #f5f5f5;
 
       &::before {
         content: "";
@@ -293,7 +367,8 @@ const StyledContent = styled.div`
     .prettyprint {
       padding: 2px;
       background: #f4f4f4;
-      font-family: "Roboto Mono", Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+      font-family: "Roboto Mono", Menlo, "Bitstream Vera Sans Mono",
+        "DejaVu Sans Mono", Monaco, Consolas, monospace;
       border: 0;
       font-size: 14px;
 
@@ -320,7 +395,7 @@ const StyledContent = styled.div`
 
     code {
       background: #f4f4f4;
-      font-family: "Roboto Mono",Consolas,Monaco,'Andale Mono',monospace;
+      font-family: "Roboto Mono", Consolas, Monaco, "Andale Mono", monospace;
       padding: 1px 5px;
       word-break: break-all;
     }
@@ -346,7 +421,7 @@ const StyledContent = styled.div`
       text-decoration: none;
       color: #ffffff;
       transition: background-color 0.3s;
-      
+
       &.gray {
         background-color: #444444;
 
@@ -367,6 +442,6 @@ const StyledContent = styled.div`
   .download-area {
     margin: 40px 0 16px;
   }
-`
+`;
 
 export default StyledContent;

@@ -1,18 +1,20 @@
 import styled from "styled-components";
 
 const StyledVideo = styled.div`
-    padding: 91px 0 0 52px;
-    text-align: center;
-    width: 246px;
+padding: 24px 0 0;
+  .box {
+    gap: 16px;
+    padding: 16px 0 0;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex: 1;
+  }
 
-    h2 {
-        color: #333;
-        font-family: 'Open Sans',sans-serif,Arial;
-        font-size: 30px;
-        font-weight: 300;
-        line-height: 1.3em;
-        margin: 25px 0 10px;
-    }
-`
+  .more {
+    color: #ff6f3d;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+`;
 
 export default StyledVideo;

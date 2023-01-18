@@ -7,6 +7,7 @@ import docker from "@public/images/icons/docker.svg";
 const StyledDownloadArea = styled.div`
   position: relative;
   background: linear-gradient(134.97deg, #FFC671 0%, #FF7541 64.06%, #FF6F3D 100%);
+  border-radius: 3px;
 
   .download-wrapper {
     padding: 71px;

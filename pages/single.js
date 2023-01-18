@@ -10,9 +10,6 @@ import SingleContent from "@components/screens/single-content";
 
 const SinglePage = ({ locale, articles }) => {
   const { t } = useTranslation();
-
- // console.log(articles.data)
-
   return (
     <Layout>
       <Layout.PageHead></Layout.PageHead>
@@ -31,7 +28,7 @@ const SinglePage = ({ locale, articles }) => {
 
 export const getServerSideProps = async ({ locale }) => {
   const articles = await getAllArticles(locale);
-
+console.log(locale);
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),

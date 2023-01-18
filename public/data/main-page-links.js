@@ -309,6 +309,12 @@ export const LinksInfo = [
     text: "ONLYOFFICE integration is provided by connecting ONLYOFFICE Docs with out partners' services using special connectors.",
     data: [
       {
+        title: "Alfresco",
+        href: "/connectors/alfresco.aspx",
+        isBold: false,
+        line: "1"
+      },
+      {
         title: "Chamilo",
         href: "",
         isBold: false,
@@ -342,7 +348,7 @@ export const LinksInfo = [
         title: "Nextcloud",
         href: "",
         isBold: false,
-        line: "1"
+        line: "2"
       },
       {
         title: "Nuxeo",
@@ -371,12 +377,6 @@ export const LinksInfo = [
       {
         title: "SharePoint",
         href: "",
-        isBold: false,
-        line: "2"
-      },
-      {
-        title: "Alfresco",
-        href: "/integrations/alfresco",
         isBold: false,
         line: "2"
       }

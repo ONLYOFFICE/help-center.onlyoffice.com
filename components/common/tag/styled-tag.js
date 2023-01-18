@@ -1,19 +1,11 @@
 import styled, { css } from "styled-components";
 import { Base } from "@components/themes";
-import StyledText from "@components/common/text/styled-text";
-import globalColors from "@components/utils/global-colors";
 
 const StyledTag = styled.li`
 background-color: ${(props) =>
     props.type === "popup"
       ? props.theme.tag.backgroundColorPopup
       : "unset"};
-border: ${(props) =>
-    props.type === "page"
-      ? "1px solid"
-      : "none"};
-border-color: ${(props) =>
-    (props.type === "page" && props.theme.tag.borderColorPage)};
 color: ${(props) =>
     props.type === "page"
       ? props.theme.tag.colorPage
@@ -43,15 +35,15 @@ text-decoration: none;
 white-space: ${(props) => props.type !== "list" ? "nowrap" : "unset"};
 width: ${(props) => props.type !== "list" ? "fit-content" : "unset"};
 
-:hover {
+`
+/*:hover {
     border-color: ${(props) =>
         (props.type === "page" && globalColors.orangeMain)};
     color: ${(props) =>
         (props.type === "page" && globalColors.orangeMain)};
     text-decoration: ${(props) =>
         (props.type === "list" && "underline")};
-}
-`
+} */
 
 StyledTag.defaultProps = { theme: Base };
 

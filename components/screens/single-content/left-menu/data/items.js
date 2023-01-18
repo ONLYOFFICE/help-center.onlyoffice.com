@@ -88,9 +88,13 @@ const Items = [
     href: "#",
   },
   {
-    label: "Integrations",
-    href: "#",
+    label: "Connectors",
+    href: "/connectors",
     items: [
+      {
+        label: "Alfresco",
+        href: "/connectors/alfresco.aspx",
+      },
       {
         label: "Chamilo",
         href: "#",
@@ -134,10 +138,6 @@ const Items = [
       {
         label: "SharePoint",
         href: "#",
-      },
-      {
-        label: "Alfresco",
-        href: "/integrations/alfresco",
       },
     ]
   },

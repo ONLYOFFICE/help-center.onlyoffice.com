@@ -10,7 +10,6 @@ const HeadSEO = ({
   metaDescriptionOg,
   metaKeywords,
   title,
-  isDesktopClient,
 }) => {
   return (
     <>
@@ -51,7 +50,7 @@ const HeadSEO = ({
 
         <link
           rel="icon"
-          href={isDesktopClient ? "https://static-oforms.teamlab.info/images/logo/favicon_desktop.png" : "https://static-oforms.teamlab.info/images/logo/favicon_general.png"}
+          href="https://static-oforms.teamlab.info/images/logo/favicon_general.png"
           type="image/x-icon"
         />
 
@@ -70,7 +69,7 @@ const HeadSEO = ({
 
         <meta name="theme-light" />
       </Head>
-      <Script
+      {/* <Script
         id="googletagmanager"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
@@ -82,7 +81,7 @@ const HeadSEO = ({
           })(window,document,'script','dataLayer','GTM-5NW47TX');
         `,
         }}
-      />
+      /> */}
     </>
   );
 };

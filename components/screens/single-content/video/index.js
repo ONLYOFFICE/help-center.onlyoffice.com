@@ -1,43 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import StyledVideo from "./styled-video";
-import Carousel from "@components/common/carousel"
 import Heading from "@components/common/heading";
+import Box from "@components/common/box";
+import VideoItem from "./sub-components/video-item";
+import InternalLink from "@components/common/internal-link";
 
-import PrivateRooms from "@public/images/video-preview/private_rooms.png"
-import ConnectSeafile from "@public/images/video-preview/desktop_connect_seafile.png"
+const Video = ({ t, items, videos, isMain }) => {
+  const maxShown = 2;
+  const curVideos = !isMain ? items.attributes.videos.data : videos;
+  const videosLength = curVideos?.length;
+  const allItems = videosLength - maxShown;
+  const [next, setNext] = useState(maxShown);
+  const handleMoreVideos = () => {
+    setNext(next + allItems);
+  };
+  return (
+    <StyledVideo>
+      <Heading level={4}>{t("Watch video")}</Heading>
+      <Box>
+        {curVideos.slice(0, next)?.map((it, index) => {
+          return <VideoItem t={t} key={index} data={it} videos={videos} />;
+        })}
+        {next < videosLength && (
+          <span className="more" onClick={handleMoreVideos}>More videos</span>
+        )}
+      </Box>
+    </StyledVideo>
+  );
+};
 
-const Video = ({ t }) => {
-    const items = [{
-        name_video: "Private Rooms in ONLYOFFICE Workspace for Secure Collaboration on Documents",
-        pathName: "",
-        imgUrlCard: `${PrivateRooms}`,
-        description_card: ""
-    },
-    {
-        name_video: "How to connect ONLYOFFICE Desktop Editors to Seafile",
-        pathName: "",
-        imgUrlCard: `${ConnectSeafile}`,
-        description_card: ""
-    },
-    {
-        name_video: "Private Rooms in ONLYOFFICE Workspace for Secure Collaboration on Documents",
-        pathName: "",
-        imgUrlCard: `${PrivateRooms}`,
-        description_card: ""
-    },
-    {
-        name_video: "How to connect ONLYOFFICE Desktop Editors to Seafile",
-        pathName: "",
-        imgUrlCard: `${ConnectSeafile}`,
-        description_card: ""
-    },]
-
-    return(
-        <StyledVideo>
-            <Heading textAlign="center" level={2}>{t("Watch video")}</Heading>
-            <Carousel items={items}></Carousel>
-        </StyledVideo>
-    )
-}
 
 export default Video;

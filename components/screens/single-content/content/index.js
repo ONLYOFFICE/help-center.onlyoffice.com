@@ -1,104 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import StyledContent from "./styled-content";
-import ReactHtmlParser from 'react-html-parser';
+import ReactHtmlParser from "react-html-parser";
+import Tag from "@components/common/tag";
+import ArticlePopup from "../article-popup";
 
-const CenterContent = ({ t, articles, children }) => {
-  console.log(articles[0]);
+const CenterContent = ({ t, articles, tags, children }) => {
+   const isMain = articles.attributes.is_main;
+  const articleTags = !isMain && articles.attributes.tags.data;
+  const [modalActive, setModalActive] = useState(false);
+  const [tag, setTag] = useState();
+  const handlerSetModal = (active) => {
+    setModalActive(!!active);
+    setTag(active);
+  };
+  {
+    !isMain &&
+      articleTags.sort(function (a, b) {
+        return a.attributes.title.toLowerCase() <
+          b.attributes.title.toLowerCase()
+          ? -1
+          : 1;
+      });
+  }
   return (
     <StyledContent>
+      <div className={!isMain ? "wrapper" : "wrapper main"}>
+        {!isMain &&
+          articleTags.map((item, index) => (
+            <Tag
+              key={index}
+              t={t}
+              type={"page"}
+              label={item.attributes.title}
+              className="tag"
+              onClick={() => handlerSetModal(item.attributes.title)}
+            />
+          ))}
+        {ReactHtmlParser(articles.attributes.content)}
+      </div>
       {children}
-      {/* <div className="wrapper">
-        <h3>Installation Guides</h3>
-        
-        <div className="category-item">
-          <a className="category-item-title" href="#">
-            <img src="/images/icons/docs-community.svg" alt="ONLYOFFICE Docs Community Edition" />
-            <h4>ONLYOFFICE Docs Community Edition</h4>
-          </a>
-          <div className="category-item-links">
-            <a href="#"><img src="/images/icons/changelog.svg" alt="Changelog" />Changelog</a>
-            <a href="#"><img src="/images/icons/roadmap.svg" alt="Roadmap" />Roadmap</a>
-          </div>
-          <div className="category-subitems">
-            <div>
-              <h5>Operating system</h5>
-              <a href="#"><img src="/images/icons/windows-gray.svg" />Windows version</a>
-              <a href="#"><img src="/images/icons/linux-gray.svg" />Linux version</a>
-              <a href="#"><img src="/images/icons/docker-gray.svg" />Docker version</a>
-              <a href="#">1-Click apps</a>
-              <a href="#">Podman</a>
-            </div>
-            <div>
-              <h5>General configuration</h5>
-              <a href="#">Ports which must be opened for ONLYOFFICE Docs</a>
-              <a href="#">Using ONLYOFFICE Docs behind the proxy</a>
-              <a href="#">Uninstall default plugin from the server editors</a>
-              <a href="#">Adding new plugins to server editors</a>
-            </div>
-          </div>
-        </div>
-
-        <div className="category-item">
-          <a className="category-item-title" href="#">
-            <img src="/images/icons/docs-enterprise.svg" alt="ONLYOFFICE Docs Enterprise Edition" />
-            <h4>ONLYOFFICE Docs Enterprise Edition</h4>
-          </a>
-          <div className="category-item-links">
-            <a href="#"><img src="/images/icons/changelog.svg" alt="Changelog" />Changelog</a>
-            <a href="#"><img src="/images/icons/roadmap.svg" alt="Roadmap" />Roadmap</a>
-          </div>
-          <div className="category-subitems">
-            <div>
-              <h5>Operating system</h5>
-              <a href="#"><img src="/images/icons/windows-gray.svg" />Windows version</a>
-              <a href="#"><img src="/images/icons/linux-gray.svg" />Linux version</a>
-              <a href="#"><img src="/images/icons/docker-gray.svg" />Docker version</a>
-              <a href="#">1-Click apps</a>
-              <a href="#">Amazon</a>
-              <a href="#">Podman</a>
-            </div>
-            <div>
-              <h5>General configuration</h5>
-              <a href="#">Ports which must be opened for ONLYOFFICE Docs Enterprise Edition</a>
-              <a href="#">Working with plugins when using CSP</a>
-            </div>
-          </div>
-        </div>
-
-        <div className="category-item">
-          <a className="category-item-title" href="#">
-            <img src="/images/icons/docs-developer.svg" alt="ONLYOFFICE Docs Developer Edition" />
-            <h4>ONLYOFFICE Docs Developer Edition</h4>
-          </a>
-          <div className="category-item-links">
-            <a href="#"><img src="/images/icons/changelog.svg" alt="Changelog" />Changelog</a>
-            <a href="#"><img src="/images/icons/roadmap.svg" alt="Roadmap" />Roadmap</a>
-          </div>
-          <div className="category-subitems">
-            <div>
-              <h5>Operating system</h5>
-              <a href="#"><img src="/images/icons/windows-gray.svg" />Windows version</a>
-              <a href="#"><img src="/images/icons/linux-gray.svg" />Linux version</a>
-              <a href="#"><img src="/images/icons/docker-gray.svg" />Docker version</a>
-              <a href="#">1-Click apps</a>
-              <a href="#">Podman</a>
-            </div>
-            <div>
-              <div>
-                <h5>General configuration</h5>
-                <a href="#">Ports which must be opened for ONLYOFFICE Docs Enterprise Edition</a>
-                <a href="#">Working with plugins when using CSP</a>
-              </div>
-              <div>
-                <h5>Developing</h5>
-                <a href="#">ONLYOFFICE Docs Developer Edition API</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
+      {!isMain && (
+        <ArticlePopup
+          t={t}
+          active={modalActive}
+          tag={tag}
+          allTags={tags}
+          setActive={setModalActive}
+        />
+      )}
     </StyledContent>
   );
-}
+};
 
 export default CenterContent;
