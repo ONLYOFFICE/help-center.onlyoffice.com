@@ -87,12 +87,6 @@ const StyledContent = styled.div`
         border-bottom: 0px;
         padding-bottom: 0px;
       }
-      &::before {
-        content: "";
-        display: block;
-        height: 72px; /* fixed header height*/
-        margin: -72px 0 0; /* negative fixed header height */
-      }
     }
 
     .gs_submenu {
