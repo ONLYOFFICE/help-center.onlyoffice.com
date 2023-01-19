@@ -304,8 +304,8 @@ export const LinksInfo = [
   },
   {
     position: "integrations",
-    header: "Integrations",
-    header_href: "",
+    header: "Connectors",
+    header_href: "/connectors",
     text: "ONLYOFFICE integration is provided by connecting ONLYOFFICE Docs with out partners' services using special connectors.",
     data: [
       {
