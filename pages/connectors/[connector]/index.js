@@ -1,8 +1,10 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
 import getAllArticles from "@lib/strapi/getArticles";
 import getAllVideos from "@lib/strapi/getVideos";
+import getAllTags from "@lib/strapi/getTags";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
@@ -12,9 +14,13 @@ import HeadSEO from "@components/screens/head-content";
 import Video from "@components/screens/single-content/video";
 import DownloadArea from "@components/screens/single-content/download-area";
 
-const AlfrescoPage = ({ locale, articles, videos }) => {
+const articlePage = ({ locale, articles, videos, tags }) => {
   const { t } = useTranslation();
-  const alfrescoData = articles.data.find((it) => it.attributes.slug === "alfresco");
+  const query = useRouter();
+  const url = query.asPath;
+  const pageData = articles.data.find((it) => it.attributes.url === query.asPath);
+  //const alfrescoData = articles.data.find((it) => it.attributes.slug === "alfresco");
+  console.log(query.query);
   return (
     <Layout>
       <Layout.PageHead>
@@ -33,10 +39,11 @@ const AlfrescoPage = ({ locale, articles, videos }) => {
         <SingleContent
           t={t}
           currentLanguage={locale}
-          articles={alfrescoData}
+          articles={pageData}
+          tags={tags.data}
           isCategory={false}
         >
-          <Video t={t} items={alfrescoData} videos={videos.data} isMain={false} />
+          <Video t={t} items={pageData} videos={videos.data} isMain={false} />
           <DownloadArea className="download-area" t={t} />
         </SingleContent>
       </Layout.SectionMain>
@@ -50,6 +57,7 @@ const AlfrescoPage = ({ locale, articles, videos }) => {
 export async function getServerSideProps({ locale }) {
   const articles = await getAllArticles(locale);
   const videos = await getAllVideos(locale);
+  const tags = await getAllTags(locale);
 
   return {
     props: {
@@ -57,8 +65,9 @@ export async function getServerSideProps({ locale }) {
       locale,
       articles,
       videos,
+      tags
     },
   };
 }
 
-export default AlfrescoPage;
+export default articlePage;

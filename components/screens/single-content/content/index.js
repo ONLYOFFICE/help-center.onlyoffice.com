@@ -5,7 +5,7 @@ import Tag from "@components/common/tag";
 import ArticlePopup from "../article-popup";
 
 const CenterContent = ({ t, articles, tags, children }) => {
-   const isMain = articles.attributes.is_main;
+  const isMain = articles.attributes.is_main;
   const articleTags = !isMain && articles.attributes.tags.data;
   const [modalActive, setModalActive] = useState(false);
   const [tag, setTag] = useState();
@@ -22,6 +22,8 @@ const CenterContent = ({ t, articles, tags, children }) => {
           : 1;
       });
   }
+   console.log(articles);
+   console.log(isMain);
   return (
     <StyledContent>
       <div className={!isMain ? "wrapper" : "wrapper main"}>

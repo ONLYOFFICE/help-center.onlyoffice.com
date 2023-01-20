@@ -22,12 +22,13 @@ const Video = ({ t, items, videos, isMain }) => {
           return <VideoItem t={t} key={index} data={it} videos={videos} />;
         })}
         {next < videosLength && (
-          <span className="more" onClick={handleMoreVideos}>More videos</span>
+          <span className="more" onClick={handleMoreVideos}>
+            {t("More videos")}
+          </span>
         )}
       </Box>
     </StyledVideo>
   );
 };
-
 
 export default Video;
