@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
@@ -17,10 +17,10 @@ import DownloadArea from "@components/screens/single-content/download-area";
 const articlePage = ({ locale, articles, videos, tags }) => {
   const { t } = useTranslation();
   const query = useRouter();
-  const url = query.asPath;
-  const pageData = articles.data.find((it) => it.attributes.url === query.asPath);
-  //const alfrescoData = articles.data.find((it) => it.attributes.slug === "alfresco");
-  console.log(query.query);
+  const pageData = useMemo(
+    () => articles.data.find((it) => it.attributes.slug === query.query.connector),
+    [articles]
+  );
   return (
     <Layout>
       <Layout.PageHead>

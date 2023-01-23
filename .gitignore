@@ -35,5 +35,8 @@ node_modules
 /.next/
 /out/
 
+/.cache/
+/public/page-data
+
 # jenkins
 #/.jenkins/

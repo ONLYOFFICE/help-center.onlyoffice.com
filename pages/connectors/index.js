@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getAllArticles from "@lib/strapi/getArticles";
@@ -15,8 +15,11 @@ import DownloadArea from "@components/screens/single-content/download-area";
 
 const ConnectorsPage = ({ locale, articles, videos, categories }) => {
   const { t } = useTranslation();
+  const curArticles = useMemo(
+    () => articles.data.filter((it) => it.attributes.category.data.attributes.slug === "connectors"),
+    [articles]
+  );
   //const videoData = videos.filter((it) => it.attributes.category.data.attributes.slug === category && it.attributes.is_main);
-  const curArticles = articles.data.filter((it) => it.attributes.category.data.attributes.slug === "connectors");
   const curVideos = videos.data.filter((it) => {
   return curArticles.some((elem) => {
     return elem.id === it.attributes.article.data.id;
@@ -38,7 +41,7 @@ const ConnectorsPage = ({ locale, articles, videos, categories }) => {
       </Layout.PageHeader>
       <Layout.SectionMain>
         <SingleContent t={t} currentLanguage={locale} articles={articles.data} categories={categories.data} category={"connectors"} isCategory={true}>
-           <Video t={t} items={articles.data[1]} videos={curVideos} isMain={true} />
+           <Video t={t} videos={curVideos} isMain={true} />
           <DownloadArea className="download-area" t={t} />
         </SingleContent>
       </Layout.SectionMain>

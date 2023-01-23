@@ -11,7 +11,9 @@ import MobilePic from "@public/images/icons/mobile.svg";
 import IntegrationPic from "@public/images/icons/integration.svg";
 import PersonalPic from "@public/images/icons/personal.svg"
 
-const GuidesCards = ({ t }) => {
+const GuidesCards = ({ t, articles, categories }) => {
+  console.log(articles);
+  console.log(categories);
   const docsData = useMemo(
     () => LinksInfo.find((it) => it.position === "docs"),
     [LinksInfo]

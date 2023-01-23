@@ -22,8 +22,6 @@ const CenterContent = ({ t, articles, tags, children }) => {
           : 1;
       });
   }
-   console.log(articles);
-   console.log(isMain);
   return (
     <StyledContent>
       <div className={!isMain ? "wrapper" : "wrapper main"}>
