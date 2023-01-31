@@ -205,12 +205,6 @@ export const LinksInfo = [
     heading: true,
     data: [
       {
-        title: "iOS",
-        isBold: false,
-        heading: true,
-        line: "1"
-      },
-      {
         title: "Installation Guides",
         href: "",
         isBold: true,
@@ -251,12 +245,6 @@ export const LinksInfo = [
         href: "",
         isBold: false,
         line: "1"
-      },
-      {
-        title: "Android",
-        isBold: false,
-        heading: true,
-        line: "2"
       },
       {
         title: "Installation Guides",
@@ -303,7 +291,7 @@ export const LinksInfo = [
     ]
   },
   {
-    position: "integrations",
+    position: "connectors",
     header: "Connectors",
     header_href: "/connectors",
     text: "ONLYOFFICE integration is provided by connecting ONLYOFFICE Docs with out partners' services using special connectors.",

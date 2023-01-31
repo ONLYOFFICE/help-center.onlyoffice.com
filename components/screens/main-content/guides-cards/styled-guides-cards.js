@@ -7,18 +7,13 @@ const StyledGuidesCards = styled(Section)`
 
   .section-page {
     display: flex;
-    gap: 0px 32px;
-
-    .cell_container {
-      display: flex;
-      flex-direction: column;
-      gap: 32px 0px;
-    }
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex: 2;
+    gap: 32px;
 
     @media ${device.tabletM} {
-      flex-direction: column;
-      .cell_container {
-      }
+
     }
   }
 

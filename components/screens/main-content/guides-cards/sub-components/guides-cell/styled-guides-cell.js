@@ -10,6 +10,7 @@ const StyledGuidesCell = styled.div`
   box-shadow: 0px 7px 25px rgba(85, 85, 85, 0.15);
   display: inline-block;
   height: fit-content;
+  flex: 48%;
   margin: 0;
   position: relative;
   vertical-align: top;

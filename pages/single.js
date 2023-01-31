@@ -28,7 +28,6 @@ const SinglePage = ({ locale, articles }) => {
 
 export const getServerSideProps = async ({ locale }) => {
   const articles = await getAllArticles(locale);
-console.log(locale);
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),

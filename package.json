@@ -15,6 +15,7 @@
     "babel-plugin-styled-components": "^1.13.2",
     "email-addresses": "^5.0.0",
     "i18next": "^21.8.9",
+    "is-internal-link": "^1.1.4",
     "next": "^13.0.7",
     "next-i18next": "^13.0.2",
     "prop-types": "^15.7.2",

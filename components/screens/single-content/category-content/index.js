@@ -3,6 +3,7 @@ import InternalLink from "@components/common/internal-link";
 import Text from "@components/common/text";
 import React, { useState } from "react";
 import StyledContent from "../content/styled-content";
+import ReactHtmlParser from "react-html-parser";
 
 const CenterCategoryContent = ({
   t,
@@ -25,9 +26,6 @@ const CenterCategoryContent = ({
         ? -1
         : 1;
     });
-  //console.log(categories, category);
-  //console.log(catData);
-  //console.log(artData);
   return (
     <StyledContent>
       <div className="wrapper">
@@ -39,7 +37,7 @@ const CenterCategoryContent = ({
                 <InternalLink href={it.attributes.url}>
                   <Heading level={3}>{it.attributes.title}</Heading>
                 </InternalLink>
-                <Text>{it.attributes.description}</Text>
+                <>{ReactHtmlParser(it.attributes.description)}</>
               </div>
             );
           })}

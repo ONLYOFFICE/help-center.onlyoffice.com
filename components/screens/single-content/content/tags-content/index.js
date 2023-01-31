@@ -13,8 +13,8 @@ const TagsContent = ({ t, content, ...rest }) => {
     setTag(active);
     //console.log(tag);
   };
-  console.log(content);
-  console.log(TagsInfo);
+  //console.log(content);
+  //console.log(TagsInfo);
 
   content.sort(function (a, b) {
     return a.title.toLowerCase() < b.title.toLowerCase() ? -1 : 1;

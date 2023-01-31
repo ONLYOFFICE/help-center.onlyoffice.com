@@ -3,6 +3,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getAllArticles from "@lib/strapi/getArticles";
 import getAllCategories from "@lib/strapi/getCategories";
+import getAllGuides from "@lib/strapi/getGuides";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
@@ -12,7 +13,7 @@ import Accordion from "@components/screens/common/accordion";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 
-const Index = ({ locale, categories, articles }) => {
+const Index = ({ locale, categories, articles, guides }) => {
   const { t } = useTranslation();
   
   return (
@@ -30,8 +31,8 @@ const Index = ({ locale, categories, articles }) => {
         <HeadingContent t={t} template={true} currentLanguage={locale} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <InfoContent t={t} currentLanguage={locale}/>
-        <GuidesCards t={t} categories={categories.data} articles={articles.data} />
+        <InfoContent t={t} categories={categories.data} currentLanguage={locale}/>
+        <GuidesCards t={t} categories={categories.data} articles={articles.data} guides={guides.data} />
         <Accordion t={t} currentLanguage={locale} />
       </Layout.SectionMain>
       <Layout.PageFooter>
@@ -44,13 +45,15 @@ const Index = ({ locale, categories, articles }) => {
 export const getStaticProps = async ({ locale }) => {
   const articles = await getAllArticles(locale);
   const categories = await getAllCategories(locale);
+  const guides = await getAllGuides(locale);
 
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       articles,
-      categories
+      categories,
+      guides
     },
   };
 };

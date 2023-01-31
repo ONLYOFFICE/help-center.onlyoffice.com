@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import StyledUpArrow from "./styled-up-arrow";
-import IconButton from "@components/common/icon-button";
 
 const UpArrow = ({ ...rest }) => {
   // When the user clicks on the button, scroll to the top of the document
