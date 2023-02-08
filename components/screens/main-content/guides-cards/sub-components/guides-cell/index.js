@@ -48,7 +48,7 @@ const GuidesCell = ({ headData, category, linkData, t }) => {
               <ExternalLink label={t(it.attributes.title)} href={it.attributes.url} />
             </div>
           })} */}
-          {firstLine.map((it, index) => {
+          {/* {firstLine?.map((it, index) => {
             if (it.isExternal) {
               return (
                 <div className={`cell_link ${!it.isBold ? "not_bold" : ""}`} key={index}>
@@ -68,7 +68,7 @@ const GuidesCell = ({ headData, category, linkData, t }) => {
                 </div>
               )
             }
-          })}
+          })} */}
         </Box>
         <Box className="links_area">
           {category === "mobile" && <div className="cell_link cell_heading Android not_bold">Android</div>}
@@ -77,7 +77,7 @@ const GuidesCell = ({ headData, category, linkData, t }) => {
               <ExternalLink label={t(it.attributes.title)} href={it.attributes.url} />
             </div>
           })} */}
-          {secondLine.map((it, index) => {
+          {/* {secondLine?.map((it, index) => {
             if (it.isExternal) {
               return (
                 <div className={`cell_link ${!it.isBold ? "not_bold" : ""}`} key={index}>
@@ -97,7 +97,7 @@ const GuidesCell = ({ headData, category, linkData, t }) => {
                 </div>
               )
             }
-          })}
+          })} */}
         </Box>
       </Box>
     </StyledGuidesCell>
