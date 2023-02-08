@@ -1,24 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getAllArticles from "@lib/strapi/getArticles";
 import getAllCategories from "@lib/strapi/getCategories";
+import getGlossary from "@lib/strapi/getGlossary";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
-import InfoContent from "@components/screens/main-content/info-content";
-import GuidesCards from "@components/screens/main-content/guides-cards";
-import Accordion from "@components/screens/common/accordion";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
+import SingleContent from "@components/screens/single-content";
 
-const Index = ({ locale, categories, articles }) => {
+const TagsPage = ({ locale, categories, articles, glossary }) => {
   const { t } = useTranslation();
-  
+
   return (
     <Layout>
       <Layout.PageHead>
-      <HeadSEO
+        <HeadSEO
           title={t("titleIndexPage")}
           metaSiteNameOg={t("metaSiteNameOg")}
           metaDescription={t("titleIndexPage")}
@@ -30,9 +29,7 @@ const Index = ({ locale, categories, articles }) => {
         <HeadingContent t={t} template={true} currentLanguage={locale} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <InfoContent t={t} categories={categories.data} currentLanguage={locale}/>
-        <GuidesCards t={t} categories={categories.data} articles={articles.data} />
-        <Accordion t={t} currentLanguage={locale} />
+      <SingleContent t={t} currentLanguage={locale} articles={articles.data} tags={glossary.data} categories={categories.data} isCategory={false} isArticle={false} isTagPage={false}></SingleContent>
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />
@@ -44,15 +41,17 @@ const Index = ({ locale, categories, articles }) => {
 export const getStaticProps = async ({ locale }) => {
   const articles = await getAllArticles(locale);
   const categories = await getAllCategories(locale);
+  const glossary = await getGlossary(locale);
 
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       articles,
-      categories
+      categories,
+      glossary
     },
   };
 };
 
-export default Index;
+export default TagsPage;

@@ -16,6 +16,10 @@ pointer-events: none;
 transition: all ease 0.5s;
 z-index: 1001;
 
+.PopupPanelCaptionItems > a {
+    float: right;
+  }
+
   .popupPanelText {
     background-color: transparent;
     color: #333;
@@ -33,7 +37,6 @@ z-index: 1001;
   .tagsLink {
     border-bottom: 1px dotted #ff642e;
     color: #ff642e;display: block;
-    float: right;
     font-size: 13px;
     margin-right: 20px;
     position: relative;

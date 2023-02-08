@@ -11,11 +11,11 @@ const GlossarySelector = ({ t, content, onClickFunc, ...rest }) => {
   };
   return (
     <StyledGlossarySelector>
-      <GlossarySelect t={t} label={"All"} id={"all"} active={active === "all"} onClick={() => onClickGloss("all")} />
-      {alphabet.split("").map((y) => {
+      <GlossarySelect t={t} label={t("All")} id={"all"} active={active === "all"} onClick={() => onClickGloss("all")} />
+      {alphabet.split("").map((y, index) => {
         const found = content.find(a => a === y);
         return (
-          <GlossarySelect t={t} label={(found === undefined) ? y : found} id={(found === undefined) ? y : found} active={active === found} isDisabled={ (found === undefined) ? true : false} onClick={() => (!(found === undefined) ? onClickGloss(found) : () => undefined)} /> )
+          <GlossarySelect key={index} t={t} label={(found === undefined) ? y : found} id={(found === undefined) ? y : found} active={active === found} isDisabled={ (found === undefined) ? true : false} onClick={() => (!(found === undefined) ? onClickGloss(found) : () => undefined)} /> )
       })}
     </StyledGlossarySelector>
   );

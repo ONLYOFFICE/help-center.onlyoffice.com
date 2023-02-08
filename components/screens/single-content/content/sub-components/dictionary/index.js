@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Text from "@components/common/text";
 import StyledDictionary from "./styled-dictionary";
+import ReactHtmlParser from "react-html-parser";
 
 const Dictionary = ({ t, title, subtitle, definition, ...rest }) => {
   const isMultiply = Array.isArray(definition);
@@ -16,7 +17,7 @@ const Dictionary = ({ t, title, subtitle, definition, ...rest }) => {
             ))}
           </ol>
         ) : (
-          <>&nbsp;–&nbsp; {definition}</>
+          <>&nbsp;–&nbsp; {ReactHtmlParser(definition)}</>
         )}
       </Text>
     </StyledDictionary>

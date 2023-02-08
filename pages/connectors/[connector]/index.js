@@ -17,8 +17,10 @@ import DownloadArea from "@components/screens/single-content/download-area";
 const articlePage = ({ locale, articles, videos, tags }) => {
   const { t } = useTranslation();
   const query = useRouter();
+  const pageLoc = query.locale !== "en" ? query.locale : "";
+  const pagePath = (pageLoc + query.asPath).split('#')[0];
   const pageData = useMemo(
-    () => articles.data.find((it) => it.attributes.slug === query.query.connector),
+    () => articles.data.find((it) => it.attributes.url === pagePath),
     [articles]
   );
   return (
@@ -42,6 +44,7 @@ const articlePage = ({ locale, articles, videos, tags }) => {
           articles={pageData}
           tags={tags.data}
           isCategory={false}
+          isArticle={true}
         >
           <Video t={t} items={pageData} videos={videos.data} isMain={false} />
           <DownloadArea className="download-area" t={t} />

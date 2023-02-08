@@ -32,7 +32,7 @@ const ArticlePopup = ({ t, language, active, setActive, tag, allTags, ...rest })
             </div>
             <CloseButton onClick={() => setActive(false)} />
           </div>
-          <InternalLink className="tagsLink" href="/tags">
+          <InternalLink className="tagsLink" href="/tags.aspx">
             {t("Browse all tags")}
           </InternalLink>
           <div className="textContent">

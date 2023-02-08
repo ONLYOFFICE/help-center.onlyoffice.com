@@ -5,7 +5,6 @@ import StyledAlphabetContainer from "./styled-alphabet-container";
 import Dictionary from "../dictionary";
 import Tag from "@components/common/tag";
 import Heading from "@components/common/heading";
-import FloatSubMenu from "../float-submenu";
 import { CSSTransition } from "react-transition-group";
 
 const AlphabetContainer = ({
@@ -16,9 +15,9 @@ const AlphabetContainer = ({
   onClickFunction,
   ...rest
 }) => {
-  const [isFloat, setIsFloat] = useState(false);
   const [prodAplh, setProdAlph] = useState(selectorContent);
   const [stateMobile, setStateMobile] = useState(false);
+  //console.log(pageContent);
 
   useEffect(() => {
     function handleResize() {
@@ -51,21 +50,6 @@ const AlphabetContainer = ({
     return tagID;
   };
 
-  const scrollTop = () => {
-    if (
-      document.body.scrollTop > 400 ||
-      document.documentElement.scrollTop > 400
-    ) {
-      setIsFloat(true);
-    } else {
-      setIsFloat(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", scrollTop);
-  }, []);
-
   return (
     <StyledAlphabetContainer isTagPage={isTagPage}>
       <GlossarySelector
@@ -74,9 +58,9 @@ const AlphabetContainer = ({
         onClickFunc={onClickHandler}
       />
       <Box className="glossContent">
-        {prodAplh.map((c) => {
+        {prodAplh.map((c, index) => {
           return (
-            <Box className="glossLetter" id={"gloss_" + c + "_block"}>
+            <Box key={index} className="glossLetter" id={"gloss_" + c + "_block"}>
               <Heading
                 fontSize={"25px"}
                 fontWeight={"300"}
@@ -87,31 +71,29 @@ const AlphabetContainer = ({
               </Heading>
               {isTagPage ? (
                 <ul className="glossTagsArea">
-                  {pageContent
-                    .filter((item) => item.title.toLowerCase().startsWith(c))
+                  {pageContent?.filter((item) => item.attributes.title.toLowerCase().startsWith(c))
                     .map((item, index) => (
                       <Tag
                         key={index}
                         t={t}
                         type={"list"}
-                        label={item.title}
+                        label={item.attributes.title}
                         className="tags"
-                        onClick={() => onClickFunction(item.title)}
-                        id={makeTagID(item.title)}
+                        onClick={() => onClickFunction(item.attributes.title)}
+                        id={makeTagID(item.attributes.title)}
                       />
                     ))}
                 </ul>
               ) : (
                 <div>
-                  {pageContent
-                    .filter((item) => item.title.toLowerCase().startsWith(c))
+                  {pageContent?.filter((item) => item.attributes.title.toLowerCase().startsWith(c))
                     .map((item, index) => (
                       <Dictionary
                         key={index}
                         t={t}
-                        title={item.title}
-                        subtitle={item.subtitle}
-                        definition={item.definition}
+                        title={item.attributes.title}
+                        subtitle={item.attributes.subtitle}
+                        definition={item.attributes.definition}
                       />
                     ))}
                 </div>
@@ -120,16 +102,6 @@ const AlphabetContainer = ({
           );
         })}
       </Box>
-      {!stateMobile && (
-        <CSSTransition
-          in={isFloat}
-          timeout={400}
-          classNames="float"
-          unmountOnExit
-        >
-          <FloatSubMenu content={selectorContent} />
-        </CSSTransition>
-      )}
     </StyledAlphabetContainer>
   );
 };

@@ -11,9 +11,9 @@ const CategoryBox = ({ t, template, pic, label, href }) => {
     <StyledCategoryBox template={template}>
       <IconButton isClickable={true} className="icon" iconName={pic} size={100} onClick={() => { window.open(href, "_self"); }} />
       {isInternalLink(href) ?
-        <ExternalLink className="link" label={t(label)} href={href} />
-        :
         <InternalLink className="link" label={t(label)} href={href} />
+        :
+        <ExternalLink className="link" label={t(label)} href={href} />
       }
     </StyledCategoryBox>
   );

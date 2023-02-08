@@ -12,6 +12,8 @@ const SingleContent = ({
   category,
   categories,
   isCategory,
+  isArticle,
+  isTagPage,
   ...rest
 }) => {
   return (
@@ -25,6 +27,8 @@ const SingleContent = ({
           articles={articles}
           children={children}
           tags={tags}
+          isTagPage={isTagPage}
+          isArticle={isArticle}
         />
       )}
     </StyledSingleContent>

@@ -13,12 +13,12 @@ const CenterCategoryContent = ({
   children,
 }) => {
   const catData = categories.find(
-    (it) => it.attributes.slug === category
-  ).attributes;
+    (it) => it.attributes.slug_id === category
+  )?.attributes;
   const artData = articles
     .filter(
       (it) =>
-        it.attributes.category.data.attributes.slug === category &&
+        it.attributes.category.data.attributes.slug_id === category &&
         it.attributes.is_main
     )
     .sort(function (a, b) {
@@ -29,8 +29,8 @@ const CenterCategoryContent = ({
   return (
     <StyledContent>
       <div className="wrapper">
-        <Heading level={2}>{catData.name}</Heading>
-        <Text>{catData.description}</Text>
+        <Heading level={2}>{catData?.name}</Heading>
+        <Text>{catData?.description}</Text>
           {artData.map((it, index) => {
             return (
               <div className="items" key={index}>

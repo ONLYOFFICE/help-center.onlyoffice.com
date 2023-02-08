@@ -6,9 +6,9 @@ import InternalLink from "@components/common/internal-link";
 import ExternalLink from "@components/common/link";
 import Text from "@components/common/text";
 
-const GuidesCell = ({ headData, category, guides, linkData, t }) => {
-  const firstLine = linkData.data.filter((item) => item.line === "1");
-  const secondLine = linkData.data.filter((item) => item.line === "2");
+const GuidesCell = ({ headData, category, linkData, t }) => {
+  const firstLine = linkData?.data.filter((item) => item.line === "1");
+  const secondLine = linkData?.data.filter((item) => item.line === "2");
   // const mainArticles = useMemo(
   //   () => linkData.filter((item) => item.attributes.is_main === true).sort(function (a, b) {
   //     return a.attributes.title.toLowerCase() <
@@ -19,7 +19,7 @@ const GuidesCell = ({ headData, category, guides, linkData, t }) => {
   //   [linkData]
   // );
   // const linksLength = Math.floor(mainArticles.length/2);
-
+  //console.log(linkData);
   //console.log(firstLine);
   //console.log(mainArticles);
   //console.log(instArticles);
@@ -28,14 +28,14 @@ const GuidesCell = ({ headData, category, guides, linkData, t }) => {
       <Box className="cell_header">
         <Box className="cell_icon" alignItems="center">
           <img
-            src={headData.card_field_img.data.attributes.url}
+            src={headData.card_field_img.data?.attributes.url}
           />
         </Box>
         <Box className="cell_header_links">
           {isInternalLink(headData.url) ?
-            <ExternalLink className="presearch_title_link" label={t(headData.name)} href={headData.url} />
-            :
             <InternalLink className="presearch_title_link" label={t(headData.name)} href={headData.url} />
+            :
+            <ExternalLink className="presearch_title_link" label={t(headData.name)} href={headData.url} />
           }
           <Text label={t(headData.description)} />
         </Box>
@@ -48,7 +48,7 @@ const GuidesCell = ({ headData, category, guides, linkData, t }) => {
               <ExternalLink label={t(it.attributes.title)} href={it.attributes.url} />
             </div>
           })} */}
-          {firstLine.map((it, index) => {
+          {/* {firstLine.map((it, index) => {
             if (it.isExternal) {
               return (
                 <div className={`cell_link ${!it.isBold ? "not_bold" : ""}`} key={index}>
@@ -68,7 +68,7 @@ const GuidesCell = ({ headData, category, guides, linkData, t }) => {
                 </div>
               )
             }
-          })}
+          })} */}
         </Box>
         <Box className="links_area">
           {category === "mobile" && <div className="cell_link cell_heading Android not_bold">Android</div>}
@@ -77,7 +77,7 @@ const GuidesCell = ({ headData, category, guides, linkData, t }) => {
               <ExternalLink label={t(it.attributes.title)} href={it.attributes.url} />
             </div>
           })} */}
-          {secondLine.map((it, index) => {
+          {/* {secondLine.map((it, index) => {
             if (it.isExternal) {
               return (
                 <div className={`cell_link ${!it.isBold ? "not_bold" : ""}`} key={index}>
@@ -97,7 +97,7 @@ const GuidesCell = ({ headData, category, guides, linkData, t }) => {
                 </div>
               )
             }
-          })}
+          })} */}
         </Box>
       </Box>
     </StyledGuidesCell>

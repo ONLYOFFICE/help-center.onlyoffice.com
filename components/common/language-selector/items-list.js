@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 import { StyledItem, StyledPanelView } from "./styled-language-selector";
 import Link from 'next/link'
 import languages from "@config/languages";
 
 export default function LangsList(props) {
   const { t, isOpen, currentLanguage, onCloseSelector } = props;
+  const query = useRouter();
+  const pagePath = query.asPath;
 
   useEffect(() => {
     const layout = document.getElementById("page-layout");
@@ -42,7 +45,7 @@ export default function LangsList(props) {
 
       return (
         <StyledItem key={key}>
-          <Link href="/" locale={language.shortKey} className="language-item-link">
+          <Link href={pagePath} locale={language.shortKey} className="language-item-link">
             <img
               src={`/images/flags/${iconName}`}
               alt={key}
