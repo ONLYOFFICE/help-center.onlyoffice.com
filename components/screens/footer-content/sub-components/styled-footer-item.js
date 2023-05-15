@@ -61,7 +61,7 @@ const StyledFooterItem = styled.div`
   }
 
   .footer-link {
-    color: #333;
+    color: #ffffff;
     font-size: 13px;
     line-height: 18px;
     margin: 0px 0px 8px;
@@ -77,6 +77,7 @@ const StyledFooterItem = styled.div`
   }
 
   .footer-item-heading {
+    color: #808080;
     padding: 0 0 16px;
     font-size: 12px;
     line-height: 16px;

@@ -7,7 +7,6 @@ const StyledSingleLayout = styled.div`
   display: flex;
   width: 100%;
   max-width: 1152px;
-  padding: 72px 16px 0;
   margin: 0 auto;
 
   .alert-enter {
@@ -40,8 +39,7 @@ const StyledSingleLayout = styled.div`
   }
     
   @media (max-width: 1190px) {
-    margin: 100px 0 20px 0px;
-    padding: 0 20px;
+    margin: 72px 0 0px 0px;
   }
   @media (max-width: 500px) {
     margin: 106px 0 20px 0px;

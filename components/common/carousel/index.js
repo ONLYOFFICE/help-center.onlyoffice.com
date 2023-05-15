@@ -5,8 +5,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import Slide from "./sub-components/slide";
 import StyledCarousel from "./carousel-styled";
+import VideoItem from "@components/screens/single-content/video/sub-components/video-item";
 
 const Carousel = ({
   t,
@@ -21,24 +21,22 @@ const Carousel = ({
 }) => {
   const settings =  {
     infinite: true,
-    slidesToShow: items.length > 3 ? 3 : items.length > 2 ? 2 : 1,
+    slidesToShow: 2,
     slidesToScroll: 1,
     vertical: true,
     verticalSwiping: true,
     autoplay: true,
     speed: 1000,
     autoplaySpeed: 2000,
-    pauseOnHover: true
+    pauseOnHover: true,
+    arrows: true
   };
 
   const sliders = items.map((item, idx) => (
-    <Slide
+    <VideoItem
       key={`item-${idx}`}
-      arrayItems={item}
-      className="carousel-cards"
-      currentLanguage={currentLanguage}
       t={t}
-      description={description}
+      data={item}
     />
   ));
 

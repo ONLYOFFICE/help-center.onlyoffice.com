@@ -3,10 +3,13 @@ import StyledContent from "../styled-content";
 import ReactHtmlParser from "react-html-parser";
 import Tag from "@components/common/tag";
 import ArticlePopup from "../../article-popup";
+import Heading from "@components/common/heading";
+import Breadcrumbs from "@components/common/breadcrumbs";
+import Video from "../../video";
 
-const ArticleContent = ({ t, articles, tags, children }) => {
+const ArticleContent = ({ t, articles, tags, videos, children }) => {
   const isMain = articles?.attributes.is_main;
-  const articleTags = !isMain && articles?.attributes.tags.data;
+  const articleTags = articles?.attributes.tags.data;
   const [modalActive, setModalActive] = useState(false);
   const [tag, setTag] = useState();
   const handlerSetModal = (active) => {
@@ -14,7 +17,6 @@ const ArticleContent = ({ t, articles, tags, children }) => {
     setTag(active);
   };
   {
-    !isMain &&
       articleTags?.sort(function (a, b) {
         return a.attributes.title.toLowerCase() <
           b.attributes.title.toLowerCase()
@@ -22,12 +24,12 @@ const ArticleContent = ({ t, articles, tags, children }) => {
           : 1;
       });
   }
-  //console.log(articles);
   return (
-    <StyledContent>
+    <>
       <div className={!isMain ? "wrapper" : "wrapper main"}>
-        {!isMain &&
-          articleTags?.map((item, index) => (
+        <Breadcrumbs t={t} article={articles} />
+        <Heading level={3}>{articles?.attributes.title}</Heading>
+        {articleTags?.map((item, index) => (
             <Tag
               key={index}
               t={t}
@@ -37,10 +39,10 @@ const ArticleContent = ({ t, articles, tags, children }) => {
               onClick={() => handlerSetModal(item.attributes.title)}
             />
           ))}
+          <Video t={t} items={articles} videos={videos} />
         {ReactHtmlParser(articles?.attributes.content)}
       </div>
       {children}
-      {!isMain && (
         <ArticlePopup
           t={t}
           active={modalActive}
@@ -48,8 +50,7 @@ const ArticleContent = ({ t, articles, tags, children }) => {
           allTags={tags}
           setActive={setModalActive}
         />
-      )}
-    </StyledContent>
+    </>
   );
 };
 

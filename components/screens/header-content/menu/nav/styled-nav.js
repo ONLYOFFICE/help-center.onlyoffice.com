@@ -3,70 +3,25 @@ import arrow_red from "@public/images/icons/arrow-red.svg";
 import { device } from "@components/utils/devices";
 
 const StyledNav = styled.nav`
-  display: grid;
-  grid-template-columns: auto auto auto auto auto auto;
+  display: flex;
   justify-content: center;
-
-  .navitem_features_menu {
-    color: #fff;
-  }
+  gap: 40px;
+  margin: 0 auto;
+  padding: 0 132px 0 88px;
 
   .external-link {
-    color: #333;
+    color: #fff;
     text-decoration: none;
     :hover {
       color: rgb(255, 111, 61);
     }
   }
-
-  .menu_wrapper {
-    flex-direction: unset;
-    justify-content: unset;
-    align-content: unset;
-    flex-wrap: unset;
-    align-items: unset;
-    &:before {
-      display: block;
-      position: absolute;
-      width: 50%;
-      content: "";
-      height: 1px;
-      background-color: #ff642e;
-      transition: width 0.2s ease-in-out;
-      left: 0;
-      top: 0;
-    }
-
-    &:after {
-      display: block;
-      position: absolute;
-      width: 50%;
-      content: "";
-      height: 1px;
-      background-color: #ff642e;
-      transition: width 0.2s ease-in-out;
-      left: 50%;
-      top: 0;
-    }
+  @media (max-width: 1024px) {
+    gap: 3vw;
+    padding: 0 3vw 0 2vw;
   }
 
-  #navitem_contribution, #navitem_development, #navitem_user, #navitem_integrations, #navitem_installation, #navitem_administration {
-      border-bottom: 1px solid transparent;
-  }
-
-  #navitem_contribution, #navitem_development {
-      &:hover {
-        border-bottom: 1px solid #ff6f3d;
-    }
-  }
-
-  @media (min-width: 1190px) {
-    #navitem_user .menu-items-wrapper {
-      left: calc(50% - 395px);
-    }
-  }
-
-  @media (max-width: 1190px) {
+  @media (max-width: 768px) {
     padding: 0;
     background-color: #fff;
     min-height: 100px;
@@ -131,19 +86,6 @@ const StyledNav = styled.nav`
       left: auto;
       margin: 0;
       padding: 0;
-    }
-
-    #navitem_contribution, #navitem_development, #navitem_user, #navitem_integrations, #navitem_installation, #navitem_administration {
-      .heading-nav-item {
-        border-bottom: 1px solid #f2f2f2;
-      }
-    }
-    #navitem_contribution, #navitem_development {
-      .heading-nav-item {
-        &:hover {
-          border-bottom: 1px solid #f2f2f2;
-        }
-      }
     }
 
     .no-box-inside {

@@ -1,27 +1,14 @@
 import styled from "styled-components";
 
 const StyledVideoItem = styled.div`
-  background: #ffffff;
-  box-shadow: 0px 7px 25px rgba(85, 85, 85, 0.15);
-  border-radius: 2px;
   cursor: pointer;
-  padding: 32px;
-  height: 353px;
-  width: 344px;
 
-  .external-link {
-    color: #333333;
-    text-decoration: none;
+  iframe {
+    aspect-ratio: 1.79;
   }
 
   h5 {
     cursor: unset;
-    padding: 16px 0;
-  }
-
-  .video-cover {
-    height: 192px;
-    width: 344px;
   }
 
    span {

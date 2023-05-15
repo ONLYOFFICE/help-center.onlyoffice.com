@@ -3,6 +3,7 @@ import InternalLink from "@components/common/internal-link";
 import Text from "@components/common/text";
 import React, { useState } from "react";
 import StyledContent from "../content/styled-content";
+import Breadcrumbs from "@components/common/breadcrumbs";
 import ReactHtmlParser from "react-html-parser";
 
 const CenterCategoryContent = ({
@@ -18,8 +19,7 @@ const CenterCategoryContent = ({
   const artData = articles
     .filter(
       (it) =>
-        it.attributes.category.data.attributes.slug_id === category &&
-        it.attributes.is_main
+        it.attributes.category.data.attributes.slug_id === category
     )
     .sort(function (a, b) {
       return a.attributes.title.toLowerCase() < b.attributes.title.toLowerCase()
@@ -28,19 +28,20 @@ const CenterCategoryContent = ({
     });
   return (
     <StyledContent>
+      <Breadcrumbs t={t} category={catData} isCategory={true} />
       <div className="wrapper">
-        <Heading level={2}>{catData?.name}</Heading>
+        <Heading level={3}>{catData?.name}</Heading>
         <Text>{catData?.description}</Text>
-          {artData.map((it, index) => {
-            return (
+        {artData.map((it, index) => {
+          return (
+            <a href={it.attributes.url}>
               <div className="items" key={index}>
-                <InternalLink href={it.attributes.url}>
-                  <Heading level={3}>{it.attributes.title}</Heading>
-                </InternalLink>
+                <Heading level={3}>{it.attributes.title}</Heading>
                 <>{ReactHtmlParser(it.attributes.description)}</>
               </div>
-            );
-          })}
+            </a>
+          );
+        })}
       </div>
       {children}
     </StyledContent>

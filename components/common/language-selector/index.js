@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import StyledLanguageSelector from "./styled-language-selector";
 import ArrowDown from "@public/images/icons/arrow-drop-down.react.svg";
 import ArrowUp from "@public/images/icons/arrow-drop-up.react.svg";

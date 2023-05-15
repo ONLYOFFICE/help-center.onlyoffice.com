@@ -17,7 +17,6 @@ const AlphabetContainer = ({
 }) => {
   const [prodAplh, setProdAlph] = useState(selectorContent);
   const [stateMobile, setStateMobile] = useState(false);
-  //console.log(pageContent);
 
   useEffect(() => {
     function handleResize() {

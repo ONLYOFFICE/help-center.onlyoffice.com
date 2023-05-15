@@ -10,8 +10,6 @@ import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import SingleContent from "@components/screens/single-content";
 import HeadSEO from "@components/screens/head-content";
-import Video from "@components/screens/single-content/video";
-import DownloadArea from "@components/screens/single-content/download-area";
 
 const ConnectorsPage = ({ locale, articles, videos, categories }) => {
   const { t } = useTranslation();
@@ -19,12 +17,6 @@ const ConnectorsPage = ({ locale, articles, videos, categories }) => {
     () => articles.data.filter((it) => it.attributes.category.data?.attributes.slug_id === "connectors"),
     [articles]
   );
-  // const videoData = videos.filter((it) => it.attributes.category.data?.attributes.slug === category && it.attributes.is_main);
-  const curVideos = videos.data.filter((it) => {
-    return curArticles.some((elem) => {
-      return elem.id === it.attributes.article.data?.id;
-    });
-  });
   return (
     <Layout>
       <Layout.PageHead>
@@ -37,12 +29,10 @@ const ConnectorsPage = ({ locale, articles, videos, categories }) => {
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={false} currentLanguage={locale} />
+        <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <SingleContent t={t} currentLanguage={locale} articles={articles.data} categories={categories.data} category={"connectors"} isCategory={true} isArticle={true}>
-          <Video t={t} videos={curVideos} isMain={true} />
-          <DownloadArea className="download-area" t={t} />
+        <SingleContent t={t} currentLanguage={locale} articles={articles.data} categories={categories.data} category={"connectors"} isCategory={true}>
         </SingleContent>
       </Layout.SectionMain>
       <Layout.PageFooter>
@@ -54,7 +44,6 @@ const ConnectorsPage = ({ locale, articles, videos, categories }) => {
 
 export async function getServerSideProps({ locale }) {
   const articles = await getAllArticles(locale);
-  const videos = await getAllVideos(locale);
   const categories = await getAllCategories(locale);
 
   return {
@@ -62,7 +51,6 @@ export async function getServerSideProps({ locale }) {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       articles,
-      videos,
       categories
     },
   }

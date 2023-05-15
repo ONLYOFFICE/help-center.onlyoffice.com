@@ -12,13 +12,13 @@ const SingleContent = ({
   category,
   categories,
   isCategory,
-  isArticle,
   isTagPage,
+  videos,
   ...rest
 }) => {
   return (
     <StyledSingleContent {...rest}>
-      <LeftMenu t={t} />
+      <LeftMenu t={t} isCategory={isCategory} articles={articles} categories={categories} category={category} />
       {isCategory ? (
         <CenterCategoryContent t={t} articles={articles} children={children} categories={categories} category={category} />
       ) : (
@@ -28,7 +28,7 @@ const SingleContent = ({
           children={children}
           tags={tags}
           isTagPage={isTagPage}
-          isArticle={isArticle}
+          videos={videos}
         />
       )}
     </StyledSingleContent>

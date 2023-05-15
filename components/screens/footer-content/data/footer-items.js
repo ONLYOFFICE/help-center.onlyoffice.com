@@ -5,12 +5,12 @@ const Items = [
     heading: "products",
     link: [
       {
-        localize: true,
+        localize: false,
         label: "Docs",
-        href: "",
+        href: "/docs",
       },
       {
-        localize: true,
+        localize: false,
         label: "Desktop apps",
         href: "",
       },
@@ -32,27 +32,27 @@ const Items = [
     ],
   },
   {
-    className: "intergrations",
+    className: "integrations",
     position: 2,
-    heading: "intergrations",
+    heading: "integrations",
     link: [
       {
-        localize: true,
+        localize: false,
         label: "Nextcloud",
-        href: "",
+        href: "/connectors/nextcloud",
       },
       {
-        localize: true,
+        localize: false,
         label: "ownCloud",
         href: "",
       },
       {
-        localize: true,
+        localize: false,
         label: "Confluence",
         href: "",
       },
       {
-        localize: true,
+        localize: false,
         label: "Alfresco",
         href: "",
       },
@@ -94,37 +94,37 @@ const Items = [
     heading: "administration",
     link: [
       {
-        localize: true,
+        localize: false,
         label: "Managing Portals",
         href: "",
       },
       {
-        localize: true,
+        localize: false,
         label: "Reinforcing Security",
         href: "",
       },
       {
-        localize: true,
+        localize: false,
         label: "Configuring modules and tools",
         href: "",
       },
       {
-        localize: true,
+        localize: false,
         label: "Customizing modules and tools",
         href: "",
       },
       {
-        localize: true,
+        localize: false,
         label: "Managing Users",
         href: "",
       },
       {
-        localize: true,
+        localize: false,
         label: "Connecting external services",
         href: "",
       },
       {
-        localize: true,
+        localize: false,
         label: "ONLYOFFICE Control panel",
         href: "",
       },
@@ -136,7 +136,7 @@ const Items = [
     heading: "contribution",
     link: [
       {
-        localize: true,
+        localize: false,
         label: "All contributions",
         href: "",
       },
@@ -148,21 +148,18 @@ const Items = [
     heading: "Contact us",
     link: [
       {
-        localize: true,
         label: "Sales Questions",
         mail: "sales@onlyoffice.com",
         href: "mailto:sales@onlyoffice.com",
         isContact: true,
       },
       {
-        localize: true,
         label: "Partner Inquiries",
         mail: "partners@onlyoffice.com",
         href: "mailto:partners@onlyoffice.com",
         isContact: true,
       },
       {
-        localize: true,
         label: "Press Inquiries",
         mail: "press@onlyoffice.com",
         href: "mailto:press@onlyoffice.com",
@@ -172,6 +169,11 @@ const Items = [
         localize: true,
         label: "Request a Call",
         href: "/call-back-form.aspx",
+      },
+      {
+        localize: true,
+        label: "Home site",
+        href: "",
       }
     ],
   },

@@ -12,7 +12,6 @@ const TagsContent = ({ t, content, isTagPage, ...rest }) => {
     setModalActive(active);
     setTag(active);
   };
-  //console.log(content);
 
   content?.sort(function (a, b) {
     return a.attributes.title.toLowerCase() < b.attributes.title.toLowerCase() ? -1 : 1;

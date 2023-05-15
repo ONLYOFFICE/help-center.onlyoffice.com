@@ -26,10 +26,10 @@ const TagsPage = ({ locale, categories, articles, glossary }) => {
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={true} currentLanguage={locale} />
+        <HeadingContent t={t} template={true} currentLanguage={locale} categories={categories.data} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-      <SingleContent t={t} currentLanguage={locale} articles={articles.data} tags={glossary.data} categories={categories.data} isCategory={false} isArticle={false} isTagPage={false}></SingleContent>
+      {/* <SingleContent t={t} currentLanguage={locale} articles={articles.data} tags={glossary.data} categories={categories.data} isCategory={false} isTagPage={false}></SingleContent> */}
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />

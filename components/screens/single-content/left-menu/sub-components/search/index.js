@@ -19,11 +19,11 @@ const MiniSearch = ({ valueSearch, callback, t, label }) => {
           value={searchItem}
           type="text"
           className="search_input"
-          backgroundColor="#fffff"
-          color="#333333"
+          color="#cccccc"
           fontSize="16px"
           colorHover="#CCCCCC"
           labelColor={!valueSearch ? "#808080" : "#CCCCCC"}
+          placeholder={"Search in Help Center"}
         />
         <div className="search_icon">
             <ReactSVG src={SearchIcon.src} style={{ cursor: "default" }} />

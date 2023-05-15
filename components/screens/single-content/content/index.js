@@ -6,10 +6,10 @@ import ArticlePopup from "../article-popup";
 import ArticleContent from "./article-content";
 import TagsContent from "./tags-content";
 
-const CenterContent = ({ t, articles, tags, children, isArticle, isTagPage }) => {
+const CenterContent = ({ t, articles, tags, children, isTagPage }) => {
   return (
     <StyledContent>
-      {isArticle ?
+      {!isTagPage ?
         <ArticleContent
           t={t}
           articles={articles}

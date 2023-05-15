@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 
 import Heading from "@components/common/heading";
-import Link from "@components/common/link";
+import Link from "@components/common/internal-link";
 import Box from "../nav/sub-components/box";
 
 import { StyledNavMenu, StyledMenuItemsWrapper } from "./styled-navmenu";
 
-const MenuItem = ({ children, heading, ...rest }) => {
+const MenuItem = ({ heading, link, ...rest }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
@@ -48,30 +48,14 @@ const MenuItem = ({ children, heading, ...rest }) => {
     <StyledNavMenu
       className="nav-item"
       {...rest}
-      onMouseLeave={handleLeaveMenu}
     >
-      <Heading
-        className="heading-nav-item"
-        label={heading}
-        level={2}
-        onClick={toggleMenu}
-        onMouseEnter={handleHoverMenu}
-      />
-      {(windowCheck ? showMobileMenu : showMenu) && (
-        <StyledMenuItemsWrapper
-          isOpen={showMobileMenu}
-          className="menu-items-wrapper"
-        >
-          {windowCheck && (
-            <Heading
-              className="mobile-heading-nav-item"
-              label={heading}
-              onClick={toggleMenu}
-            />
-          )}
-          {children}
-        </StyledMenuItemsWrapper>
-      )}
+      <Link href={link}>
+        <Heading
+          className="heading-nav-item"
+          label={heading}
+          level={2}
+        />
+      </Link>
     </StyledNavMenu>
   );
 };

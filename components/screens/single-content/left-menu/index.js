@@ -1,83 +1,110 @@
-import React, { useEffect, useRef} from "react";
-import { useRouter } from "next/router";
+import React, { useEffect, useRef, useState } from "react";
 import StyledLeftMenu from "./styled-left-menu";
 import InternalLink from "@components/common/internal-link";
-import Items from "./data/items";
+import items from "./data/items";
+import MiniSearch from "./sub-components/search";
+import Heading from "@components/common/heading";
 
-const LeftMenu = ({ t, ...rest }) => {
-  const router = useRouter();
+const LeftMenu = ({ t, isCategory, articles, category, categories, ...rest }) => {
   const leftMenu = useRef();
+  const catData = isCategory && categories.find(
+    (it) => it.attributes.slug_id === category
+  )?.attributes;
+  const artData = isCategory && articles?.filter(
+    (it) =>
+      it.attributes.category.data.attributes.slug_id === category
+  )
+    .sort(function (a, b) {
+      return a.attributes.title.toLowerCase() < b.attributes.title.toLowerCase()
+        ? -1
+        : 1;
+    });
 
+  const [menuItems, setMenuItems] = useState([]);
+  const [activeMenuItem, setActiveMenuItem] = useState(null);
   useEffect(() => {
-    const selectedLink = leftMenu.current.querySelector(".external-link.selected");
+    const content = !isCategory && articles.attributes.content;
+    const headings = document.createElement('div');
+    headings.innerHTML = content;
+    const h2 = headings.querySelectorAll('h2');
+    const h3 = headings.querySelectorAll('h3');
+    const items = [];
 
-    if (selectedLink) {
-      selectedLink.closest("ul")?.classList.add("open");
-      selectedLink.closest(".expanded-menu-first")?.classList.add("open");
-      selectedLink.closest(".expanded-menu-second")?.classList.add("open");
-      selectedLink.closest(".expanded-menu-second")?.closest("li")?.classList.add("active");
-      selectedLink.closest(".expanded-menu-third")?.closest("li")?.classList.add("active");
+    [...h2, ...h3].forEach((heading) => {
+      const text = heading.textContent;
+      const id = text.replace(/\W/g, '').toLowerCase() + '_block';
+      const item = {
+        id,
+        text,
+      };
+      items.push(item);
+      heading.parentElement.id = id;
+    });
+    setMenuItems(items);
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [articles]);
+
+  const handleScroll = () => {
+    if (menuItems.length === 0) {
+      return;
     }
-  }, []);
+    const sections = menuItems.map((item) => ({
+      id: item.id,
+      position: document.getElementById(item.id).offsetTop,
+    }));
+
+    const currentSection = sections.find((section) => {
+      const { position } = section;
+      const windowHeight = window.innerHeight;
+      const scrollY = window.scrollY || window.pageYOffset;
+      return scrollY >= position - windowHeight * 0.5;
+    });
+
+    setActiveMenuItem(currentSection ? currentSection.id : null);
+  };
 
   return (
     <StyledLeftMenu ref={leftMenu}>
-      {Items.map((it, idx) => {
-        return (
-          <li className={`${it.className ? it.className : ""}`} key={`${it.label}-${idx}`}>
-            <InternalLink
-              href={it.href}
-              label={t(it.label)}
-              className={`item ${router.route.includes(it.label.toLowerCase()) ? "selected" : ""}`}
-            />
-            {
-              it.items &&
-              <ul className={`expanded-menu expanded-menu-first ${router.route.includes(it.label.toLowerCase()) ? "open" : ""}  ${it.items ? "no-subitems" : ""}`}>
-                {
-                  it.items.map((item, idx_item) =>
-                  <li className={`${router.route.includes(item.label.toLowerCase()) ? "active" : ""}`} key={idx_item}>
-                    <InternalLink
-                      href={item.href}
-                      label={t(item.label)}
-                      className={`expanded-item ${router.route.includes(item.label.toLowerCase()) ? "selected" : ""}`}
-                    />
-                    {
-                      item.subitems &&
-                      <ul className={`expanded-menu expanded-menu-second ${router.route.includes(item.label.toLowerCase()) ? "open" : ""}`}>
-                        {
-                          item.subitems.map((subitem, idx_subitem) =>
-                          <li className={`${router.route.includes(subitem.label.toLowerCase()) ? "active" : ""}`} key={idx_subitem}>
-                            <InternalLink
-                              href={subitem.href}
-                              label={t(subitem.label)}
-                              className={`expanded-subitem ${router.route.includes(subitem.label.toLowerCase()) ? "selected" : ""}`}
-                            />
-                            {
-                              subitem.subsubitems &&
-                              <ul className={`expanded-menu expanded-menu-third ${router.route.includes(subitem.label.toLowerCase()) ? "open" : ""}`}>
-                                {
-                                  subitem.subsubitems.map((subsubitem, idx_subsubitem) =>
-                                  <li key={idx_subsubitem}>
-                                    <InternalLink
-                                      href={subsubitem.href}
-                                      label={t(subsubitem.label)}
-                                      className={`expanded-subsubitem ${router.route.includes(subsubitem.label.toLowerCase()) ? "selected" : ""}`}
-                                    />
-                                  </li>
-                                )}
-                              </ul>
-                            }
-                          </li>
-                        )}
-                      </ul>
-                    }
-                  </li>
-                )}
-              </ul>
-            }
-          </li>
-        )
-      })}
+      <div className="lm-wrap">
+        <MiniSearch />
+        {isCategory ? <>
+          <Heading level={6}>{catData.name}</Heading>
+          <ul>
+            {artData.map((article, index) => (
+              <li key={index}>
+                <InternalLink href={article.attributes.url}>
+                  {article.attributes.title}
+                </InternalLink>
+              </li>
+            ))}
+          </ul>
+        </> : <>
+          <Heading level={6}>{articles.attributes.title}</Heading>
+          <ul className="page" onScroll={handleScroll}>
+            {menuItems.map((item, index) => (
+              <li key={index} className={activeMenuItem === item.id ? 'active' : ''}>
+                <InternalLink href={`#${item.id}`}>
+                  {item.text}
+                </InternalLink>
+              </li>
+            ))}
+          </ul>
+        </>}
+        <ul className="stat">
+          {items.map((link, index) => (
+            <li key={index}>
+              <InternalLink href={link.href} className={link.className}>
+                {link.label}
+              </InternalLink>
+            </li>
+          ))}
+        </ul>
+
+      </div>
     </StyledLeftMenu>
   )
 }

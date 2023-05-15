@@ -105,6 +105,7 @@ const StyledFooter = styled.div`
       }
 
       .footer-item-follow {
+        display: none;
         padding: 0 0 22px;
       }
 
@@ -125,6 +126,7 @@ const StyledFooter = styled.div`
   }
 
   .contact-text {
+    color: #ffffff;
     display: flex;
     font-size: 13px;
     margin: 0 0 7px;

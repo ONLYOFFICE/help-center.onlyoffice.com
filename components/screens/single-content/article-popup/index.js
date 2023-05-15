@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { CloseButton, StyledArticlePopup } from "./styled-article-popup";
 import Text from "@components/common/text";

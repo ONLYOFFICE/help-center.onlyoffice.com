@@ -1,18 +1,9 @@
 import styled from "styled-components";
 
 const StyledVideo = styled.div`
-    padding: 91px 0 0 52px;
-    text-align: center;
-    width: 246px;
-
-    h2 {
-        color: #333;
-        font-family: 'Open Sans',sans-serif,Arial;
-        font-size: 30px;
-        font-weight: 300;
-        line-height: 1.3em;
-        margin: 25px 0 10px;
-    }
+    text-align: left;
+    height: 434px;
+    width: 224px;
 `
 
 export default StyledVideo;

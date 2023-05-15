@@ -27,11 +27,11 @@ const Index = ({ locale, categories, articles }) => {
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={true} currentLanguage={locale} />
+        <HeadingContent t={t} template={true} currentLanguage={locale} categories={categories.data} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <InfoContent t={t} categories={categories.data} currentLanguage={locale}/>
-        <GuidesCards t={t} categories={categories.data} articles={articles.data} />
+        <GuidesCards t={t} categories={categories.data} articles={articles.data} links={articles.data} />
         <Accordion t={t} currentLanguage={locale} />
       </Layout.SectionMain>
       <Layout.PageFooter>

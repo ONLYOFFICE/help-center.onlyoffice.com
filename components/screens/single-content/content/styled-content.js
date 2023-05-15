@@ -3,7 +3,7 @@ import attention from "@public/images/icons/attention.svg";
 
 const StyledContent = styled.div`
   box-sizing: border-box;
-  padding: 32px 0 112px 29px;
+  padding: 44px 0 112px 14px;
   width: 100%;
   max-width: 861px;
   color: #333333;
@@ -105,6 +105,11 @@ const StyledContent = styled.div`
       border: 1px solid #EFEFEF;
       box-shadow: 0px 7px 25px rgb(85 85 85 / 15%);
       border-radius: 3px;
+      color: #333333;
+      &:hover {
+        color: #333333;
+        text-decoration: none;
+      }
     }
 
     a {
