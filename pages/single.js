@@ -10,10 +10,19 @@ import Footer from "@components/screens/footer-content";
 import SingleContent from "@components/screens/single-content";
 
 const SinglePage = ({ locale, articles, categories }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(); 
+  const data = articles.data.attributes;
+  const { seo_title, seo_description } = data;
   return (
     <Layout>
-      <Layout.PageHead></Layout.PageHead>
+      <Layout.PageHead>
+        <HeadSEO
+          title={seo_title} 
+          metaDescription={seo_description}
+          metaDescriptionOg={seo_description}
+          metaKeywords={seo_title}
+        />
+      </Layout.PageHead>
       <Layout.PageHeader>
         <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} />
       </Layout.PageHeader>

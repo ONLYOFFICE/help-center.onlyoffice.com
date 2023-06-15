@@ -7,10 +7,7 @@ import VideoCarousel from "../video-carousel";
 
 const Video = ({ t, items, videos, isMain }) => {
   const curVideos = items.attributes.videos.data;
-  const videosLength = curVideos?.length;
-  const maxShown = 1;
-  const allItems = videosLength - maxShown;
-  const allvideos = curVideos.slice(1, allItems);
+  const allvideos = curVideos.slice(1);
   return (
     <StyledVideo>
       <Heading level={4}>{t("Watch video")}</Heading>

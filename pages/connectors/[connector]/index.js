@@ -23,15 +23,16 @@ const articlePage = ({ locale, articles, videos, tags, categories }) => {
     () => articles.data.find((it) => it.attributes.url === pagePath),
     [articles]
   );
+  const data = pageData.attributes;
+  const { seo_title, seo_description } = data;
   return (
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={t("titleIndexPage")}
-          metaSiteNameOg={t("metaSiteNameOg")}
-          metaDescription={t("titleIndexPage")}
-          metaDescriptionOg={t("metaDescriptionOgIndexPage")}
-          metaKeywords={t("metaKeywordsIndexPage")}
+          title={seo_title} 
+          metaDescription={seo_description}
+          metaDescriptionOg={seo_description}
+          metaKeywords={seo_title}
         />
       </Layout.PageHead>
       <Layout.PageHeader>

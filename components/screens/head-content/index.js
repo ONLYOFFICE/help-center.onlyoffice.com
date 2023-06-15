@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Script from "next/script";
 import PropTypes from "prop-types";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 import languages from "@config/languages.json";
 
@@ -11,6 +13,14 @@ const HeadSEO = ({
   metaKeywords,
   title,
 }) => {
+  const router = useRouter();
+  const [currentUrl, setCurrentUrl] = useState("");
+
+  useEffect(() => {
+    const path = router.asPath;
+    const currentUrl = path.replace(/^.*\/\/[^/]+/, "");
+    setCurrentUrl(currentUrl);
+  }, [router.asPath]);
   return (
     <>
       <Head>
@@ -44,7 +54,10 @@ const HeadSEO = ({
         <meta id="ctl00_MetaKeywords" name="keywords" content={metaKeywords} />
         <meta name="description" content={metaDescription} />
 
-        <link rel="apple-touch-icon" href="https://static-oforms.teamlab.info/images/logo/ONLYOFFICE-logo.png" />
+        <link
+          rel="apple-touch-icon"
+          href="https://static-oforms.teamlab.info/images/logo/ONLYOFFICE-logo.png"
+        />
 
         <meta name="google" content="notranslate" />
 
@@ -62,26 +75,31 @@ const HeadSEO = ({
               rel="alternate"
               href={`https://helpcenter.onlyoffice.com/${
                 shortKey === "en" ? "" : shortKey
-              }`}
+              }${currentUrl === null ? "" : currentUrl}`}
             />
           );
         })}
 
         <meta name="theme-light" />
       </Head>
-      {/* <Script
+      <Script
         id="googletagmanager"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
-          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-5NW47TX');
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-12442749-5']);
+          _gaq.push(['_setDomainName', '.onlyoffice.com']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
         `,
         }}
-      /> */}
+      />
     </>
   );
 };

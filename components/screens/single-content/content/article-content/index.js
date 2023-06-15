@@ -9,7 +9,8 @@ import Video from "../../video";
 
 const ArticleContent = ({ t, articles, tags, videos, children }) => {
   const isMain = articles?.attributes.is_main;
-  const articleTags = articles?.attributes.tags.data;
+  const articleTags = articles?.attributes.tags?.data;
+  const curVideos = articles?.attributes.videos?.data.length;
   const [modalActive, setModalActive] = useState(false);
   const [tag, setTag] = useState();
   const handlerSetModal = (active) => {
@@ -39,7 +40,7 @@ const ArticleContent = ({ t, articles, tags, videos, children }) => {
               onClick={() => handlerSetModal(item.attributes.title)}
             />
           ))}
-          <Video t={t} items={articles} videos={videos} />
+          {curVideos > 0 && <Video t={t} items={articles} videos={videos} />}
         {ReactHtmlParser(articles?.attributes.content)}
       </div>
       {children}
