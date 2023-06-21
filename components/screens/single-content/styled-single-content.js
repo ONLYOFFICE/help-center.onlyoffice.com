@@ -6,8 +6,8 @@ const StyledSingleLayout = styled.div`
   position: relative;
   display: flex;
   width: 100%;
-  max-width: 1152px;
-  margin: 0 auto;
+  max-width: 1120px;
+  margin: 72px auto 0;
 
   .alert-enter {
     opacity: 0;
@@ -31,18 +31,15 @@ const StyledSingleLayout = styled.div`
       gap: 32px 0px;
     }
 
-    @media ${device.tabletM} {
+    @media ${device.tablet} {
       flex-direction: column;
       .cell_container {
       }
     }
   }
     
-  @media (max-width: 1190px) {
-    margin: 72px 0 0px 0px;
-  }
-  @media (max-width: 500px) {
-    margin: 106px 0 20px 0px;
+  @media ${device.laptopM} {
+    max-width: 100vw;
   }
 `;
 

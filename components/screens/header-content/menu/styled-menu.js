@@ -4,12 +4,17 @@ import { device } from "@components/utils/devices";
 const StyledMenuTablet = css`
   padding: 0 48px;
 
+  > a {
+    margin: 0 auto;
+  }
+
   .site-logo {
     background: url(../images/logo/logo-mobile.svg) no-repeat 50%;
     width: 35px;
     height: 32px;
     padding: 20px 0;
   }
+
   @media ${device.tablet} {
     .nav-items-mobile {
       display: block;
@@ -26,7 +31,6 @@ const StyledMenuTablet = css`
       }
       cursor: pointer;
     }
-
   }
 
   @media ${device.mobileL} {
@@ -97,6 +101,7 @@ const StyledMenu = styled.div`
     height: 34px;
     padding: 19px 0;
   }
+
   .nav-item-lng {
     grid-column-start: 4;
     grid-column-end: 5;
@@ -108,11 +113,12 @@ const StyledMenu = styled.div`
   .nav-items-mobile {
     display: none;
   }
-  @media (max-width: 1439px) {
+
+  @media ${device.laptopL} {
     padding: 0 2vw;
   }
 
-  @media (max-width: 1190px) {
+  @media ${device.laptopM} {
     ${StyledMenuTablet};
   }
 `;

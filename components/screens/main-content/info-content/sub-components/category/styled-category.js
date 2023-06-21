@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Box from "@components/common/box";
+import { device } from "@components/utils/devices";
 
 const StyledCategory = styled(Box)`
     display: grid;
@@ -9,7 +10,7 @@ const StyledCategory = styled(Box)`
     margin: 0 auto;
     max-width: 880px;
 
-    @media (max-width: 1200px){
+    @media ${device.laptopM} {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap: 71px 0;

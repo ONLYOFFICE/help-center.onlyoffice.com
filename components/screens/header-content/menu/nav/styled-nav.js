@@ -16,12 +16,12 @@ const StyledNav = styled.nav`
       color: rgb(255, 111, 61);
     }
   }
-  @media (max-width: 1024px) {
+  @media ${device.laptop} {
     gap: 3vw;
     padding: 0 3vw 0 2vw;
   }
 
-  @media (max-width: 768px) {
+  @media ${device.tablet} {
     padding: 0;
     background-color: #fff;
     min-height: 100px;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Base } from "@components/themes";
+import { device } from "@components/utils/devices";
 
 const StyledInput = styled.div`
   display: block;
@@ -32,7 +33,7 @@ const StyledInput = styled.div`
     z-index: 0;
     width: max-content;
 
-    @media (max-width: 592px) {
+    @media ${device.tabletS} {
       padding-top: 46px;
       max-width: calc(100vw - 64px);
       line-height: 16px;

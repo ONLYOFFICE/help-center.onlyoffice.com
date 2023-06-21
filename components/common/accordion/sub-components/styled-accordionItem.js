@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Base } from "@components/themes";
+import { device } from "@components/utils/devices";
 
 const StyledAccordionItem = styled.div`
 position: relative;
@@ -46,7 +47,7 @@ padding: 19px 0 19px 40px;
   letter-spacing: -0.02em;
 }
 
-@media (max-width: 600px) {
+@media ${device.tabletS} {
   .accordion__heading {
       font-size: 16px;
   }

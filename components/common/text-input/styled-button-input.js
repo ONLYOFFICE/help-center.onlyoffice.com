@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Base } from "@components/themes";
 import Button from "@components/common/button";
+import { device } from "@components/utils/devices";
 
 const StyledButtonInput = styled(Button)`
   padding: ${(props) => props.padding || props.theme.textInput.padding};
@@ -15,10 +16,9 @@ const StyledButtonInput = styled(Button)`
   text-overflow: ${(props) => props.theme.button.textOverflow};
   position: relative;
   float: right;
-
   padding: 20px;
 
-  @media (max-width: 592px) {
+  @media ${device.tabletS} {
     height: 48px;
     padding: 16px;
   }

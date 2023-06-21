@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Base } from "@components/themes";
+import { device } from "@components/utils/devices";
 
 const Label = styled.label`
   width: calc(100% - 40px);
@@ -35,7 +36,7 @@ const Label = styled.label`
   transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out,
     left 0.2s ease-in-out;
 
-  @media (max-width: 592px) {
+  @media ${device.tabletS} {
     top: ${(props) =>
     props.defaultChecked ? props.theme.textInput.label.top : "27%"};
   }

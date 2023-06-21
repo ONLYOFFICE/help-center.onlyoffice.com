@@ -3,10 +3,12 @@ import { device } from "@components/utils/devices";
 
 const StyledFooterTablet = css`
   display: block;
-  padding: 17px 0;
-  border-bottom: 2px solid #f7f7f7;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(204, 204, 204, .3);
 
   .footer-item-heading {
+    color: #ffffff;
+    font-weight: 600;
     padding: 6px 0 3px;
     cursor: pointer;
     overflow: hidden;
@@ -22,6 +24,14 @@ const StyledFooterTablet = css`
     transition: 0.3s linear;
     &.up {
       transform: rotate(180deg);
+    }
+
+    div {
+      svg {
+        path {
+          fill: white;
+        }
+      }
     }
   }
 
@@ -90,7 +100,7 @@ const StyledFooterItem = styled.div`
     display: none;
   }
 
-  @media ${device.tablet} {
+  @media ${device.tabletS} {
     ${StyledFooterTablet};
   }
 `;

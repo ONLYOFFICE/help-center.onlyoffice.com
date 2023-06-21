@@ -131,7 +131,7 @@ const Items = [
     ],
   },
   {
-    className: "Contribution",
+    className: "contribution",
     position: 4,
     heading: "contribution",
     link: [

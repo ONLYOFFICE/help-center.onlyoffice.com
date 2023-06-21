@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "@components/utils/devices";
 
 const StyledSection = styled.section`
   height: 100%;
@@ -14,7 +15,7 @@ const StyledSection = styled.section`
     margin: 0px auto;
   }
 
-  @media (max-width: 1200px) {
+  @media ${device.laptopM} {
     margin: ${(props) => props.margin || "0px"};
     padding: ${(props) => props.padding || "0px"};
 
@@ -23,7 +24,7 @@ const StyledSection = styled.section`
     }
   }
 
-  @media (max-width: 1024px) {
+  @media ${device.laptop} {
     margin: ${(props) => props.tabletMargin || "0px"};
     padding: ${(props) => props.tabletPadding || "25px 0px"};
 
@@ -33,7 +34,7 @@ const StyledSection = styled.section`
     }
   }
 
-  @media (max-width: 576px) {
+  @media ${device.tabletS} {
     margin: ${(props) => props.mobileLMargin || "0px"};
     padding: ${(props) => props.mobileLPadding || "50px 0px"};
 

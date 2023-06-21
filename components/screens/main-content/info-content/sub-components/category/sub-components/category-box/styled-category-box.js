@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Box from "@components/common/box";
+import { device } from "@components/utils/devices";
 
 const StyledCategoryBox = styled(Box)`
     display: flex;
@@ -10,12 +11,12 @@ const StyledCategoryBox = styled(Box)`
         display: inline-flex;
     }
     
-    .icon{
+    .icon {
         display: inline-block;
         width: 80px;
     }
 
-    .link{
+    .link {
         text-transform: uppercase;
         text-decoration: none;
         font-size: 12px;
@@ -25,25 +26,25 @@ const StyledCategoryBox = styled(Box)`
         margin-top: 24px;
         color: #444444;
 
-        &:hover{
+        &:hover {
             text-decoration: underline;
         }
     }
 
-    &:hover .link{
+    &:hover .link {
         text-decoration: underline;
     }
 
 
-    @media (max-width: 1200px){
+    @media ${device.laptopM} {
         .icon{
             display: block;
             margin: 0 auto;
         }
     }
 
-    @media (max-width: 600px){
-        .link{
+    @media ${device.tabletS} {
+        .link {
             font-size:12px;
             padding-top: 33px;
         }

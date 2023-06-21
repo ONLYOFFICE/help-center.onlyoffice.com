@@ -88,7 +88,7 @@ const StyledTextInput = styled.input`
     font-size: ${(props) => props.fontSize || props.theme.textInput.fontSize};
   }
 
-  @media (max-width: 592px) {
+  @media ${device.tabletS} {
     height: 48px;
   }
 

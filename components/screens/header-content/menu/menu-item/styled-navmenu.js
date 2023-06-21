@@ -62,7 +62,7 @@ const StyledMenuItemsWrapper = styled.div`
   display: flex;
   box-shadow: 0 20px 50px rgba(85, 85, 85, 0.15);
 
-  @media (max-width: 1190px) {
+  @media ${device.laptopM} {
     padding: 0;
     background-color: #fff;
     max-height: calc(100% - 54px);

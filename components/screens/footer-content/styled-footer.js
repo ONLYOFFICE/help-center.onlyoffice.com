@@ -2,16 +2,11 @@ import styled, { css } from "styled-components";
 import { device } from "@components/utils/devices";
 
 const StyledFooterTablet = css`
-  padding: 0 17px;
+  padding: 16px 17px 0;
   margin: 0;
-
-  grid-template-columns: 1fr;
-  -ms-grid-columns: 1fr;
-
-  .footer-social-links {
-    justify-content: space-between;
-    width: 100%;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 
   .footer-item-follow {
     height: 100%;
@@ -54,6 +49,17 @@ const StyledFooterTablet = css`
         margin: 6px 0 9px;
       }
     }
+
+    &:nth-child(4) {
+      align-items: start;
+      flex-direction: column;
+      justify-content: start;
+      gap: 0;
+
+      .footer-item-contribution, .footer-item-contacts {
+        width: 100%;
+      }
+    }
   }
 
   .footer-item-contacts {
@@ -69,13 +75,12 @@ const StyledFooterTablet = css`
     display: flex;
     justify-content: center;
     margin: 0 -17px;
-    padding: 20px 0 21px;
-    background-color: #f9f9f9;
+    padding: 40px 0 16px;
   }
 
   .footer-copyright {
-    font-size: 13px;
-    line-height: 13px;
+    font-size: 12px;
+    line-height: 16px;
     color: #aaa;
   }
 `;
@@ -104,11 +109,6 @@ const StyledFooter = styled.div`
         max-width: 774px;
       }
 
-      .footer-item-follow {
-        display: none;
-        padding: 0 0 22px;
-      }
-
       .footer-item-heading {
         padding: 0 0 16px;
         text-align: center;
@@ -133,22 +133,6 @@ const StyledFooter = styled.div`
     line-height: 1.4em;
   }
 
-  .footer-social-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-left: 32px;
-
-    .footer-social {
-      display: inline-block;
-      margin: 0 32px 18px 0;
-      list-style-type: none;
-      width: 24px;
-      height: 24px;
-      vertical-align: middle;
-    }
-  }
-
   .footer-copyright-block {
     display: flex;
     justify-content: center;
@@ -161,7 +145,7 @@ const StyledFooter = styled.div`
     color: #AAAAAA;
   }
 
-  @media (max-width: 1100px) {
+  @media ${device.laptopM} {
     .contact-text {
       display: flex;
       flex-direction: column;
@@ -176,19 +160,34 @@ const StyledFooter = styled.div`
     width: auto;
     max-width: 928px;
     padding: 56px 35px 50px;
+    grid-template-columns: 25vw 25vw 25vw;
     vertical-align: top;
     min-width: unset;
     margin-bottom: 0;
-  }
+    gap: 42px;
 
-  @media ${device.tablet} {
-    ${StyledFooterTablet};
-  }
+    .footer-item-group {
+      &.last {
+        grid-column: span 3;
+      }
 
-  @media (max-width: 500px) {
-    .footer-social-links {
-      justify-content: center;
+      &:nth-child(4) {
+        align-items: start;
+        grid-column: span 3;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        gap: 42px;
+
+        .footer-item-contribution, .footer-item-contacts {
+          width: 25vw;
+        }
+      }
     }
+  }
+
+  @media ${device.tabletS} {
+    ${StyledFooterTablet};
   }
 `;
 

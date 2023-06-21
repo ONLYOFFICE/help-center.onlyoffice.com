@@ -9,9 +9,10 @@ import Text from "@components/common/text";
 import { AccordionItem } from "@components/common/accordion";
 
 const Nav = ({ onClick, t, stateMobilePND, categories, ...rest }) => {
+  const menu = categories.slice(0, 6);
   return (
     <StyledNav stateMobile={stateMobilePND} categories={categories} {...rest}>
-      {categories.map((item, index) => {
+      {menu.map((item, index) => {
          return <MenuItem t={t} key={index} heading={item.attributes.name} link={item.attributes.url} ></MenuItem>
       })}
     </StyledNav>

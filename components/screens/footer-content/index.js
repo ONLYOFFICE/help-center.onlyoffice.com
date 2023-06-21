@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 
 import StyledFooter from "./styled-footer";
-import Social from "./data/social-items";
 import Items from "./data/footer-items";
 import FooterItem from "./sub-components/footer-item";
 import ExternalLink from "@components/common/link";
-import IconButton from "@components/common/icon-button";
 import Text from "@components/common/text";
 
 const date = new Date();
@@ -13,11 +11,6 @@ const currentYear = date.getFullYear();
 
 const Footer = ({ t, language }) => {
   const POSITION_ELEMENTS_ITEM = [1, 2, 3, 4];
-
-  const [modalActive, setModalActive] = useState(false);
-  const handlerSetModal = (active) => {
-    setModalActive(active);
-  };
 
   const onlyoffice = `https://www.onlyoffice.com${
     language === "en" ? "" : `/${language}`
@@ -66,36 +59,11 @@ const Footer = ({ t, language }) => {
         </div>
       ))}
       <div className="footer-item-group last">
-        <div className="footer-item-group">
-          <FooterItem heading={`${t("Follow us on")}:`} className="follow">
-            <div className="footer-social-links">
-              {Social.map((item) => (
-                <ExternalLink
-                  className="footer-social"
-                  href={item.href}
-                  title={item.title}
-                  rel={item.rel}
-                  alt={item.title}
-                  target="_blank"
-                  key={item.title}
-                >
-                  <IconButton
-                    className={item.className}
-                    iconName={item.src}
-                    size={item.size}
-                    grayed={item.filter}
-                    key={item.title}
-                  />
-                </ExternalLink>
-              ))}
-            </div>
-          </FooterItem>
           <div className="footer-copyright-block">
             <Text
               className="footer-copyright"
               label={t("FooterCopyright", { currentYear })}
             />
-          </div>
         </div>
       </div>
     </StyledFooter>

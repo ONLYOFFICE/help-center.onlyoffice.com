@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import StyledIconButton from "@components/common/icon-button/styled-icon-button";
-import globalColors from "@components/utils/global-colors";
-import arrow_gray from "@public/images/icons/arrowup.png"
+import arrow_gray from "@public/images/icons/arrowup.png";
+import { device } from "@components/utils/devices";
 
 const StyledUpArrow = styled(StyledIconButton)`
 background-color: #9ea4b5;
@@ -22,7 +22,7 @@ width: 40px;
     background-color: rgba(61,74,107,0.7);
 }
 
-@media (max-width: 1190px) {
+@media ${device.laptopM} {
     bottom: 100px;
     height: 50px;
     left: auto;

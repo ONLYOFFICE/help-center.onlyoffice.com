@@ -10,12 +10,10 @@ const CategoryItem = ({
 }) => {
     const catData = data?.attributes.pictures?.data;
     const categoryPic = catData?.find((it) => it.attributes.name === "connector_img.png");
-    console.log(categoryPic);
   return (
     <StyledCategoryItem>
               <div className="items">
                 <Heading level={3}><Link href={data.attributes.url}>{data.attributes.title}</Link><img src={categoryPic?.attributes.url} /></Heading>
-                
                 <Text>{ReactHtmlParser(data.attributes.description)}</Text>
               </div>
     </StyledCategoryItem>

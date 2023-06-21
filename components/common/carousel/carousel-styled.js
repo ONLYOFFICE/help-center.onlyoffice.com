@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
-import arrow_gray from "@public/images/icons/slideshow_next-prev.png"
+import arrow_gray from "@public/images/icons/slideshow_next-prev.png";
+import { device } from "@components/utils/devices";
 
 const StyledCarousel = styled.div`
   margin: 0 auto;
@@ -62,7 +63,7 @@ const StyledCarousel = styled.div`
             }
           `}
   }
-  @media (max-width: 1200px) {
+  @media ${device.laptopM} {
     .slick-slider {
       .slide-carousel {
         width: 100vw;
@@ -73,7 +74,7 @@ const StyledCarousel = styled.div`
       }
     }
   }
-  @media (max-width: 1024px) {
+  @media ${device.laptop} {
     .slick-slider {
       .slide-carousel {
         width: 100vw;
@@ -81,7 +82,7 @@ const StyledCarousel = styled.div`
       }
     }
   }
-  @media (max-width: 576px) {
+  @media ${device.tabletS} {
     .slick-slider {
       .slide-carousel {
         margin: 0;
