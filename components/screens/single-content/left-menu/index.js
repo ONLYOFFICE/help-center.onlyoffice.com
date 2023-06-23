@@ -5,7 +5,7 @@ import items from "./data/items";
 import MiniSearch from "./sub-components/search";
 import Heading from "@components/common/heading";
 
-const LeftMenu = ({ t, isCategory, articles, category, categories, ...rest }) => {
+const LeftMenu = ({ t, isCategory, articles, category, categories, activeItem, onActiveItemChange, ...rest }) => {
   const leftMenu = useRef();
   const catData = isCategory && categories.find(
     (it) => it.attributes.slug_id === category
@@ -21,16 +21,16 @@ const LeftMenu = ({ t, isCategory, articles, category, categories, ...rest }) =>
     });
 
   const [menuItems, setMenuItems] = useState([]);
-  const [activeMenuItem, setActiveMenuItem] = useState(null);
+
+  // menu generating
   useEffect(() => {
     const content = !isCategory && articles.attributes.content;
     const headings = document.createElement('div');
     headings.innerHTML = content;
-    const h2 = headings.querySelectorAll('h2');
-    const h3 = headings.querySelectorAll('h3');
+    const headingElements = headings.querySelectorAll('h4, h5');
     const items = [];
 
-    [...h2, ...h3].forEach((heading) => {
+    headingElements.forEach((heading) => {
       const text = heading.textContent;
       const id = text.replace(/\W/g, '').toLowerCase() + '_block';
       const item = {
@@ -40,32 +40,65 @@ const LeftMenu = ({ t, isCategory, articles, category, categories, ...rest }) =>
       items.push(item);
       heading.parentElement.id = id;
     });
-    setMenuItems(items);
 
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [articles]);
-
-  const handleScroll = () => {
-    if (menuItems.length === 0) {
-      return;
-    }
-    const sections = menuItems.map((item) => ({
-      id: item.id,
-      position: document.getElementById(item.id).offsetTop,
-    }));
-
-    const currentSection = sections.find((section) => {
-      const { position } = section;
-      const windowHeight = window.innerHeight;
-      const scrollY = window.scrollY || window.pageYOffset;
-      return scrollY >= position - windowHeight * 0.5;
+    items.sort((a, b) => {
+      const aIndex = Array.from(headingElements).indexOf(document.getElementById(a.id).querySelector('h4, h5'));
+      const bIndex = Array.from(headingElements).indexOf(document.getElementById(b.id).querySelector('h4, h5'));
+      return aIndex - bIndex;
     });
 
-    setActiveMenuItem(currentSection ? currentSection.id : null);
-  };
+    setMenuItems(items);
+  }, [articles]);
+
+  // menu highlight
+  // useEffect(() => {
+  //   const headings = document.querySelectorAll('h4, h5');
+
+  //   const handleScroll = () => {
+  //     const topHeading = Array.from(headings).find((heading) => {
+  //       const rect = heading.getBoundingClientRect();
+  //       return rect.top >= 0 && rect.top <= window.innerHeight;
+  //     });
+  //     if (topHeading) {
+  //       const activeItem = {
+  //         id: topHeading.parentElement.id,
+  //         text: topHeading.textContent,
+  //       };
+  //       onActiveItemChange(activeItem);
+  //     }
+  //   };
+
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, [onActiveItemChange]);
+  useEffect(() => {
+    const headings = document.querySelectorAll('h4, h5');
+
+    const handleScroll = () => {
+      const topHeading = Array.from(headings).find((heading) => {
+        const rect = heading.getBoundingClientRect();
+        return rect.top >= 0 && rect.top <= window.innerHeight;
+      });
+      if (topHeading) {
+        const activeItemId = topHeading.parentElement.id;
+        if (activeItemId === 'watchvideo') {
+          onActiveItemChange({
+            id: activeItemId,
+            text: 'Watch Video',
+          });
+        } else {
+          onActiveItemChange({
+            id: activeItemId,
+            text: topHeading.textContent,
+          });
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [onActiveItemChange]);
+
 
   return (
     <StyledLeftMenu ref={leftMenu}>
@@ -84,9 +117,16 @@ const LeftMenu = ({ t, isCategory, articles, category, categories, ...rest }) =>
           </ul>
         </> : <>
           <Heading level={6}>{articles.attributes.title}</Heading>
-          <ul className="page" onScroll={handleScroll}>
+          <ul className="page">
+            {articles.attributes.videos && (
+              <li className={activeItem?.id === 'watchvideo' ? 'active' : ''}>
+                <InternalLink href="#watchvideo">
+                  Watch Video
+                </InternalLink>
+              </li>
+            )}
             {menuItems.map((item, index) => (
-              <li key={index} className={activeMenuItem === item.id ? 'active' : ''}>
+              <li key={index} className={activeItem && activeItem.id === item.id ? 'active' : ''} >
                 <InternalLink href={`#${item.id}`}>
                   {item.text}
                 </InternalLink>

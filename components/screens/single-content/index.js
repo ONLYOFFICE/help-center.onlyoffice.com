@@ -16,16 +16,29 @@ const SingleContent = ({
   videos,
   ...rest
 }) => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 593);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    const updateWindowWidth = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    updateWindowWidth();
+    window.addEventListener('resize', updateWindowWidth);
+    return () => {
+      window.removeEventListener('resize', updateWindowWidth);
+    };
   }, []);
+
+  // menu
+
+  const [activeItem, setActiveItem] = useState(null);
+
+  const handleActiveItemChange = (item) => {
+    setActiveItem(item);
+  };
+
   return (
     <StyledSingleContent {...rest}>
-     {!isMobile && <LeftMenu t={t} isCategory={isCategory} articles={articles} categories={categories} category={category} />}
+     {windowWidth > 593 && <LeftMenu t={t} isCategory={isCategory} articles={articles} categories={categories} category={category} activeItem={activeItem} onActiveItemChange={handleActiveItemChange} />}
       {isCategory ? (
         <CenterCategoryContent t={t} articles={articles} children={children} categories={categories} category={category} />
       ) : (
@@ -36,6 +49,7 @@ const SingleContent = ({
           tags={tags}
           isTagPage={isTagPage}
           videos={videos}
+          onActiveItemChange={handleActiveItemChange}
         />
       )}
     </StyledSingleContent>

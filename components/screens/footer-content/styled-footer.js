@@ -164,7 +164,7 @@ const StyledFooter = styled.div`
     vertical-align: top;
     min-width: unset;
     margin-bottom: 0;
-    gap: 42px;
+    gap: 32px 42px;
 
     .footer-item-group {
       &.last {

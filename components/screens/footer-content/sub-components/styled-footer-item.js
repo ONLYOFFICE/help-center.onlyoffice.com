@@ -100,6 +100,10 @@ const StyledFooterItem = styled.div`
     display: none;
   }
 
+  @media ${device.laptop} {
+    padding: 0;
+  }
+
   @media ${device.tabletS} {
     ${StyledFooterTablet};
   }

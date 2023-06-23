@@ -99,21 +99,7 @@ const StyledContent = styled.div`
       display: none;
     }
 
-    .items {
-      margin: 24px 0 0;
-      padding: 32px;
-      background: #FFFFFF;
-      border: 1px solid #EFEFEF;
-      box-shadow: 0px 7px 25px rgb(85 85 85 / 15%);
-      border-radius: 3px;
-      color: #333333;
-      &:hover {
-        color: #333333;
-        text-decoration: none;
-      }
-    }
-
-    a {
+   .raw-html-embed a {
       display: inline-flex;
       align-items: center;
       color: #ff6f3d;

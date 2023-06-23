@@ -82,7 +82,7 @@ const HeadSEO = ({
 
         <meta name="theme-light" />
       </Head>
-      <Script
+      {/* <Script
         id="googletagmanager"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
@@ -99,7 +99,7 @@ const HeadSEO = ({
           })();
         `,
         }}
-      />
+      /> */}
     </>
   );
 };

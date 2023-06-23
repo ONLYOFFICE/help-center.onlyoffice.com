@@ -6,7 +6,7 @@ import ArticlePopup from "../article-popup";
 import ArticleContent from "./article-content";
 import TagsContent from "./tags-content";
 
-const CenterContent = ({ t, articles, tags, children, isTagPage }) => {
+const CenterContent = ({ t, articles, tags, children, isTagPage, onActiveItemChange }) => {
   return (
     <StyledContent>
       {!isTagPage ?
@@ -15,6 +15,7 @@ const CenterContent = ({ t, articles, tags, children, isTagPage }) => {
           articles={articles}
           tags={tags}
           children={children}
+          onActiveItemChange={onActiveItemChange}
         />
         :
         <TagsContent t={t} isTagPage={isTagPage} content={tags} />

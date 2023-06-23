@@ -10,7 +10,7 @@ const Video = ({ t, items, videos, isMain }) => {
   const allvideos = curVideos.slice(1);
   return (
     <StyledVideo>
-      <Heading level={4}>{t("Watch video")}</Heading>
+      <Heading id="watchvideo" level={4}>{t("Watch video")}</Heading>
       <Box className="vids">
         <div>
         {curVideos.slice(0, 1)?.map((it, index) => {

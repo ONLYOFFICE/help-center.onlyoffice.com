@@ -9,7 +9,6 @@ const StyledMenuTablet = css`
   }
 
   .site-logo {
-    background: url(../images/logo/logo-mobile.svg) no-repeat 50%;
     width: 35px;
     height: 32px;
     padding: 20px 0;
@@ -31,11 +30,23 @@ const StyledMenuTablet = css`
       }
       cursor: pointer;
     }
+    .site-logo {
+      width: 186px;
+    }
+  }
+
+  @media ${device.tabletS} {
+    .site-logo {
+      background: url(../images/logo/logo-mobile.svg) no-repeat 50%;
+      width: 35px;
+      height: 32px;
+      padding: 12px 0;
+    }
   }
 
   @media ${device.mobileL} {
     grid-template-columns: 1fr 1fr 2fr auto 2fr 1fr 1fr;
-    height: 106px;
+    height: 56px;
     padding: 0;
     .nav-item-lng {
       grid-column-start: 6;
@@ -99,7 +110,6 @@ const StyledMenu = styled.div`
     position: relative;
     width: 186px;
     height: 34px;
-    padding: 19px 0;
   }
 
   .nav-item-lng {

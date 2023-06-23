@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import arrow_right from "@public/images/icons/arrow-right.svg";
 import glossary from "@public/images/icons/glossary-icon.svg";
 import video from "@public/images/icons/video-icon.svg";
 import faq from "@public/images/icons/faq-icon.svg";
+import { device } from "@components/utils/devices";
 
 const StyledLeftMenu = styled.div`
 background-color: #F5F5F5;
@@ -17,9 +17,8 @@ border-right: 1px solid #EFEFEF;
     top: 72px;
     height: calc(100vh - 72px);
     overflow-y: auto;
-    padding: 32px 26px 64px 24px;
+    padding: 32px 26px 64px 16px;
     width: 258px;
-
   }
 
   h6 {
@@ -50,7 +49,10 @@ border-right: 1px solid #EFEFEF;
   }
 
   li.active {
-    color: #ff6f3d;
+    .internal-link {
+      color: #ff6f3d;
+      font-weight: 700;
+    } 
   }
 
   .internal-link {
@@ -119,9 +121,37 @@ border-right: 1px solid #EFEFEF;
     transform: translateY(0); 
     transition: transform 0.2s ease; 
   }
+
+  ul > li::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 100%;
+    border-radius: 50%;
+  }
   
-  .page.active::before {
-    transform: translateY(calc(var(--active-index, 1) - 1) * var(--item-height, 40px)); 
+  ul > li.active::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 100%;
+    border-radius: 2px;
+    background-color: #444444;
+  }
+
+  ul > li {
+    position: relative;
+  }
+
+  @media ${device.tablet} {
+    .lm-wrap {
+      padding: 32px 40px 64px;
+      width: 280px;
+    }
   }
 `;
 
