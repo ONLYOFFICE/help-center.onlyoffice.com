@@ -3,8 +3,6 @@ import { isInternalLink } from 'is-internal-link';
 import StyledGuidesLinks from "./styled-guides-links";
 import Box from "@components/common/box";
 import InternalLink from "@components/common/internal-link";
-import ExternalLink from "@components/common/link";
-import Text from "@components/common/text";
 
 const GuidesLinks = ({ mainArticles, linksLength, category, t }) => {
   const [data, setData] = useState([]);
@@ -32,7 +30,7 @@ const GuidesLinks = ({ mainArticles, linksLength, category, t }) => {
             items: [],
           };
         }
-        sortedData[topLevel].items.push(item);
+        sortedData[topLevel].items?.push(item);
         if (topLevelData && item.attributes.url === topLevelData.attributes.url) {
           sortedData[topLevel].items.pop();
         }

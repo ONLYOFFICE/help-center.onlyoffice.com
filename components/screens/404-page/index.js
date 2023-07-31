@@ -15,7 +15,7 @@ const Error404 = ({ t, ...rest }) => {
         alt="page-error-404"
       />
       <div className="page-error-404-container">
-        <Text className="page-error-404-heading" label={t("404Error!")} />
+        <Text className="page-error-404-heading" label={t("404Error")} />
         <Text
           className="page-error-404-description"
           label={t("404Descdription")}

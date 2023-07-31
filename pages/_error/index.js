@@ -6,7 +6,7 @@ import HeadSEO from "@components/screens/head-content";
 import Error404 from "@components/screens/404-page";
 
 const ErrorPage = () => {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation();
 
   return (
     <Layout footerContent={false} headerContent={false}>

@@ -10,7 +10,6 @@ import ImagePopup from "../../image-popup";
 import RawHtmlStyle from "@components/utils/rawHtmlStyles";
 
 const CenterArticleContent = ({ t, articles, tags, videos, children, onActiveItemChange }) => {
-  //const isMain = articles?.attributes.is_main;
   const articleTags = articles?.attributes.tags?.data;
   const curVideos = articles?.attributes.videos?.data.length;
   const [modalActive, setModalActive] = useState(false);
@@ -28,27 +27,7 @@ const CenterArticleContent = ({ t, articles, tags, videos, children, onActiveIte
         : 1;
     });
   }
-  // const containerRef = useRef(null);
-  // const [imageSrc, setImageSrc] = useState(null);
-  // const handleImageClick = (event) => {
-  //   if (event.target.classList.contains('screenphoto')) {
-  //     const imageElement = event.target;
-  //     const currentSrc = imageElement.getAttribute('src');
-  //     const newSrc = currentSrc.replace('_small', '_big');
-  //     setImageSrc(newSrc);
-  //     console.log(imageSrc);
-  //   }
-  // };
-  // const handleImageClick = (event) => {
-  //   if (event.target.classList.contains('screen_guides')) {
-  //     const closestBigPhotoScreen = event.target.closest('.bigphoto_screen');
-  //     if (closestBigPhotoScreen) {
-  //       const bigPhotoSrc = closestBigPhotoScreen.getAttribute('src');
-  //       // Pass the bigPhotoSrc to your modal or do any other action you need
-  //       console.log('Modal Image Source:', bigPhotoSrc);
-  //     }
-  //   }
-  // };
+
   const [bigPhotoSrc, setBigPhotoSrc] = useState(null);
   const handleImageClick = (event) => {
     const clickedImage = event.target;
