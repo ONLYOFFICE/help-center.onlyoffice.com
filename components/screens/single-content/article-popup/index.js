@@ -27,13 +27,13 @@ const ArticlePopup = ({ t, language, active, setActive, tag, allTags, ...rest })
         <div className="PopupPanelCaptionItems">
           <div className="PopupPanelCaption">
             <div className="popupPanelText">
-              {t("Article with the tag")}
+              {t("ArticleWithTheTag")}
               <Tag t={t} type={"popup"} label={tag} />
             </div>
-            <CloseButton onClick={() => setActive(false)} />
+              <CloseButton onClick={() => setActive(false)} />
           </div>
-          <InternalLink className="tagsLink" href="/tags.aspx">
-            {t("Browse all tags")}
+          <InternalLink className="tagsLink" href="#">
+            {t("BrowseAllTags")}
           </InternalLink>
           <div className="textContent">
               {tagsData?.attributes.articles.data.slice(0, next)?.map((it, index) => {
@@ -51,7 +51,7 @@ const ArticlePopup = ({ t, language, active, setActive, tag, allTags, ...rest })
               {next < tagsLength && (
                 <Button
                   onClick={handleMoreImage}
-                  label={"More articles"}
+                  label={t("MoreArticles")}
                   typeButton="secondary"
                   className="loadButton"
                 />

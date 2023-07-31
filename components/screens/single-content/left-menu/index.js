@@ -24,7 +24,7 @@ const LeftMenu = ({ t, isCategory, articles, category, categories, activeItem, o
 
   // menu generating
   useEffect(() => {
-    const content = !isCategory && articles.attributes.content;
+    const content = !isCategory && articles?.attributes.content;
     const headings = document.createElement('div');
     headings.innerHTML = content;
     const headingElements = headings.querySelectorAll('h4, h5');
@@ -40,15 +40,16 @@ const LeftMenu = ({ t, isCategory, articles, category, categories, activeItem, o
       items.push(item);
       heading.parentElement.id = id;
     });
-
-    items.sort((a, b) => {
-      const aIndex = Array.from(headingElements).indexOf(document.getElementById(a.id).querySelector('h4, h5'));
-      const bIndex = Array.from(headingElements).indexOf(document.getElementById(b.id).querySelector('h4, h5'));
-      return aIndex - bIndex;
-    });
+    // not works bc of wrong articl id's
+    // items.sort((a, b) => {
+    //   const aIndex = Array.from(headingElements).indexOf(document.getElementById(a.id).querySelector('h4, h5'));
+    //   const bIndex = Array.from(headingElements).indexOf(document.getElementById(b.id).querySelector('h4, h5'));
+    //   return aIndex - bIndex;
+    // });
 
     setMenuItems(items);
   }, [articles]);
+
 
   // menu highlight
   // useEffect(() => {
@@ -116,9 +117,9 @@ const LeftMenu = ({ t, isCategory, articles, category, categories, activeItem, o
             ))}
           </ul>
         </> : <>
-          <Heading level={6}>{articles.attributes.title}</Heading>
+          <Heading level={6}>{articles?.attributes.title}</Heading>
           <ul className="page">
-            {articles.attributes.videos && (
+            {articles?.attributes.videos && (
               <li className={activeItem?.id === 'watchvideo' ? 'active' : ''}>
                 <InternalLink href="#watchvideo">
                   Watch Video

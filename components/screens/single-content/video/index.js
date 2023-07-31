@@ -17,7 +17,7 @@ const Video = ({ t, items, videos, isMain }) => {
           return <VideoItem t={t} key={index} data={it} isMain={true} />;
         })}
         </div>
-        <VideoCarousel t={t} items={allvideos} />
+        {curVideos > 1 && <VideoCarousel t={t} items={allvideos} />}
       </Box>
     </StyledVideo>
   );

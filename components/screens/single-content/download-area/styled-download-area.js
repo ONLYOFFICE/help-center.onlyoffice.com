@@ -8,9 +8,10 @@ const StyledDownloadArea = styled.div`
   position: relative;
   background: linear-gradient(134.97deg, #FFC671 0%, #FF7541 64.06%, #FF6F3D 100%);
   border-radius: 3px;
+  margin: 40px 0 16px;
 
   .download-wrapper {
-    padding: 71px;
+    padding: 71px 16px;
     text-align: center;
     background-image: url(${download_bg.src});
     background-repeat: no-repeat;
@@ -45,6 +46,8 @@ const StyledDownloadArea = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
   }
 
   .download-button {
@@ -68,10 +71,6 @@ const StyledDownloadArea = styled.div`
       height: 32px;
       filter: grayscale(1);
       transition: filter 0.3s;
-    }
-
-    &:not(:last-child) {
-      margin-right: 8px;
     }
 
     &.for-windows {

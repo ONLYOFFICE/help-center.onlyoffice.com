@@ -36,6 +36,7 @@ const StyledMenuTablet = css`
   }
 
   @media ${device.tabletS} {
+  height: 56px;
     .site-logo {
       background: url(../images/logo/logo-mobile.svg) no-repeat 50%;
       width: 35px;
@@ -94,6 +95,7 @@ const StyledMenu = styled.div`
   .nav-item-logo {
     grid-column-start: 1;
     grid-column-end: 2;
+    display: unset;
   }
 
   .nav-item-links {

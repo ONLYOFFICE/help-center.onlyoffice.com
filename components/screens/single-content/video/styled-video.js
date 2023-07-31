@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "@components/utils/devices";
 
 const StyledVideo = styled.div`
 padding: 24px 0 40px;
@@ -13,6 +14,13 @@ border-bottom: 1px solid #cccccc;
     height: 434px;
     gap: 32px;
     padding: 32px;
+  }
+
+  h4 {
+    padding: 0 0 16px;
+  }
+
+  @media ${device.laptop} {
   }
 `;
 

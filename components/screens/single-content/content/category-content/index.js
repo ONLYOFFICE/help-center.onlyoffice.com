@@ -1,10 +1,9 @@
 import Heading from "@components/common/heading";
-import InternalLink from "@components/common/internal-link";
 import Text from "@components/common/text";
 import React, { useState } from "react";
-import StyledContent from "../content/styled-content";
+import StyledContent from "../styled-content";
 import Breadcrumbs from "@components/common/breadcrumbs";
-import CategoryItem from "../content/sub-components/category-item";
+import CategoryItem from "../sub-components/category-item";
 
 const CenterCategoryContent = ({
   t,
@@ -13,7 +12,7 @@ const CenterCategoryContent = ({
   category,
   children,
 }) => {
-  const catData = categories.find(
+  const catData = categories?.find(
     (it) => it.attributes.slug_id === category
   )?.attributes;
   const artData = articles
@@ -27,17 +26,15 @@ const CenterCategoryContent = ({
         : 1;
     });
   return (
-    <StyledContent>
+    <StyledContent className="wrapper">
       <Breadcrumbs t={t} category={catData} isCategory={true} />
-      <div className="wrapper">
-        <Heading level={3}>{catData?.name}</Heading>
-        <Text>{catData?.description}</Text>
-        {artData.map((it, index) => {
-          return (
-            <CategoryItem data={it} key={index} />
-          );
-        })}
-      </div>
+      <Heading level={3}>{catData?.name}</Heading>
+      <Text>{catData?.description}</Text>
+      {artData.map((it, index) => {
+        return (
+          <CategoryItem data={it} key={index} t={t} />
+        );
+      })}
       {children}
     </StyledContent>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import StyledContent from "../styled-content";
 import ReactHtmlParser from "react-html-parser";
 import Tag from "@components/common/tag";
@@ -6,12 +6,15 @@ import ArticlePopup from "../../article-popup";
 import Heading from "@components/common/heading";
 import Breadcrumbs from "@components/common/breadcrumbs";
 import Video from "../../video";
+import ImagePopup from "../../image-popup";
+import RawHtmlStyle from "@components/utils/rawHtmlStyles";
 
-const ArticleContent = ({ t, articles, tags, videos, children, onActiveItemChange }) => {
-  const isMain = articles?.attributes.is_main;
+const CenterArticleContent = ({ t, articles, tags, videos, children, onActiveItemChange }) => {
+  //const isMain = articles?.attributes.is_main;
   const articleTags = articles?.attributes.tags?.data;
   const curVideos = articles?.attributes.videos?.data.length;
   const [modalActive, setModalActive] = useState(false);
+  const [imageModalActive, setImageModalActive] = useState(false);
   const [tag, setTag] = useState();
   const handlerSetModal = (active) => {
     setModalActive(!!active);
@@ -25,32 +28,46 @@ const ArticleContent = ({ t, articles, tags, videos, children, onActiveItemChang
         : 1;
     });
   }
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  //     const divs = document.querySelectorAll(".gs_content");
-  //     const visibleDivs = Array.from(divs).filter(div => {
-  //       const rect = div.getBoundingClientRect();
-  //       return rect.top >= 0 && rect.bottom <= window.innerHeight;
-  //     });
-  //     if (visibleDivs.length > 0) {
-  //       const activeDiv = visibleDivs[0];
-  //       const activeMenuItemId = activeDiv.getAttribute("id");
-  //       setActiveMenuItem(activeMenuItemId);
+  // const containerRef = useRef(null);
+  // const [imageSrc, setImageSrc] = useState(null);
+  // const handleImageClick = (event) => {
+  //   if (event.target.classList.contains('screenphoto')) {
+  //     const imageElement = event.target;
+  //     const currentSrc = imageElement.getAttribute('src');
+  //     const newSrc = currentSrc.replace('_small', '_big');
+  //     setImageSrc(newSrc);
+  //     console.log(imageSrc);
+  //   }
+  // };
+  // const handleImageClick = (event) => {
+  //   if (event.target.classList.contains('screen_guides')) {
+  //     const closestBigPhotoScreen = event.target.closest('.bigphoto_screen');
+  //     if (closestBigPhotoScreen) {
+  //       const bigPhotoSrc = closestBigPhotoScreen.getAttribute('src');
+  //       // Pass the bigPhotoSrc to your modal or do any other action you need
+  //       console.log('Modal Image Source:', bigPhotoSrc);
   //     }
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, [setActiveMenuItem]);
+  //   }
+  // };
+  const [bigPhotoSrc, setBigPhotoSrc] = useState(null);
+  const handleImageClick = (event) => {
+    const clickedImage = event.target;
+    if (clickedImage.tagName === 'IMG') {
+      const targetImageId = clickedImage.getAttribute('target');
+      if (targetImageId) {
+        const closestBigPhotoScreen = document.querySelector(`.bigphoto_screen[id="${targetImageId}"]`);
+        if (closestBigPhotoScreen) {
+          setBigPhotoSrc(closestBigPhotoScreen.getAttribute('src'));
+          setImageModalActive(true);
+        }
+      }
+    }
+  };
   return (
-    <>
-      <div className={!isMain ? "wrapper" : "wrapper main"}>
-        <Breadcrumbs t={t} article={articles} />
-        <Heading level={3}>{articles?.attributes.title}</Heading>
+    <StyledContent className="wrapper">
+      <Breadcrumbs t={t} article={articles} />
+      <Heading level={3}>{articles?.attributes.title}</Heading>
+      <div className="tags">
         {articleTags?.map((item, index) => (
           <Tag
             key={index}
@@ -61,9 +78,9 @@ const ArticleContent = ({ t, articles, tags, videos, children, onActiveItemChang
             onClick={() => handlerSetModal(item.attributes.title)}
           />
         ))}
-        {curVideos > 0 && <Video t={t} items={articles} videos={videos} />}
-        {ReactHtmlParser(articles?.attributes.content)}
       </div>
+      {curVideos > 0 && <Video t={t} items={articles} videos={videos} />}
+      <RawHtmlStyle onClick={handleImageClick}>{ReactHtmlParser(articles?.attributes.content)}</RawHtmlStyle>
       {children}
       <ArticlePopup
         t={t}
@@ -72,8 +89,14 @@ const ArticleContent = ({ t, articles, tags, videos, children, onActiveItemChang
         allTags={tags}
         setActive={setModalActive}
       />
-    </>
+      <ImagePopup
+        t={t}
+        image={bigPhotoSrc}
+        active={imageModalActive}
+        setActive={setImageModalActive}
+      />
+    </StyledContent>
   );
 };
 
-export default ArticleContent;
+export default CenterArticleContent;

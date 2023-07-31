@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "@components/utils/devices";
 
 const StyledVideoItem = styled.div`
   cursor: pointer;
@@ -18,6 +19,11 @@ const StyledVideoItem = styled.div`
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+  }
+  @media ${device.laptop} {
+    iframe {
+      width: 46vw;
+    }
   }
 `;
 

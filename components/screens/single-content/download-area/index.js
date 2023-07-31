@@ -9,17 +9,16 @@ const DownloadArea = ({ t, ...rest }) => {
     <StyledDownloadArea {...rest}>
       <div className="download-wrapper">
         <div className="download-content">
-          <Heading level={3} className="download-title" label={t("Host on your own server")} />
-          <Text className="download-text" label={t("Download free and open source versions of ONLYOFFICE")} />
-
+          <Heading level={3} className="download-title" label={t("HostOnYourOwnServer")} />
+          <Text className="download-text" label={t("DownloadFreeOpenSourceOO")} />
           <div className="download-buttons">
-            <ExternalLink className="download-button for-windows">
+            <ExternalLink className="download-button for-windows" href="https://www.onlyoffice.com/download-docs.aspx">
               {t("For Windows")}
             </ExternalLink>
-            <ExternalLink className="download-button for-linux">
+            <ExternalLink className="download-button for-linux" href="https://www.onlyoffice.com/download-docs.aspx">
               {t("For Linux")}
             </ExternalLink>
-            <ExternalLink className="download-button docker">
+            <ExternalLink className="download-button docker" href="https://www.onlyoffice.com/download-docs.aspx">
               {t("Docker")}
             </ExternalLink>
           </div>

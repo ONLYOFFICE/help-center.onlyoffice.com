@@ -153,6 +153,9 @@ border-right: 1px solid #EFEFEF;
       width: 280px;
     }
   }
+  @media ${device.tabletS} {
+    display: none;
+  }
 `;
 
 export default StyledLeftMenu;

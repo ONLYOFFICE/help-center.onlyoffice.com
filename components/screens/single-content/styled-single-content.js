@@ -9,21 +9,6 @@ const StyledSingleLayout = styled.div`
   max-width: 1120px;
   margin: 72px auto 0;
 
-  .alert-enter {
-    opacity: 0;
-  }
-  .alert-enter-active {
-    opacity: 1;
-    transition: opacity .1s fadein;
-  }
-  .alert-exit {
-    opacity: 1;
-  }
-  .alert-exit-active {
-    opacity: 0;
-    transition: opacity .1s fadeout;
-  }
-
   .section-page {
     .cell_container {
       display: flex;
@@ -40,6 +25,10 @@ const StyledSingleLayout = styled.div`
     
   @media ${device.laptopM} {
     max-width: 100vw;
+  }
+  
+  @media ${device.tabletS} {
+    margin: 56px auto 0;
   }
 `;
 

@@ -60,7 +60,7 @@ const SearchContent = ({ t, article }) => {
        // valueSearch={searchItem}
        // clearValueSearch={clearValueSearch}
         label={t("WelcomeToHelpCenter")}
-        placeholder={t("How can we help?")}
+        placeholder={t("HowCanWeHelp?")}
       />
       {/* <SearchResult
         searchItem={searchItem}

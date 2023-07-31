@@ -10,6 +10,7 @@ import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 import SingleContent from "@components/screens/single-content";
+import TagsContent from "@components/screens/single-content/content/tags-content";
 
 const TagsPage = ({ locale, categories, articles, tags }) => {
   const { t } = useTranslation();
@@ -29,6 +30,7 @@ const TagsPage = ({ locale, categories, articles, tags }) => {
         <HeadingContent t={t} template={true} currentLanguage={locale} categories={categories.data} />
       </Layout.PageHeader>
       <Layout.SectionMain>
+      {/* <TagsContent t={t} isTagPage={true} content={tags} /> */}
       {/* <SingleContent t={t} currentLanguage={locale} articles={articles.data} tags={tags.data} isCategory={false} isTagPage={true}></SingleContent> */}
       </Layout.SectionMain>
       <Layout.PageFooter>

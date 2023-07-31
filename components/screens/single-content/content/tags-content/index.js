@@ -22,8 +22,7 @@ const TagsContent = ({ t, content, isTagPage, ...rest }) => {
   });
 
   return (
-    <StyledContent>
-      <div className="wrapper">
+    <StyledContent className="wrapper">
         {isTagPage ?
           <>
             <AlphabetContainer t={t} selectorContent={filteredAlph} pageContent={content} isTagPage={isTagPage} onClickFunction={handlerSetModal} />
@@ -34,7 +33,6 @@ const TagsContent = ({ t, content, isTagPage, ...rest }) => {
             <Text padding={"10px 0"}>{t("Here are the base terms which are used in the online office interface and documentation.")}</Text>
             <AlphabetContainer t={t} selectorContent={filteredAlph} pageContent={content} isTagPage={isTagPage} />
           </>}
-      </div>
     </StyledContent>
   );
 };

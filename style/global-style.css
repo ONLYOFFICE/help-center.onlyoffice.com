@@ -18,3 +18,8 @@ body {
 a {
   color: #ff6f3d;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+}

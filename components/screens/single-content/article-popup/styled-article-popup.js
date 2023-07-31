@@ -20,14 +20,21 @@ z-index: 1001;
     float: right;
   }
 
-  .popupPanelText {
-    background-color: transparent;
+  .PopupPanelCaption {
     color: #333;
-    display: inline-flex;
+    display: flex;
     font-size: 18px;
     font-weight: 300;
-    margin: 0 0 0 20px;
+    padding: 30px 20px 15px;
     text-align: left;
+    align-items: center;
+    justify-content: space-between;
+
+    .popupPanelText {
+      display: flex;
+      align-items: center;
+
+    }
 
     li {
       margin: 0 5px;
@@ -47,8 +54,8 @@ z-index: 1001;
     display: block;
     max-height: 500px;
     overflow-y: auto;
-    margin: 30px 40px 30px;
-    padding: 0 15px 15px;
+    margin: 30px 0px 30px;
+    padding: 0 20px 15px;
     text-align: center;
     width: auto;
     .markLink {
@@ -78,11 +85,6 @@ z-index: 1001;
     box-shadow: 0 7px 25px rgb(0, 0, 0, 0.1);
     width: 780px;
 
-    .PopupPanelCaption {
-      padding: 30px 20px 15px;
-      display: block;
-    }
-
     @media ${device.tablet} {
       width: 85vw;
       background-size: 85vw auto;
@@ -107,28 +109,33 @@ z-index: 1001;
 
 const CloseButton = styled.div`
   cursor: pointer;
-  position: relative;
   display: block;
   float: right;
-  width: 13px;
-  height: 13px;
-  cursor: pointer;
-  margin: 6px 0 0;
+  width: 16px;
+  height: 16px;
+  margin: 0px 0 0;
+  position: relative;
 
   &:before,
   &:after {
     content: "";
     background-color: #333333;
     position: absolute;
-    width: 100%;
-    height: 1.5px;
     transform: rotate(45deg);
     border-radius: 1px;
-    top: 0;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 1px;
+    border-radius: 50%;
   }
 
-  &:after {
-    transform: rotate(-45deg);
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
   }
 `;
 
