@@ -9,7 +9,7 @@ import video from "@public/images/icons/video.svg";
 import RawHtmlStyle from "@components/utils/rawHtmlStyles";
 
 const CategoryItem = ({
-  data, t
+  data, t, currentLanguage
 }) => {
   const catPic = data?.attributes.pictures?.data;
   const catVideo = data?.attributes.videos?.data.length;
@@ -25,12 +25,12 @@ const CategoryItem = ({
       .slice(0, 2)
       .map((element) => ({
         text: element.textContent,
-        href: data.attributes.url + "#" +element.textContent.replace(/\W/g, '').toLowerCase() + '_block',
+        href: data.attributes.url + "#" + element.parentElement.id,
       }));
     setH4List(h4Links);
   }, [htmlString]);
 
-  const aboutItem = h4List.find(item => item.href.includes('about'));
+  const aboutItem = h4List.find(item => item.href.includes(t('about')));
   const catUrlAbout = aboutItem ? aboutItem.href : null;
   const catUrlVideo = data?.attributes.url + "#watchvideo";
   const categoryPic = catPic?.find((it) => it.attributes.name === "connector_img.png");
@@ -45,7 +45,7 @@ const CategoryItem = ({
      <ul>
         {h4List.map((link, index) => (
           <li key={index}>
-            <a href={link.href}>{link.text}</a>
+            <a href={currentLanguage === "en" ? link.href : `/${link.href}`}>{link.text}</a>
           </li>
         ))}
       </ul>

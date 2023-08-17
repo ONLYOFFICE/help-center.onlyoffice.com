@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import StyledLanguageSelector from "./styled-language-selector";
 import ArrowDown from "@public/images/icons/arrow-drop-down.react.svg";
 import ArrowUp from "@public/images/icons/arrow-drop-up.react.svg";
+import ArrowRight from "@public/images/icons/arrow-right.react.svg";
 import ItemsList from "./items-list";
+import languages from "@config/languages";
+import Text from "../text";
 
 const LanguageSelector = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,8 +25,7 @@ const LanguageSelector = (props) => {
   const handleClickOutside = (e) => {
     if (
       isOpen &&
-      (!e.target.closest(".lng-selector") ||
-        e.target.closest(".close-button-img"))
+      (!e.target.closest(".language-selector"))
     ) {
       onCloseSelector();
     }
@@ -36,8 +38,11 @@ const LanguageSelector = (props) => {
   };
 
   const onClickHandler = (e) => {
-    setIsOpen(!isOpen);
-    props.onClick && props.onClick(e);
+    e.stopPropagation();
+    if (e.target.closest(".flag-image") || e.target.closest(".arrow-image") || e.target.closest(".lang-name")) {
+      setIsOpen(!isOpen);
+      props.onClick && props.onClick(e);
+    }
   };
 
   const onCloseSelector = () => {
@@ -46,9 +51,16 @@ const LanguageSelector = (props) => {
 
   const { currentLanguage, t } = props;
 
-  const srcArrow = isOpen
-  ? ArrowUp.src
-  : ArrowDown.src;
+  const langName = useMemo(() => languages.map((language) => {
+    const { shortKey, name } = language;
+    if (shortKey === currentLanguage) {
+      return name;
+    }
+  }), [currentLanguage]);
+
+  // const srcArrow = isOpen
+  // ? ArrowUp.src
+  // : ArrowDown.src;
   const srcAlt = isOpen ? "arrow-up" : "arrow-down";
 
   return (
@@ -61,11 +73,13 @@ const LanguageSelector = (props) => {
         className="flag-image"
         alt="flag"
         src={`/images/flags/${currentLanguage}.svg`}
-        width={"18px"}
+        width={"24px"}
+        height={"24px"}
       />
+       <Text className="lang-name">{langName}</Text>
        {/*eslint-disable*/}
-      <div className="arrow-image">
-        <img src={srcArrow} alt={srcAlt} />
+      <div className={`arrow-image`}>
+        <img src={ArrowRight.src} alt={srcAlt} />
       </div>
        {/*eslint-enable*/}
       <ItemsList

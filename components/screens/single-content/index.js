@@ -14,6 +14,7 @@ const SingleContent = ({
   isCategory,
   isTagPage,
   videos,
+  currentLanguage,
   ...rest
 }) => {
 
@@ -22,12 +23,11 @@ const SingleContent = ({
   const handleActiveItemChange = (item) => {
     setActiveItem(item);
   };
-
   return (
     <StyledSingleContent {...rest}>
-      <LeftMenu t={t} isCategory={isCategory} articles={articles} categories={categories} category={category} activeItem={activeItem} onActiveItemChange={handleActiveItemChange} />
+      <LeftMenu currentLanguage={currentLanguage} t={t} isCategory={isCategory} articles={articles} categories={categories} category={category} activeItem={activeItem} onActiveItemChange={handleActiveItemChange} />
       {isCategory ? (
-        <CenterCategoryContent t={t} articles={articles} children={children} categories={categories} category={category} />
+        <CenterCategoryContent currentLanguage={currentLanguage} t={t} articles={articles} children={children} categories={categories} category={category} />
       ) : (
         <CenterArticleContent
           t={t}

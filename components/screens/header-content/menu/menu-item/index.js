@@ -6,7 +6,7 @@ import Box from "../nav/sub-components/box";
 
 import { StyledNavMenu, StyledMenuItemsWrapper } from "./styled-navmenu";
 
-const MenuItem = ({ heading, link, ...rest }) => {
+const MenuItem = ({ children, heading, ...rest }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
@@ -23,10 +23,10 @@ const MenuItem = ({ heading, link, ...rest }) => {
   };
 
   const windowCheck =
-    typeof window !== "undefined" && window.innerWidth <= 1190;
+    typeof window !== "undefined" && window.innerWidth <= 1050;
 
   useEffect(() => {
-    if (window.innerWidth <= 1190) {
+    if (window.innerWidth <= 1050) {
       setShowMenu(false);
     }
   }, []);
@@ -42,22 +42,42 @@ const MenuItem = ({ heading, link, ...rest }) => {
     resizeWindow();
     window.addEventListener("resize", resizeWindow);
     return () => window.removeEventListener("resize", resizeWindow);
-  }, []);
+  }, [windowWidth, windowHeight]);
 
   return (
     <StyledNavMenu
       className="nav-item"
       {...rest}
+      onMouseLeave={handleLeaveMenu}
     >
-      <Link href={link}>
-        <Heading
-          className="heading-nav-item"
-          label={heading}
-          level={2}
-        />
-      </Link>
+      <Heading
+        className="heading-nav-item"
+        label={heading}
+        as="span"
+        level={2}
+        onClick={toggleMenu}
+        onMouseEnter={handleHoverMenu}
+      />
+      {(windowCheck ? showMobileMenu : showMenu) && (
+        <>
+          <StyledMenuItemsWrapper
+            isOpen={showMobileMenu}
+            className="menu-items-wrapper"
+          >
+            {windowCheck && (
+              <Heading
+                className="mobile-heading-nav-item"
+                label={heading}
+                onClick={toggleMenu}
+              />
+            )}
+            {children}
+          </StyledMenuItemsWrapper>
+        </>
+      )}
     </StyledNavMenu>
   );
 };
+
 
 export default MenuItem;

@@ -11,6 +11,7 @@ const CenterCategoryContent = ({
   categories,
   category,
   children,
+  currentLanguage
 }) => {
   const catData = categories?.find(
     (it) => it.attributes.slug_id === category
@@ -32,7 +33,7 @@ const CenterCategoryContent = ({
       <Text>{catData?.description}</Text>
       {artData.map((it, index) => {
         return (
-          <CategoryItem data={it} key={index} t={t} />
+          <CategoryItem data={it} key={index} t={t} currentLanguage={currentLanguage} />
         );
       })}
       {children}

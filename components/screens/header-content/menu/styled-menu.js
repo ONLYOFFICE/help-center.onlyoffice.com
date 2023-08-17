@@ -2,38 +2,46 @@ import styled, { css } from "styled-components";
 import { device } from "@components/utils/devices";
 
 const StyledMenuTablet = css`
-  padding: 0 48px;
+  //padding: 0 48px;
+  padding: 0 16px;
+  height: 58px;
+  grid-template-columns: 20px 1fr auto 50px;
 
-  > a {
+  /* > a {
     margin: 0 auto;
-  }
+  } */
 
   .site-logo {
-    width: 35px;
+    //width: 35px;
     height: 32px;
-    padding: 20px 0;
+    width: 50px;
+    //padding: 20px 0;
+    padding: 13px 0;
+    //margin-left: 10px;
+    margin-left: -16px;
   }
 
-  @media ${device.tablet} {
+ // @media ${device.tablet} {
     .nav-items-mobile {
       display: block;
       grid-column-start: 1;
       grid-column-end: 2;
       grid-row-start: 1;
       grid-row-end: 1;
+      padding-top: 6px;
       div {
         svg {
           rect {
-            fill: ${(props) => (props.template ? "black" : "white")};
+            fill: ${(props) => (!props.template ? "#666" : "white")};
           }
         }
       }
       cursor: pointer;
     }
-    .site-logo {
+    /* .site-logo {
       width: 186px;
-    }
-  }
+    } */
+  //}
 
   @media ${device.tabletS} {
   height: 56px;
@@ -45,11 +53,36 @@ const StyledMenuTablet = css`
     }
   }
 
-  @media ${device.mobileL} {
-    grid-template-columns: 1fr 1fr 2fr auto 2fr 1fr 1fr;
-    height: 56px;
-    padding: 0;
-    .nav-item-lng {
+  //@media ${device.mobileL} {
+    @media (max-width: 500px) {
+      height: fit-content;
+      padding: 0;
+      grid-template-rows: 48px 58px;
+      grid-template-columns: 50px 1fr 50px;
+    .link {
+      grid-column-start: 1;
+      grid-column-end: 4;
+      grid-row-start: 1;
+      grid-row-end: 1; 
+      width: 100%;
+      > button {
+        height: 48px;
+        width: 100%;
+      }
+  }
+  a,
+  .language-selector,
+  .nav-items-mobile {
+    grid-row-start: 2;
+    grid-row-end: 2; 
+  }
+  .nav-items-mobile {
+    padding-left: 16px;
+  }
+    //grid-template-columns: 1fr 1fr 2fr auto 2fr 1fr 1fr;
+    //height: 56px;
+    //padding: 0;
+    /* .nav-item-lng {
       grid-column-start: 6;
       grid-column-end: 7;
       grid-row-start: 2;
@@ -66,11 +99,11 @@ const StyledMenuTablet = css`
       grid-column-end: 3;
       grid-row-start: 2;
       grid-row-end: 2;
-    }
+    } */
 
     .site-logo {
       margin: 0 auto;
-      background: url(../images/logo/logo-mobile.svg) no-repeat 20px 50%;
+      //background: url(../images/logo/logo-mobile.svg) no-repeat 20px 50%;
     }
   }
 `;
@@ -80,17 +113,33 @@ const StyledMenu = styled.div`
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto 1fr auto;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr auto 106px;
   -ms-grid-rows: 1fr;
   grid-template-rows: 1fr;
   margin: 0 auto;
-  padding: 0 160px;
+  //padding: 0 160px;
+  padding: 0 40px;
   box-sizing: border-box;
   height: 72px;
   font-size: 12px;
-  color: #fff;
-  background-color: #333;
+  color: #333;
+  background-color: #fff;
   transition: 0.3s;
+  column-gap: 5vw;
+    @media screen and (max-width: 1550px) {
+      column-gap: 30px;
+    }
+  .menu-box {
+    justify-content: end;
+    @media screen and (max-width: 1550px) {
+      justify-content: start;
+    }
+  }
+
+  .nav-btn {
+      height: 48px;
+      font-size: 14px;
+  }
 
   .nav-item-logo {
     grid-column-start: 1;
@@ -98,20 +147,15 @@ const StyledMenu = styled.div`
     display: unset;
   }
 
-  .nav-item-links {
-    .nav-item .heading-nav-item {
-      color: #fff;
-      &:hover {
-        color: #ff6f3d;
-      }
-    }
-  }
-
   .site-logo {
-    background: url(../images/logo/logowhite.svg) no-repeat 0 50%;
+    background: url(../images/logo/logonew.svg) no-repeat 0 50%;
     position: relative;
     width: 186px;
-    height: 34px;
+    height: 40px;
+    @media screen and (max-width: 1550px) {
+      width: 50px;
+      margin-left: 60px;
+    }
   }
 
   .nav-item-lng {
@@ -130,9 +174,21 @@ const StyledMenu = styled.div`
     padding: 0 2vw;
   }
 
-  @media ${device.laptopM} {
+  //@media ${device.laptopM} {
+  @media (max-width: 1190px) {
     ${StyledMenuTablet};
   }
 `;
 
-export { StyledMenu };
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); // Dark transparent color
+  z-index: 999; // Make sure it's above other content
+  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+`;
+
+export { StyledMenu, Overlay };

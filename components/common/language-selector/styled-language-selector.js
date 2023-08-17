@@ -4,10 +4,12 @@ import { device } from "@components/utils/devices";
 export default styled.div`
   display: flex;
   align-items: center;
-  width: 36px;
+  //width: 36px;
+  width: 103px;
   position: relative;
   outline: none;
   -webkit-tap-highlight-color: transparent;
+  gap: 8px;
 
   .arrow-image,
   .flag-image {
@@ -16,15 +18,20 @@ export default styled.div`
     -webkit-tap-highlight-color: transparent;
   }
   .arrow-image {
-    margin-top: 8px;
     outline: none;
     -webkit-tap-highlight-color: transparent;
+    height: 12px;
+    width: 12px;
+
+    > img {
+      transform: rotate(90deg);
+    }
   }
 
   .lang-name {
     font-size: 13px;
-    padding-left: 10px;
     cursor: pointer;
+    overflow: unset;
   }
 
   @media ${device.laptopM} {
@@ -33,46 +40,53 @@ export default styled.div`
     }
   }
 
-  @media ${device.mobileL} {
+  @media (max-width: 1190px) {
+    width: 50px;
+  }
+
+  /* @media ${device.mobileL} {
     width: 44px;
     grid-template-columns: 18px 24px;
-  }
+  } */
 `;
 
 const StyledPanelView = styled.div`
   position: absolute;
   display: ${(props) => (props.isOpen ? "block" : "none")};
   width: max-content;
-  max-width: 36px;
+  //max-width: 36px;
   background-color: white;
   box-shadow: 0 1px 1px rgb(0 0 0 / 20%);
   z-index: 100;
   padding: 6px 12px;
   top: 40px;
   left: -13%;
+  width: 106px;
 
   @media ${device.laptopM} {
-    left: 30%;
+    //left: 30%;
+    width: 21px;
   }
 
-  @media ${device.mobileL} {
+  /* @media ${device.mobileL} {
     left: 0;
-  }
+  } */
 `;
 
 const StyledItem = styled.div`
+  display: flex;
   outline: none;
   -webkit-tap-highlight-color: transparent;
   .language-item-image {
-    height: 18px;
     margin-top: -1px;
   }
   .language-item-link {
     align-items: center;
     display: flex;
     height: 30px;
-    width: 18px;
+    //width: 18px;
     text-decoration: none;
+    gap: 12px;
   }
 
   .language-item-title {
@@ -85,7 +99,9 @@ const StyledItem = styled.div`
 
   @media ${device.laptopM} {
     .language-item-link {
-      width: 20px;
+      //width: 20px;
+      width: 21px;
+      justify-content: space-evenly;
     }
   }
 `;

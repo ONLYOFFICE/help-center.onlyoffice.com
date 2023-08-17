@@ -17,7 +17,7 @@ const Index = ({ locale, categories, articles }) => {
   
   return (
     <Layout>
-      <Layout.PageHead>
+      {/* <Layout.PageHead>
       <HeadSEO
           title={t("titleIndexPage")}
           metaSiteNameOg={t("metaSiteNameOg")}
@@ -36,7 +36,7 @@ const Index = ({ locale, categories, articles }) => {
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />
-      </Layout.PageFooter>
+      </Layout.PageFooter> */}
     </Layout>
   );
 };

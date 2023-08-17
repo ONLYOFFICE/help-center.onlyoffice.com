@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 14"><defs><style>.cls-1{fill:#2c945d;}.cls-2{fill:#f5f5f5;}.cls-3{fill:#ff4b55;}.cls-4{fill:#b5b5b5;}</style></defs><title>13</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><g id="_13" data-name="13"><path class="cls-1" d="M6,13H1.3a.27.27,0,0,1-.3-.3V1.3A.27.27,0,0,1,1.3,1H6Z"/><path class="cls-2" d="M12,1H6.3V13H12Z"/><path class="cls-3" d="M17.1,13H12V1h5.1a.27.27,0,0,1,.3.3V12.7Q17.25,13,17.1,13Z"/><path class="cls-4" d="M17,1V13H1V1Zm0-1H1A.94.94,0,0,0,0,1V13a.94.94,0,0,0,1,1H17a.94.94,0,0,0,1-1V1A.94.94,0,0,0,17,0Z"/></g></g></g></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 18.0002H4.3C4.1 18.0002 4 17.9002 4 17.7002V6.30025C4 6.10025 4.1 6.00024 4.3 6.00024H9V18.0002Z" fill="#73AF00"/>
+<path d="M15 6.00024H9.29999V18.0002H15V6.00024Z" fill="#F5F5F5"/>
+<path d="M20.1 18.0002H15V6.00024H20.1C20.3 6.00024 20.4 6.10025 20.4 6.30025V17.7002C20.3 17.9002 20.2 18.0002 20.1 18.0002Z" fill="#FF4B55"/>
+<path d="M20 6.00024V18.0002H4V6.00024H20ZM20 5.00024H4C3.4 5.00024 3 5.40024 3 6.00024V18.0002C3 18.6002 3.4 19.0002 4 19.0002H20C20.6 19.0002 21 18.6002 21 18.0002V6.00024C21 5.40024 20.6 5.00024 20 5.00024Z" fill="#B5B5B5"/>
+</svg>

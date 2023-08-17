@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { StyledItem, StyledPanelView } from "./styled-language-selector";
 import Link from 'next/link'
 import languages from "@config/languages";
+import Text from "../text";
 
 export default function LangsList(props) {
   const { t, isOpen, currentLanguage, onCloseSelector } = props;
@@ -49,9 +50,11 @@ export default function LangsList(props) {
             <img
               src={`/images/flags/${iconName}`}
               alt={key}
-              width="18px"
+              width="24px"
+              height="24px"
               className="language-item-image"
             />
+            <Text className="language-item-title">{language.name}</Text>
           </Link>
         </StyledItem>
       );

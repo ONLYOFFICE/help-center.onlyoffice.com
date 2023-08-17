@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getAllArticles from "@lib/strapi/getArticles";
-import getAllCategories from "@lib/strapi/getCategories";
+import categories from "@lib/strapi/getCategories";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
@@ -24,7 +24,7 @@ const SinglePage = ({ locale, articles, categories }) => {
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} />
+        <HeadingContent t={t} template={false} currentLanguage={locale} articles={articles.data} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <SingleContent t={t} currentLanguage={locale} articles={articles.data} />
@@ -43,8 +43,7 @@ export const getServerSideProps = async ({ locale }) => {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      articles,
-      categories
+      articles
     },
   };
 };

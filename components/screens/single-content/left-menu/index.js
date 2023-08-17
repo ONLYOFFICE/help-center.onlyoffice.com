@@ -2,10 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import StyledLeftMenu from "./styled-left-menu";
 import InternalLink from "@components/common/internal-link";
 import items from "./data/items";
-import MiniSearch from "./sub-components/search";
 import Heading from "@components/common/heading";
 
-const LeftMenu = ({ t, isCategory, articles, category, categories, activeItem, onActiveItemChange, ...rest }) => {
+const LeftMenu = ({ t, isCategory, articles, category, categories, activeItem, onActiveItemChange, currentLanguage, ...rest }) => {
   const leftMenu = useRef();
   const catData = isCategory && categories.find(
     (it) => it.attributes.slug_id === category
@@ -32,46 +31,23 @@ const LeftMenu = ({ t, isCategory, articles, category, categories, activeItem, o
 
     headingElements.forEach((heading) => {
       const text = heading.textContent;
-      const id = text.replace(/\W/g, '').toLowerCase() + '_block';
       const item = {
-        id,
+        id: heading.parentElement.id,
         text,
       };
       items.push(item);
-      heading.parentElement.id = id;
     });
     // not works bc of wrong articl id's
-    // items.sort((a, b) => {
-    //   const aIndex = Array.from(headingElements).indexOf(document.getElementById(a.id).querySelector('h4, h5'));
-    //   const bIndex = Array.from(headingElements).indexOf(document.getElementById(b.id).querySelector('h4, h5'));
-    //   return aIndex - bIndex;
-    // });
+    items.sort((a, b) => {
+      const aIndex = Array.from(headingElements).indexOf(document.getElementById(a.id).querySelector('h4, h5'));
+      const bIndex = Array.from(headingElements).indexOf(document.getElementById(b.id).querySelector('h4, h5'));
+      return aIndex - bIndex;
+    });
 
     setMenuItems(items);
   }, [articles]);
 
-
   // menu highlight
-  // useEffect(() => {
-  //   const headings = document.querySelectorAll('h4, h5');
-
-  //   const handleScroll = () => {
-  //     const topHeading = Array.from(headings).find((heading) => {
-  //       const rect = heading.getBoundingClientRect();
-  //       return rect.top >= 0 && rect.top <= window.innerHeight;
-  //     });
-  //     if (topHeading) {
-  //       const activeItem = {
-  //         id: topHeading.parentElement.id,
-  //         text: topHeading.textContent,
-  //       };
-  //       onActiveItemChange(activeItem);
-  //     }
-  //   };
-
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => window.removeEventListener('scroll', handleScroll);
-  // }, [onActiveItemChange]);
   useEffect(() => {
     const headings = document.querySelectorAll('h4, h5');
 
@@ -100,11 +76,14 @@ const LeftMenu = ({ t, isCategory, articles, category, categories, activeItem, o
     return () => window.removeEventListener('scroll', handleScroll);
   }, [onActiveItemChange]);
 
+  // for release
+  const hrefLang = `https://helpcenter.onlyoffice.com${currentLanguage === "en" ? "" : `/${currentLanguage}`
+    }`;
 
   return (
     <StyledLeftMenu ref={leftMenu}>
       <div className="lm-wrap">
-        <MiniSearch />
+        {/* <MiniSearch /> */}
         {isCategory ? <>
           <Heading level={6}>{catData.name}</Heading>
           <ul>
@@ -138,7 +117,7 @@ const LeftMenu = ({ t, isCategory, articles, category, categories, activeItem, o
         <ul className="stat">
           {items.map((link, index) => (
             <li key={index}>
-              <InternalLink href={link.href} className={link.className}>
+              <InternalLink href={hrefLang + link.href} className={link.className}>
                 {link.label}
               </InternalLink>
             </li>

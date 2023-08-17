@@ -29,7 +29,7 @@ const ConnectorsPage = ({ locale, articles, videos, categories }) => {
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} />
+        <HeadingContent t={t} template={false} currentLanguage={locale} articles={articles.data} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <SingleContent t={t} currentLanguage={locale} articles={articles.data} categories={categories.data} category={"connectors"} isCategory={true}>
