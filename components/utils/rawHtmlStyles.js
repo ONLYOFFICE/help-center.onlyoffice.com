@@ -462,8 +462,7 @@ const RawHtmlStyle = styled.div`
     img.bigphoto_screen {
       display: none;
     }
-
-    @media ${device.tabletS} {
+    @media ${device.tabletL} {
       img.bigphoto_screen {
         display: block;
         margin: 16px 0;
@@ -472,6 +471,9 @@ const RawHtmlStyle = styled.div`
       img.screen_guides {
         display: none;
       }
+    }
+
+    @media ${device.tabletS} {
       img[target] {
         width: 100%;
       }

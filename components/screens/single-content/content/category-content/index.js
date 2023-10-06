@@ -13,6 +13,7 @@ const CenterCategoryContent = ({
   children,
   currentLanguage
 }) => {
+  
   const catData = categories?.find(
     (it) => it.attributes.slug_id === category
   )?.attributes;

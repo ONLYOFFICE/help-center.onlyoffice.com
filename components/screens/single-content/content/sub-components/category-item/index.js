@@ -6,6 +6,7 @@ import StyledCategoryItem from "./styled-category-item";
 import ReactHtmlParser from "react-html-parser";
 import info from "@public/images/icons/info.react.svg";
 import video from "@public/images/icons/video.svg";
+import gs from "@public/images/icons/start.svg";
 import RawHtmlStyle from "@components/utils/rawHtmlStyles";
 
 const CategoryItem = ({
@@ -22,7 +23,6 @@ const CategoryItem = ({
     container.innerHTML = htmlString;
     const h4Elements = container.querySelectorAll('h4');
     const h4Links = Array.from(h4Elements)
-      .slice(0, 2)
       .map((element) => ({
         text: element.textContent,
         href: data.attributes.url + "#" + element.parentElement.id,
@@ -30,6 +30,27 @@ const CategoryItem = ({
     setH4List(h4Links);
   }, [htmlString]);
 
+  const [h5List, setH5List] = useState([]);
+
+  useEffect(() => {
+    const container = document.createElement('div');
+    container.innerHTML = htmlString;
+
+    // Find the div element with an id starting with "connectingonlyofficedocsto"
+    const connectingDiv = container.querySelector('div[id^="connectingonlyofficedocsto"]');
+
+    if (connectingDiv) {
+      const h5Elements = connectingDiv.querySelectorAll('h5');
+      const h5Links = Array.from(h5Elements).map((element) => ({
+        text: element.textContent,
+        href: data.attributes.url + "#" + element.parentElement.id,
+      }));
+      setH5List(h5Links);
+    }
+  }, [htmlString]);
+
+  const gsItem = h4List.find(item => item.href.includes(t('startusingonlyofficedocs')));
+  const catUrlGS = gsItem ? gsItem.href : null;
   const aboutItem = h4List.find(item => item.href.includes(t('about')));
   const catUrlAbout = aboutItem ? aboutItem.href : null;
   const catUrlVideo = data?.attributes.url + "#watchvideo";
@@ -38,12 +59,14 @@ const CategoryItem = ({
     <StyledCategoryItem>
       <Heading level={4}><Link href={data.attributes.url}>{data.attributes.title}</Link><img src={categoryPic?.attributes.url} /></Heading>
       <div className="main_links">
+        {catUrlGS && <><img src={gs.src} /><Link href={catUrlGS}>{t("GettingStarted")}</Link></>}
         {catUrlAbout && <><img src={info.src} /><Link href={catUrlAbout}>{t("About")}</Link></>}
         {catVideo > 0 && <><img src={video.src} /><Link href={catUrlVideo}>{t("WatchVideo")}</Link></>}
       </div>
      <Text><RawHtmlStyle>{ReactHtmlParser(data.attributes.description)}</RawHtmlStyle></Text> 
+     <Heading level={5}>{t("Connecting")}</Heading>
      <ul>
-        {h4List.map((link, index) => (
+        {h5List.map((link, index) => (
           <li key={index}>
             <a href={currentLanguage === "en" ? link.href : `/${link.href}`}>{link.text}</a>
           </li>

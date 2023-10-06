@@ -36,6 +36,10 @@ const StyledCategoryItem = styled.div`
     }
 }
 
+> h5 {
+    padding: 16px 0 0;
+}
+
  > span {
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
@@ -51,7 +55,7 @@ const StyledCategoryItem = styled.div`
     > a { 
         display: flex;
         > span {
-            line-height: 14px;
+            line-height: 16px;
             text-decoration: none;
         }
     }

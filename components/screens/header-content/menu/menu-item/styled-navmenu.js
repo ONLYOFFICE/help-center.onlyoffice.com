@@ -138,6 +138,10 @@ const StyledNavMenu = styled.div`
       font-weight: 400;
       padding: 8px 40px;
     }
+
+    &:hover {
+      color: #ff6f3d;
+    }
   }
 
   .outer-box {

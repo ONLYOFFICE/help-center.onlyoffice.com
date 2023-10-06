@@ -1,10 +1,11 @@
 {
   "GoToHomePage": "GO TO HOME PAGE",
   "WelcomeToHelpCenter": "Willkommen im Hilfe-Center",
-  "ArticleWithTag": "Artikel zum Thema:",
   "HereAreTheBaseTerms": "Hier finden Sie die Grundbegriffe, die in der ONLYOFFICE-Bedienfläche und Dokumentation verwendet werden.",
   "All": "Alle",
   "BrowseAllTags": "Alle Schlagwörter",
   "about": "über",
-  "About": "Über"
+  "About": "Über",
+  "ArticleWithThe": "Artikel zum Thema: ",
+  "Tag:": ""
 }

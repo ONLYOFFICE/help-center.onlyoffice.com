@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import Slider from "react-slick";
@@ -7,6 +7,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 import StyledCarousel from "./carousel-styled";
 import VideoItem from "@components/screens/single-content/video/sub-components/video-item";
+
+import arrowImage from '@public/images/icons/slideshow_next-prev.svg';
 
 const Carousel = ({
   t,
@@ -19,17 +21,42 @@ const Carousel = ({
   description,
   ...rest
 }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const CustomPrevArrow = ({ onClick }) => (
+    <button onClick={onClick} className={`cust-arr prev ${currentSlide === 0 ? 'disabled' : ''}`}>
+      <img src={arrowImage.src} alt="Previous" />
+    </button>
+  );
+  const CustomNextArrow = ({ onClick }) => (
+    <button onClick={onClick} className={`cust-arr next ${
+      currentSlide === settings.slidesToShow - 1 ? 'disabled' : ''
+    }`}>
+      <img src={arrowImage.src} alt="Next" />
+    </button>
+  );
   const settings =  {
-    infinite: true,
+    infinite: false,
     slidesToShow: 2,
     slidesToScroll: 1,
     vertical: true,
     verticalSwiping: true,
-    autoplay: true,
+    autoplay: false,
     speed: 1000,
-    autoplaySpeed: 2000,
-    pauseOnHover: true,
-    arrows: true
+    arrows: true,
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
+    beforeChange: (current, next) => {
+      setCurrentSlide(next);
+    },
+    responsive: [
+      {
+        breakpoint: 1025,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   const sliders = items.map((item, idx) => (
@@ -39,7 +66,7 @@ const Carousel = ({
       data={item}
     />
   ));
-
+  
   return (
     <StyledCarousel arrows={isArrows} {...rest}>
       <Slider {...settings}>{sliders}</Slider>

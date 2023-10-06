@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-
 import Heading from "@components/common/heading";
-import Link from "@components/common/internal-link";
-import Box from "../nav/sub-components/box";
-
 import { StyledNavMenu, StyledMenuItemsWrapper } from "./styled-navmenu";
 
 const MenuItem = ({ children, heading, ...rest }) => {

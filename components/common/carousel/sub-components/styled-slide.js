@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import VideoPlay from "@public/images/icons/video.png"
 
 const StyledSlide = styled.div`
   .video-image{
@@ -12,26 +11,9 @@ const StyledSlide = styled.div`
     width: 246px;
     z-index: 100;
     position: relative;
-
-    &:before{
-      content: '';
-      background-image: url(${VideoPlay});
-      background-position: 0 0;
-      background-repeat: no-repeat;
-      display: block;
-      height: 88px;
-      width: 88px;
-      margin: 0;
-      padding: 0;
-      position: absolute;
-      left: calc(50% - 44px);
-      top: calc(50% - 44px);
-      z-index: 50;
-    }
-
   }
 
-  .title-template{
+  .title-template {
     box-sizing: border-box;
     height: 60px;
     padding: 5px;

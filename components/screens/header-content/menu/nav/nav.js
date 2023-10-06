@@ -19,7 +19,6 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
   const hrefLang = `https://helpcenter.onlyoffice.com${currentLanguage === "en" ? "" : `/${currentLanguage}`
     }`;
     const connectorsArticles = articles.filter(article => article.attributes.category.data.attributes.slug_id === 'connectors');
-    console.log(connectorsArticles);
     const midIndex = Math.ceil(connectorsArticles.length / 2);
     connectorsArticles.sort((a, b) => a.attributes.title.localeCompare(b.attributes.title));
   return (

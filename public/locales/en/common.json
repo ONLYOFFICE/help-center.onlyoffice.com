@@ -93,7 +93,8 @@
   "Translation": "Translation",
   "ReportingIssues": "Reporting issues",
   "titleIndexPage": "ONLYOFFICE - Cloud Office Applications",
-  "ArticleWithTheTag": "Article with the tag:",
+  "ArticleWithThe": "Article with the ",
+  "Tag": " tag:",
   "MoreVideos": "More videos",
   "HereAreTheBaseTerms": "Here are the base terms which are used in the online office interface and documentation.",
   "All": "All",
@@ -103,5 +104,7 @@
   "DownloadFreeOpenSourceOO": "Download free and open source versions of ONLYOFFICE",
   "MoreArticles": "More articles",
   "Home": "Home",
-  "about": "about"
+  "about": "about",
+  "GettingStarted": "Getting started",
+  "Connecting": "Connecting"
 }
