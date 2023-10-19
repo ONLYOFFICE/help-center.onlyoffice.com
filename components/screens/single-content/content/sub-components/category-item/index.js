@@ -59,9 +59,9 @@ const CategoryItem = ({
     <StyledCategoryItem>
       <Heading level={4}><Link href={data.attributes.url}>{data.attributes.title}</Link><img src={categoryPic?.attributes.url} /></Heading>
       <div className="main_links">
-        {catUrlGS && <><img src={gs.src} /><Link href={catUrlGS}>{t("GettingStarted")}</Link></>}
-        {catUrlAbout && <><img src={info.src} /><Link href={catUrlAbout}>{t("About")}</Link></>}
-        {catVideo > 0 && <><img src={video.src} /><Link href={catUrlVideo}>{t("WatchVideo")}</Link></>}
+        <div>{catUrlGS && <><img src={gs.src} /><Link href={catUrlGS}>{t("GettingStarted")}</Link></>}</div>
+        <div>{catUrlAbout && <><img src={info.src} /><Link href={catUrlAbout}>{t("About")}</Link></>}</div>
+        <div>{catVideo > 0 && <><img src={video.src} /><Link href={catUrlVideo}>{t("WatchVideo")}</Link></>}</div>
       </div>
      <Text><RawHtmlStyle>{ReactHtmlParser(data.attributes.description)}</RawHtmlStyle></Text> 
      <Heading level={5}>{t("Connecting")}</Heading>

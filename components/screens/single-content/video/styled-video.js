@@ -2,10 +2,7 @@ import styled from "styled-components";
 import { device } from "@components/utils/devices";
 
 const StyledVideo = styled.div`
-padding: 24px 0 40px;
-margin: 24px 0;
-border-top: 1px solid #cccccc;
-border-bottom: 1px solid #cccccc;
+padding: 64px 0;
   .vids {
     align-items: start;
     background: #ffffff;

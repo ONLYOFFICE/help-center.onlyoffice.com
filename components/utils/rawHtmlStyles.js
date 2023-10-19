@@ -253,7 +253,7 @@ const RawHtmlStyle = styled.div`
 
     ol {
         line-height: 1.5em;
-        margin: 10px 0;
+        margin: 0px 0;
         padding: 0;
 
         > li {
@@ -301,7 +301,7 @@ const RawHtmlStyle = styled.div`
       color: #666;
       position: relative;
       border-radius: 3px;
-      margin: 16px 16px 16px 22px;
+      margin: 48px 0px 48px 22px;
       padding: 16px;
       font-size: 14px;
       line-height: 22px;
