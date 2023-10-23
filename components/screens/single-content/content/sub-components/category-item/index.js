@@ -37,7 +37,7 @@ const CategoryItem = ({
     container.innerHTML = htmlString;
 
     // Find the div element with an id starting with "connectingonlyofficedocsto"
-    const connectingDiv = container.querySelector('div[id^="connectingonlyofficedocsto"]');
+    const connectingDiv = container.querySelector(`div[id^="${t('ConnectingId')}"]`);
 
     if (connectingDiv) {
       const h5Elements = connectingDiv.querySelectorAll('h5');
@@ -49,9 +49,9 @@ const CategoryItem = ({
     }
   }, [htmlString]);
 
-  const gsItem = h4List.find(item => item.href.includes(t('startusingonlyofficedocs')));
+  const gsItem = h4List.find(item => item.href.includes(t('GettingStartedId')));
   const catUrlGS = gsItem ? gsItem.href : null;
-  const aboutItem = h4List.find(item => item.href.includes(t('about')));
+  const aboutItem = h4List.find(item => item.href.includes(t('AboutId')));
   const catUrlAbout = aboutItem ? aboutItem.href : null;
   const catUrlVideo = data?.attributes.url + "#watchvideo";
   const categoryPic = catPic?.find((it) => it.attributes.name === "connector_img.png");
@@ -59,9 +59,9 @@ const CategoryItem = ({
     <StyledCategoryItem>
       <Heading level={4}><Link href={data.attributes.url}>{data.attributes.title}</Link><img src={categoryPic?.attributes.url} /></Heading>
       <div className="main_links">
-        <div>{catUrlGS && <><img src={gs.src} /><Link href={catUrlGS}>{t("GettingStarted")}</Link></>}</div>
-        <div>{catUrlAbout && <><img src={info.src} /><Link href={catUrlAbout}>{t("About")}</Link></>}</div>
-        <div>{catVideo > 0 && <><img src={video.src} /><Link href={catUrlVideo}>{t("WatchVideo")}</Link></>}</div>
+        {catUrlGS && <div><img src={gs.src} /><Link href={catUrlGS}>{t("GettingStarted")}</Link></div>}
+        {catUrlAbout && <div><img src={info.src} /><Link href={catUrlAbout}>{t("About")}</Link></div>}
+        {catVideo > 0 && <div><img src={video.src} /><Link href={catUrlVideo}>{t("WatchVideo")}</Link></div>}
       </div>
      <Text><RawHtmlStyle>{ReactHtmlParser(data.attributes.description)}</RawHtmlStyle></Text> 
      <Heading level={5}>{t("Connecting")}</Heading>

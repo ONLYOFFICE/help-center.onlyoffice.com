@@ -9,10 +9,8 @@ import Video from "../../video";
 import ImagePopup from "../../image-popup";
 import RawHtmlStyle from "@components/utils/rawHtmlStyles";
 import DownloadArea from "../../download-area";
-import useWindowWidth from '@utils/helpers/useWindowProvider';
 
 const CenterArticleContent = ({ t, article, tags, videos, onActiveItemChange, currentLanguage }) => {
-  const windowWidth = useWindowWidth();
   const { articleTags, curVideos } = useMemo(() => {
     const tags = article?.attributes.tags?.data;
     const videos = article?.attributes.videos?.data.length;
@@ -69,7 +67,7 @@ const CenterArticleContent = ({ t, article, tags, videos, onActiveItemChange, cu
           </div>
           {curVideos > 0 && <Video t={t} items={article} videos={videos} />}
           <RawHtmlStyle onClick={handleImageClick}>{ReactHtmlParser(article?.attributes.content)}</RawHtmlStyle>
-          {windowWidth > 968 && <DownloadArea className="download-area" t={t} />}
+          <DownloadArea className="download-area" t={t} />
           <ArticlePopup
             t={t}
             active={modalActive}

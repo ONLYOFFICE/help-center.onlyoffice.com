@@ -1,11 +1,15 @@
 {
-  "GoToHomePage": "GO TO HOME PAGE",
-  "WelcomeToHelpCenter": "Willkommen im Hilfe-Center",
-  "HereAreTheBaseTerms": "Hier finden Sie die Grundbegriffe, die in der ONLYOFFICE-Bedienfläche und Dokumentation verwendet werden.",
-  "All": "Alle",
-  "BrowseAllTags": "Alle Schlagwörter",
-  "about": "über",
   "About": "Über",
+  "AboutId": "über",
+  "All": "Alle",
   "ArticleWithThe": "Artikel zum Thema: ",
-  "Tag:": ""
+  "BrowseAllTags": "Alle Schlagwörter",
+  "Connecting": "Connecting",
+  "ConnectingId": "verbinden",
+  "GettingStarted": "Getting started",
+  "GettingStartedId": "erste",
+  "GoToHomePage": "GO TO HOME PAGE",
+  "HereAreTheBaseTerms": "Hier finden Sie die Grundbegriffe, die in der ONLYOFFICE-Bedienfläche und Dokumentation verwendet werden.",
+  "Tag:": "",
+  "WelcomeToHelpCenter": "Willkommen im Hilfe-Center"
 }

@@ -3,7 +3,7 @@ import { device } from "@components/utils/devices";
 
 const StyledContent = styled.div`
   box-sizing: border-box;
-  padding: 32px 40px 112px 16px;
+  padding: 32px 40px 112px 32px;
   width: 100%;
   max-width: 861px;
   color: #333333;

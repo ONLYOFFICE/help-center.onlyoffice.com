@@ -113,6 +113,10 @@ const StyledNav = styled.nav`
     }
   }
 
+  .link_api{
+    text-decoration: none;
+  }
+
   .external-link {
     color: #333;
     text-decoration: none;

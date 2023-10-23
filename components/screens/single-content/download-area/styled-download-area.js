@@ -97,6 +97,10 @@ const StyledDownloadArea = styled.div`
       }
     }
   }
+
+  @media (max-width: 968px) {
+    display: none;
+  }
 `;
 
 export default StyledDownloadArea;

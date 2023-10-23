@@ -598,11 +598,11 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
               </Box>
             </Box>
           </MenuItem>
+          <a href={`https://api.onlyoffice.com/`} className="link_api">
           <MenuItem
             heading={t("Development")}
             id="navitem_development"
-            href={`https://api.onlyoffice.com/`}
-          />
+          /></a>
         </Box> </Box>
     </StyledNav>
   );

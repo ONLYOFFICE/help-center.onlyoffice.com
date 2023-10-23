@@ -220,13 +220,22 @@ const RawHtmlStyle = styled.div`
       margin: 0;
     }
 
+    ol {
+      > li > ul {
+        padding: 8px 0 0;
+      }
+    }
+
     ul {
       list-style-type: disc;
-      margin: 0 0 24px;
+      margin: 0;
 
       li {
         margin: 0 0 0 22px;
         line-height: 22px;
+            &:last-child {
+              padding-bottom: 8px;
+            }
       }
 
       &.ul-category {
@@ -257,7 +266,10 @@ const RawHtmlStyle = styled.div`
         padding: 0;
 
         > li {
-            margin: 8px 0 8px 16px;
+            margin: 0px 0 0px 16px;
+            &:last-child {
+              padding-bottom: 8px;
+            }
         }
     }
 
@@ -273,13 +285,10 @@ const RawHtmlStyle = styled.div`
     }
 
     .gs_content {
-      border-bottom: 1px solid #d1dce2;
       height: auto;
       margin: 24px 0 0;
-      padding-bottom: 30px;
       &:last-child {
         border-bottom: 0px;
-        padding-bottom: 0px;
       }
     }
 
@@ -293,7 +302,7 @@ const RawHtmlStyle = styled.div`
     }
 
     .PortalHelp {
-        padding: 8px 0 0;
+        padding: 0;
     }
 
     .notehelp {
@@ -395,7 +404,7 @@ const RawHtmlStyle = styled.div`
         "DejaVu Sans Mono", Monaco, Consolas, monospace;
       border: 0;
       font-size: 14px;
-      margin: 10px 0;
+      margin: 24px 0;
       line-height: 18px;
       white-space: pre-wrap;
       word-wrap: break-word;
@@ -450,9 +459,9 @@ const RawHtmlStyle = styled.div`
       cursor: pointer;
       display: inline-block;
       height: auto;
-      margin: 16px 0;
+      margin: 24px 0;
       position: relative;
-      width: 350px;
+      width: 352px;
     }
 
     img {

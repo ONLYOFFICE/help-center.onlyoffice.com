@@ -1,5 +1,12 @@
 {
-  "ArticleWithThe": "Articles avec le tag ",
-  "Tag:": " :",
+  "About": "À propos",
+  "AboutId": "apropos",
   "All": "Tout",
+  "ArticleWithThe": "Articles avec le tag ",
+  "BrowseAllTags": "Parcourir tous les tags",
+  "Connecting": "Connecting",
+  "ConnectingId": "connecter",
+  "GettingStarted": "Getting started",
+  "GettingStartedId": "commencer",
+  "Tag:": " :"
 }
