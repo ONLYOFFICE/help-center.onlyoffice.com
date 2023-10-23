@@ -138,6 +138,10 @@ const StyledNavMenu = styled.div`
       font-weight: 400;
       padding: 8px 40px;
     }
+
+    &:hover {
+      color: #ff6f3d;
+    }
   }
 
   .outer-box {
@@ -180,6 +184,12 @@ const StyledNavMenu = styled.div`
 
   //@media (max-width: 1150px) {
     @media (max-width: 1190px) {
+      &#navitem_features {
+      position: unset;
+      > .menu-items-wrapper {
+        left: 0px;
+      }
+    }
     .heading-nav-item {
       cursor: pointer;
       //font-size: 18px;
@@ -221,10 +231,11 @@ const StyledNavMenu = styled.div`
     }
 
     .outer-box {
-      padding: 24px;
+      //padding: 24px;
+      padding: 16px 0;
 
       &:first-child {
-        padding-top: 32px;
+        //padding-top: 32px;
       }
 
       &:last-child {

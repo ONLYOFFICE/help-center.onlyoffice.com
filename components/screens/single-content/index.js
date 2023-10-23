@@ -6,6 +6,7 @@ import CenterCategoryContent from "./content/category-content";
 
 const SingleContent = ({
   t,
+  article,
   articles,
   children,
   tags,
@@ -23,21 +24,46 @@ const SingleContent = ({
   const handleActiveItemChange = (item) => {
     setActiveItem(item);
   };
+
+  const articleProps = {
+    article,
+    tags,
+    isTagPage,
+    videos,
+    handleActiveItemChange,
+    currentLanguage,
+    children,
+    t,
+  };
+  const menuProps = {
+    article,
+    articles,
+    categories,
+    isCategory,
+    category,
+    handleActiveItemChange,
+    currentLanguage,
+    children,
+    t,
+    activeItem,
+  };
+  const categoryProps = {
+    articles,
+    handleActiveItemChange,
+    currentLanguage,
+    children,
+    t,
+    category,
+    categories,
+  };
+
   return (
     <StyledSingleContent {...rest}>
-      <LeftMenu currentLanguage={currentLanguage} t={t} isCategory={isCategory} articles={articles} categories={categories} category={category} activeItem={activeItem} onActiveItemChange={handleActiveItemChange} />
+      <LeftMenu { ...menuProps} />
       {isCategory ? (
-        <CenterCategoryContent currentLanguage={currentLanguage} t={t} articles={articles} children={children} categories={categories} category={category} />
+        <CenterCategoryContent { ...categoryProps} />
       ) : (
-        <CenterArticleContent
-          t={t}
-          articles={articles}
-          children={children}
-          tags={tags}
-          isTagPage={isTagPage}
-          videos={videos}
-          onActiveItemChange={handleActiveItemChange}
-        />
+        <CenterArticleContent { ...articleProps} />
       )}
     </StyledSingleContent>
   );

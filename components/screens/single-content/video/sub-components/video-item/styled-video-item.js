@@ -3,13 +3,23 @@ import { device } from "@components/utils/devices";
 
 const StyledVideoItem = styled.div`
   cursor: pointer;
-
+  //display: flex;
+  //flex-direction: column;
+  //gap: 16px;
+  
   iframe {
     aspect-ratio: 1.79;
+    border: none;
+    width: 100%;
   }
 
   h5 {
+    font-size: 12px;
     cursor: unset;
+    line-height: 1.33em;
+    &.main {
+      font-size: 14px;
+    }
   }
 
    span {
@@ -19,10 +29,41 @@ const StyledVideoItem = styled.div`
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+    padding-top: 16px;
+  }
+
+  &.single {
+    iframe {
+      aspect-ratio: 2.87;
+    }
   }
   @media ${device.laptop} {
-    iframe {
-      width: 46vw;
+    &.main.single {
+      display: block;
+      iframe {
+        width: 100%;
+      }
+    }
+    &.main {
+      display: none;
+    }
+  }
+  @media ${device.tablet} {
+    &.single {
+      iframe {
+        aspect-ratio: 1.79;
+      }
+    }
+  }
+  @media ${device.tabletS} {
+    h5 {
+      font-size: 14px;
+      &.main {
+        font-size: 13px;
+      }
+    }
+    span {
+      font-size: 13px;
     }
   }
 `;

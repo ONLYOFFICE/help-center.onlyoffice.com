@@ -12,7 +12,6 @@ import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import SingleContent from "@components/screens/single-content";
 import HeadSEO from "@components/screens/head-content";
-import DownloadArea from "@components/screens/single-content/download-area";
 
 const articlePage = ({ locale, articles, videos, tags, categories }) => {
   const { t } = useTranslation();
@@ -42,13 +41,12 @@ const articlePage = ({ locale, articles, videos, tags, categories }) => {
         <SingleContent
           t={t}
           currentLanguage={locale}
-          articles={pageData}
+          article={pageData}
+          articles={articles.data}
           tags={tags.data}
           isCategory={false} 
           videos={videos.data}
-        >
-          <DownloadArea className="download-area" t={t} />
-        </SingleContent>
+        />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />

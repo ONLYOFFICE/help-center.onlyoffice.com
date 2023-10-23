@@ -5,7 +5,7 @@ import Carousel from "@components/common/carousel";
 const VideoCarousel = ({ t, items }) => {
     return(
         <StyledVideo>
-            <Carousel isArrows={true} items={items}></Carousel>
+            <Carousel isArrows={items.length > 2 ? true : false} items={items}></Carousel>
         </StyledVideo>
     )
 }

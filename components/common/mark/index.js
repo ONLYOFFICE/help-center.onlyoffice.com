@@ -17,9 +17,6 @@ const Mark = ({
 };
 
 Mark.propTypes = {
-  /** The mark type */
-  type: PropTypes.oneOf(["saas", "videoguide", "controlpanel", "onlineeditors", "iosmobileapp", "androidmobileapp", "serverdocker", "serverall", "serverwindows",
-  "iosweb", "androidweb",  "integration", "faq", "serverlinux", "desktopall"]),
   /** Text color */
   color: PropTypes.string,
   /** Text font-size */

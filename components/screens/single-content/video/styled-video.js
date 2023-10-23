@@ -2,18 +2,21 @@ import styled from "styled-components";
 import { device } from "@components/utils/devices";
 
 const StyledVideo = styled.div`
-padding: 24px 0 40px;
-margin: 24px 0;
-border-top: 1px solid #cccccc;
-border-bottom: 1px solid #cccccc;
+padding: 64px 0;
   .vids {
     align-items: start;
     background: #ffffff;
     box-shadow: 0px 7px 25px rgba(85, 85, 85, 0.15);
     border-radius: 2px;
-    height: 434px;
+    max-height: 414px;
+    height: 100%;
+    aspect-ratio: 1.9;
     gap: 32px;
     padding: 32px;
+
+    &.single {
+      display: block;
+    }
   }
 
   h4 {
@@ -21,6 +24,15 @@ border-bottom: 1px solid #cccccc;
   }
 
   @media ${device.laptop} {
+    .vids {
+      aspect-ratio: 1.6;
+      padding: 16px 32px;
+      &.single {
+        aspect-ratio: 1.9;
+        max-height: fit-content;
+        padding: 32px;
+      }
+    }
   }
 `;
 

@@ -6,7 +6,6 @@ const StyledCategoryItem = styled.div`
     margin: 24px 0 0;
     padding: 32px;
     background: #FFFFFF;
-    border: 1px solid #EFEFEF;
     box-shadow: 0px 7px 25px rgb(85 85 85 / 15%);
     border-radius: 3px;
     color: #333333;
@@ -36,6 +35,10 @@ const StyledCategoryItem = styled.div`
     }
 }
 
+> h5 {
+    padding: 16px 0 0;
+}
+
  > span {
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
@@ -46,14 +49,18 @@ const StyledCategoryItem = styled.div`
  .main_links {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 16px 0;
+    gap: 32px;
+    padding: 32px 0 16px;
+    > div {
+        display: flex;
+        gap: 8px;
     > a { 
         display: flex;
         > span {
-            line-height: 14px;
+            line-height: 16px;
             text-decoration: none;
         }
+    }
     }
  }
 
@@ -62,8 +69,9 @@ const StyledCategoryItem = styled.div`
     padding: 16px 0 0;
 
     li {
-        padding: 0 0 10px;
+        padding: 0 0 16px;
         a {
+            color: #333333;
             text-decoration: none;
         }
     }

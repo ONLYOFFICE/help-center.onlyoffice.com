@@ -13,16 +13,15 @@ const currentYear = date.getFullYear();
 
 const Footer = ({ t, language }) => {
   const POSITION_ELEMENTS_ITEM = [1, 2, 3, 4];
+  const onlyoffice = `https://www.onlyoffice.com${language === "en" ? "" : `/${language}`}`;
 
-  const onlyoffice = `https://www.onlyoffice.com${language === "en" ? "" : `/${language}`
-    }`;
   return (
     <StyledFooter>
       {POSITION_ELEMENTS_ITEM.map((elements_in_div, id) => (
         <div className="footer-item-group" key={id}>
           {Items.map((it, idx) => {
             if (elements_in_div === it.position) {
-              if (it.className != 'follow') {
+              if (it.className !== 'follow') {
                 return (
                   <FooterItem
                     dis
@@ -40,6 +39,7 @@ const Footer = ({ t, language }) => {
                             label={item_link.mail}
                             href={item_link.href}
                             alt={item_link.mail}
+                            key={idx_link} // Add key here
                           />
                         </Text>
                       ) : (
@@ -56,14 +56,15 @@ const Footer = ({ t, language }) => {
                         />
                       )
                     )}
-                  </FooterItem>)
+                  </FooterItem>
+                );
               } else {
                 return (
-                  <>
+                  <React.Fragment key={`${it.className}-${idx}`}> {/* Add key here */}
                     <FooterItem
                       heading={t(it.heading)}
                       className={it.className}
-                      key={`${it.className}-${idx}`}>
+                    >
                       <div className="footer-social-links">
                         {Social.map((item) => (
                           <ExternalLink
@@ -80,7 +81,6 @@ const Footer = ({ t, language }) => {
                               iconName={item.src}
                               size={item.size}
                               grayed={item.filter}
-                              key={item.title}
                             />
                           </ExternalLink>
                         ))}
@@ -91,10 +91,11 @@ const Footer = ({ t, language }) => {
                         className="footer-copyright"
                         label={t("FooterCopyright", { currentYear })}
                       />
-                    </div></>)
+                    </div>
+                  </React.Fragment>
+                );
               }
-            }
-            else {
+            } else {
               return null;
             }
           })}

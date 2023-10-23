@@ -16,60 +16,65 @@ pointer-events: none;
 transition: all ease 0.5s;
 z-index: 1001;
 
-.PopupPanelCaptionItems > a {
-    float: right;
-  }
-
   .PopupPanelCaption {
     color: #333;
     display: flex;
-    font-size: 18px;
-    font-weight: 300;
-    padding: 30px 20px 15px;
+    font-size: 16px;
+    padding: 16px 0px;
     text-align: left;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
 
     .popupPanelText {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
+      gap: 6px;
 
     }
-
     li {
       margin: 0 5px;
     }
   }
 
   .tagsLink {
-    border-bottom: 1px dotted #ff642e;
-    color: #ff642e;display: block;
-    font-size: 13px;
-    margin-right: 20px;
-    position: relative;
-    text-decoration: none;
+    color: #ff6f3d;
+    display: block;
+    font-size: 14px;
+    text-decoration: underline;
   }
 
   .textContent {
     display: block;
-    max-height: 500px;
+    max-height: 402px;
+    margin-bottom: 32px;
     overflow-y: auto;
-    margin: 30px 0px 30px;
-    padding: 0 20px 15px;
     text-align: center;
     width: auto;
     .markLink {
-      display: block;
-      font-size: 13px;
-      line-height: 2em;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 14px;
+      line-height: 1.33em;
+      gap: 8px;
+      padding: 0 0 8px;
+      text-decoration: none;
+      .title {
+        text-decoration: underline;
+      }
     }
 
     .postlinkText {
-      font-size: 13px;
+      font-size: 14px;
+      line-height: 1.33em;
+      display: initial;
     }
 
     .loadButton {
       margin: 24px 0 0;
+      font-size: 13px;
+      letter-spacing: 0.52px;
     }
   }
 
@@ -83,26 +88,32 @@ z-index: 1001;
   .popup-content {
     background-color: #fff;
     box-shadow: 0 7px 25px rgb(0, 0, 0, 0.1);
-    width: 780px;
+    width: 624px;
+    padding: 32px;
+    height: 469px;
 
     @media ${device.tablet} {
       width: 85vw;
       background-size: 85vw auto;
-
-      .PopupPanelCaption {
-        padding: 110px 130px 0;
-        display: block;
-      }
     }
 
-    @media ${device.mobileL} {
-      width: 100vw;
+    @media ${device.tabletS} {
+      width: calc(100vw - 128px);
       background-size: 120vw auto;
       background-position: 50% 10%;
 
       .PopupPanelCaption {
-        padding: 110px 80px 0;
+        flex-direction: column;
+        align-items: start;
       }
+      .textContent {
+        max-height: 76%;
+      }
+    }
+    @media ${device.mobileL} {
+      width: calc(100vw - 64px);
+      padding: 32px 16px;
+
     }
   }
 `;
@@ -126,7 +137,7 @@ const CloseButton = styled.div`
     top: 50%;
     left: 50%;
     width: 16px;
-    height: 1px;
+    height: 2px;
     border-radius: 50%;
   }
 

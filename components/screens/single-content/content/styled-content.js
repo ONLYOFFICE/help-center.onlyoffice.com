@@ -3,7 +3,7 @@ import { device } from "@components/utils/devices";
 
 const StyledContent = styled.div`
   box-sizing: border-box;
-  padding: 32px 40px 112px 14px;
+  padding: 32px 40px 112px 32px;
   width: 100%;
   max-width: 861px;
   color: #333333;
@@ -185,7 +185,7 @@ const StyledContent = styled.div`
   }
 
   @media ${device.laptopM} {
-    max-width: calc(100vw - 258px);
+    max-width: calc(100vw - 280px);
   }
   @media ${device.tabletS} {
     max-width: 100vw;
