@@ -125,7 +125,7 @@ const LeftMenu = ({ t, isCategory, articles, article, category, categories, acti
           {items.map((link, index) => (
             <li key={index}>
               <InternalLink href={hrefLang + link.href} className={link.className}>
-                {link.label}
+              {t(link.label)}
               </InternalLink>
             </li>
           ))}
