@@ -34,7 +34,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/installation/workspace-index.aspx`}
                     className="dropdown-item"
                   >
-                    {t("ONLYOFFICE Workspace")}
+                    {t("ONLYOFFICEWorkspace")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -52,7 +52,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/installation/workspace-enterprise-index.aspx`}
                     className="dropdown-item not_bold"
                   >
-                    {t("Workspace Enterprise Edition")}
+                    {t("WorkspaceEnterpriseEdition")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -61,7 +61,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   href={`${hrefLang}/installation/workspace-saas-index.aspx`}
                   className="dropdown-item not_bold"
                 >
-                  {t("Workspace Cloud Service")}
+                  {t("WorkspaceCloudService")}
                 </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -70,7 +70,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   href={`${hrefLang}/installation/groups-index.aspx`}
                   className="dropdown-item"
                 >
-                  {t("ONLYOFFICE Groups")}
+                  {t("ONLYOFFICEGroups")}
                 </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -79,7 +79,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   href={`${hrefLang}/installation/mail-index.aspx`}
                   className="dropdown-item"
                 >
-                  {t("ONLYOFFICE Mail")}
+                  {t("ONLYOFFICEMail")}
                 </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -88,7 +88,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   href={`${hrefLang}/installation/talk-index.aspx`}
                   className="dropdown-item"
                 >
-                  {t("ONLYOFFICE Talk")}
+                  {t("ONLYOFFICETalk")}
                 </Link>
                 </Box>
               </Box>
@@ -99,7 +99,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/installation/docs-index.aspx`}
                     className="dropdown-item"
                   >
-                    {t("ONLYOFFICE Docs")}
+                    {t("ONLYOFFICEDocs")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -108,7 +108,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/installation/docs-community-index.aspx`}
                     className="dropdown-item not_bold"
                   >
-                    {t("Community Edition")}
+                    {t("CommunityEdition")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -117,7 +117,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/installation/docs-enterprise-index.aspx`}
                     className="dropdown-item not_bold"
                   >
-                    {t("Enterprise Edition")}
+                    {t("EnterpriseEdition")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -126,7 +126,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   href={`${hrefLang}/installation/docs-developer-index.aspx`}
                   className="dropdown-item not_bold"
                 >
-                  {t("Developer Edition")}
+                  {t("DeveloperEdition")}
                 </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -135,7 +135,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   href={`${hrefLang}/installation/docs-cloud-index.aspx`}
                   className="dropdown-item not_bold"
                 >
-                  {t("Docs Cloud Service")}
+                  {t("DocsCloudService")}
                 </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -144,7 +144,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   href={`${hrefLang}/installation/desktop-index.aspx`}
                   className="dropdown-item"
                 >
-                  {t("ONLYOFFICE Desktop Editors")}
+                  {t("ONLYOFFICEDesktopEditors")}
                 </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -153,7 +153,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   href={`${hrefLang}/installation/mobile-index.aspx`}
                   className="dropdown-item"
                 >
-                  {t("ONLYOFFICE Mobile Apps")}
+                  {t("ONLYOFFICEMobileApps")}
                 </Link>
                 </Box>
               </Box>
@@ -164,7 +164,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/installation/docspace-index.aspx`}
                     className="dropdown-item"
                   >
-                    {t("ONLYOFFICE Docspace")}
+                    {t("ONLYOFFICEDocspace")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -173,7 +173,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/installation/docspace-community-index.aspx`}
                     className="dropdown-item not_bold"
                   >
-                    {t("DocSpace Community")}
+                    {t("DocSpaceCommunity")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -182,7 +182,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/installation/docspace-enterprise-index.aspx`}
                     className="dropdown-item not_bold"
                   >
-                    {t("DocSpace Enterprise")}
+                    {t("DocSpaceEnterprise")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -191,7 +191,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   href={`${hrefLang}/installation/docspace-cloud-index.aspx`}
                   className="dropdown-item not_bold"
                 >
-                  {t("DocSpace Cloud Service")}
+                  {t("DocSpaceCloudService")}
                 </Link>
                 </Box>
               </Box>
@@ -206,7 +206,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/administration/portal-management.aspx`}
                     className="dropdown-item"
                   >
-                    {t("Managing portals")}
+                    {t("ManagingPortals")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -215,7 +215,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/administration/reinforcing-security.aspx`}
                     className="dropdown-item"
                   >
-                    {t("Reinforcing security")}
+                    {t("ReinforcingSecurity")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -224,7 +224,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/administration/configuring-modules.aspx`}
                     className="dropdown-item"
                   >
-                    {t("Configuring modules and tools")}
+                    {t("ConfiguringModulesAndTools")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -233,7 +233,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/administration/customizing-modules.aspx`}
                     className="dropdown-item"
                   >
-                    {t("Customizing modules and tools")}
+                    {t("CustomizingModulesAndTools")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -242,7 +242,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/administration/managing-users.aspx`}
                     className="dropdown-item"
                   >
-                    {t("Managing users")}
+                    {t("ManagingUsers")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -251,7 +251,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/administration/external-services.aspx`}
                     className="dropdown-item"
                   >
-                    {t("Connecting external services")}
+                    {t("ConnectingExternalServices")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -260,7 +260,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/administration/control-panel.aspx`}
                     className="dropdown-item"
                   >
-                    {t("ONLYOFFICE Control Panel")}
+                    {t("ONLYOFFICEControlPanel")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -269,7 +269,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/administration/docspace.aspx`}
                     className="dropdown-item"
                   >
-                    {t("ONLYOFFICE DocSpace")}
+                    {t("ONLYOFFICEDocSpace")}
                   </Link>
                 </Box>
               </Box>
@@ -312,7 +312,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/userguides/docs-index.aspx`}
                     className="dropdown-item"
                   >
-                    {t("ONLYOFFICE Docs")}
+                    {t("ONLYOFFICEDocs")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -321,7 +321,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/userguides/docs-de.aspx`}
                     className="dropdown-item not_bold"
                   >
-                    {t("Document Editor")}
+                    {t("DocumentEditor")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -330,7 +330,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/userguides/docs-se.aspx`}
                     className="dropdown-item not_bold"
                   >
-                    {t("Spreadsheet Editor")}
+                    {t("SpreadsheetEditor")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -339,7 +339,16 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   href={`${hrefLang}/userguides/docs-pe.aspx`}
                   className="dropdown-item not_bold"
                 >
-                  {t("Presentation Editor")}
+                  {t("PresentationEditor")}
+                </Link>
+                </Box>
+                <Box className="link-wrapper">
+                <Link
+                  id="navitem_userguide_pdf"
+                  href={`${hrefLang}/userguides/docs-pdf.aspx`}
+                  className="dropdown-item not_bold"
+                >
+                  {t("PDFEditor")}
                 </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -348,7 +357,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/userguides/workspace-index.aspx`}
                     className="dropdown-item"
                   >
-                    {t("ONLYOFFICE Workspace")}
+                    {t("ONLYOFFICEWorkspace")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -404,7 +413,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   href={`${hrefLang}/userguides/groups-index.aspx`}
                   className="dropdown-item"
                 >
-                  {t("ONLYOFFICE Groups")}
+                  {t("ONLYOFFICEGroups")}
                 </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -487,7 +496,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/userguides/mobile-index.aspx`}
                     className="dropdown-item"
                   >
-                    {t("ONLYOFFICE mobile apps")}
+                    {t("ONLYOFFICEMobileApps")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -496,7 +505,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/mobile-applications/documents/index.aspx`}
                     className="dropdown-item not_bold"
                   >
-                    {t("Documents app for iOS")}
+                    {t("DocumentsAppForIOS")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -505,7 +514,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/mobile-applications/documents/android/index.aspx`}
                     className="dropdown-item not_bold"
                   >
-                    {t("Documents app for Android")}
+                    {t("DocumentsAppForAndroid")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -514,7 +523,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   href={`${hrefLang}/mobile-applications/documents/mobile-web-editors/ios/index.aspx`}
                   className="dropdown-item not_bold"
                 >
-                  {t("Mobile web editors for iOS")}
+                  {t("MobileWebEditorsForIOS")}
                 </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -523,7 +532,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   href={`${hrefLang}/mobile-applications/documents/mobile-web-editors/android/index.aspx`}
                   className="dropdown-item not_bold"
                 >
-                  {t("Mobile web editors for Android")}
+                  {t("MobileWebEditorsForAndroid")}
                 </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -532,7 +541,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   href={`${hrefLang}/mobile-applications/documents/projects/index.aspx`}
                   className="dropdown-item not_bold"
                 >
-                  {t("Projects for iOS")}
+                  {t("ProjectsForIOS")}
                 </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -541,7 +550,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   href={`${hrefLang}/mobile-applications/androidprojects/index.aspx`}
                   className="dropdown-item not_bold"
                 >
-                  {t("Projects for Android")}
+                  {t("ProjectsForAndroid")}
                 </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -550,7 +559,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/userguides/docspace-index.aspx`}
                     className="dropdown-item"
                   >
-                    {t("ONLYOFFICE Docspace")}
+                    {t("ONLYOFFICEDocspace")}
                   </Link>
                 </Box>
               </Box>
@@ -583,7 +592,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/guides/writing-documentation.aspx`}
                     className="dropdown-item"
                   >
-                    {t("Writing documentation")}
+                    {t("WritingDocumentation")}
                   </Link>
                 </Box>
                 <Box className="link-wrapper">
@@ -592,7 +601,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/guides/report-issues.aspx`}
                     className="dropdown-item"
                   >
-                    {t("Reporting issues")}
+                    {t("ReportingIssues")}
                   </Link>
                 </Box>
               </Box>
