@@ -269,7 +269,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                     href={`${hrefLang}/administration/docspace.aspx`}
                     className="dropdown-item"
                   >
-                    {t("ONLYOFFICEDocSpace")}
+                    {t("ONLYOFFICEDocspace")}
                   </Link>
                 </Box>
               </Box>
@@ -479,7 +479,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   {t("Calendar")}
                 </Link>
                 </Box>
-                <Box className="link-wrapper">
+                {currentLanguage !== "ru" && <Box className="link-wrapper">
                 <Link
                   id="navitem_userguides_feed"
                   href={`${hrefLang}/userguides/feed.aspx`}
@@ -487,7 +487,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                 >
                   {t("Feed")}
                 </Link>
-                </Box>
+                </Box>}
               </Box>
               <Box className="outer-box">
                 <Box className="link-wrapper">
@@ -544,7 +544,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   {t("ProjectsForIOS")}
                 </Link>
                 </Box>
-                <Box className="link-wrapper">
+                {currentLanguage !== "ru" && <Box className="link-wrapper">
                 <Link
                   id="navitem_mob_proj_andr"
                   href={`${hrefLang}/mobile-applications/androidprojects/index.aspx`}
@@ -552,7 +552,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                 >
                   {t("ProjectsForAndroid")}
                 </Link>
-                </Box>
+                </Box>}
                 <Box className="link-wrapper">
                   <Link
                     id="navitem_userguides_docspace"
@@ -565,7 +565,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
               </Box>
             </Box>
           </MenuItem>
-          <MenuItem heading={t("Contribution")} id="navitem_saas">
+          {currentLanguage !== "ru" ? <MenuItem heading={t("Contribution")} id="navitem_saas">
             <Box className="menu_wrapper">
               <Box className="outer-box">
               <Box className="link-wrapper">
@@ -606,7 +606,12 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                 </Box>
               </Box>
             </Box>
-          </MenuItem>
+          </MenuItem> :
+          <a href={`${hrefLang}/guides/become-translator.aspx`} className="link_api">
+          <MenuItem
+            heading={t("Contribution")}
+            id="navitem_saas"
+          /></a>}
           <a href={`https://api.onlyoffice.com/`} className="link_api">
           <MenuItem
             heading={t("Development")}

@@ -45,13 +45,18 @@ const LeftMenu = ({ t, isCategory, articles, article, category, categories, acti
       };
       items.push(item);
     });
-    // can not work bc of wrong article id's
     items.sort((a, b) => {
-      const aIndex = Array.from(headingElements).indexOf(document.getElementById(a.id).querySelector('h4, h5'));
-      const bIndex = Array.from(headingElements).indexOf(document.getElementById(b.id).querySelector('h4, h5'));
-      return aIndex - bIndex;
+      const elementA = document.getElementById(a.id);
+      const elementB = document.getElementById(b.id);
+    
+      if (elementA && elementB) {
+        const aIndex = Array.from(headingElements).indexOf(elementA.querySelector('h4, h5'));
+        const bIndex = Array.from(headingElements).indexOf(elementB.querySelector('h4, h5'));
+        return aIndex - bIndex;
+      } else {
+        return 0;
+      }
     });
-
     setMenuItems(items);
   }, [article]);
 
@@ -105,7 +110,7 @@ const LeftMenu = ({ t, isCategory, articles, article, category, categories, acti
         </> : <>
           <Heading level={6}>{article?.attributes.title}</Heading>
           <ul className="page">
-            {article?.attributes.videos && (
+            {article?.attributes.videos.data.length > 0 && (
               <li className={activeItem?.id === 'watchvideo' ? 'active' : ''}>
                 <InternalLink href="#watchvideo">
                   Watch Video

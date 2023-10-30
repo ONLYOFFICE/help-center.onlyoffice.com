@@ -91,6 +91,9 @@ const StyledNavMenu = styled.div`
       > .menu-items-wrapper {
         left: -300px;
       }
+      > .heading-nav-item {
+        line-height: 12px;
+      }
     }
   .heading-nav-item {
     border-bottom: 1px solid transparent;
@@ -101,10 +104,11 @@ const StyledNavMenu = styled.div`
     //letter-spacing: 0.08em;
     letter-spacing: 0.01em;
     //padding: 21px 20px 22px;
-    padding: 21px 13px;
+    padding: 21px 0;
     cursor: pointer;
     margin: 0;
     text-transform: uppercase;
+    text-align: center;
     
     &:hover {
       color: #333;
@@ -128,7 +132,7 @@ const StyledNavMenu = styled.div`
     cursor: pointer;
     line-height: 1.4em;
     text-decoration: none;
-    white-space: nowrap;
+    //white-space: nowrap;
     position: relative;
     text-transform: uppercase;
     padding: 8px 25px;
@@ -180,6 +184,7 @@ const StyledNavMenu = styled.div`
     color: #666666;
     text-align: left;
     gap: 8px;
+    min-width: 252px;
   }
 
   //@media (max-width: 1150px) {
@@ -204,6 +209,7 @@ const StyledNavMenu = styled.div`
       letter-spacing: 0.03em;
       margin: 0px;
       position: relative;
+      text-align: left;
 
       &:before {
         display: block;

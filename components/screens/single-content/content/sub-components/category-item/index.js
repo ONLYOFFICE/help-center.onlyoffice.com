@@ -35,8 +35,6 @@ const CategoryItem = ({
   useEffect(() => {
     const container = document.createElement('div');
     container.innerHTML = htmlString;
-
-    // Find the div element with an id starting with "connectingonlyofficedocsto"
     const connectingDiv = container.querySelector(`div[id^="${t('ConnectingId')}"]`);
 
     if (connectingDiv) {
@@ -48,7 +46,7 @@ const CategoryItem = ({
       setH5List(h5Links);
     }
   }, [htmlString]);
-
+  
   const gsItem = h4List.find(item => item.href.includes(t('GettingStartedId')));
   const catUrlGS = gsItem ? gsItem.href : null;
   const aboutItem = h4List.find(item => item.href.includes(t('AboutId')));
@@ -64,14 +62,14 @@ const CategoryItem = ({
         {catVideo > 0 && <div><img src={video.src} /><Link href={catUrlVideo}>{t("WatchVideo")}</Link></div>}
       </div>
      <Text><RawHtmlStyle>{ReactHtmlParser(data.attributes.description)}</RawHtmlStyle></Text> 
-     <Heading level={5}>{t("Connecting")}</Heading>
+     {h5List.lenght != 0 && <><Heading level={5}>{t("Connecting")}</Heading>
      <ul>
         {h5List.map((link, index) => (
           <li key={index}>
             <a href={currentLanguage === "en" ? link.href : `/${link.href}`}>{link.text}</a>
           </li>
         ))}
-      </ul>
+      </ul></>}
     </StyledCategoryItem>
   );
 };

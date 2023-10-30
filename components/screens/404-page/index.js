@@ -18,7 +18,7 @@ const Error404 = ({ t, ...rest }) => {
         <Text className="page-error-404-heading" label={t("404Error")} />
         <Text
           className="page-error-404-description"
-          label={t("404Descdription")}
+          label={t("404Description")}
         />
         <InternalLink className="page-error-404-btn" href="/">
           <Button label={t("GoToHomePage")} />
