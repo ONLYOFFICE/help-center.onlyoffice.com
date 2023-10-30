@@ -18,7 +18,7 @@ const StyledMenuTablet = css`
     //padding: 20px 0;
     padding: 13px 0;
     //margin-left: 10px;
-    margin-left: -16px;
+    margin-left: 0px;
   }
 
  // @media ${device.tablet} {
@@ -129,6 +129,9 @@ const StyledMenu = styled.div`
     @media screen and (max-width: 1550px) {
       column-gap: 30px;
     }
+    @media screen and (max-width: 1440px) {
+      column-gap: 16px;
+    }
   .menu-box {
     justify-content: end;
     @media screen and (max-width: 1550px) {
@@ -139,6 +142,9 @@ const StyledMenu = styled.div`
   .nav-btn {
       height: 48px;
       font-size: 14px;
+    @media screen and (max-width: 1440px) {
+      padding: 0 16px;
+    }
   }
 
   .nav-item-logo {

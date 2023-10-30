@@ -45,3 +45,4 @@ lib/strapi/getCategories.js
 lib/strapi/getGlossary.js
 lib/strapi/getTags.js
 lib/strapi/getVideos.js
+lib/

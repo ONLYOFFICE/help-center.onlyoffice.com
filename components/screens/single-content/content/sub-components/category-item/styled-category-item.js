@@ -49,7 +49,8 @@ const StyledCategoryItem = styled.div`
  .main_links {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 16px 32px;
+    flex-wrap: wrap;
     padding: 32px 0 16px;
     > div {
         display: flex;

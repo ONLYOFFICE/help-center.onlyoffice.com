@@ -6,12 +6,12 @@ const Items = [
       link: [
         {
           localize: true,
-          label: "Developer Edition",
+          label: "DeveloperEdition",
           href: "/developer-edition.aspx",
         },
         {
           localize: true,
-          label: "Document Builder",
+          label: "DocumentBuilder",
           href: "/document-builder.aspx",
         },
         {
@@ -21,7 +21,7 @@ const Items = [
         },
         {
           localize: false,
-          label: "Code on GitHub",
+          label: "CodeOnGitHub",
           href: "https://github.com/ONLYOFFICE/",
         },
       ],
@@ -33,32 +33,32 @@ const Items = [
       link: [
         {
           localize: true,
-          label: "Authentication and access control",
+          label: "AuthenticationAndAccessControl",
           href: "/security.aspx#access_control",
         },
         {
           localize: true,
-          label: "Data protection",
+          label: "DataProtection",
           href: "/security.aspx#data_protection",
         },
         {
           localize: true,
-          label: "Data encryption",
+          label: "DataEncryption",
           href: "/security.aspx#data_encryption",
         },
         {
           localize: true,
-          label: "Private rooms",
+          label: "PrivateRooms",
           href: "/private-rooms.aspx",
         },
         {
           localize: false,
-          label: "GDPR compliance",
+          label: "GDPRCompliance",
           href: "https://www.onlyoffice.com/blog/2018/05/how-onlyoffice-complies-with-gdpr/",
         },
         {
           localize: false,
-          label: "HIPAA compliance",
+          label: "HIPAACompliance",
           href: "https://www.onlyoffice.com/blog/2020/10/how-onlyoffice-complies-with-hipaa/",
         },
       ],
@@ -127,12 +127,12 @@ const Items = [
       link: [
         {
           localize: true,
-          label: "Premium support",
+          label: "PremiumSupport",
           href: "/support-contact-form.aspx",
         },
         {
           localize: true,
-          label: "Support contact form",
+          label: "SupportContactForm",
           href: "/support.aspx",
         },
         {
@@ -142,7 +142,7 @@ const Items = [
         },
         {
           localize: true,
-          label: "Order demo",
+          label: "OrderDemo",
           href: "/demo-order.aspx",
         },
       ],
@@ -154,12 +154,12 @@ const Items = [
       link: [
         {
           localize: true,
-          label: "App Directory",
+          label: "AppDirectory",
           href: "/app-directory.aspx",
         },
         {
           localize: true,
-          label: "Compare to other suites",
+          label: "ComparetoOtherSuites",
           href: "/document-editor-comparison.aspx",
         },
         {
@@ -174,7 +174,7 @@ const Items = [
         },
         {
           localize: true,
-          label: "Legal notice",
+          label: "LegalNotice",
           href: "/legalterms.aspx",
         },
       ],
@@ -182,32 +182,32 @@ const Items = [
     {
       className: "contacts",
       position: 4,
-      heading: "Contact us",
+      heading: "ContactUs",
       link: [
         {
           localize: true,
-          label: "Sales Questions",
+          label: "SalesQuestions",
           mail: "sales@onlyoffice.com",
           href: "mailto:sales@onlyoffice.com",
           isContact: true,
         },
         {
           localize: true,
-          label: "Partner Inquiries",
+          label: "PartnerInquiries",
           mail: "partners@onlyoffice.com",
           href: "mailto:partners@onlyoffice.com",
           isContact: true,
         },
         {
           localize: true,
-          label: "Press Inquiries",
+          label: "PressInquiries",
           mail: "press@onlyoffice.com",
           href: "mailto:press@onlyoffice.com",
           isContact: true,
         },
         {
           localize: true,
-          label: "Request a Call",
+          label: "RequestACall",
           href: "/call-back-form.aspx",
         }
       ],
@@ -215,7 +215,7 @@ const Items = [
     {
         className: "follow",
         position: 4,
-        heading: "Follow us",
+        heading: "FollowUs",
         link: [],
     },
   ];

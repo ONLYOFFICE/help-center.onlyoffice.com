@@ -19,10 +19,10 @@ const MenuItem = ({ children, heading, ...rest }) => {
   };
 
   const windowCheck =
-    typeof window !== "undefined" && window.innerWidth <= 1050;
+    typeof window !== "undefined" && window.innerWidth <= 1190;
 
   useEffect(() => {
-    if (window.innerWidth <= 1050) {
+    if (window.innerWidth <= 1190) {
       setShowMenu(false);
     }
   }, []);
