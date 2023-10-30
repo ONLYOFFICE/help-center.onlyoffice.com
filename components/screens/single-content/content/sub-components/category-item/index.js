@@ -45,7 +45,7 @@ const CategoryItem = ({
       }));
       setH5List(h5Links);
     }
-  }, [htmlString]);
+  }, [htmlString, t]);
   
   const gsItem = h4List.find(item => item.href.includes(t('GettingStartedId')));
   const catUrlGS = gsItem ? gsItem.href : null;

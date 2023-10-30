@@ -13,10 +13,10 @@ const DownloadArea = ({ t, ...rest }) => {
           <Text className="download-text" label={t("DownloadFreeOpenSourceOO")} />
           <div className="download-buttons">
             <ExternalLink className="download-button for-windows" href="https://www.onlyoffice.com/download-docs.aspx">
-              {t("For Windows")}
+              {t("ForWindows")}
             </ExternalLink>
             <ExternalLink className="download-button for-linux" href="https://www.onlyoffice.com/download-docs.aspx">
-              {t("For Linux")}
+              {t("ForLinux")}
             </ExternalLink>
             <ExternalLink className="download-button docker" href="https://www.onlyoffice.com/download-docs.aspx">
               {t("Docker")}
