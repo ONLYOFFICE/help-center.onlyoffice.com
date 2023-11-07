@@ -58,7 +58,6 @@ const StyledCategoryItem = styled.div`
     > a { 
         display: flex;
         > span {
-            line-height: 16px;
             text-decoration: none;
         }
     }
