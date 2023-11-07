@@ -16,11 +16,5 @@
       "shortKey": "fr",
       "iconName": "fr.svg",
       "name": "Français"
-    },
-    {
-      "key": "ru",
-      "shortKey": "ru",
-      "iconName": "ru.svg",
-      "name": "Русский"
     }
   ]
