@@ -33,7 +33,7 @@ const Video = ({ t, items }) => {
   
   return (
     <StyledVideo id="watchvideo">
-      <Heading level={4}>{t("Watch video")}</Heading>
+      <Heading level={4}>{t("WatchVideo")}</Heading>
       <Box className={`vids ${curVideos.length == 1 ? 'single' : ''}`}>
         {curVideos.slice(0, 1)?.map((it, index) => {
           return <VideoItem t={t} key={index} data={it} isMain={true} className={`main ${curVideos.length == 1 ? 'single' : ''}`} />;

@@ -113,7 +113,7 @@ const LeftMenu = ({ t, isCategory, articles, article, category, categories, acti
             {article?.attributes.videos.data.length > 0 && (
               <li className={activeItem?.id === 'watchvideo' ? 'active' : ''}>
                 <InternalLink href="#watchvideo">
-                  Watch Video
+                {t("WatchVideo")}
                 </InternalLink>
               </li>
             )}

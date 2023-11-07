@@ -46,7 +46,6 @@ const CategoryItem = ({
       setH5List(h5Links);
     }
   }, [htmlString, t]);
-  
   const gsItem = h4List.find(item => item.href.includes(t('GettingStartedId')));
   const catUrlGS = gsItem ? gsItem.href : null;
   const aboutItem = h4List.find(item => item.href.includes(t('AboutId')));
@@ -62,7 +61,7 @@ const CategoryItem = ({
         {catVideo > 0 && <div><img src={video.src} /><Link href={catUrlVideo}>{t("WatchVideo")}</Link></div>}
       </div>
      <Text><RawHtmlStyle>{ReactHtmlParser(data.attributes.description)}</RawHtmlStyle></Text> 
-     {h5List.lenght != 0 && <><Heading level={5}>{t("Connecting")}</Heading>
+     {h5List.length !== 0 && <><Heading level={5}>{t("Connecting")}</Heading>
      <ul>
         {h5List.map((link, index) => (
           <li key={index}>
