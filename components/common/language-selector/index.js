@@ -39,7 +39,7 @@ const LanguageSelector = (props) => {
 
   const onClickHandler = (e) => {
     e.stopPropagation();
-    if (e.target.closest(".flag-image") || e.target.closest(".arrow-image") || e.target.closest(".lang-name")) {
+    if (e.target.closest(".flag-image") || e.target.closest(".arrow-image") || e.target.closest(".language-item-link")) {
       setIsOpen(!isOpen);
       props.onClick && props.onClick(e);
     }

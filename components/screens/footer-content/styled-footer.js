@@ -142,7 +142,7 @@ const StyledFooter = styled.div`
 
     .footer-social {
       list-style-type: none;
-      width: 22px;
+      width: 24px;
       height: 24px;
       margin: 0;
       vertical-align: middle;

@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 import { device } from "@components/utils/devices";
+import logo from "@public/images/logo/logonew.svg";
+import logo_mobile from "@public/images/logo/logo-mobile.svg";
 
 const StyledMenuTablet = css`
   //padding: 0 48px;
@@ -46,7 +48,9 @@ const StyledMenuTablet = css`
   @media ${device.tabletS} {
   height: 56px;
     .site-logo {
-      background: url(../images/logo/logo-mobile.svg) no-repeat 50%;
+      background-image: url(${logo_mobile.src});
+      background-repeat: no-repeat;
+      background-position: 50%;
       width: 35px;
       height: 32px;
       padding: 12px 0;
@@ -154,7 +158,9 @@ const StyledMenu = styled.div`
   }
 
   .site-logo {
-    background: url(../images/logo/logonew.svg) no-repeat 0 50%;
+    background-image: url(${logo.src});
+    background-repeat: no-repeat;
+    background-position: 0 50%;
     position: relative;
     width: 186px;
     height: 40px;
