@@ -3,6 +3,8 @@ import { device } from "@components/utils/devices";
 
 const RawHtmlStyle = styled.div`
   .raw-html-embed {
+    z-index: 1;
+    position: relative;
     p {
       margin: 0;
 
@@ -472,6 +474,9 @@ const RawHtmlStyle = styled.div`
       display: none;
     }
     @media ${device.tabletL} {
+      img {
+        width: 100%;
+      }
       img.bigphoto_screen {
         display: block;
         margin: 16px 0;

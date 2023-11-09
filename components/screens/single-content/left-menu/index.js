@@ -63,18 +63,20 @@ const LeftMenu = ({ t, isCategory, articles, article, category, categories, acti
   // menu highlight
   useEffect(() => {
     const headings = document.querySelectorAll('h4, h5');
-
+    const header = document.querySelector('header'); 
+  
     const handleScroll = () => {
+      const headerRect = header.getBoundingClientRect().height;
       const topHeading = Array.from(headings).find((heading) => {
         const rect = heading.getBoundingClientRect();
-        return rect.top >= 0 && rect.top <= window.innerHeight;
+        return rect.top - headerRect >= 0 && rect.top - headerRect <= window.innerHeight;
       });
       if (topHeading) {
         const activeItemId = topHeading.parentElement.id;
         if (activeItemId === 'watchvideo') {
           handleActiveItemChange({
             id: activeItemId,
-            text: 'Watch Video',
+            text: 'WatchVideo',
           });
         } else {
           handleActiveItemChange({
@@ -84,7 +86,6 @@ const LeftMenu = ({ t, isCategory, articles, article, category, categories, acti
         }
       }
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleActiveItemChange]);

@@ -10,6 +10,8 @@ const StyledVideoItem = styled.div`
   iframe {
     aspect-ratio: 1.79;
     border: none;
+    min-width: 100%;
+    max-width: 100%;
     width: 100%;
   }
 
