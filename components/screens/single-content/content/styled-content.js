@@ -10,7 +10,7 @@ const StyledContent = styled.div`
 
   &.wrapper {
     font-size: 14px;
-    line-height: 19px;
+    line-height: 200%;
 
     h3 {
       padding: 0 0 16px;

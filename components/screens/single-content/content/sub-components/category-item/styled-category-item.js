@@ -73,6 +73,9 @@ const StyledCategoryItem = styled.div`
         a {
             color: #333333;
             text-decoration: none;
+            &:hover {
+                color: #ff6f3d;
+            }
         }
     }
  }

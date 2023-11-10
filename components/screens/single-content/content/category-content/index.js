@@ -1,6 +1,7 @@
 import Heading from "@components/common/heading";
 import Text from "@components/common/text";
 import React, { useState } from "react";
+import ReactHtmlParser from "react-html-parser";
 import StyledContent from "../styled-content";
 import Breadcrumbs from "@components/common/breadcrumbs";
 import CategoryItem from "../sub-components/category-item";
@@ -31,7 +32,7 @@ const CenterCategoryContent = ({
     <StyledContent className="wrapper">
       <Breadcrumbs t={t} category={catData} isCategory={true} />
       <Heading level={3}>{catData?.name}</Heading>
-      <Text>{catData?.description}</Text>
+      <Text>{ReactHtmlParser(catData?.description)}</Text>
       {artData.map((it, index) => {
         return (
           <CategoryItem data={it} key={index} t={t} currentLanguage={currentLanguage} />

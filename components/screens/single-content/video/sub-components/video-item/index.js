@@ -9,9 +9,10 @@ const VideoItem = ({ t, data, isMain, className }) => {
        <iframe
           width={isMain ? "512px" : "224px"}
           src={`https://www.youtube.com/embed/${data.attributes.url}`}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allow="clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           title="Embedded youtube"
+          loading="lazy"
         />
         <Heading level={5} className={`${isMain && 'main'}`} style={{ paddingTop: isMain ? "16px" : "0px" }}>{data.attributes.title}</Heading>
         {isMain && <Text>{data.attributes.description}</Text> }

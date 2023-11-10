@@ -10,17 +10,6 @@ export default function LangsList(props) {
   const query = useRouter();
   const pagePath = query.asPath;
 
-  useEffect(() => {
-    const layout = document.getElementById("page-layout");
-    if (isOpen) {
-      layout.style.overflow = "hidden";
-    }
-
-    if (!isOpen) {
-      layout.style.overflow = "unset";
-    }
-  });
-
   let path = "";
   if (typeof window !== "undefined") {
     const {

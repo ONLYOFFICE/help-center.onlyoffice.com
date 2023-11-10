@@ -5,12 +5,10 @@ const RawHtmlStyle = styled.div`
   .raw-html-embed {
     z-index: 1;
     position: relative;
+
     p {
       margin: 0;
-
-      &:not(:last-child) {
-        margin: 0 0 8px;
-      }
+      padding: 0;
     }
     // tables
     table.table_versionlist {
@@ -223,9 +221,15 @@ const RawHtmlStyle = styled.div`
     }
 
     ol {
-      > li > ul {
-        padding: 8px 0 0;
-      }
+      line-height: 1.5em;
+      margin: 0px 0;
+      padding: 0;
+        > li {
+          margin: 0px 0 0px 16px;
+        }
+        li::marker {
+          font-weight: bold;
+        }
     }
 
     ul {
@@ -235,44 +239,16 @@ const RawHtmlStyle = styled.div`
       li {
         margin: 0 0 0 22px;
         line-height: 22px;
-            &:last-child {
-              padding-bottom: 8px;
-            }
       }
-
+            
       &.ul-category {
         list-style-type: none;
 
         > li {
           list-style-type: none;
           margin: 0;
-
-          &:not(:last-child) {
-            margin-bottom: 32px;
-          }
-
-          > ul {
-            > li {
-              &:not(:last-child) {
-                margin-bottom: 10px;
-              }
-            }
-          }
         }
       }
-    }
-
-    ol {
-        line-height: 1.5em;
-        margin: 0px 0;
-        padding: 0;
-
-        > li {
-            margin: 0px 0 0px 16px;
-            &:last-child {
-              padding-bottom: 8px;
-            }
-        }
     }
 
     hr {
@@ -473,6 +449,25 @@ const RawHtmlStyle = styled.div`
     img.bigphoto_screen {
       display: none;
     }
+
+    // styles classes 
+    .without_padding {
+      padding: 0 !important;
+    }
+
+    .pb16 {
+      padding-bottom: 16px;
+    }
+    .pb8 {
+      padding-bottom: 8px;
+    }
+    .pt16 {
+      padding-top: 16px;
+    }
+    .pt8 {
+      padding-top: 8px;
+    }
+
     @media ${device.tabletL} {
       img {
         width: 100%;

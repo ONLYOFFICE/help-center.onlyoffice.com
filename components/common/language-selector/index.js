@@ -25,7 +25,7 @@ const LanguageSelector = (props) => {
   const handleClickOutside = (e) => {
     if (
       isOpen &&
-      (!e.target.closest(".language-selector"))
+      (!e.target.closest(".lng-selector"))
     ) {
       onCloseSelector();
     }
@@ -39,7 +39,7 @@ const LanguageSelector = (props) => {
 
   const onClickHandler = (e) => {
     e.stopPropagation();
-    if (e.target.closest(".flag-image") || e.target.closest(".arrow-image") || e.target.closest(".language-item-link")) {
+    if (e.target.closest(".flag-image") || e.target.closest(".arrow-image") || e.target.closest(".language-item-link")|| e.target.closest(".lang-name")) {
       setIsOpen(!isOpen);
       props.onClick && props.onClick(e);
     }
