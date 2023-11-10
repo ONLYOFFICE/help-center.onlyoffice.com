@@ -4,6 +4,12 @@ import { device } from "@components/utils/devices";
 const StyledCarousel = styled.div`
   margin: 0 auto;
   //padding: 0px;
+  .slick-vertical .slick-slide {
+      padding-bottom: 10px;
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
   .slick-slider {
     margin: 0 auto;
    // padding: 0px;
@@ -13,9 +19,10 @@ const StyledCarousel = styled.div`
       }
     }
     .slick-list{
-      //height: 342px;
-      margin: 12px 0;
+      height: 380px;
+      //margin: 12px 0;
     }
+
     ${(props) =>
       props.arrows
         ? css`
@@ -23,12 +30,12 @@ const StyledCarousel = styled.div`
               position: relative;
               cursor: pointer;
               font-size: 0;
-              height: 24px;
+              height: 36px;
               outline: none;
               display: block;
               width: 24px;
               margin: 0 auto;
-              padding: 0;
+              padding: 12px 0 0;
               border: 0;
               background: transparent;
               transition: opacity 0.3s ease;

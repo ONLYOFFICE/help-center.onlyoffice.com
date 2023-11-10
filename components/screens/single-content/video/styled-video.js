@@ -19,6 +19,10 @@ padding: 64px 0;
     }
   }
 
+  .vids-car {
+    width: 244px;
+  }
+
   h4 {
     padding: 0 0 16px;
   }
@@ -32,6 +36,9 @@ padding: 64px 0;
         max-height: fit-content;
         padding: 32px;
       }
+    }
+    .vids-car {
+      width: 100%;
     }
   }
 `;

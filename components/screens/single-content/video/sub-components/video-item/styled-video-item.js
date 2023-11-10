@@ -19,6 +19,11 @@ const StyledVideoItem = styled.div`
     font-size: 12px;
     cursor: unset;
     line-height: 1.33em;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2; 
+    max-height: 3em;
     &.main {
       font-size: 14px;
     }

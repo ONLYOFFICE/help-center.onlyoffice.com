@@ -221,7 +221,6 @@ const RawHtmlStyle = styled.div`
     }
 
     ol {
-      line-height: 1.5em;
       margin: 0px 0;
       padding: 0;
         > li {
@@ -238,7 +237,7 @@ const RawHtmlStyle = styled.div`
 
       li {
         margin: 0 0 0 22px;
-        line-height: 22px;
+        line-height: 1.6em;
       }
             
       &.ul-category {
@@ -454,6 +453,9 @@ const RawHtmlStyle = styled.div`
     .without_padding {
       padding: 0 !important;
     }
+    .without_margin {
+      margin: 0 !important;
+    }
 
     .pb16 {
       padding-bottom: 16px;
@@ -466,6 +468,19 @@ const RawHtmlStyle = styled.div`
     }
     .pt8 {
       padding-top: 8px;
+    }
+    
+    .mb16 {
+      margin-bottom: 16px;
+    }
+    .mb8 {
+      margin-bottom: 8px;
+    }
+    .mt16 {
+      margin-top: 16px;
+    }
+    .mt8 {
+      margin-top: 8px;
     }
 
     @media ${device.tabletL} {

@@ -3,7 +3,7 @@ import StyledVideo from "./styled-video";
 import Heading from "@components/common/heading";
 import Box from "@components/common/box";
 import VideoItem from "./sub-components/video-item";
-import VideoCarousel from "../video-carousel";
+import Carousel from "@components/common/carousel";
 
 const Video = ({ t, items }) => {
   // set all current videos data
@@ -38,7 +38,7 @@ const Video = ({ t, items }) => {
         {curVideos.slice(0, 1)?.map((it, index) => {
           return <VideoItem t={t} key={index} data={it} isMain={true} className={`main ${curVideos.length == 1 ? 'single' : ''}`} />;
         })}
-        {filteredArray.length > 1 && <VideoCarousel t={t} items={filteredArray} />}
+        {filteredArray.length > 1 && <Carousel className="vids-car" isArrows={filteredArray.length > 2 ? true : false} t={t} items={filteredArray}/>}
       </Box>
     </StyledVideo>
   );
