@@ -7,7 +7,7 @@ import leftMenuGenerating from '@utils/helpers/leftMenuGenerating';
 
 const LeftMenu = ({ t, isCategory, articles, article, category, categories, activeItem, handleActiveItemChange, currentLanguage, ...rest }) => {
   const leftMenu = useRef();
-  const menuItems = leftMenuGenerating(article, isCategory);
+  const menuItems = leftMenuGenerating(article, isCategory, null, 'h4');
   const data = useMemo(() => {
     if (!isCategory) {
       return { catData: null, artData: null };

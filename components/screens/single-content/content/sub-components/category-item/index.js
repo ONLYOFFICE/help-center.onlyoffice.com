@@ -8,13 +8,15 @@ import info from "@public/images/icons/info.react.svg";
 import video from "@public/images/icons/video.svg";
 import gs from "@public/images/icons/start.svg";
 import RawHtmlStyle from "@components/utils/rawHtmlStyles";
+import leftMenuGenerating from '@utils/helpers/leftMenuGenerating';
 
 const CategoryItem = ({
   data, t, currentLanguage
 }) => {
   const catPic = data?.attributes.pictures?.data;
   const catVideo = data?.attributes.videos?.data.length;
-  //get links for pages in bottom block
+
+  //get links 
   const htmlString = data?.attributes.content;
   const [h4List, setH4List] = useState([]);
 
@@ -30,22 +32,9 @@ const CategoryItem = ({
     setH4List(h4Links);
   }, [htmlString]);
 
-  const [h5List, setH5List] = useState([]);
+  // for release bottom menu from all headings
+  const itemsBM = leftMenuGenerating(data, false, data.attributes.url, 'h4, h5');
 
-  useEffect(() => {
-    const container = document.createElement('div');
-    container.innerHTML = htmlString;
-    const connectingDiv = container.querySelector(`div[id^="${t('ConnectingId')}"]`);
-
-    if (connectingDiv) {
-      const h5Elements = connectingDiv.querySelectorAll('h5');
-      const h5Links = Array.from(h5Elements).map((element) => ({
-        text: element.textContent,
-        href: data.attributes.url + "#" + element.parentElement.id,
-      }));
-      setH5List(h5Links);
-    }
-  }, [htmlString, t]);
   const gsItem = h4List.find(item => item.href.includes(t('GettingStartedId')));
   const catUrlGS = gsItem ? gsItem.href : null;
   const aboutItem = h4List.find(item => item.href.includes(t('AboutId')));
@@ -61,9 +50,10 @@ const CategoryItem = ({
         {catVideo > 0 && <div><img src={video.src} /><Link href={catUrlVideo}>{t("WatchVideo")}</Link></div>}
       </div>
      <Text><RawHtmlStyle>{ReactHtmlParser(data.attributes.description)}</RawHtmlStyle></Text> 
-     {h5List.length !== 0 && <><Heading level={5}>{t("Connecting")}</Heading>
+     {itemsBM.length !== 0 && <>
+     {/* <Heading level={5}>{t("Connecting")}</Heading> */}
      <ul>
-        {h5List.map((link, index) => (
+        {itemsBM.map((link, index) => (
           <li key={index}>
             <a href={currentLanguage === "en" ? link.href : `/${link.href}`}>{link.text}</a>
           </li>

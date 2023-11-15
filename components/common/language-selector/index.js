@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import StyledLanguageSelector from "./styled-language-selector";
 import ArrowDown from "@public/images/icons/arrow-drop-down.react.svg";
 import ArrowUp from "@public/images/icons/arrow-drop-up.react.svg";
@@ -9,33 +9,29 @@ import Text from "../text";
 
 const LanguageSelector = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const selectorRef = useRef(null);
 
   useEffect(() => {
-    typeof window !== "undefined" &&
-      isOpen &&
-      window.addEventListener("click", handleClickOutside);
+    const handleClickOutside = (e) => {
+      if (isOpen && selectorRef.current && !selectorRef.current.contains(e.target)) {
+        onCloseSelector();
+      }
+    };
+
+    const resizeHandler = () => {
+      if (window.innerWidth < 769) {
+        setIsOpen(false);
+      }
+    };
+
+    typeof window !== "undefined" && window.addEventListener("click", handleClickOutside);
     window.addEventListener("resize", resizeHandler);
 
     return () => {
       window.removeEventListener("click", handleClickOutside);
       window.removeEventListener("resize", resizeHandler);
     };
-  }, []);
-
-  const handleClickOutside = (e) => {
-    if (
-      isOpen &&
-      (!e.target.closest(".lng-selector"))
-    ) {
-      onCloseSelector();
-    }
-  };
-
-  const resizeHandler = (e) => {
-    if (window.innerWidth < 769) {
-      setIsOpen(false);
-    }
-  };
+  }, [isOpen]);
 
   const onClickHandler = (e) => {
     e.stopPropagation();
@@ -68,6 +64,7 @@ const LanguageSelector = (props) => {
       {...props}
       onClick={onClickHandler}
       className="language-selector"
+      ref={selectorRef}
     >
       <img
         className="flag-image"

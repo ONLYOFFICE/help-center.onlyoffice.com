@@ -70,6 +70,9 @@ const StyledCategoryItem = styled.div`
 
     li {
         padding: 0 0 16px;
+        &:last-child {
+            padding: 0;
+        }
         a {
             color: #333333;
             text-decoration: none;

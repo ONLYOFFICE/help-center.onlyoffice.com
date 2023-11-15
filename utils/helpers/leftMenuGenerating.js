@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 
-export default function leftMenuGenerating(article, isCategory) {
+export default function leftMenuGenerating(article, isCategory, hrefDomain, selectItems) {
     const [menuItems, setMenuItems] = useState([]);
 
     useEffect(() => {
         const content = !isCategory && article?.attributes.content;
         const headings = document.createElement('div');
         headings.innerHTML = content;
-        // const headingElements = headings.querySelectorAll('h4, h5');
-        const headingElements = headings.querySelectorAll('h4');
+        const headingElements = headings.querySelectorAll(selectItems);
+
         const items = [];
     
         headingElements.forEach((heading) => {
@@ -16,6 +16,7 @@ export default function leftMenuGenerating(article, isCategory) {
           const item = {
             id: heading.parentElement.id,
             text,
+            ...(hrefDomain != null && { href: article.attributes.url + "#" + heading.parentElement.id }),
           };
           items.push(item);
         });
@@ -24,10 +25,8 @@ export default function leftMenuGenerating(article, isCategory) {
           const elementB = document.getElementById(b.id);
         
           if (elementA && elementB) {
-            // const aIndex = Array.from(headingElements).indexOf(elementA.querySelector('h4, h5'));
-            // const bIndex = Array.from(headingElements).indexOf(elementB.querySelector('h4, h5'));
-            const aIndex = Array.from(headingElements).indexOf(elementA.querySelector('h4'));
-            const bIndex = Array.from(headingElements).indexOf(elementB.querySelector('h4'));
+            const aIndex = Array.from(headingElements).indexOf(elementA.querySelector(selectItems));
+            const bIndex = Array.from(headingElements).indexOf(elementB.querySelector(selectItems));
             return aIndex - bIndex;
           } else {
             return 0;
