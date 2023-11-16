@@ -1,6 +1,6 @@
 import React from "react";
 import Heading from "@components/common/heading";
-import Text from "@components/common/text";
+import Button from "@components/common/button";
 import ExternalLink from "@components/common/link";
 import StyledDownloadArea from "./styled-download-area";
 
@@ -11,11 +11,11 @@ const DownloadArea = ({ t, ...rest }) => {
         <div className="download-content">
           <Heading level={3} className="download-title" label={t("HostOnYourOwnServer")} />
           <div className="download-buttons">
-            <ExternalLink className="download-button" href="https://www.onlyoffice.com/download-docs.aspx">
-              {t("GetItNow")}
+            <ExternalLink href="https://www.onlyoffice.com/download-docs.aspx">
+              <Button label={t("GetItNow")} typeButton={"white"} />
             </ExternalLink>
-            <ExternalLink className="download-button" href="https://www.onlyoffice.com/docspace-registration.aspx">
-              {t("UseInTheCloud")}
+            <ExternalLink href="https://www.onlyoffice.com/docspace-registration.aspx">
+              <Button label={t("UseInTheCloud")} typeButton={"white"} />
             </ExternalLink>
           </div>
         </div>

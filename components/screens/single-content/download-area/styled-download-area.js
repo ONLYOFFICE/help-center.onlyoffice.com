@@ -11,7 +11,7 @@ const StyledDownloadArea = styled.div`
   margin: 64px 0 0;
 
   .download-wrapper {
-    padding: 71px 16px;
+    padding: 64px 16px;
     text-align: center;
     background-image: url(${download_bg.src});
     background-repeat: no-repeat;
@@ -23,15 +23,16 @@ const StyledDownloadArea = styled.div`
     flex-direction: column;
     max-width: 586px;
     margin: 0 auto;
+    gap: 32px;
   }
 
-  .download-title {
-    margin-bottom: 8px;
+  h3.download-title {
     font-size: 24px;
     line-height: 32px;
     letter-spacing: -0.02em;
     text-align: center;
     color: #FFFFFF;
+    padding: 0;
   }
 
   .download-text {
@@ -47,7 +48,7 @@ const StyledDownloadArea = styled.div`
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 8px;
   }
 
   .download-button {
