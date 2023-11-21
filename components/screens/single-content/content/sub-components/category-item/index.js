@@ -40,7 +40,7 @@ const CategoryItem = ({
   const aboutItem = h4List.find(item => item.href.includes(t('AboutId')));
   const catUrlAbout = aboutItem ? aboutItem.href : null;
   const catUrlVideo = data?.attributes.url + "#watchvideo";
-  const categoryPic = catPic?.find((it) => it.attributes.name === "connector_img.png");
+  const categoryPic = catPic?.find((it) => it.attributes.name === "connector_img.svg");
   return (
     <StyledCategoryItem>
       <Heading level={4}><Link href={data.attributes.url}>{data.attributes.title}</Link><img src={categoryPic?.attributes.url} /></Heading>
@@ -49,16 +49,24 @@ const CategoryItem = ({
         {catUrlAbout && <div><img src={info.src} /><Link href={catUrlAbout}>{t("About")}</Link></div>}
         {catVideo > 0 && <div><img src={video.src} /><Link href={catUrlVideo}>{t("WatchVideo")}</Link></div>}
       </div>
-     <Text><RawHtmlStyle>{ReactHtmlParser(data.attributes.description)}</RawHtmlStyle></Text> 
-     {itemsBM.length !== 0 && <>
-     {/* <Heading level={5}>{t("Connecting")}</Heading> */}
-     <ul>
-        {itemsBM.map((link, index) => (
-          <li key={index}>
-            <a href={currentLanguage === "en" ? link.href : `/${link.href}`}>{link.text}</a>
-          </li>
-        ))}
-      </ul></>}
+      <Text><RawHtmlStyle>{ReactHtmlParser(data.attributes.description)}</RawHtmlStyle></Text>
+      {itemsBM.length !== 0 && (
+        <ul>
+          {itemsBM.map((link, index) => (
+            <React.Fragment key={index}>
+              {link.type === "h4" ? (
+                <li>
+                <a href={currentLanguage === "en" ? link.href : `/${link.href}`}><Heading level={5}>{link.text}</Heading></a>
+                </li>
+              ) : link.type === "h5" && (
+                <li className="sublink">
+                <a href={currentLanguage === "en" ? link.href : `/${link.href}`}>{link.text}</a>
+                </li>
+              )}
+              </React.Fragment>
+          ))}
+        </ul>
+      )}
     </StyledCategoryItem>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Box from "@components/common/box";
 import StyledNav from "./styled-nav";
 import MenuItem from "../menu-item";
@@ -21,6 +21,13 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
     const connectorsArticles = articles.filter(article => article.attributes.category.data.attributes.slug_id === 'connectors');
     const midIndex = Math.ceil(connectorsArticles.length / 2);
     connectorsArticles.sort((a, b) => a.attributes.title.localeCompare(b.attributes.title));
+    const [url, setUrl] = useState('');
+
+    useEffect(() => {
+      if (typeof window !== 'undefined') {
+        setUrl(window.location.origin + '/');
+      }
+    }, []);
   return (
     <StyledNav stateMobile={stateMobilePND} {...rest}>
       <Box className="menu-box">
@@ -282,7 +289,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   <Link
                   key={idx}
                   id={`navitem_${item.attributes.title}`}
-                  href={item.attributes.url}
+                  href={url + item.attributes.url}
                   className="dropdown-item"
                 >
                   {item.attributes.title}
@@ -294,7 +301,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
                   <Link
                   key={idx}
                   id={`navitem_${item.attributes.title}`}
-                  href={item.attributes.url}
+                  href={url + item.attributes.url}
                   className="dropdown-item"
                 >
                   {item.attributes.title}
