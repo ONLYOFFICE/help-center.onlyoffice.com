@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import ReactHtmlParser from "react-html-parser";
 import StyledContent from "../styled-content";
 import Breadcrumbs from "@components/common/breadcrumbs";
+import CategoryConnectorItem from "../sub-components/connector-category-item";
 import CategoryItem from "../sub-components/category-item";
 
 const CenterCategoryContent = ({
@@ -34,9 +35,11 @@ const CenterCategoryContent = ({
       <Heading level={3}>{catData?.name}</Heading>
       <Text>{ReactHtmlParser(catData?.description)}</Text>
       {artData.map((it, index) => {
-        return (
-          <CategoryItem data={it} key={index} t={t} currentLanguage={currentLanguage} />
-        );
+          return (
+            <React.Fragment key={index}>
+              {catData.slug_id !== "connectors" ? <CategoryItem data={it} t={t} currentLanguage={currentLanguage} /> : <CategoryConnectorItem data={it} key={index} t={t} currentLanguage={currentLanguage} />}
+            </React.Fragment>
+           );
       })}
       {children}
     </StyledContent>
