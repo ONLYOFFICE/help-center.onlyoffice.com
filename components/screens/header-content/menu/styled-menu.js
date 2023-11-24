@@ -1,7 +1,5 @@
 import styled, { css } from "styled-components";
 import { device } from "@components/utils/devices";
-import logo from "@public/images/logo/logonew.svg";
-import logo_mobile from "@public/images/logo/logo-mobile.svg";
 
 const StyledMenuTablet = css`
   //padding: 0 48px;
@@ -48,7 +46,7 @@ const StyledMenuTablet = css`
   @media ${device.tabletS} {
   height: 56px;
     .site-logo {
-      background-image: url(${logo_mobile.src});
+      background-image: url('https://static-helpcenter.teamlab.info/images/logo/logo-mobile.svg');
       background-repeat: no-repeat;
       background-position: 50%;
       width: 35px;
@@ -158,7 +156,7 @@ const StyledMenu = styled.div`
   }
 
   .site-logo {
-    background-image: url(${logo.src});
+    background-image: url('https://static-helpcenter.teamlab.info/images/logo/logonew.svg');
     background-repeat: no-repeat;
     background-position: 0 50%;
     position: relative;
@@ -198,8 +196,8 @@ const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); // Dark transparent color
-  z-index: 999; // Make sure it's above other content
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 999;
   display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
 `;
 

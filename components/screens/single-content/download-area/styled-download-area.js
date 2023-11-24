@@ -1,8 +1,4 @@
 import styled from "styled-components";
-import download_bg from "@public/images/icons/download-bg.svg";
-import for_windows from "@public/images/icons/windows.svg";
-import for_linux from "@public/images/icons/linux.svg";
-import docker from "@public/images/icons/docker.svg";
 
 const StyledDownloadArea = styled.div`
   position: relative;
@@ -13,7 +9,7 @@ const StyledDownloadArea = styled.div`
   .download-wrapper {
     padding: 64px 16px;
     text-align: center;
-    background-image: url(${download_bg.src});
+    background-image: url('https://static-helpcenter.teamlab.info/images/icons/download-bg.svg');
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -76,19 +72,19 @@ const StyledDownloadArea = styled.div`
 
     &.for-windows {
       &::before {
-        content: url(${for_windows.src});
+        content: url('https://static-helpcenter.teamlab.info/images/icons/windows.svg');
       }
     }
 
     &.for-linux {
       &::before {
-        content: url(${for_linux.src});
+        content: url('https://static-helpcenter.teamlab.info/images/icons/linux.svg');
       }
     }
 
     &.docker {
       &::before {
-        content: url(${docker.src});
+        content: url('https://static-helpcenter.teamlab.info/images/icons/docker.svg');
       }
     }
 

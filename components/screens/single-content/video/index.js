@@ -11,13 +11,19 @@ const Video = ({ t, items }) => {
     return items?.attributes.videos.data;
   }, [items]); 
   const [filteredArray, setFilteredArray] = useState(curVideos);
+  const [mobile, setMobile] = useState(false);
+  const [videosForCarLenght, setVideosForCarLenght] = useState(2);
 
   const handleResize = () => {
     const screenWidth = window.innerWidth;
     if (screenWidth > 1024) {
       setFilteredArray(curVideos.slice(1));
+      setMobile(false);
+      setVideosForCarLenght(2);
     } else {
       setFilteredArray(curVideos);
+      setMobile(true);
+      setVideosForCarLenght(1);
     }
   };
 
@@ -38,7 +44,8 @@ const Video = ({ t, items }) => {
         {curVideos.slice(0, 1)?.map((it, index) => {
           return <VideoItem t={t} key={index} data={it} isMain={true} className={`main ${curVideos.length == 1 ? 'single' : ''}`} />;
         })}
-        {filteredArray.length > 1 && <Carousel className="vids-car" isArrows={filteredArray.length > 2 ? true : false} t={t} items={filteredArray}/>}
+        {filteredArray.length > 1 && <Carousel className="vids-car" isArrows={filteredArray.length > videosForCarLenght ? true : false} t={t} items={filteredArray}/>}
+        {(curVideos.length == 2 && !mobile) && <VideoItem t={t} data={filteredArray[0]} isMain={false} className="second" />}
       </Box>
     </StyledVideo>
   );

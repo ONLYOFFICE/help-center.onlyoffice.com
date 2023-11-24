@@ -3,9 +3,9 @@ import { device } from "@components/utils/devices";
 
 const StyledContent = styled.div`
   box-sizing: border-box;
-  padding: 32px 40px 112px 32px;
+  padding: 32px 0px 112px 32px;
   width: 100%;
-  max-width: 861px;
+  max-width: 904px;
   color: #333333;
 
   &.wrapper {

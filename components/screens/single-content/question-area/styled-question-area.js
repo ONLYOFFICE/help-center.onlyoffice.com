@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import question_forum from "@public/images/icons/question-forum.svg";
 
 const StyledQuestionArea = styled.div`
   border: 1px solid #EFEFEF;
@@ -38,7 +37,7 @@ const StyledQuestionArea = styled.div`
     width: 100%;
     max-width: 344px;
     padding-bottom: 74.21%;
-    background-image: url(${question_forum.src});
+    background-image: url('https://static-helpcenter.teamlab.info/images/icons/question-forum.svg');
     background-repeat: no-repeat;
     background-size: cover;
   }

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import arrow_red from "@public/images/icons/arrow-red.svg";
 import { device } from "@components/utils/devices";
 
 // const StyledNav = styled.nav`
@@ -60,7 +59,7 @@ import { device } from "@components/utils/devices";
 //       text-align: center;
 
 //       &:before {
-//         background-image: url(${arrow_red});
+//         background-image: url('https://static-helpcenter.teamlab.info/images/icons/arrow_red.svg');
 //         background-position: 50% 50%;
 //         background-repeat: no-repeat;
 //         background-size: auto 100%;

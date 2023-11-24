@@ -4,9 +4,6 @@ import Text from "@components/common/text";
 import React, { useState, useEffect } from "react";
 import StyledCategoryItem from "./styled-category-item";
 import ReactHtmlParser from "react-html-parser";
-import info from "@public/images/icons/info.react.svg";
-import video from "@public/images/icons/video.svg";
-import gs from "@public/images/icons/start.svg";
 import RawHtmlStyle from "@components/utils/rawHtmlStyles";
 import leftMenuGenerating from '@utils/helpers/leftMenuGenerating';
 
@@ -45,9 +42,9 @@ const CategoryItem = ({
     <StyledCategoryItem>
       <Heading level={4}><Link href={data.attributes.url}>{data.attributes.title}</Link><img src={categoryPic?.attributes.url} /></Heading>
       <div className="main_links">
-        {catUrlGS && <div><img src={gs.src} /><Link href={catUrlGS}>{t("GettingStarted")}</Link></div>}
-        {catUrlAbout && <div><img src={info.src} /><Link href={catUrlAbout}>{t("About")}</Link></div>}
-        {catVideo > 0 && <div><img src={video.src} /><Link href={catUrlVideo}>{t("WatchVideo")}</Link></div>}
+        {catUrlGS && <div><img src={'https://static-helpcenter.teamlab.info/images/icons/start.svg'} /><Link href={catUrlGS}>{t("GettingStarted")}</Link></div>}
+        {catUrlAbout && <div><img src={'https://static-helpcenter.teamlab.info/images/icons/info.react.svg'} /><Link href={catUrlAbout}>{t("About")}</Link></div>}
+        {catVideo > 0 && <div><img src={'https://static-helpcenter.teamlab.info/images/icons/video.svg'} /><Link href={catUrlVideo}>{t("WatchVideo")}</Link></div>}
       </div>
       <Text><RawHtmlStyle>{ReactHtmlParser(data.attributes.description)}</RawHtmlStyle></Text>
       {itemsBM.length !== 0 && (

@@ -15,7 +15,7 @@ const SinglePage = ({ locale, articles, categories }) => {
   const { seo_title, seo_description } = data;
   return (
     <Layout>
-      <Layout.PageHead>
+      {/* <Layout.PageHead>
         <HeadSEO
           title={seo_title} 
           metaDescription={seo_description}
@@ -31,7 +31,7 @@ const SinglePage = ({ locale, articles, categories }) => {
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />
-      </Layout.PageFooter>
+      </Layout.PageFooter> */}
     </Layout>
   );
 };

@@ -15,12 +15,13 @@ padding: 64px 0;
     padding: 32px;
 
     &.single {
+      aspect-ratio: unset;
       display: block;
     }
   }
 
   .vids-car {
-    width: 244px;
+    width: 224px;
   }
 
   h4 {
