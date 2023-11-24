@@ -8,8 +8,6 @@ import "slick-carousel/slick/slick-theme.css";
 import StyledCarousel from "./carousel-styled";
 import VideoItem from "@components/screens/single-content/video/sub-components/video-item";
 
-import arrowImage from '@public/images/icons/slideshow_next-prev.svg';
-
 const Carousel = ({
   t,
   settingsCarousel,
@@ -24,14 +22,14 @@ const Carousel = ({
   const [currentSlide, setCurrentSlide] = useState(0);
   const CustomPrevArrow = ({ onClick }) => (
     <button onClick={onClick} className={`cust-arr prev ${currentSlide === 0 ? 'disabled' : ''}`}>
-      <img src={arrowImage.src} alt="Previous" />
+      <img src="https://static-helpcenter.teamlab.info/images/icons/slideshow_next-prev.react.svg" alt="Previous" />
     </button>
   );
   const CustomNextArrow = ({ onClick }) => (
     <button onClick={onClick} className={`cust-arr next ${
       currentSlide === settings.slidesToShow - 1 ? 'disabled' : ''
     }`}>
-      <img src={arrowImage.src} alt="Next" />
+      <img src="https://static-helpcenter.teamlab.info/images/icons/slideshow_next-prev.react.svg" alt="Next" />
     </button>
   );
   const settings =  {

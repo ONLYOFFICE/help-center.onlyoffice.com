@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { ReactSVG } from "react-svg";
-
 import LanguageSelector from "@components/common/language-selector";
 import InternalLink from "@components/common/internal-link";
-import MobileMenu from "@public/images/icons/mob_menu.svg";
 import { StyledMenu, Overlay } from "./styled-menu";
 import Nav from "./nav/nav";
 import Button from "@components/common/button";
@@ -49,8 +46,8 @@ const Menu = ({ t, currentLanguage, template, articles, ...rest }) => {
       <InternalLink className="nav-item-logo" href={curLang}>
         <div className="site-logo"></div>
       </InternalLink>
-      <ReactSVG
-        src={MobileMenu.src}
+      <img
+        src="https://static-helpcenter.teamlab.info/images/icons/mob_menu.react.svg"
         className="nav-items-mobile"
         onClick={toggleMobile}
       />
@@ -63,7 +60,7 @@ const Menu = ({ t, currentLanguage, template, articles, ...rest }) => {
         t={t}
       />
       {/* <div className="nav-right"> */}
-      <Link className="link" href="https://www.onlyoffice.com/registration.aspx?from=helpcenter"><Button label={t("Try in the cloud")} className="nav-btn" /></Link>
+      <Link className="link" href="https://www.onlyoffice.com/docs-registration.aspx?from=helpcenter"><Button label={t("Try in the cloud")} className="nav-btn" /></Link>
         
       <LanguageSelector t={t} currentLanguage={currentLanguage} />
       {/* <div className="nav-item-lng">

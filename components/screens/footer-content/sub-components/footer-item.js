@@ -1,9 +1,6 @@
 import React, { useState, useRef } from "react";
-import { ReactSVG } from "react-svg";
-
 import StyledFooterItem from "./styled-footer-item";
 import Heading from "@components/common/heading";
-import MobileMenu from "@public/images/icons/chevron-down.react.svg";
 
 const FooterItem = ({ dis, children, className, heading }) => {
   const content = useRef();
@@ -29,9 +26,8 @@ const FooterItem = ({ dis, children, className, heading }) => {
         onClick={dis && onHandleClick}
         label={heading}
       />
-      {/*eslint-disable*/}
-      <ReactSVG
-        src={MobileMenu.src}
+      <img
+        src="https://static-helpcenter.teamlab.info/images/icons/chevron-down.react.svg"
         className={footerImageArrow}
       />
       {/* <img
@@ -40,7 +36,6 @@ const FooterItem = ({ dis, children, className, heading }) => {
         height="24px"
         width="24px"
       /> */}
-      {/*eslint-enable*/}
       <div ref={content} className="footer-items-group">
         {children}
       </div>

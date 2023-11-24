@@ -9,7 +9,7 @@ const StyledDownloadArea = styled.div`
   .download-wrapper {
     padding: 64px 16px;
     text-align: center;
-    background-image: url('https://static-helpcenter.teamlab.info/images/icons/download-bg.svg');
+    background-image: url('https://static-helpcenter.teamlab.info/images/icons/download-bg.react.svg');
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -68,24 +68,6 @@ const StyledDownloadArea = styled.div`
       height: 32px;
       filter: grayscale(1);
       transition: filter 0.3s;
-    }
-
-    &.for-windows {
-      &::before {
-        content: url('https://static-helpcenter.teamlab.info/images/icons/windows.svg');
-      }
-    }
-
-    &.for-linux {
-      &::before {
-        content: url('https://static-helpcenter.teamlab.info/images/icons/linux.svg');
-      }
-    }
-
-    &.docker {
-      &::before {
-        content: url('https://static-helpcenter.teamlab.info/images/icons/docker.svg');
-      }
     }
 
     &:hover {

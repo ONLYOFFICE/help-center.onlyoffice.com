@@ -89,9 +89,6 @@ const StyledNavMenu = styled.div`
       > .menu-items-wrapper {
         left: -300px;
       }
-      > .heading-nav-item {
-        line-height: 12px;
-      }
     }
   .heading-nav-item {
     border-bottom: 1px solid transparent;
@@ -214,7 +211,7 @@ const StyledNavMenu = styled.div`
         content: "";
         width: 10px;
         height: 10px;
-        background-image: url('https://static-oforms.onlyoffice.com/icons/arrow-gray.svg');
+        background-image: url('https://static-oforms.onlyoffice.com/icons/arrow-gray.react.svg');
         background-position: 50% 50%;
         background-repeat: no-repeat;
         background-size: auto 100%;

@@ -23,7 +23,7 @@ const StyledAttentionBlock = styled.div`
     cursor: pointer;
     border: none;
     background-color: transparent;
-    background-image: url('https://static-helpcenter.teamlab.info/images/icons/close-icon.svg');
+    background-image: url('https://static-helpcenter.teamlab.info/images/icons/close-icon.react.svg');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 20px 20px;

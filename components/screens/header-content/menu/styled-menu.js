@@ -46,7 +46,7 @@ const StyledMenuTablet = css`
   @media ${device.tabletS} {
   height: 56px;
     .site-logo {
-      background-image: url('https://static-helpcenter.teamlab.info/images/logo/logo-mobile.svg');
+      background-image: url('https://static-helpcenter.teamlab.info/images/logo/logo-mobile.react.svg');
       background-repeat: no-repeat;
       background-position: 50%;
       width: 35px;
@@ -105,7 +105,7 @@ const StyledMenuTablet = css`
 
     .site-logo {
       margin: 0 auto;
-      //background: url(../images/logo/logo-mobile.svg) no-repeat 20px 50%;
+      //background: url(../images/logo/logo-mobile.react.svg) no-repeat 20px 50%;
     }
   }
 `;
@@ -156,7 +156,7 @@ const StyledMenu = styled.div`
   }
 
   .site-logo {
-    background-image: url('https://static-helpcenter.teamlab.info/images/logo/logonew.svg');
+    background-image: url('https://static-helpcenter.teamlab.info/images/logo/logonew.react.svg');
     background-repeat: no-repeat;
     background-position: 0 50%;
     position: relative;

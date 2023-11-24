@@ -12,7 +12,7 @@ width: 231px;
     box-sizing: border-box;
     position: sticky;
     margin: 0;
-    min-width: 258px;
+    min-width: 231px;
     z-index: 100;
     top: 72px;
     height: calc(100vh - 72px);
@@ -97,19 +97,19 @@ width: 231px;
 
   .glossary {
       &::before {
-        content: url('https://static-helpcenter.teamlab.info/images/icons/glossary-icon.svg');
+        content: url('https://static-helpcenter.teamlab.info/images/icons/glossary-icon.react.svg');
     }
   }
 
   .video {
       &::before {
-        content: url('https://static-helpcenter.teamlab.info/images/icons/video-icon.svg');
+        content: url('https://static-helpcenter.teamlab.info/images/icons/video-icon.react.svg');
     }
   }
 
   .faq {
       &::before {
-        content: url('https://static-helpcenter.teamlab.info/images/icons/faq-icon.svg');
+        content: url('https://static-helpcenter.teamlab.info/images/icons/faq-icon.react.svg');
     }
   }
 
@@ -152,6 +152,12 @@ width: 231px;
 
   ul > li {
     position: relative;
+  }
+
+  @media ${device.tablet} {
+    .lm-wrap {
+      min-width: 184px;
+    }
   }
 
   @media ${device.tabletS} {

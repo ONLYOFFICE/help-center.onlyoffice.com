@@ -1,11 +1,8 @@
 import React, {useState} from "react";
 import TextInput from "@components/common/text-input";
 import StyledSearch from "./styled-search";
-import SearchIcon from "@public/images/icons/search-icon.react.svg";
-import { ReactSVG } from "react-svg";
 
 const MiniSearch = ({ valueSearch, callback, t, label }) => {
-
   const [searchItem, setSearchItem] = useState("");
 
   const onSearch = (e) => {
@@ -26,7 +23,7 @@ const MiniSearch = ({ valueSearch, callback, t, label }) => {
           placeholder={"Search in Help Center"}
         />
         <div className="search_icon">
-            <ReactSVG src={SearchIcon.src} style={{ cursor: "default" }} />
+            <img src="https://static-helpcenter.teamlab.info/images/icons/search-icon.react.svg" style={{ cursor: "default" }} />
         </div>
     </StyledSearch>
   );

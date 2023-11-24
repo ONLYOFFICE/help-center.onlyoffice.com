@@ -4,17 +4,13 @@ import Text from "@components/common/text";
 import Box from "@components/common/box";
 import TextInput from "@components/common/text-input/";
 import Heading from "@components/common/heading";
-
 import StyledSearchArea from "./styled-search-area";
-
-import SearchIcon from "@public/images/icons/search-icon.react.svg";
-import CloseIcon from "@public/images/icons/close-icon.react.svg";
 
 const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeholder }) => {
   /*eslint-disable*/
   const imgSearch = !valueSearch ? (
     <img className="search_img"
-      src={SearchIcon.src}
+      src="https://static-helpcenter.teamlab.info/images/icons/search-icon.react.svg"
       style={{ cursor: "default" }}
       alt="search"
       width="24px"
@@ -22,7 +18,7 @@ const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeho
     />
   ) : (
     <img
-      src={CloseIcon.src}
+      src="https://static-helpcenter.teamlab.info/images/icons/close-icon.react.svg"
       onClick={clearValueSearch}
       alt="close"
       width="24px"

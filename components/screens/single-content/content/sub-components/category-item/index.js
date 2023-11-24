@@ -42,9 +42,9 @@ const CategoryItem = ({
     <StyledCategoryItem>
       <Heading level={4}><Link href={data.attributes.url}>{data.attributes.title}</Link><img src={categoryPic?.attributes.url} /></Heading>
       <div className="main_links">
-        {catUrlGS && <div><img src={'https://static-helpcenter.teamlab.info/images/icons/start.svg'} /><Link href={catUrlGS}>{t("GettingStarted")}</Link></div>}
+        {catUrlGS && <div><img src={'https://static-helpcenter.teamlab.info/images/icons/start.react.svg'} /><Link href={catUrlGS}>{t("GettingStarted")}</Link></div>}
         {catUrlAbout && <div><img src={'https://static-helpcenter.teamlab.info/images/icons/info.react.svg'} /><Link href={catUrlAbout}>{t("About")}</Link></div>}
-        {catVideo > 0 && <div><img src={'https://static-helpcenter.teamlab.info/images/icons/video.svg'} /><Link href={catUrlVideo}>{t("WatchVideo")}</Link></div>}
+        {catVideo > 0 && <div><img src={'https://static-helpcenter.teamlab.info/images/icons/video.react.svg'} /><Link href={catUrlVideo}>{t("WatchVideo")}</Link></div>}
       </div>
       <Text><RawHtmlStyle>{ReactHtmlParser(data.attributes.description)}</RawHtmlStyle></Text>
       {itemsBM.length !== 0 && (
