@@ -73,7 +73,7 @@ const ArticlePopup = ({ t, language, active, setActive, tag, allTags, ...rest })
               {tagsData?.attributes.articles.data.slice(0, next)?.map((it, index) => {
                const matchingItem2 = markData[index];
                 return (
-                  <InternalLink key={index} className="markLink" href={window.location.origin + "/" + it.attributes.url} onClick={(e) => handlePopupClose(e, window.location.origin + "/" + it.attributes.url)}>
+                  <InternalLink key={index} className="markLink" href={window.location.origin + it.attributes.url} onClick={(e) => handlePopupClose(e, window.location.origin + it.attributes.url)}>
                     {matchingItem2 !== undefined && (<Mark t={t} style={{ backgroundColor: matchingItem2[0]?.attributes.color }} label={matchingItem2[0]?.attributes.name} />)}
                     <span className="title">{it.attributes.title}</span>
                     {it.attributes.subtitle?.length !== undefined && <Text className="postlinkText">&nbsp;{"("}{it.attributes.subtitle}{")"}</Text>}
