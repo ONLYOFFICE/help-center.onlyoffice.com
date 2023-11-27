@@ -32,7 +32,7 @@ const LanguageSelector = (props) => {
 
   const onClickHandler = (e) => {
     e.stopPropagation();
-    if (e.target.closest(".flag-image") || e.target.closest(".arrow-image") || e.target.closest(".language-item-link")|| e.target.closest(".lang-name")) {
+    if (e.target.closest(".flag-image") || e.target.closest(".arrow-image") || e.target.closest(".language-item-link") || e.target.closest(".lang-name")) {
       setIsOpen(!isOpen);
       props.onClick && props.onClick(e);
     }
@@ -63,25 +63,24 @@ const LanguageSelector = (props) => {
       <img
         className="flag-image"
         alt="flag"
-        src={`https://static-helpcenter.teamlab.info/images/flags/${currentLanguage}.react.svg`}
+        src={`https://static-helpcenter.onlyoffice.com/images/flags/${currentLanguage}.react.svg`}
         width={"24px"}
         height={"24px"}
       />
-       <Text className="lang-name">{langName}</Text>
-       {/*eslint-disable*/}
+      <Text className="lang-name">{langName}</Text>
+      {/*eslint-disable*/}
       <div className={`arrow-image`}>
-        <img src="https://static-helpcenter.teamlab.info/images/icons/arrow-right.react.svg" alt={srcAlt} />
+        <img src="https://static-helpcenter.onlyoffice.com/images/icons/arrow-right.react.svg" alt={srcAlt} />
       </div>
-       {/*eslint-enable*/}
+      {/*eslint-enable*/}
       <ItemsList
-        className={`languages-list lng-selector ${
-          isOpen ? "language-selector-open" : "language-selector-closed"
-        }`}
+        className={`languages-list lng-selector ${isOpen ? "language-selector-open" : "language-selector-closed"
+          }`}
         t={t}
         isOpen={isOpen}
         currentLanguage={currentLanguage}
         onCloseSelector={onCloseSelector}
-      /> 
+      />
     </StyledLanguageSelector>
   );
 };

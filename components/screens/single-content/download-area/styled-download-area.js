@@ -9,7 +9,7 @@ const StyledDownloadArea = styled.div`
   .download-wrapper {
     padding: 64px 16px;
     text-align: center;
-    background-image: url('https://static-helpcenter.teamlab.info/images/icons/download-bg.react.svg');
+    background-image: url('https://static-helpcenter.onlyoffice.com/images/icons/download-bg.react.svg');
     background-repeat: no-repeat;
     background-size: cover;
   }

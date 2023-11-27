@@ -37,7 +37,7 @@ const Menu = ({ t, currentLanguage, template, articles, ...rest }) => {
   };
 
 
- 
+
   return (
     <StyledMenu
       template={template}
@@ -49,7 +49,7 @@ const Menu = ({ t, currentLanguage, template, articles, ...rest }) => {
         <div className="site-logo"></div>
       </InternalLink>
       <img
-        src="https://static-helpcenter.teamlab.info/images/icons/mob_menu.react.svg"
+        src="https://static-helpcenter.onlyoffice.com/images/icons/mob_menu.react.svg"
         className="nav-items-mobile"
         onClick={toggleMobile}
       />
@@ -63,7 +63,7 @@ const Menu = ({ t, currentLanguage, template, articles, ...rest }) => {
       />
       {/* <div className="nav-right"> */}
       <Link className="link" href="https://www.onlyoffice.com/docs-registration.aspx?from=helpcenter"><Button label={t("Try in the cloud")} className="nav-btn" /></Link>
-        
+
       <LanguageSelector t={t} currentLanguage={currentLanguage} />
       {/* <div className="nav-item-lng">
           

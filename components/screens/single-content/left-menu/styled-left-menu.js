@@ -97,19 +97,19 @@ width: 231px;
 
   .glossary {
       &::before {
-        content: url('https://static-helpcenter.teamlab.info/images/icons/glossary-icon.react.svg');
+        content: url('https://static-helpcenter.onlyoffice.com/images/icons/glossary-icon.react.svg');
     }
   }
 
   .video {
       &::before {
-        content: url('https://static-helpcenter.teamlab.info/images/icons/video-icon.react.svg');
+        content: url('https://static-helpcenter.onlyoffice.com/images/icons/video-icon.react.svg');
     }
   }
 
   .faq {
       &::before {
-        content: url('https://static-helpcenter.teamlab.info/images/icons/faq-icon.react.svg');
+        content: url('https://static-helpcenter.onlyoffice.com/images/icons/faq-icon.react.svg');
     }
   }
 

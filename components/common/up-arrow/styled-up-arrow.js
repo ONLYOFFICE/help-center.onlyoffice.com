@@ -4,7 +4,7 @@ import { device } from "@components/utils/devices";
 
 const StyledUpArrow = styled(StyledIconButton)`
 background-color: #9ea4b5;
-background-image: url('https://static-helpcenter.teamlab.info/images/icons/arrowup.png');
+background-image: url('https://static-helpcenter.onlyoffice.com/images/icons/arrowup.png');
 background-position: center center;
 background-repeat: no-repeat;
 border-radius: 3px;

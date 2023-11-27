@@ -27,7 +27,7 @@ const FooterItem = ({ dis, children, className, heading }) => {
         label={heading}
       />
       <img
-        src="https://static-helpcenter.teamlab.info/images/icons/chevron-down.react.svg"
+        src="https://static-helpcenter.onlyoffice.com/images/icons/chevron-down.react.svg"
         className={footerImageArrow}
       />
       {/* <img

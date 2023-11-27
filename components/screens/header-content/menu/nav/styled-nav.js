@@ -59,7 +59,7 @@ import { device } from "@components/utils/devices";
 //       text-align: center;
 
 //       &:before {
-//         background-image: url('https://static-helpcenter.teamlab.info/images/icons/arrow_red.react.svg');
+//         background-image: url('https://static-helpcenter.onlyoffice.com/images/icons/arrow_red.react.svg');
 //         background-position: 50% 50%;
 //         background-repeat: no-repeat;
 //         background-size: auto 100%;
@@ -219,7 +219,7 @@ const StyledNav = styled.nav`
       width: 100%;
 
       &:before {
-        background-image: url('https://static-helpcenter.teamlab.info/images/icons/arrow-red.react.svg');
+        background-image: url('https://static-helpcenter.onlyoffice.com/images/icons/arrow-red.react.svg');
         background-position: 50% 50%;
         background-repeat: no-repeat;
         background-size: auto 100%;

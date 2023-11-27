@@ -46,7 +46,7 @@ const StyledMenuTablet = css`
   @media ${device.tabletS} {
   height: 56px;
     .site-logo {
-      background-image: url('https://static-helpcenter.teamlab.info/images/logo/logo-mobile.react.svg');
+      background-image: url('https://static-helpcenter.onlyoffice.com/images/logo/logo-mobile.react.svg');
       background-repeat: no-repeat;
       background-position: 50%;
       width: 35px;
@@ -157,7 +157,7 @@ const StyledMenu = styled.div`
   }
 
   .site-logo {
-    background-image: url('https://static-helpcenter.teamlab.info/images/logo/logonew.react.svg');
+    background-image: url('https://static-helpcenter.onlyoffice.com/images/logo/logonew.react.svg');
     background-repeat: no-repeat;
     background-position: 0 50%;
     position: relative;

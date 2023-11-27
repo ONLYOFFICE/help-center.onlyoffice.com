@@ -70,33 +70,27 @@ const HeadSEO = ({
             <link
               key={key}
               rel="alternate"
-              href={`https://helpcenter.onlyoffice.com/${
-                shortKey === "en" ? "" : shortKey
-              }${currentUrl === null ? "" : currentUrl}`}
+              href={`https://helpcenter.onlyoffice.com/${shortKey === "en" ? "" : shortKey
+                }${currentUrl === null ? "" : currentUrl}`}
             />
           );
         })}
 
         <meta name="theme-light" />
       </Head>
-      {/* <Script
+      <Script
         id="googletagmanager"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
-          var _gaq = _gaq || [];
-          _gaq.push(['_setAccount', 'UA-12442749-5']);
-          _gaq.push(['_setDomainName', '.onlyoffice.com']);
-          _gaq.push(['_trackPageview']);
-
-          (function() {
-              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-              ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-          })();
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-5NW47TX');
         `,
         }}
-      /> */}
+      />
     </>
   );
 };

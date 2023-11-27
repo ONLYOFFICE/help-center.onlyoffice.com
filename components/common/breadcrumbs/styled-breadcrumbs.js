@@ -23,7 +23,7 @@ const StyledBreadcrumb = styled.div`
       top: 0px;
       width: 10px;
       height: 10px;
-      background-image: url('https://static-helpcenter.teamlab.info/images/icons/crumb.react.svg');
+      background-image: url('https://static-helpcenter.onlyoffice.com/images/icons/crumb.react.svg');
       background-repeat: no-repeat;
       background-size: cover;
     }

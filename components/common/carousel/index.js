@@ -22,17 +22,16 @@ const Carousel = ({
   const [currentSlide, setCurrentSlide] = useState(0);
   const CustomPrevArrow = ({ onClick }) => (
     <button onClick={onClick} className={`cust-arr prev ${currentSlide === 0 ? 'disabled' : ''}`}>
-      <img src="https://static-helpcenter.teamlab.info/images/icons/slideshow_next-prev.react.svg" alt="Previous" />
+      <img src="https://static-helpcenter.onlyoffice.com/images/icons/slideshow_next-prev.react.svg" alt="Previous" />
     </button>
   );
   const CustomNextArrow = ({ onClick }) => (
-    <button onClick={onClick} className={`cust-arr next ${
-      currentSlide === settings.slidesToShow - 1 ? 'disabled' : ''
-    }`}>
-      <img src="https://static-helpcenter.teamlab.info/images/icons/slideshow_next-prev.react.svg" alt="Next" />
+    <button onClick={onClick} className={`cust-arr next ${currentSlide === settings.slidesToShow - 1 ? 'disabled' : ''
+      }`}>
+      <img src="https://static-helpcenter.onlyoffice.com/images/icons/slideshow_next-prev.react.svg" alt="Next" />
     </button>
   );
-  const settings =  {
+  const settings = {
     infinite: false,
     slidesToShow: 2,
     slidesToScroll: 1,
@@ -64,7 +63,7 @@ const Carousel = ({
       data={item}
     />
   ));
-  
+
   return (
     <StyledCarousel arrows={isArrows} {...rest}>
       <Slider {...settings}>{sliders}</Slider>

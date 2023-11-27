@@ -211,7 +211,7 @@ const StyledNavMenu = styled.div`
         content: "";
         width: 10px;
         height: 10px;
-        background-image: url('https://static-helpcenter.teamlab.info/images/icons/arrow-gray.react.svg');
+        background-image: url('https://static-helpcenter.onlyoffice.com/images/icons/arrow-gray.react.svg');
         background-position: 50% 50%;
         background-repeat: no-repeat;
         background-size: auto 100%;

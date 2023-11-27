@@ -37,7 +37,7 @@ const StyledQuestionArea = styled.div`
     width: 100%;
     max-width: 344px;
     padding-bottom: 74.21%;
-    background-image: url('https://static-helpcenter.teamlab.info/images/icons/question-forum.react.svg');
+    background-image: url('https://static-helpcenter.onlyoffice.com/images/icons/question-forum.react.svg');
     background-repeat: no-repeat;
     background-size: cover;
   }

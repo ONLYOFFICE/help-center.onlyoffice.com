@@ -10,7 +10,7 @@ const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeho
   /*eslint-disable*/
   const imgSearch = !valueSearch ? (
     <img className="search_img"
-      src="https://static-helpcenter.teamlab.info/images/icons/search-icon.react.svg"
+      src="https://static-helpcenter.onlyoffice.com/images/icons/search-icon.react.svg"
       style={{ cursor: "default" }}
       alt="search"
       width="24px"
@@ -18,7 +18,7 @@ const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeho
     />
   ) : (
     <img
-      src="https://static-helpcenter.teamlab.info/images/icons/close-icon.react.svg"
+      src="https://static-helpcenter.onlyoffice.com/images/icons/close-icon.react.svg"
       onClick={clearValueSearch}
       alt="close"
       width="24px"
@@ -28,16 +28,16 @@ const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeho
   /*eslint-enable*/
   return (
     <StyledSearchArea>
-      {label && 
+      {label &&
         <Heading
-            className="presearch_title"
-            color="#333"
-            level={1}
-            label={label}
-            textAlign="center"
-            fontWeight={700}
-          />
-        }
+          className="presearch_title"
+          color="#333"
+          level={1}
+          label={label}
+          textAlign="center"
+          fontWeight={700}
+        />
+      }
       <Box className="search_container" alignItems="center">
         <TextInput
           onChange={callback}
