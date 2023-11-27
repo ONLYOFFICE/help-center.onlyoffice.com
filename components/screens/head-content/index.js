@@ -54,18 +54,15 @@ const HeadSEO = ({
         <meta id="ctl00_MetaKeywords" name="keywords" content={metaKeywords} />
         <meta name="description" content={metaDescription} />
 
-        <link
-          rel="apple-touch-icon"
-          href="https://static-oforms.teamlab.info/images/logo/ONLYOFFICE-logo.png"
-        />
+        <link rel="shortcut icon" sizes="16x16" href="https://static-www.onlyoffice.com/v9.5.0/images/favicons01/favicon.png" type="image/png" />
+        <link rel="shortcut icon" sizes="32x32" href="https://static-www.onlyoffice.com/v9.5.0/images/favicons01/favicon32.png" type="image/png" />
+        <link rel="shortcut icon" sizes="64x64" href="https://static-www.onlyoffice.com/v9.5.0/images/favicons01/favicon64.png" type="image/png" />
+        <link rel="icon" sizes="96x96" href="https://static-www.onlyoffice.com/v9.5.0/images/favicons01/favicon.ico" type="image/x-icon" />
 
         <meta name="google" content="notranslate" />
-
-        <link
-          rel="icon"
-          href="https://static-oforms.teamlab.info/images/logo/favicon_general.png"
-          type="image/x-icon"
-        />
+        <link rel="apple-touch-icon" sizes="150x150" href="https://static-www.onlyoffice.com/v9.5.0/images/favicons01/apple150.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="310x310" href="https://static-www.onlyoffice.com/v9.5.0/images/favicons01/apple310.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="325x325" href="https://static-www.onlyoffice.com/v9.5.0/images/favicons01/fb_icon_325x325.png" type="image/png" />
 
         {languages.map((lng) => {
           const { key, shortKey } = lng;

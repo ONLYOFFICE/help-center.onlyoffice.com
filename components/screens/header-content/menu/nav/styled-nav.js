@@ -219,7 +219,7 @@ const StyledNav = styled.nav`
       width: 100%;
 
       &:before {
-        background-image: url('https://static-oforms.onlyoffice.com/icons/arrow-red.react.svg');
+        background-image: url('https://static-helpcenter.teamlab.info/images/icons/arrow-red.react.svg');
         background-position: 50% 50%;
         background-repeat: no-repeat;
         background-size: auto 100%;
