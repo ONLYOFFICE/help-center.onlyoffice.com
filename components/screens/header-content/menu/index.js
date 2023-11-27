@@ -35,6 +35,8 @@ const Menu = ({ t, currentLanguage, template, articles, ...rest }) => {
       onCloseMenu();
     }
   };
+
+
  
   return (
     <StyledMenu

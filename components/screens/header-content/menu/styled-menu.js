@@ -128,6 +128,7 @@ const StyledMenu = styled.div`
   background-color: #fff;
   transition: 0.3s;
   column-gap: 5vw;
+
     @media screen and (max-width: 1550px) {
       column-gap: 30px;
     }

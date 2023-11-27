@@ -14,7 +14,7 @@ const DownloadArea = ({ t, ...rest }) => {
             <ExternalLink href="https://www.onlyoffice.com/download-docs.aspx">
               <Button label={t("GetItNow")} typeButton={"white"} />
             </ExternalLink>
-            <ExternalLink href="https://www.onlyoffice.com/docspace-registration.aspx">
+            <ExternalLink href="https://www.onlyoffice.com/docs-registration.aspx">
               <Button label={t("UseInTheCloud")} typeButton={"white"} />
             </ExternalLink>
           </div>
