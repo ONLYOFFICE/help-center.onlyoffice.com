@@ -216,7 +216,7 @@ const StyledNavMenu = styled.div`
         content: "";
         width: 10px;
         height: 10px;
-        background-image: url('https://static-oforms.onlyoffice.com/icons/arrow-gray.svg');
+        background-image: url('https://static-helpcenter.teamlab.info/icons/arrow-gray.svg');
         background-position: 50% 50%;
         background-repeat: no-repeat;
         background-size: auto 100%;
