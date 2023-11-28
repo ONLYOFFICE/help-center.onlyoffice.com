@@ -22,9 +22,9 @@ const ConnectorsPage = ({ locale, articles, videos, categories }) => {
       <Layout.PageHead>
         <HeadSEO
           title={t("Integration Guides - ONLYOFFICE")}
-          metaSiteNameOg={t("metaSiteNameOg")}
-          metaDescription={t("titleIndexPage")}
-          metaDescriptionOg={t("metaDescriptionOgIndexPage")}
+          metaSiteNameOg={t("ONLYOFFICE Help Center")}
+          metaDescription={t("ONLYOFFICEMeta")}
+          metaDescriptionOg={t("ONLYOFFICEMeta")}
           metaKeywords={t("Integration Guides - ONLYOFFICE")}
         />
       </Layout.PageHead>
