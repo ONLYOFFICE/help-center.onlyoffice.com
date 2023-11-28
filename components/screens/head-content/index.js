@@ -12,6 +12,7 @@ const HeadSEO = ({
   metaDescriptionOg,
   metaKeywords,
   title,
+  currentLanguage
 }) => {
   const router = useRouter();
   const [currentUrl, setCurrentUrl] = useState("");
@@ -26,6 +27,7 @@ const HeadSEO = ({
       <Head>
         <title>{title}</title>
         <meta charSet="utf-8" />
+        <meta name="robots" content="noindex, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <meta property="og:type" content="website" />
         <meta
           id="ctl00_MetaSiteNameOG"
@@ -50,19 +52,16 @@ const HeadSEO = ({
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=3, shrink-to-fit=no, viewport-fit=cover"
         />
-
         <meta id="ctl00_MetaKeywords" name="keywords" content={metaKeywords} />
         <meta name="description" content={metaDescription} />
 
-        <link rel="shortcut icon" sizes="16x16" href="https://static-www.onlyoffice.com/v9.5.0/images/favicons01/favicon.png" type="image/png" />
-        <link rel="shortcut icon" sizes="32x32" href="https://static-www.onlyoffice.com/v9.5.0/images/favicons01/favicon32.png" type="image/png" />
-        <link rel="shortcut icon" sizes="64x64" href="https://static-www.onlyoffice.com/v9.5.0/images/favicons01/favicon64.png" type="image/png" />
-        <link rel="icon" sizes="96x96" href="https://static-www.onlyoffice.com/v9.5.0/images/favicons01/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="https://static-helpcenter.onlyoffice.com/images/favicon.ico" sizes="192x192" />
+        <link rel="apple-touch-icon" href="https://static-helpcenter.onlyoffice.com/images/favicon.ico" />
 
         <meta name="google" content="notranslate" />
-        <link rel="apple-touch-icon" sizes="150x150" href="https://static-www.onlyoffice.com/v9.5.0/images/favicons01/apple150.png" type="image/png" />
-        <link rel="apple-touch-icon" sizes="310x310" href="https://static-www.onlyoffice.com/v9.5.0/images/favicons01/apple310.png" type="image/png" />
-        <link rel="apple-touch-icon" sizes="325x325" href="https://static-www.onlyoffice.com/v9.5.0/images/favicons01/fb_icon_325x325.png" type="image/png" />
+        <meta name="google" content="nositelinkssearchbox" />
+
+        <link rel="canonical" href={`https://helpcenter.onlyoffice.com/${currentLanguage === "en" ? "" : `${currentLanguage}/`}`} />
 
         {languages.map((lng) => {
           const { key, shortKey } = lng;
@@ -70,8 +69,8 @@ const HeadSEO = ({
             <link
               key={key}
               rel="alternate"
-              href={`https://helpcenter.onlyoffice.com/${shortKey === "en" ? "" : shortKey
-                }${currentUrl === null ? "" : currentUrl}`}
+              hrefLang={key}
+              href={`https://helpcenter.onlyoffice.com${shortKey === "en" ? "" : `/${shortKey}`}${currentUrl === null ? "" : currentUrl}`}
             />
           );
         })}

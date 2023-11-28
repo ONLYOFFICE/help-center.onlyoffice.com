@@ -32,6 +32,7 @@ const articlePage = ({ locale, articles, videos, tags, categories }) => {
           metaDescription={seo_description}
           metaDescriptionOg={seo_description}
           metaKeywords={seo_title}
+          currentLanguage={locale}
         />
       </Layout.PageHead>
       <Layout.PageHeader>

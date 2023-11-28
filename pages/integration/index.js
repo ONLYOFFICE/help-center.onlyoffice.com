@@ -26,6 +26,7 @@ const ConnectorsPage = ({ locale, articles, videos, categories }) => {
           metaDescription={t("ONLYOFFICEMeta")}
           metaDescriptionOg={t("ONLYOFFICEMeta")}
           metaKeywords={t("Integration Guides - ONLYOFFICE")}
+          currentLanguage={locale}
         />
       </Layout.PageHead>
       <Layout.PageHeader>

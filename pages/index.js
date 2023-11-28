@@ -24,6 +24,7 @@ const Index = ({ locale, categories, articles }) => {
           metaDescription={t("titleIndexPage")}
           metaDescriptionOg={t("metaDescriptionOgIndexPage")}
           metaKeywords={t("metaKeywordsIndexPage")}
+          currentLanguage={locale}
         />
       </Layout.PageHead>
       <Layout.PageHeader>
