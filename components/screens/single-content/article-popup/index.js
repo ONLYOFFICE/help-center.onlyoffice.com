@@ -20,6 +20,7 @@ const ArticlePopup = ({ t, language, active, setActive, tag, allTags, ...rest })
     }
   };
   const [marks, setMarks] = useState([]);
+  const baseUrl = process.browser && window.location.origin;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,7 +32,7 @@ const ArticlePopup = ({ t, language, active, setActive, tag, allTags, ...rest })
       }
     };
 
-    fetchData(); // Call the fetchData function inside useEffect
+    fetchData(); 
   }, [tagsData]);
 
   const markData = useMemo(() => {
@@ -72,8 +73,9 @@ const ArticlePopup = ({ t, language, active, setActive, tag, allTags, ...rest })
           <div className="textContent">
               {tagsData?.attributes.articles.data.slice(0, next)?.map((it, index) => {
                const matchingItem2 = markData[index];
+               const finalUrl = baseUrl + (language != "en" ? '/' : '') + it.attributes.url;
                 return (
-                  <InternalLink key={index} className="markLink" href={window.location.origin + it.attributes.url} onClick={(e) => handlePopupClose(e, window.location.origin + it.attributes.url)}>
+                  <InternalLink key={index} className="markLink" href={finalUrl} onClick={(e) => handlePopupClose(e, finalUrl)}>
                     {matchingItem2 !== undefined && (<Mark t={t} style={{ backgroundColor: matchingItem2[0]?.attributes.color }} label={matchingItem2[0]?.attributes.name} />)}
                     <span className="title">{it.attributes.title}</span>
                     {it.attributes.subtitle?.length !== undefined && <Text className="postlinkText">&nbsp;{"("}{it.attributes.subtitle}{")"}</Text>}

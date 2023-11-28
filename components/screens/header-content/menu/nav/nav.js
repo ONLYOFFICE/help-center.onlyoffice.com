@@ -25,7 +25,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, articles, ...rest })
 
     useEffect(() => {
       if (typeof window !== 'undefined') {
-        setUrl(window.location.origin);
+        setUrl(window.location.origin + (currentLanguage != "en" ? '/' : ''));
       }
     }, []);
   return (
