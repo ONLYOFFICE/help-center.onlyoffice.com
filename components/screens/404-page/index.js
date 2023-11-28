@@ -10,7 +10,7 @@ const Error404 = ({ t, ...rest }) => {
   return (
     <Styled404 {...rest}>
       <img
-        src="/images/icons/bg-errors.react.svg"
+        src="https://static-helpcenter.onlyoffice.com/images/icons/bg-errors.react.svg"
         className="page-error-404-image"
         alt="page-error-404"
       />
