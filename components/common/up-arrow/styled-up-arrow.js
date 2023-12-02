@@ -1,11 +1,10 @@
 import styled, { css } from "styled-components";
 import StyledIconButton from "@components/common/icon-button/styled-icon-button";
-import arrow_gray from "@public/images/icons/arrowup.png";
 import { device } from "@components/utils/devices";
 
 const StyledUpArrow = styled(StyledIconButton)`
 background-color: #9ea4b5;
-background-image: url(${arrow_gray});
+background-image: url('https://static-helpcenter.onlyoffice.com/images/icons/arrowup.png');
 background-position: center center;
 background-repeat: no-repeat;
 border-radius: 3px;

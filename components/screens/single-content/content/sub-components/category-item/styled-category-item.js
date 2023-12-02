@@ -35,8 +35,11 @@ const StyledCategoryItem = styled.div`
     }
 }
 
-> h5 {
-    padding: 16px 0 0;
+h5 {
+    &:hover {
+        color: #ff6f3d;
+        cursor: pointer;
+    }
 }
 
  > span {
@@ -67,11 +70,14 @@ const StyledCategoryItem = styled.div`
  ul {
     list-style-type: none;
     padding: 16px 0 0;
-
     li {
-        padding: 0 0 16px;
+        line-height: normal;
+        padding: 16px 0 16px;
+        &.sublink {
+            padding: 0 0 16px;
+        }
         &:last-child {
-            padding: 0;
+            padding-bottom: 0;
         }
         a {
             color: #333333;

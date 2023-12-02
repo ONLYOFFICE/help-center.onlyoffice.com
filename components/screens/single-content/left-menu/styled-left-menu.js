@@ -1,25 +1,32 @@
 import styled from "styled-components";
-import glossary from "@public/images/icons/glossary-icon.svg";
-import video from "@public/images/icons/video-icon.svg";
-import faq from "@public/images/icons/faq-icon.svg";
 import { device } from "@components/utils/devices";
 
 const StyledLeftMenu = styled.div`
 background-color: #F5F5F5;
 border-right: 1px solid #EFEFEF;
+padding: 32px 0;
+padding-right: 24px;
+width: 231px;
   
   .lm-wrap {
     box-sizing: border-box;
     position: sticky;
     margin: 0;
-    min-width: 258px;
+    min-width: 231px;
     z-index: 100;
     top: 72px;
     height: calc(100vh - 72px);
     overflow-y: auto;
-    padding: 32px 26px 64px 16px;
-    width: 258px;
+    padding: 0px 4px 64px 0px;
   }
+
+  .lm-wrap::-webkit-scrollbar-thumb {
+      border-radius: 3px;
+      background: #D0D5DA;
+    }
+    .lm-wrap::-webkit-scrollbar {
+    width: 4px;
+}
 
   h6 {
     padding: 0 0 8px;
@@ -29,7 +36,7 @@ border-right: 1px solid #EFEFEF;
   &::before {
     content: "";
     position: absolute;
-    left: 0;
+    left: 32px;
     top: 0;
     z-index: 2;
     width: 100vw;
@@ -90,19 +97,19 @@ border-right: 1px solid #EFEFEF;
 
   .glossary {
       &::before {
-        content: url(${glossary.src});
+        content: url('https://static-helpcenter.onlyoffice.com/images/icons/glossary-icon.react.svg');
     }
   }
 
   .video {
       &::before {
-        content: url(${video.src});
+        content: url('https://static-helpcenter.onlyoffice.com/images/icons/video-icon.react.svg');
     }
   }
 
   .faq {
       &::before {
-        content: url(${faq.src});
+        content: url('https://static-helpcenter.onlyoffice.com/images/icons/faq-icon.react.svg');
     }
   }
 
@@ -140,7 +147,7 @@ border-right: 1px solid #EFEFEF;
     width: 4px;
     height: 100%;
     border-radius: 2px;
-    background-color: #444444;
+    background-color: #ff6f3d;
   }
 
   ul > li {
@@ -149,10 +156,10 @@ border-right: 1px solid #EFEFEF;
 
   @media ${device.tablet} {
     .lm-wrap {
-      padding: 32px 40px 64px;
-      width: 280px;
+      min-width: 184px;
     }
   }
+
   @media ${device.tabletS} {
     display: none;
   }

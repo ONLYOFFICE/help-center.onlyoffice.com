@@ -15,6 +15,7 @@ export default function leftMenuGenerating(article, isCategory, hrefDomain, sele
           const text = heading.textContent;
           const item = {
             id: heading.parentElement.id,
+            type: heading.tagName.toLowerCase(),
             text,
             ...(hrefDomain != null && { href: article.attributes.url + "#" + heading.parentElement.id }),
           };

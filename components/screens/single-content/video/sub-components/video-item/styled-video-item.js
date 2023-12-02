@@ -6,12 +6,21 @@ const StyledVideoItem = styled.div`
   //display: flex;
   //flex-direction: column;
   //gap: 16px;
+
+  &.main {
+    max-width: 512px;
+    width: 100%;
+  }
+
+  &.second {
+    min-width: 224px;
+    width: 224px;
+  }
   
   iframe {
     aspect-ratio: 1.79;
     border: none;
     min-width: 100%;
-    max-width: 100%;
     width: 100%;
   }
 
@@ -40,8 +49,15 @@ const StyledVideoItem = styled.div`
   }
 
   &.single {
+  max-width: 100%;
     iframe {
       aspect-ratio: 2.87;
+    }
+  }
+
+  @media ${device.laptopM} {
+      &.main {
+      max-width: 100%;
     }
   }
   @media ${device.laptop} {

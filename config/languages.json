@@ -1,20 +1,20 @@
 [
     {
-      "key": "en",
+      "key": "en-US",
       "shortKey": "en",
-      "iconName": "en.svg",
+      "iconName": "en.react.svg",
       "name": "English"
     },
     {
-      "key": "de",
+      "key": "de-DE",
       "shortKey": "de",
-      "iconName": "de.svg",
+      "iconName": "de.react.svg",
       "name": "Deutsch"
     },
     {
-      "key": "fr",
+      "key": "fr-FR",
       "shortKey": "fr",
-      "iconName": "fr.svg",
+      "iconName": "fr.react.svg",
       "name": "Français"
     }
   ]

@@ -1,8 +1,5 @@
 import React, { useEffect, useState, useMemo, useRef } from "react";
 import StyledLanguageSelector from "./styled-language-selector";
-import ArrowDown from "@public/images/icons/arrow-drop-down.react.svg";
-import ArrowUp from "@public/images/icons/arrow-drop-up.react.svg";
-import ArrowRight from "@public/images/icons/arrow-right.react.svg";
 import ItemsList from "./items-list";
 import languages from "@config/languages";
 import Text from "../text";
@@ -35,7 +32,7 @@ const LanguageSelector = (props) => {
 
   const onClickHandler = (e) => {
     e.stopPropagation();
-    if (e.target.closest(".flag-image") || e.target.closest(".arrow-image") || e.target.closest(".language-item-link")|| e.target.closest(".lang-name")) {
+    if (e.target.closest(".flag-image") || e.target.closest(".arrow-image") || e.target.closest(".language-item-link") || e.target.closest(".lang-name")) {
       setIsOpen(!isOpen);
       props.onClick && props.onClick(e);
     }
@@ -54,9 +51,6 @@ const LanguageSelector = (props) => {
     }
   }), [currentLanguage]);
 
-  // const srcArrow = isOpen
-  // ? ArrowUp.src
-  // : ArrowDown.src;
   const srcAlt = isOpen ? "arrow-up" : "arrow-down";
 
   return (
@@ -69,25 +63,24 @@ const LanguageSelector = (props) => {
       <img
         className="flag-image"
         alt="flag"
-        src={`/images/flags/${currentLanguage}.svg`}
+        src={`https://static-helpcenter.onlyoffice.com/images/flags/${currentLanguage}.react.svg`}
         width={"24px"}
         height={"24px"}
       />
-       <Text className="lang-name">{langName}</Text>
-       {/*eslint-disable*/}
+      <Text className="lang-name">{langName}</Text>
+      {/*eslint-disable*/}
       <div className={`arrow-image`}>
-        <img src={ArrowRight.src} alt={srcAlt} />
+        <img src="https://static-helpcenter.onlyoffice.com/images/icons/arrow-right.react.svg" alt={srcAlt} />
       </div>
-       {/*eslint-enable*/}
+      {/*eslint-enable*/}
       <ItemsList
-        className={`languages-list lng-selector ${
-          isOpen ? "language-selector-open" : "language-selector-closed"
-        }`}
+        className={`languages-list lng-selector ${isOpen ? "language-selector-open" : "language-selector-closed"
+          }`}
         t={t}
         isOpen={isOpen}
         currentLanguage={currentLanguage}
         onCloseSelector={onCloseSelector}
-      /> 
+      />
     </StyledLanguageSelector>
   );
 };

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import CloseBtnIcon from "@public/images/icons/close-icon.svg";
 
 const StyledAttentionBlock = styled.div`
   position: relative;
@@ -24,7 +23,7 @@ const StyledAttentionBlock = styled.div`
     cursor: pointer;
     border: none;
     background-color: transparent;
-    background-image: url(${CloseBtnIcon});
+    background-image: url('https://static-helpcenter.onlyoffice.com/images/icons/close-icon.react.svg');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 20px 20px;

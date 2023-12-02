@@ -93,7 +93,7 @@ body {
   position: relative;
 }
 
-a {
+a, a:visited, a:-webkit-any-link {
   color: #ff6f3d;
 }
 a:hover {

@@ -37,7 +37,7 @@ export default function LangsList(props) {
         <StyledItem key={key}>
           <Link href={pagePath} locale={language.shortKey} className="language-item-link">
             <img
-              src={`/images/flags/${iconName}`}
+              src={`https://static-helpcenter.onlyoffice.com/images/flags/${iconName}`}
               alt={key}
               width="24px"
               height="24px"

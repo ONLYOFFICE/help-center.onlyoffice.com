@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import arrow_gray from "@public/images/icons/arrow-gray.svg";
-import arrow_red from "@public/images/icons/arrow-red.svg";
 import { device } from "@components/utils/devices";
 
 // const StyledNavMenu = styled.div`
@@ -90,9 +88,6 @@ const StyledNavMenu = styled.div`
       position: relative;
       > .menu-items-wrapper {
         left: -300px;
-      }
-      > .heading-nav-item {
-        line-height: 12px;
       }
     }
   .heading-nav-item {
@@ -216,7 +211,7 @@ const StyledNavMenu = styled.div`
         content: "";
         width: 10px;
         height: 10px;
-        background-image: url('https://static-helpcenter.teamlab.info/icons/arrow-gray.svg');
+        background-image: url('https://static-helpcenter.onlyoffice.com/images/icons/arrow-gray.react.svg');
         background-position: 50% 50%;
         background-repeat: no-repeat;
         background-size: auto 100%;

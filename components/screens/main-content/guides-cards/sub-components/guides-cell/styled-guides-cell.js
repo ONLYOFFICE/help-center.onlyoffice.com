@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 
-import apple from "@public/images/icons/apple.svg";
-import android from "@public/images/icons/android.svg";
-
 const StyledGuidesCell = styled.div`
   background-color: white;  
   border-radius: 3px;
@@ -71,7 +68,7 @@ const StyledGuidesCell = styled.div`
    }
   }
 
-  @media ${device.tabletM} {
+  @media ${device.tablet} {
     width: 90vw;
   }
 

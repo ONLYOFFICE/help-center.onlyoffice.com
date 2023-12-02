@@ -12,6 +12,7 @@ const HeadSEO = ({
   metaDescriptionOg,
   metaKeywords,
   title,
+  currentLanguage
 }) => {
   const router = useRouter();
   const [currentUrl, setCurrentUrl] = useState("");
@@ -26,6 +27,7 @@ const HeadSEO = ({
       <Head>
         <title>{title}</title>
         <meta charSet="utf-8" />
+        <meta name="robots" content="noindex, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <meta property="og:type" content="website" />
         <meta
           id="ctl00_MetaSiteNameOG"
@@ -50,22 +52,16 @@ const HeadSEO = ({
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=3, shrink-to-fit=no, viewport-fit=cover"
         />
-
         <meta id="ctl00_MetaKeywords" name="keywords" content={metaKeywords} />
         <meta name="description" content={metaDescription} />
 
-        <link
-          rel="apple-touch-icon"
-          href="https://static-oforms.teamlab.info/images/logo/ONLYOFFICE-logo.png"
-        />
+        <link rel="icon" href="https://static-helpcenter.onlyoffice.com/images/favicon.ico" sizes="192x192" />
+        <link rel="apple-touch-icon" href="https://static-helpcenter.onlyoffice.com/images/favicon.ico" />
 
         <meta name="google" content="notranslate" />
+        <meta name="google" content="nositelinkssearchbox" />
 
-        <link
-          rel="icon"
-          href="https://static-oforms.teamlab.info/images/logo/favicon_general.png"
-          type="image/x-icon"
-        />
+        <link rel="canonical" href={`https://helpcenter.onlyoffice.com/${currentLanguage === "en" ? "" : `${currentLanguage}/`}`} />
 
         {languages.map((lng) => {
           const { key, shortKey } = lng;
@@ -73,33 +69,27 @@ const HeadSEO = ({
             <link
               key={key}
               rel="alternate"
-              href={`https://helpcenter.onlyoffice.com/${
-                shortKey === "en" ? "" : shortKey
-              }${currentUrl === null ? "" : currentUrl}`}
+              hrefLang={key}
+              href={`https://helpcenter.onlyoffice.com${shortKey === "en" ? "" : `/${shortKey}`}${currentUrl === null ? "" : currentUrl}`}
             />
           );
         })}
 
         <meta name="theme-light" />
       </Head>
-      {/* <Script
+      <Script
         id="googletagmanager"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
-          var _gaq = _gaq || [];
-          _gaq.push(['_setAccount', 'UA-12442749-5']);
-          _gaq.push(['_setDomainName', '.onlyoffice.com']);
-          _gaq.push(['_trackPageview']);
-
-          (function() {
-              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-              ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-          })();
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-5NW47TX');
         `,
         }}
-      /> */}
+      />
     </>
   );
 };

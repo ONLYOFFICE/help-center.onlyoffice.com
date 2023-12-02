@@ -5,13 +5,13 @@ import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head-content";
 import Error404 from "@components/screens/404-page";
 
-const ErrorPage = () => {
+const ErrorPage = ({ locale }) => {
   const { t } = useTranslation();
 
   return (
     <Layout footerContent={false} headerContent={false}>
       <Layout.PageHead>
-        <HeadSEO title={t("Error Page")} metaDescription={t("Error Page")} />
+        <HeadSEO title={t("Error Page")} metaDescription={t("Error Page")} currentLanguage={locale} />
       </Layout.PageHead>
       <Layout.SectionMain>
         <Error404 t={t} />

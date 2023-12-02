@@ -6,7 +6,7 @@ import Layout from "@components/layout";
 import Error404 from "@components/screens/404-page";
 import HeadSEO from "@components/screens/head-content";
 
-const Error404Page = () => {
+const Error404Page = ({ locale }) => {
   const { t } = useTranslation();
 
   return (
@@ -17,6 +17,7 @@ const Error404Page = () => {
           metaSiteNameOg={t("Page 404")}
           metaDescription={t("Page 404")}
           metaDescriptionOg={t("Page 404")}
+          currentLanguage={locale}
         />
       </Layout.PageHead>
       <Layout.SectionMain>

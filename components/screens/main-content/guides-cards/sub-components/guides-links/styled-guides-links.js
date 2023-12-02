@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 
-import apple from "@public/images/icons/apple.svg";
-import android from "@public/images/icons/android.svg";
-
 const StyledGuidesLinks = styled.div`
     align-items: start;
     display: flex;
@@ -68,18 +65,6 @@ const StyledGuidesLinks = styled.div`
           &:before {
             margin-right: 8px;
             width: 16px;
-          }
-        }
-
-        &.iOS {
-          &::before {
-            content: url(${apple.src});
-          }
-        }
-
-        &.Android {
-          &:before {
-            content: url(${android.src});
           }
         }
       }
