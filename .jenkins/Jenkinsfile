@@ -9,14 +9,14 @@ switch(BRANCH_NAME) {
     cms="https://cmshelpcenter.teamlab.info"
     appServer="https://testnew-helpcenter.onlyoffice.com/"
     break
-  case "production.deploy111":
+  case "production.deploy":
     aws_region="us-east-1"
     region="com"
     MONITOR_ID = '8888888888888'
-    cloud_front_distribution_id="9999999999"
-    site_url="https://testnew-helpcenter.onlyoffice.com/"
-    cms="https://cmshelpcenter.teamlab.info"
-    appServer="https://helpcenter.onlyoffice.com/"
+    cloud_front_distribution_id="E2E2PQUBA1BLDR"
+    site_url="https://prodnew-helpcenter.onlyoffice.com/"
+    cms="https://cmshelpcenter.onlyoffice.com"
+    appServer="https://prodnew-helpcenter.onlyoffice.com/"
     break
   default:
     println("Branch: ${BRANCH_NAME} do not for deploy.")
@@ -34,7 +34,7 @@ pipeline {
   }
   stages {
     stage('stop_monitor') {
-      when { branch 'production_deploy' }
+      when { branch 'production_deploy111' }
       steps {
         build job: 'monitor.24x7.start.stop', 
           parameters: [string(name: 'monitor_id', value: "${MONITOR_ID}"), 
@@ -45,7 +45,7 @@ pipeline {
     stage('deploy') {
       when { 
         anyOf { branch 'test.deploy';
-                branch 'production_deploy' }
+                branch 'production.deploy' }
       }
       environment {
         region = "${region}"
@@ -89,7 +89,7 @@ pipeline {
     stage('invalidation') {
       when { 
         anyOf { branch 'test.deploy';
-                branch 'production_deploy' }
+                branch 'production.deploy' }
       }
       environment {
         aws_region = "${aws_region}"
@@ -114,7 +114,7 @@ pipeline {
     }
     
     stage('start_monitor') {
-      when { branch 'production_deploy' }
+      when { branch 'production_deploy111' }
       steps {
         build job: 'monitor.24x7.start.stop', 
           parameters: [string(name: 'monitor_id', value: "${MONITOR_ID}"), 
