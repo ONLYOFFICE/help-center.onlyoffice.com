@@ -5,7 +5,7 @@ import ReactHtmlParser from "react-html-parser";
 import StyledContent from "../styled-content";
 import Breadcrumbs from "@components/common/breadcrumbs";
 import CategoryConnectorItem from "../sub-components/connector-category-item";
-import CategoryItem from "../sub-components/category-item";
+import CategoryItem from "../../../category-content/sub-components/category-item";
 import filterAricles from "@utils/helpers/filterArticles";
 
 const CenterCategoryContent = ({
@@ -20,10 +20,10 @@ const CenterCategoryContent = ({
   const catData = categories?.find(
     (it) => it.attributes.slug_id === category
   )?.attributes;
-   const data = filterAricles(articles, catData.slug_id);
-   
-   // function to make articles group by first level of url
-   const groupArticlesBySecondLevel = () => {
+  const data = filterAricles(articles, catData.slug_id);
+
+  // function to make articles group by first level of url
+  const groupArticlesBySecondLevel = () => {
     const groupedArticles = {};
 
     data.forEach((article) => {

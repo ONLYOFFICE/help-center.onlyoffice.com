@@ -43,7 +43,7 @@ export default class MyDocument extends Document {
           {/* <style data-href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" /> */}
         </Head>
         <body>
-        <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5NW47TX" height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
+        {/* <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5NW47TX" height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript> */}
           <Main />
           <NextScript />
         </body>

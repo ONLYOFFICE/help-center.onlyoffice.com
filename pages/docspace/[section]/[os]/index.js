@@ -10,7 +10,7 @@ import getAllCategories from "@lib/strapi/getCategories";
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
-import SingleContent from "@components/screens/single-content";
+import SingleContent from "@components/screens/single-page-content";
 import HeadSEO from "@components/screens/head-content";
 
 const articlePage = ({ locale, articles, videos, tags, categories }) => {
@@ -28,7 +28,7 @@ const articlePage = ({ locale, articles, videos, tags, categories }) => {
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={seo_title} 
+          title={seo_title}
           metaDescription={seo_description}
           metaDescriptionOg={seo_description}
           metaKeywords={seo_title}
@@ -44,7 +44,7 @@ const articlePage = ({ locale, articles, videos, tags, categories }) => {
           article={pageData}
           articles={articles.data}
           tags={tags.data}
-          isCategory={false} 
+          isCategory={false}
           videos={videos.data}
         />
       </Layout.SectionMain>

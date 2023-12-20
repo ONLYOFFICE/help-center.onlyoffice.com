@@ -36,8 +36,6 @@ const Menu = ({ t, currentLanguage, template, articles, ...rest }) => {
     }
   };
 
-
-
   return (
     <StyledMenu
       template={template}

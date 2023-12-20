@@ -2,12 +2,12 @@ import Heading from "@components/common/heading";
 import Link from "@components/common/internal-link";
 import Text from "@components/common/text";
 import React, { useState, useEffect } from "react";
-import StyledCategoryItem from "../category-item/styled-category-item";
+import StyledCategoryItem from "../../category-content/sub-components/category-item/styled-category-item";
 import ReactHtmlParser from "react-html-parser";
 import RawHtmlStyle from "@components/utils/rawHtmlStyles";
 import leftMenuGenerating from '@utils/helpers/leftMenuGenerating';
 
-const CategoryItem = ({
+const ConnectorCategoryItem = ({
   data, t, currentLanguage
 }) => {
   const catPic = data?.attributes.pictures?.data;
@@ -46,8 +46,8 @@ const CategoryItem = ({
         {catUrlAbout && <div><img src={'https://static-helpcenter.onlyoffice.com/images/icons/info.react.svg'} /><Link href={catUrlAbout}>{t("About")}</Link></div>}
         {catVideo > 0 && <div><img src={'https://static-helpcenter.onlyoffice.com/images/icons/video.react.svg'} /><Link href={catUrlVideo}>{t("WatchVideo")}</Link></div>}
       </div>
-     <Text><RawHtmlStyle>{ReactHtmlParser(data.attributes.description)}</RawHtmlStyle></Text> 
-     {itemsBM.length !== 0 && (
+      <Text><RawHtmlStyle>{ReactHtmlParser(data.attributes.description)}</RawHtmlStyle></Text>
+      {itemsBM.length !== 0 && (
         <ul>
           {itemsBM.map((link, index) => (
             <React.Fragment key={index}>
@@ -68,4 +68,4 @@ const CategoryItem = ({
   );
 };
 
-export default CategoryItem;
+export default ConnectorCategoryItem;

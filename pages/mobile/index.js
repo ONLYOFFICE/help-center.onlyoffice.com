@@ -8,7 +8,7 @@ import getAllVideos from "@lib/strapi/getVideos";
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
-import SingleContent from "@components/screens/single-content";
+import SingleContent from "@components/screens/single-page-content";
 import HeadSEO from "@components/screens/head-content";
 
 const MobilePage = ({ locale, articles, videos, categories }) => {

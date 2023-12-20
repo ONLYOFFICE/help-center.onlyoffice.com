@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import StyledSingleContent from "./styled-single-content";
 import LeftMenu from "./left-menu";
 import CenterArticleContent from "./content/article-content";
-import CenterCategoryContent from "./content/category-content";
 
 const SingleContent = ({
   t,
@@ -47,24 +46,11 @@ const SingleContent = ({
     t,
     activeItem,
   };
-  const categoryProps = {
-    articles,
-    handleActiveItemChange,
-    currentLanguage,
-    children,
-    t,
-    category,
-    categories,
-  };
 
   return (
     <StyledSingleContent {...rest}>
       <LeftMenu { ...menuProps} />
-      {isCategory ? (
-        <CenterCategoryContent { ...categoryProps} />
-      ) : (
-        <CenterArticleContent { ...articleProps} />
-      )}
+      <CenterArticleContent { ...articleProps} />
     </StyledSingleContent>
   );
 };
