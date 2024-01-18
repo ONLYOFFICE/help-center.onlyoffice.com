@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import StyledCarousel from "./carousel-styled";
-import VideoItem from "@components/screens/single-page-content/video/sub-components/video-item";
+import VideoItem from "@components/screens/single-page-content/sub-components/video/sub-components/video-item";
 
 const Carousel = ({
   t,

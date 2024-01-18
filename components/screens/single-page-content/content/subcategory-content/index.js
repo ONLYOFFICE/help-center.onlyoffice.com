@@ -3,69 +3,60 @@ import Text from "@components/common/text";
 import React, { useState, useEffect } from "react";
 import ReactHtmlParser from "react-html-parser";
 import StyledContent from "../styled-content";
+import StyledSingleContent from "../../styled-single-content";
 import Breadcrumbs from "@components/common/breadcrumbs";
-import CategoryConnectorItem from "../sub-components/connector-category-item";
-import CategoryItem from "../../../category-content/sub-components/category-item";
-import filterAricles from "@utils/helpers/filterArticles";
+import LeftMenu from "../../sub-components/left-menu";
 
-const CenterCategoryContent = ({
+const CenterSubCategoryContent = ({
   t,
   articles,
   categories,
   category,
   children,
-  currentLanguage
+  currentLanguage,
+  isCategory
 }) => {
-  const [artData, setArtData] = useState(null);
-  const catData = categories?.find(
-    (it) => it.attributes.slug_id === category
-  )?.attributes;
-  const data = filterAricles(articles, catData.slug_id);
 
-  // function to make articles group by first level of url
-  const groupArticlesBySecondLevel = () => {
-    const groupedArticles = {};
+    const article = null;
+    // left menu highlight
+    const [activeItem, setActiveItem] = useState(null);
+    const handleActiveItemChange = (item) => {
+        setActiveItem(item);
+    };
+    
+    const menuProps = {
+        article,
+        articles,
+        categories,
+        isCategory,
+        category,
+        handleActiveItemChange,
+        currentLanguage,
+        children,
+        t,
+        activeItem,
+    };
 
-    data.forEach((article) => {
-      const urlParts = article.attributes.url.split('/');
-      if (urlParts.length >= 3) {
-        const secondLevel = urlParts[2];
-        if (!groupedArticles[secondLevel]) {
-          groupedArticles[secondLevel] = [];
-        }
-        groupedArticles[secondLevel].push(article);
-      }
-    });
+    //console.log(articles);
+    console.log(categories);
 
-    return groupedArticles;
-  };
-
-  const groupedArticles = groupArticlesBySecondLevel();
-  console.log(groupedArticles);
-
-  useEffect(() => {
-    if (catData.slug_id !== "connectors") {
-      setArtData(groupedArticles);
-    } else {
-      setArtData(data);
-    }
-  }, [catData, articles]);
-  console.log(artData);
   return (
+    <StyledSingleContent>
+    <LeftMenu {...menuProps} />
     <StyledContent className="wrapper">
-      <Breadcrumbs t={t} category={catData} isCategory={true} />
-      <Heading level={3}>{catData?.name}</Heading>
-      <Text>{ReactHtmlParser(catData?.description)}</Text>
-      {/* {artData.map((it, index) => {
+      <Breadcrumbs t={t} category={category} isCategory={false} categories={categories} mainCategory="Docs" />
+      <Heading level={3}>{category?.name}</Heading>
+      {articles?.map((it, index) => {
           return (
-            <React.Fragment key={index}>
-              {catData.slug_id !== "connectors" ? <CategoryItem data={it} t={t} currentLanguage={currentLanguage} /> : <CategoryConnectorItem data={it} key={index} t={t} currentLanguage={currentLanguage} />}
-            </React.Fragment>
+            <li key={index}>
+             <a href={it.url}>{it.name}</a>
+            </li>
            );
-      })} */}
+      })}
       {children}
     </StyledContent>
+    </StyledSingleContent>
   );
 };
 
-export default CenterCategoryContent;
+export default CenterSubCategoryContent;

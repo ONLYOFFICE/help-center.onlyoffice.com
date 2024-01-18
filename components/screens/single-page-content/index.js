@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import StyledSingleContent from "./styled-single-content";
-import LeftMenu from "./left-menu";
+import LeftMenu from "./sub-components/left-menu";
 import CenterArticleContent from "./content/article-content";
 
 const SingleContent = ({
@@ -49,8 +49,8 @@ const SingleContent = ({
 
   return (
     <StyledSingleContent {...rest}>
-      <LeftMenu { ...menuProps} />
-      <CenterArticleContent { ...articleProps} />
+      <LeftMenu {...menuProps} />
+      <CenterArticleContent {...articleProps} />
     </StyledSingleContent>
   );
 };

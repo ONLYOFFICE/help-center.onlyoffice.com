@@ -3,6 +3,7 @@ import { device } from "@components/utils/devices";
 
 const StyledGuidesLinks = styled.div`
     align-items: start;
+    border-top: 1px solid #ccc;
     display: flex;
     padding: 24px 32px 32px;
     gap: 0 32px;

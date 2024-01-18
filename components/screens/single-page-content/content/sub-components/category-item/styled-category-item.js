@@ -27,8 +27,10 @@ const StyledCategoryItem = styled.div`
 }
 
 > h4 {
+    align-items: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
+    gap: 16px;
 
     img {
         height: fit-content;
@@ -70,11 +72,19 @@ h5 {
  ul {
     list-style-type: none;
     padding: 16px 0 0;
+        &.subcategory {
+            padding: 24px 0 16px;
+        }
     li {
         line-height: normal;
         padding: 16px 0 16px;
         &.sublink {
             padding: 0 0 16px;
+
+            &.dlw > a {
+                display: flex;
+                gap: 8px;
+            }
         }
         &:last-child {
             padding-bottom: 0;

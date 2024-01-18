@@ -13,11 +13,10 @@ const LeftMenu = ({ t, isCategory, articles, article, category, categories, acti
       return { catData: null, artData: null };
     }
     
-    const categoryData = categories.find((it) => it.attributes.slug_id === category);
+    const categoryData = categories?.find((it) => it.attributes.slug_id === category);
     const catData = categoryData ? categoryData.attributes : null;
     
-    const artData = articles
-      .filter((it) => it.attributes.category.data.attributes.slug_id === category)
+    const artData = articles?.filter((it) => it.attributes.category.data.attributes.slug_id === category)
       .sort((a, b) => {
         return a.attributes.title.toLowerCase() < b.attributes.title.toLowerCase()
           ? -1

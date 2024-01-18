@@ -306,6 +306,19 @@ const RawHtmlStyle = styled.div`
       }
     }
 
+    .sysreq_title {
+      display: inline;
+      font-weight: 700;
+      padding-right: 4px;
+      &:after {
+        content: ':';
+        display: inline;
+      }
+    }
+    .sysreq_descr {
+        display: inline;
+    }
+
     // links 
     a {
       display: inline-flex;

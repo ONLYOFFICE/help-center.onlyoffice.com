@@ -4,7 +4,7 @@ import Search from "@components/common/search-area";
 
 import SearchResult from "./search-result";
 
-const SearchContent = ({ t, article }) => {
+const SearchContent = ({ t, article, isCategory, category }) => {
   // const data = useStaticQuery(graphql`
   //   {
   //     allDirectory {
@@ -52,6 +52,9 @@ const SearchContent = ({ t, article }) => {
   //   setFocusOnSearch(false);
   // };
 
+  const labelValue = !isCategory ? t("WelcomeToHelpCenter") : category.name;
+  const labelImg = isCategory && category.card_field_img.data?.attributes.url;
+  
   return (
     <>
       <Search
@@ -59,7 +62,9 @@ const SearchContent = ({ t, article }) => {
         //callback={onSearch}
        // valueSearch={searchItem}
        // clearValueSearch={clearValueSearch}
-        label={t("WelcomeToHelpCenter")}
+        label={labelValue}
+        isCategory={isCategory}
+        pic={labelImg}
         placeholder={t("HowCanWeHelp?")}
       />
       {/* <SearchResult

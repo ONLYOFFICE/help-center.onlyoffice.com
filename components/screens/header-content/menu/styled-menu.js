@@ -124,8 +124,8 @@ const StyledMenu = styled.div`
   box-sizing: border-box;
   height: 72px;
   font-size: 12px;
-  color: #333;
-  background-color: #fff;
+  color: #fff;
+  background-color: #333;
   transition: 0.3s;
   column-gap: 5vw;
 
@@ -185,8 +185,7 @@ const StyledMenu = styled.div`
     padding: 0 2vw;
   }
 
-  //@media ${device.laptopM} {
-  @media (max-width: 1190px) {
+  @media ${device.laptopS} {
     ${StyledMenuTablet};
   }
 `;

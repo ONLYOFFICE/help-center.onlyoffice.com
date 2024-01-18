@@ -169,5 +169,6 @@
   "Workspace": "Workspace",
   "WorkspaceCloudService": "Workspace Cloud Service",
   "WorkspaceEnterpriseEdition": "Workspace Enterprise Edition",
-  "WritingDocumentation": "Writing Documentation"
+  "WritingDocumentation": "Writing Documentation",
+  "Version": "version"
 }

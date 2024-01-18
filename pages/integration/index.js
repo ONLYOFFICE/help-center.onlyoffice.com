@@ -8,7 +8,9 @@ import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
-import CenterCategoryConnectorContent from "@components/screens/category-connector-content";
+import CenterCategoryConnectorContent from "@components/screens/single-page-content/content/category-connector-content";
+import InfoContent from "@components/screens/main-content/info-content";
+import GuidesCards from "@components/screens/main-content/guides-cards";
 
 const ConnectorsPage = ({ locale, articles, categories }) => {
   const { t } = useTranslation();
@@ -17,8 +19,11 @@ const ConnectorsPage = ({ locale, articles, categories }) => {
     () => articles.data.filter((it) => it.attributes.category.data?.attributes.slug_id === pageCategory),
     [articles]
   );
-  console.log(curArticles);
-
+  //console.log(curArticles);
+  const curCatInfo = useMemo(
+    () => categories.data.find((it) => it.attributes.slug_id === pageCategory),
+    [categories]
+  );
   return (
     <Layout>
       <Layout.PageHead>
@@ -35,12 +40,8 @@ const ConnectorsPage = ({ locale, articles, categories }) => {
         <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <CenterCategoryConnectorContent 
-        t={t} 
-        currentLanguage={locale} 
-        articles={curArticles} 
-        category={pageCategory} 
-        isCategory={true} />
+        <InfoContent t={t} categories={categories.data} currentLanguage={locale} isCategory={true} category={curCatInfo.attributes} />
+        <GuidesCards t={t} categories={curArticles} articles={null} isCategory={true} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />

@@ -11,8 +11,8 @@ const Items = [
       },
       {
         localize: false,
-        label: "Desktop apps",
-        href: "",
+        label: "DocSpace",
+        href: "/docspace",
       },
       {
         localize: false,
@@ -21,124 +21,94 @@ const Items = [
       },
       {
         localize: false,
+        label: "Connectors",
+        href: "/integration",
+      },
+      {
+        localize: false,
         label: "Mobile apps",
-        href: "",
+        href: "/mobile",
       },
       {
         localize: false,
-        label: "Personal",
-        href: "",
+        label: "Desktop apps",
+        href: "/desktop",
       },
     ],
   },
   {
-    className: "integrations",
+    className: "collaborate",
     position: 2,
-    heading: "integrations",
+    heading: "collaborate",
     link: [
       {
-        localize: false,
-        label: "Nextcloud",
-        href: "/connectors/nextcloud",
+        localize: true,
+        label: "For contributors",
+        href: "/contribute.aspx",
       },
       {
         localize: false,
-        label: "ownCloud",
+        label: "For translators",
         href: "",
       },
       {
-        localize: false,
-        label: "Confluence",
-        href: "",
+        localize: true,
+        label: "For influencers",
+        href: "/influencer-program.aspx",
       },
       {
-        localize: false,
-        label: "Alfresco",
-        href: "",
-      },
-      {
-        localize: false,
-        label: "SharePoint",
-        href: "",
-      },
-      {
-        localize: false,
-        label: "Liferay",
-        href: "",
-      },
-      {
-        localize: false,
-        label: "HumHub",
-        href: "",
-      },
-      {
-        localize: false,
-        label: "Plone",
-        href: "",
-      },
-      {
-        localize: false,
-        label: "Nuxeo",
-        href: "",
-      },
-      {
-        localize: false,
-        label: "Others",
-        href: "",
+        localize: true,
+        label: "Vacancies",
+        href: "/vacancies.aspx",
       },
     ],
   },
   {
-    className: "administration",
+    className: "get_news",
+    position: 2,
+    heading: "Get news",
+    link: [
+      {
+        localize: false,
+        label: "Blog",
+        href: "https://wwww.onlyoffice.com/blog/",
+      },
+    ],
+  },
+  {
+    className: "get_help",
     position: 3,
-    heading: "administration",
+    heading: "get help",
     link: [
       {
         localize: false,
-        label: "Managing Portals",
+        label: "Forum",
+        href: "https://forum.onlyoffice.com/",
+      },
+      {
+        localize: true,
+        label: "Training courses",
+        href: "/training-courses.aspx",
+      },
+      {
+        localize: true,
+        label: "Webinars",
+        href: "/webinars.aspx",
+      },
+      {
+        localize: true,
+        label: "White papers",
+        href: "/whitepapers.aspx",
+      },
+      {
+        localize: true,
+        label: "Support contact form",
         href: "",
       },
       {
-        localize: false,
-        label: "Reinforcing Security",
-        href: "",
-      },
-      {
-        localize: false,
-        label: "Configuring modules and tools",
-        href: "",
-      },
-      {
-        localize: false,
-        label: "Customizing modules and tools",
-        href: "",
-      },
-      {
-        localize: false,
-        label: "Managing Users",
-        href: "",
-      },
-      {
-        localize: false,
-        label: "Connecting external services",
-        href: "",
-      },
-      {
-        localize: false,
-        label: "ONLYOFFICE Control panel",
-        href: "",
-      },
-    ],
-  },
-  {
-    className: "contribution",
-    position: 4,
-    heading: "contribution",
-    link: [
-      {
-        localize: false,
-        label: "All contributions",
-        href: "",
+        localize: true,
+        label: "Order demo",
+        href: "/demo-order.aspx",
       },
     ],
   },

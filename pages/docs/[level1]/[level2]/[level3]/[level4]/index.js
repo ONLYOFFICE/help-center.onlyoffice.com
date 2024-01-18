@@ -35,7 +35,7 @@ const articlePage = ({ locale, articles, videos, tags, categories }) => {
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={false} currentLanguage={locale} articles={articles.data} />
+        <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <SingleContent

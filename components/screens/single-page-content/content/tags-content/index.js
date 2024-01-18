@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ArticlePopup from "../../article-popup";
+import ArticlePopup from "../../pop-ups/article-popup";
 import AlphabetContainer from "../sub-components/aplhabet-container";
 import Text from "@components/common/text";
 import StyledContent from "../styled-content";
@@ -23,16 +23,16 @@ const TagsContent = ({ t, content, isTagPage, ...rest }) => {
 
   return (
     <StyledContent className="wrapper">
-        {isTagPage ?
-          <>
-            <AlphabetContainer t={t} selectorContent={filteredAlph} pageContent={content} isTagPage={isTagPage} onClickFunction={handlerSetModal} />
-            <ArticlePopup t={t} active={modalActive} tag={tag} allTags={content} setActive={setModalActive} />
-          </>
-          :
-          <>
-            <Text padding={"10px 0"}>{t("Here are the base terms which are used in the online office interface and documentation.")}</Text>
-            <AlphabetContainer t={t} selectorContent={filteredAlph} pageContent={content} isTagPage={isTagPage} />
-          </>}
+      {isTagPage ?
+        <>
+          <AlphabetContainer t={t} selectorContent={filteredAlph} pageContent={content} isTagPage={isTagPage} onClickFunction={handlerSetModal} />
+          <ArticlePopup t={t} active={modalActive} tag={tag} allTags={content} setActive={setModalActive} />
+        </>
+        :
+        <>
+          <Text padding={"10px 0"}>{t("Here are the base terms which are used in the online office interface and documentation.")}</Text>
+          <AlphabetContainer t={t} selectorContent={filteredAlph} pageContent={content} isTagPage={isTagPage} />
+        </>}
     </StyledContent>
   );
 };

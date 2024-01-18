@@ -8,8 +8,8 @@ const FooterItem = ({ dis, children, className, heading }) => {
 
   const onHandleClick = (e) => {
     e.preventDefault();
-    //window.innerWidth <= 592 && setIsOpen(!isOpen);
-    window.innerWidth <= 812 && setIsOpen(!isOpen);
+    window.innerWidth <= 592 && setIsOpen(!isOpen);
+    //window.innerWidth <= 812 && setIsOpen(!isOpen);
   };
 
   const footerItemClassName = className

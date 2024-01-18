@@ -7,10 +7,19 @@ const StyledSearchArea = styled.div`
   width: 100%;
   padding: 164px 0 80px;
 
+  &.cat_search {
+    padding: 72px 0;
+  }
+
   .search_container {
     position: relative;
-    margin: 48px auto 0;
+    margin: 40px auto 0;
     max-width: 688px;
+  }
+
+  .presearch_bx {
+    gap: 16px;
+    justify-content: center;
   }
 
   .presearch_title {
