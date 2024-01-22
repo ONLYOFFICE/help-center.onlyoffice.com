@@ -13,6 +13,7 @@ import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 import filterDocsAricles from "@utils/helpers/filterForDocsCategory";
+import createDocsCategoryStructure from "@utils/helpers/createDocsCategoryStructure";
 import CenterSubCategoryContent from "@components/screens/single-page-content/content/subcategory-content";
 
 const subcategoryPage = ({ locale, articles, videos, tags, categories, docsCategories }) => {
@@ -20,12 +21,13 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, docsCateg
   const query = useRouter();
   const pageLoc = query.locale !== "en" ? query.locale : "";
   const pagePath = (pageLoc + query.asPath).split('#')[0];
+
   const { secondWord, urlBeforeLastSlashSlice } = (() => {
     const lastSlashIndex = pagePath.lastIndexOf('/');
     const urlBeforeLastSlashSlice = lastSlashIndex > 0 ? pagePath.slice(0, lastSlashIndex) : null;
     const wordsArray = urlBeforeLastSlashSlice?.split('/').filter(Boolean) || [];
     const secondWord = wordsArray[1] || null;
-  
+
     return { secondWord, urlBeforeLastSlashSlice };
   })();
 
@@ -36,21 +38,18 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, docsCateg
     },
     [docsCategories, secondWord]
   );
-  
+
   const datalvl1 = filterDocsAricles(articles?.data, pageSubCategory?.slug_id);
-  
   const datalvl2 = useMemo(
     () => datalvl1?.find((it) => it.url === urlBeforeLastSlashSlice),
     [datalvl1, urlBeforeLastSlashSlice]
   );
-  
   const pageData = useMemo(
     () => datalvl2?.level_3.find((it) => it.url === pagePath),
     [datalvl2, pagePath]
   );
-  
-  console.log(datalvl1);
-  
+  const allDocsCat = createDocsCategoryStructure(docsCategories?.data, datalvl1);
+
   //const { seo_title, seo_description } = data;
   return (
     <Layout>
@@ -66,13 +65,13 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, docsCateg
         <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-      <CenterSubCategoryContent 
-        t={t} 
-        currentLanguage={locale} 
-        articles={pageData?.level_4} 
-        category={pageData} 
-        categories={datalvl1}
-        isCategory={false}
+        <CenterSubCategoryContent
+          t={t}
+          currentLanguage={locale}
+          articles={pageData?.level_4}
+          category={pageData}
+          categories={allDocsCat}
+          isCategory={false}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>

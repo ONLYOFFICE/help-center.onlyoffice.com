@@ -38,7 +38,6 @@ const CenterSubCategoryContent = ({
     };
 
     //console.log(articles);
-    console.log(categories);
 
   return (
     <StyledSingleContent>

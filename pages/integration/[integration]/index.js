@@ -16,6 +16,7 @@ import HeadSEO from "@components/screens/head-content";
 const articlePage = ({ locale, articles, videos, tags, categories }) => {
   const { t } = useTranslation();
   const query = useRouter();
+  const pageCategory = "Connectors";
   const pageLoc = query.locale !== "en" ? query.locale : "";
   const pagePath = (pageLoc + query.asPath).split('#')[0];
   const pageData = useMemo(
@@ -47,6 +48,7 @@ const articlePage = ({ locale, articles, videos, tags, categories }) => {
           tags={tags.data}
           isCategory={false}
           videos={videos.data}
+          category={pageCategory}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>

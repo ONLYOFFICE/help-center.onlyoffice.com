@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { device } from "@components/utils/devices";
 
 const RawHtmlStyle = styled.div`
+padding: 64px 0 0;
   .raw-html-embed {
     z-index: 1;
     position: relative;

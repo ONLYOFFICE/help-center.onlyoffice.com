@@ -8,20 +8,19 @@ import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
-import CenterCategoryConnectorContent from "@components/screens/single-page-content/content/category-connector-content";
 import InfoContent from "@components/screens/main-content/info-content";
 import GuidesCards from "@components/screens/main-content/guides-cards";
 
 const ConnectorsPage = ({ locale, articles, categories }) => {
   const { t } = useTranslation();
-  const pageCategory = "connectors";
+  const pageCategory = "Connectors";
   const curArticles = useMemo(
-    () => articles.data.filter((it) => it.attributes.category.data?.attributes.slug_id === pageCategory),
+    () => articles.data.filter((it) => it.attributes.category.data?.attributes.slug_id === pageCategory.toLowerCase()),
     [articles]
   );
-  //console.log(curArticles);
+  
   const curCatInfo = useMemo(
-    () => categories.data.find((it) => it.attributes.slug_id === pageCategory),
+    () => categories.data.find((it) => it.attributes.slug_id === pageCategory.toLowerCase()),
     [categories]
   );
   return (

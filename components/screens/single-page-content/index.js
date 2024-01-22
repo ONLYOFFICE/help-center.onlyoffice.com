@@ -15,6 +15,7 @@ const SingleContent = ({
   isTagPage,
   videos,
   currentLanguage,
+  pagepath,
   ...rest
 }) => {
 
@@ -26,12 +27,15 @@ const SingleContent = ({
 
   const articleProps = {
     article,
+    category,
+    categories,
     tags,
     isTagPage,
     videos,
     handleActiveItemChange,
     currentLanguage,
     children,
+    pagepath,
     t,
   };
   const menuProps = {

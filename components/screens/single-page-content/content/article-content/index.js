@@ -10,7 +10,7 @@ import ImagePopup from "../../pop-ups/image-popup";
 import RawHtmlStyle from "@components/utils/rawHtmlStyles";
 import DownloadArea from "../../sub-components/download-area";
 
-const CenterArticleContent = ({ t, article, tags, videos, onActiveItemChange, currentLanguage }) => {
+const CenterArticleContent = ({ t, article, tags, videos, onActiveItemChange, currentLanguage, category, categories, pagepath }) => {
   const { articleTags, curVideos } = useMemo(() => {
     const tags = article?.attributes.tags?.data;
     const videos = article?.attributes.videos?.data.length;
@@ -48,10 +48,9 @@ const CenterArticleContent = ({ t, article, tags, videos, onActiveItemChange, cu
       }
     }
   };
-
   return (
     <StyledContent className="wrapper">
-      <Breadcrumbs t={t} article={article} />
+      <Breadcrumbs t={t} article={article} categories={categories} mainCategory={category} pagePath={pagepath} />
       <Heading level={3}>{article?.attributes.title}</Heading>
       {articleTags && <div className="tags">
         {sortedTags?.map((item, index) => (

@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react';
 
-export default function filterDocsAricles(articles, category) {
+export default function filterDocsArticles(articles, category) {
     const installationCategoryLinks = [];
     const userguidesCategoryLinks = [];
     const [cardData, setCardData] = useState();
 
     const uniqueInstallationCategorySet = new Set();
     const uniqueUserguidesCategorySet = new Set();
-    const uniqueLevel3Set = new Set();
-    const uniqueLevel4Set = new Set();
 
     articles.forEach((article) => {
         if (article.attributes.for_installation_category) {
             const level2 = article?.attributes.for_installation_category.level_2;
             const level3 = article?.attributes.for_installation_category.level_3;
             const level4 = article?.attributes.for_installation_category.level_4;
+            const uniqueLevel3Set = new Set();
+            const uniqueLevel4Set = new Set();
 
             if (!uniqueInstallationCategorySet.has(level2)) {
                 installationCategoryLinks.push({

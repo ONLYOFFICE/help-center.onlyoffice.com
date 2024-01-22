@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { device } from "@components/utils/devices";
 
 const StyledVideo = styled.div`
-padding: 64px 0;
+padding: 64px 0 0;
+
   .vids {
     align-items: start;
     background: #ffffff;

@@ -11,7 +11,7 @@ import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 import CenterCategoryContent from "@components/screens/single-page-content/content/category-docs-content";
-import filterDocsAricles from "@utils/helpers/filterForDocsCategory";
+import filterDocsArticles from "@utils/helpers/filterForDocsCategory";
 
 const subcategoryPage = ({ locale, articles, docsCategories, categories }) => {
   const { t } = useTranslation();
@@ -28,8 +28,8 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories }) => {
     [articles]
   );
   
-  const data = filterDocsAricles(pageData, pageSubCategory.slug_id);
-
+  const data = filterDocsArticles(pageData, pageSubCategory.slug_id);
+//console.log(data);
   //const { seo_title, seo_description } = data;
   return (
     <Layout>
