@@ -7,10 +7,10 @@ import categories from "@lib/strapi/getCategories";
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
-import SingleContent from "@components/screens/single-content";
+import SingleContent from "@components/screens/single-page-content";
 
 const SinglePage = ({ locale, articles, categories }) => {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
   const data = articles.data.attributes;
   const { seo_title, seo_description } = data;
   return (

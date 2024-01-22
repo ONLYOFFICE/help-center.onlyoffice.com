@@ -17,7 +17,7 @@ const Index = ({ locale, categories, articles }) => {
   
   return (
     <Layout>
-      {/* <Layout.PageHead>
+      <Layout.PageHead>
       <HeadSEO
           title={t("titleIndexPage")}
           metaSiteNameOg={t("metaSiteNameOg")}
@@ -31,13 +31,13 @@ const Index = ({ locale, categories, articles }) => {
         <HeadingContent t={t} template={true} currentLanguage={locale} categories={categories.data} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <InfoContent t={t} categories={categories.data} currentLanguage={locale}/>
-        <GuidesCards t={t} categories={categories.data} articles={articles.data} links={articles.data} />
+        <InfoContent t={t} categories={categories.data} currentLanguage={locale} isCategory={false} />
+        <GuidesCards t={t} categories={categories.data} articles={articles.data} links={articles.data} isCategory={false} className="mp" />
         <Accordion t={t} currentLanguage={locale} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />
-      </Layout.PageFooter> */}
+      </Layout.PageFooter>
     </Layout>
   );
 };

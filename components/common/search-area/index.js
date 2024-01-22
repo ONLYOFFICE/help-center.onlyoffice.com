@@ -6,7 +6,7 @@ import TextInput from "@components/common/text-input/";
 import Heading from "@components/common/heading";
 import StyledSearchArea from "./styled-search-area";
 
-const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeholder }) => {
+const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeholder, isCategory, pic }) => {
   /*eslint-disable*/
   const imgSearch = !valueSearch ? (
     <img className="search_img"
@@ -27,7 +27,15 @@ const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeho
   );
   /*eslint-enable*/
   return (
-    <StyledSearchArea>
+    <StyledSearchArea className={`${isCategory ? 'cat_search' : ''}`}>
+      <Box className="presearch_bx">
+      {isCategory &&
+      <img
+        src={pic}
+        height={80}
+        width={80}
+      />
+      }
       {label &&
         <Heading
           className="presearch_title"
@@ -38,6 +46,7 @@ const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeho
           fontWeight={700}
         />
       }
+      </Box>
       <Box className="search_container" alignItems="center">
         <TextInput
           onChange={callback}

@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { ReactSVG } from "react-svg";
+
 import LanguageSelector from "@components/common/language-selector";
 import InternalLink from "@components/common/internal-link";
-import { StyledMenu, Overlay } from "./styled-menu";
+import { StyledMenu } from "./styled-menu";
 import Nav from "./nav/nav";
-import Button from "@components/common/button";
-import Link from "next/link";
 
-const Menu = ({ t, currentLanguage, template, articles, ...rest }) => {
+const Menu = ({ t, currentLanguage, template, categories, ...rest }) => {
   const curLang = currentLanguage === "en" ? "/" : `/${currentLanguage}/`;
   const [windowCheck, setWindowCheck] = useState("undefined");
   useEffect(() => {
     if (typeof window !== windowCheck) {
-      setWindowCheck(window.innerWidth <= 1190);
+      setWindowCheck(window.innerWidth <= 769);
     }
   }, [windowCheck]);
 
@@ -35,16 +35,13 @@ const Menu = ({ t, currentLanguage, template, articles, ...rest }) => {
       onCloseMenu();
     }
   };
-
-
-
+ 
   return (
     <StyledMenu
       template={template}
       className="navbar"
       onMouseLeave={onCloseMenu}
     >
-      <Overlay isOpen={stateMobile} onClick={toggleMobile} />
       <InternalLink className="nav-item-logo" href={curLang}>
         <div className="site-logo"></div>
       </InternalLink>
@@ -57,18 +54,12 @@ const Menu = ({ t, currentLanguage, template, articles, ...rest }) => {
         currentLanguage={currentLanguage}
         className="nav-item-links"
         stateMobilePND={stateMobile}
-        //categories={categories}
-        articles={articles}
+        categories={categories}
         t={t}
       />
-      {/* <div className="nav-right"> */}
-      <Link className="link" href="https://www.onlyoffice.com/docs-registration.aspx?from=helpcenter"><Button label={t("Try in the cloud")} className="nav-btn" /></Link>
-
-      <LanguageSelector t={t} currentLanguage={currentLanguage} />
-      {/* <div className="nav-item-lng">
-          
-        </div> */}
-      {/* </div> */}
+      <div className="nav-item-lng">
+        <LanguageSelector t={t} currentLanguage={currentLanguage} />
+      </div>
     </StyledMenu>
   );
 };

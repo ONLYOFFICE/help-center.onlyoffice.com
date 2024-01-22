@@ -7,10 +7,8 @@ const StyledFooterTablet = css`
   border-bottom: 1px solid rgba(204, 204, 204, .3);
 
   .footer-item-heading {
-    //color: #ffffff;
-    color: #333;
-    //font-weight: 600;
-    font-weight: 700;
+    color: #808080;
+    font-weight: 600;
     padding: 6px 0 3px;
     cursor: pointer;
     overflow: hidden;
@@ -28,13 +26,13 @@ const StyledFooterTablet = css`
       transform: rotate(180deg);
     }
 
-    /* div {
+    div {
       svg {
         path {
           fill: white;
         }
       }
-    } */
+    }
   }
 
   .footer-items-group {
@@ -73,8 +71,7 @@ const StyledFooterItem = styled.div`
   }
 
   .footer-link {
-    //color: #ffffff;
-    color: #333;
+    color: #ffffff;
     font-size: 13px;
     line-height: 18px;
     margin: 0px 0px 8px;
@@ -90,12 +87,11 @@ const StyledFooterItem = styled.div`
   }
 
   .footer-item-heading {
-    //color: #808080;
-    color: #333;
+    color: #808080;
     padding: 0 0 16px;
     font-size: 12px;
     line-height: 16px;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.04em;
   }
@@ -105,11 +101,11 @@ const StyledFooterItem = styled.div`
   }
 
   @media ${device.laptop} {
-    //padding: 0;
+    padding: 0;
   }
 
-  //@media ${device.tabletS} {
-    @media (max-width: 812px) {
+  @media ${device.tabletS} {
+    //@media (max-width: 812px) {
     ${StyledFooterTablet};
   }
 `;

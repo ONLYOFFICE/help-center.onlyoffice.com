@@ -8,8 +8,8 @@ const StyledFooter = styled.footer`
   width: 100%;
   z-index: 20;
   border-top: 1px solid #ccc;
-  //background: #333333;
-  //color: #ffffff;
+  background: #333333;
+  color: #ffffff;
 
   @media ${device.laptop} {
     margin: 0 auto;

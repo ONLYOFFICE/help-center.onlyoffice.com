@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { device } from "@components/utils/devices";
 
 const RawHtmlStyle = styled.div`
+padding: 64px 0 0;
   .raw-html-embed {
     z-index: 1;
     position: relative;
@@ -304,6 +305,19 @@ const RawHtmlStyle = styled.div`
         display: block;
         padding: 0 0 8px;
       }
+    }
+
+    .sysreq_title {
+      display: inline;
+      font-weight: 700;
+      padding-right: 4px;
+      &:after {
+        content: ':';
+        display: inline;
+      }
+    }
+    .sysreq_descr {
+        display: inline;
     }
 
     // links 

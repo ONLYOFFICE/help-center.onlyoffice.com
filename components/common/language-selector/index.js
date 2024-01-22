@@ -67,7 +67,6 @@ const LanguageSelector = (props) => {
         width={"24px"}
         height={"24px"}
       />
-      <Text className="lang-name">{langName}</Text>
       {/*eslint-disable*/}
       <div className={`arrow-image`}>
         <img src="https://static-helpcenter.onlyoffice.com/images/icons/arrow-right.react.svg" alt={srcAlt} />

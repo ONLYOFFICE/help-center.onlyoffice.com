@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import StyledFooter from "./styled-footer";
-import Items from "./data/footer-items-site";
+import Items from "./data/footer-items";
 import Social from "./data/social-items";
 import FooterItem from "./sub-components/footer-item";
 import ExternalLink from "@components/common/link";
@@ -39,7 +39,7 @@ const Footer = ({ t, language }) => {
                             label={item_link.mail}
                             href={item_link.href}
                             alt={item_link.mail}
-                            key={idx_link} // Add key here
+                            key={idx_link}
                           />
                         </Text>
                       ) : (
@@ -60,7 +60,7 @@ const Footer = ({ t, language }) => {
                 );
               } else {
                 return (
-                  <React.Fragment key={`${it.className}-${idx}`}> {/* Add key here */}
+                  <React.Fragment key={`${it.className}-${idx}`}>
                     <FooterItem
                       heading={t(it.heading)}
                       className={it.className}
@@ -86,7 +86,7 @@ const Footer = ({ t, language }) => {
                         ))}
                       </div>
                     </FooterItem>
-                    <div className="footer-copyright-block">
+                    <div className="footer-copyright-block last">
                       <Text
                         className="footer-copyright"
                         label={t("FooterCopyright", { currentYear })}
