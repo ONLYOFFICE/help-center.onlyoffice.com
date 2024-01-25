@@ -3,19 +3,34 @@ import { isInternalLink } from 'is-internal-link';
 import StyledGuidesLinks from "./styled-guides-links";
 import Box from "@components/common/box";
 import InternalLink from "@components/common/internal-link";
-import filterDocsAricles from "@utils/helpers/filterForDocsCategory";
+import filterDocsArticles from "@utils/helpers/filterForDocsCategory";
 import Text from '@components/common/text';
 
-const GuidesLinks = ({ mainArticles, category, t }) => {
-  const linksLength = Math.floor(mainArticles.length/2);
-  const dataCards = filterDocsAricles(mainArticles, category);
-  // const [data, setData] = useState([]);
-  // useEffect(() => {
-  //   const sortedData = sortDataByTopLevel(mainArticles);
-  //   setData(sortedData);
-  // }, []);
-   //console.log(dataCards);
-   //console.log(mainArticles);
+const GuidesLinks = ({ mainArticles, category, mainCategory, t }) => {
+  const [data, setData] = useState([]);    
+  const [loading, setLoading] = useState(true);
+  const dataCards = mainCategory && mainCategory.toLowerCase() === 'docs' && filterDocsArticles(mainArticles, category);
+
+  useEffect(() => {
+    if (mainCategory && dataCards !== null && dataCards !== undefined) {
+      setLoading(false);
+    }
+    if (!loading) {
+      switch (mainCategory?.toLowerCase()) {
+        case 'connectors':
+          setData(mainArticles);
+          break;
+        case 'docs':
+          setData(dataCards);
+          break;
+        default: 
+          setData(mainArticles);
+          break;
+      }
+    }
+  }, [mainCategory]);
+  //console.log(mainCategory);
+  console.log(data);
 
   // function sortDataByTopLevel(data) {
   //   const sortedData = {};
@@ -45,35 +60,21 @@ const GuidesLinks = ({ mainArticles, category, t }) => {
   //   return Object.values(sortedData);
   // }
   return (
-    <StyledGuidesLinks linksLength={linksLength} >
-      {category === "mobile" && <div className="cell_link cell_heading iOS not_bold">iOS</div>}
-      {/* {!(category === "connectors") && data.map((group, idx) => (
-        <div className={`cell_link`} key={idx}>
-          <InternalLink label={t(group.name)} href={group.url} />
-          {group.items.map((item, index) => (
-            <div className={`cell_link not_bold`} key={index}>
-              <InternalLink label={t(item.attributes.name)} href={item.attributes.url} />
-            </div>
-          ))} 
-        </div>
-      ))} */}
-      {category === "connectors" && <Box className="con-box"> {mainArticles.slice(0, linksLength).map((item, idx) => (
-        <div className={`cell_link not_bold`} key={idx}>
-          <InternalLink label={t(item.attributes.title)} href={item.attributes.url} />
-        </div>))}
+    <StyledGuidesLinks>
+      <Box className="con-box">
+        {!loading && data.slice(0, Math.ceil(data.length / 2)).map((item, idx) => (
+          <div className={`cell_link ${category === "connectors" ? 'not_bold' : ''}`} key={idx}>
+            {(item.attributes?.url || item?.url) && isInternalLink(item.attributes?.url || item?.url) && <InternalLink label={t(item.attributes?.title) || t(item?.name)} href={item.attributes?.url || item?.url} />}
+          </div>
+        ))}
       </Box>
-      }
-      {category === "connectors" && <Box className="con-box"> {mainArticles.slice(linksLength, mainArticles.length).map((item, idx) => (
-        <div className={`cell_link not_bold`} key={idx}>
-          <InternalLink label={t(item.attributes.title)} href={item.attributes.url} />
-        </div>))}
+      <Box className="con-box">
+        {!loading && data.slice(Math.ceil(data.length / 2), mainArticles.length).map((item, idx) => (
+          <div className={`cell_link ${category === "connectors" ? 'not_bold' : ''}`} key={idx}>
+            {(item.attributes?.url || item?.url) && isInternalLink(item.attributes?.url || item?.url) && <InternalLink label={t(item.attributes?.title) || t(item?.name)} href={item.attributes?.url || item?.url} />}
+          </div>
+        ))}
       </Box>
-      }
-      {dataCards?.map((group, idx) => (
-        <div className={`cell_link`} key={idx}>
-         {group.url && <InternalLink label={t(group?.name)} href={group?.url} />}
-        </div>
-      ))}
     </StyledGuidesLinks>
   );
 };

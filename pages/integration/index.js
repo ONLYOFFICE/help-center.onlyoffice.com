@@ -40,7 +40,7 @@ const ConnectorsPage = ({ locale, articles, categories }) => {
       </Layout.PageHeader>
       <Layout.SectionMain>
         <InfoContent t={t} categories={categories.data} currentLanguage={locale} isCategory={true} category={curCatInfo.attributes} />
-        <GuidesCards t={t} categories={curArticles} articles={null} isCategory={true} />
+        <GuidesCards t={t} categories={curArticles} articles={null} isCategory={true} mainCategory={pageCategory} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />

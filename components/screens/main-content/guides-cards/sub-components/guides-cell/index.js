@@ -1,5 +1,4 @@
-import React from "react";
-import { isInternalLink } from 'is-internal-link';
+import React, { useState, useEffect } from "react";
 import StyledGuidesCell from "./styled-guides-cell";
 import Box from "@components/common/box";
 import InternalLink from "@components/common/internal-link";
@@ -7,13 +6,13 @@ import Text from "@components/common/text";
 import GuidesLinks from "../guides-links";
 import ReactHtmlParser from "react-html-parser";
 import Heading from "@components/common/heading";
+import filterDocsAricles from "@utils/helpers/filterForDocsCategory";
 
-const GuidesCell = ({ headData, category, linkData, t }) => {
-
+const GuidesCell = ({ headData, category, linkData, mainCategory, t }) => {
   return (
     <StyledGuidesCell>
       <Box className="cell_header">
-        <Box className={`cell_icon ${category == 'connectors' ? 'connectors' : ''}`}>
+        <Box className={`cell_icon ${(category == 'connectors' && mainCategory) ? 'connectors' : ''}`}>
           {category !== 'connectors' && headData.card_field_img?.data?.attributes.url && (
             <img src={headData.card_field_img.data?.attributes.url} />
           )}
@@ -37,7 +36,7 @@ const GuidesCell = ({ headData, category, linkData, t }) => {
           <Text>{ReactHtmlParser(headData.description)}</Text>
         </Box>
       </Box>
-      {linkData && <GuidesLinks t={t} mainArticles={linkData} category={category} />}
+      {linkData && <GuidesLinks t={t} mainArticles={linkData} mainCategory={mainCategory} category={category} />}
     </StyledGuidesCell>
   );
 };

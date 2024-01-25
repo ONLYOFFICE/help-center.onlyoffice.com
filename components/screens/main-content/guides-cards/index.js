@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import GuidesCell from "../guides-cards/sub-components/guides-cell";
 import StyledGuidesCards from "./styled-guides-cards";
 
-const GuidesCards = ({ t, articles, categories, isCategory, className }) => {
+const GuidesCards = ({ t, articles, categories, isCategory, className, mainCategory }) => {
   const getArtData = (category) => {
-    return articles.filter((item) => item.attributes.category.data?.attributes.slug_id === category);
+    return articles?.filter((item) => item.attributes.category.data?.attributes.slug_id === category);
   };
 
   return (
@@ -17,6 +17,7 @@ const GuidesCards = ({ t, articles, categories, isCategory, className }) => {
             headData={it.attributes}
             category={it.attributes.slug_id || it.attributes.category.data.attributes.slug_id}
             linkData={isCategory ? articles : getArtData(it.attributes.slug_id)}
+            mainCategory={mainCategory}
           />
         );
       })}

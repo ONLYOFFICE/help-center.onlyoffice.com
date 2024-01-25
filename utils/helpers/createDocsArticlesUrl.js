@@ -4,7 +4,11 @@ export default function createDocsArticlesUrl(data, pagepath) {
     const { level_2, level_3, level_4 } = for_installation_category;
   
     const levels = [level_2, level_3, level_4].filter(Boolean).map(level => level.toLowerCase().replace(/ /g, "_"));
-    const fullPath = [categoryAttributes.url, ...levels].join("/");
+    let fullPath = [categoryAttributes.url, ...levels].join("/");
+
+    // if (level_4) {
+    //     fullPath += `#${level_4.toLowerCase().replace(/ /g, "_")}`;
+    // }
   
-    return  fullPath + "/" + pagepath;
+    return fullPath + "/" + pagepath;
   }
