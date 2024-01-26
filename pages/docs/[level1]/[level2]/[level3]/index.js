@@ -12,8 +12,8 @@ import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
-import filterDocsAricles from "@utils/helpers/filterForDocsCategory";
-import createDocsCategoryStructure from "@utils/helpers/createDocsCategoryStructure";
+import filterDocsAricles from "@utils/helpers/DocsCategory/filterForDocsCategory";
+import createDocsCategoryStructure from "@utils/helpers/DocsCategory/createDocsCategoryStructure";
 import CenterSubCategoryContent from "@components/screens/single-page-content/content/subcategory-content";
 
 const subcategoryPage = ({ locale, articles, videos, tags, categories, docsCategories }) => {
@@ -21,6 +21,7 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, docsCateg
   const query = useRouter();
   const pageLoc = query.locale !== "en" ? query.locale : "";
   const pagePath = (pageLoc + query.asPath).split('#')[0];
+  const pageCategory = "Docs";
 
   const { secondWord, urlBeforeLastSlashSlice } = (() => {
     const lastSlashIndex = pagePath.lastIndexOf('/');
@@ -50,6 +51,9 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, docsCateg
   );
   const allDocsCat = createDocsCategoryStructure(docsCategories?.data, datalvl1);
 
+  //console.log(pageData);
+  //console.log(datalvl2);
+
   //const { seo_title, seo_description } = data;
   return (
     <Layout>
@@ -72,6 +76,7 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, docsCateg
           category={pageData}
           categories={allDocsCat}
           isCategory={false}
+          pageMainCategory={pageCategory}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>

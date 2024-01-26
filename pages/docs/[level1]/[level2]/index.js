@@ -13,9 +13,9 @@ import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 import CenterCategoryContent from "@components/screens/single-page-content/content/category-docs-content";
-import filterDocsAricles from "@utils/helpers/filterForDocsCategory";
-import createDocsCategoryStructure from "@utils/helpers/createDocsCategoryStructure";
-import createDocsArticlesUrl from "@utils/helpers/createDocsArticlesUrl";
+import filterDocsAricles from "@utils/helpers/DocsCategory/filterForDocsCategory";
+import createDocsCategoryStructure from "@utils/helpers/DocsCategory/createDocsCategoryStructure";
+import createDocsArticlesUrl from "@utils/helpers/DocsCategory/createDocsArticlesUrl";
 import SingleContent from "@components/screens/single-page-content";
 
 const subcategoryPage = ({ locale, articles, docsCategories, categories, videos, tags }) => {
@@ -43,9 +43,9 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories, videos,
   );
 
   const link = pattern.test(pagePath) && createDocsArticlesUrl(pageArticlesData, lastWord);
-  
+
   //console.log(pageArticlesData);
-  //console.log(pageData?.name);
+  console.log(pageData);
 
   //const { seo_title, seo_description } = data;
   return (
@@ -82,7 +82,6 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories, videos,
             category={pageData}
             categories={allDocsCat}
             isCategory={false} />}
-
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />

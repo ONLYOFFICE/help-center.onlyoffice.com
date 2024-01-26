@@ -6,17 +6,17 @@ import Text from "@components/common/text";
 import GuidesLinks from "../guides-links";
 import ReactHtmlParser from "react-html-parser";
 import Heading from "@components/common/heading";
-import filterDocsAricles from "@utils/helpers/filterForDocsCategory";
+import filterDocsAricles from "@utils/helpers/DocsCategory/filterForDocsCategory";
 
 const GuidesCell = ({ headData, category, linkData, mainCategory, t }) => {
   return (
     <StyledGuidesCell>
       <Box className="cell_header">
-        <Box className={`cell_icon ${(category == 'connectors' && mainCategory) ? 'connectors' : ''}`}>
+        <Box className={`cell_icon ${(category == 'connectors' && mainCategory !== 'main') ? 'connectors' : ''}`}>
           {category !== 'connectors' && headData.card_field_img?.data?.attributes.url && (
             <img src={headData.card_field_img.data?.attributes.url} />
           )}
-          {category == 'connectors'&& linkData && headData.card_field_img?.data?.attributes.url && (
+          {category == 'connectors' && linkData && headData.card_field_img?.data?.attributes.url && (
             <img src={headData.card_field_img.data?.attributes.url} />
           )}
           {headData.url != null ? (

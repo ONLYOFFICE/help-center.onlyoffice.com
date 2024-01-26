@@ -12,11 +12,12 @@ import GuidesCards from "@components/screens/main-content/guides-cards";
 import Accordion from "@components/screens/common/accordion";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
-import createAllArticlesList from "@utils/helpers/createAllArticlesList";
+import createAllArticlesList from "@utils/helpers/Common/createAllArticlesList";
 
 const Index = ({ locale, categories, integrationArticles, docsArticles }) => {
   const { t } = useTranslation();
   const result = createAllArticlesList(integrationArticles.data, docsArticles.data);
+  const pageCategory = 'main';
 
   return (
     <Layout>
@@ -35,7 +36,7 @@ const Index = ({ locale, categories, integrationArticles, docsArticles }) => {
       </Layout.PageHeader>
       <Layout.SectionMain>
         <InfoContent t={t} categories={categories.data} currentLanguage={locale} isCategory={false} />
-        <GuidesCards t={t} categories={categories.data} articles={result} isCategory={false} className="mp" />
+        <GuidesCards t={t} categories={categories.data} articles={result} isCategory={false} className="mp" mainCategory={pageCategory} />
         <Accordion t={t} currentLanguage={locale} />
       </Layout.SectionMain>
       <Layout.PageFooter>

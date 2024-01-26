@@ -5,7 +5,7 @@ import ReactHtmlParser from "react-html-parser";
 import StyledContent from "@components/screens/single-page-content/content/styled-content";
 import Breadcrumbs from "@components/common/breadcrumbs";
 import CategoryItem from "../sub-components/category-item";
-import filterDocsAricles from "@utils/helpers/filterForDocsCategory";
+import filterDocsAricles from "@utils/helpers/DocsCategory/filterForDocsCategory";
 import StyledSingleContent from "../../../single-page-content/styled-single-content";
 import LeftMenu from "@components/screens/single-page-content/sub-components/left-menu";
 
@@ -22,7 +22,7 @@ const CenterCategoryContent = ({
 }) => {
     const catData = category?.attributes;
     const data = filterDocsAricles(articles, catData.slug_id);
-   // console.log(data);
+    // console.log(data);
 
     const article = null;
     // left menu highlight

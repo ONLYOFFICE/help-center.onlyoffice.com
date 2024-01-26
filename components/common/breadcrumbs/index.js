@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Link from "next/link";
 import StyledBreadcrumb from "./styled-breadcrumbs";
 import languages from "@config/languages.json";
-import findCategory from "@utils/helpers/findLvlCategories";
+import findCategory from "@utils/helpers/Common/findLvlCategories";
 
 const Breadcrumbs = ({ t, article, category, categories, mainCategory, pagePath }) => {
   const router = useRouter();
