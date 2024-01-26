@@ -5,7 +5,7 @@ import Text from "@components/common/text";
 import InternalLink from "@components/common/internal-link";
 import Mark from "@components/common/mark";
 import Button from "@components/common/button";
-import useWindowWidth from '@utils/helpers/useWindowProvider';
+import useWindowWidth from '@utils/helpers/System/useWindowProvider';
 import getMarks from "@lib/strapi/getMarks";
 
 const ArticlePopup = ({ t, language, active, setActive, tag, allTags, ...rest }) => {

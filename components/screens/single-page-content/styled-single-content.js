@@ -23,6 +23,35 @@ const StyledSingleLayout = styled.div`
       }
     }
   }
+
+  h3.subcat-heading {
+    padding: 0 0 24px;
+    &.dlw {
+      display: flex;
+      gap: 8px;
+    }
+  }
+
+  .subcat-divs {
+    padding: 0 0 24px;
+    h5 {
+      padding: 0;
+    }
+  }
+
+  .classic-ul {
+    list-style-type: none;
+    > li {
+        padding: 16px 0 0;
+      > a {
+        color: #333333;
+        text-decoration: none;
+        &:hover {
+          color: #ff6f3d;
+        }
+      }
+    }
+  }
     
   @media ${device.laptopM} {
     max-width: 100vw;

@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import StyledCategoryItem from "../category-item/styled-category-item";
 import ReactHtmlParser from "react-html-parser";
 import RawHtmlStyle from "@components/utils/rawHtmlStyles";
-import leftMenuGenerating from '@utils/helpers/leftMenuGenerating';
+import leftMenuGenerating from '@utils/helpers/Menu/leftMenuGenerating';
 
 const ConnectorCategoryItem = ({
   data, t, currentLanguage

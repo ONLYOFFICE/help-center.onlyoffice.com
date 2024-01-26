@@ -3,7 +3,7 @@ import StyledLeftMenu from "./styled-left-menu";
 import InternalLink from "@components/common/internal-link";
 import items from "./data/items";
 import Heading from "@components/common/heading";
-import leftMenuGenerating from '@utils/helpers/leftMenuGenerating';
+import leftMenuGenerating from '@utils/helpers/Menu/leftMenuGenerating';
 
 const LeftMenu = ({ t, isCategory, articles, article, category, categories, activeItem, handleActiveItemChange, currentLanguage, ...rest }) => {
   const leftMenu = useRef();
@@ -12,27 +12,27 @@ const LeftMenu = ({ t, isCategory, articles, article, category, categories, acti
     if (!isCategory) {
       return { catData: null, artData: null };
     }
-    
+
     const categoryData = categories?.find((it) => it.attributes.slug_id === category);
     const catData = categoryData ? categoryData.attributes : null;
-    
+
     const artData = articles?.filter((it) => it.attributes.category.data.attributes.slug_id === category)
       .sort((a, b) => {
         return a.attributes.title.toLowerCase() < b.attributes.title.toLowerCase()
           ? -1
           : 1;
-      });  
+      });
     return { catData, artData };
   }, [isCategory, categories, articles, category]);
-    
+
   const catData = data.catData;
   const artData = data.artData;
 
   // menu highlight
   useEffect(() => {
     const headings = document.querySelectorAll('h4');
-    const header = document.querySelector('header'); 
-  
+    const header = document.querySelector('header');
+
     const handleScroll = () => {
       const headerRect = header.getBoundingClientRect().height;
       const topHeading = Array.from(headings).find((heading) => {
@@ -82,7 +82,7 @@ const LeftMenu = ({ t, isCategory, articles, article, category, categories, acti
             {article?.attributes.videos.data.length > 0 && (
               <li className={activeItem?.id === 'watchvideo' ? 'active' : ''}>
                 <InternalLink href="#watchvideo">
-                {t("WatchVideo")}
+                  {t("WatchVideo")}
                 </InternalLink>
               </li>
             )}
@@ -99,7 +99,7 @@ const LeftMenu = ({ t, isCategory, articles, article, category, categories, acti
           {items.map((link, index) => (
             <li key={index}>
               <InternalLink href={hrefLang + link.href} className={link.className}>
-              {t(link.label)}
+                {t(link.label)}
               </InternalLink>
             </li>
           ))}

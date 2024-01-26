@@ -11,7 +11,7 @@ import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 import CenterCategoryContent from "@components/screens/single-page-content/content/category-docs-content";
-import filterDocsArticles from "@utils/helpers/filterForDocsCategory";
+import filterDocsArticles from "@utils/helpers/DocsCategory/filterForDocsCategory";
 
 const subcategoryPage = ({ locale, articles, docsCategories, categories }) => {
   const { t } = useTranslation();
@@ -27,9 +27,9 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories }) => {
     () => articles?.data.filter((it) => it.attributes.category_doc.data.attributes.url === pagePath),
     [articles]
   );
-  
+
   const data = filterDocsArticles(pageData, pageSubCategory.slug_id);
-//console.log(data);
+  //console.log(data);
   //const { seo_title, seo_description } = data;
   return (
     <Layout>
@@ -45,13 +45,13 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories }) => {
         <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-      <CenterCategoryContent 
-        t={t} 
-        currentLanguage={locale} 
-        articles={data} 
-        category={pageSubCategory} 
-        categories={categories.data}
-        isCategory={false} />
+        <CenterCategoryContent
+          t={t}
+          currentLanguage={locale}
+          articles={data}
+          category={pageSubCategory}
+          categories={categories.data}
+          isCategory={false} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />
