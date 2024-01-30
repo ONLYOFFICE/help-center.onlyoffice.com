@@ -3,30 +3,36 @@ import StyledLeftMenu from "./styled-left-menu";
 import InternalLink from "@components/common/internal-link";
 import items from "./data/items";
 import Heading from "@components/common/heading";
+import TreeView from "@components/common/treeview";
+
 import leftMenuGenerating from '@utils/helpers/Menu/leftMenuGenerating';
 
 const LeftMenu = ({ t, isCategory, articles, article, category, categories, activeItem, handleActiveItemChange, currentLanguage, ...rest }) => {
   const leftMenu = useRef();
-  const menuItems = leftMenuGenerating(article, isCategory, null, 'h4');
-  const data = useMemo(() => {
-    if (!isCategory) {
-      return { catData: null, artData: null };
-    }
+  const menuItems = !isCategory && leftMenuGenerating(article, null, 'h4');
+  //console.log(category);
+  //console.log(articles);
+  // const data = useMemo(() => {
+  //   if (!isCategory) {
+  //     return { catData: null, artData: null };
+  //   }
 
-    const categoryData = categories?.find((it) => it.attributes.slug_id === category);
-    const catData = categoryData ? categoryData.attributes : null;
+  //   const categoryData = categories?.find((it) => it.attributes.slug_id === category);
+  //   const catData = categoryData ? categoryData.attributes : null;
 
-    const artData = articles?.filter((it) => it.attributes.category.data.attributes.slug_id === category)
-      .sort((a, b) => {
-        return a.attributes.title.toLowerCase() < b.attributes.title.toLowerCase()
-          ? -1
-          : 1;
-      });
-    return { catData, artData };
-  }, [isCategory, categories, articles, category]);
+  //   const artData = articles?.filter((it) => it.attributes.category.data.attributes.slug_id === category)
+  //     .sort((a, b) => {
+  //       return a.attributes.title.toLowerCase() < b.attributes.title.toLowerCase()
+  //         ? -1
+  //         : 1;
+  //     });
+  //   return { catData, artData };
+  // }, [isCategory, categories, articles, category]);
 
-  const catData = data.catData;
-  const artData = data.artData;
+  // const catData = data.catData;
+  // const artData = data.artData;
+  // console.log(data);
+  //console.log(isCategory);
 
   // menu highlight
   useEffect(() => {
@@ -58,24 +64,18 @@ const LeftMenu = ({ t, isCategory, articles, article, category, categories, acti
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleActiveItemChange]);
 
-  // for release
-  const hrefLang = `https://helpcenter.onlyoffice.com${currentLanguage === "en" ? "" : `/${currentLanguage}`}`;
-
   return (
     <StyledLeftMenu ref={leftMenu}>
       <div className="lm-wrap">
         {/* <MiniSearch /> */}
+        <div className="bck-to-prev">
+          <img src="/images/icons/16px_back_arrow.react.svg" /><InternalLink href="#"></InternalLink>
+        </div>
         {isCategory ? <>
-          <Heading level={6}>{catData.name}</Heading>
-          <ul>
-            {artData.map((article, index) => (
-              <li key={index}>
-                <InternalLink href={article.attributes.url}>
-                  {article.attributes.title}
-                </InternalLink>
-              </li>
+           <Heading level={6}>{category?.name}</Heading>
+            {articles?.map((article, index) => (
+              <TreeView key={index} children={article} />
             ))}
-          </ul>
         </> : <>
           <Heading level={6}>{article?.attributes.title}</Heading>
           <ul className="page">
@@ -98,7 +98,7 @@ const LeftMenu = ({ t, isCategory, articles, article, category, categories, acti
         <ul className="stat">
           {items.map((link, index) => (
             <li key={index}>
-              <InternalLink href={hrefLang + link.href} className={link.className}>
+              <InternalLink href={link.href} className={link.className}>
                 {t(link.label)}
               </InternalLink>
             </li>

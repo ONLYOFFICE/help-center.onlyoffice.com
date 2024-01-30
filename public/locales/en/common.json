@@ -170,5 +170,7 @@
   "WorkspaceCloudService": "Workspace Cloud Service",
   "WorkspaceEnterpriseEdition": "Workspace Enterprise Edition",
   "WritingDocumentation": "Writing Documentation",
-  "Version": "version"
+  "Version": "version",
+  "SystemRequirements": "System requirements",
+  "Troubleshooting": "Troubleshooting"
 }

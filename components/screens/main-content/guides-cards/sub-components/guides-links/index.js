@@ -31,8 +31,8 @@ const GuidesLinks = ({ mainArticles, category, mainCategory, t }) => {
       }
     }
   }, [mainCategory, loading]);
-  console.log(mainArticles);
-  console.log(data);
+  //console.log(mainArticles);
+  //console.log(data);
 
   return (
     <StyledGuidesLinks>

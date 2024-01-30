@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 
-export default function leftMenuGenerating(article, isCategory, hrefDomain, selectItems) {
+export default function leftMenuGenerating(article, hrefDomain, selectItems) {
     const [menuItems, setMenuItems] = useState([]);
 
     useEffect(() => {
-        const content = !isCategory && article?.attributes.content;
+        const content = article && article?.attributes.content;
         const headings = document.createElement('div');
         headings.innerHTML = content;
         const headingElements = headings.querySelectorAll(selectItems);

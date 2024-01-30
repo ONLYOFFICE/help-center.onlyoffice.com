@@ -43,7 +43,7 @@ const StyledSingleLayout = styled.div`
     list-style-type: none;
     > li {
         padding: 16px 0 0;
-      > a {
+      > a > span {
         color: #333333;
         text-decoration: none;
         &:hover {
@@ -51,6 +51,12 @@ const StyledSingleLayout = styled.div`
         }
       }
     }
+  }
+
+  .reqs {
+      display: flex;
+      gap: 8px;
+      text-decoration: underline;
   }
     
   @media ${device.laptopM} {
