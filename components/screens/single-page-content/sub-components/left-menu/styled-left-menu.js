@@ -7,6 +7,12 @@ border-right: 1px solid #EFEFEF;
 padding: 32px 0;
 padding-right: 24px;
 width: 231px;
+
+  .bck-to-prev {
+    display: flex;
+    gap: 8px;
+    padding: 0 0 16px;
+  }
   
   .lm-wrap {
     box-sizing: border-box;

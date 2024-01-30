@@ -31,6 +31,7 @@ const StyledCategoryItem = styled.div`
     display: flex;
     justify-content: start;
     gap: 16px;
+    padding: 0 0 24px;
 
     img {
         height: fit-content;
@@ -73,7 +74,7 @@ h5 {
     list-style-type: none;
     padding: 16px 0 0;
         &.subcategory {
-            padding: 24px 0 16px;
+            padding: 0px;
         }
     li {
         line-height: normal;
@@ -81,7 +82,7 @@ h5 {
         &.sublink {
             padding: 0 0 16px;
 
-            &.dlw > a {
+            &.dlw > a > span {
                 display: flex;
                 gap: 8px;
             }
@@ -89,7 +90,7 @@ h5 {
         &:last-child {
             padding-bottom: 0;
         }
-        a {
+        a > span {
             color: #333333;
             text-decoration: none;
             &:hover {

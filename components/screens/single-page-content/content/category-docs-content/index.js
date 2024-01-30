@@ -41,7 +41,7 @@ const CenterCategoryContent = ({
         <StyledSingleContent>
             <LeftMenu {...menuProps} />
             <StyledContent className="wrapper">
-                <Breadcrumbs t={t} category={category} isCategory={false} categories={categories} mainCategory="Docs" />
+                <Breadcrumbs t={t} category={category} categories={categories} mainCategory="Docs" />
                 <Heading level={3}>{category?.name}</Heading>
                 {category?.description && <Text>{ReactHtmlParser(category?.description)}</Text>}
                 {articles?.map((it, index) => {

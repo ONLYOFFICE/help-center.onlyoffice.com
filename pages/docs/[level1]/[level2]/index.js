@@ -44,9 +44,6 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories, videos,
 
   const link = pattern.test(pagePath) && createDocsArticlesUrl(pageArticlesData, lastWord);
 
-  //console.log(pageArticlesData);
-  console.log(pageData);
-
   //const { seo_title, seo_description } = data;
   return (
     <Layout>
@@ -81,7 +78,7 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories, videos,
             articles={pageData?.level_3}
             category={pageData}
             categories={allDocsCat}
-            isCategory={false} />}
+            isCategory={true} />}
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />

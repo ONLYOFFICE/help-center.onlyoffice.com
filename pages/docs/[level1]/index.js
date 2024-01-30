@@ -51,7 +51,7 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories }) => {
           articles={data}
           category={pageSubCategory}
           categories={categories.data}
-          isCategory={false} />
+          isCategory={true} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />
