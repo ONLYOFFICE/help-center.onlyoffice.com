@@ -15,7 +15,7 @@ const CategoryDocsItem = ({
 
   return (
     <StyledCategoryItem>
-      <Heading level={4}><img src={`/images/icons/${path}.react.svg`} alt={data.name} style={{ fontSize: "10px" }} /><Link href={data.url}>{data.name} {checkPlatformMatch(data.name) && t("Version")}</Link></Heading>
+      <Heading level={4}><img src={`https://static-helpcenter.onlyoffice.com/images/icons/${path}.react.svg`} alt={data.name} style={{ fontSize: "10px" }} /><Link href={data.url}>{data.name} {checkPlatformMatch(data.name) && t("Version")}</Link></Heading>
       <ul className="subcategory">
         {level?.map((it, index) => {
           const levelpic = it?.name.toLowerCase();
@@ -24,7 +24,7 @@ const CategoryDocsItem = ({
               {
                 checkPlatformMatch(it.name) ? <li className="sublink dlw" key={index}>
                   <Link href={it.url}>
-                    <img src={`/images/icons/16px_${levelpic}.react.svg`} alt={it.name} style={{ fontSize: "10px" }} />
+                    <img src={`https://static-helpcenter.onlyoffice.com/images/icons/16px_${levelpic}.react.svg`} alt={it.name} style={{ fontSize: "10px" }} />
                     {it.name} {t("Version")}</Link>
                 </li> : sysReqItem || troubleShootingItem ? <li className="sublink" key={index}>
                   <Link href={it.level_5[0]?.url}>{it.name}</Link>

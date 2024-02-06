@@ -25,6 +25,8 @@ const SingleContent = ({
     setActiveItem(item);
   };
 
+  const isArticle = true;
+
   const articleProps = {
     article,
     category,
@@ -49,6 +51,7 @@ const SingleContent = ({
     children,
     t,
     activeItem,
+    isArticle
   };
 
   return (

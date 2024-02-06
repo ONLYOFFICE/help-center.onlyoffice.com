@@ -14,13 +14,14 @@ const TreeView = ({
     const items = children?.level_3 || children?.level_4;
 
     return (
-        <StyledTreeView {...rest} onClick={() => setActive(!active)}>
+        <StyledTreeView {...rest}>
             <Heading
                 level={6}
                 style={{ cursor: "pointer" }}
                 className="tree__heading"
+                onClick={() => setActive(!active)}
             >
-                <img src="/images/icons/arrow-right.react.svg" style={!active ? { transform: "rotate(0)" } : { transform: "rotate(90deg)" }} />
+                <img src="https://static-helpcenter.onlyoffice.com/images/icons/arrow-right.react.svg" style={!active ? { transform: "rotate(0)" } : { transform: "rotate(90deg)" }} />
                 {children.name}
             </Heading>
             <div className="tree__items"

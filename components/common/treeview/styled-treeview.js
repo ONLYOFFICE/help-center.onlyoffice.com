@@ -6,7 +6,7 @@ h6.tree__heading {
     gap: 8px;
     text-transform: none;
         &:hover {
-            text-decoration: underline;
+            color: #ff6f3d;
         }
 }
 

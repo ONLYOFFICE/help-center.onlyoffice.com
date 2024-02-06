@@ -1,27 +1,27 @@
 import { useState, useEffect } from 'react';
 
-export default function leftMenuGenerating(article, hrefDomain, selectItems) {
+export default function leftMenuGenerating(article, hrefDomain, selectItems, isArticle) {
     const [menuItems, setMenuItems] = useState([]);
 
     useEffect(() => {
-        const content = article && article?.attributes.content;
+        const content = isArticle ? article?.attributes?.content : article;
         const headings = document.createElement('div');
         headings.innerHTML = content;
-        const headingElements = headings.querySelectorAll(selectItems);
+        const headingElements = isArticle ? headings.querySelectorAll(selectItems) : content?.querySelectorAll(selectItems);
 
         const items = [];
     
-        headingElements.forEach((heading) => {
+        headingElements?.forEach((heading) => {
           const text = heading.textContent;
           const item = {
-            id: heading.parentElement.id,
+            id: heading.parentElement.id || heading.id,
             type: heading.tagName.toLowerCase(),
             text,
             ...(hrefDomain != null && { href: article.attributes.url + "#" + heading.parentElement.id }),
           };
           items.push(item);
         });
-        items.sort((a, b) => {
+        items?.sort((a, b) => {
           const elementA = document.getElementById(a.id);
           const elementB = document.getElementById(b.id);
         

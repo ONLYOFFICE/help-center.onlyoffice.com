@@ -59,6 +59,11 @@ export default function filterDocsArticles(articles, category) {
                 const newLevel5 = {
                     name: `${article?.attributes.title}`,
                     url: `${article?.attributes.url}`,
+                    videos: article?.attributes.videos?.data.map(video => ({
+                        title: video.attributes.title,
+                        description: video.attributes.description,
+                        url: video.attributes.url,
+                    })) || [],
                 };
 
                 targetCategoryForLvl5.level_5.push(newLevel5);
