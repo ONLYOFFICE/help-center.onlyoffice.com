@@ -32,7 +32,7 @@ const StyledSingleLayout = styled.div`
     }
   }
 
-  .subcat-divs {
+  .subcat-div {
     padding: 0 0 24px;
     h5 {
       padding: 0;

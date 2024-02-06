@@ -16,5 +16,11 @@
       "shortKey": "fr",
       "iconName": "fr.react.svg",
       "name": "Français"
+    },
+    {
+      "key": "zh-ZH",
+      "shortKey": "zh",
+      "iconName": "zh.react.svg",
+      "name": "Chineese"
     }
   ]

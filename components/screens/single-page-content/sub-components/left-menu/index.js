@@ -7,32 +7,10 @@ import TreeView from "@components/common/treeview";
 
 import leftMenuGenerating from '@utils/helpers/Menu/leftMenuGenerating';
 
-const LeftMenu = ({ t, isCategory, articles, article, category, categories, activeItem, handleActiveItemChange, currentLanguage, ...rest }) => {
+const LeftMenu = ({ t, isCategory, articles, article, category, categories, activeItem, handleActiveItemChange, currentLanguage, isArticle, ...rest }) => {
   const leftMenu = useRef();
-  const menuItems = !isCategory && leftMenuGenerating(article, null, 'h4');
-  //console.log(category);
-  //console.log(articles);
-  // const data = useMemo(() => {
-  //   if (!isCategory) {
-  //     return { catData: null, artData: null };
-  //   }
-
-  //   const categoryData = categories?.find((it) => it.attributes.slug_id === category);
-  //   const catData = categoryData ? categoryData.attributes : null;
-
-  //   const artData = articles?.filter((it) => it.attributes.category.data.attributes.slug_id === category)
-  //     .sort((a, b) => {
-  //       return a.attributes.title.toLowerCase() < b.attributes.title.toLowerCase()
-  //         ? -1
-  //         : 1;
-  //     });
-  //   return { catData, artData };
-  // }, [isCategory, categories, articles, category]);
-
-  // const catData = data.catData;
-  // const artData = data.artData;
-  // console.log(data);
-  //console.log(isCategory);
+  const menuItems = !isCategory && leftMenuGenerating(article, null, isArticle ? 'h4' : 'h5, a[id]:not([id=""]', isArticle);
+  const artTitle = !isArticle && article?.querySelector('h3');
 
   // menu highlight
   useEffect(() => {
@@ -69,7 +47,7 @@ const LeftMenu = ({ t, isCategory, articles, article, category, categories, acti
       <div className="lm-wrap">
         {/* <MiniSearch /> */}
         <div className="bck-to-prev">
-          <img src="/images/icons/16px_back_arrow.react.svg" /><InternalLink href="#"></InternalLink>
+          <img src="https://static-helpcenter.onlyoffice.com/images/icons/16px_back_arrow.react.svg" /><InternalLink href="#"></InternalLink>
         </div>
         {isCategory ? <>
            <Heading level={6}>{category?.name}</Heading>
@@ -77,9 +55,9 @@ const LeftMenu = ({ t, isCategory, articles, article, category, categories, acti
               <TreeView key={index} children={article} />
             ))}
         </> : <>
-          <Heading level={6}>{article?.attributes.title}</Heading>
+          <Heading level={6}>{isArticle ? article?.attributes?.title : artTitle?.textContent}</Heading>
           <ul className="page">
-            {article?.attributes.videos.data.length > 0 && (
+            {article?.attributes?.videos?.data.length > 0 && (
               <li className={activeItem?.id === 'watchvideo' ? 'active' : ''}>
                 <InternalLink href="#watchvideo">
                   {t("WatchVideo")}

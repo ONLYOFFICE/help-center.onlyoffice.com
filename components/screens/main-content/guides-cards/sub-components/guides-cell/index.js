@@ -6,7 +6,6 @@ import Text from "@components/common/text";
 import GuidesLinks from "../guides-links";
 import ReactHtmlParser from "react-html-parser";
 import Heading from "@components/common/heading";
-import filterDocsAricles from "@utils/helpers/DocsCategory/filterForDocsCategory";
 
 const GuidesCell = ({ headData, category, linkData, mainCategory, t }) => {
   return (

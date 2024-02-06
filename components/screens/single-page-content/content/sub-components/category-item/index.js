@@ -16,7 +16,7 @@ const CategoryItem = ({
 
   return (
     <StyledCategoryItem>
-      <Heading level={4}><img src={`/images/icons/${categoryPic}.react.svg`} alt={data.name} style={{ fontSize: "10px" }} /><Link href={data.url}>{data.name}</Link></Heading>
+      <Heading level={4}><img src={`https://static-helpcenter.onlyoffice.com/images/icons/${categoryPic}.react.svg`} alt={data.name} style={{ fontSize: "10px" }} /><Link href={data.url}>{data.name}</Link></Heading>
       <ul className="subcategory">
         {level3?.map((it, index) => {
           const level3pic = it?.name.toLowerCase();
@@ -25,14 +25,13 @@ const CategoryItem = ({
               {
                 it.name === "docker" ? <li className="sublink" key={index}>
                   <a href={it.url}>
-                    <img src={`/images/icons/16px_${level3pic}.react.svg`} alt={it.name} style={{ fontSize: "10px" }} />
+                    <img src={`https://static-helpcenter.onlyoffice.com/images/icons/16px_${level3pic}.react.svg`} alt={it.name} style={{ fontSize: "10px" }} />
                     {it.name}</a>
                 </li> : <li className="sublink" key={index}>
                   <a href={it.url}>
-                    <img src={`/images/icons/16px_${level3pic}.react.svg`} alt={it.name} style={{ fontSize: "10px" }} />
+                    <img src={`https://static-helpcenter.onlyoffice.com/images/icons/16px_${level3pic}.react.svg`} alt={it.name} style={{ fontSize: "10px" }} />
                     {it.name}</a>
                 </li>
-
               }
             </React.Fragment>
           )

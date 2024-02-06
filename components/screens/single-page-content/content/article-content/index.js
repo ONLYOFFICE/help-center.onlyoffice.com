@@ -5,7 +5,7 @@ import Tag from "@components/common/tag";
 import ArticlePopup from "../../pop-ups/article-popup";
 import Heading from "@components/common/heading";
 import Breadcrumbs from "@components/common/breadcrumbs";
-import Video from "../../sub-components/video";
+import Video from "../../sub-components/connectors-video";
 import ImagePopup from "../../pop-ups/image-popup";
 import RawHtmlStyle from "@components/utils/rawHtmlStyles";
 import DownloadArea from "../../sub-components/download-area";
