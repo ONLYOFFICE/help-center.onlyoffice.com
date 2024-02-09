@@ -6,11 +6,13 @@ import Heading from "@components/common/heading";
 import TreeView from "@components/common/treeview";
 
 import leftMenuGenerating from '@utils/helpers/Menu/leftMenuGenerating';
+import checkPrevPage from "@utils/helpers/Menu/checkPrevPage";
 
 const LeftMenu = ({ t, isCategory, articles, article, category, categories, activeItem, handleActiveItemChange, currentLanguage, isArticle, ...rest }) => {
   const leftMenu = useRef();
   const menuItems = !isCategory && leftMenuGenerating(article, null, isArticle ? 'h4' : 'h5, a[id]:not([id=""]', isArticle);
   const artTitle = !isArticle && article?.querySelector('h3');
+  const prevPath = categories && checkPrevPage(categories, isArticle);
 
   // menu highlight
   useEffect(() => {
@@ -47,12 +49,12 @@ const LeftMenu = ({ t, isCategory, articles, article, category, categories, acti
       <div className="lm-wrap">
         {/* <MiniSearch /> */}
         <div className="bck-to-prev">
-          <img src="https://static-helpcenter.onlyoffice.com/images/icons/16px_back_arrow.react.svg" /><InternalLink href="#"></InternalLink>
+         {prevPath && <InternalLink href={prevPath.url}><img src="https://static-helpcenter.onlyoffice.com/images/icons/16px_back_arrow.react.svg" />{prevPath?.name}</InternalLink>}
         </div>
         {isCategory ? <>
            <Heading level={6}>{category?.name}</Heading>
             {articles?.map((article, index) => (
-              <TreeView key={index} children={article} />
+              <TreeView key={index} children={article} t={t} />
             ))}
         </> : <>
           <Heading level={6}>{isArticle ? article?.attributes?.title : artTitle?.textContent}</Heading>

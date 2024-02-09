@@ -3,9 +3,11 @@ import React, { useState, useRef } from "react";
 import StyledTreeView from "./styled-treeview";
 import Link from "@components/common/internal-link";
 import Heading from "@components/common/heading";
+import checkPlatformMatch from "@utils/helpers/Common/checkPlatforms";
 
 const TreeView = ({
     children,
+    t,
     ...rest
 
 }) => {
@@ -34,7 +36,7 @@ const TreeView = ({
                     <Link
                         className="treeview__link"
                         key={index}
-                        href={it.url}> {it.name} </Link>
+                        href={it.url}> {it.name} {checkPlatformMatch(it.name) && t("Version")}</Link>
                 ))}
             </div>
         </StyledTreeView>

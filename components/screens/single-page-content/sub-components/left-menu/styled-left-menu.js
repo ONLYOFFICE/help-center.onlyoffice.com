@@ -9,9 +9,12 @@ padding-right: 24px;
 width: 231px;
 
   .bck-to-prev {
-    display: flex;
-    gap: 8px;
     padding: 0 0 16px;
+     > a > span {
+      display: flex;
+      gap: 8px;
+      padding: 0;
+     }
   }
   
   .lm-wrap {
