@@ -1,13 +1,67 @@
-import React from "react";
-import StyledHeadingContent from "./styled-heading";
-import Menu from "./menu";
+import React, { useState, useEffect } from "react";
+import { ReactSVG } from "react-svg";
 
-const HeadingContent = ({ t, template, currentLanguage, categories }) => {
+import LanguageSelector from "@components/common/language-selector";
+import InternalLink from "@components/common/internal-link";
+import { StyledMenu } from "./styled-menu";
+import Nav from "./nav/nav";
+
+const Menu = ({ t, currentLanguage, template, categories, ...rest }) => {
+  const curLang = currentLanguage === "en" ? "/" : `/${currentLanguage}/`;
+  const [windowCheck, setWindowCheck] = useState("undefined");
+  useEffect(() => {
+    if (typeof window !== windowCheck) {
+      setWindowCheck(window.innerWidth <= 769);
+    }
+  }, [windowCheck]);
+
+  const [stateMobile, setStateMobile] = useState(false);
+  const toggleMobile = () => {
+    setStateMobile(true);
+  };
+  const onCloseMenu = () => {
+    setStateMobile(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("touchstart", handleClickOutside);
+    return () => {
+      window.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [stateMobile]);
+
+  const handleClickOutside = (e) => {
+    if (windowCheck && stateMobile && !e.target.closest(".navbar")) {
+      onCloseMenu();
+    }
+  };
+ 
   return (
-    <StyledHeadingContent template={template}>
-      <Menu t={t} template={template} currentLanguage={currentLanguage} categories={categories} />
-    </StyledHeadingContent>
+    <StyledMenu
+      template={template}
+      className="navbar"
+      onMouseLeave={onCloseMenu}
+    >
+      <InternalLink className="nav-item-logo" href={curLang}>
+        <div className="site-logo"></div>
+      </InternalLink>
+      <img
+        src="https://static-helpcenter.onlyoffice.com/images/icons/mob_menu.react.svg"
+        className="nav-items-mobile"
+        onClick={toggleMobile}
+      />
+      <Nav
+        currentLanguage={currentLanguage}
+        className="nav-item-links"
+        stateMobilePND={stateMobile}
+        categories={categories}
+        t={t}
+      />
+      <div className="nav-item-lng">
+        <LanguageSelector t={t} currentLanguage={currentLanguage} />
+      </div>
+    </StyledMenu>
   );
 };
 
-export default HeadingContent;
+export default Menu;

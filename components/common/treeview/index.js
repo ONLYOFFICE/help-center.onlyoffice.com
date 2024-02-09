@@ -32,7 +32,7 @@ const TreeView = ({
                     maxHeight: `${active ? `${content?.current?.scrollHeight}px` : "0px"}`,
                 }}
             >
-                {items.map((it, index) => (
+                {items?.map((it, index) => (
                     <Link
                         className="treeview__link"
                         key={index}

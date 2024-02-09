@@ -42,7 +42,7 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories, videos,
     [articles]
   );
 
-  const link = pattern.test(pagePath) && createDocsArticlesUrl(pageArticlesData, lastWord);
+  const link = pattern.test(pagePath) && createDocsArticlesUrl(pageArticlesData, lastWord, secondWord);
 
   //const { seo_title, seo_description } = data;
   return (

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 
-const StyledNavMenu = styled.div`
+const StyledNavMenu = styled.a`
+text-decoration: none;
   .heading-nav-item {
     color: #fff;
     display: block;
@@ -9,12 +10,13 @@ const StyledNavMenu = styled.div`
     font-weight: 600;
     line-height: 1.33em;
     letter-spacing: 0.04em;
-    padding: 28px 0px;
+    padding: 27px 16px 28px;
     cursor: pointer;
     margin: 0px;
     text-transform: uppercase;
     &:hover {
       color: #ff6f3d;
+      border-bottom: 1px solid #ff6f3d;
     }
   }
 

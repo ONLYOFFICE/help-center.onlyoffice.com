@@ -15,12 +15,17 @@ import HeadSEO from "@components/screens/head-content";
 import filterDocsAricles from "@utils/helpers/DocsCategory/filterForDocsCategory";
 import createDocsCategoryStructure from "@utils/helpers/DocsCategory/createDocsCategoryStructure";
 import CenterSubCategoryContent from "@components/screens/single-page-content/content/subcategory-content";
+import createDocsArticlesUrl from "@utils/helpers/DocsCategory/createDocsArticlesUrl";
+import SingleContent from "@components/screens/single-page-content";
 
 const subcategoryPage = ({ locale, articles, videos, tags, categories, docsCategories }) => {
   const { t } = useTranslation();
   const query = useRouter();
   const pageLoc = query.locale !== "en" ? query.locale : "";
   const pagePath = (pageLoc + query.asPath).split('#')[0];
+  const pattern = /[a-zA-Z0-9-]+\/[a-zA-Z0-9-]+\.aspx$/;
+  const wordsArray = pagePath.split('/').filter(Boolean);
+  const lastWord = wordsArray[wordsArray.length - 1];
   const pageCategory = "Docs";
 
   const { secondWord, urlBeforeLastSlashSlice } = (() => {
@@ -51,6 +56,11 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, docsCateg
   );
   const allDocsCat = createDocsCategoryStructure(docsCategories?.data, datalvl1);
 
+  const pageArticlesData = pattern.test(pagePath) && useMemo(
+    () => articles?.data.find((it) => it.attributes.url === pagePath),
+    [articles]
+  );
+  const link = pattern.test(pagePath) && createDocsArticlesUrl(pageArticlesData, lastWord, secondWord);
 
   //const { seo_title, seo_description } = data;
   return (
@@ -67,15 +77,27 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, docsCateg
         <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <CenterSubCategoryContent
+      {pattern.test(pagePath)
+          ? <SingleContent
+            t={t}
+            currentLanguage={locale}
+            article={pageArticlesData}
+            articles={articles.data}
+            tags={tags.data}
+            isCategory={false}
+            videos={videos.data}
+            category={pageCategory}
+            categories={allDocsCat}
+            pagepath={link}
+          />
+          : <CenterSubCategoryContent
           t={t}
           currentLanguage={locale}
           articles={pageData?.level_4}
           category={pageData}
           categories={allDocsCat}
           isCategory={false}
-          pageMainCategory={pageCategory}
-        />
+          pageMainCategory={pageCategory} />}
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />

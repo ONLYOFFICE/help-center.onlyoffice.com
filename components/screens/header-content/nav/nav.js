@@ -8,7 +8,7 @@ const Nav = ({ onClick, t, stateMobilePND, categories, ...rest }) => {
   return (
     <StyledNav stateMobile={stateMobilePND} {...rest}>
       {categories.map((item, index) => {
-         return <MenuItem t={t} key={index} heading={item.attributes.name} link={item.attributes.url} ></MenuItem>
+        return <MenuItem t={t} key={index} heading={item.attributes.name} link={item.attributes.url} ></MenuItem>
       })}
     </StyledNav>
   );

@@ -112,6 +112,7 @@ const StyledMenuTablet = css`
 
 const StyledMenu = styled.div`
   align-items: center;
+  border-bottom: 1px solid #cccccc;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: auto 1fr auto;
@@ -119,7 +120,6 @@ const StyledMenu = styled.div`
   -ms-grid-rows: 1fr;
   grid-template-rows: 1fr;
   margin: 0 auto;
-  //padding: 0 160px;
   padding: 0 40px;
   box-sizing: border-box;
   height: 72px;

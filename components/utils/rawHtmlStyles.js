@@ -445,6 +445,10 @@ padding: 64px 0 0;
       word-break: break-all;
     }
 
+    pre {
+      white-space: break-spaces;
+    }
+
     // images 
     img.screen_guides {
       cursor: pointer;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Heading from "@components/common/heading";
-import { StyledNavMenu, StyledMenuItemsWrapper } from "./styled-navmenu";
+import { StyledNavMenu, StyledMenuItemsWrapper } from "./styled-menuitem";
 import Link from "@components/common/internal-link";
 
 const MenuItem = ({ children, heading, link, ...rest }) => {
@@ -44,15 +44,14 @@ const MenuItem = ({ children, heading, link, ...rest }) => {
   return (
     <StyledNavMenu
     className="nav-item"
+    href={link}
     {...rest}
   >
-    <Link href={link}>
       <Heading
         className="heading-nav-item"
         label={heading}
         level={2}
       />
-    </Link>
   </StyledNavMenu>
   );
 };
