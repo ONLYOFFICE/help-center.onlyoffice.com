@@ -51,8 +51,6 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, docsCateg
   );
   const allDocsCat = createDocsCategoryStructure(docsCategories?.data, datalvl1);
 
-  //console.log(pageData);
-  //console.log(datalvl2);
 
   //const { seo_title, seo_description } = data;
   return (
