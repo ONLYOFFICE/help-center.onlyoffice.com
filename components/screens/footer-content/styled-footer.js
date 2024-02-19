@@ -108,9 +108,7 @@ const StyledFooter = styled.div`
   height: auto;
   display: grid;
   grid-template-columns: 160px 160px 224px 1fr;
-  //grid-template-columns: 0.8fr 0.8fr 0.8fr 1fr;
   grid-column-gap: 56px;
-  //grid-column-gap: 32px;
 
   .footer-item-group {
     position: relative;
@@ -171,14 +169,12 @@ const StyledFooter = styled.div`
     display: flex;
     justify-content: center;
     color: #AAAAAA;
-    //color: #333;
   }
 
   .footer-copyright {
     font-size: 13px;
     line-height: 18px;
     color: #AAAAAA;
-    //color: #333;
   }
 
   @media ${device.laptopM} {

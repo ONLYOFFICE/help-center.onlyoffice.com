@@ -1,14 +1,20 @@
-import React, { useState, useRef, useEffect } from "react";
-import Box from "@components/common/box";
+import React from "react";
 import StyledNav from "./styled-nav";
-import MenuItem from "../menu-item";
 import Link from "next/link";
+import Heading from "@components/common/heading";
 
-const Nav = ({ onClick, t, stateMobilePND, categories, ...rest }) => {
+const Nav = ({ onClickPND, t, stateMobilePND, categories, windowWidth, ...rest }) => {
   return (
     <StyledNav stateMobile={stateMobilePND} {...rest}>
-      {categories.map((item, index) => {
-        return <MenuItem t={t} key={index} heading={item.attributes.name} link={item.attributes.url} ></MenuItem>
+      {/* {typeof window !== 'undefined' && windowWidth <= 1000 && (<img
+        src="https://static-helpcenter.onlyoffice.com/images/icons/close-icon.react.svg"
+        className="close-cross"
+        onClick={onClickPND}
+      />)} */}
+      {categories?.map((item, index) => {
+        return <Link className="nav-item" key={index} href={item.attributes.url}>
+          <Heading className="heading-nav-item" label={item.attributes.name} level={2} />
+        </Link>
       })}
     </StyledNav>
   );

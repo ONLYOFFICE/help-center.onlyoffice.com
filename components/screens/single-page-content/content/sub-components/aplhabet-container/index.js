@@ -5,7 +5,6 @@ import StyledAlphabetContainer from "./styled-alphabet-container";
 import Dictionary from "../dictionary";
 import Tag from "@components/common/tag";
 import Heading from "@components/common/heading";
-import { CSSTransition } from "react-transition-group";
 
 const AlphabetContainer = ({
   t,
@@ -16,20 +15,6 @@ const AlphabetContainer = ({
   ...rest
 }) => {
   const [prodAplh, setProdAlph] = useState(selectorContent);
-  const [stateMobile, setStateMobile] = useState(false);
-
-  useEffect(() => {
-    function handleResize() {
-      if (window.innerWidth <= 1190) {
-        setStateMobile(true);
-      }
-    }
-    window.addEventListener("resize", handleResize);
-
-    return (_) => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const onClickHandler = (c) => {
     if (c !== "all") {

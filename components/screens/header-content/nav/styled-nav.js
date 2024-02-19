@@ -4,24 +4,63 @@ import { device } from "@components/utils/devices";
 const StyledNav = styled.nav`
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 8px;
   margin: 0 auto;
   padding: 0 132px 0 88px;
 
-  .external-link {
-    color: #fff;
+  .nav-item {
     text-decoration: none;
-    :hover {
-      color: rgb(255, 111, 61);
-    }
-  }
-  @media ${device.laptopM} {
-    gap: 3vw;
-    padding: 0 3vw 0 2vw;
   }
 
-  @media ${device.tablet} {
+  .close-cross {
+    height: 24px;
+    width: 24px;
+  }
+
+  .heading-nav-item {
+    color: #fff;
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.33em;
+    letter-spacing: 0.04em;
+    padding: 27px 16px 28px;
+    cursor: pointer;
+    margin: 0px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    &:hover {
+      color: #ff6f3d;
+      border-bottom: 1px solid #ff6f3d;
+    }
+  }
+
+  @media ${device.laptopM} {
     padding: 0;
+  }
+
+  @media ${device.laptopS} {
+    box-sizing: border-box;
+    position: fixed;
+    top: 0px;
+    left: ${(props) => (props.stateMobile ? "280px" : "-120vw")};
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    border-right: 1px solid rgb(229, 229, 229);
+    padding: 24px 32px 0 40px;
+    margin: 0px;
+    font-size: 16px;
+    width: 280px;
+    height: 100%;
+    min-height: 100px;
+    background-color: rgb(255, 255, 255);
+    z-index: 1002;
+    overflow: hidden auto;
+    transform: translate3d(-100%, 0px, 0px);
+    transition: transform 0.2s cubic-bezier(0.16, 0.68, 0.43, 0.99) 0s;
+
+    /* padding: 0;
     background-color: #fff;
     min-height: 100px;
     height: 100vh;
@@ -38,7 +77,33 @@ const StyledNav = styled.nav`
     display: block;
     padding-top: 16px;
     box-sizing: border-box;
-    overflow-x: hidden;
+    overflow-x: hidden; */
+
+    .heading-nav-item {
+      align-items: center;
+      border-bottom: 1px solid #cccccc;
+      color: #333;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      padding: 16px 0;
+      margin: 0px;
+
+       &:after {
+        display: block;
+        background-image: url('/images/icons/arrow-gray.react.svg');
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        width: 6px;
+        height: 10px;
+        content: "";
+      }
+      &:hover {
+        color: #ff6f3d;
+      border-bottom: 1px solid #cccccc;
+      }
+  }
 
     .menu_wrapper {
       display: block;

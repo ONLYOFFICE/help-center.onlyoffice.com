@@ -4,8 +4,7 @@ import { device } from "@components/utils/devices";
 export default styled.div`
   display: flex;
   align-items: center;
-  //width: 36px;
-  width: 103px;
+  width: 36px;
   position: relative;
   outline: none;
   -webkit-tap-highlight-color: transparent;
@@ -54,14 +53,12 @@ const StyledPanelView = styled.div`
   position: absolute;
   display: ${(props) => (props.isOpen ? "block" : "none")};
   width: max-content;
-  //max-width: 36px;
   background-color: white;
   box-shadow: 0 1px 1px rgb(0 0 0 / 20%);
   z-index: 100;
   padding: 6px 12px;
   top: 40px;
-  left: -13%;
-  width: 106px;
+  left: 0;
 
   @media ${device.laptopM} {
     //left: 30%;
@@ -84,23 +81,14 @@ const StyledItem = styled.div`
     align-items: center;
     display: flex;
     height: 30px;
-    //width: 18px;
+    width: 18px;
     text-decoration: none;
     gap: 12px;
   }
 
-  .language-item-title {
-    font-size: 13px;
-    &:hover {
-      cursor: pointer;
-      text-decoration: underline;
-    }
-  }
-
   @media ${device.laptopM} {
     .language-item-link {
-      //width: 20px;
-      width: 21px;
+      width: 20px;
       justify-content: space-evenly;
     }
   }

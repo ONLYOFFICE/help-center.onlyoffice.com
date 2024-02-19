@@ -2,7 +2,6 @@ import React, { useEffect, useState, useMemo, useRef } from "react";
 import StyledLanguageSelector from "./styled-language-selector";
 import ItemsList from "./items-list";
 import languages from "@config/languages";
-import Text from "../text";
 
 const LanguageSelector = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,18 +14,10 @@ const LanguageSelector = (props) => {
       }
     };
 
-    const resizeHandler = () => {
-      if (window.innerWidth < 769) {
-        setIsOpen(false);
-      }
-    };
-
     typeof window !== "undefined" && window.addEventListener("click", handleClickOutside);
-    window.addEventListener("resize", resizeHandler);
 
     return () => {
       window.removeEventListener("click", handleClickOutside);
-      window.removeEventListener("resize", resizeHandler);
     };
   }, [isOpen]);
 

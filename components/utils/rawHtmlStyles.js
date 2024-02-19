@@ -461,6 +461,7 @@ padding: 64px 0 0;
 
     img {
       vertical-align: middle;
+      width: 352px;
     }
 
     img.bigphoto_screen {

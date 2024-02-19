@@ -43,7 +43,6 @@ export default function LangsList(props) {
               height="24px"
               className="language-item-image"
             />
-            <Text className="language-item-title">{language.name}</Text>
           </Link>
         </StyledItem>
       );

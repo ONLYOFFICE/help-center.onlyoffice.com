@@ -1,61 +1,58 @@
 import React, { useState, useEffect } from "react";
-import { ReactSVG } from "react-svg";
 
 import LanguageSelector from "@components/common/language-selector";
 import InternalLink from "@components/common/internal-link";
 import { StyledMenu } from "./styled-menu";
 import Nav from "./nav/nav";
+import useWindowWidth from '@utils/helpers/System/useWindowProvider';
 
 const Menu = ({ t, currentLanguage, template, categories, ...rest }) => {
   const curLang = currentLanguage === "en" ? "/" : `/${currentLanguage}/`;
-  const [windowCheck, setWindowCheck] = useState("undefined");
-  useEffect(() => {
-    if (typeof window !== windowCheck) {
-      setWindowCheck(window.innerWidth <= 769);
-    }
-  }, [windowCheck]);
-
+  const windowWidth = useWindowWidth();
   const [stateMobile, setStateMobile] = useState(false);
   const toggleMobile = () => {
-    setStateMobile(true);
+    setStateMobile(!stateMobile);
   };
-  const onCloseMenu = () => {
-    setStateMobile(false);
+
+  const handleClickOutside = (e) => {
+    if (stateMobile && !e.target.closest(".nav-item-links")) {
+      toggleMobile();
+    }
   };
 
   useEffect(() => {
     window.addEventListener("touchstart", handleClickOutside);
+    window.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("mouseup", handleClickOutside);
     return () => {
       window.removeEventListener("touchstart", handleClickOutside);
+      window.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("mouseup", handleClickOutside);
     };
   }, [stateMobile]);
 
-  const handleClickOutside = (e) => {
-    if (windowCheck && stateMobile && !e.target.closest(".navbar")) {
-      onCloseMenu();
-    }
-  };
  
   return (
     <StyledMenu
       template={template}
       className="navbar"
-      onMouseLeave={onCloseMenu}
     >
       <InternalLink className="nav-item-logo" href={curLang}>
         <div className="site-logo"></div>
       </InternalLink>
-      <img
+      {/* {typeof window !== 'undefined' && windowWidth <= 1000 && (<img
         src="https://static-helpcenter.onlyoffice.com/images/icons/mob_menu.react.svg"
         className="nav-items-mobile"
         onClick={toggleMobile}
-      />
+      />)} */}
       <Nav
         currentLanguage={currentLanguage}
         className="nav-item-links"
         stateMobilePND={stateMobile}
         categories={categories}
         t={t}
+        onClickPND={toggleMobile}
+        windowWidth={windowWidth}
       />
       <div className="nav-item-lng">
         <LanguageSelector t={t} currentLanguage={currentLanguage} />

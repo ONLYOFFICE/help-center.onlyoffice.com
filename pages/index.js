@@ -4,6 +4,9 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getAllArticles from "@lib/strapi/getArticles";
 import getAllCategories from "@lib/strapi/getCategories";
 import getAllDocsArticles from "@lib/strapi/getDocsArticles";
+import getAllDesktopArticles from "@lib/strapi/getDesktopArticles";
+import getAllMobileArticles from "@lib/strapi/getMobileArticles";
+import getAllDocSpaceArticles from "@lib/strapi/getDocSpaceArticles";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
@@ -14,9 +17,9 @@ import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 import createAllArticlesList from "@utils/helpers/Common/createAllArticlesList";
 
-const Index = ({ locale, categories, integrationArticles, docsArticles }) => {
+const Index = ({ locale, categories, integrationArticles, docsArticles, docspaceArticles, mobileArticles, desktopArticles }) => {
   const { t } = useTranslation();
-  const result = createAllArticlesList(integrationArticles.data, docsArticles.data);
+  const result = createAllArticlesList(integrationArticles.data, docsArticles.data, docspaceArticles.data, mobileArticles.data, desktopArticles.data );
   const pageCategory = 'main';
 
   return (
@@ -49,6 +52,9 @@ const Index = ({ locale, categories, integrationArticles, docsArticles }) => {
 export const getStaticProps = async ({ locale }) => {
   const integrationArticles = await getAllArticles(locale);
   const docsArticles = await getAllDocsArticles(locale);
+  const desktopArticles = await getAllDesktopArticles(locale);
+  const mobileArticles = await getAllMobileArticles(locale);
+  const docspaceArticles = await getAllDocSpaceArticles(locale);
   const categories = await getAllCategories(locale);
 
   return {
@@ -57,6 +63,9 @@ export const getStaticProps = async ({ locale }) => {
       locale,
       integrationArticles,
       docsArticles,
+      desktopArticles,
+      mobileArticles,
+      docspaceArticles,
       categories
     },
   };

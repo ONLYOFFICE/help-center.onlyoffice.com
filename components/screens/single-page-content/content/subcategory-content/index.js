@@ -55,6 +55,8 @@ const CenterSubCategoryContent = ({
 
   const filteredArray = items ? articles?.filter(item => !items?.includes(item)) : articles;
 
+  const artList = filteredArray?.level_5 || filteredArray?.level_4;
+
   return (
     <StyledSingleContent>
       <LeftMenu {...menuProps} />
@@ -66,12 +68,12 @@ const CenterSubCategoryContent = ({
             {troubleShootingItem && <Link id={troubleShootingItem.name.toLowerCase().replace(/ /g, "_")} className="reqs" href={troubleShootingItem?.level_5[0]?.url}><img src={`https://static-helpcenter.onlyoffice.com/images/icons/16px_${troubleShootingItem.name.toLowerCase().replace(/ /g, "_")}.react.svg`} alt={troubleShootingItem.name} />{troubleShootingItem.name}</Link>}
           </>
           {filteredArray?.map((it, index) => {
-            const l5Length = it.level_5.length;
+            const l5Length = artList?.length;
             return (
               <div className="subcat-div" key={index} id={it.name.toLowerCase()}>
                 <Heading level={5}>{it.name}</Heading>
                 {l5Length > 0 && <ul className="classic-ul">
-                  {it.level_5?.map((item, idx) => {
+                  {artList?.map((item, idx) => {
                     return (
                       <li key={idx}>
                         <Link href={item.url}>{item.name}</Link>

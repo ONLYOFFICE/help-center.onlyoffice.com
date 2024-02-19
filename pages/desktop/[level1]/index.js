@@ -2,34 +2,36 @@ import React, { useMemo } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
-import getAllArticles from "@lib/strapi/getDocsArticles";
-import getAllDocsCategories from "@lib/strapi/getDocsCategories";
-import getAllCategories from "@lib/strapi/getCategories";
+import getAllArticles from "@lib/strapi/getDesktopArticles";
+import getAllCategories from "@lib/strapi/getDesktopCategories";
+import getAllCommonCategories from "@lib/strapi/getCategories";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 import CenterCategoryContent from "@components/screens/single-page-content/content/category-docs-content";
-import filterDocsArticles from "@utils/helpers/DocsCategory/filterForDocsCategory";
+import filterDesktopArticles from "@utils/helpers/DesktopCategory/filterForDesktopCategory";
 
-const subcategoryPage = ({ locale, articles, docsCategories, categories }) => {
+const subcategoryPage = ({ locale, articles, currentCategories, categories }) => {
   const { t } = useTranslation();
   const query = useRouter();
   const pageLoc = query.locale !== "en" ? query.locale : "";
   const pagePath = (pageLoc + query.asPath).split('#')[0];
 
   const { attributes: pageSubCategory } = useMemo(
-    () => docsCategories?.data.find((it) => it.attributes.url === pagePath) || {},
-    [docsCategories, pagePath]
+    () => currentCategories?.data.find((it) => it.attributes.url === pagePath) || {},
+    [currentCategories, pagePath]
   );
+
+  console.log(pageSubCategory);
   const pageData = useMemo(
-    () => articles?.data.filter((it) => it.attributes.category_doc.data.attributes.url === pagePath),
+    () => articles?.data.filter((it) => it.attributes.category_desktop.data.attributes.url === pagePath),
     [articles]
   );
 
-  const data = filterDocsArticles(pageData, pageSubCategory.slug_id);
-  console.log(data);
+  const data = filterDesktopArticles(pageData, pageSubCategory.slug_id);
+  //console.log(data);
   //const { seo_title, seo_description } = data;
   return (
     <Layout>
@@ -62,8 +64,8 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories }) => {
 
 export async function getServerSideProps({ locale }) {
   const articles = await getAllArticles(locale);
-  const docsCategories = await getAllDocsCategories(locale);
-  const categories = await getAllCategories(locale);
+  const currentCategories = await getAllCategories(locale);
+  const categories = await getAllCommonCategories(locale);
 
   return {
     props: {
@@ -71,7 +73,7 @@ export async function getServerSideProps({ locale }) {
       locale,
       articles,
       categories,
-      docsCategories
+      currentCategories
     },
   };
 }

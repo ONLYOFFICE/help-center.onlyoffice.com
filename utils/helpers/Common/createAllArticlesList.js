@@ -1,7 +1,24 @@
-export default function createAllArticlesList(integrationsArray, docsArray) {
+export default function createAllArticlesList(integrationsArray, docsArray, docspaceArray, mobilesArray, desktopArray) {
   const articles = [];
 
   integrationsArray?.forEach((item) => {
+    const mergedItem = {
+      attributes: {
+        title: item?.attributes.title,
+        url: item?.attributes.url,
+        category: {
+          data: {
+            attributes: {
+              slug_id: item?.attributes.category?.data.attributes.slug_id,
+            }
+          }
+        },
+      },
+    };
+    articles.push(mergedItem);
+  });
+
+  desktopArray?.forEach((item) => {
     const mergedItem = {
       attributes: {
         title: item?.attributes.title,
