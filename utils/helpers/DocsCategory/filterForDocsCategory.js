@@ -100,7 +100,7 @@ export default function filterDocsArticles(articles, category) {
                 }
               }
 
-              const targetCategoryForLvl4 = targetCategoryForLvl3?.level_3.find(category => category.name === `${level3}`);
+            const targetCategoryForLvl4 = targetCategoryForLvl3?.level_3.find(category => category.name === `${level3}`);
 
             if (targetCategoryForLvl4) {
                 const newLevel4 = {

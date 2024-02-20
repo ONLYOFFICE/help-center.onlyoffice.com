@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { device } from "@components/utils/devices";
 
 const RawHtmlStyle = styled.div`
-padding: 64px 0 0;
+//padding: 64px 0 0;
   .raw-html-embed {
     z-index: 1;
     position: relative;
@@ -320,6 +320,51 @@ padding: 64px 0 0;
         display: inline;
     }
 
+
+    // spans
+    span.yes {
+      background-image: url(/images/icons/faq_check_icons.svg);
+      background-repeat: no-repeat;
+      background-position: 100% 0;
+      content: '';
+      display: inline-block;
+      height: 24px;
+      margin-top: -4px;
+      position: relative;
+      width: 24px;
+      vertical-align: middle;
+    }
+    span.no {
+      background-image: url(/images/icons/faq_check_icons.svg);
+      background-repeat: no-repeat;
+      background-position: -48px 0;
+      content: '';
+      display: inline-block;
+      height: 24px;
+      margin-top: -4px;
+      position: relative;
+      width: 24px;
+      vertical-align: middle;
+    }
+
+    span.iptoggler {
+      border-bottom: 1px dotted #333;
+      cursor: pointer;
+      width: fit-content;
+    }
+
+    span.iphidecont {
+      display: none;
+    }
+
+    div.ipcontents {
+      display: none;
+    }
+
+    div.inpage-toggler {
+      text-align: -webkit-right;
+    }
+
     // links 
     a {
       display: inline-flex;
@@ -461,7 +506,11 @@ padding: 64px 0 0;
 
     img {
       vertical-align: middle;
-      width: 352px;
+      width: initial;
+    }
+
+    img.width-content {
+      width: -webkit-fill-available;
     }
 
     img.bigphoto_screen {

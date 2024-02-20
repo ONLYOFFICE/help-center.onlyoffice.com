@@ -13,9 +13,10 @@ import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 import CenterCategoryContent from "@components/screens/single-page-content/content/category-docs-content";
+import CenterSubCategoryContent from "@components/screens/single-page-content/content/subcategory-content";
 import filterDocsAricles from "@utils/helpers/DocsCategory/filterForDocsCategory";
-import createDocsCategoryStructure from "@utils/helpers/DocsCategory/createDocsCategoryStructure";
-import createDocsArticlesUrl from "@utils/helpers/DocsCategory/createDocsArticlesUrl";
+import createCategoryStructure from "@utils/helpers/Common/createCategoryStructure";
+import createDocsArticlesUrl from "@utils/helpers/DocsCategory/createArticlesUrl";
 import SingleContent from "@components/screens/single-page-content";
 
 const subcategoryPage = ({ locale, articles, docsCategories, categories, videos, tags }) => {
@@ -35,7 +36,7 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories, videos,
   );
   const data = filterDocsAricles(articles?.data, pageSubCategory?.slug_id);
   const pageData = data?.find((it) => it.url === pagePath);
-  const allDocsCat = createDocsCategoryStructure(docsCategories?.data, data);
+  const allDocsCat = createCategoryStructure(docsCategories?.data, data);
 
   const pageArticlesData = pattern.test(pagePath) && useMemo(
     () => articles?.data.find((it) => it.attributes.url === pagePath),
@@ -72,13 +73,22 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories, videos,
             categories={allDocsCat}
             pagepath={link}
           />
-          : <CenterCategoryContent
-            t={t}
-            currentLanguage={locale}
-            articles={pageData?.level_3}
-            category={pageData}
-            categories={allDocsCat}
-            isCategory={true} />}
+          : secondWord === "userguides"
+            ? <CenterSubCategoryContent
+              t={t}
+              currentLanguage={locale}
+              articles={pageData?.level_3}
+              category={pageData}
+              categories={allDocsCat}
+              isCategory={false}
+              pageMainCategory={pageCategory} />
+            : <CenterCategoryContent
+              t={t}
+              currentLanguage={locale}
+              articles={pageData?.level_3}
+              category={pageData}
+              categories={allDocsCat}
+              isCategory={true} />}
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />

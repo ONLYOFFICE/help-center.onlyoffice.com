@@ -19,7 +19,7 @@ import createAllArticlesList from "@utils/helpers/Common/createAllArticlesList";
 
 const Index = ({ locale, categories, integrationArticles, docsArticles, docspaceArticles, mobileArticles, desktopArticles }) => {
   const { t } = useTranslation();
-  const result = createAllArticlesList(integrationArticles.data, docsArticles.data, docspaceArticles.data, mobileArticles.data, desktopArticles.data );
+  const result = createAllArticlesList(integrationArticles.data, desktopArticles.data, docsArticles.data, docspaceArticles.data, mobileArticles.data );
   const pageCategory = 'main';
 
   return (

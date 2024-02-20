@@ -35,16 +35,32 @@ const CenterArticleContent = ({ t, article, tags, videos, onActiveItemChange, cu
   };
   // photo popup
   const [bigPhotoSrc, setBigPhotoSrc] = useState(null);
-  const handleImageClick = (event) => {
-    const clickedImage = event.target;
-    if (clickedImage.tagName === 'IMG') {
-      const targetImageId = clickedImage.getAttribute('target');
+  const handleClick = (event) => {
+    const clickedTarget = event.target;
+    if (clickedTarget.tagName === 'IMG') {
+      const targetImageId = clickedTarget.getAttribute('target');
       if (targetImageId) {
         const closestBigPhotoScreen = document.querySelector(`.bigphoto_screen[id="${targetImageId}"]`);
         if (closestBigPhotoScreen) {
           setBigPhotoSrc(closestBigPhotoScreen.getAttribute('src'));
           setImageModalActive(true);
         }
+      }
+    } else if (clickedTarget.tagName === 'SPAN' && clickedTarget.classList.contains('iptoggler')) {
+      const ipHideCont = document.querySelector('.iphidecont');
+      const ipShowCont = document.querySelector('.ipshowcont');
+      const ipContents = document.querySelector('.ipcontents');
+  
+      if (clickedTarget.classList.contains('iphidecont')) {
+        // Клик по iptoggler с классом iphidecont, скрываем div с классом ipcontents
+        ipHideCont.style.display = 'none';
+        ipContents.style.display = 'none';
+        ipShowCont.style.display = 'block'; // Показываем соответствующий контент
+      } else if (clickedTarget.classList.contains('ipshowcont')) {
+        // Клик по iptoggler с классом ipshowcont, показываем div с классом ipcontents
+        ipHideCont.style.display = 'block';
+        ipContents.style.display = 'block'; // Показываем соответствующий контент
+        ipShowCont.style.display = 'none';
       }
     }
   };
@@ -65,7 +81,7 @@ const CenterArticleContent = ({ t, article, tags, videos, onActiveItemChange, cu
         ))}
       </div>}
       {curVideos > 0 && <Video t={t} items={article} videos={videos} />}
-      <RawHtmlStyle onClick={handleImageClick}>{ReactHtmlParser(article?.attributes.content)}</RawHtmlStyle>
+      <RawHtmlStyle onClick={handleClick}>{ReactHtmlParser(article?.attributes.content)}</RawHtmlStyle>
       <DownloadArea className="download-area" t={t} />
       <ArticlePopup
         t={t}

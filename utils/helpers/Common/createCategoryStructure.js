@@ -1,5 +1,5 @@
-export default function createDocsCategoryStructure(categories, subcategories) {
-    const allDocsCategories = categories?.map((item) => {
+export default function createCategoryStructure(categories, subcategories) {
+    const allCategories = categories?.map((item) => {
       const matchedItems = subcategories?.filter((it) =>
         it.url.startsWith(item.attributes.url)
       );
@@ -10,5 +10,5 @@ export default function createDocsCategoryStructure(categories, subcategories) {
       };
     });
   
-    return allDocsCategories;
+    return allCategories;
   }

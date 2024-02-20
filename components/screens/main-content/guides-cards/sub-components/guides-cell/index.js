@@ -8,6 +8,7 @@ import ReactHtmlParser from "react-html-parser";
 import Heading from "@components/common/heading";
 
 const GuidesCell = ({ headData, category, linkData, mainCategory, t }) => {
+  //console.log(linkData);
   return (
     <StyledGuidesCell>
       <Box className="cell_header">

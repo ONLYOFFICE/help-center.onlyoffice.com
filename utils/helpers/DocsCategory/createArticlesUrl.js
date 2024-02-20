@@ -1,4 +1,4 @@
-export default function createDocsArticlesUrl(data, pagepath, secondWord) {
+export default function createArticlesUrl(data, pagepath, secondWord) {
     const { category_doc, for_installation_category, for_userguides_category } = data.attributes;
     const { attributes: categoryAttributes } = category_doc?.data;
     

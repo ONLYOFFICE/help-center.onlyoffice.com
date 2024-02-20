@@ -24,7 +24,7 @@ const subcategoryPage = ({ locale, articles, currentCategories, categories }) =>
     [currentCategories, pagePath]
   );
 
-  console.log(pageSubCategory);
+  //console.log(pageSubCategory);
   const pageData = useMemo(
     () => articles?.data.filter((it) => it.attributes.category_desktop.data.attributes.url === pagePath),
     [articles]

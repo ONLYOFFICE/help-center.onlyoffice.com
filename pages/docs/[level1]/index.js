@@ -29,7 +29,8 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories }) => {
   );
 
   const data = filterDocsArticles(pageData, pageSubCategory.slug_id);
-  console.log(data);
+
+  //console.log(data);
   //const { seo_title, seo_description } = data;
   return (
     <Layout>

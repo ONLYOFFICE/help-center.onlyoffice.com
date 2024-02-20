@@ -18,6 +18,7 @@ const StyledNav = styled.nav`
   }
 
   .heading-nav-item {
+    border-bottom: 1px solid transparent;
     color: #fff;
     display: block;
     font-size: 12px;

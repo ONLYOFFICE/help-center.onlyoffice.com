@@ -4,12 +4,14 @@ import StyledGuidesLinks from "./styled-guides-links";
 import Box from "@components/common/box";
 import InternalLink from "@components/common/internal-link";
 import filterDocsArticles from "@utils/helpers/DocsCategory/filterForDocsCategory";
+import filterDesktopArticles from '@utils/helpers/DesktopCategory/filterForDesktopCategory';
 import Text from '@components/common/text';
 
 const GuidesLinks = ({ mainArticles, category, mainCategory, t }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const dataCards = mainCategory.toLowerCase() === 'docs' && filterDocsArticles(mainArticles, category);
+  const dataCardsDocs = mainCategory.toLowerCase() === 'docs' && filterDocsArticles(mainArticles, category);
+  const dataCardsDesktop = mainCategory.toLowerCase() === 'desktop' && filterDesktopArticles(mainArticles, category);
 
   useEffect(() => {
     if (mainArticles !== null && mainArticles !== undefined) {
@@ -21,7 +23,10 @@ const GuidesLinks = ({ mainArticles, category, mainCategory, t }) => {
           setData(mainArticles);
           break;
         case 'docs':
-          setData(dataCards);
+          setData(dataCardsDocs);
+          break;
+        case 'desktop':
+          setData(dataCardsDesktop);
           break;
         case 'main':
           setData(mainArticles);
@@ -32,7 +37,7 @@ const GuidesLinks = ({ mainArticles, category, mainCategory, t }) => {
     }
   }, [mainCategory, loading]);
   //console.log(mainArticles);
-  //console.log(data);
+ // console.log(dataCardsDesktop);
 
   return (
     <StyledGuidesLinks>
