@@ -13,6 +13,7 @@ export default function filterDocsArticles(articles, category) {
             const level2 = article?.attributes.for_installation_category.level_2;
             const level3 = article?.attributes.for_installation_category.level_3;
             const level4 = article?.attributes.for_installation_category.level_4;
+            const uniqueLevel4Set = new Set();
             const uniqueLevel5Set = new Set();
 
             if (!uniqueInstallationCategorySet.has(level2)) {
@@ -25,35 +26,51 @@ export default function filterDocsArticles(articles, category) {
                 uniqueInstallationCategorySet.add(level2);
             }
 
+            // const targetCategoryForLvl3 = installationCategoryLinks.find(category => category.name === `Docs ${level2}`);
+            // if (targetCategoryForLvl3) {
+            //     const isUnique = !targetCategoryForLvl3.level_3.some(item => item.name === level3);
+            //     if (isUnique) {
+            //         const newLevel3 = {
+            //             name: `${level3}`,
+            //             slug_id: level3?.toLowerCase().replace(/ /g, "_"),
+            //             url: `/docs/installation/${level2?.toLowerCase().replace(/ /g, "_")}/${level3?.toLowerCase().replace(/ /g, "_")}`,
+            //             level_4: [],
+            //         };
+            //         targetCategoryForLvl3.level_3.push(newLevel3);
+            //     }
+            // }
             const targetCategoryForLvl3 = installationCategoryLinks.find(category => category.name === `Docs ${level2}`);
+            const isFaqOrGettingStarted = level3.toLowerCase().replace(/ /g, "_") === "faq" || level3.toLowerCase().replace(/ /g, "_") === "getting_started";
             if (targetCategoryForLvl3) {
-                const isUnique = !targetCategoryForLvl3.level_3.some(item => item.name === level3);
+                const isUnique = !targetCategoryForLvl3.level_3.some(item => (isFaqOrGettingStarted ? item.name === article?.attributes.title : item.name === level3));
                 if (isUnique) {
-                  const newLevel3 = {
-                    name: `${level3}`,
-                    slug_id: level3?.toLowerCase().replace(/ /g, "_"),
-                    url: `/docs/installation/${level2?.toLowerCase().replace(/ /g, "_")}/${level3?.toLowerCase().replace(/ /g, "_")}`,
-                    level_4: [],
-                  };
-                  targetCategoryForLvl3.level_3.push(newLevel3);
+                    const newLevel3 = {
+                        name: isFaqOrGettingStarted ? `${article?.attributes.title}` : `${level3}`,
+                        slug_id: level3?.toLowerCase().replace(/ /g, "_"),
+                        url: isFaqOrGettingStarted ? `${article?.attributes.url}` : `/docs/installation/${level2?.toLowerCase().replace(/ /g, "_")}/${level3?.toLowerCase().replace(/ /g, "_")}`,
+                    };
+                    if (!isFaqOrGettingStarted) {
+                        newLevel3.level_4 = [];
+                    }
+                    targetCategoryForLvl3.level_3.push(newLevel3);
                 }
-              }
+            }
 
             const targetCategoryForLvl4 = targetCategoryForLvl3?.level_3.find(category => category.name === `${level3}`);
             if (targetCategoryForLvl4) {
-                const isUnique = !targetCategoryForLvl4.level_4.some(item => item.name === level4);
+                const isUnique = targetCategoryForLvl4.level_4 && !targetCategoryForLvl4.level_4.some(item => item.name === level4);
                 if (isUnique) {
-                  const newLevel4 = {
-                    name: `${level4}`,
-                    slug_id: level4?.toLowerCase().replace(/ /g, "_"),
-                    url: `/docs/installation/${level2?.toLowerCase().replace(/ /g, "_")}/${level3?.toLowerCase().replace(/ /g, "_")}#${level4?.toLowerCase().replace(/ /g, "_")}`,
-                    level_5: [],
-                  };
-                  targetCategoryForLvl4.level_4.push(newLevel4);
+                    const newLevel4 = {
+                        name: `${level4}`,
+                        slug_id: level4?.toLowerCase().replace(/ /g, "_"),
+                        url: `/docs/installation/${level2?.toLowerCase().replace(/ /g, "_")}/${level3?.toLowerCase().replace(/ /g, "_")}#${level4?.toLowerCase().replace(/ /g, "_")}`,
+                        level_5: [],
+                    };
+                    targetCategoryForLvl4.level_4.push(newLevel4);
                 }
-              }
+            }
 
-            const targetCategoryForLvl5 = targetCategoryForLvl4?.level_4.find(category => category.name === `${level4}`);
+            const targetCategoryForLvl5 = targetCategoryForLvl4?.level_4 && targetCategoryForLvl4?.level_4.find(category => category.name === `${level4}`);
 
             if (targetCategoryForLvl5) {
                 const newLevel5 = {
@@ -68,7 +85,7 @@ export default function filterDocsArticles(articles, category) {
 
                 targetCategoryForLvl5.level_5.push(newLevel5);
                 uniqueLevel5Set.add(newLevel5);
-            }
+            }           
         }
 
         if (article.attributes.for_userguides_category) {
@@ -90,15 +107,15 @@ export default function filterDocsArticles(articles, category) {
             if (targetCategoryForLvl3) {
                 const isUnique = !targetCategoryForLvl3.level_3?.some(item => item.name === level3);
                 if (isUnique) {
-                  const newLevel3 = {
-                    name: `${level3}`,
-                    slug_id: level3?.toLowerCase().replace(/ /g, "_"),
-                    url: `/docs/userguides/${level2?.toLowerCase().replace(/ /g, "_")}#${level3?.toLowerCase().replace(/ /g, "_")}`,
-                    level_4: [],
-                  };
-                  targetCategoryForLvl3.level_3?.push(newLevel3);
+                    const newLevel3 = {
+                        name: `${level3}`,
+                        slug_id: level3?.toLowerCase().replace(/ /g, "_"),
+                        url: `/docs/userguides/${level2?.toLowerCase().replace(/ /g, "_")}#${level3?.toLowerCase().replace(/ /g, "_")}`,
+                        level_4: [],
+                    };
+                    targetCategoryForLvl3.level_3?.push(newLevel3);
                 }
-              }
+            }
 
             const targetCategoryForLvl4 = targetCategoryForLvl3?.level_3.find(category => category.name === `${level3}`);
 

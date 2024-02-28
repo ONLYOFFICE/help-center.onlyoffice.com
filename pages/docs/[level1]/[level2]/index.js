@@ -12,7 +12,7 @@ import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
-import CenterCategoryContent from "@components/screens/single-page-content/content/category-docs-content";
+import CenterCategoryContent from "@components/screens/single-page-content/content/category-content";
 import CenterSubCategoryContent from "@components/screens/single-page-content/content/subcategory-content";
 import filterDocsAricles from "@utils/helpers/DocsCategory/filterForDocsCategory";
 import createCategoryStructure from "@utils/helpers/Common/createCategoryStructure";
@@ -28,7 +28,12 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories, videos,
   const secondWord = wordsArray.length > 1 ? wordsArray[1] : null;
   const lastWord = wordsArray[wordsArray.length - 1];
   const pattern = /[a-zA-Z0-9-]+\/[a-zA-Z0-9-]+\.aspx$/;
-  const pageCategory = "Docs";
+  const pageCatSlug = (pageLoc + query.asPath).split('/')[1];
+
+  const { attributes: pageCategory } = useMemo(
+    () => categories?.data.find((it) => it.attributes.slug_id === pageCatSlug),
+    [categories]
+  );
 
   const { attributes: pageSubCategory } = useMemo(
     () => docsCategories?.data.find((it) => it.attributes.slug_id === secondWord) || {},
@@ -43,7 +48,28 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories, videos,
     [articles]
   );
 
+  // const isSubCat = useMemo(() => {
+  //   if (pageData?.data) {
+  //     return pageData.data.some((it) =>
+  //       it.attributes.level_3.some((level3) =>
+  //         level3.level_4 && level3.level_4.length > 0 && level3.level_4.some((level4) => 'slug_id' in level4)
+  //       )
+  //     );
+  //   }
+  //   return false;
+  // }, [pageData]);
+
+  const isSubCat = pageData?.data?.some((it) =>
+  it.attributes.level_3.some((level3) =>
+    level3.level_4 && level3.level_4.length > 0 && level3.level_4.some((level4) => 'slug_id' in level4)
+  )
+) || false;
+
+  
   const link = pattern.test(pagePath) && createDocsArticlesUrl(pageArticlesData, lastWord, secondWord);
+
+  console.log(pageData);
+  console.log(isSubCat);
 
   //const { seo_title, seo_description } = data;
   return (
@@ -73,7 +99,7 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories, videos,
             categories={allDocsCat}
             pagepath={link}
           />
-          : secondWord === "userguides"
+          : (secondWord === "userguides" || isSubCat)
             ? <CenterSubCategoryContent
               t={t}
               currentLanguage={locale}
@@ -88,7 +114,8 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories, videos,
               articles={pageData?.level_3}
               category={pageData}
               categories={allDocsCat}
-              isCategory={true} />}
+              isCategory={true}
+              mainCategory={pageCategory} />}
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />

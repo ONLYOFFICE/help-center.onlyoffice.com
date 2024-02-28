@@ -10,7 +10,7 @@ import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
-import CenterCategoryContent from "@components/screens/single-page-content/content/category-docs-content";
+import CenterCategoryContent from "@components/screens/single-page-content/content/category-content";
 import filterDesktopArticles from "@utils/helpers/DesktopCategory/filterForDesktopCategory";
 
 const subcategoryPage = ({ locale, articles, currentCategories, categories }) => {
@@ -18,13 +18,18 @@ const subcategoryPage = ({ locale, articles, currentCategories, categories }) =>
   const query = useRouter();
   const pageLoc = query.locale !== "en" ? query.locale : "";
   const pagePath = (pageLoc + query.asPath).split('#')[0];
+  const pageCatSlug = (pageLoc + query.asPath).split('/')[1];
+
+  const { attributes: pageCategory } = useMemo(
+    () => categories?.data.find((it) => it.attributes.slug_id === pageCatSlug),
+    [categories]
+  );
 
   const { attributes: pageSubCategory } = useMemo(
     () => currentCategories?.data.find((it) => it.attributes.url === pagePath) || {},
     [currentCategories, pagePath]
   );
 
-  //console.log(pageSubCategory);
   const pageData = useMemo(
     () => articles?.data.filter((it) => it.attributes.category_desktop.data.attributes.url === pagePath),
     [articles]
@@ -53,7 +58,8 @@ const subcategoryPage = ({ locale, articles, currentCategories, categories }) =>
           articles={data}
           category={pageSubCategory}
           categories={categories.data}
-          isCategory={true} />
+          isCategory={true}
+          mainCategory={pageCategory} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />

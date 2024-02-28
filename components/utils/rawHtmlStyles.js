@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { device } from "@components/utils/devices";
 
 const RawHtmlStyle = styled.div`
-//padding: 64px 0 0;
+padding: 64px 0 0;
   .raw-html-embed {
     z-index: 1;
     position: relative;
@@ -39,7 +39,7 @@ const RawHtmlStyle = styled.div`
           }
       }
   
-      &.outdated_versions, &.new_versions, &.talk_pages {
+      &.talk_pages {
           td {
               width: auto;
           }

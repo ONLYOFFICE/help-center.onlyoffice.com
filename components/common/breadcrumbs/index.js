@@ -11,7 +11,7 @@ const Breadcrumbs = ({ t, article, category, categories, mainCategory, pagePath 
   const checkCategory = article && article.attributes.category.data.attributes.slug_id == "connectors" ? article?.attributes.url : pagePath;
   const pathnames = article ? checkCategory?.split("/").filter((x) => x) : currentPath.split("/").filter((x) => x);
   const languagePrefixes = languages.map(language => language.shortKey);
-  //console.log(mainCategory);
+
   return (
     <StyledBreadcrumb>
       <Link href="/" className="breadcrumb-links">
@@ -26,7 +26,7 @@ const Breadcrumbs = ({ t, article, category, categories, mainCategory, pagePath 
             <React.Fragment key={index}>
               {!isLanguagePrefix && !isLast ? (
                 <Link href={routeTo} className="breadcrumb-links">
-                  {mainCategory && index == 0 && mainCategory}
+                  {mainCategory && index == 0 && mainCategory.name}
                   {cat && index != 0 && cat?.name}
                 </Link>
               ) : null}

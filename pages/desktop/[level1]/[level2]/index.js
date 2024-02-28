@@ -27,7 +27,12 @@ const subcategoryPage = ({ locale, articles, currentCategories, categories, vide
   const secondWord = wordsArray.length > 1 ? wordsArray[1] : null;
   const lastWord = wordsArray[wordsArray.length - 1];
   const pattern = /[a-zA-Z0-9-]+\/[a-zA-Z0-9-]+\.aspx$/;
-  const pageCategory = "Desktop";
+  const pageCatSlug = (pageLoc + query.asPath).split('/')[1];
+
+  const { attributes: pageCategory } = useMemo(
+    () => categories?.data.find((it) => it.attributes.slug_id === pageCatSlug),
+    [categories]
+  );
 
   const { attributes: pageSubCategory } = useMemo(
     () => currentCategories?.data.find((it) => it.attributes.slug_id === secondWord) || {},

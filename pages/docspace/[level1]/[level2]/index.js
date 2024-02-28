@@ -12,7 +12,7 @@ import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
-import CenterCategoryContent from "@components/screens/single-page-content/content/category-docs-content";
+import CenterCategoryContent from "@components/screens/single-page-content/content/category-content";
 import filterDocsAricles from "@utils/helpers/DocsCategory/filterForDocsCategory";
 import createCategoryStructure from "@utils/helpers/Common/createCategoryStructure";
 import createDocsArticlesUrl from "@utils/helpers/DocsCategory/createArticlesUrl";
@@ -27,7 +27,12 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories, videos,
   const secondWord = wordsArray.length > 1 ? wordsArray[1] : null;
   const lastWord = wordsArray[wordsArray.length - 1];
   const pattern = /[a-zA-Z0-9-]+\/[a-zA-Z0-9-]+\.aspx$/;
-  const pageCategory = "Desktop";
+  const pageCatSlug = (pageLoc + query.asPath).split('/')[1];
+
+  const { attributes: pageCategory } = useMemo(
+    () => categories?.data.find((it) => it.attributes.slug_id === pageCatSlug),
+    [categories]
+  );
 
   const { attributes: pageSubCategory } = useMemo(
     () => docsCategories?.data.find((it) => it.attributes.slug_id === secondWord) || {},
@@ -78,7 +83,8 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories, videos,
             articles={pageData?.level_3}
             category={pageData}
             categories={allDocsCat}
-            isCategory={true} />}
+            isCategory={true}
+            mainCategory={pageCategory} />}
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />

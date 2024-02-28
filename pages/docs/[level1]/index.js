@@ -10,14 +10,20 @@ import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
-import CenterCategoryContent from "@components/screens/single-page-content/content/category-docs-content";
+import CenterCategoryContent from "@components/screens/single-page-content/content/category-content";
 import filterDocsArticles from "@utils/helpers/DocsCategory/filterForDocsCategory";
 
 const subcategoryPage = ({ locale, articles, docsCategories, categories }) => {
   const { t } = useTranslation();
   const query = useRouter();
   const pageLoc = query.locale !== "en" ? query.locale : "";
-  const pagePath = (pageLoc + query.asPath).split('#')[0];
+  const pagePath = (pageLoc + query.asPath).split('#')[0];  
+  const pageCatSlug = (pageLoc + query.asPath).split('/')[1];
+
+  const { attributes: pageCategory } = useMemo(
+    () => categories?.data.find((it) => it.attributes.slug_id === pageCatSlug),
+    [categories]
+  );
 
   const { attributes: pageSubCategory } = useMemo(
     () => docsCategories?.data.find((it) => it.attributes.url === pagePath) || {},
@@ -52,7 +58,8 @@ const subcategoryPage = ({ locale, articles, docsCategories, categories }) => {
           articles={data}
           category={pageSubCategory}
           categories={categories.data}
-          isCategory={true} />
+          isCategory={true}
+          mainCategory={pageCategory} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />

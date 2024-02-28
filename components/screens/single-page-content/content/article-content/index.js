@@ -33,6 +33,7 @@ const CenterArticleContent = ({ t, article, tags, videos, onActiveItemChange, cu
     setModalActive(!!active);
     setTag(active);
   };
+
   // photo popup
   const [bigPhotoSrc, setBigPhotoSrc] = useState(null);
   const handleClick = (event) => {
@@ -52,14 +53,12 @@ const CenterArticleContent = ({ t, article, tags, videos, onActiveItemChange, cu
       const ipContents = document.querySelector('.ipcontents');
   
       if (clickedTarget.classList.contains('iphidecont')) {
-        // Клик по iptoggler с классом iphidecont, скрываем div с классом ipcontents
         ipHideCont.style.display = 'none';
         ipContents.style.display = 'none';
-        ipShowCont.style.display = 'block'; // Показываем соответствующий контент
+        ipShowCont.style.display = 'block'; 
       } else if (clickedTarget.classList.contains('ipshowcont')) {
-        // Клик по iptoggler с классом ipshowcont, показываем div с классом ipcontents
         ipHideCont.style.display = 'block';
-        ipContents.style.display = 'block'; // Показываем соответствующий контент
+        ipContents.style.display = 'block';
         ipShowCont.style.display = 'none';
       }
     }
