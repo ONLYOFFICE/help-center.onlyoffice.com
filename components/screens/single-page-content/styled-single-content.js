@@ -28,7 +28,7 @@ const StyledSingleLayout = styled.div`
     padding: 0 0 24px;
     &.dlw {
       display: flex;
-      gap: 8px;
+      gap: 16px;
     }
   }
 

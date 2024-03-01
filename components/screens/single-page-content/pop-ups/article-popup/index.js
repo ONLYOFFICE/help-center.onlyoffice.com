@@ -12,7 +12,7 @@ const ArticlePopup = ({ t, language, active, setActive, tag, allTags, ...rest })
   const windowWidth = useWindowWidth();
   const maxShown = windowWidth > 592 ? 10 : 8;
   const [next, setNext] = useState(maxShown);
-  const tagsData = allTags.find((it) => it.attributes.title === tag);
+  const tagsData = allTags?.find((it) => it.attributes.title === tag);
   const tagsLength = tagsData?.attributes.articles.data.length;
   const handleMoreImage = () => {
     if (next < tagsLength) {
