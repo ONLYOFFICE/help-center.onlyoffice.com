@@ -67,16 +67,16 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, currentCa
   );
   const link = pattern.test(pagePath) && createArticlesUrl(pageArticlesData, lastWord, secondWord);
 
- const { seo_title, seo_description } = data;
+ //const { seo_title, seo_description } = data;
   return (
     <Layout>
       <Layout.PageHead>
-        <HeadSEO
+        {/* <HeadSEO
           title={seo_title}
           metaDescription={seo_description}
           metaDescriptionOg={seo_description}
           metaKeywords={seo_title}
-        />
+        /> */}
       </Layout.PageHead>
       <Layout.PageHeader>
         <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} />
