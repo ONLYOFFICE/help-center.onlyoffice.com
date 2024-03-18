@@ -2,8 +2,8 @@ import React, { useMemo } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
-import getAllArticles from "@lib/strapi/getDocSpaceArticles";
-import getAllCategories from "@lib/strapi/getDocSpaceCategories";
+import getAllArticles from "@lib/strapi/getWorkspaceArticles";
+import getAllCategories from "@lib/strapi/getWorkspaceCategories";
 import getAllCommonCategories from "@lib/strapi/getCategories";
 
 import Layout from "@components/layout";
@@ -11,13 +11,13 @@ import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 import CenterCategoryContent from "@components/screens/single-page-content/content/category-content";
-import filterArticles from "@utils/helpers/DocSpaceCategory/filterForDocSpaceCategory";
+import filterArticles from "@utils/helpers/WorkspaceCategory/filterForWorkspaceCategory";
 
 const subcategoryPage = ({ locale, articles, currentCategories, categories }) => {
   const { t } = useTranslation();
   const query = useRouter();
   const pageLoc = query.locale !== "en" ? query.locale : "";
-  const pagePath = (pageLoc + query.asPath).split('#')[0];
+  const pagePath = (pageLoc + query.asPath).split('#')[0];  
   const pageCatSlug = (pageLoc + query.asPath).split('/')[1];
 
   const { attributes: pageCategory } = useMemo(
@@ -29,13 +29,13 @@ const subcategoryPage = ({ locale, articles, currentCategories, categories }) =>
     [currentCategories, pagePath]
   );
   const pageData = useMemo(
-    () => articles?.data.filter((it) => it.attributes.category_docspace.data.attributes.url === pagePath),
+    () => articles?.data.filter((it) => it.attributes.category_workspace.data.attributes.url === pagePath),
     [articles]
   );
 
   const data = filterArticles(pageData, pageSubCategory.slug_id);
+
   //console.log(data);
-  
   const { seo_title, seo_description } = data;
   return (
     <Layout>

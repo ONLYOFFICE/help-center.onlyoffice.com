@@ -2,8 +2,8 @@ import React, { useMemo } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
-import getAllArticles from "@lib/strapi/getDocSpaceArticles";
-import getAllCategories from "@lib/strapi/getDocSpaceCategories";
+import getAllArticles from "@lib/strapi/getWorkspaceArticles";
+import getAllCategories from "@lib/strapi/getWorkspaceCategories";
 import getAllCommonCategories from "@lib/strapi/getCategories";
 import getAllVideos from "@lib/strapi/getVideos";
 import getAllTags from "@lib/strapi/getTags";
@@ -13,9 +13,10 @@ import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 import CenterCategoryContent from "@components/screens/single-page-content/content/category-content";
-import filterAricles from "@utils/helpers/DocSpaceCategory/filterForDocSpaceCategory";
+import CenterSubCategoryContent from "@components/screens/single-page-content/content/subcategory-content";
+import filterAricles from "@utils/helpers/WorkspaceCategory/filterForWorkspaceCategory";
 import createCategoryStructure from "@utils/helpers/Common/createCategoryStructure";
-import createArticlesUrl from "@utils/helpers/DocSpaceCategory/createArticlesUrl";
+import createArticlesUrl from "@utils/helpers/WorkspaceCategory/createArticlesUrl";
 import SingleContent from "@components/screens/single-page-content";
 
 const subcategoryPage = ({ locale, articles, currentCategories, categories, videos, tags }) => {
@@ -47,7 +48,28 @@ const subcategoryPage = ({ locale, articles, currentCategories, categories, vide
     [articles]
   );
 
+  // const isSubCat = useMemo(() => {
+  //   if (pageData?.data) {
+  //     return pageData.data.some((it) =>
+  //       it.attributes.level_3.some((level3) =>
+  //         level3.level_4 && level3.level_4.length > 0 && level3.level_4.some((level4) => 'slug_id' in level4)
+  //       )
+  //     );
+  //   }
+  //   return false;
+  // }, [pageData]);
+
+  const isSubCat = pageData?.data?.some((it) =>
+  it.attributes.level_3.some((level3) =>
+    level3.level_4 && level3.level_4.length > 0 && level3.level_4.some((level4) => 'slug_id' in level4)
+  )
+) || false;
+
+  
   const link = pattern.test(pagePath) && createArticlesUrl(pageArticlesData, lastWord, secondWord);
+
+  console.log(pageData);
+  console.log(isSubCat);
 
   const { seo_title, seo_description } = data;
   return (
@@ -77,14 +99,23 @@ const subcategoryPage = ({ locale, articles, currentCategories, categories, vide
             categories={allCat}
             pagepath={link}
           />
-          : <CenterCategoryContent
-            t={t}
-            currentLanguage={locale}
-            articles={pageData?.level_3}
-            category={pageData}
-            categories={allCat}
-            isCategory={true}
-            mainCategory={pageCategory} />}
+          : (secondWord === "userguides" || isSubCat)
+            ? <CenterSubCategoryContent
+              t={t}
+              currentLanguage={locale}
+              articles={pageData?.level_3}
+              category={pageData}
+              categories={allCat}
+              isCategory={false}
+              pageMainCategory={pageCategory} />
+            : <CenterCategoryContent
+              t={t}
+              currentLanguage={locale}
+              articles={pageData?.level_3}
+              category={pageData}
+              categories={allCat}
+              isCategory={true}
+              mainCategory={pageCategory} />}
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />

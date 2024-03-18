@@ -11,7 +11,7 @@ import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 import CenterCategoryContent from "@components/screens/single-page-content/content/category-content";
-import filterDesktopArticles from "@utils/helpers/DesktopCategory/filterForDesktopCategory";
+import filterArticles from "@utils/helpers/DesktopCategory/filterForDesktopCategory";
 
 const subcategoryPage = ({ locale, articles, currentCategories, categories }) => {
   const { t } = useTranslation();
@@ -24,29 +24,27 @@ const subcategoryPage = ({ locale, articles, currentCategories, categories }) =>
     () => categories?.data.find((it) => it.attributes.slug_id === pageCatSlug),
     [categories]
   );
-
   const { attributes: pageSubCategory } = useMemo(
     () => currentCategories?.data.find((it) => it.attributes.url === pagePath) || {},
     [currentCategories, pagePath]
   );
-
   const pageData = useMemo(
     () => articles?.data.filter((it) => it.attributes.category_desktop.data.attributes.url === pagePath),
     [articles]
   );
 
-  const data = filterDesktopArticles(pageData, pageSubCategory.slug_id);
+  const data = filterArticles(pageData, pageSubCategory.slug_id);
   //console.log(data);
-  //const { seo_title, seo_description } = data;
+  const { seo_title, seo_description } = data;
   return (
     <Layout>
       <Layout.PageHead>
-        {/* <HeadSEO
+        <HeadSEO
           title={seo_title}
           metaDescription={seo_description}
           metaDescriptionOg={seo_description}
           metaKeywords={seo_title}
-        /> */}
+        />
       </Layout.PageHead>
       <Layout.PageHeader>
         <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} />

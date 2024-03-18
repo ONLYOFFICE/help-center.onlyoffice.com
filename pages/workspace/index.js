@@ -1,9 +1,9 @@
 import React, { useMemo } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import getAllArticles from "@lib/strapi/getDesktopArticles";
+import getAllArticles from "@lib/strapi/getWorkspaceArticles";
 import getAllCommonCategories from "@lib/strapi/getCategories";
-import getAllCategories from "@lib/strapi/getDesktopCategories";
+import getAllCategories from "@lib/strapi/getWorkspaceCategories";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
@@ -14,21 +14,21 @@ import GuidesCards from "@components/screens/main-content/guides-cards";
 
 const CategoryPage = ({ locale, articles, categories, currentCategories }) => {
   const { t } = useTranslation();
-  const pageCategory = "desktop";
+  const pageCategory = "workspace";
   const curCatInfo = useMemo(
     () => categories.data.find((it) => it.attributes.slug_id === pageCategory),
     [categories]
   );
-
+  
   return (
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={t("Desktop - ONLYOFFICE")}
+          title={t("Workspace - ONLYOFFICE")}
           metaSiteNameOg={t("metaSiteNameOg")}
           metaDescription={t("titleIndexPage")}
           metaDescriptionOg={t("metaDescriptionOgIndexPage")}
-          metaKeywords={t("Desktop - ONLYOFFICE")}
+          metaKeywords={t("Workspace - ONLYOFFICE")}
         />
       </Layout.PageHead>
       <Layout.PageHeader>

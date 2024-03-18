@@ -1,28 +1,27 @@
 import { useState, useEffect } from 'react';
 
-export default function filterDocSpaceArticles(articles, category) {
+export default function filterWorkspaceArticles(articles, category) {
     const installationCategoryLinks = [];
     const userguidesCategoryLinks = [];
     const administrationCategoryLinks = [];
-    const configurationCategoryLinks = [];
     const [cardData, setCardData] = useState([]);
 
     const uniqueInstallationCategorySet = new Set();
     const uniqueUserguidesCategorySet = new Set();
     const uniqueAdministrationCategorySet = new Set();
-    const uniqueConfigurationCategorySet = new Set();
 
     articles?.forEach((article) => {
         if (article.attributes.for_installation_category) {
             const level2 = article?.attributes.for_installation_category.level_2;
             const level3 = article?.attributes.for_installation_category.level_3;
-            const uniqueLevel4Set = new Set();
+            const level4 = article?.attributes.for_installation_category.level_4;
+            const uniqueLevel5Set = new Set();
 
             if (!uniqueInstallationCategorySet.has(level2)) {
                 installationCategoryLinks.push({
                     name: level2,
                     slug_id: level2?.toLowerCase(),
-                    url: `/docspace/installation/${level2?.toLowerCase()}`,
+                    url: `/workspace/installation/${level2.toLowerCase()}`,
                     level_3: [],
                 });
                 uniqueInstallationCategorySet.add(level2);
@@ -35,7 +34,7 @@ export default function filterDocSpaceArticles(articles, category) {
                   const newLevel3 = {
                     name: `${level3}`,
                     slug_id: level3?.toLowerCase(),
-                    url: `/docspace/installation/${level2?.toLowerCase()}/${level3?.toLowerCase()}`,
+                    url: `/workspace/installation/${level2?.toLowerCase()}/${level3?.toLowerCase()}`,
                     level_4: [],
                   };
                   targetCategoryForLvl3.level_3.push(newLevel3);
@@ -67,41 +66,11 @@ export default function filterDocSpaceArticles(articles, category) {
             if (!uniqueUserguidesCategorySet.has(level2)) {
                 userguidesCategoryLinks.push({
                     name: level2,
-                    url: `/docspace/userguides/${level2?.toLowerCase().replace(/ /g, "_")}`,
+                    url: `/workspace/userguides/${level2.toLowerCase().replace(/ /g, "_")}`,
                 });
                 uniqueUserguidesCategorySet.add(level2);
             }
             const targetCategoryForLvl3 = userguidesCategoryLinks.find(category => category.name === level2);
-
-            if (targetCategoryForLvl3) {
-                const newLevel3 = {
-                    name: `${article?.attributes.title}`,
-                    url: `${article?.attributes.url}`,
-                    videos: article?.attributes.videos?.data.map(video => ({
-                        title: video.attributes.title,
-                        description: video.attributes.description,
-                        url: video.attributes.url,
-                    })) || [],
-                };
-
-                targetCategoryForLvl3.level_3?.push(newLevel3);
-                uniqueLevel3Set.add(newLevel3);
-            }
-        }
-
-        if (article.attributes.for_administration_category) {
-            const level2 = article.attributes.for_administration_category.level_2;
-            const uniqueLevel3Set = new Set();
-
-            if (!uniqueAdministrationCategorySet.has(level2)) {
-                administrationCategoryLinks.push({
-                    name: level2,
-                    url: `/docspace/administation/${level2?.toLowerCase().replace(/ /g, "_")}`,
-                    level_3: [],
-                });
-                uniqueAdministrationCategorySet.add(level2);
-            }
-            const targetCategoryForLvl3 = administrationCategoryLinks.find(category => category.name === level2);
 
             if (targetCategoryForLvl3) {
                 const newLevel3 = {
@@ -119,18 +88,19 @@ export default function filterDocSpaceArticles(articles, category) {
             }
         }
 
-        if (article.attributes.for_configuration_category) {
-            const level2 = article.attributes.for_configuration_category.level_2;
+        if (article.attributes.for_administration_category) {
+            const level2 = article.attributes.for_administration_category.level_2;
             const uniqueLevel3Set = new Set();
-            if (!uniqueConfigurationCategorySet.has(level2)) {
-                configurationCategoryLinks.push({
+
+            if (!uniqueAdministrationCategorySet.has(level2)) {
+                administrationCategoryLinks.push({
                     name: level2,
-                    url: `/docspace/configuration/${level2?.toLowerCase().replace(/ /g, "_")}`,
+                    url: `/workspace/administation/${level2.toLowerCase().replace(/ /g, "_")}`,
                     level_3: [],
                 });
-                uniqueConfigurationCategorySet.add(level2);
+                uniqueAdministrationCategorySet.add(level2);
             }
-            const targetCategoryForLvl3 = configurationCategoryLinks.find(category => category.name === level2);
+            const targetCategoryForLvl3 = administrationCategoryLinks.find(category => category.name === level2);
 
             if (targetCategoryForLvl3) {
                 const newLevel3 = {
@@ -158,9 +128,6 @@ export default function filterDocSpaceArticles(articles, category) {
         }
         else if (category == "administration") {
             setCardData(administrationCategoryLinks);
-        }
-        else if (category == "configuration") {
-            setCardData(configurationCategoryLinks);
         }
     }, [category]);
 

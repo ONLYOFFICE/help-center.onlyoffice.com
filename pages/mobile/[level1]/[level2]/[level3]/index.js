@@ -2,23 +2,23 @@ import React, { useMemo } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
-import getAllDocsCategories from "@lib/strapi/getDocsCategories";
+import getAllCategories from "@lib/strapi/getMobileCategories";
 import getAllArticles from "@lib/strapi/getDocsArticles";
 import getAllVideos from "@lib/strapi/getVideos";
 import getAllTags from "@lib/strapi/getTags";
-import getAllCategories from "@lib/strapi/getCategories";
+import getAllCommonCategories from "@lib/strapi/getCategories";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
-import filterDocsAricles from "@utils/helpers/DocsCategory/filterForDocsCategory";
+import filterAricles from "@utils/helpers/MobileCategory/filterMobileCategory";
 import createCategoryStructure from "@utils/helpers/Common/createCategoryStructure";
 import CenterSubCategoryContent from "@components/screens/single-page-content/content/subcategory-content";
-import createDocsArticlesUrl from "@utils/helpers/DocsCategory/createArticlesUrl";
+import createArticlesUrl from "@utils/helpers/MobileCategory/createArticlesUrl";
 import SingleContent from "@components/screens/single-page-content";
 
-const subcategoryPage = ({ locale, articles, videos, tags, categories, docsCategories }) => {
+const subcategoryPage = ({ locale, articles, videos, tags, categories, currentCategories }) => {
   const { t } = useTranslation();
   const query = useRouter();
   const pageLoc = query.locale !== "en" ? query.locale : "";
@@ -39,10 +39,10 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, docsCateg
 
   const { attributes: pageSubCategory } = useMemo(
     () => {
-      const foundCategory = docsCategories?.data.find((it) => it.attributes.slug_id === secondWord);
+      const foundCategory = currentCategories?.data.find((it) => it.attributes.slug_id === secondWord);
       return foundCategory || {};
     },
-    [docsCategories, secondWord]
+    [currentCategories, secondWord]
   );
 
   const datalvl1 = filterDocsAricles(articles?.data, pageSubCategory?.slug_id);
@@ -54,24 +54,24 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, docsCateg
     () => datalvl2?.level_3.find((it) => it.url === pagePath),
     [datalvl2, pagePath]
   );
-  const allDocsCat = createCategoryStructure(docsCategories?.data, datalvl1);
+  const allCat = createCategoryStructure(currentCategories?.data, datalvl1);
 
   const pageArticlesData = pattern.test(pagePath) && useMemo(
     () => articles?.data.find((it) => it.attributes.url === pagePath),
     [articles]
   );
-  const link = pattern.test(pagePath) && createDocsArticlesUrl(pageArticlesData, lastWord, secondWord);
+  const link = pattern.test(pagePath) && createArticlesUrl(pageArticlesData, lastWord, secondWord);
 
-  //const { seo_title, seo_description } = data;
+  const { seo_title, seo_description } = data;
   return (
     <Layout>
       <Layout.PageHead>
-        {/* <HeadSEO
+        <HeadSEO
           title={seo_title}
           metaDescription={seo_description}
           metaDescriptionOg={seo_description}
           metaKeywords={seo_title}
-        /> */}
+        />
       </Layout.PageHead>
       <Layout.PageHeader>
         <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} />
@@ -87,7 +87,7 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, docsCateg
             isCategory={false}
             videos={videos.data}
             category={pageCategory}
-            categories={allDocsCat}
+            categories={allCat}
             pagepath={link}
           />
           : <CenterSubCategoryContent
@@ -95,7 +95,7 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, docsCateg
             currentLanguage={locale}
             articles={pageData?.level_4}
             category={pageData}
-            categories={allDocsCat}
+            categories={allCat}
             isCategory={false}
             pageMainCategory={pageCategory} />}
       </Layout.SectionMain>
@@ -110,8 +110,8 @@ export async function getServerSideProps({ locale }) {
   const articles = await getAllArticles(locale);
   const videos = await getAllVideos(locale);
   const tags = await getAllTags(locale);
-  const categories = await getAllCategories(locale);
-  const docsCategories = await getAllDocsCategories(locale);
+  const categories = await getAllCommonCategories(locale);
+  const currentCategories = await getAllCategories(locale);
 
 
   return {
@@ -122,7 +122,7 @@ export async function getServerSideProps({ locale }) {
       videos,
       tags,
       categories,
-      docsCategories
+      currentCategories
     },
   };
 }

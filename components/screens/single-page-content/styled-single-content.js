@@ -58,6 +58,11 @@ const StyledSingleLayout = styled.div`
       gap: 8px;
       text-decoration: underline;
   }
+
+  .top-links {
+    gap: 32px;
+    padding: 0 0 32px;
+  }
     
   @media ${device.laptopM} {
     max-width: 100vw;

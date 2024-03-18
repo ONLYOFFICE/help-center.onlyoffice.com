@@ -8,7 +8,6 @@ import getAllCategories from "@lib/strapi/getMobileCategories";
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
-import SingleContent from "@components/screens/single-page-content";
 import HeadSEO from "@components/screens/head-content";
 import InfoContent from "@components/screens/main-content/info-content";
 import GuidesCards from "@components/screens/main-content/guides-cards";
@@ -16,14 +15,11 @@ import GuidesCards from "@components/screens/main-content/guides-cards";
 const CategoryPage = ({ locale, articles, categories, currentCategories }) => {
   const { t } = useTranslation();
   const pageCategory = "mobile";
-  const curArticles = useMemo(
-    () => articles?.data?.filter((it) => it.attributes.category.data?.attributes.slug_id === pageCategory),
-    [articles]
-  );
   const curCatInfo = useMemo(
     () => categories?.data.find((it) => it.attributes.slug_id === pageCategory),
     [categories]
   );
+  
   return (
     <Layout>
       <Layout.PageHead>

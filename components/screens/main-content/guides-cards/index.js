@@ -4,7 +4,7 @@ import StyledGuidesCards from "./styled-guides-cards";
 
 const GuidesCards = ({ t, articles, categories, isCategory, className, mainCategory }) => {
   const getArtData = (category) => {
-    return articles?.filter((item) => item.attributes.category?.data?.attributes.slug_id === category);
+    return articles?.filter((item) => item.data.attributes.category?.data?.attributes.slug_id === category);
   };
 
   return (

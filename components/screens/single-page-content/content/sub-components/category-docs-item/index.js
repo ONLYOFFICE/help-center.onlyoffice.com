@@ -15,7 +15,7 @@ const CategoryDocsItem = ({
 
   return (
     <StyledCategoryItem>
-      <Heading level={4}><img src={`https://static-helpcenter.onlyoffice.com/images/icons/${path}.react.svg`} alt={data.name} style={{ fontSize: "10px" }} /><Link href={data.url}>{data.name} {checkPlatformMatch(data.name) && t("Version")}</Link></Heading>
+      <Heading level={4}>{checkPlatformMatch(data.name) && <img src={`https://static-helpcenter.onlyoffice.com/images/icons/${path}.react.svg`} alt={data.name} style={{ fontSize: "10px" }} />}<Link href={data.url}>{data.name} {checkPlatformMatch(data.name) && t("Version")}</Link></Heading>
       <ul className="subcategory">
         {level?.map((it, index) => {
           const levelpic = it?.name.toLowerCase();

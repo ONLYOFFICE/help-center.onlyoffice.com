@@ -7,6 +7,7 @@ import getAllDocsArticles from "@lib/strapi/getDocsArticles";
 import getAllDesktopArticles from "@lib/strapi/getDesktopArticles";
 import getAllMobileArticles from "@lib/strapi/getMobileArticles";
 import getAllDocSpaceArticles from "@lib/strapi/getDocSpaceArticles";
+import getAllWorkspaceArticles from "@lib/strapi/getWorkspaceArticles";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
@@ -17,9 +18,9 @@ import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 import createAllArticlesList from "@utils/helpers/Common/createAllArticlesList";
 
-const Index = ({ locale, categories, integrationArticles, docsArticles, docspaceArticles, mobileArticles, desktopArticles }) => {
+const Index = ({ locale, categories, integrationArticles, docsArticles, docspaceArticles, mobileArticles, desktopArticles, workspaceArticles }) => {
   const { t } = useTranslation();
-  const result = createAllArticlesList(integrationArticles.data, desktopArticles.data, docsArticles.data, docspaceArticles.data, mobileArticles.data );
+  const result = createAllArticlesList(integrationArticles.data, desktopArticles.data, docsArticles.data, docspaceArticles.data, mobileArticles.data, workspaceArticles.data);
   const pageCategory = 'main';
 
   return (
@@ -55,6 +56,7 @@ export const getStaticProps = async ({ locale }) => {
   const desktopArticles = await getAllDesktopArticles(locale);
   const mobileArticles = await getAllMobileArticles(locale);
   const docspaceArticles = await getAllDocSpaceArticles(locale);
+  const workspaceArticles = await getAllWorkspaceArticles(locale);
   const categories = await getAllCategories(locale);
 
   return {
@@ -66,6 +68,7 @@ export const getStaticProps = async ({ locale }) => {
       desktopArticles,
       mobileArticles,
       docspaceArticles,
+      workspaceArticles,
       categories
     },
   };

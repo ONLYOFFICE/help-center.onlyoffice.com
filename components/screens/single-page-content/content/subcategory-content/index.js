@@ -8,6 +8,7 @@ import LeftMenu from "../../sub-components/left-menu";
 import checkPlatformMatch from "@utils/helpers/Common/checkPlatforms";
 import Link from "@components/common/internal-link";
 import Video from "../../sub-components/subcat-video";
+import Box from "@components/common/box";
 
 const CenterSubCategoryContent = ({
   t,
@@ -55,17 +56,16 @@ const CenterSubCategoryContent = ({
 
   const filteredArray = items ? articles?.filter(item => !items?.includes(item)) : articles;
 
-
   return (
     <StyledSingleContent>
       <LeftMenu {...menuProps} />
       <StyledContent className="wrapper">
         <Breadcrumbs t={t} category={category} isCategory={false} categories={categories} mainCategory={pageMainCategory} />
         <Heading level={3} className={`subcat-heading ${checkPlatformMatch(category?.name) && `dlw`}`}>{checkPlatformMatch(category?.name) && <img src={`https://static-helpcenter.onlyoffice.com/images/icons/24px_${category?.name.toLowerCase()}.react.svg`} alt={category?.name} style={{ width: "32px" }} />}{category?.name} {checkPlatformMatch(category?.name) && t("Version")}</Heading>
-          <>
+          <Box className="top-links">
             {sysReqItem && <Link id={sysReqItem.name.toLowerCase().replace(/ /g, "_")} className="reqs" href={sysReqItem?.level_5[0]?.url}><img src={`https://static-helpcenter.onlyoffice.com/images/icons/16px_${sysReqItem.name.toLowerCase().replace(/ /g, "_")}.react.svg`} alt={sysReqItem.name} />{sysReqItem.name}</Link>}
             {troubleShootingItem && <Link id={troubleShootingItem.name.toLowerCase().replace(/ /g, "_")} className="reqs" href={troubleShootingItem?.level_5[0]?.url}><img src={`https://static-helpcenter.onlyoffice.com/images/icons/16px_${troubleShootingItem.name.toLowerCase().replace(/ /g, "_")}.react.svg`} alt={troubleShootingItem.name} />{troubleShootingItem.name}</Link>}
-          </>
+          </Box>
           {filteredArray?.map((it, index) => {
             const artList = it.level_5 || it.level_4 || it.level_3;
             const l5Length = artList?.length;

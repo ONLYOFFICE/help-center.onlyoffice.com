@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
-import getAllArticles from "@lib/strapi/getDocsArticles";
+import getAllArticles from "@lib/strapi/getMobileArticles";
 import getAllCategories from "@lib/strapi/getMobileCategories";
 import getAllCommonCategories from "@lib/strapi/getCategories";
 
@@ -29,22 +29,22 @@ const subcategoryPage = ({ locale, articles, currentCategories, categories }) =>
     [currentCategories, pagePath]
   );
   const pageData = useMemo(
-    () => articles?.data.filter((it) => it.attributes.category_doc.data.attributes.url === pagePath),
+    () => articles?.data.filter((it) => it.attributes.category_mobile.data.attributes.url === pagePath),
     [articles]
   );
 
   const data = filterArticles(pageData, pageSubCategory.slug_id);
   //console.log(data);
-  //const { seo_title, seo_description } = data;
+  const { seo_title, seo_description } = data;
   return (
     <Layout>
       <Layout.PageHead>
-        {/* <HeadSEO
+        <HeadSEO
           title={seo_title}
           metaDescription={seo_description}
           metaDescriptionOg={seo_description}
           metaKeywords={seo_title}
-        /> */}
+        />
       </Layout.PageHead>
       <Layout.PageHeader>
         <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} />

@@ -1,6 +1,6 @@
 export default function createArticlesUrl(data, pagepath, secondWord) {
-    const { category_docs, for_installation_category, for_userguides_category } = data.attributes;
-    const { attributes: categoryAttributes } = category_docs?.data;
+    const { category_workspace, for_installation_category, for_userguides_category, for_administration_category } = data.attributes;
+    const { attributes: categoryAttributes } = category_workspace?.data;
     
     let levels = [];
     let level_4;
@@ -15,6 +15,12 @@ export default function createArticlesUrl(data, pagepath, secondWord) {
         }
     } else if (secondWord === "userguides") {
         const { level_2, level_3 } = for_userguides_category;
+        levels = [level_2].filter(Boolean).map(level => level.toLowerCase().replace(/ /g, "_"));
+        if (level_3) {
+            fullPath = `${[categoryAttributes.url, ...levels].join("/")}#${level_3.toLowerCase().replace(/ /g, "_")}`;
+        }
+    } else if (secondWord === "administration") {
+        const { level_2, level_3 } = for_administration_category;
         levels = [level_2].filter(Boolean).map(level => level.toLowerCase().replace(/ /g, "_"));
         if (level_3) {
             fullPath = `${[categoryAttributes.url, ...levels].join("/")}#${level_3.toLowerCase().replace(/ /g, "_")}`;

@@ -12,6 +12,7 @@ import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
+import CenterCategoryContent from "@components/screens/single-page-content/content/category-content";
 import CenterSubCategoryContent from "@components/screens/single-page-content/content/subcategory-content";
 import filterAricles from "@utils/helpers/DesktopCategory/filterForDesktopCategory";
 import createCategoryStructure from "@utils/helpers/Common/createCategoryStructure";
@@ -49,16 +50,16 @@ const subcategoryPage = ({ locale, articles, currentCategories, categories, vide
 
   const link = pattern.test(pagePath) && createArticlesUrl(pageArticlesData, lastWord, secondWord);
 
-  //const { seo_title, seo_description } = data;
+  const { seo_title, seo_description } = data;
   return (
     <Layout>
       <Layout.PageHead>
-        {/* <HeadSEO
+        <HeadSEO
           title={seo_title}
           metaDescription={seo_description}
           metaDescriptionOg={seo_description}
           metaKeywords={seo_title}
-        /> */}
+        />
       </Layout.PageHead>
       <Layout.PageHeader>
         <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} />

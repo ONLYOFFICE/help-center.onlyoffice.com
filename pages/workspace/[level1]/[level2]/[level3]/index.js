@@ -2,31 +2,30 @@ import React, { useMemo } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
-import getAllArticles from "@lib/strapi/getDocSpaceArticles";
-import getAllCategories from "@lib/strapi/getDocSpaceCategories";
-import getAllCommonCategories from "@lib/strapi/getCategories";
+import getAllCategories from "@lib/strapi/getWorkspaceCategories";
+import getAllArticles from "@lib/strapi/getWorkspaceArticles";
 import getAllVideos from "@lib/strapi/getVideos";
 import getAllTags from "@lib/strapi/getTags";
+import getAllCommonCategories from "@lib/strapi/getCategories";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
-import CenterCategoryContent from "@components/screens/single-page-content/content/category-content";
-import filterAricles from "@utils/helpers/DocSpaceCategory/filterForDocSpaceCategory";
+import filterAricles from "@utils/helpers/WorkspaceCategory/filterForWorkspaceCategory";
 import createCategoryStructure from "@utils/helpers/Common/createCategoryStructure";
-import createArticlesUrl from "@utils/helpers/DocSpaceCategory/createArticlesUrl";
+import CenterSubCategoryContent from "@components/screens/single-page-content/content/subcategory-content";
+import createArticlesUrl from "@utils/helpers/WorkspaceCategory/createArticlesUrl";
 import SingleContent from "@components/screens/single-page-content";
 
-const subcategoryPage = ({ locale, articles, currentCategories, categories, videos, tags }) => {
+const subcategoryPage = ({ locale, articles, videos, tags, categories, currentCategories }) => {
   const { t } = useTranslation();
   const query = useRouter();
   const pageLoc = query.locale !== "en" ? query.locale : "";
   const pagePath = (pageLoc + query.asPath).split('#')[0];
-  const wordsArray = pagePath.split('/').filter(Boolean);
-  const secondWord = wordsArray.length > 1 ? wordsArray[1] : null;
-  const lastWord = wordsArray[wordsArray.length - 1];
   const pattern = /[a-zA-Z0-9-]+\/[a-zA-Z0-9-]+\.aspx$/;
+  const wordsArray = pagePath.split('/').filter(Boolean);
+  const lastWord = wordsArray[wordsArray.length - 1];
   const pageCatSlug = (pageLoc + query.asPath).split('/')[1];
 
   const { attributes: pageCategory } = useMemo(
@@ -34,22 +33,41 @@ const subcategoryPage = ({ locale, articles, currentCategories, categories, vide
     [categories]
   );
 
+  const { secondWord, urlBeforeLastSlashSlice } = (() => {
+    const lastSlashIndex = pagePath.lastIndexOf('/');
+    const urlBeforeLastSlashSlice = lastSlashIndex > 0 ? pagePath.slice(0, lastSlashIndex) : null;
+    const wordsArray = urlBeforeLastSlashSlice?.split('/').filter(Boolean) || [];
+    const secondWord = wordsArray[1] || null;
+
+    return { secondWord, urlBeforeLastSlashSlice };
+  })();
+
   const { attributes: pageSubCategory } = useMemo(
-    () => currentCategories?.data.find((it) => it.attributes.slug_id === secondWord) || {},
-    [currentCategories, secondWord, pagePath]
+    () => {
+      const foundCategory = currentCategories?.data.find((it) => it.attributes.slug_id === secondWord);
+      return foundCategory || {};
+    },
+    [currentCategories, secondWord]
   );
-  const data = filterAricles(articles?.data, pageSubCategory?.slug_id);
-  const pageData = data?.find((it) => it.url === pagePath);
-  const allCat = createCategoryStructure(currentCategories?.data, data);
+
+  const datalvl1 = filterAricles(articles?.data, pageSubCategory?.slug_id);
+  const datalvl2 = useMemo(
+    () => datalvl1?.find((it) => it.url === urlBeforeLastSlashSlice),
+    [datalvl1, urlBeforeLastSlashSlice]
+  );
+  const pageData = useMemo(
+    () => datalvl2?.level_3.find((it) => it.url === pagePath),
+    [datalvl2, pagePath]
+  );
+  const allCat = createCategoryStructure(currentCategories?.data, datalvl1);
 
   const pageArticlesData = pattern.test(pagePath) && useMemo(
     () => articles?.data.find((it) => it.attributes.url === pagePath),
     [articles]
   );
-
   const link = pattern.test(pagePath) && createArticlesUrl(pageArticlesData, lastWord, secondWord);
 
-  const { seo_title, seo_description } = data;
+ const { seo_title, seo_description } = data;
   return (
     <Layout>
       <Layout.PageHead>
@@ -77,14 +95,14 @@ const subcategoryPage = ({ locale, articles, currentCategories, categories, vide
             categories={allCat}
             pagepath={link}
           />
-          : <CenterCategoryContent
+          : <CenterSubCategoryContent
             t={t}
             currentLanguage={locale}
-            articles={pageData?.level_3}
+            articles={pageData?.level_4}
             category={pageData}
             categories={allCat}
-            isCategory={true}
-            mainCategory={pageCategory} />}
+            isCategory={false}
+            pageMainCategory={pageCategory} />}
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />
@@ -95,20 +113,21 @@ const subcategoryPage = ({ locale, articles, currentCategories, categories, vide
 
 export async function getServerSideProps({ locale }) {
   const articles = await getAllArticles(locale);
-  const currentCategories = await getAllCategories(locale);
-  const categories = await getAllCommonCategories(locale);
   const videos = await getAllVideos(locale);
   const tags = await getAllTags(locale);
+  const categories = await getAllCommonCategories(locale);
+  const currentCategories = await getAllCategories(locale);
+
 
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       articles,
-      categories,
-      currentCategories,
       videos,
-      tags
+      tags,
+      categories,
+      currentCategories
     },
   };
 }
