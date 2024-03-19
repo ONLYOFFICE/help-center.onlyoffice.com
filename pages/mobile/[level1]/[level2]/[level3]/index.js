@@ -12,7 +12,7 @@ import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
-import filterAricles from "@utils/helpers/MobileCategory/filterMobileCategory";
+import filterAricles from "@utils/helpers/MobileCategory/filterForMobileCategory";
 import createCategoryStructure from "@utils/helpers/Common/createCategoryStructure";
 import CenterSubCategoryContent from "@components/screens/single-page-content/content/subcategory-content";
 import createArticlesUrl from "@utils/helpers/MobileCategory/createArticlesUrl";
@@ -45,7 +45,7 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, currentCa
     [currentCategories, secondWord]
   );
 
-  const datalvl1 = filterDocsAricles(articles?.data, pageSubCategory?.slug_id);
+  const datalvl1 = filterAricles(articles?.data, pageSubCategory?.slug_id);
   const datalvl2 = useMemo(
     () => datalvl1?.find((it) => it.url === urlBeforeLastSlashSlice),
     [datalvl1, urlBeforeLastSlashSlice]
