@@ -15,9 +15,9 @@ const GuidesLinks = ({ mainArticles, category, mainCategory, t }) => {
   const [loading, setLoading] = useState(true);
   const dataCardsDocs = mainCategory.toLowerCase() === 'docs' && filterDocsArticles(mainArticles, category);
   const dataCardsDesktop = mainCategory.toLowerCase() === 'desktop' && filterDesktopArticles(mainArticles, category);
-  const dataCardsDocSpace = mainCategory.toLowerCase() === 'docspace' && filterDocSpaceArticles(mainArticles, category);
-  const dataCardsWorkspace = mainCategory.toLowerCase() === 'workspace' && filterWorkspaceArticles(mainArticles, category);
-  const dataCardsMobile = mainCategory.toLowerCase() === 'mobile' && filterMobileArticles(mainArticles, category);
+  //const dataCardsDocSpace = mainCategory.toLowerCase() === 'docspace' && filterDocSpaceArticles(mainArticles, category);
+  //const dataCardsWorkspace = mainCategory.toLowerCase() === 'workspace' && filterWorkspaceArticles(mainArticles, category);
+  //const dataCardsMobile = mainCategory.toLowerCase() === 'mobile' && filterMobileArticles(mainArticles, category);
 
   const dataCardsCommon = mainCategory.toLowerCase() === 'main' && filterMainArticles(mainArticles, category);
 
