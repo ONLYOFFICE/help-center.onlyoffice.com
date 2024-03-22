@@ -7,6 +7,7 @@ import Breadcrumbs from "@components/common/breadcrumbs";
 import CategoryItem from "../sub-components/category-docs-item";
 import StyledSingleContent from "../../styled-single-content";
 import LeftMenu from "@components/screens/single-page-content/sub-components/left-menu";
+import checkCategoryMatch from "@utils/helpers/Common/checkCategory";
 
 const CenterCategoryContent = ({
     t,
@@ -38,13 +39,30 @@ const CenterCategoryContent = ({
         activeItem,
     };
 
+    const handleClick = (event) => {
+        const clickedTarget = event.target;
+        if (clickedTarget.tagName === 'P' && clickedTarget.classList.contains('changelog-main-header')) {
+            const switcher = clickedTarget.parentElement.querySelector('.changelog-switcher');
+            const switcherDisplay = getComputedStyle(switcher).getPropertyValue('display');
+            const pseudoElement = clickedTarget.querySelector('::before');    
+            
+            if (switcherDisplay === 'none') {
+                switcher.style.display = 'block'; 
+                pseudoElement?.setAttribute('content', '-'); 
+            } else {
+                switcher.style.display = 'none';
+                pseudoElement?.setAttribute('content', '+'); 
+            }
+        }
+    };
+
     return (
         <StyledSingleContent>
             <LeftMenu {...menuProps} />
             <StyledContent className="wrapper">
                 <Breadcrumbs t={t} category={category} categories={categories} mainCategory={mainCategory} />
                 <Heading level={3}>{category?.name}</Heading>
-                {category?.description && <Text>{ReactHtmlParser(category?.description)}</Text>}
+                {category?.description && <Text onClick={handleClick} style={{display: `${checkCategoryMatch(category?.slug_id) ? `block` : "inline-block"}`}}>{ReactHtmlParser(category?.description)}</Text>}
                 {articles?.map((it, index) => {
                     return (
                         <React.Fragment key={index}>

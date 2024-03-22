@@ -15,8 +15,8 @@ const GuidesLinks = ({ mainArticles, category, mainCategory, t }) => {
   const [loading, setLoading] = useState(true);
   const dataCardsDocs = mainCategory.toLowerCase() === 'docs' && filterDocsArticles(mainArticles, category);
   const dataCardsDesktop = mainCategory.toLowerCase() === 'desktop' && filterDesktopArticles(mainArticles, category);
-  //const dataCardsDocSpace = mainCategory.toLowerCase() === 'docspace' && filterDocSpaceArticles(mainArticles, category);
-  //const dataCardsWorkspace = mainCategory.toLowerCase() === 'workspace' && filterWorkspaceArticles(mainArticles, category);
+  const dataCardsDocSpace = mainCategory.toLowerCase() === 'docspace' && filterDocSpaceArticles(mainArticles, category);
+  const dataCardsWorkspace = mainCategory.toLowerCase() === 'workspace' && filterWorkspaceArticles(mainArticles, category);
   //const dataCardsMobile = mainCategory.toLowerCase() === 'mobile' && filterMobileArticles(mainArticles, category);
 
   const dataCardsCommon = mainCategory.toLowerCase() === 'main' && filterMainArticles(mainArticles, category);
@@ -36,12 +36,12 @@ const GuidesLinks = ({ mainArticles, category, mainCategory, t }) => {
         case 'desktop':
           setData(dataCardsDesktop);
           break;
-        // case 'workspace':
-        //   setData(dataCardsWorkspace);
-        //   break;
-        // case 'docspace':
-        //   setData(dataCardsDocSpace);
-        //   break;
+        case 'workspace':
+          setData(dataCardsWorkspace);
+          break;
+        case 'docspace':
+          setData(dataCardsDocSpace);
+          break;
         // case 'mobile':
         //   setData(dataCardsMobile);
         //   break;
@@ -61,26 +61,26 @@ const GuidesLinks = ({ mainArticles, category, mainCategory, t }) => {
     <StyledGuidesLinks>
       <Box className="con-box">
         {!loading && data.slice(0, Math.ceil(data.length / 2)).map((item, idx) => (
-          <>
-            {(item.attributes?.url || item?.url) && isInternalLink(item.attributes?.url || item?.url) && <InternalLink key={idx} className={`cell_link ${category === "connectors" ? 'not_bold' : ''}`} label={t(item.attributes?.title) || t(item?.name)} href={item.attributes?.url || item?.url} />}
+          <React.Fragment key={idx}>
+            {(item.attributes?.url || item?.url) && isInternalLink(item.attributes?.url || item?.url) && <InternalLink className={`cell_link ${category === "connectors" ? 'not_bold' : ''}`} label={t(item.attributes?.title) || t(item?.name)} href={item.attributes?.url || item?.url} />}
             {item.level_2_values && <>
               {item.level_2_values.map((item_lvl2, indx) => (
                 <InternalLink className="cell_link not_bold" label={t(item_lvl2.name)} href={item_lvl2.url} key={indx} />
               ))}
             </>}
-          </>
+          </React.Fragment>
         ))}
       </Box>
       <Box className="con-box">
         {!loading && data.slice(Math.ceil(data.length / 2), mainArticles.length).map((item, idx) => (
-          <>
+          <React.Fragment key={idx}>
             {(item.attributes?.url || item?.url) && isInternalLink(item.attributes?.url || item?.url) && <InternalLink key={idx} className={`cell_link ${category === "connectors" ? 'not_bold' : ''}`} label={t(item.attributes?.title) || t(item?.name)} href={item.attributes?.url || item?.url} />}
             {item.level_2_values && <>
               {item.level_2_values.map((item_lvl2, indx) => (
                 <InternalLink className="cell_link not_bold" label={t(item_lvl2.name)} href={item_lvl2.url} key={indx} />
               ))}
             </>}
-          </>
+          </React.Fragment>
         ))}
       </Box>
     </StyledGuidesLinks>

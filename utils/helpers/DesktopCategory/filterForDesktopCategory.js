@@ -23,7 +23,7 @@ export default function filterDesktopArticles(articles, category) {
                 installationCategoryLinks.push({
                     name: level2,
                     slug_id: level2?.toLowerCase(),
-                    url: `/desktop/installing/${level2.toLowerCase()}`,
+                    url: `/desktop/installing/${level2?.toLowerCase()}`,
                     level_3: [],
                 });
                 uniqueInstallationCategorySet.add(level2);

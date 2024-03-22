@@ -22,7 +22,7 @@ export default function filterDocSpaceArticles(articles, category) {
                 installationCategoryLinks.push({
                     name: level2,
                     slug_id: level2?.toLowerCase(),
-                    url: `/docspace/installation/${level2?.toLowerCase()}`,
+                    url: `/docspace/installation/${level2?.toLowerCase().replace(/ /g, "_")}`,
                     level_3: [],
                 });
                 uniqueInstallationCategorySet.add(level2);
@@ -35,7 +35,7 @@ export default function filterDocSpaceArticles(articles, category) {
                   const newLevel3 = {
                     name: `${level3}`,
                     slug_id: level3?.toLowerCase(),
-                    url: `/docspace/installation/${level2?.toLowerCase()}/${level3?.toLowerCase()}`,
+                    url: `/docspace/installation/${level2?.toLowerCase().replace(/ /g, "_")}/${level3?.toLowerCase().replace(/ /g, "_")}`,
                     level_4: [],
                   };
                   targetCategoryForLvl3.level_3.push(newLevel3);

@@ -7,7 +7,7 @@ import checkPlatformMatch from "@utils/helpers/Common/checkPlatforms";
 const CategoryDocsItem = ({
   data, t, currentLanguage
 }) => {
-  const categoryPic = data?.name.toLowerCase().replace(/ /g, "_");
+  const categoryPic = data?.name?.toLowerCase().replace(/ /g, "_");
   const level = data?.level_3 || data?.level_4;
   const path = checkPlatformMatch(data.name) ? `24px_${categoryPic}` : `${categoryPic}`;
   const sysReqItem = level?.find(item => item.name.includes(t('SystemRequirements')));
@@ -31,7 +31,6 @@ const CategoryDocsItem = ({
                 </li> : <li className="sublink" key={index}>
                   <Link href={it.url}>{it.name}</Link>
                 </li>
-
               }
             </React.Fragment>
           )
