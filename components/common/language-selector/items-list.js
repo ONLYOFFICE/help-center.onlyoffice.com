@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { StyledItem, StyledPanelView } from "./styled-language-selector";
 import Link from 'next/link'
 import languages from "@config/languages";
-import Text from "../text";
 
 export default function LangsList(props) {
   const { t, isOpen, currentLanguage, onCloseSelector } = props;

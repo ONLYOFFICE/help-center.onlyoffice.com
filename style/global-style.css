@@ -109,3 +109,7 @@ ul {
 button, input, textarea {
   font-family: inherit;
 }
+
+p {
+  margin: 0;
+}

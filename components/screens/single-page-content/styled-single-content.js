@@ -148,14 +148,9 @@ const StyledSingleLayout = styled.div`
     
   @media ${device.laptopM} {
     max-width: 100vw;
-    margin: 72px auto 0;
   }
-  @media (max-width: 500px) {
-    margin: 106px auto 0;
-  }
-  
   @media ${device.tabletS} {
-    //margin: 56px auto 0;
+    margin: 56px auto 0;
   }
 `;
 

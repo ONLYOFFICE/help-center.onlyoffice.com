@@ -219,7 +219,6 @@ const StyledFooter = styled.div`
   }
 
   @media ${device.tabletS} {
-  //@media (max-width: 812px) {
     ${StyledFooterTablet};
   }
 `;

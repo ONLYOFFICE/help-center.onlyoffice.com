@@ -12,18 +12,18 @@ const StyledCategoryBox = styled(Box)`
     }
     
     .icon {
-        display: inline-block;
+        padding: 0 20px;
         width: 80px;
     }
 
-    .link {
+    .internal-link {
         text-transform: uppercase;
         text-decoration: none;
         font-size: 12px;
         font-weight: 600;
         line-height: 16px;
         letter-spacing: 0.04em;
-        margin-top: 24px;
+        padding: 24px 0 0;
         color: #444444;
 
         &:hover {
@@ -31,22 +31,30 @@ const StyledCategoryBox = styled(Box)`
         }
     }
 
-    &:hover .link {
+    &:hover .internal-link {
         text-decoration: underline;
     }
 
 
     @media ${device.laptopM} {
-        .icon{
+        .icon {
             display: block;
             margin: 0 auto;
         }
     }
 
     @media ${device.tabletS} {
-        .link {
-            font-size:12px;
-            padding-top: 33px;
+        .internal-link {
+            font-size: 12px;
+            padding: 16px 0 0;
+        }
+            
+        .icon {
+            padding: 0 20px;
+            width: 64px;
+            > img {
+                width: 64px;
+            }
         }
     }
 `;

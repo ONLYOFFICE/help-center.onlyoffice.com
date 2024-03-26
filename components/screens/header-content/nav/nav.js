@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import StyledNav from "./styled-nav";
 import Link from "next/link";
 import Heading from "@components/common/heading";
 
 const Nav = ({ onClickPND, t, stateMobilePND, categories, windowWidth, ...rest }) => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <StyledNav stateMobile={stateMobilePND} {...rest}>
-      {/* {typeof window !== 'undefined' && windowWidth <= 1000 && (<img
-        src="https://static-helpcenter.onlyoffice.com/images/icons/close-icon.react.svg"
-        className="close-cross"
-        onClick={onClickPND}
-      />)} */}
+      {isClient && windowWidth <= 1000 && (
+        <img
+          src="https://static-helpcenter.onlyoffice.com/images/icons/close-icon.react.svg"
+          className="close-cross"
+          onClick={onClickPND}
+        />
+      )}
       {categories?.map((item, index) => {
         return <Link className="nav-item" key={index} href={item.attributes.url}>
           <Heading className="heading-nav-item" label={item.attributes.name} level={2} />

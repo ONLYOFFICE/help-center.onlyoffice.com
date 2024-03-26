@@ -16,14 +16,20 @@ import HeadSEO from "@components/screens/head-content";
 const articlePage = ({ locale, articles, videos, tags, categories }) => {
   const { t } = useTranslation();
   const query = useRouter();
-  const pageCategory = "Connectors";
   const pageLoc = query.locale !== "en" ? query.locale : "";
   const pagePath = (pageLoc + query.asPath).split('#')[0];
   const pageData = useMemo(
     () => articles?.data.find((it) => it.attributes.url === pagePath),
     [articles]
   );
+  const pageCatSlug = (pageLoc + query.asPath).split('/')[1];
+
+  const { attributes: pageCategory } = useMemo(
+    () => categories?.data.find((it) => it.attributes.slug_id === pageCatSlug),
+    [categories]
+  );
   const data = pageData?.attributes;
+
   const { seo_title, seo_description } = data;
   return (
     <Layout>
@@ -37,7 +43,7 @@ const articlePage = ({ locale, articles, videos, tags, categories }) => {
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} />
+        <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} pageCategory={pageCategory} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <SingleContent

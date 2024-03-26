@@ -3,11 +3,7 @@ import React from "react";
 import StyledCategory from "./styled-category";
 import CategoryBox from "./sub-components/category-box";
 
-const Category = ({ t, template, category, currentLanguage }) => {
-  const helpcenter = `https://helpcenter.onlyoffice.com/${
-  currentLanguage === "en" ? "" : `${currentLanguage}/`
-  }`;
-
+const Category = ({ t, template, category }) => {
   return (
     <StyledCategory template={template}>
       {category.map((it, index) => {

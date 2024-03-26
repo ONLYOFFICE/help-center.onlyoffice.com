@@ -13,16 +13,16 @@ const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeho
       src="https://static-helpcenter.onlyoffice.com/images/icons/search-icon.react.svg"
       style={{ cursor: "default" }}
       alt="search"
-      width="24px"
-      height="24px"
+      width="16px"
+      height="16px"
     />
   ) : (
     <img
       src="https://static-helpcenter.onlyoffice.com/images/icons/close-icon.react.svg"
       onClick={clearValueSearch}
       alt="close"
-      width="24px"
-      height="24px"
+      width="16px"
+      height="16px"
     />
   );
   /*eslint-enable*/

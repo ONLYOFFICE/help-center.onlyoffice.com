@@ -8,7 +8,7 @@ import findCategory from "@utils/helpers/Common/findLvlCategories";
 const Breadcrumbs = ({ t, article, category, categories, mainCategory, pagePath }) => {
   const router = useRouter();
   const currentPath = router.asPath;
-  const checkCategory = article && article.attributes.category.data.attributes.slug_id == "connectors" ? article?.attributes.url : pagePath;
+  const checkCategory = article && article.attributes.category.data.attributes.slug_id == "integration" ? article?.attributes.url : pagePath;
   const pathnames = article ? checkCategory?.split("/").filter((x) => x) : currentPath.split("/").filter((x) => x);
   const languagePrefixes = languages.map(language => language.shortKey);
 

@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useMemo, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import StyledLanguageSelector from "./styled-language-selector";
 import ItemsList from "./items-list";
-import languages from "@config/languages";
 
 const LanguageSelector = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +22,7 @@ const LanguageSelector = (props) => {
 
   const onClickHandler = (e) => {
     e.stopPropagation();
-    if (e.target.closest(".flag-image") || e.target.closest(".arrow-image") || e.target.closest(".language-item-link") || e.target.closest(".lang-name")) {
+    if (e.target.closest(".flag-image") || e.target.closest(".arrow-image") || e.target.closest(".language-item-link")) {
       setIsOpen(!isOpen);
       props.onClick && props.onClick(e);
     }
@@ -35,37 +34,26 @@ const LanguageSelector = (props) => {
 
   const { currentLanguage, t } = props;
 
-  const langName = useMemo(() => languages.map((language) => {
-    const { shortKey, name } = language;
-    if (shortKey === currentLanguage) {
-      return name;
-    }
-  }), [currentLanguage]);
-
-  const srcAlt = isOpen ? "arrow-up" : "arrow-down";
-
   return (
     <StyledLanguageSelector
       {...props}
       onClick={onClickHandler}
-      className="language-selector"
+      className="nav-item-lng"
       ref={selectorRef}
     >
-      <img
-        className="flag-image"
-        alt="flag"
-        src={`https://static-helpcenter.onlyoffice.com/images/flags/${currentLanguage}.react.svg`}
-        width={"24px"}
-        height={"24px"}
-      />
-      {/*eslint-disable*/}
-      <div className={`arrow-image`}>
-        <img src="https://static-helpcenter.onlyoffice.com/images/icons/arrow-right.react.svg" alt={srcAlt} />
+      <div className="selector">
+        <img
+          className="flag-image"
+          alt="flag"
+          src={`https://static-helpcenter.onlyoffice.com/images/flags/${currentLanguage}.react.svg`}
+          width={"24px"}
+          height={"24px"}
+        />
+        <img className={`arrow-image`} src="https://static-helpcenter.onlyoffice.com/images/icons/arrow-right.react.svg" alt="arrow" />
+
       </div>
-      {/*eslint-enable*/}
       <ItemsList
-        className={`languages-list lng-selector ${isOpen ? "language-selector-open" : "language-selector-closed"
-          }`}
+        className={`languages-list lng-selector ${isOpen ? "language-selector-open" : "language-selector-closed"}`}
         t={t}
         isOpen={isOpen}
         currentLanguage={currentLanguage}

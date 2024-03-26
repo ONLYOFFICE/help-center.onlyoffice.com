@@ -65,14 +65,10 @@ const StyledGuidesCards = styled(Section)`
 
       }
     }
-
-    @media ${device.tablet} {
-
-    }
   }
 
-  @media ${device.tablet} {
-    margin-top: 50px;
+  @media ${device.tabletS} {
+    padding: 48px 0;
   }
 `;
 

@@ -8,15 +8,14 @@ import ReactHtmlParser from "react-html-parser";
 import Heading from "@components/common/heading";
 
 const GuidesCell = ({ headData, category, linkData, mainCategory, t }) => {
-  //console.log(linkData);
   return (
     <StyledGuidesCell>
       <Box className="cell_header">
-        <Box className={`cell_icon ${(category == 'connectors' && mainCategory !== 'main') ? 'connectors' : ''}`}>
-          {category !== 'connectors' && headData.card_field_img?.data?.attributes.url && (
+        <Box className={`cell_icon ${(category == 'integration' && mainCategory !== 'main') ? 'integration' : ''}`}>
+          {category !== 'integration' && headData.card_field_img?.data?.attributes.url && (
             <img src={headData.card_field_img.data?.attributes.url} />
           )}
-          {category == 'connectors' && linkData && headData.card_field_img?.data?.attributes.url && (
+          {category == 'integration' && linkData && headData.card_field_img?.data?.attributes.url && (
             <img src={headData.card_field_img.data?.attributes.url} />
           )}
           {headData.url != null ? (
@@ -28,7 +27,7 @@ const GuidesCell = ({ headData, category, linkData, mainCategory, t }) => {
           ) : (
             <Heading className="presearch_title_link heading" label={t(headData.name)} />
           )}
-          {category === 'connectors' && !linkData && headData.connector_img?.data?.attributes.url && (
+          {category === 'integration' && !linkData && headData.connector_img?.data?.attributes.url && (
             <img src={headData.connector_img.data?.attributes.url} />
           )}
         </Box>

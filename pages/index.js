@@ -36,7 +36,7 @@ const Index = ({ locale, categories, integrationArticles, docsArticles, docspace
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={true} currentLanguage={locale} categories={categories.data} />
+        <HeadingContent t={t} template={true} currentLanguage={locale} categories={categories.data} isMain={true} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <InfoContent t={t} categories={categories.data} currentLanguage={locale} isCategory={false} />

@@ -74,7 +74,7 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, currentCa
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} />
+        <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} pageCategory={pageCategory} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         {pattern.test(pagePath)

@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
 import getAllArticles from "@lib/strapi/getArticles";
 import getAllCategories from "@lib/strapi/getCategories";
 
@@ -13,14 +14,15 @@ import GuidesCards from "@components/screens/main-content/guides-cards";
 
 const ConnectorsPage = ({ locale, articles, categories }) => {
   const { t } = useTranslation();
-  const pageCategory = "Connectors";
+  const pageCategory = "integration";
+
   const curArticles = useMemo(
-    () => articles.data.filter((it) => it.attributes.category.data?.attributes.slug_id === pageCategory.toLowerCase()),
+    () => articles.data.filter((it) => it.attributes.category.data?.attributes.slug_id === pageCategory),
     [articles]
   );
   
   const curCatInfo = useMemo(
-    () => categories.data.find((it) => it.attributes.slug_id === pageCategory.toLowerCase()),
+    () => categories.data.find((it) => it.attributes.slug_id === pageCategory),
     [categories]
   );
   return (
@@ -36,7 +38,7 @@ const ConnectorsPage = ({ locale, articles, categories }) => {
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} />
+        <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} pageCategory={pageCategory} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <InfoContent t={t} categories={categories.data} currentLanguage={locale} isCategory={true} category={curCatInfo.attributes} />

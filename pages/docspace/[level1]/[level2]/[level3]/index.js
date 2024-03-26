@@ -26,7 +26,12 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, currentCa
   const pattern = /[a-zA-Z0-9-]+\/[a-zA-Z0-9-]+\.aspx$/;
   const wordsArray = pagePath.split('/').filter(Boolean);
   const lastWord = wordsArray[wordsArray.length - 1];
-  const pageCategory = "Docs";
+  const pageCatSlug = (pageLoc + query.asPath).split('/')[1];
+
+  const { attributes: pageCategory } = useMemo(
+    () => categories?.data.find((it) => it.attributes.slug_id === pageCatSlug),
+    [categories]
+  );
 
   const { secondWord, urlBeforeLastSlashSlice } = (() => {
     const lastSlashIndex = pagePath.lastIndexOf('/');
@@ -74,7 +79,7 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, currentCa
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} />
+        <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} pageCategory={pageCategory} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         {pattern.test(pagePath)

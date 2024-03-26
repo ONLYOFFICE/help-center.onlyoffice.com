@@ -2,17 +2,23 @@ import React, { useState, useEffect } from "react";
 
 import LanguageSelector from "@components/common/language-selector";
 import InternalLink from "@components/common/internal-link";
-import { StyledMenu } from "./styled-menu";
+import StyledMenu from "./styled-menu";
 import Nav from "./nav/nav";
 import useWindowWidth from '@utils/helpers/System/useWindowProvider';
+import MenuSelector from "@components/common/menu-selector";
 
-const Menu = ({ t, currentLanguage, template, categories, ...rest }) => {
+const Menu = ({ t, currentLanguage, template, categories, isMain, pageCategory, ...rest }) => {
   const curLang = currentLanguage === "en" ? "/" : `/${currentLanguage}/`;
   const windowWidth = useWindowWidth();
+  const [isClient, setIsClient] = useState(false);
   const [stateMobile, setStateMobile] = useState(false);
   const toggleMobile = () => {
     setStateMobile(!stateMobile);
   };
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleClickOutside = (e) => {
     if (stateMobile && !e.target.closest(".nav-item-links")) {
@@ -31,20 +37,25 @@ const Menu = ({ t, currentLanguage, template, categories, ...rest }) => {
     };
   }, [stateMobile]);
 
- 
   return (
     <StyledMenu
       template={template}
-      className="navbar"
+      className={`navbar ${stateMobile ? "is-open" : ""}`}
+      isMain={isMain}
     >
       <InternalLink className="nav-item-logo" href={curLang}>
         <div className="site-logo"></div>
       </InternalLink>
-      {/* {typeof window !== 'undefined' && windowWidth <= 1000 && (<img
-        src="https://static-helpcenter.onlyoffice.com/images/icons/mob_menu.react.svg"
-        className="nav-items-mobile"
-        onClick={toggleMobile}
-      />)} */}
+      {isClient && (
+        (windowWidth <= 1000 && windowWidth > 592) || (windowWidth <= 592 && !isMain) ? (
+          <img
+            src="https://static-helpcenter.onlyoffice.com/images/icons/mob_menu_white.react.svg"
+            className="nav-items-mobile"
+            onClick={toggleMobile}
+          />
+        ) : null
+      )}
+      <div className="overlay"></div>
       <Nav
         currentLanguage={currentLanguage}
         className="nav-item-links"
@@ -54,9 +65,10 @@ const Menu = ({ t, currentLanguage, template, categories, ...rest }) => {
         onClickPND={toggleMobile}
         windowWidth={windowWidth}
       />
-      <div className="nav-item-lng">
-        <LanguageSelector t={t} currentLanguage={currentLanguage} />
-      </div>
+      {isClient && windowWidth <= 592 && (
+        <MenuSelector t={t} categories={categories} pageCategory={pageCategory} />
+      )}
+      <LanguageSelector t={t} currentLanguage={currentLanguage} />
     </StyledMenu>
   );
 };

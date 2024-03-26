@@ -5,10 +5,10 @@ const StyledSearchArea = styled.div`
   background-color: #f5f5f5;
   position: relative;
   width: 100%;
-  padding: 164px 0 80px;
+  padding: 102px 0 80px;
 
   &.cat_search {
-    padding: 72px 0;
+    padding: 72px 0 0;
   }
 
   .search_container {
@@ -50,47 +50,38 @@ const StyledSearchArea = styled.div`
     display: flex;
     z-index: 2;
     transform: translateX(12px);
+    position: absolute;
+    right: 24px;
+    padding: 16px 8px;
 
     svg {
       cursor: pointer;
-      fill: "#AAAAAA";
+      fill: "#444444";
     }
   }
 
-  @media ${device.laptopM} {
-    .search_container {
-      max-width: 928px;
-    }
-  }
-  @media ${device.laptop} {
-    .search_container {
-      margin: 76px auto 0;
-      padding: 0 12px;
-    }
+  @media ${device.tabletS} {
+    padding: 100px 0 55px;
 
-    .search_icon {
-      left: 31px;
+    &.cat_search {
+      padding: 56px 0;
     }
 
     .search_input {
-      height: 68px;
-    }
-  }
-  @media (max-width: 600px) {
-    padding: 100px 0 55px;
-
-    .input-label {
-      padding: 0 8px;
+      padding: 13px 28px;
+      height: 48px;
     }
 
-    .search_icon {
-      padding: 16px 8px;
+    .presearch_title {
+      font-size: 28px;
+      line-height: 48px;
     }
-  }
-  @media ${device.mobile} {
-    .input-label {
-      font-size: 14px;
-      top: 35%;
+
+    .presearch_bx {
+      > img {
+        height: 48px;
+        width: 48px;
+      }
     }
   }
 `;

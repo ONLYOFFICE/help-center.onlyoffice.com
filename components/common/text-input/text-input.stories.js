@@ -16,7 +16,6 @@ export default {
 const Template = ({ ...args }) => {
   const [value, setValue] = React.useState("");
   const onChangeHandler = (e) => {
-    console.log(e.target.value);
     setValue(e.target.value);
   };
   return (

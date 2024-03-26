@@ -44,7 +44,7 @@ const StyledGuidesCell = styled.div`
 
     .cell_icon {
       gap: 24px;
-      &.connectors {
+      &.integration {
         justify-content: space-between;
         width: 100%;
       }

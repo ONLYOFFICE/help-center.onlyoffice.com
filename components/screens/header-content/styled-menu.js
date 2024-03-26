@@ -3,86 +3,60 @@ import { device } from "@components/utils/devices";
 
 const StyledMenuTablet = css`
   display: grid;
-  padding: 0 16px;
-  height: 72px;
-  grid-template-columns: 20px auto 50px;
+  padding: 0 40px;
+  grid-template-columns: 20px auto 40px;
   justify-content: space-between;
 
   .site-logo {
     width: 186px;
   }
 
-    .nav-items-mobile {
-      display: block;
-      grid-column-start: 1;
-      grid-column-end: 2;
-      grid-row-start: 1;
-      grid-row-end: 1;
-      padding-top: 6px;
-      div {
-        svg {
-          rect {
-            fill: ${(props) => (!props.template ? "#666" : "white")};
-          }
-        }
+  .nav-items-mobile {
+    display: block;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    cursor: pointer;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.27);
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1001;
+  }
+
+  &.is-open {
+      .nav-items-mobile {
+        transform: translate3d(300px, 0, 0) translateX(-50%);
       }
-      cursor: pointer;
-    }
+  
+      .nav-item-logo, .nav-item-lng {
+        transform: translate3d(380px, 0, 0) translateX(-50%);
+      }
+  
+      .overlay {
+        opacity: 1;
+        visibility: visible;
+      }
+  }
 
   @media ${device.tabletS} {
-  height: 56px;
-  }
-
-  @media ${device.mobileL} {
-      height: fit-content;
-      padding: 0;
-      grid-template-rows: 48px 58px;
-      grid-template-columns: 50px 1fr 50px;
-    .link {
-      grid-column-start: 1;
-      grid-column-end: 4;
-      grid-row-start: 1;
-      grid-row-end: 1; 
-      width: 100%;
-      > button {
-        height: 48px;
-        width: 100%;
-      }
-  }
-  a,
-  .language-selector,
-  .nav-items-mobile {
-    grid-row-start: 2;
-    grid-row-end: 2; 
-  }
-  .nav-items-mobile {
-    padding-left: 16px;
-  }
-    //grid-template-columns: 1fr 1fr 2fr auto 2fr 1fr 1fr;
-    //height: 56px;
-    //padding: 0;
-    /* .nav-item-lng {
-      grid-column-start: 6;
-      grid-column-end: 7;
-      grid-row-start: 2;
-      grid-row-end: 2;
-    }
-    a {
-      grid-column-start: 4;
-      grid-column-end: 5;
-      grid-row-start: 2;
-      grid-row-end: 2;
-    }
-    .nav-items-mobile {
-      grid-column-start: 2;
-      grid-column-end: 3;
-      grid-row-start: 2;
-      grid-row-end: 2;
-    } */
+    height: 56px;
+    grid-template-columns: ${(props) => (props.isMain ? "30px 1fr 36px" : "24px 30px 1fr 36px")};
+    gap: 32px;
+    padding: 0 16px;
 
     .site-logo {
-      margin: 0 auto;
-      //background: url(../images/logo/logo-mobile.react.svg) no-repeat 20px 50%;
+      background-image: url('https://static-helpcenter.onlyoffice.com/images/logo/logo-mobile.react.svg');
+      width: 30px;
     }
   }
 `;
@@ -116,12 +90,6 @@ const StyledMenu = styled.div`
     }
   }
 
-  .nav-item-lng {
-    display: flex;
-    column-gap: 22px;
-    align-items: center;
-  }
-
   @media ${device.laptopL} {
     padding: 0 2vw;
   }
@@ -131,15 +99,4 @@ const StyledMenu = styled.div`
   }
 `;
 
-const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
-  z-index: 999;
-  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
-`;
-
-export { StyledMenu, Overlay };
+export default StyledMenu;
