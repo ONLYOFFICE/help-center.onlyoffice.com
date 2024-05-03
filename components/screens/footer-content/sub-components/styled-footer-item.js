@@ -4,10 +4,10 @@ import { device } from "@components/utils/devices";
 const StyledFooterTablet = css`
   display: block;
   padding: 16px 0;
-  border-bottom: 1px solid rgba(204, 204, 204, .3);
+  border-bottom: 1px solid #cccccc;
 
   .footer-item-heading {
-    color: #808080;
+    color: #ffffff;
     font-weight: 600;
     padding: 6px 0 3px;
     cursor: pointer;
@@ -24,14 +24,6 @@ const StyledFooterTablet = css`
     transition: 0.3s linear;
     &.up {
       transform: rotate(180deg);
-    }
-
-    div {
-      svg {
-        path {
-          fill: white;
-        }
-      }
     }
   }
 
@@ -60,13 +52,15 @@ const StyledFooterTablet = css`
 `;
 
 const StyledFooterItem = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
   position: relative;
   padding: 0 0 25px;
   white-space: break-spaces;
 
   .footer-items-group {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     max-height: 100%;
   }
 
@@ -100,12 +94,7 @@ const StyledFooterItem = styled.div`
     display: none;
   }
 
-  @media ${device.laptop} {
-    padding: 0;
-  }
-
   @media ${device.tabletS} {
-    //@media (max-width: 812px) {
     ${StyledFooterTablet};
   }
 `;

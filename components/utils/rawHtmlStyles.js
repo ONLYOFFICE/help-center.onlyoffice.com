@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { device } from "@components/utils/devices";
 
 const RawHtmlStyle = styled.div`
-padding: 64px 0 0;
+padding: 24px 0 0;
   .raw-html-embed {
     z-index: 1;
     position: relative;
@@ -11,11 +11,30 @@ padding: 64px 0 0;
       margin: 0;
       padding: 0;
     }
+
     // tables
-    table.table_versionlist {
+    table {
+      border-spacing: 0;
       margin: 10px 0 20px;
       text-align: center;
       width: 100%;
+
+      &.table_portslist {
+        text-align: left;
+        td img {
+          margin: 0;
+        }
+
+        &.common_ports {
+          th.table_port, td.table_port {
+            text-align: right;
+          }
+        }
+      }
+
+      &.table_parameters {
+        text-align: left;
+      }
   
       &.sticky_table {
           th {
@@ -187,7 +206,7 @@ padding: 64px 0 0;
       }
   
       td {
-          //border-bottom: 1px solid @helpTableBorderColor;
+          border-bottom: 1px solid #d7d8dc;
           font-weight: 400;
           padding: 8px;
           vertical-align: middle;
@@ -200,7 +219,7 @@ padding: 64px 0 0;
       }
   
       th {
-          //border-bottom: 1px solid @helpTableBorderColor;
+          border-bottom: 1px solid #d7d8dc;
           color: #333;
           font-size: 16px;
           font-weight: 600;
@@ -517,6 +536,45 @@ padding: 64px 0 0;
       display: none;
     }
 
+
+    // inputs 
+
+    input {
+        display: none;
+    }
+
+    input[type="radio"] {
+        vertical-align: text-bottom;
+    }
+
+    input+label {
+        background: #eee;
+        border: 1px solid #999;
+        border-radius: 4px 4px 0 0;
+        display: inline-block;
+        padding: 4px 12px;
+        position: relative;
+        top: 1px;
+    }
+
+    input:checked+label {
+        background: #fff;
+        border-bottom: 1px solid transparent;
+    }
+
+    input~.tab {
+        border-top: 1px solid #999;
+        padding: 12px;
+    }
+
+    input~.tab {
+        display: none;
+    }
+
+    #tab1:checked~.tab.content1, #tab2:checked~.tab.content2, #tab3:checked~.tab.content3, #tab4:checked~.tab.content4, #tab5:checked~.tab.content5, #tab6:checked~.tab.content6, #tab7:checked~.tab.content7 {
+        display: block;
+    }
+
     // styles classes 
     .without_padding {
       padding: 0 !important;
@@ -553,7 +611,7 @@ padding: 64px 0 0;
 
     @media ${device.tabletL} {
       img {
-        width: 100%;
+       // width: 100%;
       }
       img.bigphoto_screen {
         display: block;
@@ -568,6 +626,15 @@ padding: 64px 0 0;
     @media ${device.tabletS} {
       img[target] {
         width: 100%;
+      }
+
+      table {
+        display: block;
+        overflow-x: scroll;
+
+        img {
+          width: auto;
+        }
       }
     }
 }

@@ -20,7 +20,7 @@ const ConnectorsPage = ({ locale, articles, categories }) => {
     () => articles.data.filter((it) => it.attributes.category.data?.attributes.slug_id === pageCategory),
     [articles]
   );
-  
+
   const curCatInfo = useMemo(
     () => categories.data.find((it) => it.attributes.slug_id === pageCategory),
     [categories]

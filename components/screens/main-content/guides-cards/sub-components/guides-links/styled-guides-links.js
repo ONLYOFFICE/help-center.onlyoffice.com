@@ -6,7 +6,7 @@ const StyledGuidesLinks = styled.div`
     border-top: 1px solid #ccc;
     display: flex;
     padding: 24px 32px 32px;
-    gap: 0 32px;
+    gap: 32px;
 
     .con-box {
       align-items: start;
@@ -35,6 +35,14 @@ const StyledGuidesLinks = styled.div`
             line-height: 19px;
             text-transform: none;
         }
+    }
+
+    @media ${device.tablet} {
+      flex-direction: column;
+
+      .con-box {
+        width: 100%;
+      }
     }
 `;
 

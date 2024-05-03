@@ -1,7 +1,6 @@
 const Items = [
   {
     className: "products",
-    position: 1,
     heading: "products",
     link: [
       {
@@ -17,7 +16,7 @@ const Items = [
       {
         localize: false,
         label: "Workspace",
-        href: "",
+        href: "/workspace",
       },
       {
         localize: false,
@@ -38,7 +37,6 @@ const Items = [
   },
   {
     className: "collaborate",
-    position: 2,
     heading: "collaborate",
     link: [
       {
@@ -49,7 +47,7 @@ const Items = [
       {
         localize: false,
         label: "For translators",
-        href: "",
+        href: "/become-translator.aspx",
       },
       {
         localize: true,
@@ -65,19 +63,17 @@ const Items = [
   },
   {
     className: "get_news",
-    position: 2,
     heading: "Get news",
     link: [
       {
-        localize: false,
+        localize: true,
         label: "Blog",
-        href: "https://wwww.onlyoffice.com/blog/",
+        href: "/blog/",
       },
     ],
   },
   {
     className: "get_help",
-    position: 3,
     heading: "get help",
     link: [
       {
@@ -103,7 +99,7 @@ const Items = [
       {
         localize: true,
         label: "Support contact form",
-        href: "",
+        href: "/support-contact-form.aspx",
       },
       {
         localize: true,
@@ -114,7 +110,6 @@ const Items = [
   },
   {
     className: "contacts",
-    position: 4,
     heading: "Contact us",
     link: [
       {
@@ -139,11 +134,6 @@ const Items = [
         localize: true,
         label: "Request a Call",
         href: "/call-back-form.aspx",
-      },
-      {
-        localize: true,
-        label: "Home site",
-        href: "",
       }
     ],
   },

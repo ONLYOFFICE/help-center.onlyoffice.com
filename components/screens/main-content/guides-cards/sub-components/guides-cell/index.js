@@ -31,9 +31,9 @@ const GuidesCell = ({ headData, category, linkData, mainCategory, t }) => {
             <img src={headData.connector_img.data?.attributes.url} />
           )}
         </Box>
-        <Box className="cell_header_links">
+       {headData.description && <Box className="cell_header_links">
           <Text>{ReactHtmlParser(headData.description)}</Text>
-        </Box>
+        </Box>}
       </Box>
       {linkData && <GuidesLinks t={t} mainArticles={linkData} mainCategory={mainCategory} category={category} />}
     </StyledGuidesCell>

@@ -44,6 +44,10 @@ const StyledGuidesCell = styled.div`
 
     .cell_icon {
       gap: 24px;
+      > img {
+        height: 48px;
+        width: 48px;
+      }
       &.integration {
         justify-content: space-between;
         width: 100%;

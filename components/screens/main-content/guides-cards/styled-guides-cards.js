@@ -67,6 +67,14 @@ const StyledGuidesCards = styled(Section)`
     }
   }
 
+  @media ${device.laptop} {
+    padding: 80px 0 88px;
+  }
+
+  @media ${device.laptop} {
+    padding: 80px 0 80px;
+  }
+
   @media ${device.tabletS} {
     padding: 48px 0;
   }

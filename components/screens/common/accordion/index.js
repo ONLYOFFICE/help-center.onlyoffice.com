@@ -133,9 +133,9 @@ const AccordionContent = ({ t, currentLanguage }) => {
     <StyledAccordionContent>
       <Section
         background="#FFFFFF"
-        padding="56px 0 112px"
-        tabletPadding="80px 0 78px"
-        mobileLPadding="48px 0 51px"
+        padding="0px 0 112px"
+        tabletPadding="0px 0 88px"
+        mobileLPadding="0px 0 48px"
       >
         <Heading className="titleAccordion" level={3}>
           {t("Frequently Asked Questions")}

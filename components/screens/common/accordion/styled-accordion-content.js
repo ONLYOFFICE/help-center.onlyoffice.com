@@ -3,6 +3,7 @@ import Section from "../section";
 import { device } from "@components/utils/devices";
 
 const StyledAccordionContent = styled(Section)`
+  padding: 0;
   .text-trans-accordion {
     display: initial;
     vertical-align: bottom;
@@ -18,12 +19,16 @@ const StyledAccordionContent = styled(Section)`
     }
   }
   .titleAccordion {
-    margin-bottom: 56px;
+    padding: 0 0 56px;
     letter-spacing: -0.02em;
 
-    @media ${device.mobileL} {
-      margin-bottom: 8px;
-      padding: 0 0 40px;
+    @media ${device.tablet} {
+      padding: 0 0 48px;
+    }
+
+    @media ${device.tabletS} {
+      font-size: 20px;
+      padding: 0 0 32px;
     }
   }
 `;

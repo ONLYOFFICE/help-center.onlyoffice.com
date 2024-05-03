@@ -5,10 +5,11 @@ const StyledSingleLayout = styled.div`
   box-sizing: border-box;
   position: relative;
   display: flex;
+  justify-content: center;
   width: 100%;
   max-width: 1120px;
   margin: 72px auto 0;
-  padding: 0 32px;
+  padding: 0;
 
   .section-page {
     .cell_container {

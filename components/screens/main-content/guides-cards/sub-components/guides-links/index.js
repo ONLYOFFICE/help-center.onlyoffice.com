@@ -3,23 +3,13 @@ import { isInternalLink } from 'is-internal-link';
 import StyledGuidesLinks from "./styled-guides-links";
 import Box from "@components/common/box";
 import InternalLink from "@components/common/internal-link";
-import filterDocsArticles from "@utils/helpers/DocsCategory/filterForDocsCategory";
-import filterDesktopArticles from '@utils/helpers/DesktopCategory/filterForDesktopCategory';
-import filterDocSpaceArticles from "@utils/helpers/DocSpaceCategory/filterForDocSpaceCategory";
-import filterWorkspaceArticles from '@utils/helpers/WorkspaceCategory/filterForWorkspaceCategory';
-import filterMobileArticles from '@utils/helpers/MobileCategory/filterForMobileCategory';
+import filterArticles from "@utils/helpers/Common/filterForAllCategories";
 import filterMainArticles from '@utils/helpers/Common/filterForMainPage';
 
 const GuidesLinks = ({ mainArticles, category, mainCategory, t }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const dataCardsDocs = mainCategory.toLowerCase() === 'docs' && filterDocsArticles(mainArticles, category);
-  const dataCardsDesktop = mainCategory.toLowerCase() === 'desktop' && filterDesktopArticles(mainArticles, category);
-  const dataCardsDocSpace = mainCategory.toLowerCase() === 'docspace' && filterDocSpaceArticles(mainArticles, category);
-  const dataCardsWorkspace = mainCategory.toLowerCase() === 'workspace' && filterWorkspaceArticles(mainArticles, category);
-  //const dataCardsMobile = mainCategory.toLowerCase() === 'mobile' && filterMobileArticles(mainArticles, category);
-
-  const dataCardsCommon = mainCategory.toLowerCase() === 'main' && filterMainArticles(mainArticles, category);
+  const dataCards = mainCategory.toLowerCase() === 'main' ? filterMainArticles(mainArticles, category) : filterArticles(mainArticles, category, mainCategory);
 
   useEffect(() => {
     if (mainArticles !== null && mainArticles !== undefined) {
@@ -30,25 +20,8 @@ const GuidesLinks = ({ mainArticles, category, mainCategory, t }) => {
         case 'integration':
           setData(mainArticles);
           break;
-        case 'docs':
-          setData(dataCardsDocs);
-          break;
-        case 'desktop':
-          setData(dataCardsDesktop);
-          break;
-        case 'workspace':
-          setData(dataCardsWorkspace);
-          break;
-        case 'docspace':
-          setData(dataCardsDocSpace);
-          break;
-        // case 'mobile':
-        //   setData(dataCardsMobile);
-        //   break;
-        case 'main':
-          setData(dataCardsCommon);
-          break;
         default:
+          setData(dataCards);
           break;
       }
     }

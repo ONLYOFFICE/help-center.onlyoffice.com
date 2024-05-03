@@ -5,7 +5,7 @@ const StyledContent = styled.div`
   box-sizing: border-box;
   padding: 32px 0px 112px 32px;
   width: 100%;
-  max-width: 904px;
+  max-width: 832px;
   color: #333333;
 
   &.wrapper {

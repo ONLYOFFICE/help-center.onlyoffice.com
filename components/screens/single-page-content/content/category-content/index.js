@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import ReactHtmlParser from "react-html-parser";
 import StyledContent from "@components/screens/single-page-content/content/styled-content";
 import Breadcrumbs from "@components/common/breadcrumbs";
-import CategoryItem from "../sub-components/category-docs-item";
+import CategoryItem from "../sub-components/category-item";
 import StyledSingleContent from "../../styled-single-content";
 import LeftMenu from "@components/screens/single-page-content/sub-components/left-menu";
 import checkCategoryMatch from "@utils/helpers/Common/checkCategory";

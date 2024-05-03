@@ -6,7 +6,6 @@ import CenterArticleContent from "./content/article-content";
 const SingleContent = ({
   t,
   article,
-  articles,
   children,
   tags,
   category,
@@ -15,7 +14,7 @@ const SingleContent = ({
   isTagPage,
   videos,
   currentLanguage,
-  pagepath,
+  pagePath,
   ...rest
 }) => {
 
@@ -24,8 +23,6 @@ const SingleContent = ({
   const handleActiveItemChange = (item) => {
     setActiveItem(item);
   };
-
-  const isArticle = true;
 
   const articleProps = {
     article,
@@ -37,12 +34,11 @@ const SingleContent = ({
     handleActiveItemChange,
     currentLanguage,
     children,
-    pagepath,
+    pagePath,
     t,
   };
   const menuProps = {
     article,
-    articles,
     categories,
     isCategory,
     category,
@@ -50,13 +46,12 @@ const SingleContent = ({
     currentLanguage,
     children,
     t,
-    activeItem,
-    isArticle
+    activeItem
   };
 
   return (
     <StyledSingleContent {...rest}>
-      <LeftMenu {...menuProps} />
+      <LeftMenu {...menuProps} isArticle={true} />
       <CenterArticleContent {...articleProps} />
     </StyledSingleContent>
   );

@@ -49,7 +49,10 @@ padding: 19px 0 19px 40px;
 
 @media ${device.tabletS} {
   .accordion__heading {
-      font-size: 16px;
+      font-size: 13px;
+  }
+  .accordion__text {
+    font-size: 13px;
   }
 }
 `;

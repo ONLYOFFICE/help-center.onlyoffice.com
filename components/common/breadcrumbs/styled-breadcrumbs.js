@@ -30,6 +30,8 @@ const StyledBreadcrumb = styled.div`
   }
   .breadcrumb-links.last{
     color: #ff6f3d;
+    line-height: 133%;
+    display: inline-flex;
     :after {
       display: none;
     }

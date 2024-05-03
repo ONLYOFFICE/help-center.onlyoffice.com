@@ -7,26 +7,29 @@ import checkPlatformMatch from "@utils/helpers/Common/checkPlatforms";
 const CategoryItem = ({
   data, t, currentLanguage
 }) => {
-  const categoryPic = data?.name.toLowerCase().replace(/ /g, "_");
-  const level3 = data?.level_3;
+  const categoryPic = data?.name?.toLowerCase().replace(/ /g, "_");
+  const level = data?.level_3 || data?.level_4;
+  const path = checkPlatformMatch(data.name) ? `24px_${categoryPic}` : `${categoryPic}`;
+  const sysReqItem = level?.find(item => item.name.includes(t('SystemRequirements')));
+  const troubleShootingItem = level?.find(item => item.name.includes(t('Troubleshooting')));
 
   return (
     <StyledCategoryItem>
-      <Heading level={4}>{checkPlatformMatch(data.name) && categoryPic && <img src={`https://static-helpcenter.onlyoffice.com/images/icons/${categoryPic}.react.svg`} alt={data.name} style={{ fontSize: "10px" }} />}<Link href={data.url}>{data.name}</Link></Heading>
+      <Heading level={4}>{checkPlatformMatch(data.name) && <img src={`https://static-helpcenter.onlyoffice.com/images/icons/${path}.react.svg`} alt={data.name} style={{ fontSize: "10px" }} />}<Link href={data.url}>{data.name} {checkPlatformMatch(data.name) && t("Version")}</Link></Heading>
       <ul className="subcategory">
-        {level3?.map((it, index) => {
-          const level3pic = it?.name.toLowerCase();
+        {level?.map((it, index) => {
+          const levelpic = it?.name.toLowerCase();
           return (
             <React.Fragment key={index}>
               {
-                it.name === "docker" ? <li className="sublink" key={index}>
-                  <a href={it.url}>
-                    <img src={`https://static-helpcenter.onlyoffice.com/images/icons/16px_${level3pic}.react.svg`} alt={it.name} style={{ fontSize: "10px" }} />
-                    {it.name}</a>
+                checkPlatformMatch(it.name) ? <li className="sublink dlw" key={index}>
+                  <Link href={it.url}>
+                    <img src={`https://static-helpcenter.onlyoffice.com/images/icons/16px_${levelpic}.react.svg`} alt={it.name} style={{ fontSize: "10px" }} />
+                    {it.name} {t("Version")}</Link>
+                </li> : sysReqItem || troubleShootingItem ? <li className="sublink" key={index}>
+                  <Link href={it.level_5[0]?.url}>{it.name}</Link>
                 </li> : <li className="sublink" key={index}>
-                  <a href={it.url}>
-                    <img src={`https://static-helpcenter.onlyoffice.com/images/icons/16px_${level3pic}.react.svg`} alt={it.name} style={{ fontSize: "10px" }} />
-                    {it.name}</a>
+                  <Link href={it.url}>{it.name}</Link>
                 </li>
               }
             </React.Fragment>

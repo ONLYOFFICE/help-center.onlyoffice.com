@@ -20,22 +20,16 @@ const FooterItem = ({ dis, children, className, heading }) => {
 
   return (
     <StyledFooterItem isOpen={isOpen} className={footerItemClassName}>
-      <Heading
+      {heading && <Heading
         className="footer-item-heading"
         level={6}
         onClick={dis && onHandleClick}
         label={heading}
-      />
+      />}
       <img
         src="https://static-helpcenter.onlyoffice.com/images/icons/chevron-down.react.svg"
         className={footerImageArrow}
       />
-      {/* <img
-        className={footerImageArrow}
-        src="/images/icons/chevron-down.react.svg"
-        height="24px"
-        width="24px"
-      /> */}
       <div ref={content} className="footer-items-group">
         {children}
       </div>

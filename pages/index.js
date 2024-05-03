@@ -6,7 +6,7 @@ import getAllCategories from "@lib/strapi/getCategories";
 import getAllDocsArticles from "@lib/strapi/getDocsArticles";
 import getAllDesktopArticles from "@lib/strapi/getDesktopArticles";
 import getAllMobileArticles from "@lib/strapi/getMobileArticles";
-import getAllDocSpaceArticles from "@lib/strapi/getDocSpaceArticles";
+import getAllDocSpaceArticles from "@lib/strapi/getDocspaceArticles";
 import getAllWorkspaceArticles from "@lib/strapi/getWorkspaceArticles";
 
 import Layout from "@components/layout";
@@ -26,7 +26,7 @@ const Index = ({ locale, categories, integrationArticles, docsArticles, docspace
   return (
     <Layout>
       <Layout.PageHead>
-      <HeadSEO
+        <HeadSEO
           title={t("titleIndexPage")}
           metaSiteNameOg={t("metaSiteNameOg")}
           metaDescription={t("titleIndexPage")}

@@ -6,7 +6,7 @@ const StyledNav = styled.nav`
   justify-content: center;
   gap: 8px;
   margin: 0 auto;
-  padding: 0 132px 0 88px;
+  padding: 0 132px 0 0px;
 
   .nav-item {
     text-decoration: none;
