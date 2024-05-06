@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import getAllVideos from "@lib/strapi/getVideos";
-import getAllTags from "@lib/strapi/getTags";
+// import getAllVideos from "@lib/strapi/getVideos";
+// import getAllTags from "@lib/strapi/getTags";
 import getAllCommonCategories from "@lib/strapi/getCategories";
 
 import Layout from "@components/layout";
@@ -43,9 +43,9 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, currentCa
             t={t}
             currentLanguage={locale}
             article={articles.data[0]}
-            tags={tags.data}
+           // tags={tags.data}
             isCategory={false}
-            videos={videos.data}
+           // videos={videos.data}
             category={category.data[0].attributes}
             categories={categories.data}
             pagePath={link}
@@ -78,8 +78,8 @@ export async function getServerSideProps({ locale, params }) {
 
   const [articles, currentCategory, category, categories, videos, tags] = await Promise.all([
     getAllArticles(locale, params.level1 || '', pageUrl), getAllCategories(locale, params.level1 || ''),
-    getAllCommonCategories(locale, categorySlug || ''), getAllCommonCategories(locale),
-    getAllVideos(locale), getAllTags(locale)
+    getAllCommonCategories(locale, categorySlug || ''), getAllCommonCategories(locale)
+   // getAllVideos(locale), getAllTags(locale)
   ]);
 
   return {
@@ -90,31 +90,11 @@ export async function getServerSideProps({ locale, params }) {
       category,
       categories,
       currentCategory,
-      videos,
-      tags,
+    //  videos,
+    //  tags,
       params
     },
   };
 }
-// export async function getServerSideProps({ locale }) {
-//   const articles = await getAllArticles(locale);
-//   const videos = await getAllVideos(locale);
-//   const tags = await getAllTags(locale);
-//   const categories = await getAllCommonCategories(locale);
-//   const currentCategories = await getAllCategories(locale);
-
-
-//   return {
-//     props: {
-//       ...(await serverSideTranslations(locale, "common")),
-//       locale,
-//       articles,
-//       videos,
-//       tags,
-//       categories,
-//       currentCategories
-//     },
-//   };
-// }
 
 export default subcategoryPage;

@@ -3,8 +3,8 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import getAllArticles from "@lib/strapi/getArticles";
-import getAllVideos from "@lib/strapi/getVideos";
-import getAllTags from "@lib/strapi/getTags";
+// import getAllVideos from "@lib/strapi/getVideos";
+// import getAllTags from "@lib/strapi/getTags";
 import getAllCategories from "@lib/strapi/getCategories";
 
 import Layout from "@components/layout";
@@ -13,7 +13,7 @@ import Footer from "@components/screens/footer-content";
 import SingleContent from "@components/screens/single-page-content";
 import HeadSEO from "@components/screens/head-content";
 
-const articlePage = ({ locale, articles, videos, tags, categories }) => {
+const articlePage = ({ locale, articles, categories }) => {
   const { t } = useTranslation();
   const query = useRouter();
   const pageLoc = query.locale !== "en" ? query.locale : "";
@@ -51,9 +51,9 @@ const articlePage = ({ locale, articles, videos, tags, categories }) => {
           currentLanguage={locale}
           article={pageData}
           articles={articles.data}
-          tags={tags.data}
+          //tags={tags.data}
           isCategory={false}
-          videos={videos.data}
+          //videos={videos.data}
           category={pageCategory}
         />
       </Layout.SectionMain>
@@ -66,8 +66,8 @@ const articlePage = ({ locale, articles, videos, tags, categories }) => {
 
 export async function getServerSideProps({ locale }) {
   const articles = await getAllArticles(locale);
-  const videos = await getAllVideos(locale);
-  const tags = await getAllTags(locale);
+  //const videos = await getAllVideos(locale);
+  //const tags = await getAllTags(locale);
   const categories = await getAllCategories(locale);
 
   return {
@@ -75,8 +75,8 @@ export async function getServerSideProps({ locale }) {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       articles,
-      videos,
-      tags,
+     // videos,
+     // tags,
       categories
     },
   };

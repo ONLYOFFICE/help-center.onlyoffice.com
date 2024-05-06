@@ -2,8 +2,8 @@ import React, { useMemo } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getAllCommonCategories from "@lib/strapi/getCategories";
-import getAllVideos from "@lib/strapi/getVideos";
-import getAllTags from "@lib/strapi/getTags";
+// import getAllVideos from "@lib/strapi/getVideos";
+// import getAllTags from "@lib/strapi/getTags";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
@@ -50,9 +50,9 @@ const subcategoryPage = ({ locale, articles, currentCategory, categories, catego
             t={t}
             currentLanguage={locale}
             article={articles.data[0]}
-            tags={tags.data}
+           // tags={tags.data}
             isCategory={false}
-            videos={videos.data}
+           // videos={videos.data}
             category={category.data[0].attributes}
             categories={currentCategory.data[0].attributes}
             pagePath={link}
@@ -95,8 +95,8 @@ export async function getServerSideProps({ locale, params }) {
 
   const [articles, currentCategory, category, categories, videos, tags] = await Promise.all([
     getAllArticles(locale, level1 || '', pageUrl), getAllCategories(locale, level1 || ''),
-    getAllCommonCategories(locale, categorySlug || ''), getAllCommonCategories(locale),
-    getAllVideos(locale), getAllTags(locale)
+    getAllCommonCategories(locale, categorySlug || ''), getAllCommonCategories(locale)
+   // getAllVideos(locale), getAllTags(locale)
   ]);
 
   return {
@@ -107,8 +107,8 @@ export async function getServerSideProps({ locale, params }) {
       category,
       categories,
       currentCategory,
-      videos,
-      tags,
+     // videos,
+     // tags,
       params
     },
   };

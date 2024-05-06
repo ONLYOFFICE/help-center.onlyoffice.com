@@ -6,7 +6,7 @@ import getAllCategories from "@lib/strapi/getCategories";
 import getAllDocsArticles from "@lib/strapi/getDocsArticles";
 import getAllDesktopArticles from "@lib/strapi/getDesktopArticles";
 import getAllMobileArticles from "@lib/strapi/getMobileArticles";
-import getAllDocSpaceArticles from "@lib/strapi/getDocspaceArticles";
+import getAllDocspaceArticles from "@lib/strapi/getDocspaceArticles";
 import getAllWorkspaceArticles from "@lib/strapi/getWorkspaceArticles";
 
 import Layout from "@components/layout";
@@ -55,7 +55,7 @@ export const getStaticProps = async ({ locale }) => {
   const docsArticles = await getAllDocsArticles(locale);
   const desktopArticles = await getAllDesktopArticles(locale);
   const mobileArticles = await getAllMobileArticles(locale);
-  const docspaceArticles = await getAllDocSpaceArticles(locale);
+  const docspaceArticles = await getAllDocspaceArticles(locale);
   const workspaceArticles = await getAllWorkspaceArticles(locale);
   const categories = await getAllCategories(locale);
 
