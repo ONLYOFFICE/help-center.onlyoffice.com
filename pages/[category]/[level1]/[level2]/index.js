@@ -54,7 +54,7 @@ const subcategoryPage = ({ locale, articles, currentCategory, categories, catego
             isCategory={false}
            // videos={videos.data}
             category={category.data[0].attributes}
-            categories={currentCategory.data[0].attributes}
+            categories={currentCategory?.data[0].attributes}
             pagePath={link}
           />
           : isSubCat
@@ -63,7 +63,7 @@ const subcategoryPage = ({ locale, articles, currentCategory, categories, catego
               currentLanguage={locale}
               articles={currentSorted?.level_3}
               category={currentSorted}
-              categories={currentCategory.data[0].attributes}
+              categories={currentCategory?.data[0].attributes}
               isCategory={false}
               pageMainCategory={category.data[0].attributes} />
             : <CenterCategoryContent
@@ -71,7 +71,7 @@ const subcategoryPage = ({ locale, articles, currentCategory, categories, catego
               currentLanguage={locale}
               articles={currentSorted?.level_3}
               category={currentSorted}
-              categories={currentCategory.data[0].attributes}
+              categories={currentCategory?.data[0].attributes}
               isCategory={true}
               mainCategory={category.data[0].attributes} />}
       </Layout.SectionMain>
