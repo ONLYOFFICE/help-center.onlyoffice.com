@@ -8,7 +8,7 @@ import TreeView from "@components/common/treeview";
 import leftMenuGenerating from '@utils/helpers/Menu/leftMenuGenerating';
 import checkPrevPage from "@utils/helpers/Menu/checkPrevPage";
 
-const LeftMenu = ({ t, isCategory, articles, article, category, categories, activeItem, handleActiveItemChange, currentLanguage, isArticle, ...rest }) => {
+const LeftMenu = ({ t, isCategory, articles, article, category, activeItem, handleActiveItemChange, currentLanguage, isArticle, ...rest }) => {
   const leftMenu = useRef();
   const menuItems = !isCategory && leftMenuGenerating(article, null, isArticle ? 'h4' : 'h5, a[id]:not([id=""]', isArticle);
   const artTitle = !isArticle && article?.querySelector('h3');

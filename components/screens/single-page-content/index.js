@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import StyledSingleContent from "./styled-single-content";
 import LeftMenu from "./sub-components/left-menu";
 import CenterArticleContent from "./content/article-content";
@@ -7,12 +7,12 @@ const SingleContent = ({
   t,
   article,
   children,
- // tags,
+  tags,
   category,
   categories,
   isCategory,
   isTagPage,
-  //videos,
+  videos,
   currentLanguage,
   pagePath,
   ...rest
@@ -28,9 +28,9 @@ const SingleContent = ({
     article,
     category,
     categories,
-   // tags,
+    tags,
     isTagPage,
-   // videos,
+    videos,
     handleActiveItemChange,
     currentLanguage,
     children,

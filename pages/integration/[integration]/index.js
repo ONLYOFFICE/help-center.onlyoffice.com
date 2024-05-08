@@ -1,10 +1,7 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useRouter } from "next/router";
 import getAllArticles from "@lib/strapi/getArticles";
-// import getAllVideos from "@lib/strapi/getVideos";
-// import getAllTags from "@lib/strapi/getTags";
 import getAllCategories from "@lib/strapi/getCategories";
 
 import Layout from "@components/layout";
@@ -13,24 +10,10 @@ import Footer from "@components/screens/footer-content";
 import SingleContent from "@components/screens/single-page-content";
 import HeadSEO from "@components/screens/head-content";
 
-const articlePage = ({ locale, articles, categories }) => {
+const articlePage = ({ locale, articles, category, allCategories }) => {
   const { t } = useTranslation();
-  const query = useRouter();
-  const pageLoc = query.locale !== "en" ? query.locale : "";
-  const pagePath = (pageLoc + query.asPath).split('#')[0];
-  const pageData = useMemo(
-    () => articles?.data.find((it) => it.attributes.url === pagePath),
-    [articles]
-  );
-  const pageCatSlug = (pageLoc + query.asPath).split('/')[1];
+  const { seo_title, seo_description } = articles.data.length === 1 && articles.data[0]?.attributes;
 
-  const { attributes: pageCategory } = useMemo(
-    () => categories?.data.find((it) => it.attributes.slug_id === pageCatSlug),
-    [categories]
-  );
-  const data = pageData?.attributes;
-
-  const { seo_title, seo_description } = data;
   return (
     <Layout>
       <Layout.PageHead>
@@ -43,18 +26,17 @@ const articlePage = ({ locale, articles, categories }) => {
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} pageCategory={pageCategory} />
+        <HeadingContent t={t} template={false} currentLanguage={locale} categories={allCategories.data} pageCategory={category.data[0].attributes.slug_id} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <SingleContent
           t={t}
           currentLanguage={locale}
-          article={pageData}
-          articles={articles.data}
-          //tags={tags.data}
+          article={articles.data[0]}
+          tags={articles.data[0]?.attributes.tags?.data}
           isCategory={false}
-          //videos={videos.data}
-          category={pageCategory}
+          videos={articles.data[0]?.attributes.videos?.data}
+          category={category.data[0].attributes.slug_id}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>
@@ -64,20 +46,20 @@ const articlePage = ({ locale, articles, categories }) => {
   );
 };
 
-export async function getServerSideProps({ locale }) {
-  const articles = await getAllArticles(locale);
-  //const videos = await getAllVideos(locale);
-  //const tags = await getAllTags(locale);
-  const categories = await getAllCategories(locale);
+export async function getServerSideProps({ locale, req, params }) {
+  const categorySlug = "integration";
+  const [articles, category, allCategories] = await Promise.all([
+    getAllArticles(locale, params.integration || ''), getAllCategories(locale, categorySlug), 
+    getAllCategories(locale)
+  ]);
 
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       articles,
-     // videos,
-     // tags,
-      categories
+      category,
+      allCategories
     },
   };
 }

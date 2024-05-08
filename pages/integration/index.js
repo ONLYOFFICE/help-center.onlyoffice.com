@@ -12,37 +12,25 @@ import HeadSEO from "@components/screens/head-content";
 import InfoContent from "@components/screens/main-content/info-content";
 import GuidesCards from "@components/screens/main-content/guides-cards";
 
-const ConnectorsPage = ({ locale, articles, categories }) => {
+const ConnectorsPage = ({ locale, articles, category, allCategories, categorySlug }) => {
   const { t } = useTranslation();
-  const pageCategory = "integration";
-
-  const curArticles = useMemo(
-    () => articles.data.filter((it) => it.attributes.category.data?.attributes.slug_id === pageCategory),
-    [articles]
-  );
-
-  const curCatInfo = useMemo(
-    () => categories.data.find((it) => it.attributes.slug_id === pageCategory),
-    [categories]
-  );
+  
   return (
     <Layout>
       <Layout.PageHead>
         <HeadSEO
           title={t("Integration Guides - ONLYOFFICE")}
           metaSiteNameOg={t("ONLYOFFICE Help Center")}
-          metaDescription={t("ONLYOFFICEMeta")}
-          metaDescriptionOg={t("ONLYOFFICEMeta")}
           metaKeywords={t("Integration Guides - ONLYOFFICE")}
           currentLanguage={locale}
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} pageCategory={pageCategory} />
+        <HeadingContent t={t} template={false} currentLanguage={locale} categories={allCategories.data} pageCategory={categorySlug} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <InfoContent t={t} categories={categories.data} currentLanguage={locale} isCategory={true} category={curCatInfo.attributes} />
-        <GuidesCards t={t} categories={curArticles} articles={null} isCategory={true} mainCategory={pageCategory} />
+        <InfoContent t={t} categories={allCategories.data} currentLanguage={locale} isCategory={true} category={category.data[0].attributes} />
+        <GuidesCards t={t} categories={articles.data} articles={null} isCategory={true} mainCategory={categorySlug} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />
@@ -51,16 +39,20 @@ const ConnectorsPage = ({ locale, articles, categories }) => {
   );
 };
 
-export async function getServerSideProps({ locale }) {
-  const articles = await getAllArticles(locale);
-  const categories = await getAllCategories(locale);
-
+export async function getServerSideProps({ locale, req }) {
+  const categorySlug = req.url.substring(1);
+  const [articles, category, allCategories] = await Promise.all([
+    getAllArticles(locale, ''), getAllCategories(locale, categorySlug), 
+    getAllCategories(locale)
+  ]);
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       articles,
-      categories
+      category,
+      allCategories,
+      categorySlug
     },
   }
 }

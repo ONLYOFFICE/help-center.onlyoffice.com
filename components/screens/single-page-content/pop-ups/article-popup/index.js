@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { CloseButton, StyledArticlePopup } from "./styled-article-popup";
 import Text from "@components/common/text";
@@ -6,51 +6,35 @@ import InternalLink from "@components/common/internal-link";
 import Mark from "@components/common/mark";
 import Button from "@components/common/button";
 import useWindowWidth from '@utils/helpers/System/useWindowProvider';
-import getMarks from "@lib/strapi/getMarks";
+import getTags from "@lib/strapi/getTags";
 
-const ArticlePopup = ({ t, language, active, setActive, tag, allTags, ...rest }) => {
-  const windowWidth = useWindowWidth();
-  const maxShown = windowWidth > 592 ? 10 : 8;
-  const [next, setNext] = useState(maxShown);
-  const tagsData = allTags?.find((it) => it.attributes.title === tag);
-  const tagsLength = tagsData?.attributes.articles.data.length;
-  const handleMoreImage = () => {
-    if (next < tagsLength) {
-      setNext(tagsLength);
-    }
-  };
-  const [marks, setMarks] = useState([]);
+const ArticlePopup = ({ t, language, active, setActive, tag, ...rest }) => {
   const baseUrl = process.browser && window.location.origin;
-
+  const [allArticleForTag, setArticles] = useState();
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getMarks(language);
-        setMarks(data);
+        const tagsData = await getTags(language, tag);
+        setArticles(tagsData);
       } catch (error) {
-        console.error('Error fetching marks:', error);
+        console.error('Error fetching data:', error);
       }
     };
 
-    fetchData(); 
-  }, [tagsData]);
+    fetchData();
+  }, [language, tag]);
 
-  const markData = useMemo(() => {
-    if (!tagsData) return [];
-  
-    return tagsData.attributes.articles.data.map((it) =>
-      marks.data.filter((mark) =>
-        mark.attributes.articles.data.find((item) => item.id === it.id)
-      )
-    );
-  }, [tagsData, marks.data]);
+  const windowWidth = useWindowWidth();
+  const maxShown = windowWidth > 592 ? 10 : 8;
+  const [next, setNext] = useState(maxShown);
+  const articles = allArticleForTag !== undefined && allArticleForTag.data[0].attributes.articles.data;
 
-  const handlePopupClose = (e, url) => {
-    e.preventDefault(); 
-    setActive(false);
-    window.location.replace(url);
+  const handleMore = () => {
+    if (next < articles?.length) {
+      setNext(articles?.length);
+    }
   };
-  
+
   return (
     <StyledArticlePopup
       tag={tag}
@@ -59,39 +43,38 @@ const ArticlePopup = ({ t, language, active, setActive, tag, allTags, ...rest })
       {...rest}
     >
       <div onClick={(e) => e.stopPropagation()} className="popup-content">
-          <CloseButton onClick={() => setActive(false)} />
-          <div className="PopupPanelCaption">
-            <div className="popupPanelText">
+        <CloseButton onClick={() => setActive(false)} />
+        <div className="PopupPanelCaption">
+          <div className="popupPanelText">
             {t('ArticleWithThe')}
             <b>{tag}</b>
             {t('Tag')}
-            </div>
-            <InternalLink className="tagsLink" href="https://helpcenter.onlyoffice.com/tags.aspx">
-              {t("BrowseAllTags")}
-            </InternalLink>
           </div>
-          <div className="textContent">
-              {tagsData?.attributes.articles.data.slice(0, next)?.map((it, index) => {
-               const matchingItem2 = markData[index];
-               const finalUrl = baseUrl + (language != "en" ? '/' : '') + it.attributes.url;
-                return (
-                  <InternalLink key={index} className="markLink" href={finalUrl} onClick={(e) => handlePopupClose(e, finalUrl)}>
-                    {matchingItem2 !== undefined && (<Mark t={t} style={{ backgroundColor: matchingItem2[0]?.attributes.color }} label={matchingItem2[0]?.attributes.name} />)}
-                    <span className="title">{it.attributes.title}</span>
-                    {it.attributes.subtitle?.length !== undefined && <Text className="postlinkText">&nbsp;{"("}{it.attributes.subtitle}{")"}</Text>}
-                  </InternalLink>
-                );
-              })}
-               {next < tagsLength && (
-                 <Button
-                   onClick={handleMoreImage}
-                   label={t("MoreArticles")}
-                   typeButton="transparent"
-                   className="loadButton"
-                 />
-               )}
-          </div>
+          <InternalLink className="tagsLink" href="/tags.aspx">
+            {t("BrowseAllTags")}
+          </InternalLink>
         </div>
+        <div className="textContent">
+          {articles && articles.slice(0, next)?.map((it, index) => {
+            const finalUrl = baseUrl + (language != "en" ? '/' : '') + it.attributes.url;
+            return (
+              <InternalLink key={index} className="markLink" href={finalUrl}>
+                {it.attributes.mark !== undefined && (<Mark t={t} style={{ backgroundColor: it.attributes.mark?.data.attributes.color }} label={it.attributes.mark?.data.attributes.name} />)}
+                <span className="title">{it.attributes.title}</span>
+                {it.attributes.subtitle?.length !== undefined && <Text className="postlinkText">&nbsp;{"("}{it.attributes.subtitle}{")"}</Text>}
+              </InternalLink>
+            );
+          })}
+          {next < articles?.length && (
+            <Button
+              onClick={handleMore}
+              label={t("MoreArticles")}
+              typeButton="transparent"
+              className="loadButton"
+            />
+          )}
+        </div>
+      </div>
     </StyledArticlePopup>
   );
 };

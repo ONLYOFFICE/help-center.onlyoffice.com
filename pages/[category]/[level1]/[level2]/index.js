@@ -2,8 +2,6 @@ import React, { useMemo } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getAllCommonCategories from "@lib/strapi/getCategories";
-// import getAllVideos from "@lib/strapi/getVideos";
-// import getAllTags from "@lib/strapi/getTags";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
@@ -15,7 +13,7 @@ import createCategoryStructure from "@utils/helpers/Common/createCategoryStructu
 import SingleContent from "@components/screens/single-page-content";
 import filterArticles from "@utils/helpers/Common/filterForAllCategories";
 
-const subcategoryPage = ({ locale, articles, currentCategory, categories, category, videos, tags, params }) => {
+const subcategoryPage = ({ locale, articles, currentCategory, categories, category, params }) => {
   const { t } = useTranslation();
   const createArticlesUrl = require(`@utils/helpers/${params.capitalizeCategorySlug}Category/createArticlesUrl`).default;
   const allSortedArticles = articles.data.length > 1 && filterArticles(articles?.data, currentCategory.data[0].attributes.slug_id, category.data[0].attributes.slug_id);
@@ -31,6 +29,7 @@ const subcategoryPage = ({ locale, articles, currentCategory, categories, catego
       )
     )
   ), [allSortedArticles]);
+
   return (
     <Layout>
       <Layout.PageHead>
@@ -50,9 +49,9 @@ const subcategoryPage = ({ locale, articles, currentCategory, categories, catego
             t={t}
             currentLanguage={locale}
             article={articles.data[0]}
-           // tags={tags.data}
+            tags={articles.data[0]?.attributes.tags?.data}
             isCategory={false}
-           // videos={videos.data}
+            videos={articles.data[0]?.attributes.videos?.data}
             category={category.data[0].attributes}
             categories={currentCategory?.data[0].attributes}
             pagePath={link}
@@ -93,10 +92,9 @@ export async function getServerSideProps({ locale, params }) {
   const getAllArticles = require(`@lib/strapi/get${params.capitalizeCategorySlug}Articles`).default;
   const getAllCategories = require(`@lib/strapi/get${params.capitalizeCategorySlug}Categories`).default;
 
-  const [articles, currentCategory, category, categories, videos, tags] = await Promise.all([
+  const [articles, currentCategory, category, categories] = await Promise.all([
     getAllArticles(locale, level1 || '', pageUrl), getAllCategories(locale, level1 || ''),
     getAllCommonCategories(locale, categorySlug || ''), getAllCommonCategories(locale)
-   // getAllVideos(locale), getAllTags(locale)
   ]);
 
   return {
@@ -107,8 +105,6 @@ export async function getServerSideProps({ locale, params }) {
       category,
       categories,
       currentCategory,
-     // videos,
-     // tags,
       params
     },
   };

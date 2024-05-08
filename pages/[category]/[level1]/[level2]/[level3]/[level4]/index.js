@@ -1,8 +1,6 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-// import getAllVideos from "@lib/strapi/getVideos";
-// import getAllTags from "@lib/strapi/getTags";
 import getAllCommonCategories from "@lib/strapi/getCategories";
 
 import Layout from "@components/layout";
@@ -11,7 +9,7 @@ import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 import SingleContent from "@components/screens/single-page-content";
 
-const subcategoryPage = ({ locale, articles, videos, tags, categories, currentCategory, category, params }) => {
+const subcategoryPage = ({ locale, articles, categories, currentCategory, category, params }) => {
   const { t } = useTranslation();
   const createArticlesUrl = require(`@utils/helpers/${params.capitalizeCategorySlug}Category/createArticlesUrl`).default;
   const link = articles.data.length === 1 && createArticlesUrl(articles.data[0], params.level4, params.level1);
@@ -35,9 +33,9 @@ const subcategoryPage = ({ locale, articles, videos, tags, categories, currentCa
             t={t}
             currentLanguage={locale}
             article={articles.data[0]}
-          //  tags={tags.data}
+            tags={articles.data[0]?.attributes.tags?.data}
             isCategory={false}
-          //  videos={videos.data}
+            videos={articles.data[0]?.attributes.videos?.data}
             category={category.data[0].attributes}
             categories={currentCategory.data[0].attributes}
             pagePath={link}
@@ -59,10 +57,9 @@ export async function getServerSideProps({ locale, params }) {
   const getAllArticles = require(`@lib/strapi/get${params.capitalizeCategorySlug}Articles`).default;
   const getAllCategories = require(`@lib/strapi/get${params.capitalizeCategorySlug}Categories`).default;
 
-  const [articles, currentCategory, category, categories, videos, tags] = await Promise.all([
+  const [articles, currentCategory, category, categories] = await Promise.all([
     getAllArticles(locale, params.level1 || '', pageUrl), getAllCategories(locale, params.level1 || ''),
     getAllCommonCategories(locale, categorySlug || ''), getAllCommonCategories(locale)
-   // getAllVideos(locale), getAllTags(locale)
   ]);
 
   return {
@@ -73,8 +70,6 @@ export async function getServerSideProps({ locale, params }) {
       category,
       categories,
       currentCategory,
-    //  videos,
-    //  tags,
       params
     },
   };
