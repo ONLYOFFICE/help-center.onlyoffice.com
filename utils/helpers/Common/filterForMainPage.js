@@ -28,7 +28,7 @@ export default function filterArticles(articles, category) {
             if (forCategory && forCategory.level_2) {
                 const level2Name = category === "docs" && slugId === "installation" ? `Docs ${forCategory.level_2}` : forCategory.level_2;
                 const level2SlugId = forCategory.level_2.toLowerCase();
-                const level2Url = `${categoryUrlAttr}/${level2SlugId}`;
+                const level2Url = `${categoryUrlAttr}/${level2SlugId.replace(/ /g, "_")}`;
                 
                 if (!uniqueValuesMap[slugId].level_2_values.some(obj => obj.slug_id === level2SlugId)) {
                     uniqueValuesMap[slugId].level_2_values.push({

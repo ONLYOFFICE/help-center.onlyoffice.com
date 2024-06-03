@@ -4,6 +4,7 @@ import InternalLink from "@components/common/internal-link";
 import items from "./data/items";
 import Heading from "@components/common/heading";
 import TreeView from "@components/common/treeview";
+import MiniSearch from "./sub-components/search";
 
 import leftMenuGenerating from '@utils/helpers/Menu/leftMenuGenerating';
 import checkPrevPage from "@utils/helpers/Menu/checkPrevPage";
@@ -47,7 +48,7 @@ const LeftMenu = ({ t, isCategory, articles, article, category, activeItem, hand
   return (
     <StyledLeftMenu ref={leftMenu}>
       <div className="lm-wrap">
-        {/* <MiniSearch /> */}
+        <MiniSearch />
         {/* <div className="bck-to-prev">
          {prevPath && <InternalLink href={prevPath.url}><img src="https://static-helpcenter.onlyoffice.com/images/icons/16px_back_arrow.react.svg" />{prevPath?.name}</InternalLink>}
         </div> */}

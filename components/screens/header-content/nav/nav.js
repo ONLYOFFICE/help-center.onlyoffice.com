@@ -19,11 +19,15 @@ const Nav = ({ onClickPND, t, stateMobilePND, categories, windowWidth, ...rest }
           onClick={onClickPND}
         />
       )}
-      {categories?.map((item, index) => {
-        return <Link className="nav-item" key={index} href={item.attributes.url}>
-          <Heading className="heading-nav-item" label={item.attributes.name} level={2} />
-        </Link>
-      })}
+      {categories
+        .sort((a, b) => a.attributes.position - b.attributes.position)
+        .map((item, index) => {
+          return (
+            <Link className="nav-item" key={index} href={item.attributes.url}>
+              <Heading className="heading-nav-item" label={item.attributes.name} level={2} />
+            </Link>
+          );
+        })}
     </StyledNav>
   );
 };

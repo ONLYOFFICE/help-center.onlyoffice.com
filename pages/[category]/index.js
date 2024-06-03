@@ -30,7 +30,7 @@ const CategoryPage = ({ locale, articles, categories, currentCategories, categor
       </Layout.PageHeader>
       <Layout.SectionMain>
         <InfoContent t={t} categories={categories.data} currentLanguage={locale} isCategory={true} category={category.data[0].attributes} />
-        <GuidesCards t={t} categories={currentCategories.data} articles={articles.data} isCategory={true} mainCategory={category.data[0].attributes.slug_id} />
+        <GuidesCards t={t} categories={currentCategories.data} articles={articles?.data} isCategory={true} mainCategory={category.data[0].attributes.slug_id} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />

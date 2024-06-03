@@ -52,11 +52,11 @@ const Index = ({ locale, categories, integrationArticles, docsArticles, docspace
 
 export const getStaticProps = async ({ locale }) => {
   const integrationArticles = await getAllArticles(locale);
-  const docsArticles = await getAllDocsArticles(locale);
-  const desktopArticles = await getAllDesktopArticles(locale);
-  const mobileArticles = await getAllMobileArticles(locale);
-  const docspaceArticles = await getAllDocspaceArticles(locale);
-  const workspaceArticles = await getAllWorkspaceArticles(locale);
+  const docsArticles = await getAllDocsArticles(locale, null, null, true);
+  const desktopArticles = await getAllDesktopArticles(locale, null, null, true);
+  const mobileArticles = await getAllMobileArticles(locale, null, null, true);
+  const docspaceArticles = await getAllDocspaceArticles(locale, null, null, true);
+  const workspaceArticles = await getAllWorkspaceArticles(locale, null, null, true);
   const categories = await getAllCategories(locale);
 
   return {

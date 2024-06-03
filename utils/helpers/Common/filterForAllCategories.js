@@ -77,6 +77,15 @@ export default function filterArticles(articles, category, mainCategory) {
                 level4Item.level_5.push(newLevel5);
             });
         }
+        if (mainCategory === "docs" && (article.attributes.category_docs.data.attributes.slug_id === "development" || article.attributes.category_docs.data.attributes.slug_id === "contribution")) {
+            const level2 = article.attributes.title;
+            if (!categoryData[level2]) {
+                categoryData[level2] = {
+                    name: level2,
+                    url: article.attributes.url,
+                };
+            }
+        }
     });
 
     useEffect(() => {

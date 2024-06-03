@@ -34,65 +34,6 @@ const AccordionContent = ({ t, currentLanguage }) => {
     </Text>
   );
 
-  const AccordionDescriptionCommunityEnterpriseDifferenceLink = t(
-    "AccordionDescriptionCommunityEnterpriseDifferenceLink"
-  );
-  const AccordionDescriptionCommunityEnterpriseDifference = (
-    <Text as={"p"} className="text-trans-accordion">
-      <Trans
-        i18nKey="AccordionDescriptionCommunityEnterpriseDifference"
-        AccordionDescriptionCommunityEnterpriseDifferenceLink={t(
-          "AccordionDescriptionCommunityEnterpriseDifferenceLink"
-        )}
-      >
-        Enterprise Edition has the same features
-        <Link
-          display="contents"
-          className="link-trans-acc"
-          href="https://www.onlyoffice.com/compare-server-editions.aspx"
-        >
-          {{ AccordionDescriptionCommunityEnterpriseDifferenceLink }}
-        </Link>
-      </Trans>
-    </Text>
-  );
-
-  const AccordionDescriptionUpgradeCommunityToEnterpriseDocsLink = t(
-    "AccordionDescriptionUpgradeCommunityToEnterpriseDocsLink"
-  );
-  const AccordionDescriptionUpgradeCommunityToEnterpriseWorkspaceLink = t(
-    "AccordionDescriptionUpgradeCommunityToEnterpriseWorkspaceLink"
-  );
-  const AccordionDescriptionUpgradeCommunityToEnterprise = (
-    <Text as={"p"} className="text-trans-accordion">
-      <Trans
-        i18nKey="AccordionDescriptionUpgradeCommunityToEnterprise"
-        AccordionDescriptionUpgradeCommunityToEnterpriseDocsLink={t(
-          "AccordionDescriptionUpgradeCommunityToEnterpriseDocsLink"
-        )}
-        AccordionDescriptionUpgradeCommunityToEnterpriseWorkspaceLink={t(
-          "AccordionDescriptionUpgradeCommunityToEnterpriseWorkspaceLink"
-        )}
-      >
-        Find more information here: for 
-        <Link
-          display="contents"
-          className="link-trans-acc"
-          href="https://helpcenter.onlyoffice.com/installation/docs-enterprise-index.aspx"
-        >
-          {{ AccordionDescriptionUpgradeCommunityToEnterpriseDocsLink }}
-        </Link>
-        <Link
-          display="contents"
-          className="link-trans-acc"
-          href="https://helpcenter.onlyoffice.com/installation/workspace-enterprise-index.aspx"
-        >
-          {{ AccordionDescriptionUpgradeCommunityToEnterpriseWorkspaceLink }}
-        </Link>
-      </Trans>
-    </Text>
-  );
-
   const AccordionDescriptionRequestAssistanceForumLink = t(
     "AccordionDescriptionRequestAssistanceForumLink"
   );
@@ -143,17 +84,17 @@ const AccordionContent = ({ t, currentLanguage }) => {
         <AccordionItem heading={t("AccordionHeadingOOLicense")}>
           {AccordionDescriptionOOLicense}
         </AccordionItem>
-        <AccordionItem heading={t("AccordionHeadingCommunityEnterpriseDifference")}>
-          {AccordionDescriptionCommunityEnterpriseDifference}
-        </AccordionItem>
-        <AccordionItem heading={t("AccordionHeadingUpgradeCommunityToEnterprise")}>
-          {AccordionDescriptionUpgradeCommunityToEnterprise}
-        </AccordionItem>
         <AccordionItem heading={t("AccordionHeadingRequestAssistance")}>
           {AccordionDescriptionRequestAssistance}
         </AccordionItem>
         <AccordionItem heading={t("AccordionHeadingOtherQuestions")}>
           <TransAccorionItem currentLanguage={currentLanguage} t={t} />
+        </AccordionItem>
+        <AccordionItem heading={t("AccordionHeadingIntegrateOO")}>
+          {/* {AccordionDescriptionIntegrateOO} */}
+        </AccordionItem>
+        <AccordionItem heading={t("AccordionHeadingContributeOO")}>
+          {/* {AccordionDescriptionContributeOO} */}
         </AccordionItem>
       </Section>
     </StyledAccordionContent>

@@ -27,18 +27,23 @@ const GuidesCards = ({ t, articles, categories, isCategory, className, mainCateg
         })}
       </Box>}
       <Box className="squares">
-        {mappedCategories?.map((it, index) => {
-          return (
-            <GuidesCell
-              t={t}
-              key={index}
-              headData={it.attributes}
-              category={it.attributes.slug_id || it.attributes.category.data.attributes.slug_id}
-              linkData={isCategory ? articles : getArtData(it.attributes.slug_id)}
-              mainCategory={mainCategory}
-            />
-          );
-        })}
+        {mappedCategories?.sort((a, b) => {
+          if (a.attributes.position !== undefined && b.attributes.position !== undefined) {
+            return a.attributes.position - b.attributes.position;
+          }
+        })
+          .map((it, index) => {
+            return (
+              <GuidesCell
+                t={t}
+                key={index}
+                headData={it.attributes}
+                category={it.attributes.slug_id || it.attributes.category.data.attributes.slug_id}
+                linkData={isCategory ? articles : getArtData(it.attributes.slug_id)}
+                mainCategory={mainCategory}
+              />
+            );
+          })}
       </Box>
     </StyledGuidesCards>
   );

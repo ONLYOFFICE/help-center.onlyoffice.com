@@ -29,7 +29,7 @@ const ConnectorsPage = ({ locale, articles, category, allCategories, categorySlu
         <HeadingContent t={t} template={false} currentLanguage={locale} categories={allCategories.data} pageCategory={categorySlug} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <InfoContent t={t} categories={allCategories.data} currentLanguage={locale} isCategory={true} category={category.data[0].attributes} />
+        <InfoContent t={t} categories={allCategories.data} currentLanguage={locale} isCategory={true} category={category?.data[0].attributes} />
         <GuidesCards t={t} categories={articles.data} articles={null} isCategory={true} mainCategory={categorySlug} />
       </Layout.SectionMain>
       <Layout.PageFooter>

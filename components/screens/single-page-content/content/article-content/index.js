@@ -64,7 +64,7 @@ const CenterArticleContent = ({ t, article, tags, videos, onActiveItemChange, cu
           />
         ))}
       </div>}
-      {videos.length > 0 && <Video t={t} videos={videos} />}
+      {videos && videos.length > 0 && <Video t={t} videos={videos} />}
       <RawHtmlStyle onClick={handleClick}>{ReactHtmlParser(article?.attributes.content)}</RawHtmlStyle>
       <DownloadArea className="download-area" t={t} />
       <ArticlePopup

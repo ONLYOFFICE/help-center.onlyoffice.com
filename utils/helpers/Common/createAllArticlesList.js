@@ -10,7 +10,7 @@ export default function createAllArticlesList(integrationsArray, desktopArray, d
           category: {
             data: {
               attributes: {
-                slug_id: item?.attributes.category?.data.attributes.slug_id,
+                slug_id: item?.attributes.category?.data?.attributes?.slug_id,
               }
             }
           },
@@ -30,7 +30,7 @@ export default function createAllArticlesList(integrationsArray, desktopArray, d
           category: {
             data: {
               attributes: {
-                slug_id: item?.attributes.category?.data.attributes.slug_id,
+                slug_id: item?.attributes.category?.data?.attributes?.slug_id,
               }
             }
           },
@@ -56,7 +56,7 @@ export default function createAllArticlesList(integrationsArray, desktopArray, d
           category: {
             data: {
               attributes: {
-                slug_id: item?.attributes.category?.data.attributes.slug_id,
+                slug_id: item?.attributes.category?.data?.attributes?.slug_id,
               }
             }
           },
@@ -80,7 +80,7 @@ export default function createAllArticlesList(integrationsArray, desktopArray, d
           category: {
             data: {
               attributes: {
-                slug_id: item?.attributes.category?.data.attributes.slug_id,
+                slug_id: item?.attributes.category?.data?.attributes?.slug_id,
               }
             }
           },
@@ -105,7 +105,7 @@ export default function createAllArticlesList(integrationsArray, desktopArray, d
           category: {
             data: {
               attributes: {
-                slug_id: item?.attributes.category?.data.attributes.slug_id,
+                slug_id: item?.attributes.category?.data?.attributes?.slug_id,
               }
             }
           },
@@ -127,7 +127,7 @@ export default function createAllArticlesList(integrationsArray, desktopArray, d
           category: {
             data: {
               attributes: {
-                slug_id: item?.attributes.category?.data.attributes.slug_id,
+                slug_id: item?.attributes.category?.data?.attributes?.slug_id,
               }
             }
           },

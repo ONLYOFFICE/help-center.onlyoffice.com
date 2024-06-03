@@ -1,37 +1,37 @@
 const Items = [
   {
     className: "products",
-    heading: "products",
+    heading: "Get it now",
     link: [
       {
-        localize: false,
+        localize: true,
         label: "Docs",
-        href: "/docs",
+        href: "/download-docs.aspx",
       },
       {
-        localize: false,
+        localize: true,
         label: "DocSpace",
-        href: "/docspace",
+        href: "/download-docspace.aspx",
       },
       {
-        localize: false,
+        localize: true,
         label: "Workspace",
-        href: "/workspace",
+        href: "/download-workspace.aspx",
       },
       {
-        localize: false,
+        localize: true,
         label: "Connectors",
-        href: "/integration",
+        href: "/all-connectors.aspx",
       },
       {
-        localize: false,
-        label: "Mobile apps",
-        href: "/mobile",
-      },
-      {
-        localize: false,
+        localize: true,
         label: "Desktop apps",
-        href: "/desktop",
+        href: "/download-desktop.aspx",
+      },
+      {
+        localize: true,
+        label: "Mobile apps",
+        href: "/download-desktop.aspx#mobile",
       },
     ],
   },
