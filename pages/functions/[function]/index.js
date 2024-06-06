@@ -11,10 +11,11 @@ import SingleContent from "@components/screens/single-page-content";
 import HeadSEO from "@components/screens/head-content";
 import withErrorHandling from "@components/common/hoc/error-handling";
 
-const articlePage = ({ locale, articles, allCategories }) => {
+const articlePage = ({ data }) => {
 const { t } = useTranslation();
+const { articles, allCategories, locale } = data;
 const pageTitle = `${t(articles.data[0].attributes.title)} - ONLYOFFICE`;
-
+console.log(articles);
   return (
     <Layout>
       <Layout.PageHead>
@@ -62,9 +63,11 @@ export async function getServerSideProps({ locale, req }) {
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
-      locale,
-      articles,
-      allCategories
+      data: {
+        locale,
+        articles,
+        allCategories
+      },
     },
   };
 }
