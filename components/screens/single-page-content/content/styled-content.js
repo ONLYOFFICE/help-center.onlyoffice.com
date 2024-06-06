@@ -144,6 +144,15 @@ const StyledContent = styled.div`
         text-decoration: none;
       }
     }
+
+    &.video {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 24px;
+      > .vid-page-item {
+        width: calc(50% - 24px);
+      }
+    }
   }
 
   .page_download_button {
@@ -186,6 +195,17 @@ const StyledContent = styled.div`
 
   @media ${device.laptopM} {
     max-width: calc(100vw - 280px);
+  }
+
+  @media ${device.tabletL} {
+    &.wrapper {
+      &.video {
+      gap: 16px;
+        > .vid-page-item {
+          width: 100%;
+        }
+      }
+    }
   }
   @media ${device.tabletS} {
     max-width: 100vw;

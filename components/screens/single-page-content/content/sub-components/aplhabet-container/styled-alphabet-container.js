@@ -7,7 +7,7 @@ const StyledAlphabetContainer = styled.div`
 
   .glossLetter {
     display: block;
-    padding-bottom: 48px;
+    padding-bottom: 24px;
   }
 
   .glossTagsArea {

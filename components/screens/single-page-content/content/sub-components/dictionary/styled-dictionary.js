@@ -1,10 +1,12 @@
 import styled from "styled-components";
+import StyledText from "@components/common/text/styled-text";
 import globalColors from "@components/utils/global-colors";
 
-const StyledDictionary = styled.div`
+const StyledDictionary = styled(StyledText)`
   display: block;
+  padding: 10px 0;
 
-  > span > p {
+  > p {
     display: initial;
     > a {
       border-bottom: 1px dotted ${globalColors.orangeLetters};
@@ -18,19 +20,16 @@ const StyledDictionary = styled.div`
         text-decoration: none!important;
       }
     }
+    > strong {
+      color: #808080;
+      font-weight: 700;
+    }
   }
 
   .int_link {
     color: ${globalColors.orangeLetters};
     cursor: pointer;
     text-decoration: none;
-  }
-
-
-
-  .strong_text {
-    color: #808080;
-    font-weight: 700;
   }
 `;
 

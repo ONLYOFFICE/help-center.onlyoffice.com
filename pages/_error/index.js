@@ -1,30 +1,18 @@
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import React from 'react';
 
-import Layout from "@components/layout";
-import HeadSEO from "@components/screens/head-content";
-import Error404 from "@components/screens/404-page";
-
-const ErrorPage = ({ locale }) => {
-  const { t } = useTranslation();
-
+const Error = ({ statusCode }) => {
   return (
-    <Layout footerContent={false} headerContent={false}>
-      <Layout.PageHead>
-        <HeadSEO title={t("Error Page")} metaDescription={t("Error Page")} currentLanguage={locale} />
-      </Layout.PageHead>
-      <Layout.SectionMain>
-        <Error404 t={t} />
-      </Layout.SectionMain>
-    </Layout>
+    <p>
+      {statusCode
+        ? `An error ${statusCode} occurred on server`
+        : 'An error occurred on client'}
+    </p>
   );
-};
+}
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...(await serverSideTranslations(locale, "common")),
-    locale
-  },
-});
+Error.getInitialProps = ({ res, err }) => {
+  const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
+  return { statusCode };
+}
 
-export default ErrorPage;
+export default Error;

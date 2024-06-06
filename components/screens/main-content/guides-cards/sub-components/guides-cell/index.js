@@ -6,8 +6,30 @@ import Text from "@components/common/text";
 import GuidesLinks from "../guides-links";
 import ReactHtmlParser from "react-html-parser";
 import Heading from "@components/common/heading";
+import filterArticles from "@utils/helpers/Common/filterForAllCategories";
+import filterMainArticles from '@utils/helpers/Common/filterForMainPage';
 
 const GuidesCell = ({ headData, category, linkData, mainCategory, t }) => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const dataCards = mainCategory.toLowerCase() === 'main' ? filterMainArticles(linkData, category) : filterArticles(linkData, category, mainCategory);
+  //console.log(dataCards);
+  useEffect(() => {
+    if (linkData !== null && linkData !== undefined) {
+      setLoading(false);
+    }
+    if (!loading) {
+      switch (mainCategory?.toLowerCase()) {
+        case 'integration':
+          setData(linkData);
+          break;
+        default:
+          setData(dataCards);
+          break;
+      }
+    }
+  }, [mainCategory, loading]);
+
   return (
     <StyledGuidesCell>
       <Box className="cell_header">
@@ -35,7 +57,7 @@ const GuidesCell = ({ headData, category, linkData, mainCategory, t }) => {
           <Text>{ReactHtmlParser(headData.description)}</Text>
         </Box>}
       </Box>
-      {linkData && <GuidesLinks t={t} mainArticles={linkData} mainCategory={mainCategory} category={category} />}
+      {data && !loading && <GuidesLinks t={t} mainArticles={data} category={category} />}
     </StyledGuidesCell>
   );
 };

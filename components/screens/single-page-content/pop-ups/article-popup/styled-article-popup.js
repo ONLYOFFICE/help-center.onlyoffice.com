@@ -53,6 +53,7 @@ z-index: 1001;
     text-align: center;
     width: auto;
     .markLink {
+      align-items: baseline;
       display: flex;
       flex-wrap: wrap;
       font-size: 14px;

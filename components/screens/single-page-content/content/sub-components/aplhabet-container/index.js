@@ -29,13 +29,8 @@ const AlphabetContainer = ({
     setProdAlph(selectorContent);
   }, [selectorContent]);
 
-  const makeTagID = (text) => {
-    const tagID = "tag_" + text.toLowerCase().replace(/[\s.'-]/g, "");
-    return tagID;
-  };
-
   return (
-    <StyledAlphabetContainer isTagPage={isTagPage}>
+    <StyledAlphabetContainer>
       <GlossarySelector
         t={t}
         content={selectorContent}
@@ -64,12 +59,12 @@ const AlphabetContainer = ({
                         label={item.attributes.title}
                         className="tags"
                         onClick={() => onClickFunction(item.attributes.title)}
-                        id={makeTagID(item.attributes.title)}
+                        id={"tag_" + item.attributes.title.toLowerCase().replace(/[\s.'-]/g, "")}
                       />
                     ))}
                 </ul>
               ) : (
-                <div>
+                <>
                   {pageContent?.filter((item) => item.attributes.title.toLowerCase().startsWith(c))
                     .map((item, index) => (
                       <Dictionary
@@ -80,7 +75,7 @@ const AlphabetContainer = ({
                         definition={item.attributes.definition}
                       />
                     ))}
-                </div>
+                </>
               )}
             </Box>
           );

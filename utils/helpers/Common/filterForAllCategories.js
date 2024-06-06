@@ -5,6 +5,10 @@ export default function filterArticles(articles, category, mainCategory) {
     const categoryData = {};
 
     articles?.forEach((article) => {
+        if (mainCategory === "docs" && (article.attributes.category_docs.data.attributes.slug_id === "development" || article.attributes.category_docs.data.attributes.slug_id === "contribution")) {
+            //console.log(article);
+        }
+       
         const categoryAttribute = article.attributes[`for_${category}_category`] || article.attributes.for_all_mobile_articles;
         if (categoryAttribute) {
             const level2 = categoryAttribute.level_2;
@@ -76,15 +80,6 @@ export default function filterArticles(articles, category, mainCategory) {
                 };
                 level4Item.level_5.push(newLevel5);
             });
-        }
-        if (mainCategory === "docs" && (article.attributes.category_docs.data.attributes.slug_id === "development" || article.attributes.category_docs.data.attributes.slug_id === "contribution")) {
-            const level2 = article.attributes.title;
-            if (!categoryData[level2]) {
-                categoryData[level2] = {
-                    name: level2,
-                    url: article.attributes.url,
-                };
-            }
         }
     });
 

@@ -9,9 +9,14 @@ import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import SingleContent from "@components/screens/single-page-content";
 import HeadSEO from "@components/screens/head-content";
+import withErrorHandling from "@components/common/hoc/error-handling";
 
-const articlePage = ({ locale, articles, category, allCategories }) => {
+const articlePage = ({ data }) => {
   const { t } = useTranslation();
+  if (!data) {
+    return null;
+  }
+  const { articles, category, allCategories, locale } = data;
   const { seo_title, seo_description } = articles.data.length === 1 && articles.data[0]?.attributes;
 
   return (
@@ -33,9 +38,9 @@ const articlePage = ({ locale, articles, category, allCategories }) => {
           t={t}
           currentLanguage={locale}
           article={articles.data[0]}
-          tags={articles.data[0]?.attributes.tags?.data}
+          tags={articles.data[0].attributes.tags?.data}
           isCategory={false}
-          videos={articles.data[0]?.attributes.videos?.data}
+          videos={articles.data[0].attributes.videos?.data}
           category={category.data[0].attributes.slug_id}
         />
       </Layout.SectionMain>
@@ -46,22 +51,34 @@ const articlePage = ({ locale, articles, category, allCategories }) => {
   );
 };
 
-export async function getServerSideProps({ locale, req, params }) {
+export async function getServerSideProps({ locale, params }) {
   const categorySlug = "integration";
   const [articles, category, allCategories] = await Promise.all([
     getAllArticles(locale, params.integration || ''), getAllCategories(locale, categorySlug), 
     getAllCategories(locale)
   ]);
 
+  if (!articles || !category || !allCategories) {
+    res.statusCode = 404;
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, 'common')),
+        data: null,
+      },
+    };
+  }
+
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
-      locale,
-      articles,
-      category,
-      allCategories
+      data: {
+        locale,
+        articles,
+        category,
+        allCategories
+      },
     },
   };
 }
 
-export default articlePage;
+export default withErrorHandling(articlePage);

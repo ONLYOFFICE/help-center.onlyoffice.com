@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Base } from "@components/themes";
 
 const StyledTag = styled.li`
@@ -23,6 +23,7 @@ font-size: ${(props) =>
       ? props.theme.tag.fontSizePopup
       : "13px"};
 font-weight: ${(props) => props.type === "popup" ? props.theme.tag.fontWeightBold : "400"};
+line-height: 1.6em;
 margin: ${(props) => props.type === "list" ? "2px 0" : "unset"};
 padding: ${(props) =>
     props.type === "page"

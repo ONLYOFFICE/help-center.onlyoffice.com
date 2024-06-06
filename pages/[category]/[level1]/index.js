@@ -8,14 +8,22 @@ import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 import CenterCategoryContent from "@components/screens/single-page-content/content/category-content";
+import withErrorHandling from "@components/common/hoc/error-handling";
+
 import filterArticles from "@utils/helpers/Common/filterForAllCategories";
+import { CATEGORIES } from "@utils/constants";
 
-const subcategoryPage = ({ locale, articles, currentCategory, category, categories }) => {
+const subcategoryPage = ({ data }) => {
   const { t } = useTranslation();
-  const data = articles && filterArticles(articles.data, currentCategory?.data[0].attributes.slug_id, category.data[0].attributes.slug_id);
+  if (!data) {
+    return null;
+  }
+  const { articles, currentCategory, category, categories, locale } = data;
 
-  const seo_title = data?.seo_title || t("titleIndexPage");
-  const seo_description = data?.seo_description || t("metaDescriptionOgIndexPage");
+  const pageData = articles && filterArticles(articles.data, currentCategory?.data[0].attributes.slug_id, category.data[0].attributes.slug_id);
+
+  const seo_title = pageData?.seo_title || t("titleIndexPage");
+  const seo_description = pageData?.seo_description || t("metaDescriptionOgIndexPage");
   
   return (
     <Layout>
@@ -34,7 +42,7 @@ const subcategoryPage = ({ locale, articles, currentCategory, category, categori
         {articles ? <CenterCategoryContent
           t={t}
           currentLanguage={locale}
-          articles={data}
+          articles={pageData}
           category={currentCategory.data[0].attributes}
           categories={categories.data}
           isCategory={true}
@@ -55,38 +63,48 @@ const subcategoryPage = ({ locale, articles, currentCategory, category, categori
   );
 };
 
-export async function getServerSideProps({ locale, params }) {
+export async function getServerSideProps({ locale, params, res }) {
   const pattern = /[a-zA-Z0-9\-]+\.aspx$/;
   const { level1 } = params;
   const pageUrl = pattern.test(level1) ? level1 : '';
-  console.log(pageUrl);
   const pageCatSlug = level1;
   const categorySlug = params.category;
 
   const capitalizeCategorySlug = categorySlug.charAt(0).toUpperCase() + categorySlug.slice(1);
 
-  const getAllArticles = require(`@lib/strapi/get${capitalizeCategorySlug}Articles`).default;
-  const getAllCategories = require(`@lib/strapi/get${capitalizeCategorySlug}Categories`).default;
+  if (CATEGORIES.includes(capitalizeCategorySlug)) {
+    const getAllArticles = require(`@lib/strapi/get${capitalizeCategorySlug}Articles`).default;
+    const getAllCategories = require(`@lib/strapi/get${capitalizeCategorySlug}Categories`).default;
 
-  const [articles, currentCategory, category, categories] = await Promise.all([
-    getAllArticles(locale, pageCatSlug || ''), 
-    getAllCategories(locale, pageUrl ? '' : pageCatSlug || '', pageUrl ? pageUrl : ''),
-    getAllCommonCategories(locale, categorySlug || ''), getAllCommonCategories(locale)
-  ]);
+    const [articles, currentCategory, category, categories] = await Promise.all([
+      getAllArticles(locale, pageCatSlug || ''), 
+      getAllCategories(locale, pageUrl ? '' : pageCatSlug || '', pageUrl ? pageUrl : ''),
+      getAllCommonCategories(locale, categorySlug || ''), getAllCommonCategories(locale)
+    ]);
 
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, "common")),
-      locale,
-      articles,
-      category,
-      categories,
-      currentCategory,
-      pageCatSlug: pageCatSlug || null,
-      categorySlug: categorySlug || null,
-    },
-  };
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, "common")),
+        data: {
+          locale,
+          articles,
+          category,
+          categories,
+          currentCategory,
+          pageCatSlug: pageCatSlug || null,
+          categorySlug: categorySlug || null,
+        },
+      },
+    };
+  } else {
+    res.statusCode = 404;
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, 'common')),
+      },
+    };
+  }
 }
 
 
-export default subcategoryPage;
+export default withErrorHandling(subcategoryPage);

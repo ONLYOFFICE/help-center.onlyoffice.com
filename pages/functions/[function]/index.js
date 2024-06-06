@@ -9,6 +9,7 @@ import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import SingleContent from "@components/screens/single-page-content";
 import HeadSEO from "@components/screens/head-content";
+import withErrorHandling from "@components/common/hoc/error-handling";
 
 const articlePage = ({ locale, articles, allCategories }) => {
 const { t } = useTranslation();
@@ -42,11 +43,21 @@ const pageTitle = `${t(articles.data[0].attributes.title)} - ONLYOFFICE`;
   );
 };
 
-export async function getServerSideProps({ locale, params }) {
+export async function getServerSideProps({ locale, req }) {
   const [articles, allCategories] = await Promise.all([
-    getAllArticles(locale, params.function || ''),
+    getAllArticles(locale, req.url.slice(1) || ''),
     getAllCategories(locale)
   ]);
+
+  if (!articles || !allCategories) {
+    res.statusCode = 404;
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, 'common')),
+        data: null,
+      },
+    };
+  }
 
   return {
     props: {
@@ -58,4 +69,4 @@ export async function getServerSideProps({ locale, params }) {
   };
 }
 
-export default articlePage;
+export default withErrorHandling(articlePage);

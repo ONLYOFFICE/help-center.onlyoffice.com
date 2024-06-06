@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import StyledSingleContent from "./styled-single-content";
 import LeftMenu from "./sub-components/left-menu";
 import CenterArticleContent from "./content/article-content";
+import TagsContent from "./content/tags-content";
+import VideoContent from "./content/video-content";
 
 const SingleContent = ({
   t,
@@ -15,6 +17,8 @@ const SingleContent = ({
   videos,
   currentLanguage,
   pagePath,
+  content,
+  isVideoPage,
   ...rest
 }) => {
 
@@ -52,7 +56,7 @@ const SingleContent = ({
   return (
     <StyledSingleContent {...rest}>
       <LeftMenu {...menuProps} isArticle={true} />
-      <CenterArticleContent {...articleProps} />
+      {article ? <CenterArticleContent {...articleProps} /> : isVideoPage ? <VideoContent content={content} t={t} /> : <TagsContent isTagPage={isTagPage} content={content} t={t} currentLanguage={currentLanguage} />}
     </StyledSingleContent>
   );
 };

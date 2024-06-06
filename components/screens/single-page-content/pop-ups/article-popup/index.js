@@ -14,7 +14,7 @@ const ArticlePopup = ({ t, language, active, setActive, tag, ...rest }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const tagsData = await getTags(language, tag);
+        const tagsData = await getTags(language, tag, true);
         setArticles(tagsData);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -27,11 +27,20 @@ const ArticlePopup = ({ t, language, active, setActive, tag, ...rest }) => {
   const windowWidth = useWindowWidth();
   const maxShown = windowWidth > 592 ? 10 : 8;
   const [next, setNext] = useState(maxShown);
-  const articles = allArticleForTag !== undefined && allArticleForTag.data[0].attributes.articles.data;
+  const allArticles = allArticleForTag !== undefined 
+  ? [
+      ...allArticleForTag.data[0]?.attributes.articles.data,
+      ...allArticleForTag.data[0]?.attributes.article_desktops.data,
+      ...allArticleForTag.data[0]?.attributes.article_docs.data,
+      ...allArticleForTag.data[0]?.attributes.article_docspaces.data,
+      ...allArticleForTag.data[0]?.attributes.article_mobiles.data,
+      ...allArticleForTag.data[0]?.attributes.article_workspaces.data
+    ]
+  : [];
 
   const handleMore = () => {
-    if (next < articles?.length) {
-      setNext(articles?.length);
+    if (next < allArticles?.length) {
+      setNext(allArticles?.length);
     }
   };
 
@@ -55,17 +64,17 @@ const ArticlePopup = ({ t, language, active, setActive, tag, ...rest }) => {
           </InternalLink>
         </div>
         <div className="textContent">
-          {articles && articles.slice(0, next)?.map((it, index) => {
+          {allArticles && allArticles.slice(0, next)?.map((it, index) => {
             const finalUrl = baseUrl + (language != "en" ? '/' : '') + it.attributes.url;
             return (
               <InternalLink key={index} className="markLink" href={finalUrl}>
-                {it.attributes.mark !== undefined && (<Mark t={t} style={{ backgroundColor: it.attributes.mark?.data.attributes.color }} label={it.attributes.mark?.data.attributes.name} />)}
+                {it.attributes.mark.data !== null && (<Mark t={t} style={{ backgroundColor: it.attributes.mark.data.attributes.color }} label={it.attributes.mark.data.attributes.name} />)}
                 <span className="title">{it.attributes.title}</span>
                 {it.attributes.subtitle?.length !== undefined && <Text className="postlinkText">&nbsp;{"("}{it.attributes.subtitle}{")"}</Text>}
               </InternalLink>
             );
           })}
-          {next < articles?.length && (
+          {next < allArticles?.length && (
             <Button
               onClick={handleMore}
               label={t("MoreArticles")}
