@@ -37,9 +37,6 @@ export default function createAllArticlesList(integrationsArray, desktopArray, d
           category_desktop: item?.attributes.category_desktop,
           for_installation_category: item?.attributes.for_installation_category,
           for_developing_category: item?.attributes.for_developing_category,
-          for_pdf_category: item?.attributes.for_pdf_category,
-          for_editors_category: item?.attributes.for_editors_category,
-          for_plugins_category: item?.attributes.for_plugins_category,
         },
       },
       id: item.id,
@@ -48,27 +45,62 @@ export default function createAllArticlesList(integrationsArray, desktopArray, d
   });
 
   docsArray?.forEach((item) => {
-    const mergedItem = {
-      data: {
-        attributes: {
-          title: item?.attributes.title,
-          url: item?.attributes.url,
-          category: {
-            data: {
-              attributes: {
-                slug_id: item?.attributes.category?.data?.attributes?.slug_id,
+    const docsCategory = item?.attributes.category?.data?.find(category => category?.attributes?.slug_id === 'docs');
+    const desktopCategory = item?.attributes.category?.data?.find(category => category?.attributes?.slug_id === 'desktop');
+    if (docsCategory) {
+      const mergedItem = {
+        data: {
+          attributes: {
+            title: item?.attributes.title,
+            url: item?.attributes.url,
+            category: {
+              data: {
+                attributes: {
+                  slug_id: docsCategory?.attributes?.slug_id,
+                }
               }
-            }
+            },
+            category_docs: item?.attributes.category_docs,
+            for_installation_category: item?.attributes.for_installation_category,
+            for_userguides_category: item?.attributes.for_userguides_category,
           },
-          category_docs: item?.attributes.category_docs,
-          for_installation_category: item?.attributes.for_installation_category,
-          for_userguides_category: item?.attributes.for_userguides_category,
         },
-      },
-      id: item.id,
-    };
-
-    articles.push(mergedItem);
+        id: item.id,
+      };
+  
+      articles.push(mergedItem);
+    }
+    if (desktopCategory) {
+      const mergedItem = {
+        data: {
+          attributes: {
+            title: item?.attributes.title,
+            url: item?.attributes.url.replace('/docs/', '/desktop/'),
+            category: {
+              data: {
+                attributes: {
+                  slug_id: desktopCategory?.attributes?.slug_id,
+                }
+              }
+            },
+            category_desktop: {
+              data: {
+                attributes: {
+                  url: item?.attributes.category_docs.data.attributes.url.replace('/docs/', '/desktop/'),
+                  slug_id: item?.attributes.category_docs.data.attributes.slug_id,
+                  locale: item?.attributes.category_docs.data.attributes.locale,
+                  name: item?.attributes.category_docs.data.attributes.name,
+                }
+              }
+            },
+            for_userguides_category: item?.attributes.for_userguides_category,
+          },
+        },
+        id: item.id,
+      };
+  
+      articles.push(mergedItem);
+    }
   });
 
   docspaceArray?.forEach((item) => {

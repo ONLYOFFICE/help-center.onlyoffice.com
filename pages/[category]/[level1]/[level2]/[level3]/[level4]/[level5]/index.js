@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getAllCommonCategories from "@lib/strapi/getCategories";
@@ -8,24 +8,31 @@ import HeadingContent from "@components/screens/header-content";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 import SingleContent from "@components/screens/single-page-content";
+import withErrorHandling from "@components/common/hoc/error-handling";
+import { PATTERN } from "@utils/constants";
 
-const subcategoryPage = ({ locale, articles, categories, currentCategory, category, params }) => {
+const subcategoryPage = ({ data }) => {
   const { t } = useTranslation();
+  if (!data) {
+    return null;
+  }
+  const { articles, currentCategory, category, categories, locale, params } = data;
+
   const createArticlesUrl = require(`@utils/helpers/${params.capitalizeCategorySlug}Category/createArticlesUrl`).default;
   const link = articles.data.length === 1 && createArticlesUrl(articles.data[0], params.level5, params.level1);
 
   //console.log(link);
 
-  const { seo_title, seo_description } = articles.data[0].attributes;
+  // const { seo_title, seo_description } = articles.data[0].attributes;
   return (
     <Layout>
       <Layout.PageHead>
-        <HeadSEO
+        {/* <HeadSEO
           title={seo_title}
           metaDescription={seo_description}
           metaDescriptionOg={seo_description}
           metaKeywords={seo_title}
-        />
+        /> */}
       </Layout.PageHead>
       <Layout.PageHeader>
         <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} pageCategory={category.data[0].attributes.slug_id} />
@@ -51,30 +58,41 @@ const subcategoryPage = ({ locale, articles, categories, currentCategory, catego
 };
 
 export async function getServerSideProps({ locale, params }) {
-  const pattern = /[a-zA-Z0-9\-]+\.aspx$/;
-  const pageUrl = pattern.test(params.level5) ? params.level5 : '';
+  const pageUrl = PATTERN.test(params.level5) ? params.level5 : '';
   const categorySlug = params.category;
   params.capitalizeCategorySlug = categorySlug.charAt(0).toUpperCase() + categorySlug.slice(1);
 
   const getAllArticles = require(`@lib/strapi/get${params.capitalizeCategorySlug}Articles`).default;
   const getAllCategories = require(`@lib/strapi/get${params.capitalizeCategorySlug}Categories`).default;
 
-  const [articles, currentCategory, category, categories, videos, tags] = await Promise.all([
+  const [articles, currentCategory, category, categories] = await Promise.all([
     getAllArticles(locale, params.level1 || '', pageUrl), getAllCategories(locale, params.level1 || ''),
     getAllCommonCategories(locale, categorySlug || ''), getAllCommonCategories(locale)
   ]);
 
+  if (!articles) {
+    res.statusCode = 404;
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, 'common')),
+        data: null,
+      },
+    };
+  }
+
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
-      locale,
-      articles,
-      category,
-      categories,
-      currentCategory,
-      params
+      data: {
+        locale,
+        articles,
+        category,
+        categories,
+        currentCategory,
+        params
+      },
     },
   };
 }
 
-export default subcategoryPage;
+export default withErrorHandling(subcategoryPage);

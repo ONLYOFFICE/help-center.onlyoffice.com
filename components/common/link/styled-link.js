@@ -22,6 +22,7 @@ const hoverText = css`
 
 const StyledLink = styled(StyledText)`
   color: ${(props) => props.color || props.theme.externalLink.color};
+  display: block;
   text-decoration: ${(props) =>
     props.textDecoration || props.theme.externalLink.textDecoration};
   ${hoverText}

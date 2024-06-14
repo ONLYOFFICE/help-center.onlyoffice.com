@@ -9,18 +9,23 @@ import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 import CenterCategoryContent from "@components/screens/single-page-content/content/category-content";
 import CenterSubCategoryContent from "@components/screens/single-page-content/content/subcategory-content";
-import createCategoryStructure from "@utils/helpers/Common/createCategoryStructure";
 import SingleContent from "@components/screens/single-page-content";
 import filterArticles from "@utils/helpers/Common/filterForAllCategories";
+import { CATEGORIES, PATTERN } from "@utils/constants";
+import withErrorHandling from "@components/common/hoc/error-handling";
 
-const subcategoryPage = ({ locale, articles, currentCategory, categories, category, params }) => {
+const subcategoryPage = ({ data }) => {
   const { t } = useTranslation();
+  if (!data) {
+    return null;
+  }
+  const { articles, currentCategory, category, categories, locale, params } = data;
   const createArticlesUrl = require(`@utils/helpers/${params.capitalizeCategorySlug}Category/createArticlesUrl`).default;
   const allSortedArticles = articles.data.length > 1 && filterArticles(articles?.data, currentCategory.data[0].attributes.slug_id, category.data[0].attributes.slug_id);
-  //const allCategoryStructure = allSortedArticles.length !== 0 && createCategoryStructure(category, allSortedArticles);
   const currentSorted = allSortedArticles && allSortedArticles.find((it) => it.url === params.fullPagePath);
   const link = articles.data.length === 1 && createArticlesUrl(articles.data[0], params.level2, params.level1);
-  const { seo_title, seo_description } = articles.data.length === 1 && articles.data[0]?.attributes;
+  const seo_title = articles.data && articles.data.length === 1 ? articles.data[0]?.attributes.seo_title : `${t(category.data[0].attributes.name)} - ${t(currentCategory.data[0].attributes.name)} - ONLYOFFICE`;
+  const seo_description = articles.data && articles.data.length === 1 ? articles.data[0]?.attributes.seo_description : null;
 
   const isSubCat = useMemo(() => (
     !!allSortedArticles?.data?.some(it =>
@@ -35,9 +40,9 @@ const subcategoryPage = ({ locale, articles, currentCategory, categories, catego
       <Layout.PageHead>
         <HeadSEO
           title={seo_title}
+          metaKeywords={seo_title}
           metaDescription={seo_description}
           metaDescriptionOg={seo_description}
-          metaKeywords={seo_title}
         />
       </Layout.PageHead>
       <Layout.PageHeader>
@@ -81,33 +86,52 @@ const subcategoryPage = ({ locale, articles, currentCategory, categories, catego
   );
 };
 
-export async function getServerSideProps({ locale, params }) {
-  const pattern = /[a-zA-Z0-9\-]+\.aspx$/;
-  const { level1, level2 } = params;
-  const pageUrl = pattern.test(level2) ? level2 : '';
+export async function getServerSideProps({ locale, params, res }) {
+  const pageUrl = PATTERN.test(params.level2) ? params.level2 : '';
   const categorySlug = params.category;
   params.capitalizeCategorySlug = categorySlug.charAt(0).toUpperCase() + categorySlug.slice(1);
-  params.fullPagePath = `/${categorySlug}/${level1}/${level2}`;
+  params.fullPagePath = `/${categorySlug}/${params.level1}/${params.level2}`;
 
-  const getAllArticles = require(`@lib/strapi/get${params.capitalizeCategorySlug}Articles`).default;
-  const getAllCategories = require(`@lib/strapi/get${params.capitalizeCategorySlug}Categories`).default;
+  if (CATEGORIES.includes(params.capitalizeCategorySlug)) {
+    const getAllArticles = require(`@lib/strapi/get${params.capitalizeCategorySlug}Articles`).default;
+    const getAllCategories = require(`@lib/strapi/get${params.capitalizeCategorySlug}Categories`).default;
 
-  const [articles, currentCategory, category, categories] = await Promise.all([
-    getAllArticles(locale, level1 || '', pageUrl), getAllCategories(locale, level1 || ''),
-    getAllCommonCategories(locale, categorySlug || ''), getAllCommonCategories(locale)
-  ]);
+    const [articles, currentCategory, category, categories] = await Promise.all([
+      getAllArticles(locale, params.level1 || '', pageUrl, false, params.level2 || ''), getAllCategories(locale, params.level1 || ''),
+      getAllCommonCategories(locale, categorySlug || ''), getAllCommonCategories(locale)
+    ]);
 
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, "common")),
-      locale,
-      articles,
-      category,
-      categories,
-      currentCategory,
-      params
-    },
-  };
+    if (!articles || !category || !categories || !currentCategory) {
+      res.statusCode = 404;
+      return {
+        props: {
+          ...(await serverSideTranslations(locale, 'common')),
+          data: null,
+        },
+      };
+    }
+
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, "common")),
+        data: {
+          locale,
+          articles,
+          category,
+          categories,
+          currentCategory,
+          params
+        },
+      },
+    };
+  } else {
+    res.statusCode = 404;
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, 'common')),
+      },
+    };
+  }
 }
 
-export default subcategoryPage;
+export default withErrorHandling(subcategoryPage);

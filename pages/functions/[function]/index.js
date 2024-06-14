@@ -15,7 +15,7 @@ const articlePage = ({ data }) => {
 const { t } = useTranslation();
 const { articles, allCategories, locale } = data;
 const pageTitle = `${t(articles.data[0].attributes.title)} - ONLYOFFICE`;
-console.log(articles);
+
   return (
     <Layout>
       <Layout.PageHead>

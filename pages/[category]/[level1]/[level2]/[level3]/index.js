@@ -11,17 +11,23 @@ import filterArticles from "@utils/helpers/Common/filterForAllCategories";
 import createCategoryStructure from "@utils/helpers/Common/createCategoryStructure";
 import CenterSubCategoryContent from "@components/screens/single-page-content/content/subcategory-content";
 import SingleContent from "@components/screens/single-page-content";
+import withErrorHandling from "@components/common/hoc/error-handling";
+import { CATEGORIES, PATTERN } from "@utils/constants";
 
-const subcategoryPage = ({ locale, articles, categories, currentCategory, category, params }) => {
+const subcategoryPage = ({ data }) => {
   const { t } = useTranslation();
+  if (!data) {
+    return null;
+  }
+  const { articles, currentCategory, category, categories, locale, params } = data;
+
   const createArticlesUrl = require(`@utils/helpers/${params.capitalizeCategorySlug}Category/createArticlesUrl`).default;
   const allSortedArticles = articles.data.length > 1 && filterArticles(articles?.data, currentCategory.data[0].attributes.slug_id, category.data[0].attributes.slug_id);
   const allCategoryStructure = allSortedArticles.length !== 0 && createCategoryStructure(category, allSortedArticles);
   const link = articles.data.length === 1 && createArticlesUrl(articles.data[0], params.level3, params.level1);
+  const seo_title = articles.data && articles.data.length === 1 ? articles.data[0]?.attributes.seo_title : `${t(category.data[0].attributes.name)} - ${t(currentCategory.data[0].attributes.name)} - ONLYOFFICE`;
+  const seo_description = articles.data && articles.data.length === 1 ? articles.data[0]?.attributes.seo_description : null;
 
-  //console.log(allSortedArticles);
-
-  const { seo_title, seo_description } = articles.data.length === 1 && articles.data[0]?.attributes;
   return (
     <Layout>
       <Layout.PageHead>
@@ -51,8 +57,8 @@ const subcategoryPage = ({ locale, articles, categories, currentCategory, catego
           : <CenterSubCategoryContent
             t={t}
             currentLanguage={locale}
-            //articles={pageData?.level_4}
-            category={currentCategory.data[0].attributes.slug_id}
+            articles={allSortedArticles[0]?.level_3[0]?.level_4}
+            category={allSortedArticles[0]?.level_3[0]}
             categories={allCategoryStructure.data}
             isCategory={false}
             pageMainCategory={category.data[0].attributes}
@@ -65,31 +71,51 @@ const subcategoryPage = ({ locale, articles, categories, currentCategory, catego
   );
 };
 
-export async function getServerSideProps({ locale, params }) {
-  const pattern = /[a-zA-Z0-9\-]+\.aspx$/;
-  const pageUrl = pattern.test(params.level3) ? params.level3 : '';
+export async function getServerSideProps({ locale, params, res }) {
+  const pageUrl = PATTERN.test(params.level3) ? params.level1 + "/" + params.level2 + "/" + params.level3 : '';
   const categorySlug = params.category;
   params.capitalizeCategorySlug = categorySlug.charAt(0).toUpperCase() + categorySlug.slice(1);
 
-  const getAllArticles = require(`@lib/strapi/get${params.capitalizeCategorySlug}Articles`).default;
-  const getAllCategories = require(`@lib/strapi/get${params.capitalizeCategorySlug}Categories`).default;
+  if (CATEGORIES.includes(params.capitalizeCategorySlug)) {
+    const getAllArticles = require(`@lib/strapi/get${params.capitalizeCategorySlug}Articles`).default;
+    const getAllCategories = require(`@lib/strapi/get${params.capitalizeCategorySlug}Categories`).default;
 
-  const [articles, currentCategory, category, categories] = await Promise.all([
-    getAllArticles(locale, params.level1 || '', pageUrl), getAllCategories(locale, params.level1 || ''),
-    getAllCommonCategories(locale, categorySlug || ''), getAllCommonCategories(locale)
-  ]);
+    const [articles, currentCategory, category, categories] = await Promise.all([
+      getAllArticles(locale, params.level1 || '', pageUrl, false, params.level2, params.level3 || ''), getAllCategories(locale, params.level1 || ''),
+      getAllCommonCategories(locale, categorySlug || ''), getAllCommonCategories(locale)
+    ]);
 
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, "common")),
-      locale,
-      articles,
-      category,
-      categories,
-      currentCategory,
-      params
-    },
-  };
+    if (!articles || !category || !categories || !currentCategory) {
+      res.statusCode = 404;
+      return {
+        props: {
+          ...(await serverSideTranslations(locale, 'common')),
+          data: null,
+        },
+      };
+    }
+
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, "common")),
+        data: {
+          locale,
+          articles,
+          category,
+          categories,
+          currentCategory,
+          params
+        },
+      },
+    };
+  } else {
+    res.statusCode = 404;
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, 'common')),
+      },
+    };
+  }
 }
 
-export default subcategoryPage;
+export default withErrorHandling(subcategoryPage);

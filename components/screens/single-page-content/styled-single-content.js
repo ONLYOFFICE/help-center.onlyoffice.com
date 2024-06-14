@@ -38,6 +38,17 @@ const StyledSingleLayout = styled.div`
     h5 {
       padding: 0;
     }
+
+    &.olk {
+      padding: 0 0 16px;
+      > a > span {
+        color: #333333;
+        text-decoration: none;
+        &:hover {
+          color: #ff6f3d;
+        }
+      }
+    }
   }
 
   .classic-ul {

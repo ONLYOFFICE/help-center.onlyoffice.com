@@ -80,5 +80,4 @@ export const getServerSideProps = async ({ locale, params, res }) => {
   }
 };
 
-
 export default withErrorHandling(CategoryPage);

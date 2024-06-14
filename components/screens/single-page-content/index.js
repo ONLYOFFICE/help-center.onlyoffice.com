@@ -56,7 +56,7 @@ const SingleContent = ({
   return (
     <StyledSingleContent {...rest}>
       <LeftMenu {...menuProps} isArticle={true} />
-      {article ? <CenterArticleContent {...articleProps} /> : isVideoPage ? <VideoContent content={content} t={t} /> : <TagsContent isTagPage={isTagPage} content={content} t={t} currentLanguage={currentLanguage} />}
+      {article ? <CenterArticleContent {...articleProps} /> : isVideoPage ? <VideoContent content={content} t={t} /> : content ? <TagsContent isTagPage={isTagPage} content={content} t={t} currentLanguage={currentLanguage} /> : null}
     </StyledSingleContent>
   );
 };

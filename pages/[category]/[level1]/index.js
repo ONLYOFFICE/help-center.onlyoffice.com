@@ -11,7 +11,7 @@ import CenterCategoryContent from "@components/screens/single-page-content/conte
 import withErrorHandling from "@components/common/hoc/error-handling";
 
 import filterArticles from "@utils/helpers/Common/filterForAllCategories";
-import { CATEGORIES } from "@utils/constants";
+import { CATEGORIES, PATTERN } from "@utils/constants";
 
 const subcategoryPage = ({ data }) => {
   const { t } = useTranslation();
@@ -19,9 +19,7 @@ const subcategoryPage = ({ data }) => {
     return null;
   }
   const { articles, currentCategory, category, categories, locale } = data;
-
   const pageData = articles && filterArticles(articles.data, currentCategory?.data[0].attributes.slug_id, category.data[0].attributes.slug_id);
-
   const seo_title = pageData?.seo_title || t("titleIndexPage");
   const seo_description = pageData?.seo_description || t("metaDescriptionOgIndexPage");
   
@@ -64,12 +62,8 @@ const subcategoryPage = ({ data }) => {
 };
 
 export async function getServerSideProps({ locale, params, res }) {
-  const pattern = /[a-zA-Z0-9\-]+\.aspx$/;
-  const { level1 } = params;
-  const pageUrl = pattern.test(level1) ? level1 : '';
-  const pageCatSlug = level1;
+  const pageUrl = PATTERN.test(params.level1) ? params.level1 : '';
   const categorySlug = params.category;
-
   const capitalizeCategorySlug = categorySlug.charAt(0).toUpperCase() + categorySlug.slice(1);
 
   if (CATEGORIES.includes(capitalizeCategorySlug)) {
@@ -77,8 +71,8 @@ export async function getServerSideProps({ locale, params, res }) {
     const getAllCategories = require(`@lib/strapi/get${capitalizeCategorySlug}Categories`).default;
 
     const [articles, currentCategory, category, categories] = await Promise.all([
-      getAllArticles(locale, pageCatSlug || ''), 
-      getAllCategories(locale, pageUrl ? '' : pageCatSlug || '', pageUrl ? pageUrl : ''),
+      getAllArticles(locale, params.level1 || ''), 
+      getAllCategories(locale, pageUrl ? '' : params.level1 || '', pageUrl ? pageUrl : ''),
       getAllCommonCategories(locale, categorySlug || ''), getAllCommonCategories(locale)
     ]);
 
@@ -91,7 +85,7 @@ export async function getServerSideProps({ locale, params, res }) {
           category,
           categories,
           currentCategory,
-          pageCatSlug: pageCatSlug || null,
+          pageCatSlug: params.level1 || null,
           categorySlug: categorySlug || null,
         },
       },
@@ -105,6 +99,5 @@ export async function getServerSideProps({ locale, params, res }) {
     };
   }
 }
-
 
 export default withErrorHandling(subcategoryPage);

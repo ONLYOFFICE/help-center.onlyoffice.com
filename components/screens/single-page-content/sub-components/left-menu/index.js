@@ -45,6 +45,8 @@ const LeftMenu = ({ t, isCategory, articles, article, category, activeItem, hand
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleActiveItemChange]);
 
+  //console.log(activeItem);
+
   return (
     <StyledLeftMenu ref={leftMenu}>
       <div className="lm-wrap">

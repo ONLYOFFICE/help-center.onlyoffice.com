@@ -38,7 +38,7 @@ export default function filterArticles(articles, category, mainCategory) {
                 };
                 targetCategory.level_3.push(targetCategoryForLvl3);
             }
-    
+            
             if (level4 && level4 !== "") {
                 const isUniqueLevel4 = !targetCategoryForLvl3.level_4.some(item => item.name === level4);
                 if (isUniqueLevel4) {
@@ -50,7 +50,22 @@ export default function filterArticles(articles, category, mainCategory) {
                     };
                     targetCategoryForLvl3.level_4.push(newLevel4);
                 }
-            } else {
+                targetCategoryForLvl3.level_4.forEach(level4Item => {
+                    if (!level4Item.level_5) {
+                        level4Item.level_5 = [];
+                    }
+                    const newLevel5 = {
+                        name: `${article?.attributes.title}`,
+                        url: `${article?.attributes.url}`,
+                        videos: article?.attributes.videos?.data.map(video => ({
+                            title: video.attributes.title,
+                            description: video.attributes.description,
+                            url: video.attributes.url,
+                        })) || [],
+                    };
+                    level4Item.level_5.push(newLevel5);
+                });
+            } else if (level4 === null) {
                 const isUniqueLevel3Article = !targetCategoryForLvl3.level_4.some(item => item.name === article?.attributes.title);
                 if (isUniqueLevel3Article) {
                     const newLevel4 = {
@@ -65,21 +80,7 @@ export default function filterArticles(articles, category, mainCategory) {
                     targetCategoryForLvl3.level_4.push(newLevel4);
                 }
             }
-            targetCategoryForLvl3.level_4.forEach(level4Item => {
-                if (!level4Item.level_5) {
-                    level4Item.level_5 = [];
-                }
-                const newLevel5 = {
-                    name: `${article?.attributes.title}`,
-                    url: `${article?.attributes.url}`,
-                    videos: article?.attributes.videos?.data.map(video => ({
-                        title: video.attributes.title,
-                        description: video.attributes.description,
-                        url: video.attributes.url,
-                    })) || [],
-                };
-                level4Item.level_5.push(newLevel5);
-            });
+            
         }
     });
 
