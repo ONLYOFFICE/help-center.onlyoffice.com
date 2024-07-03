@@ -374,6 +374,12 @@ padding: 24px 0 0;
           vertical-align: middle;
           padding: 20px 0 10px;
       }
+
+      table.talk_pages.languages_list_table th.header span {
+        &::before, &::after {
+          display: none;
+        }
+      }
     }
 
 
@@ -648,6 +654,324 @@ padding: 24px 0 0;
 
     #tab1:checked~.tab.content1, #tab2:checked~.tab.content2, #tab3:checked~.tab.content3, #tab4:checked~.tab.content4, #tab5:checked~.tab.content5, #tab6:checked~.tab.content6, #tab7:checked~.tab.content7 {
         display: block;
+    }
+
+    // languages
+    .locale_lng {
+      display: inline-block;
+      padding: 0;
+      min-height: 12px;
+
+      &:before {
+        display: inline-block;
+        content: '';
+        width: 16px;
+        height: 16px;
+        background-image: url(/images/flags/flags_all.png);
+        background-repeat: no-repeat;
+        background-size: 256px 240px;
+        vertical-align: middle;
+        margin: 0 7px 3px 5px;
+      }
+
+      &.language_Lt-az-AZ:before {
+        background-position: 0 -16px;
+      }
+
+      &.language_en-US:before {
+          background-position: -223px -208px;
+      }
+
+      &.language_vi-VN:before {
+          background-position: -96px -224px;
+      }
+
+      &.language_el-GR:before {
+          background-position: -64px -80px;
+      }
+
+      &.language_es-ES:before, &.language_gl-ES:before, &.language_eu-ES:before {
+          background-position: 0 -64px;
+      }
+
+      &.language_ca-ES:before {
+          background-position: -240px -224px;
+      }
+
+      &.language_it-IT:before {
+          background-position: -128px -96px;
+      }
+
+      &.language_lo-LA:before {
+          background-position: -128px -112px;
+      }
+
+      &.language_ms-MY:before {
+          background-position: -128px -144px;
+      }
+
+      &.language_zh-TW:before {
+          background-position: -159px -208px;
+      }
+
+      &.language_zh-CN:before {
+          background-position: -207px -32px;
+      }
+
+      &.language_ko-KR:before {
+          background-position: -64px -112px;
+      }
+
+      &.language_lv-LV:before {
+          background-position: -16px -128px;
+      }
+
+      &.language_de-DE:before {
+          background-position: -80px -48px;
+      }
+
+      &.language_pl-PL:before {
+          background-position: -207px -160px;
+      }
+
+      &.language_pt-BR:before {
+          background-position: -223px -16px;
+      }
+
+      &.language_pt-PT:before {
+          background-position: -16px -176px;
+      }
+
+      &.language_ru-RU:before {
+          background-position: -112px -176px;
+      }
+
+      &.language_ar-SA:before {
+          background-position: -143px -176px;
+      }
+
+      &.language_tr-TR:before {
+          background-position: -112px -208px;
+      }
+
+      &.language_uk-UA:before {
+          background-position: -191px -208px;
+      }
+
+      &.language_fi-FI:before {
+          background-position: -48px -64px;
+      }
+
+      &.language_fr-FR:before {
+          background-position: -128px -64px;
+      }
+
+      &.language_cs-CZ:before {
+          background-position: -64px -48px;
+      }
+
+      &.language_ja-JP:before {
+          background-position: -191px -96px;
+      }
+
+      &.language_sq-AL:before {
+          background-position: -96px 0;
+      }
+
+      &.language_ar-TN:before {
+          background-position: -80px -208px;
+      }
+
+      &.language_ar-AE:before {
+          background-position: -32px 0;
+      }
+
+      &.language_hy-AM:before {
+          background-position: -112px 0;
+      }
+
+      &.language_af-ZA:before {
+          background-position: -191px -224px;
+      }
+
+      &.language_be-BY:before {
+          background-position: -32px -32px;
+      }
+
+      &.language_bg-BG:before {
+          background-position: -96px -16px;
+      }
+
+      &.language_bs-BA:before {
+          background-position: -16px -16px;
+      }
+
+      &.language_hu-HU:before {
+          background-position: -223px -80px;
+      }
+
+      &.language_ka-GE:before {
+          background-position: -191px -64px;
+      }
+
+      &.language_da-DK:before {
+          background-position: -112px -48px;
+      }
+
+      &.language_he-IL:before {
+          background-position: -32px -96px;
+      }
+
+      &.language_id-ID:before {
+          background-position: 0 -96px;
+      }
+
+      &.language_is-IS:before {
+          background-position: -112px -96px;
+      }
+
+      &.language_kk-KZ:before {
+          background-position: -112px -112px;
+      }
+
+      &.language_lt-LT:before {
+          background-position: -240px -112px;
+      }
+
+      &.language_mk-MK:before {
+          background-position: -160px -128px;
+      }
+
+      &.language_mn-MN:before {
+          background-position: -207px -128px;
+      }
+
+      &.language_nl-NL:before {
+          background-position: 0 -160px;
+      }
+
+      &.language_nb-NO:before {
+          background-position: -16px -160px;
+      }
+
+      &.language_ro-RO:before {
+          background-position: -80px -176px;
+      }
+
+      &.language_Cy-sr-SP:before, &.language_Lt-sr-SP:before {
+          background-position: -96px -176px;
+      }
+
+      &.language_si-LK:before {
+          background-position: -191px -112px;
+      }
+
+      &.language_sk-SK:before {
+          background-position: -16px -192px;
+      }
+
+      &.language_sl-SI:before {
+          background-position: 0 -192px;
+      }
+
+      &.language_sw-KE:before {
+          background-position: -207px -96px;
+      }
+
+      &.language_th-TH:before {
+          background-position: 0 -208px;
+      }
+
+      &.language_Cy-uz-UZ:before {
+          background-position: 0 -224px;
+      }
+
+      &.language_fa-IR:before {
+          background-position: -96px -96px;
+      }
+
+      &.language_hi-IN:before {
+          background-position: -64px -96px;
+      }
+
+      &.language_hr-HR:before {
+          background-position: -191px -80px;
+      }
+
+      &.language_sv-SE:before {
+          background-position: -207px -176px;
+      }
+
+      &.language_et-EE:before {
+          background-position: -191px -48px;
+      }
+
+      &.language_es-AR:before {
+          background-position: -160px 0;
+      }
+
+      &.language_my-MM:before {
+          background-position: -191px -128px;
+      }
+
+      &.language_tg-Cyrl-TJ:before {
+          background-position: -16px -208px;
+      }
+    }
+
+    // platforms
+
+    .languages_list_table {
+      .windows, .linux, .macos {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background-repeat: no-repeat;
+      background-size: 24px 24px;
+      background-position-y: 50%;
+      background-position-x: 50%;
+
+        a {
+            display: block;
+            width: 100%;
+            height: 24px;
+        }
+      }
+
+      .windows, .linux, .macos {
+          background-image: url(/images/icons/16px_windows.react.svg);
+      }
+
+      .linux {
+          background-image: url(/images/icons/16px_linux.react.svg);
+      }
+
+      .macos {
+          background-image: url(/images/icons/24px_mac.react.svg);
+      }
+
+      .windows.linux, .windows.macos, .linux.macos {
+          width: 50px;
+          background-position-x: 0%, 100%
+      }
+
+      .windows.linux {
+          background-image: url(/images/icons/16px_windows.react.svg), url(/images/icons/16px_linux.react.svg);
+      }
+
+      .windows.macos {
+          background-image: url(/images/icons/16px_windows.react.svg), url(/images/icons/24px_mac.react.svg);
+      }
+
+      .linux.macos {
+          background-image: url(/images/icons/16px_linux.react.svg), url(/images/icons/24px_mac.react.svg);
+      }
+
+      .windows.linux.macos {
+          width: 78px;
+          background-position-x: 0%, 50%, 100%;
+          background-image: url(/images/icons/16px_windows.react.svg), url(/images/icons/16px_linux.react.svg), url(/images/icons/24px_mac.react.svg);
+      }
     }
 
     // styles classes 

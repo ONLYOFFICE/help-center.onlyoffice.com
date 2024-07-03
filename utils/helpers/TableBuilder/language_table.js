@@ -198,7 +198,7 @@ export function buildMobileLargeTables(pageTopDivID) {
                 $('.table_versionlist').buildMobileLanguages('#languagesAndroidTable', i, languagesAndroidArray, engTotalAndroid);
             }
         }
-        $('#languageAndroidNumber').append(languageAndroidNumber);
+        document.getElementById('languageAndroidNumber').innerHTML =`${languageAndroidNumber}`;
     } else if (pageTopDivID === 'languagesiOSDocumentsTable') {
         for (let i = 0; i < languagesiOSDocumentsArray.length; i += 6) {
             if (languagesiOSDocumentsArray[i + 5] == 'yes' || languagesiOSDocumentsArray[i + 5] == 'yes new_language' || languagesiOSDocumentsArray[i + 5] == 'no comsoon') {
@@ -206,7 +206,7 @@ export function buildMobileLargeTables(pageTopDivID) {
                 $('.table_versionlist').buildMobileLanguages('#languagesiOSDocumentsTable', i, languagesiOSDocumentsArray, engTotaliOSDocuments);
             }
         }
-        $('#languageiOSDocumentsNumber').append(languageiOSDocumentsNumber);
+        document.getElementById('languageiOSDocumentsNumber').innerHTML =`${languageiOSDocumentsNumber}`;
     } else if (pageTopDivID === 'languagesiOSProjectsTable') {
         for (let i = 0; i < languagesiOSProjectsArray.length; i += 6) {
             if (languagesiOSProjectsArray[i + 5] == 'yes' || languagesiOSProjectsArray[i + 5] == 'yes new_language' || languagesiOSProjectsArray[i + 5] == 'no comsoon') {
