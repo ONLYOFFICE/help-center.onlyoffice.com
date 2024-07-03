@@ -1,0 +1,47 @@
+{
+  "table": "UnknownTable",
+  "rows": [
+    {
+      "count(*)": 19,
+      "authorLogin": "Henrik Troels-Hansen",
+      "cultureTitle": "da",
+      "projectName": "Projects"
+    },
+    {
+      "count(*)": 101,
+      "authorLogin": "Svetlana",
+      "cultureTitle": "ru",
+      "projectName": "TeamLab Editors"
+    },
+    {
+      "count(*)": 20,
+      "authorLogin": "Victor Ibragimov",
+      "cultureTitle": "tg-Cyrl-TJ",
+      "projectName": "Desktop Editors"
+    },
+    {
+      "count(*)": 5,
+      "authorLogin": "Victor Ibragimov",
+      "cultureTitle": "tg-Cyrl-TJ",
+      "projectName": "Files"
+    },
+    {
+      "count(*)": 104,
+      "authorLogin": "Victor Ibragimov",
+      "cultureTitle": "tg-Cyrl-TJ",
+      "projectName": "Mobile"
+    },
+    {
+      "count(*)": 5,
+      "authorLogin": "Victor Ibragimov",
+      "cultureTitle": "tg-Cyrl-TJ",
+      "projectName": "People"
+    },
+    {
+      "count(*)": 67,
+      "authorLogin": "Victor Ibragimov",
+      "cultureTitle": "tg-Cyrl-TJ",
+      "projectName": "Projects"
+    }
+  ]
+}

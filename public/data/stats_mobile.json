@@ -1,0 +1,311 @@
+{
+  "table": "UnknownTable",
+  "rows": [
+    {
+      "count(*)": 65,
+      "title": "be",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for Android"
+    },
+    {
+      "count(*)": 352,
+      "title": "bg",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for Android"
+    },
+    {
+      "count(*)": 593,
+      "title": "bg",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Common"
+    },
+    {
+      "count(*)": 390,
+      "title": "bg",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Document Editor"
+    },
+    {
+      "count(*)": 466,
+      "title": "bg",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Presentation Editor"
+    },
+    {
+      "count(*)": 523,
+      "title": "bg",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Spreadsheet Editor"
+    },
+    {
+      "count(*)": 754,
+      "title": "bg",
+      "projectName": "Mobile Applications",
+      "moduleName": "Projects for iOS"
+    },
+    {
+      "count(*)": 624,
+      "title": "cs",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Common"
+    },
+    {
+      "count(*)": 390,
+      "title": "cs",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Document Editor"
+    },
+    {
+      "count(*)": 463,
+      "title": "cs",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Presentation Editor"
+    },
+    {
+      "count(*)": 523,
+      "title": "cs",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Spreadsheet Editor"
+    },
+    {
+      "count(*)": 555,
+      "title": "Neutral",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for Android"
+    },
+    {
+      "count(*)": 639,
+      "title": "Neutral",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Common"
+    },
+    {
+      "count(*)": 390,
+      "title": "Neutral",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Document Editor"
+    },
+    {
+      "count(*)": 466,
+      "title": "Neutral",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Presentation Editor"
+    },
+    {
+      "count(*)": 523,
+      "title": "Neutral",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Spreadsheet Editor"
+    },
+    {
+      "count(*)": 754,
+      "title": "Neutral",
+      "projectName": "Mobile Applications",
+      "moduleName": "Projects for iOS"
+    },
+    {
+      "count(*)": 555,
+      "title": "fr",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for Android"
+    },
+    {
+      "count(*)": 639,
+      "title": "fr",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Common"
+    },
+    {
+      "count(*)": 390,
+      "title": "fr",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Document Editor"
+    },
+    {
+      "count(*)": 466,
+      "title": "fr",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Presentation Editor"
+    },
+    {
+      "count(*)": 523,
+      "title": "fr",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Spreadsheet Editor"
+    },
+    {
+      "count(*)": 756,
+      "title": "fr",
+      "projectName": "Mobile Applications",
+      "moduleName": "Projects for iOS"
+    },
+    {
+      "count(*)": 555,
+      "title": "de",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for Android"
+    },
+    {
+      "count(*)": 639,
+      "title": "de",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Common"
+    },
+    {
+      "count(*)": 390,
+      "title": "de",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Document Editor"
+    },
+    {
+      "count(*)": 466,
+      "title": "de",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Presentation Editor"
+    },
+    {
+      "count(*)": 523,
+      "title": "de",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Spreadsheet Editor"
+    },
+    {
+      "count(*)": 756,
+      "title": "de",
+      "projectName": "Mobile Applications",
+      "moduleName": "Projects for iOS"
+    },
+    {
+      "count(*)": 5,
+      "title": "hu",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for Android"
+    },
+    {
+      "count(*)": 555,
+      "title": "it",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for Android"
+    },
+    {
+      "count(*)": 244,
+      "title": "it",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Common"
+    },
+    {
+      "count(*)": 107,
+      "title": "it",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Document Editor"
+    },
+    {
+      "count(*)": 26,
+      "title": "it",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Presentation Editor"
+    },
+    {
+      "count(*)": 104,
+      "title": "it",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Spreadsheet Editor"
+    },
+    {
+      "count(*)": 468,
+      "title": "it",
+      "projectName": "Mobile Applications",
+      "moduleName": "Projects for iOS"
+    },
+    {
+      "count(*)": 498,
+      "title": "pl",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for Android"
+    },
+    {
+      "count(*)": 555,
+      "title": "pt-BR",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for Android"
+    },
+    {
+      "count(*)": 544,
+      "title": "ru",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for Android"
+    },
+    {
+      "count(*)": 639,
+      "title": "ru",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Common"
+    },
+    {
+      "count(*)": 390,
+      "title": "ru",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Document Editor"
+    },
+    {
+      "count(*)": 466,
+      "title": "ru",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Presentation Editor"
+    },
+    {
+      "count(*)": 523,
+      "title": "ru",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Spreadsheet Editor"
+    },
+    {
+      "count(*)": 754,
+      "title": "ru",
+      "projectName": "Mobile Applications",
+      "moduleName": "Projects for iOS"
+    },
+    {
+      "count(*)": 555,
+      "title": "es",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for Android"
+    },
+    {
+      "count(*)": 639,
+      "title": "es",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Common"
+    },
+    {
+      "count(*)": 390,
+      "title": "es",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Document Editor"
+    },
+    {
+      "count(*)": 466,
+      "title": "es",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Presentation Editor"
+    },
+    {
+      "count(*)": 523,
+      "title": "es",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for iOS Spreadsheet Editor"
+    },
+    {
+      "count(*)": 754,
+      "title": "es",
+      "projectName": "Mobile Applications",
+      "moduleName": "Projects for iOS"
+    },
+    {
+      "count(*)": 1,
+      "title": "sv",
+      "projectName": "Mobile Applications",
+      "moduleName": "Documents for Android"
+    }
+  ]
+}

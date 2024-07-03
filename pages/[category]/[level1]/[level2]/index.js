@@ -20,6 +20,7 @@ const subcategoryPage = ({ data }) => {
     return null;
   }
   const { articles, currentCategory, category, categories, locale, params } = data;
+  //console.log(articles);
   const createArticlesUrl = require(`@utils/helpers/${params.capitalizeCategorySlug}Category/createArticlesUrl`).default;
   const allSortedArticles = articles.data.length > 1 && filterArticles(articles?.data, currentCategory.data[0].attributes.slug_id, category.data[0].attributes.slug_id);
   const currentSorted = allSortedArticles && allSortedArticles.find((it) => it.url === params.fullPagePath);

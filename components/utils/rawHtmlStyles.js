@@ -10,6 +10,10 @@ padding: 24px 0 0;
     p {
       margin: 0;
       padding: 0;
+
+      &.last_update {
+        text-align: end;
+      }
     }
 
     // tables
@@ -339,6 +343,39 @@ padding: 24px 0 0;
         display: inline;
     }
 
+    .bringattention {
+      background-color: #f1da92;
+      padding: 15px 30px;
+      margin: 10px 0 20px;
+      line-height: 1.3em;
+      border-radius: 2px;
+      -moz-border-radius: 2px;
+      -webkit-border-radius: 2px;
+      .close_cross {
+          font-size: 26px;
+          float: right;
+          margin: -5px -5px 0 0;
+          padding: 5px;
+          cursor: pointer;
+      }
+      strong {
+          font-weight: 400;
+          font-size: 18px;
+          color: #ff642e;
+          display: block;
+          margin-bottom: 10px;
+      }
+      #newstrDate, #moduleTotalCount {
+          font-weight: 600;
+      }
+      .input_never_show {
+          display: flex;
+          gap: 8px;
+          vertical-align: middle;
+          padding: 20px 0 10px;
+      }
+    }
+
 
     // spans
     span.yes {
@@ -366,7 +403,33 @@ padding: 24px 0 0;
       vertical-align: middle;
     }
 
-    span.iptoggler {
+    span {
+      &.new_language:after, &.comsoon:after, &.newarticle:after { 
+        display: inline-block;
+        padding: 0 4px;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 300;
+        vertical-align: middle;
+        margin: 0 0 0 6px;
+        text-transform: top;
+        line-height: 1.5em;
+      }
+    }
+
+    span.new_language:after {
+      content: 'recently added';
+      background-color: #3db80f;
+    }
+    span.comsoon:after {
+      margin: 0 0 0 23px;
+      line-height: 1.3em;
+      font-size: 9px;
+      content: 'soon';
+      background-color: #999;
+    }
+
+    span.iptoggler, span.toggler {
       border-bottom: 1px dotted #333;
       cursor: pointer;
       width: fit-content;
@@ -382,6 +445,15 @@ padding: 24px 0 0;
 
     div.inpage-toggler {
       text-align: -webkit-right;
+    }
+
+    .block-editor, .block_of_step .inpage-toggler, .MainHelpCenter .inpage-toggler {
+      padding: 8px 0 0;
+      span.toggler {
+        left: 0;
+        right: auto;
+        top: 10px;
+      }
     }
 
     // links 
@@ -541,6 +613,9 @@ padding: 24px 0 0;
 
     input {
         display: none;
+    }
+    input[type="checkbox"] {
+      display: block;
     }
 
     input[type="radio"] {
