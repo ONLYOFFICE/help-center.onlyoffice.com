@@ -9,7 +9,9 @@ const InfoContent = ({ t, template, categories, currentLanguage, isCategory, cat
   return (
     <StyledInfoContent template={template}>
       <SearchContent t={t} isCategory={isCategory} category={category} />
-      {!isCategory && <Category t={t} category={categories} currentLanguage={currentLanguage}/>}
+      {!isCategory && 
+        <Category t={t} category={categories} currentLanguage={currentLanguage}/>
+      }
     </StyledInfoContent>
   );
 };

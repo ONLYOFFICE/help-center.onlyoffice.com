@@ -5,42 +5,40 @@ import Link from "@components/common/internal-link";
 import Heading from "@components/common/heading";
 import checkPlatformMatch from "@utils/helpers/Common/checkPlatforms";
 
-const TreeView = ({
-    children,
-    t,
-    ...rest
+const TreeView = ({ children, t, ...rest }) => {
+  const content = useRef();
+  const [active, setActive] = useState(true);
+  const items = children?.level_3 || children?.level_4;
 
-}) => {
-    const content = useRef();
-    const [active, setActive] = useState(true);
-    const items = children?.level_3 || children?.level_4;
-
-    return (
-        <StyledTreeView {...rest}>
-            <Heading
-                level={6}
-                style={{ cursor: "pointer" }}
-                className="tree__heading"
-                onClick={() => setActive(!active)}
-            >
-                <img src="https://static-helpcenter.onlyoffice.com/images/icons/arrow-right.react.svg" style={!active ? { transform: "rotate(0)" } : { transform: "rotate(90deg)" }} />
-                {children.name}
-            </Heading>
-            <div className="tree__items"
-                ref={content}
-                style={{
-                    maxHeight: `${active ? `${content?.current?.scrollHeight}px` : "0px"}`,
-                }}
-            >
-                {items?.map((it, index) => (
-                    <Link
-                        className="treeview__link"
-                        key={index}
-                        href={it.url}> {it.name} {checkPlatformMatch(it.name) && t("Version")}</Link>
-                ))}
-            </div>
-        </StyledTreeView>
-    );
+  return (
+    <StyledTreeView {...rest}>
+      <Heading
+        level={6}
+        style={{ cursor: "pointer" }}
+        className="tree__heading"
+        onClick={() => setActive(!active)}
+      >
+        <img src="https://static-helpcenter.onlyoffice.com/images/icons/arrow-right.react.svg" style={!active ? { transform: "rotate(0)" } : { transform: "rotate(90deg)" }} />
+        {children.attributes.name}
+      </Heading>
+      <div className="tree__items"
+        ref={content}
+        style={{
+          maxHeight: `${active ? `${content?.current?.scrollHeight}px` : "0px"}`,
+        }}
+      >
+        {children.attributes.level_3_docs?.data.map((item, index) => (
+          <Link
+            className="treeview__link"
+            key={index}
+            href={item.attributes.url}
+          >
+            {item.attributes.name}
+          </Link>
+        ))}
+      </div>
+    </StyledTreeView>
+  );
 };
 
 

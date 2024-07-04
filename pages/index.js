@@ -1,14 +1,6 @@
-import React from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import getAllArticles from "@lib/strapi/getArticles";
-import getAllCategories from "@lib/strapi/getCategories";
-import getAllDocsArticles from "@lib/strapi/getDocsArticles";
-import getAllDesktopArticles from "@lib/strapi/getDesktopArticles";
-import getAllMobileArticles from "@lib/strapi/getMobileArticles";
-import getAllDocspaceArticles from "@lib/strapi/getDocspaceArticles";
-import getAllWorkspaceArticles from "@lib/strapi/getWorkspaceArticles";
-
+import getCategories from "@lib/strapi/getCategories";
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
 import InfoContent from "@components/screens/main-content/info-content";
@@ -16,12 +8,9 @@ import GuidesCards from "@components/screens/main-content/guides-cards";
 import Accordion from "@components/screens/common/accordion";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
-import createAllArticlesList from "@utils/helpers/Common/createAllArticlesList";
 
-const Index = ({ locale, categories, integrationArticles, docsArticles, docspaceArticles, mobileArticles, desktopArticles, workspaceArticles }) => {
+const Index = ({ locale, categories }) => {
   const { t } = useTranslation();
-  const result = createAllArticlesList(integrationArticles.data, desktopArticles.data, docsArticles.data, docspaceArticles.data, mobileArticles.data, workspaceArticles.data);
-  const pageCategory = 'main';
 
   return (
     <Layout>
@@ -40,7 +29,7 @@ const Index = ({ locale, categories, integrationArticles, docsArticles, docspace
       </Layout.PageHeader>
       <Layout.SectionMain>
         <InfoContent t={t} categories={categories.data} currentLanguage={locale} isCategory={false} />
-        <GuidesCards t={t} categories={categories.data} articles={result} isCategory={false} className="mp" mainCategory={pageCategory} />
+        <GuidesCards t={t} className="mp" data={categories} />
         <Accordion t={t} currentLanguage={locale} />
       </Layout.SectionMain>
       <Layout.PageFooter>
@@ -51,24 +40,12 @@ const Index = ({ locale, categories, integrationArticles, docsArticles, docspace
 };
 
 export const getStaticProps = async ({ locale }) => {
-  const integrationArticles = await getAllArticles(locale);
-  const docsArticles = await getAllDocsArticles(locale, null, null, true);
-  const desktopArticles = await getAllDesktopArticles(locale, null, null, true);
-  const mobileArticles = await getAllMobileArticles(locale, null, null, true);
-  const docspaceArticles = await getAllDocspaceArticles(locale, null, null, true);
-  const workspaceArticles = await getAllWorkspaceArticles(locale, null, null, true);
-  const categories = await getAllCategories(locale);
+  const categories = await getCategories(locale);
 
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      integrationArticles,
-      docsArticles,
-      desktopArticles,
-      mobileArticles,
-      docspaceArticles,
-      workspaceArticles,
       categories
     },
   };
