@@ -30,7 +30,7 @@ const ConnectorsPage = ({ data }) => {
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={false} currentLanguage={locale} categories={allCategories.data} pageCategory={category.data[0].attributes} />
+        <HeadingContent t={t} template={false} currentLanguage={locale} categories={allCategories.data} pageCategory={category.data[0].attributes.slug_id} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <InfoContent t={t} categories={allCategories.data} currentLanguage={locale} isCategory={true} category={category.data[0].attributes} />

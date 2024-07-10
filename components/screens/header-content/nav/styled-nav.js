@@ -13,6 +13,7 @@ const StyledNav = styled.nav`
   }
 
   .close-cross {
+    display: none;
     height: 24px;
     width: 24px;
   }
@@ -88,6 +89,10 @@ const StyledNav = styled.nav`
       }
     }
 
+    .close-cross {
+      display: block;
+    }
+
     .mobile-heading-nav-item {
       border-bottom: 1px solid #f2f2f2;
       color: #ff6f3d;
@@ -121,6 +126,45 @@ const StyledNav = styled.nav`
   }
 
   @media ${device.tabletS} {
+    align-items: end;
+    border-top: 1px solid #666666;
+    border-right: none;
+    position: absolute;
+    display: ${(props) => (props.isOpen ? "flex" : "none")};
+    gap: 24px;
+    flex-direction: column;
+    height: max-content;
+    background-color: #333;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 20%);
+    z-index: 100;
+    padding: 16px 90px 18px 0;
+    top: 55px;
+    left: 100vw;
+    justify-content: space-between;
+    width: 100%;
+
+    .heading-nav-item {
+      border-bottom: none;
+      color: rgb(255, 255, 255);
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 0;
+      text-align: right;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: normal;
+        &:after {
+          display: none;
+        }
+
+        &.active {
+          color: #ff6f3d;
+        }
+      }
+    .close-cross {
+      display: none;
+    }
     .mobile-heading-nav-item {
       font-size: 16px;
     }

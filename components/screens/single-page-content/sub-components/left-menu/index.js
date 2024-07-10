@@ -45,10 +45,25 @@ const LeftMenu = ({ t, isCategory, articles, article, category, activeItem, hand
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleActiveItemChange]);
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleToggle = () => {
+      setIsOpen(prevState => !prevState);
+    };
+
+    if (typeof document !== 'undefined') {
+      document.addEventListener('toggleIsOpen', handleToggle);
+      return () => {
+        document.removeEventListener('toggleIsOpen', handleToggle);
+      };
+    }
+  }, []);
+
   //console.log(activeItem);
 
   return (
-    <StyledLeftMenu ref={leftMenu}>
+    <StyledLeftMenu ref={leftMenu} isOpen={isOpen}>
       <div className="lm-wrap">
         <MiniSearch />
         {/* <div className="bck-to-prev">

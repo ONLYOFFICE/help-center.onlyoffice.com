@@ -170,7 +170,22 @@ width: 231px;
   }
 
   @media ${device.tabletS} {
-    display: none;
+    display: ${(props) => (props.isOpen ? "block" : "none")};
+    position: fixed;
+    top: 0px;
+    z-index: 1113;
+    left: 0;
+    overflow: hidden;
+    height: 100%;
+    padding-left: 16px;
+
+    &:before {
+      display: none;
+    }
+
+    .lm-wrap {
+      height: 100%;
+      }
   }
 `;
 

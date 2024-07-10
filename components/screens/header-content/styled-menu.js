@@ -38,7 +38,7 @@ const StyledMenuTablet = css`
         transform: translate3d(300px, 0, 0) translateX(-50%);
       }
   
-      .nav-item-logo, .nav-item-lng {
+      .nav-item-logo, .nav-item-lng, .menu-selector {
         transform: translate3d(380px, 0, 0) translateX(-50%);
       }
   
@@ -57,6 +57,10 @@ const StyledMenuTablet = css`
     .site-logo {
       background-image: url('https://static-helpcenter.onlyoffice.com/images/logo/logo-mobile.react.svg');
       width: 30px;
+    }
+
+    .nav-items-mobile {
+      display: ${(props) => (props.isMain ? "none" : "block")};
     }
   }
 `;
@@ -89,6 +93,9 @@ const StyledMenu = styled.div`
       width: 35px;
     }
   }
+    .nav-items-mobile {
+      display: none;
+    }
 
   @media ${device.laptopL} {
     padding: 0 2vw;

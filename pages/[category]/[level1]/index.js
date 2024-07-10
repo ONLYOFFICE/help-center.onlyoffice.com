@@ -34,7 +34,7 @@ const subcategoryPage = ({ data }) => {
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} pageCategory={category} />
+        <HeadingContent t={t} template={false} currentLanguage={locale} categories={categories.data} pageCategory={category.data[0].attributes.slug_id} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         {articles ? <CenterCategoryContent

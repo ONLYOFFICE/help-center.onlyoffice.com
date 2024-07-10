@@ -1,24 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import LanguageSelector from "@components/common/language-selector";
 import InternalLink from "@components/common/internal-link";
 import StyledMenu from "./styled-menu";
 import Nav from "./nav/nav";
-import useWindowWidth from '@utils/helpers/System/useWindowProvider';
-import MenuSelector from "@components/common/menu-selector";
+import Text from "@components/common/text";
+import StyledMenuSelector from "./styled-menu-selector";
 
 const Menu = ({ t, currentLanguage, template, categories, isMain, pageCategory, ...rest }) => {
   const curLang = currentLanguage === "en" ? "/" : `/${currentLanguage}/`;
-  const windowWidth = useWindowWidth();
-  const [isClient, setIsClient] = useState(false);
   const [stateMobile, setStateMobile] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [cat, setCat] = useState("menu");
+  const selectorRef = useRef(null);
   const toggleMobile = () => {
     setStateMobile(!stateMobile);
+    if (typeof window !== 'undefined' && window.innerWidth < 592) {
+      const event = new CustomEvent('toggleIsOpen');
+      document.dispatchEvent(event);
+    }
   };
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   const handleClickOutside = (e) => {
     if (stateMobile && !e.target.closest(".nav-item-links")) {
@@ -37,6 +38,46 @@ const Menu = ({ t, currentLanguage, template, categories, isMain, pageCategory, 
     };
   }, [stateMobile]);
 
+  const onClickHandler = (e) => {
+    e.stopPropagation();
+    if (e.target.closest(".menu-selector") || e.target.closest(".arrow-image") || e.target.closest(".menu-item-link")) {
+      setIsOpen(!isOpen);
+      if (e.target.closest(".menu-item-link")) {
+        setCat(e.target.closest(".menu-item-link").textContent);
+      }
+      rest.onClick && rest.onClick(e);
+    }
+  };
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (isOpen && selectorRef.current && !selectorRef.current.contains(e.target)) {
+        onCloseSelector();
+      }
+    };
+
+    typeof window !== "undefined" && window.addEventListener("click", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (pageCategory) {
+      if (pageCategory === "integration") {
+        setCat("connectors")
+      } else {
+        setCat(pageCategory);
+      }
+    } else {
+      setCat("menu");
+    }
+  }, [pageCategory]);
+
+  const onCloseSelector = () => {
+    setIsOpen(false);
+  };
+
   return (
     <StyledMenu
       template={template}
@@ -46,16 +87,21 @@ const Menu = ({ t, currentLanguage, template, categories, isMain, pageCategory, 
       <InternalLink className="nav-item-logo" href={curLang}>
         <div className="site-logo"></div>
       </InternalLink>
-      {isClient && (
-        (windowWidth <= 1000 && windowWidth > 592) || (windowWidth <= 592 && !isMain) ? (
-          <img
-            src="https://static-helpcenter.onlyoffice.com/images/icons/mob_menu_white.react.svg"
-            className="nav-items-mobile"
-            onClick={toggleMobile}
-          />
-        ) : null
-      )}
+      <img
+        src="https://static-helpcenter.onlyoffice.com/images/icons/mob_menu_white.react.svg"
+        className="nav-items-mobile"
+        onClick={toggleMobile}
+      />
       <div className="overlay"></div>
+
+      <StyledMenuSelector
+        onClick={onClickHandler}
+        ref={selectorRef}
+        className="menu-selector"
+      >
+        <Text className={`${cat !== "menu" ? "orange" : ""}`}>{cat}</Text>
+        <img className={`arrow-image ${isOpen ? "open" : ""}`} src="https://static-helpcenter.onlyoffice.com/images/icons/arrow-drop-down.react.svg" alt="arrow" />
+      </StyledMenuSelector>
       <Nav
         currentLanguage={currentLanguage}
         className="nav-item-links"
@@ -63,11 +109,10 @@ const Menu = ({ t, currentLanguage, template, categories, isMain, pageCategory, 
         categories={categories}
         t={t}
         onClickPND={toggleMobile}
-        windowWidth={windowWidth}
+        setCat={setCat}
+        isOpen={isOpen}
+        cat={cat}
       />
-      {isClient && windowWidth <= 592 && (
-        <MenuSelector t={t} categories={categories} pageCategory={pageCategory} />
-      )}
       <LanguageSelector t={t} currentLanguage={currentLanguage} />
     </StyledMenu>
   );
