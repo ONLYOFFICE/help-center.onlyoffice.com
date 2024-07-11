@@ -3,7 +3,6 @@ import React, { useState, useRef } from "react";
 import StyledTreeView from "./styled-treeview";
 import Link from "@components/common/internal-link";
 import Heading from "@components/common/heading";
-import checkPlatformMatch from "@utils/helpers/Common/checkPlatforms";
 
 const TreeView = ({ children, t, pageItemsLevel, categorySlug, ...rest }) => {
   const content = useRef();
