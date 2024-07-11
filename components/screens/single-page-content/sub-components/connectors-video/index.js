@@ -30,7 +30,7 @@ const Video = ({ t, videos }) => {
     <StyledVideo id="watchvideo">
       <Heading level={4}>{t("WatchVideo")}</Heading>
       <Box className={`vids ${videos.length == 1 ? 'single' : ''}`}>
-        {videos.slice(0, 1)?.map((it, index) => {
+        {videos?.map((it, index) => {
           return <VideoItem t={t} key={index} data={it} isMain={true} className={`main ${videos.length == 1 ? 'single' : ''}`} />;
         })}
         {filteredArray.length > 1 && <Carousel className="vids-car" isArrows={filteredArray.length > videosForCarLenght ? true : false} t={t} items={filteredArray}/>}

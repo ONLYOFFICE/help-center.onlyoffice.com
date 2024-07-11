@@ -5,7 +5,7 @@ import Link from "@components/common/internal-link";
 import Heading from "@components/common/heading";
 import checkPlatformMatch from "@utils/helpers/Common/checkPlatforms";
 
-const TreeView = ({ children, t, ...rest }) => {
+const TreeView = ({ children, t, pageItemsLevel, categorySlug, ...rest }) => {
   const content = useRef();
   const [active, setActive] = useState(true);
   const items = children?.level_3 || children?.level_4;
@@ -27,7 +27,7 @@ const TreeView = ({ children, t, ...rest }) => {
           maxHeight: `${active ? `${content?.current?.scrollHeight}px` : "0px"}`,
         }}
       >
-        {children.attributes.level_3_docs?.data.map((item, index) => (
+        {children.attributes[`level_${pageItemsLevel}_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`]?.data.map((item, index) => (
           <Link
             className="treeview__link"
             key={index}

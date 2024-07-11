@@ -1,8 +1,8 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import getAllDefinitions from "@lib/strapi/getGlossary";
-import getAllCategories from "@lib/strapi/getCategories";
+import getGlossary from "@lib/strapi/getGlossary";
+import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
@@ -10,7 +10,7 @@ import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 import SingleContent from "@components/screens/single-page-content";
 
-const Index = ({ locale, categories, glossary }) => {
+const GlossaryPage = ({ locale, categoriesMenu, glossary }) => {
   const { t } = useTranslation();
 
   return (
@@ -26,15 +26,21 @@ const Index = ({ locale, categories, glossary }) => {
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={true} currentLanguage={locale} categories={categories.data} isMain={true} />
+        <HeadingContent
+          t={t}
+          template={true}
+          currentLanguage={locale}
+          categories={categoriesMenu.data}
+          isMain={true}
+        />
       </Layout.PageHeader>
       <Layout.SectionMain>
-      <SingleContent
-            t={t}
-            currentLanguage={locale}
-            isTagPage={false} 
-            content={glossary.data}
-          />
+        <SingleContent
+          t={t}
+          currentLanguage={locale}
+          isGlossaryPage={true} 
+          data={glossary.data}
+        />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />
@@ -44,18 +50,17 @@ const Index = ({ locale, categories, glossary }) => {
 };
 
 export const getStaticProps = async ({ locale }) => {
-  const [glossary, categories] = await Promise.all([
-    getAllDefinitions(locale), 
-    getAllCategories(locale)
-  ]);
+  const categoriesMenu = await getCategoriesMenu(locale);
+  const glossary = await getGlossary(locale);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      glossary,
-      categories
+      categoriesMenu,
+      glossary
     },
   };
 };
 
-export default Index;
+export default GlossaryPage;

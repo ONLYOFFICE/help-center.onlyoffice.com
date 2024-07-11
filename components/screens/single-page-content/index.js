@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import StyledSingleContent from "./styled-single-content";
 import LeftMenu from "./sub-components/left-menu";
 import CenterArticleContent from "./content/article-content";
@@ -6,57 +5,56 @@ import TagsContent from "./content/tags-content";
 import VideoContent from "./content/video-content";
 
 const SingleContent = ({
-  t,
-  article,
-  children,
-  tags,
-  category,
-  categories,
-  isCategory,
-  isTagPage,
-  videos,
-  currentLanguage,
-  pagePath,
-  content,
-  isVideoPage,
-  ...rest
-}) => {
-
-  // left menu highlight
-  const [activeItem, setActiveItem] = useState(null);
-  const handleActiveItemChange = (item) => {
-    setActiveItem(item);
-  };
-
-  const articleProps = {
-    article,
-    category,
-    categories,
+    t,
+    currentLanguage,
+    isArticle,
+    categoryName,
+    categoryUrl,
+    level2CategoryName,
+    level2CategoryUrl,
+    pageName,
+    pageDescription,
     tags,
-    isTagPage,
     videos,
-    handleActiveItemChange,
-    currentLanguage,
-    children,
-    pagePath,
-    t,
-  };
-  const menuProps = {
-    article,
-    categories,
-    isCategory,
-    category,
-    handleActiveItemChange,
-    currentLanguage,
-    children,
-    t,
-    activeItem
-  };
-
+    data,
+    isGlossaryPage,
+    isTagPage,
+    isVideoPage
+  }) => {
   return (
-    <StyledSingleContent {...rest}>
-      <LeftMenu {...menuProps} isArticle={true} />
-      {article ? <CenterArticleContent {...articleProps} /> : isVideoPage ? <VideoContent content={content} t={t} /> : content ? <TagsContent isTagPage={isTagPage} content={content} t={t} currentLanguage={currentLanguage} /> : null}
+    <StyledSingleContent>
+      <LeftMenu
+        t={t}
+        isArticle={isArticle}
+        pageName={pageName}
+        pageDescription={pageDescription}
+      />
+      {isGlossaryPage || isTagPage ? (
+        <TagsContent
+          t={t}
+          currentLanguage={currentLanguage}
+          content={data}
+          isTagPage={isTagPage}
+        />
+      ) : isVideoPage ? (
+        <VideoContent
+          t={t}
+          content={data}
+        />
+      ) : (
+        <CenterArticleContent
+          t={t}
+          currentLanguage={currentLanguage}
+          categoryName={categoryName}
+          categoryUrl={categoryUrl}
+          level2CategoryName={level2CategoryName}
+          level2CategoryUrl={level2CategoryUrl}
+          pageName={pageName}
+          pageDescription={pageDescription}
+          tags={tags}
+          videos={videos}
+        />
+      )}
     </StyledSingleContent>
   );
 };

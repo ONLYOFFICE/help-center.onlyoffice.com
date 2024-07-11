@@ -9,7 +9,7 @@ import Accordion from "@components/screens/common/accordion";
 import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 
-const Index = ({ locale, categories }) => {
+const MainPage = ({ locale, categories }) => {
   const { t } = useTranslation();
 
   return (
@@ -25,10 +25,21 @@ const Index = ({ locale, categories }) => {
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={true} currentLanguage={locale} categories={categories.data} isMain={true} />
+        <HeadingContent
+          t={t}
+          template={true}
+          currentLanguage={locale}
+          categories={categories.data}
+          isMain={true}
+        />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <InfoContent t={t} categories={categories.data} currentLanguage={locale} isCategory={false} />
+        <InfoContent
+          t={t}
+          categories={categories.data}
+          currentLanguage={locale}
+          isCategory={false}
+        />
         <GuidesCards t={t} className="mp" data={categories} />
         <Accordion t={t} currentLanguage={locale} />
       </Layout.SectionMain>
@@ -51,4 +62,4 @@ export const getStaticProps = async ({ locale }) => {
   };
 };
 
-export default Index;
+export default MainPage;

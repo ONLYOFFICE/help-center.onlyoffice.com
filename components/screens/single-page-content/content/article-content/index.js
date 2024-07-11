@@ -12,7 +12,18 @@ import DownloadArea from "../../sub-components/download-area";
 import { BuildTable } from "@utils/helpers/TableBuilder/language_table_builder.js";
 import Tooltip from "@components/common/tooltip";
 
-const CenterArticleContent = ({ t, article, tags, videos, onActiveItemChange, currentLanguage, category, categories, pagePath }) => {
+const CenterArticleContent = ({
+    t,
+    currentLanguage,
+    categoryName,
+    categoryUrl,
+    level2CategoryName,
+    level2CategoryUrl,
+    pageName,
+    pageDescription,
+    tags,
+    videos
+  }) => {
   const [modalActive, setModalActive] = useState(false);
   const [imageModalActive, setImageModalActive] = useState(false);
   const [tag, setTag] = useState();
@@ -35,8 +46,8 @@ const CenterArticleContent = ({ t, article, tags, videos, onActiveItemChange, cu
         }
       }
     }
-  }, [article?.attributes.content]);
-  
+  }, []);
+
   // photo popup
   const [bigPhotoSrc, setBigPhotoSrc] = useState(null);
   const handleClick = (event) => {
@@ -69,22 +80,32 @@ const CenterArticleContent = ({ t, article, tags, videos, onActiveItemChange, cu
 
   return (
     <StyledContent className="wrapper">
-      <Breadcrumbs t={t} article={article} categories={categories} mainCategory={category} pagePath={pagePath} />
-      <Heading level={3}>{article?.attributes.title}</Heading>
-      {tags && <div className="tags">
-        {tags.map((item, index) => (
-          <Tag
-            key={index}
-            t={t}
-            type={"page"}
-            label={item.attributes.title}
-            className="tag"
-            onClick={() => handlerSetModal(item.attributes.title)}
-          />
-        ))}
+      <Breadcrumbs
+        t={t}
+        categoryName={categoryName}
+        categoryUrl={categoryUrl}
+        level2CategoryName={level2CategoryName}
+        level2CategoryUrl={level2CategoryUrl}
+        pageName={pageName}
+      />
+      <Heading level={3}>{pageName}</Heading>
+      {tags?.data && 
+        <div className="tags">
+          {tags?.data.map((item, index) => (
+            <Tag
+              key={index}
+              t={t}
+              type={"page"}
+              label={item.attributes.title}
+              className="tag"
+              onClick={() => handlerSetModal(item.attributes.title)}
+            />
+          ))}
       </div>}
-      {videos && videos.length > 0 && <Video t={t} videos={videos} />}
-      <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(article?.attributes.content)}</RawHtmlStyle>
+      {videos && videos.data.length > 0 && 
+        <Video t={t} videos={videos.data} />
+      }
+      <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</RawHtmlStyle>
       <DownloadArea className="download-area" t={t} />
       <ArticlePopup
         t={t}

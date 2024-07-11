@@ -1,14 +1,29 @@
-import Link from "next/link";
 import StyledBreadcrumb from "./styled-breadcrumbs";
+import InternalLink from "../internal-link";
 
-const Breadcrumbs = ({ t, category }) => {
+const Breadcrumbs = ({
+    t,
+    categoryName,
+    categoryUrl,
+    pageName,
+    level2CategoryName,
+    level2CategoryUrl,
+    level3CategoryName,
+    level3CategoryUrl
+  }) => {
   return (
     <StyledBreadcrumb>
-      <Link className="breadcrumb-links" href="/">{t("Home")}</Link>
-      <Link className="breadcrumb-links" href={category.data?.[0].attributes.general_category.data.attributes.url || "" }>
-        {category.data?.[0].attributes.general_category.data.attributes.name}
-      </Link>
-      <span className="breadcrumb-links last">{category.data?.[0].attributes.name}</span>
+      <InternalLink className="breadcrumb-links" href="/" label={t("Home")} />
+      {categoryName &&
+        <InternalLink className="breadcrumb-links" href={categoryUrl} label={categoryName} />
+      }
+      {level2CategoryName &&
+        <InternalLink className="breadcrumb-links" href={level2CategoryUrl} label={level2CategoryName} />
+      }
+      {level3CategoryName &&
+        <InternalLink className="breadcrumb-links" href={level3CategoryUrl} label={level3CategoryName} />
+      }
+      <span className="breadcrumb-links last">{pageName}</span>
     </StyledBreadcrumb>
   );
 };

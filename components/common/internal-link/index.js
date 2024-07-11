@@ -1,7 +1,5 @@
-import React from "react";
-import ExternalLink from "@components/common/link";
+import StyledInternalLink from "./styled-internal-link";
 import PropTypes from "prop-types";
-import Link from 'next/link'
 
 const InternalLink = ({
   children,
@@ -12,21 +10,15 @@ const InternalLink = ({
   tabIndex,
   ...rest
 }) => {
-  const linkClassName = className
-    ? className + " internal-link"
-    : "internal-link";
-
   return (
-    <Link
-      href={href}
-      style={{ ...style, outline: "none", textDecoration: "none" }}
+    <StyledInternalLink
+      className={className ? className + " internal-link" : "internal-link"}
+      href={href ? href : ""}
       tabIndex={tabIndex}
       {...rest}
     >
-      <ExternalLink as="span" className={linkClassName} tabIndex={tabIndex} {...rest}>
-        {children || label}
-      </ExternalLink>
-    </Link>
+      {children || label}
+    </StyledInternalLink>
   );
 };
 
@@ -62,7 +54,6 @@ InternalLink.propTypes = {
 };
 
 InternalLink.defaultProps = {
-  fontSize: "14px",
   href: undefined,
   title: undefined,
   rel: "noopener noreferrer",

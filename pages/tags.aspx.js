@@ -1,8 +1,8 @@
 import React from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import getAllTags from "@lib/strapi/getTags";
-import getAllCategories from "@lib/strapi/getCategories";
+import getTags from "@lib/strapi/getTags";
+import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 
 import Layout from "@components/layout";
 import HeadingContent from "@components/screens/header-content";
@@ -10,7 +10,7 @@ import Footer from "@components/screens/footer-content";
 import HeadSEO from "@components/screens/head-content";
 import SingleContent from "@components/screens/single-page-content";
 
-const Index = ({ locale, categories, tags }) => {
+const TagsPage = ({ locale, categoriesMenu, tags }) => {
   const { t } = useTranslation();
 
   return (
@@ -26,14 +26,20 @@ const Index = ({ locale, categories, tags }) => {
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent t={t} template={true} currentLanguage={locale} categories={categories.data} isMain={true} />
+        <HeadingContent
+          t={t}
+          template={true}
+          currentLanguage={locale}
+          categories={categoriesMenu.data}
+          isMain={true}
+        />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <SingleContent
           t={t}
           currentLanguage={locale}
           isTagPage={true}
-          content={tags.data}
+          data={tags.data}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>
@@ -44,18 +50,17 @@ const Index = ({ locale, categories, tags }) => {
 };
 
 export const getStaticProps = async ({ locale }) => {
-  const [tags, categories] = await Promise.all([
-    getAllTags(locale),
-    getAllCategories(locale)
-  ]);
+  const categoriesMenu = await getCategoriesMenu(locale);
+  const tags = await getTags(locale);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      tags,
-      categories
+      categoriesMenu,
+      tags
     },
   };
 };
 
-export default Index;
+export default TagsPage;

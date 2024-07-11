@@ -16,20 +16,20 @@ const GuidesLinks = ({ data, isCategoryPage, categorySlug }) => {
       <Box className="con-box">
         {connectorsSlug ? (
           connectorsArticles?.slice(0, Math.ceil(connectorsArticles.length / 2)).map((item, index) => (
-            <InternalLink className="cell_link not_bold" label={item.attributes.title} href={item.attributes?.url ? item.attributes?.url : ""} key={index} />
+            <InternalLink className="cell_link not_bold" label={item.attributes.title} href={item.attributes?.url} key={index} />
           ))
         ) : (
           items?.slice(0, Math.ceil(items?.length / 2)).map((item, index) => (
             isCategoryPage ? (
-              <InternalLink className="cell_link" label={item.attributes.name} href={item.attributes?.url ? item.attributes?.url : ""} key={index} />
+              <InternalLink className="cell_link" label={item.attributes.name} href={item.attributes?.url} key={index} />
             ) : (
               <React.Fragment key={index}>
-                <InternalLink className="cell_link" label={item.attributes.name} href={item.attributes?.url ? item.attributes?.url : ""} />
+                <InternalLink className="cell_link" label={item.attributes.name} href={item.attributes?.url} />
                 {item.attributes[`level_2_${slugId}`].data.sort((a, b) => a.attributes.name.localeCompare(b.attributes.name)).map((itemLevel2, index) => (
                   <InternalLink
                     className="cell_link not_bold"
                     label={itemLevel2.attributes.name}
-                    href={itemLevel2?.attributes.url ? itemLevel2?.attributes.url : ""}
+                    href={itemLevel2?.attributes.url}
                     key={index}
                   />
                 ))}
@@ -41,20 +41,20 @@ const GuidesLinks = ({ data, isCategoryPage, categorySlug }) => {
       <Box className="con-box">
         {connectorsSlug ? (
           connectorsArticles?.slice(Math.ceil(connectorsArticles.length / 2), connectorsArticles.length).map((item, index) => (
-            <InternalLink className="cell_link not_bold" label={item.attributes.title} href={item.attributes?.url ? item.attributes?.url : ""} key={index} />
+            <InternalLink className="cell_link not_bold" label={item.attributes.title} href={item.attributes?.url} key={index} />
           ))
         ) : (
           items?.slice(Math.ceil(items.length / 2), mainArticles?.length).map((item, index) => (
             isCategoryPage ? (
-              <InternalLink className="cell_link" label={item.attributes.name} href={item.attributes?.url ? item.attributes?.url : ""} key={index} />
+              <InternalLink className="cell_link" label={item.attributes.name} href={item.attributes?.url} key={index} />
             ) : (
               <React.Fragment key={index}>
-                <InternalLink className="cell_link" label={item.attributes.name} href={item.attributes?.url ? item.attributes?.url : ""} />
+                <InternalLink className="cell_link" label={item.attributes.name} href={item.attributes?.url} />
                 {item.attributes[`level_2_${slugId}`].data.sort((a, b) => a.attributes.name.localeCompare(b.attributes.name)).map((itemLevel2, index) => (
                   <InternalLink
                     className="cell_link not_bold"
                     label={itemLevel2.attributes.name}
-                    href={itemLevel2?.attributes.url ? itemLevel2?.attributes.url : ""}
+                    href={itemLevel2?.attributes.url}
                     key={index}
                   />
                 ))}

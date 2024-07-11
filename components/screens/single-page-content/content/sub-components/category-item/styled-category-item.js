@@ -90,7 +90,7 @@ h5 {
         &:last-child {
             padding-bottom: 0;
         }
-        a > span {
+        a {
             color: #333333;
             text-decoration: none;
             &:hover {

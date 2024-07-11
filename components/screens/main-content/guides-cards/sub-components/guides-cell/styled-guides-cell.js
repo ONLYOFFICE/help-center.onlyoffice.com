@@ -11,7 +11,6 @@ const StyledGuidesCell = styled.div`
   margin: 0;
   position: relative;
   vertical-align: top;
-  text-align: center;
   transition: box-shadow 0.3s;
   width: 544px;
 
