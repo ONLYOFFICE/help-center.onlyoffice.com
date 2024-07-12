@@ -22,8 +22,12 @@ const Menu = ({ t, currentLanguage, template, categories, isMain, pageCategory, 
   };
 
   const handleClickOutside = (e) => {
-    if (stateMobile && !e.target.closest(".nav-item-links")) {
-      toggleMobile();
+    const regex = /styled-left-menu__StyledLeftMenu/;
+    const parentWithClass = e.target.closest('[class*="styled-left-menu__StyledLeftMenu"]') || e.target.closest('.lm-wrap') || e.target.closest('.search_wrapper') || e.target.closest('[class*="styled-text__StyledText"]');
+    if (typeof window !== 'undefined' && stateMobile) {
+      if ((window.innerWidth > 592 && !e.target.closest(".nav-item-links")) || (!parentWithClass || regex.test(e.target.className))) {
+        toggleMobile();
+      }
     }
   };
 

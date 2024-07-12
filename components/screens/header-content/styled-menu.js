@@ -39,7 +39,7 @@ const StyledMenuTablet = css`
       }
   
       .nav-item-logo, .nav-item-lng, .menu-selector {
-        transform: translate3d(380px, 0, 0) translateX(-50%);
+        transform: translate3d(300px, 0, 0) translateX(-50%);
       }
   
       .overlay {
