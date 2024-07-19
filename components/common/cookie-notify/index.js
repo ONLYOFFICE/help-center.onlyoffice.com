@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useTranslation } from "next-i18next";
-import Cookies from 'universal-cookie';
 import StyledCookieNotify from "./styled-cookie-notify";
+import { useState } from "react";
+import { useTranslation } from "next-i18next";
+import Cookies from "universal-cookie";
 
 const CookieNotify = () => {
   const { t } = useTranslation();

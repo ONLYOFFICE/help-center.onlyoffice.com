@@ -1,12 +1,8 @@
-import React from "react";
-
-import Text from "@components/common/text";
-import Box from "@components/common/box";
 import TextInput from "@components/common/text-input/";
 import Heading from "@components/common/heading";
 import StyledSearchArea from "./styled-search-area";
 
-const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeholder, isCategory, pic }) => {
+const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeholder, isCategoryPage, pic }) => {
   /*eslint-disable*/
   const imgSearch = !valueSearch ? (
     <img className="search_img"
@@ -27,9 +23,9 @@ const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeho
   );
   /*eslint-enable*/
   return (
-    <StyledSearchArea className={`${isCategory ? 'cat_search' : ''}`}>
-      <Box className="presearch_bx">
-      {isCategory &&
+    <StyledSearchArea className={`${isCategoryPage ? "cat_search" : ""}`}>
+      <div className="presearch_bx">
+      {isCategoryPage &&
       <img
         src={pic}
         height={80}
@@ -46,8 +42,8 @@ const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeho
           fontWeight={700}
         />
       }
-      </Box>
-      <Box className="search_container" alignItems="center">
+      </div>
+      <div className="search_container">
         <TextInput
           onChange={callback}
           value={valueSearch}
@@ -61,7 +57,7 @@ const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label, placeho
           labelColor={!valueSearch ? "#808080" : "#CCCCCC"}
         />
         <div className="search_icon">{imgSearch}</div>
-      </Box>
+      </div>
     </StyledSearchArea>
   );
 };

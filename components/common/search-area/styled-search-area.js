@@ -13,19 +13,24 @@ const StyledSearchArea = styled.div`
 
   .search_container {
     position: relative;
+    display: flex;
+    align-items: center;
     margin: 40px auto 0;
     max-width: 688px;
   }
 
   .presearch_bx {
+    display: flex;
+    flex-direction: column;
     gap: 16px;
     justify-content: center;
+    align-items: center;
   }
 
   .presearch_title {
     line-height: 53px;
     letter-spacing: -0.02em;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+    font-feature-settings: "pnum" on, "lnum" on;
     overflow: unset;
   }
 

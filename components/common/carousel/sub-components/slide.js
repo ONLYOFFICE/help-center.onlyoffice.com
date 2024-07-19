@@ -1,9 +1,7 @@
-import React from "react";
-import Box from "@components/common/box";
 import StyledSlide from "./styled-slide";
-import Link from "@components/common/link";
+import Link from "@components/common/external-link";
 
-const Slide = ({ t, currentLanguage, arrayItems, description, ...rest }) => {
+const Slide = ({ t, locale, arrayItems, description, ...rest }) => {
   const { name_video, pathName, imgUrlCard } = arrayItems;
 
   return (
@@ -11,18 +9,14 @@ const Slide = ({ t, currentLanguage, arrayItems, description, ...rest }) => {
       <Link href={pathName} className="image-boxshadow-template">
         <div className="video-image"></div>
       </Link>
-      <Box
-        className="card-template"
-        flexDirection="column"
-        alignItems="stretch"
-      >
+      <div className="card-template">
         <Link
           className="title-template"
           title={name_video}
           href={pathName}
           label={name_video}
         />
-      </Box>
+      </div>
     </StyledSlide>
   );
 };

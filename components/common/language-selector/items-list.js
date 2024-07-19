@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { StyledItem, StyledPanelView } from "./styled-language-selector";
-import Link from 'next/link'
+import Link from "next/link"
 import languages from "@config/languages";
 
 export default function LangsList(props) {
-  const { t, isOpen, currentLanguage, onCloseSelector } = props;
+  const { t, isOpen, locale, onCloseSelector } = props;
   const query = useRouter();
   const pagePath = query.asPath;
 
@@ -22,14 +21,14 @@ export default function LangsList(props) {
     return languages.map((language) => {
       const { shortKey, iconName, key } = language;
       let localizedPath;
-      if (currentLanguage === "en") {
+      if (locale === "en") {
         if (path.includes("en")) {
-          localizedPath = path.replace(currentLanguage, shortKey);
+          localizedPath = path.replace(locale, shortKey);
         } else {
           localizedPath = `/${shortKey}${path}`;
         }
       } else {
-        localizedPath = path.replace(currentLanguage, shortKey);
+        localizedPath = path.replace(locale, shortKey);
       }
 
       return (

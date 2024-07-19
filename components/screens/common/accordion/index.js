@@ -1,16 +1,12 @@
-import React from "react";
 import { Trans } from "next-i18next";
-
 import { AccordionItem } from "@components/common/accordion";
-
 import StyledAccordionContent from "./styled-accordion-content";
-import Section from "../section";
 import Heading from "@components/common/heading";
-import Link from "@components/common/link";
+import Link from "@components/common/external-link";
 import Text from "@components/common/text";
 import TransAccorionItem from "./item-accordion";
 
-const AccordionContent = ({ t, currentLanguage }) => {
+const AccordionContent = ({ t, locale }) => {
   const AccordionDescriptionOOLicenseLink = t(
     "AccordionDescriptionOOLicenseLink"
   );
@@ -72,13 +68,8 @@ const AccordionContent = ({ t, currentLanguage }) => {
 
   return (
     <StyledAccordionContent>
-      <Section
-        background="#FFFFFF"
-        padding="0px 0 112px"
-        tabletPadding="0px 0 88px"
-        mobileLPadding="0px 0 48px"
-      >
-        <Heading className="titleAccordion" level={3}>
+      <div>
+        <Heading className="title-accordion" level={3}>
           {t("Frequently Asked Questions")}
         </Heading>
         <AccordionItem heading={t("AccordionHeadingOOLicense")}>
@@ -88,7 +79,7 @@ const AccordionContent = ({ t, currentLanguage }) => {
           {AccordionDescriptionRequestAssistance}
         </AccordionItem>
         <AccordionItem heading={t("AccordionHeadingOtherQuestions")}>
-          <TransAccorionItem currentLanguage={currentLanguage} t={t} />
+          <TransAccorionItem locale={locale} t={t} />
         </AccordionItem>
         <AccordionItem heading={t("AccordionHeadingIntegrateOO")}>
           {/* {AccordionDescriptionIntegrateOO} */}
@@ -96,7 +87,7 @@ const AccordionContent = ({ t, currentLanguage }) => {
         <AccordionItem heading={t("AccordionHeadingContributeOO")}>
           {/* {AccordionDescriptionContributeOO} */}
         </AccordionItem>
-      </Section>
+      </div>
     </StyledAccordionContent>
   );
 };

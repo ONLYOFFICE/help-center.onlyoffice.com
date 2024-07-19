@@ -1,9 +1,9 @@
 import React from "react";
 import { Trans } from "next-i18next";
-import Link from "@components/common/link";
+import Link from "@components/common/external-link";
 import Text from "@components/common/text";
 
-const TransAccorionItem = ({ t, currentLanguage }) => {
+const TransAccorionItem = ({ t, locale }) => {
   const AccordionDescriptionOtherQuestionsHCLink = t("AccordionDescriptionOtherQuestionsHCLink");
   const AccordionDescriptionOtherQuestionsOODocsLink = t("AccordionDescriptionOtherQuestionsOODocsLink");
   const AccordionDescriptionOtherQuestionsOOGroupsLink = t("AccordionDescriptionOtherQuestionsOOGroupsLink");
@@ -12,7 +12,7 @@ const TransAccorionItem = ({ t, currentLanguage }) => {
   const AccordionDescriptionOtherQuestionsOOWorkspaceLink = t("AccordionDescriptionOtherQuestionsOOWorkspaceLink");
   const AccordionDescriptionOtherQuestionsOODesktopLink = t("AccordionDescriptionOtherQuestionsOODesktopLink");
   const AccordionDescriptionOtherQuestionsOOPricingLink = t("AccordionDescriptionOtherQuestionsOOPricingLink");
-  const lng = currentLanguage === "en" ? "" : `/${currentLanguage}`
+  const lng = locale === "en" ? "" : `/${locale}`
   return (
     <Text as={"p"} className="text-trans-accordion">
       <Trans

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 
 import Slider from "react-slick";
@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import StyledCarousel from "./carousel-styled";
-import VideoItem from "@components/screens/single-page-content/sub-components/connectors-video/sub-components/video-item";
+import VideoItem from "@components/screens/common/video-item";
 
 const Carousel = ({
   t,
@@ -15,18 +15,18 @@ const Carousel = ({
   items,
   refCarousel,
   asNavForCarousel,
-  currentLanguage,
+  locale,
   description,
   ...rest
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const CustomPrevArrow = ({ onClick }) => (
-    <button onClick={onClick} className={`cust-arr prev ${currentSlide === 0 ? 'disabled' : ''}`}>
+    <button onClick={onClick} className={`cust-arr prev ${currentSlide === 0 ? "disabled" : ""}`}>
       <img src="https://static-helpcenter.onlyoffice.com/images/icons/slideshow_next-prev.react.svg" alt="Previous" />
     </button>
   );
   const CustomNextArrow = ({ onClick }) => (
-    <button onClick={onClick} className={`cust-arr next ${currentSlide === settings.slidesToShow - 1 ? 'disabled' : ''
+    <button onClick={onClick} className={`cust-arr next ${currentSlide === settings.slidesToShow - 1 ? "disabled" : ""
       }`}>
       <img src="https://static-helpcenter.onlyoffice.com/images/icons/slideshow_next-prev.react.svg" alt="Next" />
     </button>

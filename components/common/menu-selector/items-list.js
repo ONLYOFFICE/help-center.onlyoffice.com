@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
 import { StyledItem, StyledPanelView } from "./styled-menu-selector";
-import Link from 'next/link'
+import Link from "next/link"
 
 export default function LangsList(props) {
   const { isOpen, categories, pageCategory } = props;

@@ -64,10 +64,10 @@
 "zh-CN","Chinese - Simplified",
 "zh-TW","Chinese - Traditional"
 ];
-const otherModules='Other modules';
-const outOfDateNotice='';
-export const comingSoonLabel='Translation is almost ready and <br />will appear with the nearest release';
-const XmasGreetingText='<strong>Holiday greetings from ONLYOFFICE!</strong> We wish you every holiday happiness! Merry Christmas and Happy New Year!';
-const valentineGreetingText='<strong>Happy St. Valentine\'s day from ONLYOFFICE!</strong> True love requires patience, trust, faithfulness and commitment to one another. ONLYOFFICE team loves you all!';
-const tgivingGreetingText='';
-const serverCommandsTranslation='All commands from the article in one place';
+const otherModules="Other modules";
+const outOfDateNotice="";
+export const comingSoonLabel="Translation is almost ready and <br />will appear with the nearest release";
+const XmasGreetingText="<strong>Holiday greetings from ONLYOFFICE!</strong> We wish you every holiday happiness! Merry Christmas and Happy New Year!";
+const valentineGreetingText="<strong>Happy St. Valentine\"s day from ONLYOFFICE!</strong> True love requires patience, trust, faithfulness and commitment to one another. ONLYOFFICE team loves you all!";
+const tgivingGreetingText="";
+const serverCommandsTranslation="All commands from the article in one place";

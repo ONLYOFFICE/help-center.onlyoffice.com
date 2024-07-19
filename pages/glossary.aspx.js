@@ -1,49 +1,42 @@
-import React from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getGlossary from "@lib/strapi/getGlossary";
 import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
-
 import Layout from "@components/layout";
-import HeadingContent from "@components/screens/header-content";
-import Footer from "@components/screens/footer-content";
-import HeadSEO from "@components/screens/head-content";
-import SingleContent from "@components/screens/single-page-content";
+import HeadingContent from "@components/screens/header";
+import Footer from "@components/screens/footer";
+import HeadSEO from "@components/screens/head";
+import GlossaryContent from "@components/screens/glossary-content";
 
-const GlossaryPage = ({ locale, categoriesMenu, glossary }) => {
+const GlossaryPage = ({ locale, categoriesMenu, glossaryData }) => {
   const { t } = useTranslation();
 
   return (
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={`${t("Glossary")} - ONLYOFFICE`}
-          metaSiteNameOg={t("metaSiteNameOg")}
-          metaDescription={t("titleIndexPage")}
-          metaDescriptionOg={t("metaDescriptionOgIndexPage")}
-          metaKeywords={t("metaKeywordsIndexPage")}
-          currentLanguage={locale}
+          title={t("Glossary - ONLYOFFICE")}
+          description={""}
         />
       </Layout.PageHead>
       <Layout.PageHeader>
         <HeadingContent
           t={t}
           template={true}
-          currentLanguage={locale}
+          locale={locale}
           categories={categoriesMenu.data}
           isMain={true}
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <SingleContent
+        <GlossaryContent
           t={t}
-          currentLanguage={locale}
-          isGlossaryPage={true} 
-          data={glossary.data}
+          locale={locale}
+          glossaryData={glossaryData}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} language={locale} />
+        <Footer t={t} locale={locale} />
       </Layout.PageFooter>
     </Layout>
   );
@@ -51,14 +44,20 @@ const GlossaryPage = ({ locale, categoriesMenu, glossary }) => {
 
 export const getStaticProps = async ({ locale }) => {
   const categoriesMenu = await getCategoriesMenu(locale);
-  const glossary = await getGlossary(locale);
+  const glossaryData = await getGlossary(locale);
+
+  if (glossaryData.data.length === 0) {
+    return {
+      notFound: true
+    };
+  }
 
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       categoriesMenu,
-      glossary
+      glossaryData
     },
   };
 };

@@ -1,28 +1,28 @@
 {
-    "compilerOptions": {
-        "baseUrl": ".",
-        "paths": {
-            "@components/*": [
-                "components/*"
-            ],
-            "@config/*": [
-                "config/*"
-            ],
-            "@public/*": [
-                "public/*"
-            ],
-            "@utils/*": [
-                "utils/*"
-            ],
-            "@lib/*": [
-                "lib/*"
-            ],
-            "@pages/*": [
-                "pages/*"
-            ],
-        }
-    },
-    "exclude": [
-        "node_modules"
-    ]
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": [
+        "components/*"
+      ],
+      "@config/*": [
+        "config/*"
+      ],
+      "@public/*": [
+        "public/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ],
+      "@lib/*": [
+        "lib/*"
+      ],
+      "@pages/*": [
+        "pages/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

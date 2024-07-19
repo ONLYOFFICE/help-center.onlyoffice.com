@@ -1,24 +1,28 @@
 import styled from "styled-components";
-import Section from "../section";
+import Section from "../../../common/section";
 import { device } from "@components/utils/devices";
 
 const StyledAccordionContent = styled(Section)`
-  padding: 0;
+  padding: 0 0 112px;
+
   .text-trans-accordion {
     display: initial;
     vertical-align: bottom;
+
     .link-trans-acc {
       display: inline-flex;
       text-decoration: underline;
     }
   }
-  .accordion__text {
+
+  .accordion-text {
     .link-trans-acc {
       display: initial;
       text-decoration: underline;
     }
   }
-  .titleAccordion {
+
+  .title-accordion {
     padding: 0 0 56px;
     letter-spacing: -0.02em;
 
@@ -30,6 +34,14 @@ const StyledAccordionContent = styled(Section)`
       font-size: 20px;
       padding: 0 0 32px;
     }
+  }
+
+  @media ${device.laptop} {
+    padding: 0 0 88px;
+  }
+
+  @media ${device.tabletS} {
+    padding: 0 0 48px;
   }
 `;
 

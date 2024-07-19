@@ -3,11 +3,11 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 import getCategoryLevel2 from "@lib/strapi/getCategoryLevel2";
 import Layout from "@components/layout";
-import HeadingContent from "@components/screens/header-content";
-import Footer from "@components/screens/footer-content";
-import HeadSEO from "@components/screens/head-content";
-import SingleContent from "@components/screens/single-page-content";
-import CenterCategoryContent from "@components/screens/single-page-content/content/category-content";
+import HeadingContent from "@components/screens/header";
+import Footer from "@components/screens/footer";
+import HeadSEO from "@components/screens/head";
+import CategoryContent from "@components/screens/category-content";
+import ArticleContent from "@components/screens/article-content";
 
 const Level2CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug }) => {
   const { t } = useTranslation();
@@ -18,25 +18,23 @@ const Level2CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={t("titleIndexPage")}
-          metaDescription={t("metaDescriptionOgIndexPage")}
-          metaDescriptionOg={t("metaDescriptionOgIndexPage")}
-          metaKeywords={t("titleIndexPage")}
+          title={""}
+          description={""}
         />
       </Layout.PageHead>
       <Layout.PageHeader>
         <HeadingContent
           t={t}
           template={false}
-          currentLanguage={locale}
+          locale={locale}
           categories={categoriesMenu.data}
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
         {isArticle ? (
-          <SingleContent
+          <ArticleContent 
             t={t}
-            currentLanguage={locale}
+            locale={locale}
             isArticle={isArticle}
             categoryName={data.category.data.attributes.name}
             categoryUrl={data.category.data.attributes.url}
@@ -46,7 +44,7 @@ const Level2CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             videos={data.videos}
           />
         ) : (
-          <CenterCategoryContent
+          <CategoryContent
             t={t}
             categorySlug={categorySlug}
             categoryName={data.general_category.data.attributes.name}
@@ -59,7 +57,7 @@ const Level2CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
         )}
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} language={locale} />
+        <Footer t={t} locale={locale} />
       </Layout.PageFooter>
     </Layout>
   );

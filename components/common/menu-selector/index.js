@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import StyledMenuSelector from "./styled-menu-selector";
 import ItemsList from "./items-list";
 import Text from "../text";

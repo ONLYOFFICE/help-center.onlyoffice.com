@@ -1,10 +1,9 @@
-import React from "react";
 import PropTypes from "prop-types";
 import StyledAccordion from "./styled-accordion";
-import AccordionItem from "./sub-components/accordionItem";
+import AccordionItem from "./sub-components/accordion-item";
 
 const Accordion = ({ children, level }) => {
-  const items = children.filter(item => item.type.name === 'AccordionItem');
+  const items = children.filter(item => item.type.name === "AccordionItem");
   return (
     <StyledAccordion className="accordion__section">
       {items.map(({ props }, index) => (

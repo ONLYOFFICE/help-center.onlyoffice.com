@@ -1,27 +1,27 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import StyledIconButton from "@components/common/icon-button/styled-icon-button";
 import { device } from "@components/utils/devices";
 
 const StyledUpArrow = styled(StyledIconButton)`
-background-color: #9ea4b5;
-background-image: url('https://static-helpcenter.onlyoffice.com/images/icons/arrowup.png');
-background-position: center center;
-background-repeat: no-repeat;
-border-radius: 3px;
-bottom: 80px;
-left: 24px;
-position: fixed;
-opacity: 0.8;
-z-index: 15000;
-height: 40px;
-transition: 1s;
-width: 40px;
+  background-color: #9ea4b5;
+  background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/arrowup.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 3px;
+  bottom: 80px;
+  left: 24px;
+  position: fixed;
+  opacity: 0.8;
+  z-index: 15000;
+  height: 40px;
+  transition: 1s;
+  width: 40px;
 
-&:hover {
+  &:hover {
     background-color: rgba(61,74,107,0.7);
-}
+  }
 
-@media ${device.laptopM} {
+  @media ${device.laptopM} {
     bottom: 100px;
     height: 50px;
     left: auto;

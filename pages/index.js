@@ -2,12 +2,11 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getCategories from "@lib/strapi/getCategories";
 import Layout from "@components/layout";
-import HeadingContent from "@components/screens/header-content";
-import InfoContent from "@components/screens/main-content/info-content";
-import GuidesCards from "@components/screens/main-content/guides-cards";
+import HeadSEO from "@components/screens/head";
+import HeadingContent from "@components/screens/header";
+import MainContent from "@components/screens/main-content";
 import Accordion from "@components/screens/common/accordion";
-import Footer from "@components/screens/footer-content";
-import HeadSEO from "@components/screens/head-content";
+import Footer from "@components/screens/footer";
 
 const MainPage = ({ locale, categories }) => {
   const { t } = useTranslation();
@@ -16,35 +15,29 @@ const MainPage = ({ locale, categories }) => {
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={t("titleIndexPage")}
-          metaSiteNameOg={t("metaSiteNameOg")}
-          metaDescription={t("titleIndexPage")}
-          metaDescriptionOg={t("metaDescriptionOgIndexPage")}
-          metaKeywords={t("metaKeywordsIndexPage")}
-          currentLanguage={locale}
+          title={t("Main - ONLYOFFICE")}
+          description={""}
         />
       </Layout.PageHead>
       <Layout.PageHeader>
         <HeadingContent
           t={t}
           template={true}
-          currentLanguage={locale}
+          locale={locale}
           categories={categories.data}
           isMain={true}
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <InfoContent
+        <MainContent
           t={t}
-          categories={categories.data}
-          currentLanguage={locale}
+          categories={categories}
           isCategory={false}
         />
-        <GuidesCards t={t} className="mp" data={categories} />
-        <Accordion t={t} currentLanguage={locale} />
+        <Accordion t={t} locale={locale} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} language={locale} />
+        <Footer t={t} locale={locale} />
       </Layout.PageFooter>
     </Layout>
   );

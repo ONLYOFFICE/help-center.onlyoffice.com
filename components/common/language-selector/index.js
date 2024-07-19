@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import StyledLanguageSelector from "./styled-language-selector";
 import ItemsList from "./items-list";
 
@@ -32,7 +32,7 @@ const LanguageSelector = (props) => {
     setIsOpen(false);
   };
 
-  const { currentLanguage, t } = props;
+  const { locale, t } = props;
 
   return (
     <StyledLanguageSelector
@@ -45,7 +45,7 @@ const LanguageSelector = (props) => {
         <img
           className="flag-image"
           alt="flag"
-          src={`https://static-helpcenter.onlyoffice.com/images/flags/${currentLanguage}.react.svg`}
+          src={`https://static-helpcenter.onlyoffice.com/images/flags/${locale}.react.svg`}
           width={"24px"}
           height={"24px"}
         />
@@ -56,7 +56,7 @@ const LanguageSelector = (props) => {
         className={`languages-list lng-selector ${isOpen ? "language-selector-open" : "language-selector-closed"}`}
         t={t}
         isOpen={isOpen}
-        currentLanguage={currentLanguage}
+        locale={locale}
         onCloseSelector={onCloseSelector}
       />
     </StyledLanguageSelector>
