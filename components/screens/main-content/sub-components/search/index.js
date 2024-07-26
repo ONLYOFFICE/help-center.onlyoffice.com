@@ -52,8 +52,8 @@ const SearchContent = ({ t, article, isCategoryPage, category }) => {
   //   setFocusOnSearch(false);
   // };
 
-  const labelValue = !isCategoryPage ? t("WelcomeToHelpCenter") : category.data[0]?.attributes.name;
-  const labelImg = isCategoryPage && category.data[0]?.attributes.card_field_img.data?.attributes.url;
+  // const labelValue = !isCategoryPage ? t("WelcomeToHelpCenter") : category.data[0]?.attributes.name;
+  // const labelImg = isCategoryPage && category.data[0]?.attributes?.card_field_img?.data?.attributes.url;
   
   return (
     <>
@@ -62,9 +62,9 @@ const SearchContent = ({ t, article, isCategoryPage, category }) => {
         //callback={onSearch}
        // valueSearch={searchItem}
        // clearValueSearch={clearValueSearch}
-        label={labelValue}
+        // label={labelValue}
         isCategoryPage={isCategoryPage}
-        pic={labelImg}
+        // pic={labelImg}
         placeholder={t("HowCanWeHelp?")}
       />
       {/* <SearchResult

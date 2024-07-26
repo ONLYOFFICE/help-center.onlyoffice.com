@@ -1,4 +1,4 @@
-import StyledBreadcrumb from "./styled-breadcrumbs";
+import StyledBreadcrumbs from "./styled-breadcrumbs";
 import InternalLink from "../../../common/internal-link";
 
 const Breadcrumbs = ({
@@ -12,19 +12,19 @@ const Breadcrumbs = ({
     level3CategoryUrl
   }) => {
   return (
-    <StyledBreadcrumb>
-      <InternalLink className="breadcrumb-links" href="/" label={t("Home")} />
+    <StyledBreadcrumbs>
+      <li><InternalLink className="breadcrumb-link" href="/" label={t("Home")} /></li>
       {categoryName &&
-        <InternalLink className="breadcrumb-links" href={categoryUrl} label={categoryName} />
+        <li><InternalLink className="breadcrumb-link" href={categoryUrl} label={categoryName} /></li>
       }
       {level2CategoryName &&
-        <InternalLink className="breadcrumb-links" href={level2CategoryUrl} label={level2CategoryName} />
+        <li><InternalLink className="breadcrumb-link" href={level2CategoryUrl} label={level2CategoryName} /></li>
       }
       {level3CategoryName &&
-        <InternalLink className="breadcrumb-links" href={level3CategoryUrl} label={level3CategoryName} />
+        <li><InternalLink className="breadcrumb-link" href={level3CategoryUrl} label={level3CategoryName} /></li>
       }
-      <span className="breadcrumb-links last">{pageName}</span>
-    </StyledBreadcrumb>
+      <li><span className="breadcrumb-link last">{pageName}</span></li>
+    </StyledBreadcrumbs>
   );
 };
 

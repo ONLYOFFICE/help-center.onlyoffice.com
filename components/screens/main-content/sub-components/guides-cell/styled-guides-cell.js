@@ -41,6 +41,7 @@ const StyledGuidesCell = styled.div`
     font-size: 18px;
     line-height: 1.33em;
     letter-spacing: -0.02em;
+    transition: color 0.3s;
 
     &[href] {
       &:hover {
@@ -52,6 +53,10 @@ const StyledGuidesCell = styled.div`
   .guides-cell-description {
     font-size: 13px;
     line-height: 1.6em;
+
+    a {
+      color: #ff6f3d;
+    }
   }
 
   .guides-cell-columns {

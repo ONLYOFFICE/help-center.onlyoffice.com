@@ -34,9 +34,14 @@ const StyledCategoryItem = styled.div`
     justify-content: start;
     gap: 16px;
     padding: 0 0 24px;
+    transition: color 0.3s;
 
     img {
-        height: fit-content;
+      height: fit-content;
+    }
+
+    &:hover {
+      color: #ff6f3d;
     }
   }
 
@@ -103,6 +108,7 @@ const StyledCategoryItem = styled.div`
       a {
         color: #333333;
         text-decoration: none;
+        transition: color 0.3s;
 
         &:hover {
           color: #ff6f3d;

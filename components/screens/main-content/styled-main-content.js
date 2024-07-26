@@ -95,6 +95,10 @@ const StyledMainContent = styled(Section)`
     &:not(:last-child) {
       margin-right: 48px;
     }
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .guides-cards-items {

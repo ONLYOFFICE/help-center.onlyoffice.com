@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { device } from "@components/utils/devices";
 
 const StyledSearch = styled.div`
-  padding: 0 0 40px;
+  margin-bottom: 32px;
   position: relative;
 
   .group_input_container {
@@ -30,10 +30,11 @@ const StyledSearch = styled.div`
     top: 14px;
   }
 
-  @media ${device.tablet} {
+  @media ${device.laptopS} {
+    margin-bottom: 24px;
+
     .search_input {
       font-size: 13px;
-      height: 38px;
       padding: 0 16px 0 40px;
     }
 

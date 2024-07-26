@@ -3,22 +3,24 @@ import { device } from "@components/utils/devices";
 
 const StyledWrapperContent = styled.div`
   box-sizing: border-box;
-  position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
   max-width: 1120px;
-  padding: 0;
 
   .wrapper {
     box-sizing: border-box;
-    padding: 32px 0px 112px 32px;
+    padding: 32px 0 112px 30px;
     width: 100%;
-    max-width: 832px;
+    max-width: 860px;
     color: #333333;
 
     h3 {
       margin-bottom: 16px;
+    }
+    
+    @media ${device.laptopS} {
+      padding: 32px 0 112px;
     }
   }
 
@@ -189,15 +191,6 @@ const StyledWrapperContent = styled.div`
     &.answer {
       color: #5b9c18;
     }
-  }
-
-  @media ${device.laptopM} {
-    max-width: calc(100vw - 280px);
-  }
-
-  @media ${device.tabletS} {
-    max-width: 100vw;
-    padding: 40px 16px 48px;
   }
 `;
 

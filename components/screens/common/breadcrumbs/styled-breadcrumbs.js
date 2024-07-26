@@ -1,44 +1,58 @@
 import styled from "styled-components";
 
-const StyledBreadcrumb = styled.div`
-  font-size: 13px;
-  padding: 0 0 24px;
+const StyledBreadcrumbs = styled.ul`
+  display: flex;
+  align-items: center;
   flex-wrap: wrap;
+  font-size: 13px;
+  margin: 0 0 24px;
+  list-style-type: none;
 
-  a.breadcrumb-links {
+  li {
+    &:not(:last-child) {
+      margin-right: 31px;
+    }
+  }
+
+  .breadcrumb-link {
     align-items: center;
     display: inline-flex;
     position: relative;
     color: #666666;
     text-decoration: none;
-    cursor: pointer;
-    padding: 0 10px 0 0;
-    line-height: 133%;
-    gap: 10px;
-    margin-bottom: 0 !important;
+    line-height: 18px;
 
     &:after {
       content: "";
-      position: relative;
-      right: 0px;
-      top: 0px;
-      width: 10px;
-      height: 10px;
+      position: absolute;
+      right: -21px;
+      top: 50%;
+      width: 11px;
+      height: 12px;
       background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/crumb.react.svg");
       background-repeat: no-repeat;
-      background-size: cover;
+      background-size: contain;
+      transform: translateY(-50%);
     }
-  }
 
-  .breadcrumb-links.last {
-    color: #ff6f3d;
-    line-height: 133%;
-    display: inline-flex;
+    &.last {
+      color: #ff6f3d;
+      line-height: 133%;
+      display: inline-flex;
 
-    &:after {
-      display: none;
+      &:after {
+        display: none;
+      }
+    }
+
+    &:not(.last) {
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 `;
 
-export default StyledBreadcrumb;
+export default StyledBreadcrumbs;

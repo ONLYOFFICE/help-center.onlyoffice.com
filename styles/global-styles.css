@@ -105,14 +105,6 @@ body {
   position: relative;
 }
 
-a, a:visited, a:-webkit-any-link {
-  color: #ff6f3d;
-  line-height: normal;
-}
-a:hover {
-  cursor: pointer;
-}
-
 ul {
   margin: 0;
   padding: 0;

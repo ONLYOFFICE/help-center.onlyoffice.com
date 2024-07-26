@@ -1,26 +1,18 @@
 [
-    {
-      "key": "en-US",
-      "shortKey": "en",
-      "iconName": "en.react.svg",
-      "name": "English"
-    },
-    {
-      "key": "de-DE",
-      "shortKey": "de",
-      "iconName": "de.react.svg",
-      "name": "Deutsch"
-    },
-    {
-      "key": "fr-FR",
-      "shortKey": "fr",
-      "iconName": "fr.react.svg",
-      "name": "Français"
-    },
-    {
-      "key": "zh-ZH",
-      "shortKey": "zh",
-      "iconName": "zh.react.svg",
-      "name": "Chineese"
-    }
-  ]
+  {
+    "key": "en-US",
+    "shortKey": "en"
+  },
+  {
+    "key": "de-DE",
+    "shortKey": "de"
+  },
+  {
+    "key": "fr-FR",
+    "shortKey": "fr"
+  },
+  {
+    "key": "zh-ZH",
+    "shortKey": "zh"
+  }
+]
