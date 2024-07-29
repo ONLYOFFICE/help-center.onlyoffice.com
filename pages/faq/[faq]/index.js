@@ -1,15 +1,18 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useState } from "react";
 import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 import getFaq from "@lib/strapi/getFaq";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
-import HeadingContent from "@components/screens/header";
+import Header from "@components/screens/header";
 import Footer from "@components/screens/footer";
 import FaqContent from "@components/screens/faq-content";
 
 const FaqPage = ({ locale, categoriesMenu, faqData }) => {
   const { t } = useTranslation();
+  const [leftMenuMobile, setLeftMenuMobile] = useState(false);
+
   const { seo_title, seo_description, name } = faqData.data[0].attributes;
   const seoTitle = seo_title ? seo_title : `${name} - ONLYOFFICE`;
   const seoDescription = seo_description ? seo_description : t("metaDescriptionOgIndexPage");
@@ -23,17 +26,19 @@ const FaqPage = ({ locale, categoriesMenu, faqData }) => {
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent
+        <Header
           t={t}
-          template={false}
           locale={locale}
-          categories={categoriesMenu.data}
+          categories={categoriesMenu}
+          leftMenuMobile={leftMenuMobile}
+          setLeftMenuMobile={setLeftMenuMobile}
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <FaqContent
           t={t}
           faqData={faqData}
+          leftMenuMobile={leftMenuMobile}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>

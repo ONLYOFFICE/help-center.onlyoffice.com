@@ -1,19 +1,21 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
+import { useState } from "react";
 import getCategoryLevel1 from "@lib/strapi/getCategoryLevel1";
 import Layout from "@components/layout";
-import HeadingContent from "@components/screens/header";
-import Footer from "@components/screens/footer";
 import HeadSEO from "@components/screens/head";
+import Header from "@components/screens/header";
 import MainContent from "@components/screens/main-content";
+import Footer from "@components/screens/footer";
 
-const CategoryPage = ({ locale, categoriesMenu, category }) => {
+const CategoryPage = ({ locale, categories, category }) => {
   const { t } = useTranslation();
-  const { name, slug_id, articles } = category.data[0]?.attributes;
+  const [leftMenuMobile, setLeftMenuMobile] = useState(false);
+
+  const { name, slug_id, articles } = category.attributes;
   const pageTitle = `${name} - ONLYOFFICE`;
   const categorySlug = slug_id === "docs" ? "docs" : `${slug_id}s`;
-  const data = slug_id === "integration" ? articles : category.data[0]?.attributes[`category_${categorySlug}`];
+  const data = slug_id === "integration" ? articles : category.attributes[`category_${categorySlug}`];
   const isIntegrationCategory = slug_id === "integration";
 
   return (
@@ -25,12 +27,12 @@ const CategoryPage = ({ locale, categoriesMenu, category }) => {
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent
+        <Header
           t={t}
-          template={false}
           locale={locale}
-          categories={categoriesMenu.data}
-          pageCategory={category.data[0]?.attributes}
+          categories={categories}
+          leftMenuMobile={leftMenuMobile}
+          setLeftMenuMobile={setLeftMenuMobile}
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
@@ -41,6 +43,9 @@ const CategoryPage = ({ locale, categoriesMenu, category }) => {
           categories={data}
           categorySlug={categorySlug}
           isIntegrationCategory={isIntegrationCategory}
+          leftMenuCategories={categories}
+          leftMenuMobile={leftMenuMobile}
+          setLeftMenuMobile={setLeftMenuMobile}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>
@@ -51,10 +56,10 @@ const CategoryPage = ({ locale, categoriesMenu, category }) => {
 };
 
 export const getServerSideProps = async ({ locale, params }) => {
-  const categoriesMenu = await getCategoriesMenu(locale);
-  const category = await getCategoryLevel1(locale, params.category);
+  const categories = await getCategoryLevel1(locale, params.category);
+  const category = categories.data.find(item => item.attributes.slug_id === params.category);
 
-  if (category.data.length === 0) {
+  if (category === undefined) {
     return {
       notFound: true
     };
@@ -64,7 +69,7 @@ export const getServerSideProps = async ({ locale, params }) => {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      categoriesMenu,
+      categories,
       category
     },
   };

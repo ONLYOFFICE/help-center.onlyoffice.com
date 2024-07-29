@@ -1,60 +1,52 @@
 import styled from "styled-components";
-import { device } from "@components/utils/devices";
+import arrownDown from "@public/images/icons/arrow-down.svg";
 
-export default styled.div`
-  width: 36px;
+const StyledLanguageSelector = styled.div`
   position: relative;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
 
-  .selector {
-    align-items: center;
+  .language-button {
+    position: relative;
     display: flex;
-    gap: 4px;
-    justify-content: space-between;
-    width: 36px;
-  }
-
-  .arrow-image,
-  .flag-image {
+    align-items: center;
+    border: none;
+    padding: 0;
+    background-color: transparent;
     cursor: pointer;
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
+
+    &:after {
+      content: "";
+      display: inline-flex;
+      margin-left: 4px;
+      width: 8px;
+      height: 6px;
+      background-image: url(${arrownDown.src});
+      background-repeat: no-repeat;
+      transform: ${(props) => (props.isOpen ? "rotate(180deg)" : "")};
+    }
   }
 
-  .arrow-image {
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
-    height: 8px;
-    transform: rotate(90deg);
-    width: 10px;
+  .language-list {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
+    z-index: 100;
+    list-style-type: none;
   }
-`;
 
-const StyledPanelView = styled.div`
-  position: absolute;
-  display: ${(props) => (props.isOpen ? "flex" : "none")};
-  gap: 12px;
-  flex-direction: column;
-  width: max-content;
-  background-color: white;
-  box-shadow: 0 1px 1px rgb(0 0 0 / 20%);
-  z-index: 100;
-  padding: 6px;
-  top: 40px;
-  left: 0;
-`;
+  .language-item {
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  }
 
-const StyledItem = styled.div`
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-
-  .language-item-link {
-    display: block;
-    height: 24px;
-    width: 24px;
-    text-decoration: none;
+  .language-link {
+    display: flex;
   }
 `;
 
-export { StyledItem, StyledPanelView };
+export default StyledLanguageSelector;

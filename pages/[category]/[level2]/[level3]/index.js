@@ -1,16 +1,19 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useState } from "react";
 import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 import getCategoryLevel3 from "@lib/strapi/getCategoryLevel3";
 import Layout from "@components/layout";
-import HeadingContent from "@components/screens/header";
-import Footer from "@components/screens/footer";
 import HeadSEO from "@components/screens/head";
+import Header from "@components/screens/header";
 import CategoryContent from "@components/screens/category-content";
 import ArticleContent from "@components/screens/article-content";
+import Footer from "@components/screens/footer";
 
 const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug }) => {
   const { t } = useTranslation();
+  const [leftMenuMobile, setLeftMenuMobile] = useState(false);
+
   const isArticle = categoryData.data[0].attributes.article;
   const data = categoryData.data?.[0].attributes;
   const categorySlugType = categorySlug === "docs" ? isArticle ? "docs" : "doc" : categorySlug;
@@ -28,11 +31,12 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent
+        <Header
           t={t}
-          template={false}
           locale={locale}
-          categories={categoriesMenu.data}
+          categories={categoriesMenu}
+          leftMenuMobile={leftMenuMobile}
+          setLeftMenuMobile={setLeftMenuMobile}
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
@@ -48,6 +52,10 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             pageName={data.title}
             pageDescription={data.content}
             tags={data.tags}
+            leftMenuMobile={leftMenuMobile}
+            setLeftMenuMobile={setLeftMenuMobile}
+            backBtnName={categoryName}
+            backBtnUrl={data[`category_${categorySlugType}`].data?.attributes.general_category?.data.attributes.url}
           />
         ) : (
           <CategoryContent
@@ -60,6 +68,9 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             pageName={data.name}
             pageItems={data[`level_3_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`].data}
             pageItemsLevel={4}
+            leftMenuMobile={leftMenuMobile}
+            backBtnName={level2CategoryName}
+            backBtnUrl={data[`category_${categorySlugType}`].data?.attributes.url}
           />
         )}
       </Layout.SectionMain>

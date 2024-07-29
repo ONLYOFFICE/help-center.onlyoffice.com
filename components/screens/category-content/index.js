@@ -17,7 +17,10 @@ const CategoryContent = ({
     pageDescription,
     pageItems,
     pageItemsLevel,
-    categorySlug
+    categorySlug,
+    leftMenuMobile,
+    backBtnName,
+    backBtnUrl
   }) => {
   return (
     <StyledCategoryContent>
@@ -28,6 +31,9 @@ const CategoryContent = ({
           pageItems={pageItems}
           pageItemsLevel={pageItemsLevel}
           categorySlug={categorySlug}
+          leftMenuMobile={leftMenuMobile}
+          backBtnName={backBtnName}
+          backBtnUrl={backBtnUrl}
         />
         <div className="wrapper">
           <Breadcrumbs

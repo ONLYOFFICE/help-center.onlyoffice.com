@@ -1,15 +1,18 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useState } from "react";
 import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 import getCategoryLevel4 from "@lib/strapi/getCategoryLevel4";
 import Layout from "@components/layout";
-import HeadingContent from "@components/screens/header";
-import Footer from "@components/screens/footer";
 import HeadSEO from "@components/screens/head";
+import Header from "@components/screens/header";
 import SubCategoryContent from "@components/screens/subcategory-content";
+import Footer from "@components/screens/footer";
 
 const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug }) => {
   const { t } = useTranslation();
+  const [leftMenuMobile, setLeftMenuMobile] = useState(false);
+
   const data = categoryData.data?.[0].attributes;
   const categorySlugType = categorySlug === "docs" ? "doc" : categorySlug;
   const categoryName = data[`category_${categorySlugType}`].data?.attributes.general_category?.data.attributes.name;
@@ -27,11 +30,12 @@ const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent
+        <Header
           t={t}
-          template={false}
           locale={locale}
-          categories={categoriesMenu.data}
+          categories={categoriesMenu}
+          leftMenuMobile={leftMenuMobile}
+          setLeftMenuMobile={setLeftMenuMobile}
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
@@ -46,6 +50,9 @@ const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
           pageName={data.name}
           pageIcon={data.icon}
           pageItems={data[`level_4_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`].data}
+          leftMenuMobile={leftMenuMobile}
+          backBtnName={data[`level_2_${categorySlugType}`].data?.attributes.name}
+          backBtnUrl={data[`level_2_${categorySlugType}`].data?.attributes.url}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>

@@ -17,7 +17,10 @@ const SubCategoryContent = ({
     level2CategoryName,
     level2CategoryUrl,
     level3CategoryName,
-    level3CategoryUrl
+    level3CategoryUrl,
+    leftMenuMobile,
+    backBtnName,
+    backBtnUrl
   }) => {
   const contentRef = useRef();
   const [activeSection, setActiveSection] = useState(null);
@@ -77,6 +80,9 @@ const SubCategoryContent = ({
           pageName={pageName}
           isLevel4CategoryPage={true}
           headings={level4CategoryHeadings}
+          leftMenuMobile={leftMenuMobile}
+          backBtnName={backBtnName}
+          backBtnUrl={backBtnUrl}
         />
         <div className="wrapper">
           <Breadcrumbs

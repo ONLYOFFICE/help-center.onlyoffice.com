@@ -1,15 +1,18 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useState } from "react";
 import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 import getFunctions from "@lib/strapi/getFunctions";
 import Layout from "@components/layout";
-import HeadingContent from "@components/screens/header";
+import Header from "@components/screens/header";
 import Footer from "@components/screens/footer";
 import HeadSEO from "@components/screens/head";
 import ArticleContent from "@components/screens/article-content";
 
 const FunctionsPage = ({ locale, categoriesMenu, functions }) => {
   const { t } = useTranslation();
+  const [leftMenuMobile, setLeftMenuMobile] = useState(false);
+
   const { title, content, tags } = functions.data[0].attributes;
 
   return (
@@ -21,20 +24,23 @@ const FunctionsPage = ({ locale, categoriesMenu, functions }) => {
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent
+        <Header
           t={t}
-          template={false}
           locale={locale}
-          categories={categoriesMenu.data}
+          categories={categoriesMenu}
+          leftMenuMobile={leftMenuMobile}
+          setLeftMenuMobile={setLeftMenuMobile}
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <ArticleContent
           t={t}
           locale={locale}
-          pageName={title}
+          backBtnName={t("Home")}
+          backBtnUrl="/"
           pageDescription={content}
           tags={tags}
+          leftMenuMobile={leftMenuMobile}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>

@@ -2,87 +2,51 @@ import styled from "styled-components";
 import { device } from "@components/utils/devices";
 
 const StyledLeftMenu = styled.div`
-  background-color: #F5F5F5;
+  box-sizing: border-box;
+  position: relative;
   border-right: 1px solid #EFEFEF;
-  padding: 32px 0;
-  padding-right: 24px;
-  width: 231px;
+  padding: 32px 28px 32px 0;
+  width: 260px;
+  min-width: 260px;
+  background-color: #F5F5F5;
 
-  .bck-to-prev {
-    padding: 0 0 16px;
-
-    > a > span {
-      display: flex;
-      gap: 8px;
-      padding: 0;
-    }
-  }
-  
-  .lm-wrap {
-    box-sizing: border-box;
-    position: sticky;
-    margin: 0;
-    min-width: 231px;
-    z-index: 100;
-    top: 72px;
-    height: calc(100vh - 72px);
-    overflow-y: auto;
-    padding: 0px 4px 64px 0px;
-  }
-
-  .lm-wrap::-webkit-scrollbar-thumb {
-    border-radius: 3px;
-    background: #D0D5DA;
-  }
-
-  .lm-wrap::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  h6 {
-    padding: 0 0 8px;
-    text-transform: uppercase;
-  }
-
-  &::before {
+  &:before {
     content: "";
     position: absolute;
-    left: 32px;
+    left: 0;
     top: 0;
-    z-index: 2;
+    z-index: -1;
     width: 100vw;
     height: 100%;
     background-color: #F5F5F5;
     transform: translateX(-100%);
   }
 
-  ul, li {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
+  .left-menu-wrapper {
+    position: sticky;
+    top: 104px;
+
+    @media ${device.laptopS} {
+      position: initial;
+      top: initial;
+    }
   }
 
-  ul.stat {
-    padding: 32px 0 0;
-  }
-
-  li.active {
-    .internal-link {
-      color: #ff6f3d;
-      font-weight: 700;
-    } 
-  }
-
-  .internal-link {
-    display: block;
-    line-height: 22px;
-    color: #333333;
-    padding: 6px 16px;
-    text-decoration: none;
+  .left-menu-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 21px;
     transition: color 0.3s;
 
-    &.selected {
-      color: #FF6F3D;
+    &:before {
+      content: url("https://static-helpcenter.onlyoffice.com/images/icons/16px_back_arrow.react.svg");
+      display: inline-flex;
+      margin-right: 8px;
+      width: 16px;
+      height: 16px;
     }
 
     &:hover {
@@ -90,90 +54,160 @@ const StyledLeftMenu = styled.div`
     }
   }
 
-  .glossary, .video, .faq {
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    font-weight: 400;
-    line-height: 22px;
-    letter-spacing: normal;
-    text-transform: initial;
+  .left-menu-title {
+    padding: 8px 0;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 19px;
+    color: #333333;
+    text-transform: uppercase;
 
-    &::before {
-      margin-right: 8px;
-      width: 24px;
-      height: 24px;
+    @media ${device.laptopS} {
+      padding: 10px 0;
     }
   }
 
-  .glossary {
-    &::before {
-      content: url("https://static-helpcenter.onlyoffice.com/images/icons/glossary-icon.react.svg");
+  .left-menu-items {
+    margin-bottom: 32px;
+    list-style-type: none;
+
+    &.left-menu-articles {
+      position: relative;
+      margin-top: 8px;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 2px;
+        width: 4px;
+        height: 100%;
+        background-color: #E2E2E2;
+      }
+
+      li {
+        &.active {
+          position: relative;
+
+          a {
+            font-weight: 700;
+            color: #FF6F3D;
+          }
+
+          &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 2px;
+            width: 4px;
+            height: 100%;
+            background-color: #FF6F3D;
+          }
+        }
+      }
+
+      a {
+        display: block;
+        padding: 6px 0 6px 32px;
+        font-size: 14px;
+        line-height: 21px;
+      }
+    }
+
+    @media ${device.laptopS} {
+      margin-bottom: 24px;
     }
   }
 
-  .video {
-    &::before {
-      content: url("https://static-helpcenter.onlyoffice.com/images/icons/video-icon.react.svg");
+  .left-menu-info {
+    list-style-type: none;
+
+    li {
+      &:not(:last-child) {
+        margin-bottom: 24px;
+      }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      transition: color 0.3s;
+
+      &:before {
+        margin-right: 8px;
+        width: 24px;
+        height: 24px;
+      }
+
+      &.glossary {
+        &::before {
+          content: url("https://static-helpcenter.onlyoffice.com/images/icons/glossary-icon.react.svg");
+        }
+      }
+
+      &.video {
+        &::before {
+          content: url("https://static-helpcenter.onlyoffice.com/images/icons/video-icon.react.svg");
+        }
+      }
+
+      &.faq {
+        &::before {
+          content: url("https://static-helpcenter.onlyoffice.com/images/icons/faq-icon.react.svg");
+        }
+      }
+
+      &:hover {
+        color: #FF6F3D;
+      }
+
+      @media ${device.laptopS} {
+        padding: 4px 0;
+      }
     }
   }
 
-  .faq {
-    &::before {
-      content: url("https://static-helpcenter.onlyoffice.com/images/icons/faq-icon.react.svg");
-    }
-  }
-
-  .page {
-    position: relative;
-  }
-
-  .page::before {
-    border-radius: 2px;
-    content: "";
-    position: absolute;
-    top: 8px;
-    width: 4px; 
-    height: calc(100% - 16px);
-    background-color: #E2E2E2; 
-    transform: translateY(0); 
-    transition: transform 0.2s ease; 
-  }
-
-  ul > li::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
+  @media ${device.laptopS} {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-right: none;
+    padding: 24px 24px 24px 16px;
+    width: 272px;
+    min-width: 272px;
     height: 100%;
-    border-radius: 50%;
-  }
-  
-  ul > li.active::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 100%;
-    border-radius: 2px;
-    background-color: #ff6f3d;
-  }
+    background-color: #ffffff;
+    z-index: 1000;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 0.3s, visibility 0.3s;
 
-  ul > li {
-    position: relative;
-  }
-
-  @media ${device.tablet} {
-    .lm-wrap {
-      min-width: 184px;
+    &.active {
+      transform: translateX(0);
+      visibility: visible;
     }
   }
 
-  @media ${device.tabletS} {
-    display: none;
+  .ScrollbarsCustom {
+    height: calc(100vh - 253px) !important;
+
+    @media ${device.laptopS} {
+      height: calc(100vh - 147px) !important;
+    }
+  }
+
+  .ScrollbarsCustom-Track.ScrollbarsCustom-TrackY {
+    border-radius: 2px !important;
+    width: 4px !important;
+    background-color: #E2E2E2 !important;
+  }
+
+  .ScrollbarsCustom-Thumb.ScrollbarsCustom-ThumbY {
+    border-radius: 2px !important;
+    width: 4px !important;
+    background-color: #FF6F3D !important;
   }
 `;
 

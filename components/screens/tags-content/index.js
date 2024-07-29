@@ -6,7 +6,7 @@ import StyledWrapperContent from "@components/screens/common/wrapper-content/sty
 import ArticlePopup from "../common/article-popup";
 import AlphabetContainer from "../common/alphabet-container";
 
-const TagsContent = ({ t, locale, pageName, tagsData }) => {
+const TagsContent = ({ t, locale, tagsData, leftMenuMobile }) => {
   const [modalActive, setModalActive] = useState(false);
   const [tagName, setTagName] = useState();
   const [tagItems, setTagItems] = useState();
@@ -37,7 +37,9 @@ const TagsContent = ({ t, locale, pageName, tagsData }) => {
       <StyledWrapperContent>
         <LeftMenu
           t={t}
-          pageName={pageName}
+          backBtnName={t("Home")}
+          backBtnUrl="/"
+          leftMenuMobile={leftMenuMobile}
         />
         <div className="wrapper">
           <AlphabetContainer

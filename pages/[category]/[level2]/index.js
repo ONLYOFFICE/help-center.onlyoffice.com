@@ -1,16 +1,19 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useState } from "react";
 import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 import getCategoryLevel2 from "@lib/strapi/getCategoryLevel2";
 import Layout from "@components/layout";
-import HeadingContent from "@components/screens/header";
-import Footer from "@components/screens/footer";
 import HeadSEO from "@components/screens/head";
+import Header from "@components/screens/header";
 import CategoryContent from "@components/screens/category-content";
 import ArticleContent from "@components/screens/article-content";
+import Footer from "@components/screens/footer";
 
 const Level2CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug }) => {
   const { t } = useTranslation();
+  const [leftMenuMobile, setLeftMenuMobile] = useState(false);
+
   const data = categoryData.data?.[0].attributes;
   const isArticle = categoryData.data[0].attributes.article;
 
@@ -23,11 +26,12 @@ const Level2CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
         />
       </Layout.PageHead>
       <Layout.PageHeader>
-        <HeadingContent
+        <Header
           t={t}
-          template={false}
           locale={locale}
-          categories={categoriesMenu.data}
+          categories={categoriesMenu}
+          leftMenuMobile={leftMenuMobile}
+          setLeftMenuMobile={setLeftMenuMobile}
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
@@ -42,6 +46,10 @@ const Level2CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             pageDescription={data.content}
             tags={data.tags}
             videos={data.videos}
+            leftMenuMobile={leftMenuMobile}
+            setLeftMenuMobile={setLeftMenuMobile}
+            backBtnName={data.category.data.attributes.name}
+            backBtnUrl={data.category.data.attributes.url}
           />
         ) : (
           <CategoryContent
@@ -53,6 +61,9 @@ const Level2CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             pageDescription={data.description}
             pageItems={data[`level_2_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`].data}
             pageItemsLevel={3}
+            leftMenuMobile={leftMenuMobile}
+            backBtnName={data.general_category.data.attributes.name}
+            backBtnUrl={data.general_category.data.attributes.url}
           />
         )}
       </Layout.SectionMain>

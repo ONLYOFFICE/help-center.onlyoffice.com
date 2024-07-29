@@ -5,7 +5,7 @@ import Heading from "@components/common/heading";
 import { AccordionItem } from "@components/common/accordion";
 import ReactHtmlParser from "react-html-parser";
 
-const FaqContent = ({ t, pageName, faqData }) => {
+const FaqContent = ({ t, faqData, leftMenuMobile }) => {
   const { name, faq_block } = faqData.data[0].attributes;
 
   return (
@@ -13,7 +13,9 @@ const FaqContent = ({ t, pageName, faqData }) => {
       <StyledWrapperContent>
         <LeftMenu
           t={t}
-          pageName={pageName}
+          backBtnName={t("Home")}
+          backBtnUrl="/"
+          leftMenuMobile={leftMenuMobile}
         />
 
         <div className="wrapper">

@@ -3,13 +3,15 @@ import LeftMenu from "@components/screens/common/left-menu";
 import StyledWrapperContent from "@components/screens/common/wrapper-content/styled-wrapper-content";
 import VideoItem from "@components/screens/common/video-item";
 
-const VideoContent = ({ t, videoData }) => {
+const VideoContent = ({ t, videoData, leftMenuMobile }) => {
   return (
     <StyledVideoContent>
       <StyledWrapperContent>
         <LeftMenu
           t={t}
-          pageName={t("Video")}
+          backBtnName={t("Home")}
+          backBtnUrl="/"
+          leftMenuMobile={leftMenuMobile}
         />
         <div className="wrapper">
           <div className="video-items">

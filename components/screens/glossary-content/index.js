@@ -4,13 +4,15 @@ import StyledWrapperContent from "@components/screens/common/wrapper-content/sty
 import AlphabetContainer from "../common/alphabet-container";
 import Text from "@components/common/text";
 
-const GlossaryContent = ({ t, glossaryData }) => {
+const GlossaryContent = ({ t, glossaryData, leftMenuMobile }) => {
   return (
     <StyledGlossaryContent>
       <StyledWrapperContent>
         <LeftMenu
           t={t}
-          pageName={t("Glossary")}
+          backBtnName={t("Home")}
+          backBtnUrl="/"
+          leftMenuMobile={leftMenuMobile}
         />
         <div className="wrapper">
           <Text label={t("Here are the base terms which are used in the online office interface and documentation.")} />

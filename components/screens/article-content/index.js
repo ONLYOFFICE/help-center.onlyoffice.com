@@ -23,7 +23,11 @@ const ArticleContent = ({
     pageName,
     pageDescription,
     tags,
-    videos
+    videos,
+    backBtnName,
+    backBtnUrl,
+    leftMenuMobile,
+    setLeftMenuMobile
   }) => {
   const containerRef = useRef(null);
   const [modalActive, setModalActive] = useState(false);
@@ -151,6 +155,10 @@ const ArticleContent = ({
           headings={headings}
           isArticle={true}
           activeSection={activeSection}
+          backBtnName={backBtnName}
+          backBtnUrl={backBtnUrl}
+          leftMenuMobile={leftMenuMobile}
+          setLeftMenuMobile={setLeftMenuMobile}
         />
         <div className="wrapper">
           <Breadcrumbs

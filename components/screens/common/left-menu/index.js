@@ -1,8 +1,9 @@
 import StyledLeftMenu from "./styled-left-menu";
+import { Scrollbar } from "react-scrollbars-custom";
 import InternalLink from "@components/common/internal-link";
 import MiniSearch from "./sub-components/search";
 import Heading from "@components/common/heading";
-import TreeView from "@components/screens/common/treeview";
+import TreeView from "@components/screens/common/left-menu/sub-components/treeview";
 
 const LeftMenu = ({
     t,
@@ -13,41 +14,52 @@ const LeftMenu = ({
     pageItemsLevel,
     categorySlug,
     headings,
-    activeSection
+    activeSection,
+    backBtnUrl,
+    backBtnName,
+    leftMenuMobile,
+    setLeftMenuMobile
   }) => {
   return (
-    <StyledLeftMenu>
-      <div className="lm-wrap">
+    <StyledLeftMenu className={`left-menu ${leftMenuMobile ? "active" : ""}`}>
+      <div className="left-menu-wrapper">
         <MiniSearch />
-        <Heading level={6} label={pageName} />
+        {backBtnUrl &&
+          <InternalLink className="left-menu-link" href={backBtnUrl} label={backBtnName} />
+        }
 
-        {isArticle || isLevel4CategoryPage ? (
-          <ul className="page">
-            {headings.map((item, index) => (
-              <li className={activeSection === item.id ? "active" : ""} key={index}>
-                <InternalLink href={`#${item.id}`} label={item.text} />
-              </li>
-            ))}
+        <Scrollbar>
+          {pageName &&
+            <Heading className="left-menu-title" level={6} label={pageName} />
+          }
+
+          {isArticle || isLevel4CategoryPage ? (
+            <ul className="left-menu-items left-menu-articles">
+    
+              {headings.map((item, index) => (
+                <li className={activeSection === item.id ? "active" : ""} key={index}>
+                  <InternalLink onClick={() => setLeftMenuMobile(false)} href={`#${item.id}`} label={item.text} />
+                </li>
+              ))}
+            </ul>
+          ) : pageItems ? (
+            <ul className="left-menu-items">
+              {pageItems?.map((article, index) => (
+                <TreeView
+                  key={index}
+                  article={article}
+                  pageItemsLevel={pageItemsLevel}
+                  categorySlug={categorySlug}
+                />
+              ))}
+            </ul>
+          ) : null}
+          <ul className="left-menu-info">
+            <li><InternalLink href="/glossary.aspx" className="glossary" label={t("Glossary")} /></li>
+            <li><InternalLink href="/video.aspx" className="video" label={t("Video")} /></li>
+            <li><InternalLink href="/faq/faq.aspx" className="faq" label={t("FAQ")} /></li>
           </ul>
-        ) : (
-          <div>
-            {pageItems?.map((article, index) => (
-              <TreeView
-                t={t}
-                key={index}
-                article={article}
-                pageItemsLevel={pageItemsLevel}
-                categorySlug={categorySlug}
-              />
-            ))}
-          </div>
-        )}
-
-        <ul className="stat">
-          <li><InternalLink href="/glossary.aspx" className="glossary" label={t("Glossary")} /></li>
-          <li><InternalLink href="/video.aspx" className="video" label={t("Video")} /></li>
-          <li><InternalLink href="/faq/faq.aspx" className="faq" label={t("FAQ")} /></li>
-        </ul>
+        </Scrollbar>
       </div>
     </StyledLeftMenu>
   )
