@@ -5,7 +5,7 @@ import chevronRightIcon from "@public/images/icons/chevron-right.svg";
 const StyledHeader = styled.div`
   display: flex;
   align-items: center;
-  padding: 0 40px;
+  padding: 0 48px;
   min-height: 72px;
   background-color: #333333;
 
@@ -247,6 +247,10 @@ const StyledHeader = styled.div`
       padding: 0 85px 0 16px;
       color: #ffffff;
     }
+  }
+
+  @media ${device.tablet} {
+    padding: 0 40px;
   }
 
   @media ${device.tabletS} {
