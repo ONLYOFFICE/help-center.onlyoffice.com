@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "@components/utils/devices";
 
 const StyledArticlePopup = styled.div`
   box-sizing: border-box;
@@ -38,8 +39,18 @@ const StyledArticlePopup = styled.div`
     background-color: #ffffff;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 7px 25px;
 
-    @media (max-width: 592px) {
+    @media ${device.tablet} {
+      width: 95vw;
+    }
+
+    @media ${device.tabletS} {
       padding: 24px 16px;
+      width: calc(100vw - 32px);
+
+      .article-popup-header {
+        flex-direction: column;
+        align-items: start;
+      }
     }
   }
 
@@ -92,6 +103,9 @@ const StyledArticlePopup = styled.div`
     font-size: 14px;
     color: #ff6f3d;
     text-decoration: underline;
+    &:visited {
+      color: #ff6f3d;
+    }
   }
 
   .article-popup-list {
@@ -112,20 +126,20 @@ const StyledArticlePopup = styled.div`
 
   .article-popup-list-link {
     display: flex;
-    align-items: center;
+    -webkit-box-align: baseline;
+    align-items: baseline;
+    flex-wrap: wrap;
+    padding: 0px 0px 8px;
+    text-decoration: none;
+    gap: 8px;
   }
 
   .article-popup-list-title {
     color: #ff6f3d;
     text-decoration: underline;
-
-    &:not(:last-child) {
-      margin-right: 8px;
-    }
   }
 
   .mark {
-    margin-right: 8px;
     border-radius: 2px;
     padding: 4px 8px;
     color: #ffffff;
