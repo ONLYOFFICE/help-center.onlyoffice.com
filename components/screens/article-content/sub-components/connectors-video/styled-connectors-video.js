@@ -14,11 +14,6 @@ const StyledConnectorsVideo = styled.div`
     aspect-ratio: 1.9;
     gap: 32px;
     padding: 32px;
-
-    &.single {
-      aspect-ratio: unset;
-      display: block;
-    }
   }
 
   .vids-car {

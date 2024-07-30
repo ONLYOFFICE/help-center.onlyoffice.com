@@ -3,11 +3,14 @@ import { device } from "@components/utils/devices";
 
 const StyledAccordionItem = styled.div`
   position: relative;
-  border-top: 1px solid #D2D6DB;
-  padding: 19px 0 19px 40px;
+  border-top: 1px solid #E5E5E5;
+  padding: ${(props) => (props.isMain ? "16px 0" : "32px 0")};
+  @media ${device.tabletS} {
+    padding: ${(props) => (props.isMain ? "16px 0" : "24px 0")};
+    }
 
   &:last-child {
-    border-bottom: 1px solid #D2D6DB;
+    border-bottom: 1px solid #E5E5E5;
   }
 
   .accordion {
@@ -16,16 +19,16 @@ const StyledAccordionItem = styled.div`
     cursor: pointer;
     outline: none;
     align-items: center;
+    gap: ${(props) => (props.isMain ? "16px" : "10px")};
   }
 
   .accordion-icon {
-    position: absolute;
-    left: 12px;
-    top: 20px;
     font-size: 24px;
     line-height: 24px;
     font-weight: 600;
+    text-align: center;
     transition: transform 0.2s ease;
+    width: 24px;
   }
 
   .accordion-content {
@@ -39,6 +42,11 @@ const StyledAccordionItem = styled.div`
     font-size: 14px;
     line-height: 22px;
     padding-top: 16px;
+    padding-left: ${(props) => (props.isMain ? "40px" : "34px")};
+
+    > ul {
+      padding-left: 16px;
+    }
 
     @media ${device.tabletS} {
       font-size: 13px;

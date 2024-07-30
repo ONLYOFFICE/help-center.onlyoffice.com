@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import StyledAccordion from "./styled-accordion";
 import AccordionItem from "./sub-components/accordion-item";
 
-const Accordion = ({ children, level }) => {
+const Accordion = ({ children, level, isMain }) => {
   const items = children.filter(item => item.type.name === "AccordionItem");
   return (
     <StyledAccordion className="accordion__section">
@@ -11,6 +11,7 @@ const Accordion = ({ children, level }) => {
           key={index}
           heading={props.heading}
           level={level}
+          isMain={isMain}
         >
           {props.children}
         </AccordionItem>

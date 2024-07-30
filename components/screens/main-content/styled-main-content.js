@@ -80,7 +80,7 @@ const StyledMainContent = styled(Section)`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 32px;
+    margin-bottom: 40px;
   }
 
   .guides-cards-top-link {
@@ -96,15 +96,17 @@ const StyledMainContent = styled(Section)`
       margin-right: 48px;
     }
 
-    &:hover {
-      text-decoration: underline;
+    > a {
+      color: #333333;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      text-transform: uppercase;
     }
   }
 
   .guides-cards-items {
     display: flex;
-    flex-wrap: wrap;
-    align-items: start;
     gap: 32px;
   }
 `;

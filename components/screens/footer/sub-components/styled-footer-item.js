@@ -4,12 +4,12 @@ import { device } from "@components/utils/devices";
 const StyledFooterTablet = css`
   display: block;
   padding: 16px 0;
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #616161;
 
   .footer-item-heading {
     color: #ffffff;
     font-weight: 600;
-    padding: 6px 0 3px;
+    padding: 0px;
     cursor: pointer;
     overflow: hidden;
     transition: all 0.4s linear 0s;
@@ -19,9 +19,12 @@ const StyledFooterTablet = css`
     display: block;
     position: absolute;
     right: 2px;
-    top: 16px;
+    top: 18px;
     z-index: -1;
+    height: 11px;
     transition: 0.3s linear;
+    transform: rotate(90deg);
+    width: 11px;
     &.up {
       transform: rotate(180deg);
     }
@@ -33,6 +36,7 @@ const StyledFooterTablet = css`
     margin-bottom: 0px;
     overflow: hidden;
     transition: margin-top 0.5s ease;
+    gap: 16px;
 
     ${(props) =>
       props.isOpen
@@ -55,20 +59,19 @@ const StyledFooterItem = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  padding: 0 0 25px;
   white-space: break-spaces;
 
   .footer-items-group {
     display: flex;
     flex-direction: column;
     max-height: 100%;
+    gap: 8px;
   }
 
   .footer-link {
     color: #ffffff;
     font-size: 13px;
     line-height: 18px;
-    margin: 0px 0px 8px;
     text-decoration: none;
     -webkit-transition: color 0.2s, border 0.5s;
     -moz-transition: color 0.2s, border 0.5s;
@@ -83,7 +86,7 @@ const StyledFooterItem = styled.div`
   .footer-item-heading {
     color: #808080;
     padding: 0 0 16px;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 16px;
     font-weight: 600;
     text-transform: uppercase;
@@ -92,6 +95,13 @@ const StyledFooterItem = styled.div`
 
   .footer-item-heading-arrow {
     display: none;
+  }
+
+  @media ${device.desktop} {
+    .footer-items-group {
+      flex-direction: column;
+      gap: 8px;
+    }
   }
 
   @media ${device.tabletS} {

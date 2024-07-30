@@ -9,19 +9,22 @@ const StyledSearchArea = styled.div`
 
   &.cat_search {
     padding: 72px 0 0;
+
+    .search_container {
+      margin: 40px auto 0;
+    }
   }
 
   .search_container {
     position: relative;
     display: flex;
     align-items: center;
-    margin: 40px auto 0;
-    max-width: 688px;
+    margin: 48px auto 0;
+    max-width: 624px;
   }
 
   .presearch_bx {
     display: flex;
-    flex-direction: column;
     gap: 16px;
     justify-content: center;
     align-items: center;
@@ -56,8 +59,7 @@ const StyledSearchArea = styled.div`
     z-index: 2;
     transform: translateX(12px);
     position: absolute;
-    right: 24px;
-    padding: 16px 8px;
+    right: 36px;
 
     svg {
       cursor: pointer;
@@ -65,11 +67,25 @@ const StyledSearchArea = styled.div`
     }
   }
 
+  @media ${device.tablet} {
+    .search_container {
+      margin: 32px auto 0;
+      max-width: 524px;
+    }
+    &.cat_search .search_container {
+      margin: 40px 32px 0;
+      max-width: 624px;
+    }
+  }
+
   @media ${device.tabletS} {
-    padding: 100px 0 55px;
+    padding: 48px 0 55px;
 
     &.cat_search {
       padding: 56px 0;
+      .search_container {
+        margin: 48px auto 0;
+      }
     }
 
     .search_input {
@@ -79,7 +95,7 @@ const StyledSearchArea = styled.div`
 
     .presearch_title {
       font-size: 28px;
-      line-height: 48px;
+      line-height: 38px;
     }
 
     .presearch_bx {

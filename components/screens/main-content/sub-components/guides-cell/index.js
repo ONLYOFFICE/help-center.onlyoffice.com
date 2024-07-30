@@ -13,7 +13,7 @@ const GuidesCell = ({ data, isCategoryPage, categorySlug, isIntegrationCategory 
   const items = isCategoryPage ? data.attributes[`level_2_${categorySlug}`]?.data : filteredData;
 
   return (
-    <StyledGuidesCell>
+    <StyledGuidesCell isCategoryPage={isCategoryPage}>
       <div className="guides-cell-header">
         <div className={`guides-cell-top ${isIntegrationCategory ? "integration" : ""}`}>
           {!isIntegrationCategory &&
@@ -43,7 +43,7 @@ const GuidesCell = ({ data, isCategoryPage, categorySlug, isIntegrationCategory 
             ) : (
               items?.slice(0, Math.ceil(items?.length / 2)).map((item, index) => (
                 isCategoryPage ? (
-                  <InternalLink className="guides-cell-link" label={item.attributes.name} href={item.attributes?.url} key={index} />
+                  <InternalLink className="guides-cell-link guides-cell-header-link" label={item.attributes.name} href={item.attributes?.url} key={index} />
                 ) : (
                   <React.Fragment key={index}>
                     <InternalLink className="guides-cell-link guides-cell-header-link" label={item.attributes.name} href={item.attributes?.url} />
@@ -68,7 +68,7 @@ const GuidesCell = ({ data, isCategoryPage, categorySlug, isIntegrationCategory 
             ) : (
               items?.slice(Math.ceil(items.length / 2), mainArticles?.length).map((item, index) => (
                 isCategoryPage ? (
-                  <InternalLink className="guides-cell-link" label={item.attributes.name} href={item.attributes?.url} key={index} />
+                  <InternalLink className="guides-cell-link guides-cell-header-link" label={item.attributes.name} href={item.attributes?.url} key={index} />
                 ) : (
                   <React.Fragment key={index}>
                     <InternalLink className="guides-cell-link guides-cell-header-link" label={item.attributes.name} href={item.attributes?.url} />

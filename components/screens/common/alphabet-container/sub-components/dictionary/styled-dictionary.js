@@ -10,23 +10,21 @@ const StyledDictionary = styled(StyledText)`
     display: initial;
 
     > a {
-      border-bottom: 1px dotted ${globalColors.orangeLetters};
       color: ${globalColors.orangeLetters};
       display: inline;
       font-size: 14px;
       margin: 0;
-      padding: 0 2px;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: none!important;
-      }
+      text-decoration: underline;
     }
 
     > strong {
       color: #808080;
       font-weight: 700;
     }
+  }
+
+  ol {
+    padding: 0 0 0 20px;
   }
 
   .int_link {

@@ -4,11 +4,16 @@ import SearchContent from "./sub-components/search";
 import Category from "./sub-components/category";
 import GuidesCell from "./sub-components/guides-cell";
 import InternalLink from "@components/common/internal-link";
+import Masonry from "react-masonry-css";
 
 const MainContent = ({ t, categories, category, categorySlug, isCategoryPage, isIntegrationCategory, leftMenuMobile, setLeftMenuMobile, leftMenuCategories }) => {
   const categorySlugs = ["changelog", "roadmap", "troubleshooting"];
   const topData = categories.data?.filter(item => categorySlugs.includes(item.attributes.slug_id)) || [];
   const mappedCategories = categories.data?.filter(item => !categorySlugs.includes(item.attributes.slug_id)) || [];
+  const breakpointColumnsObj = {
+    default: 2,
+    592: 1
+  };
 
   return (
     <>
@@ -37,15 +42,20 @@ const MainContent = ({ t, categories, category, categorySlug, isCategoryPage, is
             </div>
           }
           <div className="guides-cards-items">
-            {mappedCategories?.sort((a, b) => a.attributes.position - b.attributes.position).map((item, index) => (
-              <GuidesCell
-                data={item}
-                isCategoryPage={isCategoryPage}
-                categorySlug={categorySlug}
-                isIntegrationCategory={isIntegrationCategory}
-                key={index}
-              />
-            ))}
+            <Masonry
+              breakpointCols={breakpointColumnsObj}
+              className="guides-cards-items"
+              columnClassName="guides-cards-items-column">
+              {mappedCategories?.sort((a, b) => a.attributes.position - b.attributes.position).map((item, index) => (
+                <GuidesCell
+                  data={item}
+                  isCategoryPage={isCategoryPage}
+                  categorySlug={categorySlug}
+                  isIntegrationCategory={isIntegrationCategory}
+                  key={index}
+                />
+              ))}
+            </Masonry>
           </div>
         </div>
       </StyledMainContent>

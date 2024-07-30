@@ -6,7 +6,7 @@ import Link from "@components/common/external-link";
 import Text from "@components/common/text";
 import TransAccorionItem from "./item-accordion";
 
-const AccordionContent = ({ t, locale }) => {
+const AccordionContent = ({ t, locale, isMain }) => {
   const AccordionDescriptionOOLicenseLink = t(
     "AccordionDescriptionOOLicenseLink"
   );
@@ -72,19 +72,19 @@ const AccordionContent = ({ t, locale }) => {
         <Heading className="title-accordion" level={3}>
           {t("Frequently Asked Questions")}
         </Heading>
-        <AccordionItem heading={t("AccordionHeadingOOLicense")}>
+        <AccordionItem isMain={isMain} heading={t("AccordionHeadingOOLicense")}>
           {AccordionDescriptionOOLicense}
         </AccordionItem>
-        <AccordionItem heading={t("AccordionHeadingRequestAssistance")}>
+        <AccordionItem isMain={isMain} heading={t("AccordionHeadingRequestAssistance")}>
           {AccordionDescriptionRequestAssistance}
         </AccordionItem>
-        <AccordionItem heading={t("AccordionHeadingOtherQuestions")}>
+        <AccordionItem isMain={isMain} heading={t("AccordionHeadingOtherQuestions")}>
           <TransAccorionItem locale={locale} t={t} />
         </AccordionItem>
-        <AccordionItem heading={t("AccordionHeadingIntegrateOO")}>
+        <AccordionItem isMain={isMain} heading={t("AccordionHeadingIntegrateOO")}>
           {/* {AccordionDescriptionIntegrateOO} */}
         </AccordionItem>
-        <AccordionItem heading={t("AccordionHeadingContributeOO")}>
+        <AccordionItem isMain={isMain} heading={t("AccordionHeadingContributeOO")}>
           {/* {AccordionDescriptionContributeOO} */}
         </AccordionItem>
       </div>

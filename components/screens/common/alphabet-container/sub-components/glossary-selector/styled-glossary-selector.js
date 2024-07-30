@@ -1,33 +1,44 @@
 import styled from "styled-components";
+import { device } from "@components/utils/devices";
 
 const StyledGlossarySelector = styled.div`
+  background-color: #f5f5f5;
+  border-radius: 4px;
   display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0 64px;
+  padding: 24px;
+
 
   .glossary-select {
-    border: none;
-    padding: 1px 5px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #ff642e;
     background-color: #ffffff;
-    text-align: center;
-    text-transform: uppercase;
-    outline: none;
+    border: none;
+    border-radius: 3px;
+    color: #444444;
     cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    outline: none;
+    padding: 10px;
+    text-align: center;
+    text-transform: capitalize;
+    min-width: 41px;
 
     &.active {
-      font-weight: 700;
       color: #ffffff;
-      background-color: #ff642e;
+      background-color: #ff6f3d;
     }
 
     &:disabled {
-      color: #333333;
+      color: #aaaaaa;
       cursor: unset;
     }
 
     &:not(:disabled):hover {
-      background-color: #a9d4ef;
+      background-color: #ff6f3d;
+      color: #ffffff;
     }
 
     @media (max-width: 608px) {
@@ -35,8 +46,8 @@ const StyledGlossarySelector = styled.div`
     }
   }
 
-  @media (max-width: 608px) {
-    display: inline-block;
+  @media ${device.tablet} {
+    margin: 24px 0 56px;
   }
 `
 

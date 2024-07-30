@@ -39,6 +39,7 @@ const FaqPage = ({ locale, categoriesMenu, faqData }) => {
           t={t}
           faqData={faqData}
           leftMenuMobile={leftMenuMobile}
+          locale={locale}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>

@@ -40,7 +40,7 @@ const MainPage = ({ locale, categories }) => {
           leftMenuMobile={leftMenuMobile}
           setLeftMenuMobile={setLeftMenuMobile}
         />
-        <Accordion t={t} locale={locale} />
+        <Accordion t={t} locale={locale} isMain={true} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} locale={locale} />

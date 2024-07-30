@@ -5,8 +5,10 @@ import LeftMenu from "@components/screens/common/left-menu";
 import StyledWrapperContent from "@components/screens/common/wrapper-content/styled-wrapper-content";
 import ArticlePopup from "../common/article-popup";
 import AlphabetContainer from "../common/alphabet-container";
+import Breadcrumbs from "../common/breadcrumbs";
+import Heading from "@components/common/heading";
 
-const TagsContent = ({ t, locale, tagsData, leftMenuMobile }) => {
+const TagsContent = ({ t, locale, pageName, tagsData }) => {
   const [modalActive, setModalActive] = useState(false);
   const [tagName, setTagName] = useState();
   const [tagItems, setTagItems] = useState();
@@ -16,7 +18,7 @@ const TagsContent = ({ t, locale, tagsData, leftMenuMobile }) => {
   const handleTagModal = async (tagName) => {
     const data = await getTagsArticle(locale, tagName, 2, page);
 
-    const { articles, article_desktops, article_docs, article_docspaces, article_mobiles,  article_workspaces } = data;
+    const { articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces } = data;
     const hasMoreTags = [articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces].some(({ meta: { pagination } }) => pagination.total > pagination.page + 1);
 
     setHasMoreTags(hasMoreTags);
@@ -42,6 +44,11 @@ const TagsContent = ({ t, locale, tagsData, leftMenuMobile }) => {
           leftMenuMobile={leftMenuMobile}
         />
         <div className="wrapper">
+          <Breadcrumbs
+            t={t}
+            pageName={t("Tags")}
+          />
+          <Heading level={3}>{t("Tags")}</Heading>
           <AlphabetContainer
             t={t}
             data={tagsData}

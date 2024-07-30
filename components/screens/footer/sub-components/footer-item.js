@@ -26,7 +26,7 @@ const FooterItem = ({ dis, children, className, heading }) => {
         label={heading}
       />}
       <img
-        src="https://static-helpcenter.onlyoffice.com/images/icons/chevron-down.react.svg"
+        src="https://static-helpcenter.onlyoffice.com/images/icons/arrowup.react.png"
         className={footerImageArrow}
       />
       <div ref={content} className="footer-items-group">

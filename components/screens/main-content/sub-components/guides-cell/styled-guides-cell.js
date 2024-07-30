@@ -6,6 +6,11 @@ const StyledGuidesCell = styled.div`
   width: 544px;
   background-color: #ffffff;
   box-shadow: rgba(85, 85, 85, 0.15) 0px 7px 25px;
+  margin-bottom: ${(props) => (props.isCategoryPage ? "32px" : "24px")};
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   .guides-cell-header {
     display: flex;
@@ -70,7 +75,7 @@ const StyledGuidesCell = styled.div`
 
   .guides-cell-column {
     display: grid;
-    gap: 16px;
+    gap: ${(props) => (props.isCategoryPage ? "24px" : "16px")};
   }
 
   .guides-cell-link {
@@ -89,6 +94,24 @@ const StyledGuidesCell = styled.div`
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  @media ${device.laptopM} {
+    width: 100%;
+  }
+
+  @media ${device.tablet} {
+    .guides-cell-columns {
+      grid-template-columns: 1fr;
+      gap:  ${(props) => (props.isCategoryPage ? "24px" : "32px")};
+    }
+    .guides-cell-link.guides-cell-header-link:not(:first-of-type) {
+      padding-top: ${(props) => (props.isCategoryPage ? "0px" : "16px")};
+    }
+  }
+
+  @media ${device.tabletS} {
+    margin-bottom: ${(props) => (props.isCategoryPage ? "24px" : "32px")};
   }
 `;
 
