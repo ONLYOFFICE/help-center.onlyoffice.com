@@ -1,82 +1,44 @@
 import styled, { css } from "styled-components";
 import { device } from "@components/utils/devices";
-
-const StyledFooterTablet = css`
-  display: block;
-  padding: 16px 0;
-  border-bottom: 1px solid #616161;
-
-  .footer-item-heading {
-    color: #ffffff;
-    font-weight: 600;
-    padding: 0px;
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 0.4s linear 0s;
-  }
-
-  .footer-item-heading-arrow {
-    display: block;
-    position: absolute;
-    right: 2px;
-    top: 18px;
-    z-index: -1;
-    height: 11px;
-    transition: 0.3s linear;
-    transform: rotate(90deg);
-    width: 11px;
-    &.up {
-      transform: rotate(180deg);
-    }
-  }
-
-  .footer-items-group {
-    display: grid;
-    position: initial;
-    margin-bottom: 0px;
-    overflow: hidden;
-    transition: margin-top 0.5s ease;
-    gap: 16px;
-
-    ${(props) =>
-      props.isOpen
-        ? css`
-            margin-top: 16px;
-            position: initial;
-            height: 100%;
-            max-height: 100%;
-          `
-        : css`
-            position: initial;
-            margin-bottom: 0px;
-            margin-top: 0px;
-            max-height: 0px;
-          `}
-  }
-`;
+import chevronRight from "@public/images/icons/chevron-right-white.svg";
 
 const StyledFooterItem = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
-  white-space: break-spaces;
 
   .footer-items-group {
     display: flex;
     flex-direction: column;
-    max-height: 100%;
     gap: 8px;
+
+    @media ${device.tabletS} {
+      display: grid;
+      position: initial;
+      margin-bottom: 0;
+      overflow: hidden;
+      gap: 16px;
+      transition: max-height 0.3s ease;
+
+      ${(props) =>
+        props.isOpen
+          ? css`
+              margin-bottom: 16px;
+              max-height: ${(props) => props.maxHeight};
+            `
+          : css`
+              margin-bottom: 0;
+              max-height: 0;
+      `}
+    }
   }
 
   .footer-link {
-    color: #ffffff;
     font-size: 13px;
     line-height: 18px;
+    color: #ffffff;
     text-decoration: none;
-    -webkit-transition: color 0.2s, border 0.5s;
-    -moz-transition: color 0.2s, border 0.5s;
-    -o-transition: color 0.2s, border 0.5s;
-    transition: color 0.2s, border 0.5s;
+    transition: color 0.3s;
 
     &:hover {
       color: #ff6f3d;
@@ -84,28 +46,48 @@ const StyledFooterItem = styled.div`
   }
 
   .footer-item-heading {
-    color: #808080;
-    padding: 0 0 16px;
+    margin-bottom: 16px;
     font-size: 13px;
-    line-height: 16px;
+    line-height: 18px;
     font-weight: 600;
-    text-transform: uppercase;
     letter-spacing: 0.04em;
-  }
+    color: #808080;
+    text-transform: uppercase;
 
-  .footer-item-heading-arrow {
-    display: none;
-  }
+    &:after {
+      @media ${device.tabletS} {
+        content: "";
+        display: inline-flex;
+        width: 11px;
+        height: 11px;
+        background-image: url(${chevronRight.src});
+        background-repeat: no-repeat;
+      }
+    }
 
-  @media ${device.desktop} {
-    .footer-items-group {
-      flex-direction: column;
-      gap: 8px;
+    &.up {
+      &:after {
+        @media ${device.tabletS} {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    @media ${device.tabletS} {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0;
+      padding: 15px 0 14px;
+      color: #ffffff;
+      overflow: hidden;
+      cursor: pointer;
     }
   }
 
   @media ${device.tabletS} {
-    ${StyledFooterTablet};
+    display: block;
+    border-bottom: 1px solid #616161;
   }
 `;
 

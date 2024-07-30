@@ -9,10 +9,10 @@ import useWindowWidth from '@utils/helpers/System/useWindowProvider';
 const date = new Date();
 const currentYear = date.getFullYear();
 
-const Footer = ({ t, language }) => {
+const Footer = ({ t, locale }) => {
   const [isClient, setIsClient] = useState(false);
   const windowWidth = useWindowWidth();
-  const onlyoffice = `https://www.onlyoffice.com${language === "en" ? "" : `/${language}`}`;
+  const onlyoffice = `https://www.onlyoffice.com${locale === "en" ? "" : `/${locale}`}`;
 
   useEffect(() => {
     setIsClient(true);
@@ -20,7 +20,7 @@ const Footer = ({ t, language }) => {
 
   if (!isClient) return null;
 
-  const isMobile = windowWidth <= 768;
+  const isMobile = windowWidth <= 1000;
 
   let columns;
   if (isMobile) {
@@ -47,7 +47,6 @@ const Footer = ({ t, language }) => {
               <FooterItem
                 dis
                 heading={t(item.heading)}
-                className={item.className}
                 key={`${item.className}-${idx}`}
               >
                 {item.link.map((item_link, idx_link) =>
