@@ -45,7 +45,7 @@ const VideoPage = ({ locale, categoriesMenu, videoData }) => {
   );
 };
 
-export const getStaticProps = async ({ locale }) => {
+export const getServerSideProps = async ({ locale }) => {
   const categoriesMenu = await getCategoriesMenu(locale);
   const videoData = await getVideos(locale);
 

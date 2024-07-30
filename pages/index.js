@@ -49,7 +49,7 @@ const MainPage = ({ locale, categories }) => {
   );
 };
 
-export const getStaticProps = async ({ locale }) => {
+export const getServerSideProps = async ({ locale }) => {
   const categories = await getCategories(locale, true);
 
   return {

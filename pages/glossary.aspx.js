@@ -45,7 +45,7 @@ const GlossaryPage = ({ locale, categoriesMenu, glossaryData }) => {
   );
 };
 
-export const getStaticProps = async ({ locale }) => {
+export const getServerSideProps = async ({ locale }) => {
   const categoriesMenu = await getCategoriesMenu(locale);
   const glossaryData = await getGlossary(locale);
 

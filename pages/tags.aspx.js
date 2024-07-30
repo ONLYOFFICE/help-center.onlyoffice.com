@@ -45,7 +45,7 @@ const TagsPage = ({ locale, categoriesMenu, tagsData }) => {
   );
 };
 
-export const getStaticProps = async ({ locale }) => {
+export const getServerSideProps = async ({ locale }) => {
   const categoriesMenu = await getCategoriesMenu(locale);
   const tagsData = await getTags(locale);
 
