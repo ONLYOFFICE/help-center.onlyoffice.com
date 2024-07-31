@@ -1,6 +1,7 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
+import ReactHtmlParser from "react-html-parser";
 import getCategoryLevel1 from "@lib/strapi/getCategoryLevel1";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
@@ -12,8 +13,10 @@ const CategoryPage = ({ locale, categories, category }) => {
   const { t } = useTranslation();
   const [leftMenuMobile, setLeftMenuMobile] = useState(false);
 
-  const { name, slug_id, articles } = category.attributes;
-  const pageTitle = `${name} - ONLYOFFICE`;
+  const { name, description, slug_id, articles, seo_title, seo_description } = category.attributes;
+  const seoTitle = seo_title ? seo_title : `${name} - ONLYOFFICE`;
+  const seoDescription = seo_description ? seo_description : ReactHtmlParser(description)[0]?.props.children[0];
+
   const categorySlug = slug_id === "docs" ? "docs" : `${slug_id}s`;
   const data = slug_id === "integration" ? articles : category.attributes[`category_${categorySlug}`];
   const isIntegrationCategory = slug_id === "integration";
@@ -22,8 +25,8 @@ const CategoryPage = ({ locale, categories, category }) => {
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={pageTitle}
-          description={""}
+          title={seoTitle}
+          description={seoDescription}
         />
       </Layout.PageHead>
       <Layout.PageHeader>

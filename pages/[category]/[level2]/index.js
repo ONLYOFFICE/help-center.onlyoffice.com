@@ -21,8 +21,8 @@ const Level2CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={""}
-          description={""}
+          title={data.seo_title}
+          description={data.seo_description}
         />
       </Layout.PageHead>
       <Layout.PageHeader>

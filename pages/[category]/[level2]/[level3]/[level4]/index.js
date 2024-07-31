@@ -15,18 +15,13 @@ const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
 
   const data = categoryData.data?.[0].attributes;
   const categorySlugType = categorySlug === "docs" ? "doc" : categorySlug;
-  const categoryName = data[`category_${categorySlugType}`].data?.attributes.general_category?.data.attributes.name;
-  const level1CategoryName = data[`category_${categorySlugType}`].data?.attributes.name;
-  const level2CategoryName = data[`level_2_${categorySlugType}`].data?.attributes.name;
-  const seoTitle = data.seo_title ? data.seo_title : `${categoryName} - ${level1CategoryName} - ${level2CategoryName} ONLYOFFICE`;
-  const seoDescription = data.seo_description ? data.seo_description : t("metaDescriptionOgIndexPage");
 
   return (
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={seoTitle}
-          description={seoDescription}
+          title={data.seo_title}
+          description={data.seo_description}
         />
       </Layout.PageHead>
       <Layout.PageHeader>
