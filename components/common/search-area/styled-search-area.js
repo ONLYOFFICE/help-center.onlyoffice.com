@@ -8,6 +8,10 @@ const StyledSearchArea = styled.div`
   padding: 102px 20px 80px;
   box-sizing: border-box;
 
+  &.open {
+      padding: 56px 20px 56px;
+  }
+
   > div {
     max-width: 688px;
     margin: auto;

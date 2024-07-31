@@ -1,8 +1,8 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import styled from "styled-components";
+import StyledSearchResult from "../components/screens/main-content/sub-components/search/styled-search-result";
 
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
@@ -17,35 +17,6 @@ import { getDocspaceArticles } from '@lib/searchApi/getDocspaceArticles';
 import { getWorkspaceArticles } from '@lib/searchApi/getWorkspaceArticles';
 import { getDesktopArticles } from '@lib/searchApi/getDesktopArticles';
 import { getMobileArticles } from '@lib/searchApi/getMobileArticles';
-
-const StyledSearchLink = styled.div`
-  background: #F5F5F5; 
-  min-height: calc(100vh - 393px);
-
-  p {
-    margin: auto;
-  }
-
-  div {
-    max-width: 688px;
-    margin: auto;
-    padding: 24px;
-
-    h1 {
-      text-align: center;
-      line-height: 1.3em;
-      font-size: 24px;
-    }
-
-    a {
-      color: #FF6F3D;
-    }
-
-    &:last-child {
-      padding-bottom: 112px;
-    }
-  }
-`;
 
 const SearchResult = ({
   locale,
@@ -160,11 +131,13 @@ return (
       setInputValue={setInputValue}
       inputValue={inputValue}
     />
-    {isLoading ? <StyledSearchLink><div>loading...</div></StyledSearchLink> : 
+    {isLoading ? <StyledSearchResult><div>loading...</div></StyledSearchResult> : 
     searchData?.length === 0 ? (
-      <StyledSearchLink><div><h1>{t("NoResult")}</h1></div></StyledSearchLink>
+      <StyledSearchResult><div>
+        <h1>{t("NoResult")}</h1></div></StyledSearchResult>
       ) : 
-      <StyledSearchLink>
+      <StyledSearchResult>
+        <p className="found">{searchData?.length} results found</p>
           {searchData?.map((item) => {
             return(
               <div>
@@ -175,7 +148,7 @@ return (
               </div>
             )
           })}
-        </StyledSearchLink>
+        </StyledSearchResult>
     }
     
       </Layout.SectionMain>
