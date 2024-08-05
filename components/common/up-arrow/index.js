@@ -2,10 +2,9 @@ import PropTypes from "prop-types";
 import StyledUpArrow from "./styled-up-arrow";
 
 const UpArrow = ({ ...rest }) => {
-  // When the user clicks on the button, scroll to the top of the document
   function topFunction() {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    document.body.scrollTop = 0; 
+    document.documentElement.scrollTop = 0;
   }
 
   return <StyledUpArrow title="Scroll up" {...rest} onClick={() => topFunction()} />;

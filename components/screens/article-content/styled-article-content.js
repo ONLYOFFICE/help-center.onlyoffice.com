@@ -290,7 +290,7 @@ const RawHtmlStyle = styled.div`
     .gs_content {
       height: auto;
       margin: 24px 0 0;
-      scroll-margin-top: 10px;
+      scroll-margin-top: 24px;
       &:last-child {
         border-bottom: 0px;
       }
@@ -1026,7 +1026,7 @@ const RawHtmlStyle = styled.div`
       margin-top: 8px;
     }
 
-    @media ${device.tabletL} {
+    @media ${device.laptopS} {
       img.bigphoto_screen {
         display: block;
         margin: 16px 0;
