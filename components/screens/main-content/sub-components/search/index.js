@@ -1,78 +1,37 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from 'next/router'
 
-import Search from "@components/common/search-area";
+import SearchArea from "@components/common/search-area";
 
-import SearchResult from "./search-result";
+const SearchContent = ({ t, isCategoryPage, category, item }) => {
+   const [inputValue, setInputValue] = useState('')
 
-const SearchContent = ({ t, article, isCategoryPage, category }) => {
-  // const data = useStaticQuery(graphql`
-  //   {
-  //     allDirectory {
-  //       nodes {
-  //         id
-  //       }
-  //       totalCount
-  //     }
-  //   }
-  // `);
+   const router = useRouter();
 
-  //const searchDataItems = data.allDirectory.nodes;
+   const onKeyDownHandle = async (e) => {
+    if (e.key === "Enter") {
+      
+       router.push({
+         pathname: "/searchresult",
+         query: { ...router.query, query: inputValue }
+       });
+    }
+  };
 
-  // const [focusOnSearch, setFocusOnSearch] = useState(false);
-  // const [searchItem, setSearchItem] = useState("");
-  // const [resultSearch, setResultSearch] = useState([]);
-
-  // const searchFilter = () => {
-  //   const tmpResultSearch = searchDataItems.filter(({ id }) => {
-  //     if (id.toLowerCase().includes(searchItem.toLowerCase())) {
-  //       return { ...id };
-  //     }
-  //   });
-  //   if (searchItem !== "") {
-  //     setResultSearch(tmpResultSearch);
-  //     setFocusOnSearch(true);
-  //   } else {
-  //     setResultSearch(null);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   searchFilter();
-  // }, [searchItem]);
-
-  // const onSearch = (e) => {
-  //   setSearchItem(e.target.value);
-  // };
-
-  // const clearValueSearch = () => {
-  //   setSearchItem("");
-  // };
-
-  // const onCloseSearchResult = () => {
-  //   setFocusOnSearch(false);
-  // };
-
-  // const labelValue = !isCategoryPage ? t("WelcomeToHelpCenter") : category.data[0]?.attributes.name;
-  // const labelImg = isCategoryPage && category.data[0]?.attributes?.card_field_img?.data?.attributes.url;
+  const labelValue = !isCategoryPage ? t("WelcomeToHelpCenter") : item?.attributes.title;
+  const labelImg = isCategoryPage && category.card_field_img?.data?.attributes.url;
   
   return (
     <>
-      <Search
-        t={t}
-        //callback={onSearch}
-       // valueSearch={searchItem}
-       // clearValueSearch={clearValueSearch}
-        // label={labelValue}
-        isCategoryPage={isCategoryPage}
-        // pic={labelImg}
+      <SearchArea 
+        t={t} 
+        onKeyDown={(e) => onKeyDownHandle(e)} 
+        setInputValue={setInputValue}
+        inputValue={inputValue}
         placeholder={t("HowCanWeHelp?")}
+        pic={labelImg}
+        label={labelValue}
       />
-      {/* <SearchResult
-        searchItem={searchItem}
-        resultItems={resultSearch}
-        onMouseLeaveSearchResult={onCloseSearchResult}
-        resultMouseLeave={focusOnSearch}
-      /> */}
     </>
   );
 };
