@@ -80,9 +80,10 @@ const StyledWrapperContent = styled.div`
     > li {
         padding: 16px 0 0;
 
-      > a > span {
+      > a {
         color: #333333;
         text-decoration: none;
+        transition: color 0.3s;
 
         &:hover {
           color: #ff6f3d;

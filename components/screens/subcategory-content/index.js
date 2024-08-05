@@ -12,6 +12,7 @@ const SubCategoryContent = ({
     pageName,
     pageIcon,
     pageItems,
+    categorySlug,
     categoryName,
     categoryUrl,
     level2CategoryName,
@@ -19,6 +20,7 @@ const SubCategoryContent = ({
     level3CategoryName,
     level3CategoryUrl,
     leftMenuMobile,
+    setLeftMenuMobile,
     backBtnName,
     backBtnUrl
   }) => {
@@ -81,6 +83,7 @@ const SubCategoryContent = ({
           isLevel4CategoryPage={true}
           headings={level4CategoryHeadings}
           leftMenuMobile={leftMenuMobile}
+          setLeftMenuMobile={setLeftMenuMobile}
           backBtnName={backBtnName}
           backBtnUrl={backBtnUrl}
         />
@@ -97,17 +100,17 @@ const SubCategoryContent = ({
           />
 
           <Heading level={3} className="subcat-heading">
-            {pageIcon.data &&
+            {pageIcon?.data &&
               <img src={pageIcon.data?.attributes.url} alt={pageName} />
             }
             {pageName}
           </Heading>
           <div ref={contentRef}>
-            {pageItems.map((item, index) => (
-              <div id={`${item.attributes.name.toLowerCase()}_block`} className="subcat-div" key={index}>
+            {pageItems.sort((a, b) => a.attributes.name.localeCompare(b.attributes.name)).map((item, index) => (
+              <div id={`${item.attributes.name.replace(' ', '_').toLowerCase()}_block`} className="subcat-div" key={index}>
                 <Heading level={5}>{item.attributes.name}</Heading>
                 <ul className="classic-ul">
-                  {item.attributes.article_docs.data.map((item, index) => (
+                  {item.attributes[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`].data.sort((a, b) => a.attributes.title.localeCompare(b.attributes.title)).map((item, index) => (
                     <li key={index}>
                       <InternalLink href={item.attributes.url} label={item.attributes.title} />
                     </li>

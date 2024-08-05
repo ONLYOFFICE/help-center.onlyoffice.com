@@ -84,6 +84,14 @@ const StyledMainContent = styled(Section)`
   }
 
   .guides-cards-top-link {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #333333;
+    text-decoration: none;
+    text-transform: uppercase;
+
     img {
       margin-right: 8px;
       width: 16px;
@@ -94,14 +102,6 @@ const StyledMainContent = styled(Section)`
 
     &:not(:last-child) {
       margin-right: 48px;
-    }
-
-    > a {
-      color: #333333;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-decoration: none;
-      text-transform: uppercase;
     }
   }
 

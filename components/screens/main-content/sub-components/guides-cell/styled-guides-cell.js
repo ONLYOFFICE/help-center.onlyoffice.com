@@ -21,7 +21,10 @@ const StyledGuidesCell = styled.div`
   .guides-cell-top {
     display: flex;
     align-items: center;
-    margin-bottom: 24px;
+    
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
 
     &.integration {
       justify-content: space-between;
@@ -91,8 +94,10 @@ const StyledGuidesCell = styled.div`
       text-transform: uppercase;
     }
 
-    &:hover {
-      text-decoration: underline;
+    &[href] {
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 

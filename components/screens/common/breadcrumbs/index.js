@@ -9,19 +9,24 @@ const Breadcrumbs = ({
     level2CategoryName,
     level2CategoryUrl,
     level3CategoryName,
-    level3CategoryUrl
+    level3CategoryUrl,
+    level4CategoryName,
+    level4CategoryUrl
   }) => {
   return (
     <StyledBreadcrumbs>
       <li><InternalLink className="breadcrumb-link" href="/" label={t("Home")} /></li>
-      {categoryName &&
+      {categoryUrl &&
         <li><InternalLink className="breadcrumb-link" href={categoryUrl} label={categoryName} /></li>
       }
-      {level2CategoryName &&
+      {level2CategoryUrl &&
         <li><InternalLink className="breadcrumb-link" href={level2CategoryUrl} label={level2CategoryName} /></li>
       }
-      {level3CategoryName &&
+      {level3CategoryUrl &&
         <li><InternalLink className="breadcrumb-link" href={level3CategoryUrl} label={level3CategoryName} /></li>
+      }
+      {level4CategoryUrl &&
+        <li><InternalLink className="breadcrumb-link" href={level4CategoryUrl} label={level4CategoryName} /></li>
       }
       <li><span className="breadcrumb-link last">{pageName}</span></li>
     </StyledBreadcrumbs>

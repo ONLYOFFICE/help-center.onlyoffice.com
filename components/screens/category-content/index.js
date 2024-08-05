@@ -48,7 +48,7 @@ const CategoryContent = ({
           {pageDescription &&
             <Text>{ReactHtmlParser(pageDescription)}</Text>
           }
-          {pageItems?.map((item, index) => (
+          {pageItems?.sort((a, b) => a.attributes.name.localeCompare(b.attributes.name)).map((item, index) => (
             <CategoryItem
               data={item}
               pageItemsLevel={pageItemsLevel}

@@ -1,32 +1,27 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
-import ReactHtmlParser from "react-html-parser";
 import getCategoryLevel1 from "@lib/strapi/getCategoryLevel1";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
 import Header from "@components/screens/header";
-import MainContent from "@components/screens/main-content";
+import CategoryContent from "@components/screens/main-content/category-content";
 import Footer from "@components/screens/footer";
 
 const CategoryPage = ({ locale, categories, category }) => {
   const { t } = useTranslation();
   const [leftMenuMobile, setLeftMenuMobile] = useState(false);
 
-  const { name, description, slug_id, articles, seo_title, seo_description } = category.attributes;
-  const seoTitle = seo_title ? seo_title : `${name} - ONLYOFFICE`;
-  const seoDescription = seo_description ? seo_description : ReactHtmlParser(description)[0]?.props.children[0];
-
-  const categorySlug = slug_id === "docs" ? "docs" : `${slug_id}s`;
-  const data = slug_id === "integration" ? articles : category.attributes[`category_${categorySlug}`];
-  const isIntegrationCategory = slug_id === "integration";
+  const { slug_id, articles, seo_title, seo_description } = category.attributes;
+  const categorySlugMany = slug_id === "docs" ? "docs" : `${slug_id}s`;
+  const data = slug_id === "integration" ? articles : category.attributes[`category_${categorySlugMany}`];
 
   return (
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={seoTitle}
-          description={seoDescription}
+          title={seo_title}
+          description={seo_description}
         />
       </Layout.PageHead>
       <Layout.PageHeader>
@@ -39,13 +34,10 @@ const CategoryPage = ({ locale, categories, category }) => {
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <MainContent
+        <CategoryContent
           t={t}
-          isCategoryPage={true}
-          category={category}
           categories={data}
-          categorySlug={categorySlug}
-          isIntegrationCategory={isIntegrationCategory}
+          categorySlug={categorySlugMany}
           leftMenuCategories={categories}
           leftMenuMobile={leftMenuMobile}
           setLeftMenuMobile={setLeftMenuMobile}

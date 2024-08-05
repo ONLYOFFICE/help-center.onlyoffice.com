@@ -35,7 +35,6 @@ const MainPage = ({ locale, categories }) => {
         <MainContent
           t={t}
           categories={categories}
-          isCategory={false}
           leftMenuCategories={categories}
           leftMenuMobile={leftMenuMobile}
           setLeftMenuMobile={setLeftMenuMobile}

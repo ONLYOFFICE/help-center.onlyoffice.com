@@ -17,6 +17,7 @@ const StyledCategoryItem = styled.div`
 
   > h4 > a {
     display: flex;
+    transition: color 0.3s;
 
     > span {
       color: #333333;
@@ -25,6 +26,12 @@ const StyledCategoryItem = styled.div`
       letter-spacing: -0.02em;
       font-weight: 700;
       text-decoration: none;
+    }
+
+    &[href] {
+      &:hover {
+        color: #ff6f3d;
+      }
     }
   }
 
@@ -40,8 +47,10 @@ const StyledCategoryItem = styled.div`
       height: fit-content;
     }
 
-    &:hover {
-      color: #ff6f3d;
+    &[href] {
+      &:hover {
+        color: #ff6f3d;
+      }
     }
   }
 

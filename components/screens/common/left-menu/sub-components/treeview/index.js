@@ -28,6 +28,15 @@ const TreeView = ({ article, pageItemsLevel, categorySlug }) => {
             />
           </li>
         ))}
+        {article.attributes[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`]?.data.map((item, index) => (
+          <li className="treeview-item" key={index}>
+            <InternalLink
+              className="treeview-link"
+              href={item.attributes.url}
+              label={item.attributes.name || item.attributes.title}
+            />
+          </li>
+        ))}
       </ul>
     </StyledTreeView>
   );

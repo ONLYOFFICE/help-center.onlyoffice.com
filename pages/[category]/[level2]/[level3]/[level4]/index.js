@@ -13,15 +13,22 @@ const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
   const { t } = useTranslation();
   const [leftMenuMobile, setLeftMenuMobile] = useState(false);
 
-  const data = categoryData.data?.[0].attributes;
-  const categorySlugType = categorySlug === "docs" ? "doc" : categorySlug;
+  const categorySlugOne = categorySlug === "docs" ? "doc" : categorySlug;
+  const { 
+    seo_title, 
+    seo_description, 
+    name,
+    icon,
+    [`level_2_${categorySlugOne}`]: level2Data,
+    [`level_4_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`]: level4Data
+  } = categoryData.data?.[0]?.attributes;
 
   return (
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={data.seo_title}
-          description={data.seo_description}
+          title={seo_title}
+          description={seo_description}
         />
       </Layout.PageHead>
       <Layout.PageHeader>
@@ -36,18 +43,20 @@ const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
       <Layout.SectionMain>
         <SubCategoryContent 
           t={t}
-          categoryName={data[`category_${categorySlugType}`].data?.attributes.general_category?.data.attributes.name}
-          categoryUrl={data[`category_${categorySlugType}`].data?.attributes.general_category?.data.attributes.url}
-          level2CategoryName={data[`category_${categorySlugType}`].data?.attributes.name}
-          level2CategoryUrl={data[`category_${categorySlugType}`].data?.attributes.url}
-          level3CategoryName={data[`level_2_${categorySlugType}`].data?.attributes.name}
-          level3CategoryUrl={data[`level_2_${categorySlugType}`].data?.attributes.url}
-          pageName={data.name}
-          pageIcon={data.icon}
-          pageItems={data[`level_4_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`].data}
+          categorySlug={categorySlug}
+          categoryName={level2Data?.data?.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name}
+          categoryUrl={level2Data?.data?.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url}
+          level2CategoryName={level2Data?.data?.attributes[`category_${categorySlugOne}`].data.attributes.name}
+          level2CategoryUrl={level2Data?.data?.attributes[`category_${categorySlugOne}`].data.attributes.url}
+          level3CategoryName={level2Data?.data?.attributes.name}
+          level3CategoryUrl={level2Data?.data?.attributes.url}
+          pageName={name}
+          pageIcon={icon}
+          pageItems={level4Data?.data}
           leftMenuMobile={leftMenuMobile}
-          backBtnName={data[`level_2_${categorySlugType}`].data?.attributes.name}
-          backBtnUrl={data[`level_2_${categorySlugType}`].data?.attributes.url}
+          setLeftMenuMobile={setLeftMenuMobile}
+          backBtnName={level2Data?.data?.attributes.name}
+          backBtnUrl={level2Data?.data?.attributes.url}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>
