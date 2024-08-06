@@ -8,7 +8,11 @@ const CategoryItem = ({ data, pageItemsLevel, categorySlug }) => {
   const sublinks = [
     ...(data.attributes[`level_${pageItemsLevel}_${categorySlugMany}`]?.data || []),
     ...(data.attributes[`article_${categorySlugMany}`]?.data || [])
-  ].sort((a, b) => a.attributes.name.localeCompare(b.attributes.name));
+  ].sort((a, b) => {
+    const aValue = a.attributes.name || a.attributes.title;
+    const bValue = b.attributes.name || b.attributes.title;
+    return aValue.localeCompare(bValue);
+  });
 
   return (
     <StyledCategoryItem>

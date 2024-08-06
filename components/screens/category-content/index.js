@@ -48,14 +48,19 @@ const CategoryContent = ({
           {pageDescription &&
             <Text>{ReactHtmlParser(pageDescription)}</Text>
           }
-          {pageItems?.sort((a, b) => a.attributes.name.localeCompare(b.attributes.name)).map((item, index) => (
-            <CategoryItem
-              data={item}
-              pageItemsLevel={pageItemsLevel}
-              categorySlug={categorySlug}
-              key={index}
-            />
-          ))}
+          {pageItems?.sort((a, b) => {
+              const aValue = a.attributes.name || a.attributes.title;
+              const bValue = b.attributes.name || b.attributes.title;
+              return aValue.localeCompare(bValue);
+            }).map((item, index) => (
+              <CategoryItem
+                data={item}
+                pageItemsLevel={pageItemsLevel}
+                categorySlug={categorySlug}
+                key={index}
+              />
+            )
+          )}
         </div>
       </StyledWrapperContent>
     </StyledCategoryContent>

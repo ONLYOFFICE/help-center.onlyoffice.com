@@ -106,18 +106,28 @@ const SubCategoryContent = ({
             {pageName}
           </Heading>
           <div ref={contentRef}>
-            {pageItems.sort((a, b) => a.attributes.name.localeCompare(b.attributes.name)).map((item, index) => (
-              <div id={`${item.attributes.name.replace(' ', '_').toLowerCase()}_block`} className="subcat-div" key={index}>
-                <Heading level={5}>{item.attributes.name}</Heading>
-                <ul className="classic-ul">
-                  {item.attributes[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`].data.sort((a, b) => a.attributes.title.localeCompare(b.attributes.title)).map((item, index) => (
-                    <li key={index}>
-                      <InternalLink href={item.attributes.url} label={item.attributes.title} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            {pageItems.sort((a, b) => {
+                const aValue = a.attributes.name || a.attributes.title;
+                const bValue = b.attributes.name || b.attributes.title;
+                return aValue.localeCompare(bValue);
+              }).map((item, index) => (
+                <div id={`${item.attributes.name.replace(' ', '_').toLowerCase()}_block`} className="subcat-div" key={index}>
+                  <Heading level={5}>{item.attributes.name}</Heading>
+                  <ul className="classic-ul">
+                    {item.attributes[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`].data.sort((a, b) => {
+                        const aValue = a.attributes.name || a.attributes.title;
+                        const bValue = b.attributes.name || b.attributes.title;
+                        return aValue.localeCompare(bValue);
+                      }).map((item, index) => (
+                        <li key={index}>
+                          <InternalLink href={item.attributes.url} label={item.attributes.title} />
+                        </li>
+                      )
+                    )}
+                  </ul>
+                </div>
+              )
+            )}
           </div>
           {/* <Video t={t} items={articles && articles[0].level_5} /> */}
         </div>
