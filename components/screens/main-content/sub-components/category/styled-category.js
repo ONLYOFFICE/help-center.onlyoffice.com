@@ -4,7 +4,6 @@ import { device } from "@components/utils/devices";
 const StyledCategory = styled.div`
   display: flex;
   gap: 32px;
-  padding: 0 0 112px;
   margin: 0 auto;
   max-width: 880px;
 
@@ -54,11 +53,6 @@ const StyledCategory = styled.div`
     max-width: 100%;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 0 0 72px;
-  }
-
-  @media ${device.tabletS} {
-    padding: 0 0 48px;
   }
 `;
 

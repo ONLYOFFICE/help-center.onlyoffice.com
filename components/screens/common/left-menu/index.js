@@ -1,7 +1,7 @@
 import StyledLeftMenu from "./styled-left-menu";
 import { Scrollbar } from "react-scrollbars-custom";
 import InternalLink from "@components/common/internal-link";
-import MiniSearch from "./sub-components/search";
+import SearchArea from "@components/screens/common/search-area";
 import Heading from "@components/common/heading";
 import TreeView from "@components/screens/common/left-menu/sub-components/treeview";
 
@@ -23,7 +23,11 @@ const LeftMenu = ({
   return (
     <StyledLeftMenu className={`left-menu ${leftMenuMobile ? "active" : ""}`}>
       <div className="left-menu-wrapper">
-        <MiniSearch />
+        <SearchArea
+          className="left-menu-search"
+          placeholder={t("Search in Help Center")}
+          isLeftMenu={true}
+        />
         {backBtnUrl &&
           <InternalLink className="left-menu-link" href={backBtnUrl} label={backBtnName} />
         }

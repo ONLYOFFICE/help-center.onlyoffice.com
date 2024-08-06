@@ -7,6 +7,7 @@ const StyledMainContent = styled(Section)`
 
   .info-content {
     position: relative;
+    padding: 102px 0 112px;
     background-color: #f5f5f5;
 
     &:before {
@@ -31,6 +32,55 @@ const StyledMainContent = styled(Section)`
       height: 100%;
       background-color: #f5f5f5;
       transform: translateX(100%);
+    }
+    
+    &.category-content {
+      padding: 72px 0 0;
+
+      @media ${device.tabletS} {
+        padding: 56px 0;
+      }
+    }
+
+    @media ${device.tabletS} {
+      padding: 100px 0 48px;
+    }
+  }
+
+  .info-content-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 48px;
+  }
+
+  .info-content-icon {
+    margin-right: 16px;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+
+    @media ${device.tabletS} {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  .info-content-title {
+    letter-spacing: -0.02em;
+    text-align: center;
+
+    @media ${device.tabletS} {
+      font-size: 28px;
+      line-height: 48px;
+    }
+  }
+
+  .info-content-search {
+    margin-bottom: 80px;
+
+    @media ${device.tabletS} {
+      margin-bottom: 55px;
     }
   }
 

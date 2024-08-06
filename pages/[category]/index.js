@@ -36,6 +36,8 @@ const CategoryPage = ({ locale, categories, category }) => {
       <Layout.SectionMain>
         <CategoryContent
           t={t}
+          categoryName={category.attributes.name}
+          categoryImg={category.attributes.card_field_img?.data?.attributes.url}
           categories={data}
           categorySlug={categorySlugMany}
           leftMenuCategories={categories}

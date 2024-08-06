@@ -32,6 +32,14 @@ const StyledLeftMenu = styled.div`
     }
   }
 
+  .left-menu-search {
+    margin-bottom: 32px;
+
+    @media ${device.laptopS} {
+      margin-bottom: 24px;
+    }
+  }
+
   .left-menu-link {
     position: relative;
     display: flex;
@@ -178,7 +186,6 @@ const StyledLeftMenu = styled.div`
     width: 272px;
     min-width: 272px;
     height: 100%;
-    background-color: #ffffff;
     z-index: 1000;
     transform: translateX(-100%);
     visibility: hidden;
