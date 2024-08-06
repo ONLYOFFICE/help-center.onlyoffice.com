@@ -9,23 +9,26 @@ const StyledUpArrow = styled.div`
   border: 1px solid #aaaaaa;
   border-radius: 3px;
   bottom: 80px;
-  right: 24px;
+  cursor: pointer;
+  right: calc(50% - 636px);
   position: fixed;
-  opacity: 0.8;
   z-index: 15000;
-  height: 32px;
-  transition: 1s;
+  height: 30px;
   transform: rotate(270deg);
-  width: 32px;
+  width: 30px;
+
+  @media ${device.laptopL} {
+    right: calc(50% - 600px);
+  }
 
   @media ${device.laptopM} {
-    bottom: 100px;
-    height: 50px;
-    left: auto;
-    margin: 0;
-    padding: 0;
-    right: 20px;
-    width: 50px;
+    height: 22px;
+    right: 12px;
+    width: 22px;
+  }
+
+  @media ${device.tabletS} {
+    display: none;
   }
 `
 

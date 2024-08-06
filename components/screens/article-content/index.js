@@ -199,7 +199,7 @@ const ArticleContent = ({
             <ConnectorsVideo t={t} videos={videos.data} />
           }
           <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</RawHtmlStyle>
-          <UpArrow />
+
           <DownloadArea className="download-area" t={t} />
           <ArticlePopup
             t={t}
@@ -221,6 +221,7 @@ const ArticleContent = ({
           />
           <Tooltip />
         </div>
+        <UpArrow />
       </StyledWrapperContent>
     </StyledArticleContent>
   );

@@ -20,8 +20,6 @@ const LeftMenu = ({
     leftMenuMobile,
     setLeftMenuMobile
   }) => {
-    console.log(headings);
-    console.log(activeSection);
   return (
     <StyledLeftMenu className={`left-menu ${leftMenuMobile ? "active" : ""}`}>
       <div className="left-menu-wrapper">

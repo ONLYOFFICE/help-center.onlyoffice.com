@@ -2,12 +2,14 @@ import StyledCookieNotify from "./styled-cookie-notify";
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import Cookies from "universal-cookie";
+import { useEffect } from "react";
 
-const CookieNotify = () => {
+const CookieNotify = (cookieValue) => {
   const { t } = useTranslation();
-
   const [isShow, setIsShow] = useState(true);
   const cookies = new Cookies();
+
+  if (cookieValue) return null;
 
   const hideCookieNotify = () => {
     setIsShow(false);
@@ -21,9 +23,9 @@ const CookieNotify = () => {
       expires: nextYear
     });
   };
-
+  
   return (
-    <StyledCookieNotify className={isShow && !cookies.get("cookie-notify") ? "" : "hide"}>
+    <StyledCookieNotify isShow={isShow}>
       <div className="cookie-notify">
         <span className="cookie-text">
           {t("ONLYOFFICE Help Center uses cookies so that we can provide you with the best user experience. By continuing to use this website you agree that we can store cookies in your browser.")}
