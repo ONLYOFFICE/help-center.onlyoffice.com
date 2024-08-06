@@ -7,6 +7,15 @@ const StyledSearchResult = styled.div`
 
   p {
     margin: auto;
+    margin-top: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 50px;
+    white-space: nowrap;
+  }
+    
+  .query {
+    background: #FFED90;
   }
 
   .found {

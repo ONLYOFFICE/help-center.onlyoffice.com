@@ -171,5 +171,7 @@
   "WorkspaceCloudService": "Workspace Cloud Service",
   "WorkspaceEnterpriseEdition": "Workspace Enterprise Edition",
   "WritingDocumentation": "Writing Documentation",
-  "NoResult": "No results matching your query could be found"
+  "NoResult": "No results matching your query could be found",
+  "resultsFound" : "results found",
+  "loading" : "loading..."
 }

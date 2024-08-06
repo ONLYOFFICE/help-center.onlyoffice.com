@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import StyledSearchResult from "../components/screens/main-content/sub-components/search/styled-search-result";
+import Highlighter from "react-highlight-words";
+import { StyledPagination } from '@components/common/pagination/styled-pagination'
 
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
@@ -18,6 +20,13 @@ import { getWorkspaceArticles } from '@lib/searchApi/getWorkspaceArticles';
 import { getDesktopArticles } from '@lib/searchApi/getDesktopArticles';
 import { getMobileArticles } from '@lib/searchApi/getMobileArticles';
 
+const itemsOnPage = 10;
+
+const defaultPaginationData = {
+  currentPage: 1,
+  pageNumber: 1,
+}
+
 const SearchResult = ({
   locale,
   categories
@@ -30,6 +39,8 @@ const SearchResult = ({
   const [inputValue, setInputValue] = useState('')
   const [isLoading, setIsLoading] = useState(false);
   const [leftMenuMobile, setLeftMenuMobile] = useState(false);
+  const [pageData, setPageData] = useState(defaultPaginationData);
+  const [pageToView, setPageToView] = useState([]);
 
   const onKeyDownHandle = async (e) => {
     if (e.key === "Enter") {
@@ -59,6 +70,12 @@ const SearchResult = ({
           for(const element of res) {
             allData.push(...element?.data)
           };
+
+          const dataLength = allData?.length
+          if (dataLength) {
+            const pageNumber = Math.ceil(dataLength/itemsOnPage);
+            setPageData({...pageData, pageNumber: pageNumber})
+          }
   
           setSearchData(allData)
           setIsLoading(false);
@@ -97,12 +114,55 @@ const SearchResult = ({
           allData.push(...element?.data)
         };
 
+        const dataLength = allData?.length
+        if (dataLength) {
+          const pageNumber = Math.ceil(dataLength/itemsOnPage);
+          setPageData({...pageData, pageNumber: pageNumber})
+        }
+
         setSearchData(allData)
         setIsLoading(false);
       }
   });
   },[]);
 
+  const getMaxItemIndex = (value, maxValue) => {
+    if (value < maxValue || value === maxValue) {
+      return value
+    } else {
+      return value = value - (value - maxValue + 1)
+    }
+  }
+
+  useEffect(() => {
+    const minIndexOfPage = (pageData.currentPage * itemsOnPage) - itemsOnPage
+    let maxIndexOfPage = (pageData.currentPage * itemsOnPage) - 1
+
+    if(pageData.currentPage === pageData.pageNumber && maxIndexOfPage > searchData?.length) {
+      maxIndexOfPage = getMaxItemIndex(maxIndexOfPage, searchData?.length)
+    }
+
+    const pageToView = searchData.filter((item, index) => {
+      if (index >= minIndexOfPage && index <= maxIndexOfPage) {
+        return true
+      }
+      return false;
+    })
+
+    setPageToView(pageToView)
+  }, [pageData.currentPage, searchData.length])
+
+  const onArrowLeftClick = () => {
+    if (pageData?.currentPage > 1) {
+      setPageData({...pageData, currentPage: pageData?.currentPage - 1})
+    }
+  }
+
+  const onArrowRightClick = () => {
+    if (pageData?.currentPage < pageData.pageNumber) {
+      setPageData({...pageData, currentPage: pageData?.currentPage + 1})
+    }
+  }
 
 return (
   <Layout>
@@ -131,23 +191,48 @@ return (
       setInputValue={setInputValue}
       inputValue={inputValue}
     />
-    {isLoading ? <StyledSearchResult><div>loading...</div></StyledSearchResult> : 
-    searchData?.length === 0 ? (
+    {isLoading ? <StyledSearchResult><div>{t("loading")}</div></StyledSearchResult> : 
+    pageToView?.length === 0 ? (
       <StyledSearchResult><div>
         <h1>{t("NoResult")}</h1></div></StyledSearchResult>
       ) : 
       <StyledSearchResult>
-        <p className="found">{searchData?.length} results found</p>
-          {searchData?.map((item) => {
+        <p className="found">{searchData?.length} {t("resultsFound")}</p>
+          {pageToView?.map((item) => {
             return(
               <div>
                   <Link href={item?.attributes?.url}>
-                    {item?.attributes?.title}
+                    <Highlighter
+                      highlightClassName="query"
+                      searchWords={[inputValue]}
+                      autoEscape={true}
+                      textToHighlight={item?.attributes?.title}
+                    />
                   </Link>
-                  <p>{item?.attributes?.description?.replace(/<[^>]*>/g, '') || item?.attributes?.seo_description.replace(/<[^>]*>/g, '')}</p>
+                  <p><Highlighter
+                      highlightClassName="query"
+                      searchWords={[inputValue]}
+                      autoEscape={true}
+                      textToHighlight={item?.attributes?.description?.replace(/<[^>]*>/g, '')}
+                    /></p>
               </div>
             )
           })}
+          {pageData && pageData?.pageNumber && 
+          <StyledPagination className="pagination">
+            <div style={{height: "24px", width: "24px"}} className="pagination-item-prev" onClick={onArrowLeftClick}></div>
+            {Array.from(Array(pageData?.pageNumber)).map((item, index) => {
+              const onClick = () => {
+                setPageData({...pageData, currentPage: index+1})
+              }
+              
+              return (
+                index+1 === pageData.currentPage ? <div onClick={onClick} className="pagination-item active">{index+1}</div> : <div onClick={onClick} className="pagination-item">{index+1}</div>
+              )
+            })}
+            <div style={{height: "24px", width: "24px"}} className="pagination-item-next" onClick={onArrowRightClick}></div>
+        </StyledPagination>
+        }
         </StyledSearchResult>
     }
     
