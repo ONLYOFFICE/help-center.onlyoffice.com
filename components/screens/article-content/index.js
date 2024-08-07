@@ -40,6 +40,8 @@ const ArticleContent = ({
   const [tagName, setTagName] = useState();
   const [tagItems, setTagItems] = useState();
   const [hasMoreTags, setHasMoreTags] = useState(false);
+  const refContentWrapper = useRef();
+  const [showButton, setShowButton] = useState(false);
   const page = 1;
   const cookies = new Cookies(null, { path: '/' });
 
@@ -115,6 +117,11 @@ const ArticleContent = ({
           currentSection = section.id;
         }
       });
+      if (containerRef.current) {
+        const scrolledHeight = window.scrollY - containerRef.current.offsetTop;
+        const scrolledPercentage = (scrolledHeight / containerRef.current.offsetHeight) * 100;
+        setShowButton(scrolledPercentage > 70);
+      }
       setActiveSection(currentSection || activeSection);
     };
 
@@ -172,7 +179,7 @@ const ArticleContent = ({
           leftMenuMobile={leftMenuMobile}
           setLeftMenuMobile={setLeftMenuMobile}
         />
-        <div className="wrapper">
+        <div ref={refContentWrapper} className="wrapper">
           <Breadcrumbs
             t={t}
             categoryName={categoryName}
@@ -199,7 +206,6 @@ const ArticleContent = ({
             <ConnectorsVideo t={t} videos={videos.data} />
           }
           <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</RawHtmlStyle>
-
           <DownloadArea className="download-area" t={t} />
           <ArticlePopup
             t={t}
@@ -221,7 +227,7 @@ const ArticleContent = ({
           />
           <Tooltip />
         </div>
-        <UpArrow />
+        <UpArrow showButton={showButton} />
       </StyledWrapperContent>
     </StyledArticleContent>
   );

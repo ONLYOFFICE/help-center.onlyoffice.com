@@ -2,9 +2,8 @@ import StyledCookieNotify from "./styled-cookie-notify";
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import Cookies from "universal-cookie";
-import { useEffect } from "react";
 
-const CookieNotify = (cookieValue) => {
+const CookieNotify = ({cookieValue}) => {
   const { t } = useTranslation();
   const [isShow, setIsShow] = useState(true);
   const cookies = new Cookies();

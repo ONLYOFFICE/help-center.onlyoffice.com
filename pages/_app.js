@@ -8,7 +8,7 @@ import CookieNotify from '@components/common/cookie-notify';
 const MyApp = ({ Component, pageProps, cookieValue }) => {
   return (
     <>
-      <Component {...pageProps} cookieValue={cookieValue} />
+      <Component {...pageProps} />
       <CookieNotify cookieValue={cookieValue} />
     </>
   );
@@ -21,7 +21,7 @@ MyApp.getInitialProps = async (appContext) => {
 
   if (req && res) {
     const cookies = new Cookies(req.headers.cookie, { path: '/' });;
-    cookieValue = cookies.get('cookie-notify'); 
+    cookieValue = cookies.get('cookie-notify');
   }
 
   return { ...appProps, cookieValue };
