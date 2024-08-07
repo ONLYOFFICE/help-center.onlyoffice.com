@@ -12,6 +12,7 @@ import ImagePopup from "./sub-components/image-popup";
 import DownloadArea from "./sub-components/download-area";
 import ConnectorsVideo from "./sub-components/connectors-video";
 import ArticlePopup from "../common/article-popup";
+import { handleFaqAccordionClick } from "./utils/handle-click-functions";
 
 const ArticleContent = ({
     t,
@@ -47,7 +48,7 @@ const ArticleContent = ({
   const handleTagModal = async (tagName) => {
     const data = await getTagsArticle(locale, tagName, 2, page);
 
-    const { articles, article_desktops, article_docs, article_docspaces, article_mobiles,  article_workspaces } = data;
+    const { articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces } = data;
     const hasMoreTags = [articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces].some(({ meta: { pagination } }) => pagination.total > pagination.page + 1);
 
     setHasMoreTags(hasMoreTags);
@@ -70,7 +71,7 @@ const ArticleContent = ({
       if (mainBuscallContainer) {
         const languagesListTables = mainBuscallContainer.querySelectorAll(".languages_list_table");
         const foundTable = Array.from(languagesListTables).find(table => table.id.startsWith("languages"));
-       
+
         if (foundTable) {
           const tableId = foundTable.id;
           BuildTable(tableId);
@@ -137,17 +138,19 @@ const ArticleContent = ({
       const ipHideCont = document.querySelector(".iphidecont") || document.querySelector(".hidecont");
       const ipShowCont = document.querySelector(".ipshowcont") || document.querySelector(".showcont");
       const ipContents = document.querySelector(".ipcontents") || document.querySelector(".contents");
-  
+
       if (clickedTarget.classList.contains("iphidecont") || clickedTarget.classList.contains("hidecont")) {
         ipHideCont.style.display = "none";
         ipContents.style.display = "none";
-        ipShowCont.style.display = "block"; 
+        ipShowCont.style.display = "block";
       } else if (clickedTarget.classList.contains("ipshowcont") || clickedTarget.classList.contains("showcont")) {
         ipHideCont.style.display = "block";
         ipContents.style.display = "block";
         ipShowCont.style.display = "none";
       }
     }
+
+    handleFaqAccordionClick(event, containerRef.current);
   };
 
   return (
@@ -178,7 +181,7 @@ const ArticleContent = ({
             pageName={pageName}
           />
           <Heading level={3}>{pageName}</Heading>
-          {tags?.data && 
+          {tags?.data &&
             <div className="tags">
               {tags?.data.map((item, index) => (
                 <div
@@ -191,7 +194,7 @@ const ArticleContent = ({
               ))}
             </div>
           }
-          {videos && videos.data.length > 0 && 
+          {videos && videos.data.length > 0 &&
             <ConnectorsVideo t={t} videos={videos.data} />
           }
           <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</RawHtmlStyle>
