@@ -49,7 +49,7 @@ export const getServerSideProps = async ({ locale }) => {
   const categoriesMenu = await getCategoriesMenu(locale);
   const videoData = await getVideos(locale);
 
-  if (videoData.data.length === 0) {
+  if (videoData.data === null || videoData.data.length === 0) {
     return {
       notFound: true
     };
