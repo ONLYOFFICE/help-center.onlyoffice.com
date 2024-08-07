@@ -12,7 +12,7 @@ import ImagePopup from "./sub-components/image-popup";
 import DownloadArea from "./sub-components/download-area";
 import ConnectorsVideo from "./sub-components/connectors-video";
 import ArticlePopup from "../common/article-popup";
-import { handleFaqAccordionClick } from "./utils/handle-click-functions";
+import { handleFaqAccordionClick, handleImagePopupClick, handleTogglerClick } from "./utils/handle-click-functions";
 
 const ArticleContent = ({
     t,
@@ -120,37 +120,10 @@ const ArticleContent = ({
     };
   }, []);
 
-  // photo popup
   const handleClick = (event) => {
-    const clickedTarget = event.target;
-
-    if (clickedTarget.tagName === "IMG") {
-      const targetImageId = clickedTarget.getAttribute("target");
-
-      if (targetImageId) {
-        const closestBigPhotoScreen = document.querySelector(`.bigphoto_screen[id="${targetImageId}"]`);
-        if (closestBigPhotoScreen) {
-          setBigPhotoSrc(closestBigPhotoScreen.getAttribute("src"));
-          setImageModalActive(true);
-        }
-      }
-    } else if (clickedTarget.tagName === "SPAN" && clickedTarget.classList.contains("toggler")) {
-      const ipHideCont = document.querySelector(".iphidecont") || document.querySelector(".hidecont");
-      const ipShowCont = document.querySelector(".ipshowcont") || document.querySelector(".showcont");
-      const ipContents = document.querySelector(".ipcontents") || document.querySelector(".contents");
-
-      if (clickedTarget.classList.contains("iphidecont") || clickedTarget.classList.contains("hidecont")) {
-        ipHideCont.style.display = "none";
-        ipContents.style.display = "none";
-        ipShowCont.style.display = "block";
-      } else if (clickedTarget.classList.contains("ipshowcont") || clickedTarget.classList.contains("showcont")) {
-        ipHideCont.style.display = "block";
-        ipContents.style.display = "block";
-        ipShowCont.style.display = "none";
-      }
-    }
-
     handleFaqAccordionClick(event, containerRef.current);
+    handleImagePopupClick(event, setBigPhotoSrc, setImageModalActive);
+    handleTogglerClick(event);
   };
 
   return (
