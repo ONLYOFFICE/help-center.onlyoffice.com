@@ -18,6 +18,10 @@ const RawHtmlStyle = styled.div`
       }
     }
 
+    b {
+      word-break: break-word;
+    }
+
     // tables
     table {
       border-spacing: 0;
@@ -1056,9 +1060,15 @@ const RawHtmlStyle = styled.div`
 `;
 
 const StyledArticleContent = styled(Section)`
-.section-page {
-  padding: 0 4px 0 40px;
-}
+  .section-page {
+    padding: 0 4px 0 40px;
+  }
+  
+  @media ${device.tabletS} {
+      .section-page {
+        padding: 0 16px;
+      }
+    }
 `;
 
 export { StyledArticleContent, RawHtmlStyle };
