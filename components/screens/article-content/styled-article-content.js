@@ -1056,7 +1056,9 @@ const RawHtmlStyle = styled.div`
 `;
 
 const StyledArticleContent = styled(Section)`
-  
+.section-page {
+  padding: 0 4px 0 40px;
+}
 `;
 
-export { StyledArticleContent, RawHtmlStyle};
+export { StyledArticleContent, RawHtmlStyle };

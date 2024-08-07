@@ -7,7 +7,7 @@ import Heading from "@components/common/heading";
 import Text from "@components/common/text";
 import ReactHtmlParser from "react-html-parser";
 import CategoryItem from "./sub-components/category-item";
-import UpArrow from "@components/common/up-arrow";
+import ScrollToTopButton from "@components/common/scroll-to-top-button";
 
 const CategoryContent = ({
   t,
@@ -25,15 +25,11 @@ const CategoryContent = ({
   backBtnUrl
 }) => {
   const [showButton, setShowButton] = useState(false);
-  const refContentWrapper = useRef();
-  
+
   useEffect(() => {
     const handleScroll = () => {
-      if (containerRef.current) {
-        const scrolledHeight = window.scrollY - containerRef.current.offsetTop;
-        const scrolledPercentage = (scrolledHeight / containerRef.current.offsetHeight) * 100;
-        setShowButton(scrolledPercentage > 70);
-      }
+      const scrollHeight = window.innerHeight * 2;
+      setShowButton(window.scrollY > scrollHeight);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -55,7 +51,7 @@ const CategoryContent = ({
           backBtnName={backBtnName}
           backBtnUrl={backBtnUrl}
         />
-        <div ref={refContentWrapper} className="wrapper">
+        <div className="wrapper">
           <Breadcrumbs
             t={t}
             categoryName={categoryName}
@@ -77,7 +73,7 @@ const CategoryContent = ({
             />
           ))}
         </div>
-        <UpArrow showButton={showButton} />
+        <ScrollToTopButton showButton={showButton} />
       </StyledWrapperContent>
     </StyledCategoryContent>
   );

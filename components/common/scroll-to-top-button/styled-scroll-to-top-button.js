@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 
-const StyledUpArrow = styled.div`
+const StyledScrollToTop = styled.div`
   cursor: pointer;
   height: 32px;
   margin-left: 40px;
@@ -12,7 +12,8 @@ const StyledUpArrow = styled.div`
   top: calc(100% - 80px);
   transition: 0.3s;
   width: 32px;
-  z-index: 15000;
+  z-index: 999;
+  visibility: ${(props) => (props.showButton ? "visible" : "hidden")};
     span {
       background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/arrow-gray.react.svg");
       background-position: center center;
@@ -37,8 +38,21 @@ const StyledUpArrow = styled.div`
   }
 
   @media ${device.tabletS} {
-    display: none;
+    position: fixed;
+    bottom: 0px;
+    right: 40px;
+    top: initial;
+    opacity: 0.3;
+
+    span {
+        background-color: #808080;
+        background-image: url("../images/icons/arrow-white.react.svg");
+        border-color: transparent;
+        height: 40px;  
+        transform: rotate(0deg);
+        width: 40px;
+      }
   } 
 `
 
-export default StyledUpArrow;
+export default StyledScrollToTop;

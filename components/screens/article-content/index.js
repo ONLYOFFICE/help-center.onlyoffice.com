@@ -13,7 +13,7 @@ import DownloadArea from "./sub-components/download-area";
 import ConnectorsVideo from "./sub-components/connectors-video";
 import ArticlePopup from "../common/article-popup";
 import Cookies from 'universal-cookie';
-import UpArrow from "@components/common/up-arrow";
+import ScrollToTopButton from "@components/common/scroll-to-top-button";
 
 const ArticleContent = ({
   t,
@@ -40,7 +40,6 @@ const ArticleContent = ({
   const [tagName, setTagName] = useState();
   const [tagItems, setTagItems] = useState();
   const [hasMoreTags, setHasMoreTags] = useState(false);
-  const refContentWrapper = useRef();
   const [showButton, setShowButton] = useState(false);
   const page = 1;
   const cookies = new Cookies(null, { path: '/' });
@@ -111,18 +110,15 @@ const ArticleContent = ({
 
       let currentSection = null;
       menuSections.forEach(section => {
-        const sectionTop = section.offsetTop;
+        const sectionTop = section.getBoundingClientRect().top;
         const sectionHeight = section.clientHeight;
         if ((scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) || (scrollPosition > sectionTop + sectionHeight)) {
           currentSection = section.id;
         }
       });
-      if (containerRef.current) {
-        const scrolledHeight = window.scrollY - containerRef.current.offsetTop;
-        const scrolledPercentage = (scrolledHeight / containerRef.current.offsetHeight) * 100;
-        setShowButton(scrolledPercentage > 70);
-      }
       setActiveSection(currentSection || activeSection);
+      const scrollHeight = window.innerHeight * 2;
+      setShowButton(window.scrollY > scrollHeight);
     };
 
     handleScroll();
@@ -179,7 +175,7 @@ const ArticleContent = ({
           leftMenuMobile={leftMenuMobile}
           setLeftMenuMobile={setLeftMenuMobile}
         />
-        <div ref={refContentWrapper} className="wrapper">
+        <div className="wrapper">
           <Breadcrumbs
             t={t}
             categoryName={categoryName}
@@ -202,10 +198,12 @@ const ArticleContent = ({
               ))}
             </div>
           }
-          {videos && videos.data.length > 0 &&
-            <ConnectorsVideo t={t} videos={videos.data} />
-          }
-          <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</RawHtmlStyle>
+          <div>
+            {videos && videos.data.length > 0 &&
+              <ConnectorsVideo t={t} videos={videos.data} />
+            }
+            <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</RawHtmlStyle>
+          </div>
           <DownloadArea className="download-area" t={t} />
           <ArticlePopup
             t={t}
@@ -227,7 +225,7 @@ const ArticleContent = ({
           />
           <Tooltip />
         </div>
-        <UpArrow showButton={showButton} />
+        <ScrollToTopButton showButton={showButton} />
       </StyledWrapperContent>
     </StyledArticleContent>
   );

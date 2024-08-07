@@ -1,16 +1,16 @@
 import PropTypes from "prop-types";
-import StyledUpArrow from "./styled-up-arrow";
+import StyledScrollToTop from "./styled-scroll-to-top-button";
 
-const UpArrow = ({ showButton, ...rest }) => {
+const ScrollToTopButton = ({ showButton, ...rest }) => {
   function topFunction() {
     document.body.scrollTop = 0; 
     document.documentElement.scrollTop = 0;
   }
 
-  return <StyledUpArrow showButton={showButton} title="Scroll up" {...rest} onClick={() => topFunction()}><span></span></StyledUpArrow>;
+  return <StyledScrollToTop showButton={showButton} title="Scroll up" {...rest} onClick={() => topFunction()}><span></span></StyledScrollToTop>;
 };
 
-UpArrow.propTypes = {
+ScrollToTopButton.propTypes = {
   /** Accepts CSS style */
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   /** Tab index */
@@ -19,8 +19,8 @@ UpArrow.propTypes = {
   className: PropTypes.string,
 };
 
-UpArrow.defaultProps = {
+ScrollToTopButton.defaultProps = {
   tabIndex: -1,
 };
 
-export default UpArrow;
+export default ScrollToTopButton;
