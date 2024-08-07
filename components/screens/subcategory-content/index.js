@@ -106,7 +106,7 @@ const SubCategoryContent = ({
             {pageName}
           </Heading>
           <div ref={contentRef}>
-            {pageItems.sort((a, b) => {
+            {pageItems?.sort((a, b) => {
                 const aValue = a.attributes.name || a.attributes.title;
                 const bValue = b.attributes.name || b.attributes.title;
                 return aValue.localeCompare(bValue);
