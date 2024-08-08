@@ -4,7 +4,7 @@ import { device } from "@components/utils/devices";
 const StyledFooter = styled.div`
   position: relative;
   margin: 0 auto;
-  padding: 48px 48px;
+  padding: 48px 40px;
   max-width: 1120px;
   
   .footer {

@@ -6,13 +6,12 @@ const StyledWrapperContent = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  max-width: 1120px;
 
   .wrapper {
     box-sizing: border-box;
-    padding: 32px 0 112px 30px;
+    padding: 32px 0 112px 32px;
     width: 100%;
-    max-width: 860px;
+    max-width: 864px;
     color: #333333;
 
     h3 {

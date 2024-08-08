@@ -13,7 +13,7 @@ import DownloadArea from "./sub-components/download-area";
 import ConnectorsVideo from "./sub-components/connectors-video";
 import ArticlePopup from "../common/article-popup";
 import Cookies from 'universal-cookie';
-import ScrollToTopButton from "@components/common/scroll-to-top-button";
+import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
 import { handleFaqAccordionClick, handleImagePopupClick, handleTogglerClick } from "./utils/handle-click-functions";
 
 const ArticleContent = ({
@@ -209,8 +209,8 @@ const ArticleContent = ({
           />
           <Tooltip />
         </div>
-        <ScrollToTopButton showButton={showButton} />
       </StyledWrapperContent>
+      <ScrollToTopButton showButton={showButton} />
     </StyledArticleContent>
   );
 };

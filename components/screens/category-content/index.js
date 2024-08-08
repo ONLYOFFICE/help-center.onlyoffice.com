@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import StyledCategoryContent from "./styled-category-content";
 import LeftMenu from "@components/screens/common/left-menu";
 import StyledWrapperContent from "@components/screens/common/wrapper-content/styled-wrapper-content";
@@ -7,7 +7,7 @@ import Heading from "@components/common/heading";
 import Text from "@components/common/text";
 import ReactHtmlParser from "react-html-parser";
 import CategoryItem from "./sub-components/category-item";
-import ScrollToTopButton from "@components/common/scroll-to-top-button";
+import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
 
 const CategoryContent = ({
   t,
@@ -38,6 +38,7 @@ const CategoryContent = ({
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   return (
     <StyledCategoryContent>
       <StyledWrapperContent>
@@ -78,8 +79,8 @@ const CategoryContent = ({
             )
           )}
         </div>
-        <ScrollToTopButton showButton={showButton} />
       </StyledWrapperContent>
+      <ScrollToTopButton showButton={showButton} />
     </StyledCategoryContent>
   );
 };

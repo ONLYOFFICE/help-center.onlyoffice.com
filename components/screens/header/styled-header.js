@@ -5,7 +5,7 @@ import chevronRightIcon from "@public/images/icons/chevron-right.svg";
 const StyledHeader = styled.div`
   display: flex;
   align-items: center;
-  padding: 0 48px;
+  padding: 0 40px;
   min-height: 72px;
   background-color: #333333;
 

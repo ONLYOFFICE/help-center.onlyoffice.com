@@ -1,13 +1,21 @@
 import PropTypes from "prop-types";
-import StyledScrollToTop from "./styled-scroll-to-top-button";
+import StyledScrollToTopButton from "./styled-scroll-to-top-button";
 
-const ScrollToTopButton = ({ showButton, ...rest }) => {
+const ScrollToTopButton = ({ showButton }) => {
   function topFunction() {
-    document.body.scrollTop = 0; 
+    document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
 
-  return <StyledScrollToTop showButton={showButton} title="Scroll up" {...rest} onClick={() => topFunction()}><span></span></StyledScrollToTop>;
+  return (
+    <StyledScrollToTopButton
+      onClick={() => topFunction()}
+      className="scroll-to-top-button"
+      showButton={showButton}
+    >
+      <button></button>
+    </StyledScrollToTopButton>
+  );
 };
 
 ScrollToTopButton.propTypes = {

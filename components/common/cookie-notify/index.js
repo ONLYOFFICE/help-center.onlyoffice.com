@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import Cookies from "universal-cookie";
 
-const CookieNotify = ({cookieValue}) => {
+const CookieNotify = ({ cookieValue }) => {
   const { t } = useTranslation();
   const [isShow, setIsShow] = useState(true);
   const cookies = new Cookies();
@@ -22,7 +22,7 @@ const CookieNotify = ({cookieValue}) => {
       expires: nextYear
     });
   };
-  
+
   return (
     <StyledCookieNotify isShow={isShow}>
       <div className="cookie-notify">

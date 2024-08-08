@@ -1151,14 +1151,8 @@ const RawHtmlStyle = styled.div`
 
 const StyledArticleContent = styled(Section)`
   .section-page {
-    padding: 0 4px 0 40px;
+    display: flex;
   }
-  
-  @media ${device.tabletS} {
-      .section-page {
-        padding: 0 16px;
-      }
-    }
 `;
 
 export { StyledArticleContent, RawHtmlStyle };
