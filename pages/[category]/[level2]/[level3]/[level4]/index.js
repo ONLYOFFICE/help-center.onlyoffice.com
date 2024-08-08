@@ -19,6 +19,7 @@ const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
     seo_description, 
     name,
     icon,
+    video,
     [`level_2_${categorySlugOne}`]: level2Data,
     [`level_4_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`]: level4Data
   } = categoryData.data?.[0]?.attributes;
@@ -57,6 +58,7 @@ const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
           setLeftMenuMobile={setLeftMenuMobile}
           backBtnName={level2Data?.data?.attributes.name}
           backBtnUrl={level2Data?.data?.attributes.url}
+          video={video}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>

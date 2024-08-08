@@ -5,7 +5,7 @@ import StyledWrapperContent from "@components/screens/common/wrapper-content/sty
 import Heading from "@components/common/heading";
 import InternalLink from "@components/common/internal-link";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
-// import Video from "../../sub-components/subcat-video";
+import VideoBlock from "@components/screens/common/video-block";
 
 const SubCategoryContent = ({
     t,
@@ -22,7 +22,8 @@ const SubCategoryContent = ({
     leftMenuMobile,
     setLeftMenuMobile,
     backBtnName,
-    backBtnUrl
+    backBtnUrl,
+    video
   }) => {
   const contentRef = useRef();
   const lastActiveSectionRef = useRef(null);
@@ -140,7 +141,9 @@ const SubCategoryContent = ({
               )
             )}
           </div>
-          {/* <Video t={t} items={articles && articles[0].level_5} /> */}
+          {video?.data && 
+            <VideoBlock t={t} video={video} />
+          }
         </div>
       </StyledWrapperContent>
     </StyledSubCategoryContent>
