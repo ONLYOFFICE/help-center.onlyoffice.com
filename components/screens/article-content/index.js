@@ -12,6 +12,8 @@ import ImagePopup from "./sub-components/image-popup";
 import DownloadArea from "./sub-components/download-area";
 import ConnectorsVideo from "./sub-components/connectors-video";
 import ArticlePopup from "../common/article-popup";
+import Cookies from 'universal-cookie';
+import ScrollToTopButton from "@components/common/scroll-to-top-button";
 import { handleFaqAccordionClick, handleImagePopupClick, handleTogglerClick } from "./utils/handle-click-functions";
 
 const ArticleContent = ({
@@ -43,7 +45,9 @@ const ArticleContent = ({
   const [tagName, setTagName] = useState();
   const [tagItems, setTagItems] = useState();
   const [hasMoreTags, setHasMoreTags] = useState(false);
+  const [showButton, setShowButton] = useState(false);
   const page = 1;
+  const cookies = new Cookies(null, { path: '/' });
 
   const handleTagModal = async (tagName) => {
     const data = await getTagsArticle(locale, tagName, 2, page);
@@ -74,7 +78,7 @@ const ArticleContent = ({
 
         if (foundTable) {
           const tableId = foundTable.id;
-          BuildTable(tableId);
+          BuildTable(tableId, cookies);
         }
       }
     }
@@ -85,7 +89,7 @@ const ArticleContent = ({
       const headings = [];
 
       div.querySelectorAll("[id$='_block']").forEach(block => {
-        const firstHeading = block.querySelector("h1, h2, h3, h4, h5, h6");
+        const firstHeading = block.querySelector("h4");
         if (firstHeading) {
           headings.push({
             id: block.id,
@@ -93,6 +97,12 @@ const ArticleContent = ({
           });
         }
       });
+      if (videos && videos.data.length > 0) {
+        headings.unshift({
+          id: "watchvideo_block",
+          text: t("WatchVideo")
+        });
+      }
       return headings;
     };
 
@@ -101,17 +111,22 @@ const ArticleContent = ({
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const sections = document.querySelectorAll("[id$='_block']");
+      const menuSections = Array.from(sections).filter(section => section.querySelector('h4'));
 
       let currentSection = null;
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
+      menuSections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
         const sectionHeight = section.clientHeight;
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        if ((scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) || (scrollPosition > sectionTop + sectionHeight)) {
           currentSection = section.id;
         }
       });
       setActiveSection(currentSection || activeSection);
+      const scrollHeight = window.innerHeight * 2;
+      setShowButton(window.scrollY > scrollHeight);
     };
+
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll);
 
@@ -167,10 +182,12 @@ const ArticleContent = ({
               ))}
             </div>
           }
-          {videos && videos.data.length > 0 &&
-            <ConnectorsVideo t={t} videos={videos.data} />
-          }
-          <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</RawHtmlStyle>
+          <div>
+            {videos && videos.data.length > 0 &&
+              <ConnectorsVideo t={t} videos={videos.data} />
+            }
+            <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</RawHtmlStyle>
+          </div>
           <DownloadArea className="download-area" t={t} />
           <ArticlePopup
             t={t}
@@ -192,6 +209,7 @@ const ArticleContent = ({
           />
           <Tooltip />
         </div>
+        <ScrollToTopButton showButton={showButton} />
       </StyledWrapperContent>
     </StyledArticleContent>
   );

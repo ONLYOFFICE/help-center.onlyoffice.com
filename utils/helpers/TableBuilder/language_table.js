@@ -571,7 +571,7 @@ export function buildTableOfTranslators() {
         }
 };
 
-export function buildNewstrTable() {
+export function buildNewstrTable(cookies) {
     if (functionNewstrCalled) return;
     functionNewstrCalled = true;
     var newstrArray = newstr.rows;
@@ -634,10 +634,8 @@ export function buildNewstrTable() {
                 tableModuleDateLatest = tableModuleDateBiggest;
             }
         }
-        var attentionDateDelta = Math.abs((new Date(currentDate)).getTime() - (new Date(tableModuleDateLatest)).getTime()), attentionDaysDelta = Math.ceil(attentionDateDelta / (1000 * 3600 * 24)), attentionCookieValue = null, neverShowTranslatorsCookie = null;
-        if(neverShowTranslatorsCookie == 'never') {
-            $('#translatorAttention_block').css('display', 'none');
-        } else if (attentionCookieValue == 'visible' || attentionCookieValue == 'time2Show' || attentionCookieValue == undefined && neverShowTranslatorsCookie !== 'never') {
+        var attentionDateDelta = Math.abs((new Date(currentDate)).getTime() - (new Date(tableModuleDateLatest)).getTime()), attentionDaysDelta = Math.ceil(attentionDateDelta / (1000 * 3600 * 24)), attentionCookieValue = null, neverShowTranslatorsCookie = cookies.get("neverShowTranslators");
+        if (attentionCookieValue == 'visible' || attentionCookieValue == 'time2Show' || attentionCookieValue == undefined && neverShowTranslatorsCookie !== 'never') {
             $('#translatorAttention_block').fadeIn();
         } else if (attentionDaysDelta < 7 && neverShowTranslatorsCookie !== 'never') {
             $('#translatorAttention_block').fadeIn();
@@ -646,9 +644,11 @@ export function buildNewstrTable() {
         }
         $('#neverShowTranslators').on('click', function(){
             $('#translatorAttention_block').fadeOut();
+            cookies.set('neverShowTranslators', 'never');
         });
         if ($('#neverShowTranslators').prop('checked')) {
             $('#translatorAttention_block').fadeOut();
+            cookies.set('neverShowTranslators', 'never');
         }
         $('#translatorAttention_block .close_cross').on('click', function(){
             $('#translatorAttention_block').fadeOut();
