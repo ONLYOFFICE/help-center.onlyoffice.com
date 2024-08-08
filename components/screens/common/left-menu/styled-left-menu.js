@@ -76,7 +76,6 @@ const StyledLeftMenu = styled.div`
   }
 
   .left-menu-items {
-    margin-bottom: 32px;
     list-style-type: none;
 
     &.left-menu-articles {
@@ -123,13 +122,10 @@ const StyledLeftMenu = styled.div`
         line-height: 21px;
       }
     }
-
-    @media ${device.laptopS} {
-      margin-bottom: 24px;
-    }
   }
 
   .left-menu-info {
+    margin-top: 32px;
     list-style-type: none;
 
     li {
@@ -174,6 +170,10 @@ const StyledLeftMenu = styled.div`
       @media ${device.laptopS} {
         padding: 4px 0;
       }
+    }
+
+    @media ${device.laptopS} {
+      margin-top: 24px;
     }
   }
 

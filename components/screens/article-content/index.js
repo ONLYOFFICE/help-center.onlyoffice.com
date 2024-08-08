@@ -12,7 +12,7 @@ import ImagePopup from "./sub-components/image-popup";
 import DownloadArea from "./sub-components/download-area";
 import ConnectorsVideo from "./sub-components/connectors-video";
 import ArticlePopup from "../common/article-popup";
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
 import { handleFaqAccordionClick, handleImagePopupClick, handleTogglerClick } from "./utils/handle-click-functions";
 
@@ -37,6 +37,7 @@ const ArticleContent = ({
     setLeftMenuMobile
   }) => {
   const containerRef = useRef(null);
+  const lastActiveSectionRef = useRef(null);
   const [modalActive, setModalActive] = useState(false);
   const [imageModalActive, setImageModalActive] = useState(false);
   const [bigPhotoSrc, setBigPhotoSrc] = useState(null);
@@ -47,7 +48,7 @@ const ArticleContent = ({
   const [hasMoreTags, setHasMoreTags] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const page = 1;
-  const cookies = new Cookies(null, { path: '/' });
+  const cookies = new Cookies(null, { path: "/" });
 
   const handleTagModal = async (tagName) => {
     const data = await getTagsArticle(locale, tagName, 2, page);
@@ -111,9 +112,9 @@ const ArticleContent = ({
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const sections = document.querySelectorAll("[id$='_block']");
-      const menuSections = Array.from(sections).filter(section => section.querySelector('h4'));
+      const menuSections = Array.from(sections).filter(section => section.querySelector("h4"));
 
-      let currentSection = null;
+      let currentSection = lastActiveSectionRef.current;
       menuSections.forEach(section => {
         const sectionTop = section.getBoundingClientRect().top;
         const sectionHeight = section.clientHeight;
@@ -121,7 +122,14 @@ const ArticleContent = ({
           currentSection = section.id;
         }
       });
-      setActiveSection(currentSection || activeSection);
+
+      if (currentSection !== lastActiveSectionRef.current) {
+        lastActiveSectionRef.current = currentSection;
+        setActiveSection(currentSection);
+      } else {
+        setActiveSection(currentSection || menuSections[0]?.id);
+      }
+
       const scrollHeight = window.innerHeight * 2;
       setShowButton(window.scrollY > scrollHeight);
     };
