@@ -33,7 +33,7 @@ const handleFaqAccordionClick = (event, container) => {
       event.target.classList.add("active");
     }
 
-    if (Array.from(container.querySelectorAll('.faq_block dt')).every(item => item.classList.contains("active"))) {
+    if (Array.from(container.querySelectorAll(".faq_block dt")).every(item => item.classList.contains("active"))) {
       container.querySelector(".fq_expand").style.display = "none";
       container.querySelector(".fq_collapse").style.display = "inline-block";
     } else {

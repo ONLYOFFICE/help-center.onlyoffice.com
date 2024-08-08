@@ -4,7 +4,7 @@ import Items from "./data/footer-items";
 import FooterItem from "./sub-components/footer-item";
 import InternalLink from "@components/common/internal-link";
 import Text from "@components/common/text";
-import useWindowWidth from '@utils/helpers/System/useWindowProvider';
+import useWindowWidth from "@utils/helpers/System/useWindowProvider";
 
 const date = new Date();
 const currentYear = date.getFullYear();

@@ -27,7 +27,7 @@ const SearchResultsContent = ({ t, leftMenuMobile, setLeftMenuMobile, leftMenuCa
                   <InternalLink className="search-results-link" href={item?.attributes?.url}>
                     <Highlighter searchWords={[query]} textToHighlight={item?.attributes?.title} />
                   </InternalLink>
-                  <p className="search-results-description">{item?.attributes?.description?.replace(/<[^>]*>/g, "") || item?.attributes?.seo_description.replace(/<[^>]*>/g, '')}</p>
+                  <p className="search-results-description">{item?.attributes?.description?.replace(/<[^>]*>/g, "") || item?.attributes?.seo_description.replace(/<[^>]*>/g, "")}</p>
                 </div>
               ))}
             </div>
