@@ -72,6 +72,11 @@ const CategoriesLeftMenu = ({ leftMenuMobile, setLeftMenuMobile, categories }) =
                                 <InternalLink className="left-menu-level2-link" href={level2Item.attributes.url} label={level2Item.attributes.name} />
                               </li>
                             ))}
+                            {level1Item.attributes[`article_${slug_id}`]?.data.sort((a, b) => a.attributes.title.localeCompare(b.attributes.title)).map((level2Item, level2Index) => (
+                              <li className="left-menu-level2-item" key={level2Index}>
+                                <InternalLink className="left-menu-level2-link" href={level2Item.attributes.url} label={level2Item.attributes.title} />
+                              </li>
+                            ))}
                           </ul>
                         }
                       </li>
@@ -79,7 +84,7 @@ const CategoriesLeftMenu = ({ leftMenuMobile, setLeftMenuMobile, categories }) =
                   </ul>
                 ) : category.attributes.articles?.data.length > 0 && activeItems[`1-${index}`] ? (
                   <ul className="left-menu-level1">
-                    {category.attributes.articles?.data.map((item, index) => (
+                    {category.attributes.articles?.data.sort((a, b) => a.attributes.title.localeCompare(b.attributes.title)).map((item, index) => (
                       <li className="left-menu-level1-item" key={index}>
                         <InternalLink className="left-menu-level1-link" href={item.attributes.url} label={item.attributes.title} />
                       </li>
