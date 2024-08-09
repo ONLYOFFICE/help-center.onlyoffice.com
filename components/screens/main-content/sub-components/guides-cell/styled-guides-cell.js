@@ -64,6 +64,10 @@ const StyledGuidesCell = styled.div`
 
     a {
       color: #ff6f3d;
+
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
 

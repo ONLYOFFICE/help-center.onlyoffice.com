@@ -120,6 +120,11 @@ const StyledLeftMenu = styled.div`
         padding: 6px 0 6px 32px;
         font-size: 14px;
         line-height: 21px;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #FF6F3D;
+        }
       }
     }
   }

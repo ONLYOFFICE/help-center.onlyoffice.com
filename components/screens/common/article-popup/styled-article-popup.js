@@ -1,5 +1,11 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { device } from "@components/utils/devices";
+
+const loadSpin = keyframes`
+  100% { 
+    transform: translate(-50%, -50%) rotate(360deg); 
+  }
+`;
 
 const StyledArticlePopup = styled.div`
   box-sizing: border-box;
@@ -153,8 +159,39 @@ const StyledArticlePopup = styled.div`
   }
 
   .article-popup-more-btn {
+    position: relative;
     display: block;
     margin: 0 auto;
+    transition: border-color 0.3s, color 0.3s;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 18px;
+      height: 18px;
+      margin: 0 auto;
+      border: 2px solid #444444;
+      border-radius: 75%;
+      border-right-color: transparent;
+      transform: translate(-50%, -50%);
+      animation: ${loadSpin} 1025ms infinite linear;
+      transition: border 0.3s;
+      opacity: 0;
+    }
+
+    &.loading {
+      color: transparent;
+
+      &:after {
+        opacity: 1;
+      }
+
+      &:hover {
+        border-color: #444444;
+      }
+    }
   }
 `;
 

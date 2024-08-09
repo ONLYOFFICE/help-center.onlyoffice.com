@@ -47,14 +47,13 @@ const ArticleContent = ({
   const [tagItems, setTagItems] = useState();
   const [hasMoreTags, setHasMoreTags] = useState(false);
   const [showButton, setShowButton] = useState(false);
-  const page = 1;
   const cookies = new Cookies(null, { path: "/" });
 
   const handleTagModal = async (tagName) => {
-    const data = await getTagsArticle(locale, tagName, 2, page);
+    const data = await getTagsArticle(locale, tagName, 4, 1);
 
     const { articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces } = data;
-    const hasMoreTags = [articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces].some(({ meta: { pagination } }) => pagination.total > pagination.page + 1);
+    const hasMoreTags = [articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces].some(({ meta: { pagination } }) => pagination.pageCount > pagination.page);
 
     setHasMoreTags(hasMoreTags);
     setTagItems([
@@ -205,7 +204,6 @@ const ArticleContent = ({
             modalActive={modalActive}
             setModalActive={setModalActive}
             hasMoreTags={hasMoreTags}
-            page={page}
             setHasMoreTags={setHasMoreTags}
             setTagItems={setTagItems}
           />

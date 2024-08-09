@@ -72,7 +72,7 @@ const SubCategoryContent = ({
         lastActiveSectionRef.current = currentSection;
         setActiveSection(currentSection);
       } else {
-        setActiveSection(currentSection || menuSections[0].id);
+        setActiveSection(currentSection || menuSections[0]?.id);
       }
     };
 
