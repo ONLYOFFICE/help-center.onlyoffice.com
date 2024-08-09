@@ -63,7 +63,7 @@ const CategoryContent = ({
           />
           <Heading className="wrapper-title" level={3} label={pageName} />
           {pageDescription &&
-            <Text>{ReactHtmlParser(pageDescription)}</Text>
+            <Text className="wrapper-description">{ReactHtmlParser(pageDescription)}</Text>
           }
           {pageItems?.sort((a, b) => {
               const aValue = a.attributes.name || a.attributes.title;
