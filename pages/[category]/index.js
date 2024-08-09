@@ -1,6 +1,7 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
+import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 import getCategoryLevel1 from "@lib/strapi/getCategoryLevel1";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
@@ -12,9 +13,9 @@ const CategoryPage = ({ locale, categories, category }) => {
   const { t } = useTranslation();
   const [leftMenuMobile, setLeftMenuMobile] = useState(false);
 
-  const { slug_id, articles, seo_title, seo_description } = category.attributes;
+  const { slug_id, articles, seo_title, seo_description } = category.data[0].attributes;
   const categorySlugMany = slug_id === "docs" ? "docs" : `${slug_id}s`;
-  const data = slug_id === "integration" ? articles : category.attributes[`category_${categorySlugMany}`];
+  const data = slug_id === "integration" ? articles : category.data[0].attributes[`category_${categorySlugMany}`];
 
   return (
     <Layout>
@@ -36,8 +37,9 @@ const CategoryPage = ({ locale, categories, category }) => {
       <Layout.SectionMain>
         <CategoryContent
           t={t}
-          categoryName={category.attributes.name}
-          categoryImg={category.attributes.card_field_img?.data?.attributes.url}
+          locale={locale}
+          categoryName={category.data[0].attributes.name}
+          categoryImg={category.data[0].attributes.card_field_img?.data?.attributes.url}
           categories={data}
           categorySlug={categorySlugMany}
           leftMenuCategories={categories}
@@ -53,8 +55,8 @@ const CategoryPage = ({ locale, categories, category }) => {
 };
 
 export const getServerSideProps = async ({ locale, params }) => {
-  const categories = await getCategoryLevel1(locale, params.category);
-  const category = categories.data.find(item => item.attributes.slug_id === params.category);
+  const categories = await getCategoriesMenu(locale);
+  const category = await getCategoryLevel1(locale, params.category, true);
 
   if (category === undefined) {
     return {
