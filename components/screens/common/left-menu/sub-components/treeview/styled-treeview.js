@@ -11,6 +11,7 @@ const StyledTreeView = styled.li`
     font-size: 14px;
     font-weight: 700;
     line-height: 22px;
+    text-align: left;
     background-color: transparent;
     transition: color 0.3s;
     cursor: pointer;
