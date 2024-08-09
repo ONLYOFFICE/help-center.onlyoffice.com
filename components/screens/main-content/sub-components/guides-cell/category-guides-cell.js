@@ -12,7 +12,7 @@ const CategoryGuidesCell = ({ data, categorySlug }) => {
       <div className="guides-cell-header">
         <div className={`guides-cell-top ${connectorsSlug ? "integration" : ""}`}>
           {!connectorsSlug &&
-            <img className="guides-cell-icon" src={data.attributes.card_field_img?.data?.url} alt={data.attributes.name} />
+            <img className="guides-cell-icon" src={data.attributes.card_field_img?.data.attributes.url} alt={data.attributes.name} />
           }
 
           {data.attributes.url === null ? (

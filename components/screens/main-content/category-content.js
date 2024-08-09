@@ -31,7 +31,7 @@ const Level1CategoryContent = ({ t, categoryName, categoryImg, categories, categ
             <div className="guides-cards-top">
               {topData?.map((item, index) => (
                 <InternalLink className="guides-cards-top-link" href={item.attributes.url} key={index}>
-                  <img src={item.attributes.card_field_img?.data.url} alt={item.attributes.name} />
+                  <img src={item.attributes.card_field_img?.data.attributes.url} alt={item.attributes.name} />
                   <div>{item.attributes.name}</div>
                 </InternalLink>
               ))}
