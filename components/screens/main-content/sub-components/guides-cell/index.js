@@ -15,7 +15,7 @@ const GuidesCell = ({ data }) => {
     <StyledGuidesCell>
       <div className="guides-cell-header">
         <div className="guides-cell-top">
-          <img className="guides-cell-icon" src={data.attributes.card_field_img?.data?.url} alt={data.attributes.name} />
+          <img className="guides-cell-icon" src={data.attributes.card_field_img?.data?.attributes.url} alt={data.attributes.name} />
 
           {data.attributes.url === null ? (
             <Heading className="guides-cell-title" label={data.attributes.name} />
