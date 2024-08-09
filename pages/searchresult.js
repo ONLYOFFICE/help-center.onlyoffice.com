@@ -2,7 +2,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import SearchResultsContent from "@components/screens/search-results-content";
-import getCategories from "@lib/strapi/getCategories";
+import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 import getSearchResults from "@lib/strapi/getSearchResults";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
@@ -34,6 +34,7 @@ const SearchResult = ({ locale, categories, searchResults, query }) => {
       <Layout.SectionMain>
         <SearchResultsContent
           t={t}
+          locale={locale}
           leftMenuMobile={leftMenuMobile}
           setLeftMenuMobile={setLeftMenuMobile}
           leftMenuCategories={categories}
@@ -49,7 +50,7 @@ const SearchResult = ({ locale, categories, searchResults, query }) => {
 };
 
 export const getServerSideProps = async ({ locale, query }) => {
-  const categories = await getCategories(locale, true);
+  const categories = await getCategoriesMenu(locale);
   const searchResults = await getSearchResults(locale, query.query)
 
   return {

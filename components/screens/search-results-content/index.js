@@ -1,16 +1,29 @@
 import StyledSearchResultsContent from "./styled-search-results-content";
+import { useEffect, useState } from "react";
+import getCategories from "@lib/strapi/getCategories";
 import Highlighter from "react-highlight-words";
 import SearchArea from "@components/screens/common/search-area";
 import CategoriesLeftMenu from "@components/screens/common/categories-left-menu";
 import InternalLink from "@components/common/internal-link";
 import Heading from "@components/common/heading";
 
-const SearchResultsContent = ({ t, leftMenuMobile, setLeftMenuMobile, leftMenuCategories, searchResults, query }) => {
+const SearchResultsContent = ({ t, locale, leftMenuMobile, setLeftMenuMobile, leftMenuCategories, searchResults, query }) => {
+  const [categoriesLeftMenu, setCategoriesLeftMenu] = useState(leftMenuCategories);
+
+  useEffect(() => {
+    const getCategoriesLeftMenuData = async () => {
+      const data = await getCategories(locale, false);
+      setCategoriesLeftMenu(data);
+    }
+
+    getCategoriesLeftMenuData();
+  }, []);
+
   return (
     <>
       <CategoriesLeftMenu
         leftMenuMobile={leftMenuMobile}
-        categories={leftMenuCategories}
+        categories={categoriesLeftMenu}
         setLeftMenuMobile={setLeftMenuMobile}
       />
       <StyledSearchResultsContent>
