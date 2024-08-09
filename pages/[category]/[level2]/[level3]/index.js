@@ -82,7 +82,7 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             backBtnUrl={level1Data?.data?.attributes.url}
           />
         ) : (
-          level3Data?.data[0]?.attributes[`${categorySlug === "docs" ? "article" : "articles"}_${categorySlugMany}`]?.data.length > 0 ? (
+          level3Data?.data[0]?.attributes[`${categorySlug === "docs" ? "articles" : "article"}_${categorySlugMany}`]?.data.length > 0 ? (
             <SubCategoryContent
               t={t}
               categorySlug={categorySlug}
