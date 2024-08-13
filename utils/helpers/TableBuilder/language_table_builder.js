@@ -1,6 +1,6 @@
 ﻿import { buildLargeTables, buildNewstrTable, buildMobileLargeTables, buildTableOfTranslators, dateOfTable } from "@utils/helpers/TableBuilder/language_table.js";
 
-export function BuildTable(pageTopDivID){
+export function BuildTable(pageTopDivID, cookies){
     const sortTableByFirstColumn = (tableId) => {
         const table = document.getElementById(tableId);
         const rows = Array.from(table.rows).slice(1);
@@ -10,7 +10,7 @@ export function BuildTable(pageTopDivID){
 
     const commonActions = (id) => {
         if (id != "languagesTable") {
-            buildNewstrTable();
+            buildNewstrTable(cookies);
             sortTableByFirstColumn('newstrList');
         }
         if (id !== "languagesiOSDocumentsTable" && id !== "languagesiOSProjectsTable") {

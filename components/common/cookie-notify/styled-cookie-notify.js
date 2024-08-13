@@ -9,11 +9,7 @@ const StyledCookieNotify = styled.div`
   text-align: center;
   pointer-events: none;
   transition: opacity 0.3s, visibility 0.3s;
-
-  &.hide {
-    opacity: 0;
-    visibility: hidden;
-  }
+  opacity: ${(props) => (props.isShow ? 1 : 0)};
 
   .cookie-notify {
     display: inline-flex;

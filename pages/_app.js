@@ -1,8 +1,29 @@
 import { appWithTranslation } from "next-i18next";
 import "../styles/global-styles.css";
+import App from "next/app";
+import Cookies from "universal-cookie";
+import CookieNotify from "@components/common/cookie-notify";
 
-const App = ({ Component, pageProps }) => (
-  <Component {...pageProps} />
-)
+const MyApp = ({ Component, pageProps, cookieValue }) => {
+  return (
+    <>
+      <Component {...pageProps} />
+      <CookieNotify cookieValue={cookieValue} />
+    </>
+  );
+};
 
-export default appWithTranslation(App)
+MyApp.getInitialProps = async (appContext) => {
+  const appProps = await App.getInitialProps(appContext);
+  const { req } = appContext.ctx;
+  let cookieValue;
+
+  if (req) {
+    const cookies = new Cookies(req.headers.cookie);
+    cookieValue = cookies.get("cookie-notify");
+  }
+
+  return { ...appProps, cookieValue };
+};
+
+export default appWithTranslation(MyApp);

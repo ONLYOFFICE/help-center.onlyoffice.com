@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Section from "@components/common/section";
 import { device } from "@components/utils/devices";
+import plus from "@public/images/icons/plus.svg";
+import minus from "@public/images/icons/minus.svg";
 
 const RawHtmlStyle = styled.div`
   padding: 24px 0 0;
@@ -16,6 +18,10 @@ const RawHtmlStyle = styled.div`
       &.last_update {
         text-align: end;
       }
+    }
+
+    b {
+      word-break: break-word;
     }
 
     // tables
@@ -290,7 +296,7 @@ const RawHtmlStyle = styled.div`
     .gs_content {
       height: auto;
       margin: 24px 0 0;
-      scroll-margin-top: 10px;
+      scroll-margin-top: 24px;
       &:last-child {
         border-bottom: 0px;
       }
@@ -1026,7 +1032,95 @@ const RawHtmlStyle = styled.div`
       margin-top: 8px;
     }
 
-    @media ${device.tabletL} {
+    .fq_expand,
+    .fq_collapse {
+      display: inline-block;
+      margin-bottom: 24px;
+      font-size: 14px;
+      line-height: 22px;
+      color: #FF6F3D;
+      text-decoration: underline;
+      cursor: pointer;
+
+      span {
+        pointer-events: none;
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      @media ${device.tabletS} {
+        font-size: 13px;
+        line-height: 20px;
+      }
+    }
+
+    .fq_collapse {
+      display: none;
+    }
+
+    .faq_block {
+      border-top: 1px solid #E5E5E5;
+      margin: 0;
+      padding: 32px 0;
+      color: #333333;
+
+      &:last-child {
+        border-bottom: 1px solid #E5E5E5;
+      }
+
+      dt {
+        display: flex;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 24px;
+        letter-spacing: -0.02em;
+        cursor: pointer;
+
+        &:before {
+          content: url(${plus.src});
+          display: inline-block;
+          margin-right: 10px;
+          width: 24px;
+          height: 24px;
+        }
+
+        &.active {
+          &:before {
+            content: url(${minus.src});
+          }
+        }
+
+        @media ${device.tabletS} {
+          font-size: 16px;
+          line-height: 21px;
+        }
+      }
+
+      dd {
+        margin: 0 0 0 34px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s;
+
+        p {
+          &:first-child {
+            margin-top: 16px;
+          }
+        }
+
+        &.active {
+          max-height: 100px;
+        }
+      }
+
+      @media ${device.tabletS} {
+        padding: 24px 0;
+      }
+    }
+
+    @media ${device.laptopS} {
       img.bigphoto_screen {
         display: block;
         margin: 16px 0;
@@ -1056,7 +1150,9 @@ const RawHtmlStyle = styled.div`
 `;
 
 const StyledArticleContent = styled(Section)`
-  
+  .section-page {
+    display: flex;
+  }
 `;
 
-export { StyledArticleContent, RawHtmlStyle};
+export { StyledArticleContent, RawHtmlStyle };

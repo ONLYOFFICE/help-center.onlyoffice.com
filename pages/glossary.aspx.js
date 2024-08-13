@@ -49,7 +49,7 @@ export const getServerSideProps = async ({ locale }) => {
   const categoriesMenu = await getCategoriesMenu(locale);
   const glossaryData = await getGlossary(locale);
 
-  if (glossaryData.data.length === 0) {
+  if (glossaryData.data === null || glossaryData.data.length === 0) {
     return {
       notFound: true
     };

@@ -1,4 +1,6 @@
 import StyledSearchResultsContent from "./styled-search-results-content";
+import { useEffect, useState } from "react";
+import getCategories from "@lib/strapi/getCategories";
 import Highlighter from "react-highlight-words";
 import SearchArea from "@components/screens/common/search-area";
 import CategoriesLeftMenu from "@components/screens/common/categories-left-menu";
@@ -6,6 +8,17 @@ import InternalLink from "@components/common/internal-link";
 import Heading from "@components/common/heading";
 import Pagination from "@components/common/pagination";
 import { useState, useEffect } from "react";
+
+  const [categoriesLeftMenu, setCategoriesLeftMenu] = useState(leftMenuCategories);
+
+  useEffect(() => {
+    const getCategoriesLeftMenuData = async () => {
+      const data = await getCategories(locale, false);
+      setCategoriesLeftMenu(data);
+    }
+
+    getCategoriesLeftMenuData();
+  }, []);
 
 const paginationSize = 7;
 
@@ -48,12 +61,11 @@ const SearchResultsContent = ({ t, searchData, leftMenuMobile, setLeftMenuMobile
       window.removeEventListener("resize", resizeHandler);
     };
   });
-
   return (
     <>
       <CategoriesLeftMenu
         leftMenuMobile={leftMenuMobile}
-        categories={leftMenuCategories}
+        categories={categoriesLeftMenu}
         setLeftMenuMobile={setLeftMenuMobile}
       />
       <StyledSearchResultsContent>
@@ -72,8 +84,7 @@ const SearchResultsContent = ({ t, searchData, leftMenuMobile, setLeftMenuMobile
                   </InternalLink>
                   <p className="search-results-description">
                   <Highlighter className="search-results-query" searchWords={[query]} textToHighlight={item?.attributes?.description?.replace(/<[^>]*>/g, "") || item?.attributes?.content.replace(/<[^>]*>/g, '')} />
-                  </p>
-                </div>
+                  </p>                </div>
               ))}
             </div>
             {countPage !== 0 && countPage !== 1 &&

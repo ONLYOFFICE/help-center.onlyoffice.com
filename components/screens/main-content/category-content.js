@@ -1,4 +1,6 @@
 import StyledMainContent from "./styled-main-content";
+import { useEffect, useState } from "react";
+import getCategoryLevel1 from "@lib/strapi/getCategoryLevel1";
 import topSlugIdData from "./data/top-slugid.json";
 import CategoriesLeftMenu from "@components/screens/common/categories-left-menu";
 import SearchArea from "@components/screens/common/search-area";
@@ -7,14 +9,24 @@ import Heading from "@components/common/heading";
 import Masonry from "react-masonry-css";
 import CategoryGuidesCell from "./sub-components/guides-cell/category-guides-cell";
 
-const Level1CategoryContent = ({ t, categoryName, categoryImg, categories, categorySlug, leftMenuMobile, setLeftMenuMobile, leftMenuCategories }) => {
+const Level1CategoryContent = ({ t, locale, categoryName, categoryImg, categories, categorySlug, leftMenuMobile, setLeftMenuMobile, leftMenuCategories }) => {
   const topData = categories.data.filter(item => topSlugIdData.includes(item.attributes.slug_id));
+  const [categoriesLeftMenu, setCategoriesLeftMenu] = useState(leftMenuCategories);
+
+  useEffect(() => {
+    const getCategoriesLeftMenuData = async () => {
+      const data = await getCategoryLevel1(locale);
+      setCategoriesLeftMenu(data);
+    }
+
+    getCategoriesLeftMenuData();
+  }, []);
 
   return (
     <>
       <CategoriesLeftMenu
         leftMenuMobile={leftMenuMobile}
-        categories={leftMenuCategories}
+        categories={categoriesLeftMenu}
         setLeftMenuMobile={setLeftMenuMobile}
       />
       <StyledMainContent>
@@ -31,7 +43,7 @@ const Level1CategoryContent = ({ t, categoryName, categoryImg, categories, categ
             <div className="guides-cards-top">
               {topData?.map((item, index) => (
                 <InternalLink className="guides-cards-top-link" href={item.attributes.url} key={index}>
-                  <img src={item.attributes.card_field_img?.data.url} alt={item.attributes.name} />
+                  <img src={item.attributes.card_field_img?.data?.attributes.url} alt={item.attributes.name} />
                   <div>{item.attributes.name}</div>
                 </InternalLink>
               ))}

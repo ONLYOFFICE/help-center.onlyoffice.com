@@ -10,6 +10,7 @@ import SubCategoryContent from "@components/screens/subcategory-content";
 import CategoryContent from "@components/screens/category-content";
 import ArticleContent from "@components/screens/article-content";
 import Footer from "@components/screens/footer";
+import Cookies from "universal-cookie";
 
 const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug }) => {
   const { t } = useTranslation();
@@ -81,7 +82,7 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             backBtnUrl={level1Data?.data?.attributes.url}
           />
         ) : (
-          level3Data?.data[0]?.attributes[`${categorySlug === "docs" ? "article" : "articles"}_${categorySlugMany}`]?.data.length > 0 ? (
+          level3Data?.data[0]?.attributes[`${categorySlug === "docs" ? "articles" : "article"}_${categorySlugMany}`]?.data.length > 0 ? (
             <SubCategoryContent
               t={t}
               categorySlug={categorySlug}
@@ -122,9 +123,16 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
   );
 };
 
-export const getServerSideProps = async ({ locale, params }) => {
+export const getServerSideProps = async ({ locale, params, req }) => {
   const categoriesMenu = await getCategoriesMenu(locale);
   const categoryData = await getCategoryLevel3(locale, params.category, `/${params.category}/${params.level2}/${params.level3}`);
+  const cookies = new Cookies(req.headers.cookie, { path: "/" });
+  if (cookies.get("neverShowTranslators") === "never") {
+    categoryData.data[0].attributes.content = categoryData.data[0].attributes.content.replace(
+      /<div class="bringattention translator" id="translatorAttention_block" style="display: block;">/g,
+      '<div class="bringattention translator" id="translatorAttention_block" style="display: none;">'
+    );
+  }
 
   if (!categoryData.data || categoryData.data.length === 0) {
     return {

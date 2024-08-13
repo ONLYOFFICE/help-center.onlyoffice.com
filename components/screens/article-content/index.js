@@ -12,6 +12,9 @@ import ImagePopup from "./sub-components/image-popup";
 import DownloadArea from "./sub-components/download-area";
 import ConnectorsVideo from "./sub-components/connectors-video";
 import ArticlePopup from "../common/article-popup";
+import Cookies from "universal-cookie";
+import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
+import { handleFaqAccordionClick, handleImagePopupClick, handleTogglerClick } from "./utils/handle-click-functions";
 
 const ArticleContent = ({
     t,
@@ -34,6 +37,7 @@ const ArticleContent = ({
     setLeftMenuMobile
   }) => {
   const containerRef = useRef(null);
+  const lastActiveSectionRef = useRef(null);
   const [modalActive, setModalActive] = useState(false);
   const [imageModalActive, setImageModalActive] = useState(false);
   const [bigPhotoSrc, setBigPhotoSrc] = useState(null);
@@ -42,13 +46,14 @@ const ArticleContent = ({
   const [tagName, setTagName] = useState();
   const [tagItems, setTagItems] = useState();
   const [hasMoreTags, setHasMoreTags] = useState(false);
-  const page = 1;
+  const [showButton, setShowButton] = useState(false);
+  const cookies = new Cookies(null, { path: "/" });
 
   const handleTagModal = async (tagName) => {
-    const data = await getTagsArticle(locale, tagName, 2, page);
+    const data = await getTagsArticle(locale, tagName, 4, 1);
 
-    const { articles, article_desktops, article_docs, article_docspaces, article_mobiles,  article_workspaces } = data;
-    const hasMoreTags = [articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces].some(({ meta: { pagination } }) => pagination.total > pagination.page + 1);
+    const { articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces } = data;
+    const hasMoreTags = [articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces].some(({ meta: { pagination } }) => pagination.pageCount > pagination.page);
 
     setHasMoreTags(hasMoreTags);
     setTagItems([
@@ -70,10 +75,10 @@ const ArticleContent = ({
       if (mainBuscallContainer) {
         const languagesListTables = mainBuscallContainer.querySelectorAll(".languages_list_table");
         const foundTable = Array.from(languagesListTables).find(table => table.id.startsWith("languages"));
-       
+
         if (foundTable) {
           const tableId = foundTable.id;
-          BuildTable(tableId);
+          BuildTable(tableId, cookies);
         }
       }
     }
@@ -84,7 +89,7 @@ const ArticleContent = ({
       const headings = [];
 
       div.querySelectorAll("[id$='_block']").forEach(block => {
-        const firstHeading = block.querySelector("h1, h2, h3, h4, h5, h6");
+        const firstHeading = block.querySelector("h4");
         if (firstHeading) {
           headings.push({
             id: block.id,
@@ -92,6 +97,12 @@ const ArticleContent = ({
           });
         }
       });
+      if (videos && videos.data.length > 0) {
+        headings.unshift({
+          id: "watchvideo_block",
+          text: t("WatchVideo")
+        });
+      }
       return headings;
     };
 
@@ -100,17 +111,29 @@ const ArticleContent = ({
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const sections = document.querySelectorAll("[id$='_block']");
+      const menuSections = Array.from(sections).filter(section => section.querySelector("h4"));
 
-      let currentSection = null;
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
+      let currentSection = lastActiveSectionRef.current;
+      menuSections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
         const sectionHeight = section.clientHeight;
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        if ((scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) || (scrollPosition > sectionTop + sectionHeight)) {
           currentSection = section.id;
         }
       });
-      setActiveSection(currentSection || activeSection);
+
+      if (currentSection !== lastActiveSectionRef.current) {
+        lastActiveSectionRef.current = currentSection;
+        setActiveSection(currentSection);
+      } else {
+        setActiveSection(currentSection || menuSections[0]?.id);
+      }
+
+      const scrollHeight = window.innerHeight * 2;
+      setShowButton(window.scrollY > scrollHeight);
     };
+
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll);
 
@@ -119,35 +142,10 @@ const ArticleContent = ({
     };
   }, []);
 
-  // photo popup
   const handleClick = (event) => {
-    const clickedTarget = event.target;
-
-    if (clickedTarget.tagName === "IMG") {
-      const targetImageId = clickedTarget.getAttribute("target");
-
-      if (targetImageId) {
-        const closestBigPhotoScreen = document.querySelector(`.bigphoto_screen[id="${targetImageId}"]`);
-        if (closestBigPhotoScreen) {
-          setBigPhotoSrc(closestBigPhotoScreen.getAttribute("src"));
-          setImageModalActive(true);
-        }
-      }
-    } else if (clickedTarget.tagName === "SPAN" && clickedTarget.classList.contains("toggler")) {
-      const ipHideCont = document.querySelector(".iphidecont") || document.querySelector(".hidecont");
-      const ipShowCont = document.querySelector(".ipshowcont") || document.querySelector(".showcont");
-      const ipContents = document.querySelector(".ipcontents") || document.querySelector(".contents");
-  
-      if (clickedTarget.classList.contains("iphidecont") || clickedTarget.classList.contains("hidecont")) {
-        ipHideCont.style.display = "none";
-        ipContents.style.display = "none";
-        ipShowCont.style.display = "block"; 
-      } else if (clickedTarget.classList.contains("ipshowcont") || clickedTarget.classList.contains("showcont")) {
-        ipHideCont.style.display = "block";
-        ipContents.style.display = "block";
-        ipShowCont.style.display = "none";
-      }
-    }
+    handleFaqAccordionClick(event, containerRef.current);
+    handleImagePopupClick(event, setBigPhotoSrc, setImageModalActive);
+    handleTogglerClick(event);
   };
 
   return (
@@ -178,7 +176,7 @@ const ArticleContent = ({
             pageName={pageName}
           />
           <Heading level={3}>{pageName}</Heading>
-          {tags?.data && 
+          {tags?.data &&
             <div className="tags">
               {tags?.data.map((item, index) => (
                 <div
@@ -191,10 +189,12 @@ const ArticleContent = ({
               ))}
             </div>
           }
-          {videos && videos.data.length > 0 && 
-            <ConnectorsVideo t={t} videos={videos.data} />
-          }
-          <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</RawHtmlStyle>
+          <div>
+            {videos && videos.data.length > 0 &&
+              <ConnectorsVideo t={t} videos={videos.data} />
+            }
+            <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</RawHtmlStyle>
+          </div>
           <DownloadArea className="download-area" t={t} />
           <ArticlePopup
             t={t}
@@ -204,7 +204,6 @@ const ArticleContent = ({
             modalActive={modalActive}
             setModalActive={setModalActive}
             hasMoreTags={hasMoreTags}
-            page={page}
             setHasMoreTags={setHasMoreTags}
             setTagItems={setTagItems}
           />
@@ -217,6 +216,7 @@ const ArticleContent = ({
           <Tooltip />
         </div>
       </StyledWrapperContent>
+      <ScrollToTopButton showButton={showButton} />
     </StyledArticleContent>
   );
 };

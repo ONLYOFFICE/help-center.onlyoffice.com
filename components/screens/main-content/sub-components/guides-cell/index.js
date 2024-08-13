@@ -8,14 +8,14 @@ import Heading from "@components/common/heading";
 const GuidesCell = ({ data }) => {
   const slugId = data.attributes.slug_id === "docs" ? "docs" : `${data.attributes.slug_id}s`;
   const connectorsSlug = data.attributes.slug_id === "integration";
-  const connectorsArticles = data.attributes.articles?.data;
+  const connectorsArticles = data.attributes.articles?.data.sort((a, b) => a.attributes.title.localeCompare(b.attributes.title));
   const items = data.attributes[`category_${slugId}`]?.data.sort((a, b) => a.attributes.position - b.attributes?.position)?.filter(item => !topSlugIdData.includes(item.attributes.slug_id)) || [];
 
   return (
     <StyledGuidesCell>
       <div className="guides-cell-header">
         <div className="guides-cell-top">
-          <img className="guides-cell-icon" src={data.attributes.card_field_img?.data?.url} alt={data.attributes.name} />
+          <img className="guides-cell-icon" src={data.attributes.card_field_img?.data?.attributes.url} alt={data.attributes.name} />
 
           {data.attributes.url === null ? (
             <Heading className="guides-cell-title" label={data.attributes.name} />
@@ -41,7 +41,7 @@ const GuidesCell = ({ data }) => {
                 ) : (
                   <div className="guides-cell-link guides-cell-header-link">{item.attributes.name}</div>
                 )}
-                {item.attributes[`level_2_${slugId}`]?.data.map((itemLevel2, index) => (
+                {item.attributes[`level_2_${slugId}`]?.data.sort((a, b) => a.attributes.position - b.attributes?.position).map((itemLevel2, index) => (
                   <InternalLink
                     className="guides-cell-link"
                     label={itemLevel2.attributes.name}
@@ -49,7 +49,7 @@ const GuidesCell = ({ data }) => {
                     key={index}
                   />
                 ))}
-                {item.attributes[`article_${slugId}`]?.data.map((itemLevel2, index) => (
+                {item.attributes[`article_${slugId}`]?.data.sort((a, b) => a.attributes.title.localeCompare(b.attributes.title)).map((itemLevel2, index) => (
                   <InternalLink
                     className="guides-cell-link"
                     label={itemLevel2.attributes.name || itemLevel2.attributes.title}
@@ -73,7 +73,7 @@ const GuidesCell = ({ data }) => {
                 ) : (
                   <div className="guides-cell-link guides-cell-header-link">{item.attributes.name}</div>
                 )}
-                {item.attributes[`level_2_${slugId}`]?.data.map((itemLevel2, index) => (
+                {item.attributes[`level_2_${slugId}`]?.data.sort((a, b) => a.attributes.position - b.attributes?.position).map((itemLevel2, index) => (
                   <InternalLink
                     className="guides-cell-link"
                     label={itemLevel2.attributes.name}
@@ -81,7 +81,7 @@ const GuidesCell = ({ data }) => {
                     key={index}
                   />
                 ))}
-                {item.attributes[`article_${slugId}`]?.data.map((itemLevel2, index) => (
+                {item.attributes[`article_${slugId}`]?.data.sort((a, b) => a.attributes.title.localeCompare(b.attributes.title)).map((itemLevel2, index) => (
                   <InternalLink
                     className="guides-cell-link"
                     label={itemLevel2.attributes.name || itemLevel2.attributes.title}

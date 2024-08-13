@@ -53,7 +53,7 @@ export async function getServerSideProps({ locale, params }) {
   const categoriesMenu = await getCategoriesMenu(locale);
   const faqData = await getFaq(locale, `/faq/${params.faq}`);
 
-  if (faqData.data.length === 0) {
+  if (faqData.data === null || faqData.data.length === 0) {
     return {
       notFound: true
     };

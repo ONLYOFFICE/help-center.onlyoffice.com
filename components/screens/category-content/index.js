@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import StyledCategoryContent from "./styled-category-content";
 import LeftMenu from "@components/screens/common/left-menu";
 import StyledWrapperContent from "@components/screens/common/wrapper-content/styled-wrapper-content";
@@ -6,22 +7,38 @@ import Heading from "@components/common/heading";
 import Text from "@components/common/text";
 import ReactHtmlParser from "react-html-parser";
 import CategoryItem from "./sub-components/category-item";
+import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
 
 const CategoryContent = ({
-    t,
-    categoryName,
-    categoryUrl,
-    level2CategoryName,
-    level2CategoryUrl,
-    pageName,
-    pageDescription,
-    pageItems,
-    pageItemsLevel,
-    categorySlug,
-    leftMenuMobile,
-    backBtnName,
-    backBtnUrl
-  }) => {
+  t,
+  categoryName,
+  categoryUrl,
+  level2CategoryName,
+  level2CategoryUrl,
+  pageName,
+  pageDescription,
+  pageItems,
+  pageItemsLevel,
+  categorySlug,
+  leftMenuMobile,
+  backBtnName,
+  backBtnUrl
+}) => {
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollHeight = window.innerHeight * 2;
+      setShowButton(window.scrollY > scrollHeight);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <StyledCategoryContent>
       <StyledWrapperContent>
@@ -46,7 +63,7 @@ const CategoryContent = ({
           />
           <Heading className="wrapper-title" level={3} label={pageName} />
           {pageDescription &&
-            <Text>{ReactHtmlParser(pageDescription)}</Text>
+            <Text className="wrapper-description">{ReactHtmlParser(pageDescription)}</Text>
           }
           {pageItems?.sort((a, b) => {
               const aValue = a.attributes.name || a.attributes.title;
@@ -63,6 +80,7 @@ const CategoryContent = ({
           )}
         </div>
       </StyledWrapperContent>
+      <ScrollToTopButton showButton={showButton} />
     </StyledCategoryContent>
   );
 };

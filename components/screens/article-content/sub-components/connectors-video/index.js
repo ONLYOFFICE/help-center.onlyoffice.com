@@ -26,7 +26,7 @@ const ConnectorsVideo = ({ t, videos }) => {
   }, [videos.length]);
 
   return (
-    <StyledConnectorsVideo id="watchvideo">
+    <StyledConnectorsVideo id="watchvideo_block">
       <Heading level={4}>{t("WatchVideo")}</Heading>
       <div className={`vids ${videos.length == 1 ? "single" : ""}`}>
         {videos?.map((item, index) =>

@@ -5,7 +5,7 @@ import StyledWrapperContent from "@components/screens/common/wrapper-content/sty
 import Heading from "@components/common/heading";
 import InternalLink from "@components/common/internal-link";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
-// import Video from "../../sub-components/subcat-video";
+import VideoBlock from "@components/screens/common/video-block";
 
 const SubCategoryContent = ({
     t,
@@ -22,11 +22,13 @@ const SubCategoryContent = ({
     leftMenuMobile,
     setLeftMenuMobile,
     backBtnName,
-    backBtnUrl
+    backBtnUrl,
+    video
   }) => {
   const contentRef = useRef();
+  const lastActiveSectionRef = useRef(null);
   const [activeSection, setActiveSection] = useState(null);
-  const [level4CategoryHeadings, setLevel4CategoryHeadings] = useState([]);
+  const [headings, setHeadings] = useState([]);
 
   useEffect(() => {
     if (contentRef.current) {
@@ -36,7 +38,7 @@ const SubCategoryContent = ({
         const headings = [];
 
         div.querySelectorAll("[id$='_block']").forEach(block => {
-          const firstHeading = block.querySelector("h1, h2, h3, h4, h5, h6");
+          const firstHeading = block.querySelector("h5");
           if (firstHeading) {
             headings.push({
               id: block.id,
@@ -47,7 +49,7 @@ const SubCategoryContent = ({
         return headings;
       };
   
-      setLevel4CategoryHeadings(extractHeadings(contentRef.current.outerHTML));
+      setHeadings(extractHeadings(contentRef.current.outerHTML));
     }
   }, [contentRef]);
 
@@ -55,22 +57,31 @@ const SubCategoryContent = ({
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const sections = document.querySelectorAll("[id$='_block']");
+      const menuSections = Array.from(sections).filter(section => section.querySelector("h5"));
 
       let currentSection = null;
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
+      menuSections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
         const sectionHeight = section.clientHeight;
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        if ((scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) || (scrollPosition > sectionTop + sectionHeight)) {
           currentSection = section.id;
         }
       });
-      setActiveSection(currentSection || activeSection);
+
+      if (currentSection !== lastActiveSectionRef.current) {
+        lastActiveSectionRef.current = currentSection;
+        setActiveSection(currentSection);
+      } else {
+        setActiveSection(currentSection || menuSections[0]?.id);
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -81,7 +92,8 @@ const SubCategoryContent = ({
           t={t}
           pageName={pageName}
           isLevel4CategoryPage={true}
-          headings={level4CategoryHeadings}
+          headings={headings}
+          activeSection={activeSection}
           leftMenuMobile={leftMenuMobile}
           setLeftMenuMobile={setLeftMenuMobile}
           backBtnName={backBtnName}
@@ -106,12 +118,12 @@ const SubCategoryContent = ({
             {pageName}
           </Heading>
           <div ref={contentRef}>
-            {pageItems.sort((a, b) => {
+            {pageItems?.sort((a, b) => {
                 const aValue = a.attributes.name || a.attributes.title;
                 const bValue = b.attributes.name || b.attributes.title;
                 return aValue.localeCompare(bValue);
               }).map((item, index) => (
-                <div id={`${item.attributes.name.replace(' ', '_').toLowerCase()}_block`} className="subcat-div" key={index}>
+                <div id={`${item.attributes.name.replaceAll(" ", "_").toLowerCase()}_block`} className="subcat-div" key={index}>
                   <Heading level={5}>{item.attributes.name}</Heading>
                   <ul className="classic-ul">
                     {item.attributes[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`].data.sort((a, b) => {
@@ -129,7 +141,9 @@ const SubCategoryContent = ({
               )
             )}
           </div>
-          {/* <Video t={t} items={articles && articles[0].level_5} /> */}
+          {video?.data && 
+            <VideoBlock t={t} video={video} />
+          }
         </div>
       </StyledWrapperContent>
     </StyledSubCategoryContent>

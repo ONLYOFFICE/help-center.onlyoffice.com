@@ -49,7 +49,7 @@ export const getServerSideProps = async ({ locale }) => {
   const categoriesMenu = await getCategoriesMenu(locale);
   const tagsData = await getTags(locale);
 
-  if (tagsData.data.length === 0) {
+  if (tagsData.data === null || tagsData.data.length === 0) {
     return {
       notFound: true
     };
