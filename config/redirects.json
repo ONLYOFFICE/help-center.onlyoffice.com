@@ -1,0 +1,10 @@
+{
+    "/ONLYOFFICE-Editors/ONLYOFFICE-Spreadsheet-Editor/ProgramInterface/FileTab.aspx": {
+      "destination": "/docs/installation",
+      "permanent": true
+    },
+    "/blog/post-old": {
+      "destination": "/blog/post-new",
+      "permanent": true
+    }
+  }

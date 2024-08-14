@@ -1,4 +1,5 @@
 const { i18n } = require("./next-i18next.config");
+const redirects = require('./config/redirects.json');
 
 const nextConfig = {
   async headers() {
@@ -34,6 +35,16 @@ const nextConfig = {
     styledComponents: true,
   },
   productionBrowserSourceMaps: true,
+  async redirects() {
+    return Object.keys(redirects).map((source) => {
+      const { destination, permanent } = redirects[source];
+      return {
+        source,
+        destination,
+        permanent,
+      };
+    });
+  },
 };
 
 module.exports = nextConfig;

@@ -27,6 +27,7 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
     tags,
     name,
     icon,
+    videos,
     [`category_${categorySlugOne}`]: level1Data,
     [`level_3_${categorySlugMany}`]: level3Data,
     [`level_2_${categorySlugOne}`]: level2DataArticle,
@@ -80,6 +81,7 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             setLeftMenuMobile={setLeftMenuMobile}
             backBtnName={level1Data?.data?.attributes.name}
             backBtnUrl={level1Data?.data?.attributes.url}
+            videos={videos}
           />
         ) : (
           level3Data?.data[0]?.attributes[`${categorySlug === "docs" ? "article" : "articles"}_${categorySlugMany}`]?.data.length > 0 ? (
@@ -97,6 +99,7 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
               setLeftMenuMobile={setLeftMenuMobile}
               backBtnName={level1Data?.data?.attributes.name}
               backBtnUrl={level1Data?.data?.attributes.url}
+              pageDescription={description}
             />
           ) : (
             <CategoryContent

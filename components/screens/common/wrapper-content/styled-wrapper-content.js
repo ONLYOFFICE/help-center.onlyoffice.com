@@ -192,6 +192,10 @@ const StyledWrapperContent = styled.div`
       color: #5b9c18;
     }
   }
+
+  .question_answer a {
+    color: #ff6f3d;
+  }
 `;
 
 export default StyledWrapperContent;

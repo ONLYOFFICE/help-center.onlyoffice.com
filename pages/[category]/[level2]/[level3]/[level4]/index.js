@@ -59,6 +59,7 @@ const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
           backBtnName={level2Data?.data?.attributes.name}
           backBtnUrl={level2Data?.data?.attributes.url}
           video={video}
+          pageDescription={description}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>

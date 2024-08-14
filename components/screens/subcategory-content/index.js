@@ -6,6 +6,7 @@ import Heading from "@components/common/heading";
 import InternalLink from "@components/common/internal-link";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import VideoBlock from "@components/screens/common/video-block";
+import ReactHtmlParser from "react-html-parser";
 
 const SubCategoryContent = ({
     t,
@@ -23,7 +24,8 @@ const SubCategoryContent = ({
     setLeftMenuMobile,
     backBtnName,
     backBtnUrl,
-    video
+    video,
+    pageDescription
   }) => {
   const contentRef = useRef();
   const lastActiveSectionRef = useRef(null);
@@ -72,7 +74,7 @@ const SubCategoryContent = ({
         lastActiveSectionRef.current = currentSection;
         setActiveSection(currentSection);
       } else {
-        setActiveSection(currentSection || menuSections[0].id);
+        setActiveSection(currentSection || menuSections[0]?.id);
       }
     };
 
@@ -117,6 +119,9 @@ const SubCategoryContent = ({
             }
             {pageName}
           </Heading>
+          {pageDescription &&
+            <>{ReactHtmlParser(pageDescription)}</>
+          }
           <div ref={contentRef}>
             {pageItems?.sort((a, b) => {
                 const aValue = a.attributes.name || a.attributes.title;

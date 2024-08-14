@@ -92,6 +92,7 @@ const Level2CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
               setLeftMenuMobile={setLeftMenuMobile}
               backBtnName={general_category.data.attributes.name}
               backBtnUrl={general_category.data.attributes.url}
+              pageDescription={description}
             />
           )
         )}
