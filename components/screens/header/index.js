@@ -57,7 +57,7 @@ const Header = ({ t, locale, categories, isMain, leftMenuMobile, setLeftMenuMobi
   }, []);
 
   return (
-    <StyledHeader>
+    <StyledHeader locale={locale}>
       <div className="header-container">
         <button
           onClick={() => setLeftMenuMobile(true)}

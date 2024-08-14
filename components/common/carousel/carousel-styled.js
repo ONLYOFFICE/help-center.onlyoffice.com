@@ -78,7 +78,7 @@ const StyledCarousel = styled.div`
       } */
     }
   }
-  @media ${device.tabletS} {
+  @media ${device.mobile} {
     .slick-slider {
       .slide-carousel {
         margin: 0;

@@ -8,7 +8,7 @@ const StyledSection = styled.section`
     margin: 0 auto;
   }
 
-  @media ${device.tabletS} {
+  @media ${device.mobile} {
     .section-page {
       padding: 0 16px;
     }

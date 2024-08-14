@@ -49,7 +49,7 @@ const StyledArticlePopup = styled.div`
       width: 95vw;
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       padding: 24px 16px;
       width: calc(100vw - 32px);
 

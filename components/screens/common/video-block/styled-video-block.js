@@ -21,7 +21,7 @@ const StyledVideoBlock = styled.div`
       color: #FF6F3D;
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       margin-bottom: 32px;
     }
   }
@@ -37,7 +37,7 @@ const StyledVideoBlock = styled.div`
       display: block;
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       margin-bottom: 32px;
     }
   }
@@ -96,7 +96,7 @@ const StyledVideoBlock = styled.div`
     }
   }
 
-  @media ${device.tabletS} {
+  @media ${device.mobile} {
     padding: 24px;
   }
 `;

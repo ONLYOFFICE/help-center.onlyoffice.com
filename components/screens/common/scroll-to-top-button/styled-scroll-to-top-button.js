@@ -40,7 +40,7 @@ const StyledScrollToTopButton = styled.div`
       height: 24px;
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       border: none;
       border-radius: 4px;
       margin-left: 0;
@@ -58,7 +58,7 @@ const StyledScrollToTopButton = styled.div`
     height: 24px;
   }
 
-  @media ${device.tabletS} {
+  @media ${device.mobile} {
     position: fixed;
     top: initial;
     right: 24px;

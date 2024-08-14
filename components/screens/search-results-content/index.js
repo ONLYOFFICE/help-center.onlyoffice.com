@@ -7,8 +7,10 @@ import CategoriesLeftMenu from "@components/screens/common/categories-left-menu"
 import InternalLink from "@components/common/internal-link";
 import Heading from "@components/common/heading";
 import Pagination from "@components/common/pagination";
-import { useState, useEffect } from "react";
 
+const SearchResultsContent = ({ t, searchData, leftMenuMobile, setLeftMenuMobile, leftMenuCategories, page, searchResults, locale, sort, query }) => {
+  const countPage = page;
+  const [pageLimit, setPageLimit] = useState(countPage > 7 ? 7 : countPage);
   const [categoriesLeftMenu, setCategoriesLeftMenu] = useState(leftMenuCategories);
 
   useEffect(() => {
@@ -21,10 +23,6 @@ import { useState, useEffect } from "react";
   }, []);
 
 const paginationSize = 7;
-
-const SearchResultsContent = ({ t, searchData, leftMenuMobile, setLeftMenuMobile, leftMenuCategories, page, searchResults, locale, sort, query }) => {
-  const countPage = searchData.meta?.pagination.pageCount;
-  const [pageLimit, setPageLimit] = useState(countPage > 7 ? 7 : countPage);
 
   const arrayStart = [...Array(countPage).keys()].map(i => i + 1)
     .filter(item => item % pageLimit === 0)

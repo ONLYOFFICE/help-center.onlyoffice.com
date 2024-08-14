@@ -12,7 +12,7 @@ const StyledFooterItem = styled.div`
     flex-direction: column;
     gap: 8px;
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       display: grid;
       position: initial;
       margin-bottom: 0;
@@ -55,7 +55,7 @@ const StyledFooterItem = styled.div`
     text-transform: uppercase;
 
     &:after {
-      @media ${device.tabletS} {
+      @media ${device.mobile} {
         content: "";
         display: inline-flex;
         width: 11px;
@@ -67,13 +67,13 @@ const StyledFooterItem = styled.div`
 
     &.up {
       &:after {
-        @media ${device.tabletS} {
+        @media ${device.mobile} {
           transform: rotate(90deg);
         }
       }
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -85,7 +85,7 @@ const StyledFooterItem = styled.div`
     }
   }
 
-  @media ${device.tabletS} {
+  @media ${device.mobile} {
     display: block;
     border-bottom: 1px solid #616161;
   }

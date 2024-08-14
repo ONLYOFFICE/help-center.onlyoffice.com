@@ -30,7 +30,7 @@ const StyledAccordionContent = styled(Section)`
       padding: 0 0 48px;
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       font-size: 20px;
       padding: 0 0 32px;
     }
@@ -40,7 +40,7 @@ const StyledAccordionContent = styled(Section)`
     padding: 0 0 88px;
   }
 
-  @media ${device.tabletS} {
+  @media ${device.mobile} {
     padding: 0 0 48px;
   }
 `;

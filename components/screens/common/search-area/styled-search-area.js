@@ -22,7 +22,7 @@ const StyledSearchArea = styled.div`
       color: ${(props) => (props.isLeftMenu ? "#CCCCCC" : "#808080")};
     }
 
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       ${(props) => props.isLeftMenu && css`
         padding: 14px 16px 14px 48px;
         line-height: 20px;
@@ -31,7 +31,7 @@ const StyledSearchArea = styled.div`
       `}
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       ${(props) => !props.isLeftMenu && css`
         border-radius: 24px;
         padding: 13px 48px 13px 16px;
@@ -65,14 +65,14 @@ const StyledSearchArea = styled.div`
       background-image: url(${search.src});
     }
 
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       ${(props) => props.isLeftMenu && css`
         width: 24px;
         height: 24px;
       `}
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       ${(props) => !props.isLeftMenu && css`
         right: 16px;
       `}

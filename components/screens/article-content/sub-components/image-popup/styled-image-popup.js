@@ -61,7 +61,7 @@ const StyledImagePopup = styled.div`
       }
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       display: none;
     }
   }

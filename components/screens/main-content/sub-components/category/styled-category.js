@@ -10,7 +10,7 @@ const StyledCategory = styled.div`
   .category-box {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     min-width: 120px;
 
@@ -20,7 +20,7 @@ const StyledCategory = styled.div`
       }
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       min-width: 104px;
     }
   }
@@ -31,7 +31,7 @@ const StyledCategory = styled.div`
     min-width: 80px;
     height: 80px;
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       margin-bottom: 16px;
       width: 64px;
       min-width: 64px;
