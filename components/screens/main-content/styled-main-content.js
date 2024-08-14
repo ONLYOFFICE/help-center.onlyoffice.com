@@ -141,6 +141,7 @@ const StyledMainContent = styled(Section)`
     color: #333333;
     text-decoration: none;
     text-transform: uppercase;
+    transition: color 0.3s;
 
     img {
       margin-right: 8px;
@@ -152,6 +153,10 @@ const StyledMainContent = styled(Section)`
 
     &:not(:last-child) {
       margin-right: 48px;
+    }
+
+    &:hover {
+      color: #ff6f3d;
     }
   }
 
