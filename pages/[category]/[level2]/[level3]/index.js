@@ -28,12 +28,14 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
     name,
     icon,
     videos,
+    description,
     [`category_${categorySlugOne}`]: level1Data,
     [`level_3_${categorySlugMany}`]: level3Data,
     [`level_2_${categorySlugOne}`]: level2DataArticle,
     [`level_3_${categorySlugOne}`]: level3DataArticle,
     [`level_4_${categorySlugOne}`]: level4DataArticle,
-    [`category_${categorySlugMany}`]: categoryDataArticle
+    [`category_${categorySlugMany}`]: categoryDataArticle,
+    [`article_${categorySlugMany}`]: articleData
   } = categoryData.data?.[0]?.attributes;
 
   const categoryName = categoryDataArticle?.data?.attributes.general_category.data.attributes.name || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name;
@@ -94,7 +96,7 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
               level2CategoryUrl={level1Data?.data?.attributes.url}
               pageName={name}
               pageIcon={icon}
-              pageItems={level3Data.data}
+              pageItems={level3Data?.data.length > 0 ? level2Data?.data : articleData?.data}
               leftMenuMobile={leftMenuMobile}
               setLeftMenuMobile={setLeftMenuMobile}
               backBtnName={level1Data?.data?.attributes.name}

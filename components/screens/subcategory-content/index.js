@@ -7,26 +7,28 @@ import InternalLink from "@components/common/internal-link";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import VideoBlock from "@components/screens/common/video-block";
 import ReactHtmlParser from "react-html-parser";
+import { handleFaqAccordionClick, handleChangelogClick } from "@components/screens/article-content/utils/handle-click-functions";
 
 const SubCategoryContent = ({
-    t,
-    pageName,
-    pageIcon,
-    pageItems,
-    categorySlug,
-    categoryName,
-    categoryUrl,
-    level2CategoryName,
-    level2CategoryUrl,
-    level3CategoryName,
-    level3CategoryUrl,
-    leftMenuMobile,
-    setLeftMenuMobile,
-    backBtnName,
-    backBtnUrl,
-    video,
-    pageDescription
-  }) => {
+  t,
+  pageName,
+  pageIcon,
+  pageItems,
+  categorySlug,
+  categoryName,
+  categoryUrl,
+  level2CategoryName,
+  level2CategoryUrl,
+  level3CategoryName,
+  level3CategoryUrl,
+  leftMenuMobile,
+  setLeftMenuMobile,
+  backBtnName,
+  backBtnUrl,
+  video,
+  pageDescription
+}) => {
+  const containerRef = useRef(null);
   const contentRef = useRef();
   const lastActiveSectionRef = useRef(null);
   const [activeSection, setActiveSection] = useState(null);
@@ -50,7 +52,7 @@ const SubCategoryContent = ({
         });
         return headings;
       };
-  
+
       setHeadings(extractHeadings(contentRef.current.outerHTML));
     }
   }, [contentRef]);
@@ -77,6 +79,10 @@ const SubCategoryContent = ({
         setActiveSection(currentSection || menuSections[0]?.id);
       }
     };
+    const firstHeader = document.querySelector('.changelog-main-header');
+    if (firstHeader) {
+      firstHeader.click();
+    }
 
     handleScroll();
 
@@ -87,6 +93,12 @@ const SubCategoryContent = ({
     };
   }, []);
 
+  const hasNameField = pageItems.some(item => item.attributes.hasOwnProperty('name'));
+
+  const handleClick = (event) => {
+    handleFaqAccordionClick(event, containerRef.current);
+    handleChangelogClick(event);
+  };
   return (
     <StyledSubCategoryContent>
       <StyledWrapperContent>
@@ -120,33 +132,44 @@ const SubCategoryContent = ({
             {pageName}
           </Heading>
           {pageDescription &&
-            <>{ReactHtmlParser(pageDescription)}</>
+            <div onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</div>
           }
           <div ref={contentRef}>
-            {pageItems?.sort((a, b) => {
-                const aValue = a.attributes.name || a.attributes.title;
-                const bValue = b.attributes.name || b.attributes.title;
+            {hasNameField === true ? (pageItems && pageItems.sort((a, b) => {
+              const aValue = a.attributes.name || a.attributes.title;
+              const bValue = b.attributes.name || b.attributes.title;
+              return aValue.localeCompare(bValue);
+            }).map((item, index) => (
+              <div id={`${item.attributes.name.replace(/ /g, "_").toLowerCase()}_block`} className="subcat-div" key={index}>
+                <Heading level={5}>{item.attributes.name}</Heading>
+                <ul className="classic-ul">
+                  {item.attributes[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`].data.sort((a, b) => {
+                    const aValue = a.attributes.name || a.attributes.title;
+                    const bValue = b.attributes.name || b.attributes.title;
+                    return aValue.localeCompare(bValue);
+                  }).map((item, index) => (
+                    <li key={index}>
+                      <InternalLink href={item.attributes.url} label={item.attributes.title} />
+                    </li>
+                  )
+                  )}
+                </ul>
+              </div>
+            )
+            )) : (<>
+              {pageItems && pageItems.sort((a, b) => {
+                const aValue = a.attributes.title;
+                const bValue = b.attributes.title;
                 return aValue.localeCompare(bValue);
               }).map((item, index) => (
-                <div id={`${item.attributes.name.replaceAll(" ", "_").toLowerCase()}_block`} className="subcat-div" key={index}>
-                  <Heading level={5}>{item.attributes.name}</Heading>
-                  <ul className="classic-ul">
-                    {item.attributes[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`].data.sort((a, b) => {
-                        const aValue = a.attributes.name || a.attributes.title;
-                        const bValue = b.attributes.name || b.attributes.title;
-                        return aValue.localeCompare(bValue);
-                      }).map((item, index) => (
-                        <li key={index}>
-                          <InternalLink href={item.attributes.url} label={item.attributes.title} />
-                        </li>
-                      )
-                    )}
-                  </ul>
+                <div className="subcat-empty-div" key={index}>
+                  <InternalLink href={item.attributes.url} label={item.attributes.title} />
                 </div>
               )
-            )}
+              )}
+            </>)}
           </div>
-          {video?.data && 
+          {video?.data &&
             <VideoBlock t={t} video={video} />
           }
         </div>

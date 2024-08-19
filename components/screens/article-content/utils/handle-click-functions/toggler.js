@@ -2,20 +2,37 @@ const handleTogglerClick = (event) => {
   const clickedTarget = event.target;
 
   if (clickedTarget.tagName === "SPAN" && clickedTarget.classList.contains("toggler")) {
-    const ipHideCont = document.querySelector(".iphidecont") || document.querySelector(".hidecont");
-    const ipShowCont = document.querySelector(".ipshowcont") || document.querySelector(".showcont");
-    const ipContents = document.querySelector(".ipcontents") || document.querySelector(".contents");
+    const parentElement = clickedTarget.parentElement;
+    const ipHideCont = parentElement.querySelector(".iphidecont") || parentElement.querySelector(".hidecont");
+    const ipShowCont = parentElement.querySelector(".ipshowcont") || parentElement.querySelector(".showcont");
+    const ipContents = parentElement.querySelector(".ipcontents") || parentElement.querySelector(".contents");
 
     if (clickedTarget.classList.contains("iphidecont") || clickedTarget.classList.contains("hidecont")) {
-      ipHideCont.style.display = "none";
-      ipContents.style.display = "none";
-      ipShowCont.style.display = "block";
+      if (ipHideCont) ipHideCont.style.display = "none";
+      if (ipContents) ipContents.style.display = "none";
+      if (ipShowCont) ipShowCont.style.display = "block";
     } else if (clickedTarget.classList.contains("ipshowcont") || clickedTarget.classList.contains("showcont")) {
-      ipHideCont.style.display = "block";
-      ipContents.style.display = "block";
-      ipShowCont.style.display = "none";
+      if (ipHideCont) ipHideCont.style.display = "block";
+      if (ipContents) ipContents.style.display = "block";
+      if (ipShowCont) ipShowCont.style.display = "none";
     }
   }
 };
 
-export { handleTogglerClick };
+const handleChangelogClick = (event) => {
+  const clickedTarget = event.target;
+  if (clickedTarget.tagName === 'P' && clickedTarget.classList.contains('changelog-main-header')) {
+      const switcher = clickedTarget.parentElement.querySelector('.changelog-switcher');
+      const switcherDisplay = getComputedStyle(switcher).getPropertyValue('display');
+
+      if (switcherDisplay === 'none') {
+          switcher.style.display = 'block';
+          clickedTarget.style.setProperty('--content', '"-"');
+      } else {
+          switcher.style.display = 'none';
+          clickedTarget.style.setProperty('--content', '"+"');
+      }
+  }
+};
+
+export { handleTogglerClick, handleChangelogClick };
