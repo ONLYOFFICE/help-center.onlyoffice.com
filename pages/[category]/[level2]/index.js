@@ -80,6 +80,7 @@ const Level2CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
               leftMenuMobile={leftMenuMobile}
               backBtnName={general_category.data.attributes.name}
               backBtnUrl={general_category.data.attributes.url}
+              lvlArticles={articleData?.data.length > 0 ? articleData?.data : null}
             />
           ) : (
             <SubCategoryContent 
@@ -94,6 +95,7 @@ const Level2CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
               backBtnName={general_category.data.attributes.name}
               backBtnUrl={general_category.data.attributes.url}
               pageDescription={description}
+              lvlArticles={articleData?.data.length > 0 ? articleData?.data : null}
             />
           )
         )}

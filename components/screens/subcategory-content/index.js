@@ -26,7 +26,8 @@ const SubCategoryContent = ({
   backBtnName,
   backBtnUrl,
   video,
-  pageDescription
+  pageDescription,
+  lvlArticles
 }) => {
   const containerRef = useRef(null);
   const contentRef = useRef();
@@ -135,6 +136,16 @@ const SubCategoryContent = ({
             <div onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</div>
           }
           <div ref={contentRef}>
+            {lvlArticles && lvlArticles.sort((a, b) => {
+              const aValue = a.attributes.title;
+              const bValue = b.attributes.title;
+              return aValue.localeCompare(bValue);
+            }).map((item, index) => (
+              <div id={`${item.attributes.title.replace(/ /g, "_").toLowerCase()}_block`} className="subcat-empty-div" key={index}>
+                <InternalLink href={item.attributes.url} label={item.attributes.title} />
+              </div>
+            )
+            )}
             {hasNameField === true ? (pageItems && pageItems.sort((a, b) => {
               const aValue = a.attributes.name || a.attributes.title;
               const bValue = b.attributes.name || b.attributes.title;

@@ -8,6 +8,7 @@ import Text from "@components/common/text";
 import ReactHtmlParser from "react-html-parser";
 import CategoryItem from "./sub-components/category-item";
 import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
+import InternalLink from "@components/common/internal-link";
 
 const CategoryContent = ({
   t,
@@ -22,7 +23,8 @@ const CategoryContent = ({
   categorySlug,
   leftMenuMobile,
   backBtnName,
-  backBtnUrl
+  backBtnUrl,
+  lvlArticles
 }) => {
   const [showButton, setShowButton] = useState(false);
 
@@ -65,18 +67,28 @@ const CategoryContent = ({
           {pageDescription &&
             <Text className="wrapper-description">{ReactHtmlParser(pageDescription)}</Text>
           }
+          {lvlArticles && lvlArticles.sort((a, b) => {
+            const aValue = a.attributes.title;
+            const bValue = b.attributes.title;
+            return aValue.localeCompare(bValue);
+          }).map((item, index) => (
+            <div id={`${item.attributes.title.replace(/ /g, "_").toLowerCase()}_block`} className="subcat-empty-div" key={index}>
+              <InternalLink href={item.attributes.url} label={item.attributes.title} />
+            </div>
+          )
+          )}
           {pageItems?.sort((a, b) => {
-              const aValue = a.attributes.name || a.attributes.title;
-              const bValue = b.attributes.name || b.attributes.title;
-              return aValue.localeCompare(bValue);
-            }).map((item, index) => (
-              <CategoryItem
-                data={item}
-                pageItemsLevel={pageItemsLevel}
-                categorySlug={categorySlug}
-                key={index}
-              />
-            )
+            const aValue = a.attributes.name || a.attributes.title;
+            const bValue = b.attributes.name || b.attributes.title;
+            return aValue.localeCompare(bValue);
+          }).map((item, index) => (
+            <CategoryItem
+              data={item}
+              pageItemsLevel={pageItemsLevel}
+              categorySlug={categorySlug}
+              key={index}
+            />
+          )
           )}
         </div>
       </StyledWrapperContent>
