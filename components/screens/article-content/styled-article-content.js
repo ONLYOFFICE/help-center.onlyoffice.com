@@ -516,6 +516,10 @@ const RawHtmlStyle = styled.div`
       &:hover {
         text-decoration: underline;
       }
+
+      &:visited {
+        color: #ff6f3d;
+      }
     }
 
     //headings 

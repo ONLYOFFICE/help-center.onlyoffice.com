@@ -72,6 +72,9 @@ const StyledWrapperContent = styled.div`
       }
     }
   }
+  .subcat-empty-div {
+    padding: 0 0 16px;
+  }
 
   .classic-ul {
     list-style-type: none;
@@ -122,10 +125,11 @@ const StyledWrapperContent = styled.div`
       text-align: left;
 
       &::before {
-        content: "+";
+        content: var(--content, '+');
+        display: inline-block;
         height: 24px;
         padding: 0 10px 0 0;
-        width: 24px;
+        width: 14px;
       }
     }
     .changelog-release-date {
@@ -146,6 +150,10 @@ const StyledWrapperContent = styled.div`
         font-weight: 600;
         padding: 24px 0 16px;
         margin: 0;
+
+        a {
+          color: #ff6f3d;
+        }
       }
 
       .bigVideoCont {
@@ -191,6 +199,10 @@ const StyledWrapperContent = styled.div`
     &.answer {
       color: #5b9c18;
     }
+  }
+
+  .question_answer a {
+    color: #ff6f3d;
   }
 `;
 
