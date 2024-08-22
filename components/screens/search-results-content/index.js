@@ -22,8 +22,6 @@ const SearchResultsContent = ({ t, searchData, leftMenuMobile, setLeftMenuMobile
     getCategoriesLeftMenuData();
   }, []);
 
-const paginationSize = 7;
-
   const arrayStart = [...Array(countPage).keys()].map(i => i + 1)
     .filter(item => item % pageLimit === 0)
     .map((item, index) => item - index);
@@ -59,6 +57,7 @@ const paginationSize = 7;
       window.removeEventListener("resize", resizeHandler);
     };
   });
+
   return (
     <>
       <CategoriesLeftMenu
@@ -82,7 +81,8 @@ const paginationSize = 7;
                   </InternalLink>
                   <p className="search-results-description">
                   <Highlighter className="search-results-query" searchWords={[query]} textToHighlight={item?.attributes?.description?.replace(/<[^>]*>/g, "") || item?.attributes?.content.replace(/<[^>]*>/g, '')} />
-                  </p>                </div>
+                  </p>                
+                </div>
               ))}
             </div>
             {countPage !== 0 && countPage !== 1 &&

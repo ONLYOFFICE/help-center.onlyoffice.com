@@ -50,8 +50,10 @@ const SearchResult = ({ locale, categories, searchResults, query }) => {
 };
 
 export const getServerSideProps = async ({ locale, query }) => {
+  const page = query.page || 1;
+  const pageSize = query.pageSize || 12;
   const categories = await getCategoriesMenu(locale);
-  const searchResults = await getSearchResults(locale, query.query)
+  const searchResults = await getSearchResults(locale, query.query, page, pageSize)
 
   return {
     props: {
@@ -59,6 +61,7 @@ export const getServerSideProps = async ({ locale, query }) => {
       locale,
       categories,
       searchResults,
+      page,
       query: query.query
     },
   };
