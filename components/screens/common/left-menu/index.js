@@ -6,20 +6,20 @@ import Heading from "@components/common/heading";
 import TreeView from "@components/screens/common/left-menu/sub-components/treeview";
 
 const LeftMenu = ({
-    t,
-    isArticle,
-    isLevel4CategoryPage,
-    pageName,
-    pageItems,
-    pageItemsLevel,
-    categorySlug,
-    headings,
-    activeSection,
-    backBtnUrl,
-    backBtnName,
-    leftMenuMobile,
-    setLeftMenuMobile
-  }) => {
+  t,
+  isArticle,
+  isLevel4CategoryPage,
+  pageName,
+  pageItems,
+  pageItemsLevel,
+  categorySlug,
+  headings,
+  activeSection,
+  backBtnUrl,
+  backBtnName,
+  leftMenuMobile,
+  setLeftMenuMobile
+}) => {
   return (
     <StyledLeftMenu className={`left-menu ${leftMenuMobile ? "active" : ""}`}>
       <div className="left-menu-wrapper">
@@ -36,28 +36,24 @@ const LeftMenu = ({
           {pageName &&
             <Heading className="left-menu-title" level={6} label={pageName} />
           }
-
-          {isArticle || isLevel4CategoryPage ? (
-            <ul className="left-menu-items left-menu-articles">
-    
-              {headings.map((item, index) => (
+          <ul className={`left-menu-items ${isArticle || isLevel4CategoryPage ? "left-menu-articles" : ""}`}>
+            {isArticle || isLevel4CategoryPage ? (
+              headings.map((item, index) => (
                 <li className={activeSection === item.id ? "active" : ""} key={index}>
                   <InternalLink onClick={() => setLeftMenuMobile(false)} href={`#${item.id}`} label={item.text} />
                 </li>
-              ))}
-            </ul>
-          ) : pageItems ? (
-            <ul className="left-menu-items">
-              {pageItems?.map((article, index) => (
+              ))
+            ) : pageItems ? (
+              pageItems.map((article, index) => (
                 <TreeView
                   key={index}
                   article={article}
                   pageItemsLevel={pageItemsLevel}
                   categorySlug={categorySlug}
                 />
-              ))}
-            </ul>
-          ) : null}
+              ))
+            ) : null}
+          </ul>
           <ul className="left-menu-info">
             <li><InternalLink href="/glossary.aspx" className="glossary" label={t("Glossary")} /></li>
             <li><InternalLink href="/video.aspx" className="video" label={t("Video")} /></li>
@@ -65,7 +61,7 @@ const LeftMenu = ({
           </ul>
         </Scrollbar>
       </div>
-    </StyledLeftMenu>
+    </StyledLeftMenu >
   )
 }
 

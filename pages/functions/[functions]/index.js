@@ -12,7 +12,6 @@ import ArticleContent from "@components/screens/article-content";
 const FunctionsPage = ({ locale, categoriesMenu, functions }) => {
   const { t } = useTranslation();
   const [leftMenuMobile, setLeftMenuMobile] = useState(false);
-
   const { title, content, tags } = functions.data[0].attributes;
 
   return (
@@ -41,6 +40,7 @@ const FunctionsPage = ({ locale, categoriesMenu, functions }) => {
           pageDescription={content}
           tags={tags}
           leftMenuMobile={leftMenuMobile}
+          pageName={title}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>
@@ -52,7 +52,7 @@ const FunctionsPage = ({ locale, categoriesMenu, functions }) => {
 
 export async function getServerSideProps({ locale, params }) {
   const categoriesMenu = await getCategoriesMenu(locale);
-  const functions = await getFunctions(locale, `/functions/${params.functions}`);
+  const functions = await getFunctions(locale, `functions/${params.functions}`);
 
   if (functions.data.length === 0) {
     return {

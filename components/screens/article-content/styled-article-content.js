@@ -636,6 +636,10 @@ const RawHtmlStyle = styled.div`
       display: none;
     }
 
+    img.floatleft {
+      float: left;
+    }
+
     // inputs 
     input {
       display: none;
