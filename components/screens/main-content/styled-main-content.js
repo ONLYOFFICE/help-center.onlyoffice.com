@@ -37,13 +37,13 @@ const StyledMainContent = styled(Section)`
     &.category-content {
       padding: 72px 0 0;
 
-      @media ${device.tabletS} {
+      @media ${device.mobile} {
         padding: 56px 0;
       }
     }
 
-    @media ${device.tabletS} {
-      padding: 100px 0 48px;
+    @media ${device.mobile} {
+      padding: 56px 0 48px;
     }
   }
 
@@ -60,7 +60,7 @@ const StyledMainContent = styled(Section)`
     height: 80px;
     object-fit: contain;
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       width: 48px;
       height: 48px;
     }
@@ -70,16 +70,16 @@ const StyledMainContent = styled(Section)`
     letter-spacing: -0.02em;
     text-align: center;
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       font-size: 28px;
-      line-height: 48px;
+      line-height: 37px;
     }
   }
 
   .info-content-search {
     margin-bottom: 80px;
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       margin-bottom: 55px;
     }
   }
@@ -121,7 +121,7 @@ const StyledMainContent = styled(Section)`
       padding: 80px 0 88px;
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       padding: 48px 0;
     }
   }

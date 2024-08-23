@@ -30,7 +30,7 @@ const StyledTreeView = styled.li`
       color: #FF6F3D;
     }
 
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       padding: 10px 0;
       font-weight: 400;
     }
@@ -53,7 +53,7 @@ const StyledTreeView = styled.li`
       color: #FF6F3D;
     }
 
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       padding: 10px 0 10px 34px;
     }
   }

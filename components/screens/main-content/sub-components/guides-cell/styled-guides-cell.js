@@ -38,8 +38,6 @@ const StyledGuidesCell = styled.div`
 
   .guides-cell-icon {
     margin-right: 24px;
-    width: 48px;
-    height: 48px;
     object-fit: contain;
   }
 
@@ -91,6 +89,10 @@ const StyledGuidesCell = styled.div`
     letter-spacing: 0.04em;
     color: #333333;
 
+    @media ${device.mobile} {
+      font-size: 13px;
+    }
+
     &.guides-cell-header-link {
       font-size: 12px;
       font-weight: 700;
@@ -112,15 +114,31 @@ const StyledGuidesCell = styled.div`
   @media ${device.tablet} {
     .guides-cell-columns {
       grid-template-columns: 1fr;
-      gap:  ${(props) => (props.isCategoryPage ? "24px" : "32px")};
+      gap:  ${(props) => (props.isCategoryPage ? "24px" : "16px" )};
     }
+    .guides-cell-header-link {
+      padding-top: ${(props) => (props.isCategoryPage ? "0px" : "16px")};
+    }
+
     .guides-cell-link.guides-cell-header-link:not(:first-of-type) {
       padding-top: ${(props) => (props.isCategoryPage ? "0px" : "16px")};
     }
+
+    .guides-cell-icon {
+      margin-right: 32px;
+    }
   }
 
-  @media ${device.tabletS} {
+  @media ${device.mobile} {
     margin-bottom: ${(props) => (props.isCategoryPage ? "24px" : "32px")};
+
+    .guides-cell-icon {
+      margin-right: 24px;
+    }
+
+    .guides-cell-title {
+      font-size: 16px;
+    }
   }
 `;
 

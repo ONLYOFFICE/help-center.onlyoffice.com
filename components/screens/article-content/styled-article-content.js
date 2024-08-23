@@ -1058,7 +1058,7 @@ const RawHtmlStyle = styled.div`
         text-decoration: none;
       }
 
-      @media ${device.tabletS} {
+      @media ${device.mobile} {
         font-size: 13px;
         line-height: 20px;
       }
@@ -1100,7 +1100,7 @@ const RawHtmlStyle = styled.div`
           }
         }
 
-        @media ${device.tabletS} {
+        @media ${device.mobile} {
           font-size: 16px;
           line-height: 21px;
         }
@@ -1123,12 +1123,12 @@ const RawHtmlStyle = styled.div`
         }
       }
 
-      @media ${device.tabletS} {
+      @media ${device.mobile} {
         padding: 24px 0;
       }
     }
 
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       img.bigphoto_screen {
         display: block;
         margin: 16px 0;
@@ -1140,7 +1140,7 @@ const RawHtmlStyle = styled.div`
       }
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       img[target] {
         width: 100%;
       }

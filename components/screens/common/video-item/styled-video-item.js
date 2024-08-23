@@ -82,7 +82,7 @@ const StyledVideoItem = styled.div`
     }
   }
 
-  @media ${device.tabletS} {
+  @media ${device.mobile} {
     h5 {
       font-size: 14px;
 

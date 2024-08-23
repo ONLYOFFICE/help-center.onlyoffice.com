@@ -18,7 +18,7 @@ const StyledWrapperContent = styled.div`
       margin-bottom: 16px;
     }
     
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       padding: 32px 0 112px;
     }
   }

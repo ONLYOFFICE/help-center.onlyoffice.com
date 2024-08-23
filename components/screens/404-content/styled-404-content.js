@@ -61,7 +61,7 @@ const Styled404Content = styled(Section)`
     }
   }
 
-  @media ${device.mobileL} {
+  @media ${device.mobile} {
     padding: 100px 0;
   }
 `;

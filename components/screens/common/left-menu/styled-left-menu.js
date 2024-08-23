@@ -26,7 +26,7 @@ const StyledLeftMenu = styled.div`
     position: sticky;
     top: 104px;
 
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       position: initial;
       top: initial;
     }
@@ -35,7 +35,7 @@ const StyledLeftMenu = styled.div`
   .left-menu-search {
     margin-bottom: 32px;
 
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       margin-bottom: 24px;
     }
   }
@@ -70,7 +70,7 @@ const StyledLeftMenu = styled.div`
     color: #333333;
     text-transform: uppercase;
 
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       padding: 10px 0;
     }
   }
@@ -172,17 +172,17 @@ const StyledLeftMenu = styled.div`
         color: #FF6F3D;
       }
 
-      @media ${device.laptopS} {
+      @media ${device.laptop} {
         padding: 4px 0;
       }
     }
 
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       margin-top: 24px;
     }
   }
 
-  @media ${device.laptopS} {
+  @media ${device.laptop} {
     position: fixed;
     top: 0;
     left: 0;
@@ -205,7 +205,7 @@ const StyledLeftMenu = styled.div`
   .ScrollbarsCustom {
     height: calc(100vh - 253px) !important;
 
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       height: calc(100vh - 147px) !important;
     }
   }

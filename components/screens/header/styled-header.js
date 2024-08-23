@@ -16,11 +16,11 @@ const StyledHeader = styled.div`
     width: 100%;
     max-width: 1120px;
 
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       justify-content: space-between;
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       justify-content: initial;
     }
   }
@@ -36,16 +36,16 @@ const StyledHeader = styled.div`
     cursor: pointer;
 
     &.is-main {
-      @media ${device.tabletS} {
+      @media ${device.mobile} {
         display: none;
       }
     }
 
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       display: inline-flex;
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       margin-right: 32px;
     }
   }
@@ -63,7 +63,7 @@ const StyledHeader = styled.div`
       min-width: 35px;
     }
 
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       position: absolute;
       left: 50%;
       width: 186px;
@@ -71,7 +71,7 @@ const StyledHeader = styled.div`
       transform: translateX(-50%);
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       position: initial;
       left: initial;
       margin-right: auto;
@@ -137,7 +137,7 @@ const StyledHeader = styled.div`
       color: #FF6F3D;
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       display: inline-flex;
     }
   }
@@ -161,7 +161,7 @@ const StyledHeader = styled.div`
       padding-right: 8px;
     }
 
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       position: absolute;
       top: 100%;
       left: 0;
@@ -178,7 +178,7 @@ const StyledHeader = styled.div`
     align-items: center;
     list-style-type: none;
 
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       flex-direction: column;
       align-items: end;
     }
@@ -188,13 +188,13 @@ const StyledHeader = styled.div`
     &:not(:last-child) {
       margin-right: 8px;
 
-      @media ${device.laptopS} {
+      @media ${device.laptop} {
         margin-right: 0;
         margin-bottom: 24px;
       }
     }
 
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       width: 100%;
     }
   }
@@ -203,7 +203,7 @@ const StyledHeader = styled.div`
     display: flex;
     border-bottom: 1px solid transparent;
     padding: 27px 16px 26px;
-    font-size: 13px;
+    font-size: ${(props) => (props.locale === "de" ? "12px" : "13px")};
     font-weight: 600;
     line-height: 18px;
     letter-spacing: 0.04em;
@@ -211,8 +211,12 @@ const StyledHeader = styled.div`
     text-transform: uppercase;
     transition: border-color 0.3s, color 0.3s;
 
+     @media ${device.laptopM} {
+        font-size: ${(props) => (props.locale === "de" ? "11px" : "13px")};
+    }
+
     &:after {
-      @media ${device.laptopS} {
+      @media ${device.laptop} {
         content: "";
         display: inline-flex;
         margin-left: 8px;
@@ -222,7 +226,7 @@ const StyledHeader = styled.div`
         background-repeat: no-repeat;
       }
 
-      @media ${device.tabletS} {
+      @media ${device.mobile} {
         content: none;
       }
     }
@@ -231,7 +235,7 @@ const StyledHeader = styled.div`
       color: #FF6F3D;
       border-color: #FF6F3D;
 
-      @media ${device.laptopS} {
+      @media ${device.laptop} {
         border-color: #FF6F3D;
       }
     }
@@ -241,7 +245,7 @@ const StyledHeader = styled.div`
       color: #FF6F3D;
     }
 
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       justify-content: end;
       border-bottom: initial;
       padding: 0 85px 0 16px;
@@ -253,7 +257,7 @@ const StyledHeader = styled.div`
     padding: 0 40px;
   }
 
-  @media ${device.tabletS} {
+  @media ${device.mobile} {
     padding: 0 16px;
     min-height: 56px;
   }

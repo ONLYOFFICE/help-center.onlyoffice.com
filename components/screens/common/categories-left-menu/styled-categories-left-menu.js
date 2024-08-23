@@ -39,6 +39,7 @@ const StyledLeftMenu = styled.div`
   .left-menu-wrapper {
     list-style-type: none;
     color: #333333;
+    min-width: 236px;
   }
 
   .left-menu-item {

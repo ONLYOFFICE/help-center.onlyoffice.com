@@ -172,6 +172,6 @@
   "WorkspaceEnterpriseEdition": "Workspace Enterprise Edition",
   "WritingDocumentation": "Writing Documentation",
   "NoResult": "No results matching your query could be found",
-  "resultsFound" : "results found",
-  "loading" : "loading..."
+  "ResultsFound" : "results found",
+  "GoToMainPage" : "Go to main page"
 }

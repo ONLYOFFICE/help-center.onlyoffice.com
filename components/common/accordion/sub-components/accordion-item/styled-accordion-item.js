@@ -5,7 +5,7 @@ const StyledAccordionItem = styled.div`
   position: relative;
   border-top: 1px solid #E5E5E5;
   padding: ${(props) => (props.isMain ? "16px 0" : "32px 0")};
-  @media ${device.tabletS} {
+  @media ${device.mobile} {
     padding: ${(props) => (props.isMain ? "16px 0" : "24px 0")};
     }
 
@@ -29,6 +29,7 @@ const StyledAccordionItem = styled.div`
     text-align: center;
     transition: transform 0.2s ease;
     width: 24px;
+    min-width: 24px;
   }
 
   .accordion-content {
@@ -48,7 +49,7 @@ const StyledAccordionItem = styled.div`
       padding-left: 16px;
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       font-size: 13px;
     }
   }
@@ -58,8 +59,8 @@ const StyledAccordionItem = styled.div`
     letter-spacing: -0.02em;
     cursor: pointer;
 
-    @media ${device.tabletS} {
-      font-size: 13px;
+    @media ${device.mobile} {
+      font-size: 16px;
     }
   }
 `;

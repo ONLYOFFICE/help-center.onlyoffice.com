@@ -19,7 +19,7 @@ const StyledFooter = styled.div`
       border-bottom: none;
     }
 
-    @media ${device.laptopS} {
+    @media ${device.laptop} {
       grid-template-columns: 1fr 1fr 280px;
       grid-column-gap: 44px;
     }
@@ -28,7 +28,7 @@ const StyledFooter = styled.div`
       grid-template-columns: 1fr 1fr 1fr;
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       display: flex;
       flex-direction: column;
       gap: 0;
@@ -53,7 +53,7 @@ const StyledFooter = styled.div`
     line-height: 1.4em;
     flex-wrap: wrap;
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       display: flex;
       flex-direction: initial;
     }
@@ -87,7 +87,7 @@ const StyledFooter = styled.div`
         text-transform: none;
       }
 
-      @media ${device.tabletS} {
+      @media ${device.mobile} {
         line-height: 21px;
       }
     }
@@ -99,7 +99,7 @@ const StyledFooter = styled.div`
       padding-top: 24px;
     }
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       align-items: initial;
       padding-top: 16px;
       gap: 40px;
@@ -111,7 +111,7 @@ const StyledFooter = styled.div`
     line-height: 18px;
     color: #AAAAAA;
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       font-size: 12px;
       line-height: 17px;
       color: #808080;
@@ -124,7 +124,7 @@ const StyledFooter = styled.div`
     flex-direction: column;
     gap: 32px;
 
-    @media ${device.tabletS} {
+    @media ${device.mobile} {
       gap: 0;
     }
   }
@@ -137,7 +137,7 @@ const StyledFooter = styled.div`
     padding: 56px 40px 32px;
   }
 
-  @media ${device.tabletS} {
+  @media ${device.mobile} {
     padding: 16px;
   }
 `;
