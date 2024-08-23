@@ -9,7 +9,7 @@ import HeadSEO from "@components/screens/head";
 import Header from "@components/screens/header";
 import Footer from "@components/screens/footer";
 
-const SearchResult = ({ locale, categories, searchResults, query }) => {
+const SearchResult = ({ locale, categories, searchResults, query, page }) => {
   const { t } = useTranslation("common");
   const [leftMenuMobile, setLeftMenuMobile] = useState(false);
 
@@ -40,6 +40,7 @@ const SearchResult = ({ locale, categories, searchResults, query }) => {
           leftMenuCategories={categories}
           searchResults={searchResults}
           query={query}
+          page={page}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>
@@ -53,7 +54,7 @@ export const getServerSideProps = async ({ locale, query }) => {
   const page = query.page || 1;
   const pageSize = query.pageSize || 12;
   const categories = await getCategoriesMenu(locale);
-  const searchResults = await getSearchResults(locale, query.query, page, pageSize)
+  const searchResults = await getSearchResults(locale, query.query, page, pageSize);
 
   return {
     props: {

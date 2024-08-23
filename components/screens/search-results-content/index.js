@@ -8,11 +8,10 @@ import InternalLink from "@components/common/internal-link";
 import Heading from "@components/common/heading";
 import Pagination from "@components/common/pagination";
 
-const SearchResultsContent = ({ t, searchData, leftMenuMobile, setLeftMenuMobile, leftMenuCategories, page, searchResults, locale, sort, query }) => {
-  const countPage = page;
-  const [pageLimit, setPageLimit] = useState(countPage > 7 ? 7 : countPage);
+const SearchResultsContent = ({ t, leftMenuMobile, setLeftMenuMobile, leftMenuCategories, page, searchResults, locale, sort, query }) => {
+  const countPage = searchResults.meta?.pagination.pageCount;
+  const [pageLimit, setPageLimit] = useState(countPage > 12 ? 12 : countPage);
   const [categoriesLeftMenu, setCategoriesLeftMenu] = useState(leftMenuCategories);
-
   useEffect(() => {
     const getCategoriesLeftMenuData = async () => {
       const data = await getCategories(locale, false);
@@ -46,7 +45,7 @@ const SearchResultsContent = ({ t, searchData, leftMenuMobile, setLeftMenuMobile
   };
 
   const resizeHandler = () => {
-    window.innerWidth < 425 ? setPageLimit(countPage > 5 ? 5 : countPage) : setPageLimit(countPage > 7 ? 7 : countPage);
+    window.innerWidth < 425 ? setPageLimit(countPage > 5 ? 5 : countPage) : setPageLimit(countPage > 12 ? 12 : countPage);
   };
 
   useEffect(() => {
@@ -70,11 +69,11 @@ const SearchResultsContent = ({ t, searchData, leftMenuMobile, setLeftMenuMobile
           <SearchArea placeholder={t("HowCanWeHelp?")} query={query} />
         </div>
 
-        {searchResults?.length > 0 ? (
+        {searchResults?.data?.length > 0 ? (
           <div className="search-results-wrapper">
-            <div className="search-results-found">{searchResults?.length} {t("ResultsFound")}</div>
+            <div className="search-results-found">{searchResults.meta?.pagination.total ? searchResults.meta?.pagination.total : 0} {t("ResultsFound")}</div>
             <div className="search-results-items">
-              {searchResults?.map((item, index) => (
+              {searchResults?.data?.map((item, index) => (
                 <div className="search-results-item" key={index}>
                   <InternalLink className="search-results-link" href={item?.attributes?.url}>
                     <Highlighter className="search-results-query" searchWords={[query]} textToHighlight={item?.attributes?.title} />
