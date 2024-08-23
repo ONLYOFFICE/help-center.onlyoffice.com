@@ -10,7 +10,15 @@ const Pagination = ({ searchResults, locale, getPaginationGroup, sort, page, cou
   return (
     <div>
       <StyledPagination className="pagination">
-        <div className={`pagination-item pagination-item-prev ${page === 1 ? "disabled" : ""}`}></div>
+        <InternalLink
+          className={`pagination-item pagination-item-prev ${page === 1 ? "disabled" : ""}`}
+          href={router.pathname === "/searchresult"
+            ? `/searchresult?query=${router.query.query}&page=${page - 1}${sort !== undefined && sort !== "asc" ? `&_sort=${sort}` : ""}`
+            : ""
+          }
+          tabIndex={page === 1 ? -1 : 0}
+        />
+
         {getPaginationGroup.map((item, index) => (
           <InternalLink
           className={`pagination-item ${page === item ? "active" : ""}`}
@@ -24,7 +32,14 @@ const Pagination = ({ searchResults, locale, getPaginationGroup, sort, page, cou
         />
         
         ))}
-        <div className={`pagination-item pagination-item-next ${page === countPage ? "disabled" : ""}`}></div>
+        <InternalLink
+          className={`pagination-item pagination-item-next ${page === countPage ? "disabled" : ""}`}
+          href={router.pathname === "/searchresult"
+            ? `/searchresult?query=${router.query.query}&page=${page + 1}${sort !== undefined && sort !== "asc" ? `&_sort=${sort}` : ""}`
+            : ""
+          }
+          tabIndex={page === countPage ? -1 : 0}
+        />
     </StyledPagination>
     </div>
   )

@@ -10,7 +10,7 @@ import Pagination from "@components/common/pagination";
 
 const SearchResultsContent = ({ t, leftMenuMobile, setLeftMenuMobile, leftMenuCategories, page, searchResults, locale, sort, query }) => {
   const countPage = searchResults.meta?.pagination.pageCount;
-  const [pageLimit, setPageLimit] = useState(countPage > 12 ? 12 : countPage);
+  const [pageLimit, setPageLimit] = useState(countPage > 7 ? 7 : countPage);
   const [categoriesLeftMenu, setCategoriesLeftMenu] = useState(leftMenuCategories);
   useEffect(() => {
     const getCategoriesLeftMenuData = async () => {
@@ -45,7 +45,7 @@ const SearchResultsContent = ({ t, leftMenuMobile, setLeftMenuMobile, leftMenuCa
   };
 
   const resizeHandler = () => {
-    window.innerWidth < 425 ? setPageLimit(countPage > 5 ? 5 : countPage) : setPageLimit(countPage > 12 ? 12 : countPage);
+    window.innerWidth < 425 ? setPageLimit(countPage > 5 ? 5 : countPage) : setPageLimit(countPage > 7 ? 7 : countPage);
   };
 
   useEffect(() => {
