@@ -44,6 +44,13 @@ const RawHtmlStyle = styled.div`
         }
       }
 
+      &.keyboard_shortcuts_table {
+        text-align: left;
+         td {
+          width: unset;
+        }
+      }
+
       &.table_parameters {
         text-align: left;
       }
@@ -315,7 +322,7 @@ const RawHtmlStyle = styled.div`
       padding: 0;
     }
 
-    .notehelp {
+    .notehelp, .note {
       border-left: 5px solid #808080;
       color: #666;
       position: relative;
@@ -336,6 +343,38 @@ const RawHtmlStyle = styled.div`
         font-weight: 700;
         display: block;
         padding: 0 0 8px;
+      }
+    }
+
+    kbd {
+      display: inline-block;
+      padding: 0.2em 0.3em;
+      border-radius: .2em;
+      line-height: 1em;
+      background-color: #f2f2f2;
+      font-family: 'Courier New', monospace;
+      white-space: nowrap;
+      box-shadow: 0 1px 3px rgba(85, 85, 85, 0.35);
+      margin: 0.2em 0.1em;
+      color: #000;
+    }
+
+    .shortcut_variants {
+      margin: 20px 0 !important;
+      padding: 0 !important;
+      .shortcut_toggle {
+          display: inline-block;
+          margin-right: 20px;
+          margin-left: 0 !important;
+          padding: 0;
+          list-style-type: none;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 600;
+          text-transform: capitalize;
+          &.disabled {
+            color: #b2b2b2;
+        }
       }
     }
 

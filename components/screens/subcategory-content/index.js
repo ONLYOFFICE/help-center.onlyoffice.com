@@ -8,6 +8,7 @@ import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import VideoBlock from "@components/screens/common/video-block";
 import ReactHtmlParser from "react-html-parser";
 import { handleFaqAccordionClick, handleChangelogClick } from "@components/screens/article-content/utils/handle-click-functions";
+import { extractHeadings, handleArticleScroll } from "../article-content/utils/scroll-highlight-functions";
 
 const SubCategoryContent = ({
   t,
@@ -37,60 +38,23 @@ const SubCategoryContent = ({
 
   useEffect(() => {
     if (contentRef.current) {
-      const extractHeadings = (description) => {
-        const div = document.createElement("div");
-        div.innerHTML = description;
-        const headings = [];
-
-        div.querySelectorAll("[id$='_block']").forEach(block => {
-          const firstHeading = block.querySelector("h5");
-          if (firstHeading) {
-            headings.push({
-              id: block.id,
-              text: firstHeading.innerText
-            });
-          }
-        });
-        return headings;
-      };
-
-      setHeadings(extractHeadings(contentRef.current.outerHTML));
+      setHeadings(extractHeadings(contentRef.current.outerHTML, "h5"));
     }
   }, [contentRef]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const sections = document.querySelectorAll("[id$='_block']");
-      const menuSections = Array.from(sections).filter(section => section.querySelector("h5"));
-
-      let currentSection = null;
-      menuSections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const sectionHeight = section.clientHeight;
-        if ((scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) || (scrollPosition > sectionTop + sectionHeight)) {
-          currentSection = section.id;
-        }
-      });
-
-      if (currentSection !== lastActiveSectionRef.current) {
-        lastActiveSectionRef.current = currentSection;
-        setActiveSection(currentSection);
-      } else {
-        setActiveSection(currentSection || menuSections[0]?.id);
-      }
-    };
     const firstHeader = document.querySelector('.changelog-main-header');
     if (firstHeader) {
       firstHeader.click();
     }
 
-    handleScroll();
+    handleArticleScroll(setActiveSection, false, lastActiveSectionRef, "h5");
+    const scrollHandler = (event) => handleArticleScroll(setActiveSection, false, lastActiveSectionRef, "h5");
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', scrollHandler);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', scrollHandler);
     };
   }, []);
 
@@ -136,7 +100,7 @@ const SubCategoryContent = ({
             <div onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</div>
           }
           <div ref={contentRef}>
-            {lvlArticles && lvlArticles.sort((a, b) => {
+            {!pageItems && (lvlArticles && lvlArticles.sort((a, b) => {
               const aValue = a.attributes.title;
               const bValue = b.attributes.title;
               return aValue.localeCompare(bValue);
@@ -145,7 +109,7 @@ const SubCategoryContent = ({
                 <InternalLink href={item.attributes.url} label={item.attributes.title} />
               </div>
             )
-            )}
+            ))}
             {hasNameField === true ? (pageItems && pageItems.sort((a, b) => {
               const aValue = a.attributes.name || a.attributes.title;
               const bValue = b.attributes.name || b.attributes.title;

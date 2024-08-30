@@ -35,4 +35,39 @@ const handleChangelogClick = (event) => {
   }
 };
 
-export { handleTogglerClick, handleChangelogClick };
+const shortcutToggler = (enabled, disabled, enabledOptClass, disabledOptClass) => {
+  const enabledOpt = document.querySelector(enabledOptClass);
+  const disabledOpt = document.querySelector(disabledOptClass);
+  const selectorTD_en = document.querySelectorAll(`.keyboard_shortcuts_table tr td:nth-child(${enabled})`);
+  const selectorTD_dis = document.querySelectorAll(`.keyboard_shortcuts_table tr td:nth-child(${disabled})`);
+
+  disabledOpt.classList.remove('enabled');
+  disabledOpt.classList.add('disabled');
+  enabledOpt.classList.remove('disabled');
+  enabledOpt.classList.add('enabled');
+
+  selectorTD_dis.forEach(td => {
+    td.style.display = 'none';
+  });
+
+  selectorTD_en.forEach(td => {
+    td.style.display = '';
+    if (td.textContent === '') {
+      td.parentElement.style.display = 'none';
+    } else {
+      td.parentElement.style.display = '';
+    }
+  });
+};
+
+const handleShortcutToggleClick = (event) => {
+  const clickedTarget = event.target;
+
+  if (clickedTarget.classList.contains('mac_option')) {
+    shortcutToggler(3, 2, '.mac_option', '.pc_option');
+  } else if (clickedTarget.classList.contains('pc_option')) {
+    shortcutToggler(2, 3, '.pc_option', '.mac_option');
+  }
+};
+
+export { handleTogglerClick, handleChangelogClick, handleShortcutToggleClick };

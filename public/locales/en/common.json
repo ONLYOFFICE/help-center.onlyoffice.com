@@ -87,6 +87,7 @@
   "GettingStartedId": "startusing",
   "Glossary": "Glossary",
   "GoToHomePage": "GO TO HOME PAGE",
+  "GoToMainPage": "Go to main page",
   "Groups": "Groups",
   "HereAreTheBaseTerms": "Here are the base terms which are used in the online office interface and documentation.",
   "HIPAACompliance": "HIPAA compliance",
@@ -108,6 +109,7 @@
   "MoreArticles": "More articles",
   "MoreVideos": "More videos",
   "Nextcloud": "Nextcloud",
+  "NoResult": "No results matching your query could be found",
   "Nuxeo": "Nuxeo",
   "OK": "OK",
   "ONLYOFFICEControlPanel": "ONLYOFFICE Control Panel",
@@ -139,6 +141,7 @@
   "ReinforcingSecurity": "Reinforcing security",
   "ReportingIssues": "Reporting issues",
   "RequestACall": "Request a Call",
+  "ResultsFound": "results found",
   "SalesQuestions": "Sales Questions",
   "SearchInputPlaceholder": "Search plugin, apps",
   "Security": "Security",
@@ -161,6 +164,7 @@
   "User guides": "User guides",
   "Version": "version",
   "Video": "Video",
+  "VideoPageDescription": "Video Guides: watch video and learn how to use the online office.",
   "VideosWithASimilarTopic": "<span>Videos</span> with a similar topic",
   "WatchVideo": "Watch video",
   "Webinars": "Webinars",
@@ -170,8 +174,5 @@
   "Workspace": "Workspace",
   "WorkspaceCloudService": "Workspace Cloud Service",
   "WorkspaceEnterpriseEdition": "Workspace Enterprise Edition",
-  "WritingDocumentation": "Writing Documentation",
-  "NoResult": "No results matching your query could be found",
-  "ResultsFound" : "results found",
-  "GoToMainPage" : "Go to main page"
+  "WritingDocumentation": "Writing Documentation"
 }

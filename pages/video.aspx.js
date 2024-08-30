@@ -18,7 +18,7 @@ const VideoPage = ({ locale, categoriesMenu, videoData }) => {
       <Layout.PageHead>
         <HeadSEO
           title={t("Video - ONLYOFFICE")}
-          description={""}
+          description={t("VideoPageDescription")}
         />
       </Layout.PageHead>
       <Layout.PageHeader>
@@ -36,6 +36,7 @@ const VideoPage = ({ locale, categoriesMenu, videoData }) => {
           locale={locale}
           videoData={videoData}
           leftMenuMobile={leftMenuMobile}
+          setLeftMenuMobile={setLeftMenuMobile}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>

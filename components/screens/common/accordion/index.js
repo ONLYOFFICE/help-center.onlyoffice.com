@@ -4,7 +4,6 @@ import StyledAccordionContent from "./styled-accordion-content";
 import Heading from "@components/common/heading";
 import Link from "@components/common/external-link";
 import Text from "@components/common/text";
-import TransAccorionItem from "./item-accordion";
 
 const AccordionContent = ({ t, locale, isMain }) => {
   const AccordionDescriptionOOLicenseLink = t(
@@ -77,9 +76,6 @@ const AccordionContent = ({ t, locale, isMain }) => {
         </AccordionItem>
         <AccordionItem isMain={isMain} heading={t("AccordionHeadingRequestAssistance")}>
           {AccordionDescriptionRequestAssistance}
-        </AccordionItem>
-        <AccordionItem isMain={isMain} heading={t("AccordionHeadingOtherQuestions")}>
-          <TransAccorionItem locale={locale} t={t} />
         </AccordionItem>
         <AccordionItem isMain={isMain} heading={t("AccordionHeadingIntegrateOO")}>
           {/* {AccordionDescriptionIntegrateOO} */}
