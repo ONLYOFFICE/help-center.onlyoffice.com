@@ -12,6 +12,7 @@ const VideoContent = ({ t, videoData, leftMenuMobile, setLeftMenuMobile }) => {
   const lastActiveSectionRef = useRef(null);
   const [activeSection, setActiveSection] = useState(null);
   const groupedVideos = {};
+  const order = ['Docs', 'Docspace', 'Workspace', 'Connectors', 'Desktop', 'Mobile'];
 
   videoData.data.forEach(video => {
     Object.keys(video.attributes).forEach(key => {
@@ -27,6 +28,14 @@ const VideoContent = ({ t, videoData, leftMenuMobile, setLeftMenuMobile }) => {
       }
     });
   });
+
+  const sortedGroupedVideos = Object.keys(groupedVideos)
+    .sort((a, b) => {
+      const nameA = groupedVideos[a].name;
+      const nameB = groupedVideos[b].name;
+      return order.indexOf(nameA) - order.indexOf(nameB);
+    })
+    .map(key => groupedVideos[key]);
 
   useEffect(() => {
     if (contentRef.current) {
@@ -57,7 +66,7 @@ const VideoContent = ({ t, videoData, leftMenuMobile, setLeftMenuMobile }) => {
           setLeftMenuMobile={setLeftMenuMobile}
         />
         <div className="wrapper" ref={contentRef}>
-          {Object.entries(groupedVideos).map(([key, group]) => (
+          {Object.entries(sortedGroupedVideos).map(([key, group]) => (
             <div id={`${key}_block`} key={key}>
               <Heading level={4}>{group.name}</Heading>
               <div className="video-items">
