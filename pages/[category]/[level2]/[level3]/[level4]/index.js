@@ -115,7 +115,7 @@ const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
 
 export const getServerSideProps = async ({ locale, params }) => {
   const categoriesMenu = await getCategoriesMenu(locale);
-  const categoryData = await getCategoryLevel4(locale, params.category, `/${params.category}/${params.level2}/${params.level3}/${params.level4}`);
+  const categoryData = await getCategoryLevel4(locale, params.category, `${locale === "en" ? "" : `/${locale}`}/${params.category}/${params.level2}/${params.level3}/${params.level4}`);
 
   if (categoryData.data.length === 0) {
     return {
