@@ -58,7 +58,7 @@ export const getServerSideProps = async ({ locale, params }) => {
   const categories = await getCategoriesMenu(locale);
   const category = await getCategoryLevel1(locale, params.category, true);
 
-  if (category === undefined) {
+  if (!category.data || category.data.length === 0) {
     return {
       notFound: true
     };
