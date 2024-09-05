@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
+import docsIcon from "@public/images/icons/16px_docs.react.svg";
+import docspaceIcon from "@public/images/icons/16px_docspace.react.svg";
 
 const StyledGuidesCell = styled.div`
   border-radius: 3px;
@@ -15,7 +17,7 @@ const StyledGuidesCell = styled.div`
   .guides-cell-header {
     display: flex;
     flex-direction: column;
-    padding: 32px 32px 24px;
+    padding: 32px;
   }
 
   .guides-cell-top {
@@ -23,7 +25,7 @@ const StyledGuidesCell = styled.div`
     align-items: center;
     
     &:not(:last-child) {
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
 
     &.integration {
@@ -65,6 +67,30 @@ const StyledGuidesCell = styled.div`
 
       &:hover {
         text-decoration: none;
+      }
+    }
+  }
+
+  .guides-cell-int-links {
+    display: flex;
+    gap: 32px;
+    padding-top: 32px;
+
+    .guides-cell-int-link {
+      color: #ff6f3d;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      &:before {
+        content: "";
+        height: 16px;
+        width: 16px;
+      }
+      &.docs:before {
+        background-image: url(${docsIcon.src});
+      }
+      &.docspace:before {
+        background-image: url(${docspaceIcon.src});
       }
     }
   }

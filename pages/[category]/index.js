@@ -17,6 +17,17 @@ const CategoryPage = ({ locale, categories, category }) => {
   const categorySlugMany = slug_id === "docs" ? "docs" : `${slug_id}s`;
   const data = slug_id === "integration" ? articles : category.data[0].attributes[`category_${categorySlugMany}`];
 
+  slug_id === "integration" && data.data.forEach((article, index, arr) => {
+    const { url } = article.attributes;
+    const docspaceUrl = url.replace('.aspx', '-docspace.aspx');
+    const docspaceArticleIndex = arr.findIndex(a => a.attributes.url === docspaceUrl);
+
+    if (docspaceArticleIndex !== -1) {
+      article.attributes.url_docspace = docspaceUrl;
+      arr.splice(docspaceArticleIndex, 1);
+    }
+  });
+
   return (
     <Layout>
       <Layout.PageHead>
