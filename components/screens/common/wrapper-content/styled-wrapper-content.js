@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
+import globalColors from "@components/utils/global-colors";
 
 const StyledWrapperContent = styled.div`
   box-sizing: border-box;
@@ -12,7 +13,7 @@ const StyledWrapperContent = styled.div`
     padding: 32px 0 112px 32px;
     width: 100%;
     max-width: 864px;
-    color: #333333;
+    color: ${globalColors.gray};
 
     h3 {
       margin-bottom: 16px;
@@ -34,7 +35,7 @@ const StyledWrapperContent = styled.div`
     padding: 4px 8px;
     font-size: 12px;
     line-height: 19px;
-    color: #333333;
+    color: ${globalColors.gray};
     background-color: #efefef;
     cursor: pointer;
 
@@ -63,11 +64,11 @@ const StyledWrapperContent = styled.div`
       padding: 0 0 16px;
 
       > a > span {
-        color: #333333;
+        color: ${globalColors.gray};
         text-decoration: none;
 
         &:hover {
-          color: #ff6f3d;
+          color: ${globalColors.orangeMain};
         }
       }
     }
@@ -83,12 +84,12 @@ const StyledWrapperContent = styled.div`
         padding: 16px 0 0;
 
       > a {
-        color: #333333;
+        color: ${globalColors.gray};
         text-decoration: none;
         transition: color 0.3s;
 
         &:hover {
-          color: #ff6f3d;
+          color: ${globalColors.orangeMain};
         }
       }
     }
@@ -137,7 +138,7 @@ const StyledWrapperContent = styled.div`
       margin: -24px 0px 0;
 
       .crd-date {
-        color: #ff6f3d;
+        color: ${globalColors.orangeMain};
       }
     }
 
@@ -152,7 +153,7 @@ const StyledWrapperContent = styled.div`
         margin: 0;
 
         a {
-          color: #ff6f3d;
+          color: ${globalColors.orangeMain};
         }
       }
 
@@ -190,7 +191,7 @@ const StyledWrapperContent = styled.div`
   }
 
   .question_answer p span {
-    color: #ff642e;
+    color: ${globalColors.orangeLetters};
     display: inline-block;
     font-size: 14px;
     font-weight: 700;
@@ -202,7 +203,7 @@ const StyledWrapperContent = styled.div`
   }
 
   .question_answer a {
-    color: #ff6f3d;
+    color: ${globalColors.orangeMain};
   }
 `;
 

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Section from "@components/common/section";
 import bgError from "@public/images/icons/bg-errors.react.svg";
+import globalColors from "@components/utils/global-colors";
 
 const StyledSearchResultsContent = styled(Section)`
   overflow: hidden;
@@ -8,7 +9,7 @@ const StyledSearchResultsContent = styled(Section)`
   .search-results-header {
     position: relative;
     padding: 56px 0;
-    background-color: #f5f5f5;
+    background-color: ${globalColors.bgGray};
 
     &:before {
       content: "";
@@ -18,7 +19,7 @@ const StyledSearchResultsContent = styled(Section)`
       z-index: -1;
       width: 100vw;
       height: 100%;
-      background-color: #f5f5f5;
+      background-color: ${globalColors.bgGray};
       transform: translateX(-100%);
     }
 
@@ -30,7 +31,7 @@ const StyledSearchResultsContent = styled(Section)`
       z-index: -1;
       width: 100vw;
       height: 100%;
-      background-color: #f5f5f5;
+      background-color: ${globalColors.bgGray};
       transform: translateX(100%);
     }
   }
@@ -52,7 +53,7 @@ const StyledSearchResultsContent = styled(Section)`
     margin-bottom: 40px;
     font-size: 14px;
     line-height: 21px;
-    color: #808080;
+    color: ${globalColors.textGray};
     text-align: center;
   }
 
@@ -65,7 +66,7 @@ const StyledSearchResultsContent = styled(Section)`
   .search-results-item {
     font-size: 14px;
     line-height: 21px;
-    color: #444444;
+    color: ${globalColors.grayMain};
 
     &:not(:last-child) {
       margin-bottom: 40px;
@@ -73,7 +74,7 @@ const StyledSearchResultsContent = styled(Section)`
   }
 
   .search-results-link {
-    color: #FF6F3D;
+    color: ${globalColors.orangeMain};
 
     &.main {
       margin: 8px 0;
@@ -112,7 +113,7 @@ const StyledSearchResultsContent = styled(Section)`
     line-height: 1.3em;
     letter-spacing: -0.02em;
     text-align: center;
-    color: #FF6F3D;
+    color: ${globalColors.orangeMain};
   }
 
   .search-results-not-found-img {

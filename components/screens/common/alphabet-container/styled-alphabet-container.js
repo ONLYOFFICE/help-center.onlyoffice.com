@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import globalColors from "@components/utils/global-colors";
 
 const StyledAlphabetContainer = styled.div`
   .alphabet-letter {
@@ -27,7 +28,7 @@ const StyledAlphabetContainer = styled.div`
     font-size: 14px;
     line-height: 1.6em;
     background-color: transparent;
-    color: #ff642e;
+    color: ${globalColors.orangeLetters};
     cursor: pointer;
 
     &:hover {

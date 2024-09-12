@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Section from "@components/common/section";
 import { device } from "@components/utils/devices";
+import globalColors from "@components/utils/global-colors";
 import plus from "@public/images/icons/plus.svg";
 import minus from "@public/images/icons/minus.svg";
 
@@ -66,7 +67,7 @@ const RawHtmlStyle = styled.div`
         }
 
         td {            
-          color: #333;
+          color: ${globalColors.gray};
           font-size: 16px;
           font-weight: 600;
           padding: 8px;
@@ -165,7 +166,7 @@ const RawHtmlStyle = styled.div`
               width: 0;
               border-style: solid;
               border-width: 4px 4px 0 4px;
-              border-color: #666 transparent transparent transparent;
+              border-color: ${globalColors.grayTextInput} transparent transparent transparent;
             }
 
             &.header span:before {
@@ -178,7 +179,7 @@ const RawHtmlStyle = styled.div`
               height: 0;
               border-style: solid;
               border-width: 0 4px 4px 4px;
-              border-color: transparent transparent #666 transparent;
+              border-color: transparent transparent ${globalColors.grayTextInput} transparent;
             }
 
             &.header.headerSortDown span:before {
@@ -212,11 +213,11 @@ const RawHtmlStyle = styled.div`
 
           tr {
             &:nth-child(even) {
-              background-color: #f5f5f5;
+              background-color: ${globalColors.bgGray};
             }
 
             &:nth-child(odd) {
-              background-color: #fff;
+              background-color: ${globalColors.white};
             }
           }
         }
@@ -237,7 +238,7 @@ const RawHtmlStyle = styled.div`
   
       th {
         border-bottom: 1px solid #d7d8dc;
-        color: #333;
+        color: ${globalColors.gray};
         font-size: 16px;
         font-weight: 600;
         padding: 8px;
@@ -297,7 +298,7 @@ const RawHtmlStyle = styled.div`
     .border-content {
       margin-bottom: 24px;
       padding-bottom: 23px;
-      border-bottom: 1px solid #cccccc;
+      border-bottom: 1px solid ${globalColors.grayLight};
     }
 
     .gs_content {
@@ -324,22 +325,22 @@ const RawHtmlStyle = styled.div`
 
     .notehelp, .note {
       border-left: 5px solid #808080;
-      color: #666;
+      color: ${globalColors.grayTextInput};
       position: relative;
       border-radius: 3px;
       margin: 48px 0px 48px 22px;
       padding: 16px;
       font-size: 14px;
       line-height: 22px;
-      background-color: #f5f5f5;
+      background-color: ${globalColors.bgGray};
 
       &.nh_important {
-        border-color: #f5f5f5;
-        border-left: 5px solid #ff642e;
+        border-color: ${globalColors.bgGray};
+        border-left: 5px solid ${globalColors.orangeLetters};
       }
 
       > .important_notice_label {
-        color: #FF6F3D;
+        color: ${globalColors.orangeMain};
         font-weight: 700;
         display: block;
         padding: 0 0 8px;
@@ -351,7 +352,7 @@ const RawHtmlStyle = styled.div`
       padding: 0.2em 0.3em;
       border-radius: .2em;
       line-height: 1em;
-      background-color: #f2f2f2;
+      background-color: ${globalColors.whiteHover};
       font-family: 'Courier New', monospace;
       white-space: nowrap;
       box-shadow: 0 1px 3px rgba(85, 85, 85, 0.35);
@@ -413,7 +414,7 @@ const RawHtmlStyle = styled.div`
       strong {
         font-weight: 400;
         font-size: 18px;
-        color: #ff642e;
+        color: ${globalColors.orangeLetters};
         display: block;
         margin-bottom: 10px;
       }
@@ -467,7 +468,7 @@ const RawHtmlStyle = styled.div`
       &.new_language:after, &.comsoon:after, &.newarticle:after { 
         display: inline-block;
         padding: 0 4px;
-        color: #fff;
+        color: ${globalColors.white};
         font-size: 10px;
         font-weight: 300;
         vertical-align: middle;
@@ -479,7 +480,7 @@ const RawHtmlStyle = styled.div`
 
     span.new_language:after {
       content: "recently added";
-      background-color: #3db80f;
+      background-color: ${globalColors.green};
     }
 
     span.comsoon:after {
@@ -491,7 +492,7 @@ const RawHtmlStyle = styled.div`
     }
 
     span.iptoggler, span.toggler {
-      border-bottom: 1px dotted #333;
+      border-bottom: 1px dotted ${globalColors.gray};
       cursor: pointer;
       width: fit-content;
     }
@@ -521,7 +522,7 @@ const RawHtmlStyle = styled.div`
     a {
       display: inline-flex;
       align-items: center;
-      color: #ff6f3d;
+      color: ${globalColors.orangeMain};
       text-decoration: none;
       font-weight: 400;
 
@@ -533,7 +534,7 @@ const RawHtmlStyle = styled.div`
         }
 
         h1, h2, h3, h4, h5 {
-          color: #ff6f3d;
+          color: ${globalColors.orangeMain};
           &:hover {
             cursor: pointer;
           }
@@ -557,7 +558,7 @@ const RawHtmlStyle = styled.div`
       }
 
       &:visited {
-        color: #ff6f3d;
+        color: ${globalColors.orangeMain};
       }
     }
 
@@ -620,7 +621,7 @@ const RawHtmlStyle = styled.div`
         }
 
         > .pln {
-          color: #666;
+          color: ${globalColors.grayTextInput};
         }
 
         > .pun {
@@ -703,7 +704,7 @@ const RawHtmlStyle = styled.div`
     }
 
     input:checked+label {
-      background: #fff;
+      background: ${globalColors.white};
       border-bottom: 1px solid transparent;
     }
 
@@ -1085,7 +1086,7 @@ const RawHtmlStyle = styled.div`
       margin-bottom: 24px;
       font-size: 14px;
       line-height: 22px;
-      color: #FF6F3D;
+      color: ${globalColors.orangeMain};
       text-decoration: underline;
       cursor: pointer;
 
@@ -1111,7 +1112,7 @@ const RawHtmlStyle = styled.div`
       border-top: 1px solid #E5E5E5;
       margin: 0;
       padding: 32px 0;
-      color: #333333;
+      color: ${globalColors.gray};
 
       &:last-child {
         border-bottom: 1px solid #E5E5E5;

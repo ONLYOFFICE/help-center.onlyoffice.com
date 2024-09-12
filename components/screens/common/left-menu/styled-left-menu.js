@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
+import globalColors from "@components/utils/global-colors";
 
 const StyledLeftMenu = styled.div`
   box-sizing: border-box;
@@ -8,7 +9,7 @@ const StyledLeftMenu = styled.div`
   padding: 32px 28px 32px 0;
   width: 256px;
   min-width: 256px;
-  background-color: #F5F5F5;
+  background-color: ${globalColors.bgGray};
 
   &:before {
     content: "";
@@ -18,7 +19,7 @@ const StyledLeftMenu = styled.div`
     z-index: -1;
     width: 100vw;
     height: 100%;
-    background-color: #F5F5F5;
+    background-color: ${globalColors.bgGray};
     transform: translateX(-100%);
   }
 
@@ -58,7 +59,7 @@ const StyledLeftMenu = styled.div`
     }
 
     &:hover {
-      color: #FF6F3D;
+      color: ${globalColors.orangeMain};
     }
   }
 
@@ -67,7 +68,7 @@ const StyledLeftMenu = styled.div`
     font-size: 14px;
     font-weight: 700;
     line-height: 19px;
-    color: #333333;
+    color: ${globalColors.gray};
     text-transform: uppercase;
 
     @media ${device.laptop} {
@@ -99,7 +100,7 @@ const StyledLeftMenu = styled.div`
 
           a {
             font-weight: 700;
-            color: #FF6F3D;
+            color: ${globalColors.orangeMain};
           }
 
           &:before {
@@ -110,7 +111,7 @@ const StyledLeftMenu = styled.div`
             border-radius: 2px;
             width: 4px;
             height: 100%;
-            background-color: #FF6F3D;
+            background-color: ${globalColors.orangeMain};
           }
         }
       }
@@ -123,7 +124,7 @@ const StyledLeftMenu = styled.div`
         transition: color 0.3s;
 
         &:hover {
-          color: #FF6F3D;
+          color: ${globalColors.orangeMain};
         }
       }
     }
@@ -169,7 +170,7 @@ const StyledLeftMenu = styled.div`
       }
 
       &:hover {
-        color: #FF6F3D;
+        color: ${globalColors.orangeMain};
       }
 
       @media ${device.laptop} {
@@ -219,7 +220,7 @@ const StyledLeftMenu = styled.div`
   .ScrollbarsCustom-Thumb.ScrollbarsCustom-ThumbY {
     border-radius: 2px !important;
     width: 4px !important;
-    background-color: #FF6F3D !important;
+    background-color: ${globalColors.orangeMain} !important;
   }
 `;
 

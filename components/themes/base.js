@@ -6,13 +6,10 @@ const {
   grayHover,
   orangeMain,
   orangeHover,
-  orangeLetters,
   graySecnodary,
   gray,
   grayTextInput,
   grayLight,
-  grayTag,
-  shuttleGrey,
 } = globalColors;
 
 const Base = {
@@ -102,8 +99,6 @@ const Base = {
     backgroundColor: "#fff",
     backgroundColorPrimaryHover: white,
     backgroundColorDisabled: "#F9F9F9",
-    backgroundColorSuccess: "#F9FEEF",
-    backgroundColorError: "#FFF7F7",
 
     border: "1px solid",
     borderRadius: "3px",
@@ -149,22 +144,8 @@ const Base = {
     },
   },
 
-  tag : {
-    borderColorPage: "#d9d9d9",
-    backgroundColorPopup: "#999",
-    colorWhite: white,
-    colorPage: grayTag,
-    colorList: orangeLetters,
-    fontSizePopup: "18px",
-    fontSizeList: "14px", 
-    fontWeightBold: "600",
-    paddingPopup: "1px 5px 3px",
-    paddingPage: "0px 5px",
-  },
-
   text: {
     color: gray,
-
     display: "inline-block",
     height: "auto",
     width: "auto",
@@ -200,7 +181,7 @@ const Base = {
     lineHeight: "160%",
   },
   loader: {
-    color: shuttleGrey,
+    color: "#63686A",
     size: "40px",
     marginRight: "2px",
     borderRadius: "50%",

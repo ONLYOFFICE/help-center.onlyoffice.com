@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import globalColors from "@components/utils/global-colors";
 
 const StyledFooter = styled.footer`
-  color: #ffffff;
-  background-color: #333333;
+  color: ${globalColors.white};
+  background-color: ${globalColors.gray};
 `;
 
 export default StyledFooter;

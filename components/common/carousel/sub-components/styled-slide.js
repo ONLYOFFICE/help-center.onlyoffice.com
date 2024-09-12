@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import globalColors from "@components/utils/global-colors";
 
 const StyledSlide = styled.div`
   .video-image{
@@ -17,7 +18,7 @@ const StyledSlide = styled.div`
     box-sizing: border-box;
     height: 60px;
     padding: 5px;
-    color: #333;
+    color: ${globalColors.gray};
     text-decoration: none;
     text-align: center;
     line-height: 1;

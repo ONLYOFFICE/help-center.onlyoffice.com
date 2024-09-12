@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
+import globalColors from "@components/utils/global-colors";
 import chevronRightIcon from "@public/images/icons/chevron-right.svg";
 
 const StyledHeader = styled.div`
@@ -7,7 +8,7 @@ const StyledHeader = styled.div`
   align-items: center;
   padding: 0 40px;
   min-height: 72px;
-  background-color: #333333;
+  background-color: ${globalColors.gray};
 
   .header-container {
     display: flex;
@@ -111,7 +112,7 @@ const StyledHeader = styled.div`
     font-weight: 600;
     line-height: 18px;
     letter-spacing: 0.04em;
-    color: #FFFFFF;
+    color: ${globalColors.white};
     background-color: transparent;
     text-transform: uppercase;
     word-break: break-word;
@@ -134,7 +135,7 @@ const StyledHeader = styled.div`
     }
 
     &.active {
-      color: #FF6F3D;
+      color: ${globalColors.orangeMain};
     }
 
     @media ${device.mobile} {
@@ -169,7 +170,7 @@ const StyledHeader = styled.div`
       width: 100%;
       opacity: 0;
       visibility: hidden;
-      background-color: #333333;
+      background-color: ${globalColors.gray};
     }
   }
 
@@ -207,7 +208,7 @@ const StyledHeader = styled.div`
     font-weight: 600;
     line-height: 18px;
     letter-spacing: 0.04em;
-    color: #FFFFFF;
+    color: ${globalColors.white};
     text-transform: uppercase;
     transition: border-color 0.3s, color 0.3s;
 
@@ -232,24 +233,24 @@ const StyledHeader = styled.div`
     }
 
     &.active {
-      color: #FF6F3D;
-      border-color: #FF6F3D;
+      color: ${globalColors.orangeMain};
+      border-color: ${globalColors.orangeMain};
 
       @media ${device.laptop} {
-        border-color: #FF6F3D;
+        border-color: ${globalColors.orangeMain};
       }
     }
 
     &:hover {
-      border-color: #FF6F3D;
-      color: #FF6F3D;
+      border-color: ${globalColors.orangeMain};
+      color: ${globalColors.orangeMain};
     }
 
     @media ${device.laptop} {
       justify-content: end;
       border-bottom: initial;
       padding: 0 85px 0 16px;
-      color: #ffffff;
+      color: ${globalColors.white};
     }
   }
 

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Section from "@components/common/section";
 import { device } from "@components/utils/devices";
+import globalColors from "@components/utils/global-colors";
 
 const Styled404Content = styled(Section)`
   padding: 107px 0 177px;
@@ -41,7 +42,7 @@ const Styled404Content = styled(Section)`
     font-size: 16px;
     line-height: 22px;
     text-align: center;
-    color: #555555;
+    color: ${globalColors.grayHover};
   }
 
   .error-404-btn {
@@ -50,14 +51,14 @@ const Styled404Content = styled(Section)`
     font-size: 12px;
     font-weight: 600;
     line-height: 14px;
-    color: #ffffff;
+    color: ${globalColors.white};
     text-align: center;
     text-transform: uppercase;
-    background-color: #ff6f3d;
+    background-color: ${globalColors.orangeMain};
     transition: background-color 0.3s;
 
     &:hover {
-      background-color: #ff865c;
+      background-color: ${globalColors.orangeHover};
     }
   }
 

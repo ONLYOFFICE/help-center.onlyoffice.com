@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import globalColors from "@components/utils/global-colors";
 
 const StyledDownloadArea = styled.div`
   position: relative;
@@ -27,7 +28,7 @@ const StyledDownloadArea = styled.div`
     line-height: 32px;
     letter-spacing: -0.02em;
     text-align: center;
-    color: #FFFFFF;
+    color: ${globalColors.white};
     padding: 0;
   }
 
@@ -49,12 +50,29 @@ const StyledDownloadArea = styled.div`
     font-size: 12px;
     line-height: 14px;
     font-weight: 600;
-    color: #444444;
-    background-color: #FFFFFF;
+    color: ${globalColors.grayMain};
+    background-color: ${globalColors.white};
     text-decoration: none;
     text-transform: uppercase;
     opacity: 0.9;
     transition: opacity 0.3s;
+
+    &.android {
+      background-color: transparent;
+      background-image: url("/images/buttons/googleplay.react.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 40px;
+      width: 120px;
+    }
+    &.ios {
+      background-color: transparent;
+      background-image: url("/images/buttons/appstore.react.svg");
+      background-repeat: no-repeat;
+      height: 42px;
+      width: 120px;
+    }
 
     &:hover {
       opacity: 1;

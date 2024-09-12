@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
+import globalColors from "@components/utils/global-colors";
 
 const StyledFooter = styled.div`
   position: relative;
@@ -39,7 +40,7 @@ const StyledFooter = styled.div`
   .footer-link-contact {
     font-size: 13px;
     line-height: 1.4em;
-    color: #ff6f3d;
+    color: ${globalColors.orangeMain};
 
     &:hover {
       text-decoration: underline;
@@ -47,7 +48,7 @@ const StyledFooter = styled.div`
   }
 
   .contact-text {
-    color: #808080;
+    color: ${globalColors.textGray};
     display: flex;
     font-size: 13px;
     line-height: 1.4em;
@@ -64,12 +65,12 @@ const StyledFooter = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    color: #AAAAAA;
+    color: ${globalColors.veryLightGrey};
     gap: 16px;
     padding-top: 32px;
 
     > a {
-      color: #fff;
+      color: ${globalColors.white};
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.04em;
@@ -79,7 +80,7 @@ const StyledFooter = styled.div`
       transition: color 0.3s;
 
       &:hover {
-        color: #FF6F3D;
+        color: ${globalColors.orangeMain};
       }
 
       @media ${device.laptop} {
@@ -109,12 +110,12 @@ const StyledFooter = styled.div`
   .footer-copyright {
     font-size: 13px;
     line-height: 18px;
-    color: #AAAAAA;
+    color: ${globalColors.veryLightGrey};
 
     @media ${device.mobile} {
       font-size: 12px;
       line-height: 17px;
-      color: #808080;
+      color: ${globalColors.textGray};
       text-align: center;
     }
   }

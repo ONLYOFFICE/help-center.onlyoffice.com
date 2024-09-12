@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
+import globalColors from "@components/utils/global-colors";
 
 const StyledVideoBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 48px;
-  background-color: #F5F5F5;
+  background-color: ${globalColors.bgGray};
 
   h3.video-block-title {
     margin-bottom: 40px;
@@ -14,11 +15,11 @@ const StyledVideoBlock = styled.div`
     font-weight: 700;
     line-height: 32px;
     letter-spacing: -0.02em;
-    color: #333333;
+    color: ${globalColors.gray};
     text-align: center;
 
     span {
-      color: #FF6F3D;
+      color: ${globalColors.orangeMain};
     }
 
     @media ${device.mobile} {
@@ -79,20 +80,20 @@ const StyledVideoBlock = styled.div`
   }
 
   .video-block-link {
-    border: 1px solid #AAAAAA;
+    border: 1px solid ${globalColors.veryLightGrey};
     border-radius: 3px;
     padding: 19px 24px;
     font-size: 13px;
     font-weight: 600;
     line-height: 17.29px;
     letter-spacing: 0.04em;
-    color: #444444;
+    color: ${globalColors.grayMain};
     text-transform: uppercase;
     transition: border-color 0.3s, color 0.3s;
 
     &:hover {
-      border-color: #FF6F3D;
-      color: #FF6F3D;
+      border-color: ${globalColors.orangeMain};
+      color: ${globalColors.orangeMain};
     }
   }
 

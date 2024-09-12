@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import globalColors from "@components/utils/global-colors";
 
 const StyledCookieNotify = styled.div`
   position: fixed;
@@ -24,7 +25,7 @@ const StyledCookieNotify = styled.div`
     vertical-align: middle;
     font-size: 15px;
     line-height: 18px;
-    color: #fff;
+    color: ${globalColors.white};
   }
 
   .cookie-btn {
@@ -40,7 +41,7 @@ const StyledCookieNotify = styled.div`
     white-space: nowrap;
     text-transform: uppercase;
     color: rgba(255,100,46,0.8);
-    background-color: #fff;
+    background-color: ${globalColors.white};
     cursor: pointer;
   }
 `;

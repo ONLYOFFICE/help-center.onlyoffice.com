@@ -2,6 +2,7 @@ import styled from "styled-components";
 import closeIcon from "@public/images/icons/close-icon.react.svg";
 import chevronRightIcon from "@public/images/icons/chevron-right.svg";
 import chevronDownOrangeIcon from "@public/images/icons/chevron-down-orange.svg";
+import globalColors from "@components/utils/global-colors";
 
 const StyledLeftMenu = styled.div`
   box-sizing: border-box;
@@ -13,7 +14,7 @@ const StyledLeftMenu = styled.div`
   width: 280px;
   min-width: 280px;
   height: 100%;
-  background-color: #FFFFFF;
+  background-color: ${globalColors.white};
   z-index: 1000;
   transform: translateX(-100%);
   visibility: hidden;
@@ -38,7 +39,7 @@ const StyledLeftMenu = styled.div`
 
   .left-menu-wrapper {
     list-style-type: none;
-    color: #333333;
+    color: ${globalColors.gray};
     min-width: 236px;
   }
 
@@ -48,7 +49,7 @@ const StyledLeftMenu = styled.div`
     margin-right: 28px;
 
     &:not(:last-child) {
-      border-bottom: 1px solid #CCCCCC;
+      border-bottom: 1px solid ${globalColors.grayLight};
     }
   }
 
@@ -62,7 +63,7 @@ const StyledLeftMenu = styled.div`
     font-size: 14px;
     font-weight: 600;
     line-height: 16px;
-    color: #333333;
+    color: ${globalColors.gray};
     text-align: left;
     text-transform: uppercase;
     background-color: transparent;
@@ -78,7 +79,7 @@ const StyledLeftMenu = styled.div`
     }
 
     &.active {
-      color: #FF6F3D;
+      color: ${globalColors.orangeMain};
       font-weight: 700;
 
       &:after {
@@ -99,7 +100,7 @@ const StyledLeftMenu = styled.div`
     padding: 10px 0 10px 19px;
     font-size: 14px;
     line-height: 21px;
-    color: #333333;
+    color: ${globalColors.gray};
     width: 100%;
     text-align: left;
     background-color: transparent;
@@ -124,7 +125,7 @@ const StyledLeftMenu = styled.div`
     }
 
     &.active {
-      color: #FF6F3D;
+      color: ${globalColors.orangeMain};
       font-weight: 700;
 
       &:before {
@@ -165,7 +166,7 @@ const StyledLeftMenu = styled.div`
   .ScrollbarsCustom-Thumb.ScrollbarsCustom-ThumbY {
     border-radius: 2px !important;
     width: 4px !important;
-    background-color: #FF6F3D !important;
+    background-color: ${globalColors.orangeMain} !important;
   }
 `;
 

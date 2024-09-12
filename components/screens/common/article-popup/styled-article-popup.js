@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { device } from "@components/utils/devices";
+import globalColors from "@components/utils/global-colors";
 
 const loadSpin = keyframes`
   100% { 
@@ -42,7 +43,7 @@ const StyledArticlePopup = styled.div`
     padding: 32px;
     width: 624px;
     height: 100%;
-    background-color: #ffffff;
+    background-color: ${globalColors.white};
     box-shadow: rgba(0, 0, 0, 0.1) 0px 7px 25px;
 
     @media ${device.tablet} {
@@ -80,7 +81,7 @@ const StyledArticlePopup = styled.div`
       border-radius: 1px;
       width: 16px;
       height: 2px;
-      background-color: #333333;
+      background-color: ${globalColors.gray};
       transform: rotate(45deg);
     }
 
@@ -102,15 +103,15 @@ const StyledArticlePopup = styled.div`
 
   .article-popup-title {
     font-size: 16px;
-    color: #333333;
+    color: ${globalColors.gray};
   }
 
   .article-popup-link {
     font-size: 14px;
-    color: #ff6f3d;
+    color: ${globalColors.orangeMain};
     text-decoration: underline;
     &:visited {
-      color: #ff6f3d;
+      color: ${globalColors.orangeMain};
     }
   }
 
@@ -141,14 +142,14 @@ const StyledArticlePopup = styled.div`
   }
 
   .article-popup-list-title {
-    color: #ff6f3d;
+    color: ${globalColors.orangeMain};
     text-decoration: underline;
   }
 
   .mark {
     border-radius: 2px;
     padding: 4px 8px;
-    color: #ffffff;
+    color: ${globalColors.white};
     font-size: 12px;
     font-weight: 600;
     line-height: 1.33em;
@@ -172,7 +173,7 @@ const StyledArticlePopup = styled.div`
       width: 18px;
       height: 18px;
       margin: 0 auto;
-      border: 2px solid #444444;
+      border: 2px solid ${globalColors.grayMain};
       border-radius: 75%;
       border-right-color: transparent;
       transform: translate(-50%, -50%);
@@ -189,7 +190,7 @@ const StyledArticlePopup = styled.div`
       }
 
       &:hover {
-        border-color: #444444;
+        border-color: ${globalColors.grayMain};
       }
     }
   }

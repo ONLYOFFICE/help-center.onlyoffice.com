@@ -18,7 +18,7 @@ const StyledDictionary = styled(StyledText)`
     }
 
     > strong {
-      color: #808080;
+      color: ${globalColors.textGray};
       font-weight: 700;
     }
   }

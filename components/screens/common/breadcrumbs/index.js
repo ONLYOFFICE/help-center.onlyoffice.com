@@ -5,6 +5,8 @@ const Breadcrumbs = ({
     t,
     categoryName,
     categoryUrl,
+    subCategoryName,
+    subCategoryUrl,
     pageName,
     level2CategoryName,
     level2CategoryUrl,
@@ -18,6 +20,9 @@ const Breadcrumbs = ({
       <li><InternalLink className="breadcrumb-link" href="/" label={t("Home")} /></li>
       {categoryUrl &&
         <li><InternalLink className="breadcrumb-link" href={categoryUrl} label={categoryName} /></li>
+      }
+      {subCategoryName &&
+        <li><InternalLink className="breadcrumb-link" href={subCategoryUrl} label={subCategoryName} /></li>
       }
       {level2CategoryUrl &&
         <li><InternalLink className="breadcrumb-link" href={level2CategoryUrl} label={level2CategoryName} /></li>

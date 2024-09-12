@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
+import globalColors from "@components/utils/global-colors";
 import arrowWhite from "@public/images/icons/arrow-white.react.svg";
 
 const StyledScrollToTopButton = styled.div`
@@ -17,7 +18,7 @@ const StyledScrollToTopButton = styled.div`
 
   button {
     display: inline-flex;
-    border: 1px solid #aaaaaa;
+    border: 1px solid ${globalColors.veryLightGrey};
     border-radius: 3px;
     padding: 0;
     margin-left: 40px;
@@ -26,7 +27,7 @@ const StyledScrollToTopButton = styled.div`
     background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/arrow-gray.react.svg");
     background-position: center center;
     background-repeat: no-repeat;
-    background-color: #f9f9f9;
+    background-color: ${globalColors.grayTextInputHover};
     transform: rotate(270deg);
     cursor: pointer;
 

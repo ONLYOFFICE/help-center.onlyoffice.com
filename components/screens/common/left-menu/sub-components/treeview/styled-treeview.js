@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
+import globalColors from "@components/utils/global-colors";
 
 const StyledTreeView = styled.li`
   .treeview-heading {
@@ -27,7 +28,7 @@ const StyledTreeView = styled.li`
     }
 
     &:hover {
-      color: #FF6F3D;
+      color: ${globalColors.orangeMain};
     }
 
     @media ${device.laptop} {
@@ -46,11 +47,11 @@ const StyledTreeView = styled.li`
     padding: 6px 0 6px 19px;
     font-size: 14px;
     line-height: 22px;
-    color: #444444;
+    color: ${globalColors.grayMain};
     transition: color 0.3s;
 
     &:hover {
-      color: #FF6F3D;
+      color: ${globalColors.orangeMain};
     }
 
     @media ${device.laptop} {

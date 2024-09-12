@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { device } from "@components/utils/devices";
 import search from "@public/images/icons/search.svg";
+import globalColors from "@components/utils/global-colors";
 
 const StyledSearchArea = styled.div`
   position: relative;
@@ -9,7 +10,7 @@ const StyledSearchArea = styled.div`
 
   .search-input {
     box-sizing: border-box;
-    border: 1px solid #CCCCCC;
+    border: 1px solid ${globalColors.grayLight};
     border-radius: ${(props) => (props.isLeftMenu ? "24px" : "32px")};
     padding: ${(props) => (props.isLeftMenu ? "12px 16px 12px 40px" : "20px 64px 20px 28px")};
     font-size: ${(props) => (props.isLeftMenu ? "14px" : "16px")};
@@ -19,7 +20,7 @@ const StyledSearchArea = styled.div`
     outline: none;
 
     &::placeholder {
-      color: ${(props) => (props.isLeftMenu ? "#CCCCCC" : "#808080")};
+      color: ${(props) => (props.isLeftMenu ? globalColors.grayLight : "#808080")};
     }
 
     @media ${device.laptop} {
@@ -27,7 +28,7 @@ const StyledSearchArea = styled.div`
         padding: 14px 16px 14px 48px;
         line-height: 20px;
         height: 48px;
-        background-color: #F9F9F9;
+        background-color: ${globalColors.grayTextInputHover};
       `}
     }
 

@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { device } from "@components/utils/devices";
+import globalColors from "@components/utils/global-colors";
 import chevronRight from "@public/images/icons/chevron-right-white.svg";
 
 const StyledFooterItem = styled.div`
@@ -21,12 +22,12 @@ const StyledFooterItem = styled.div`
       transition: max-height 0.3s ease;
 
       ${(props) =>
-        props.isOpen
-          ? css`
+    props.isOpen
+      ? css`
               margin-bottom: 16px;
               max-height: ${(props) => props.maxHeight};
             `
-          : css`
+      : css`
               margin-bottom: 0;
               max-height: 0;
       `}
@@ -36,12 +37,12 @@ const StyledFooterItem = styled.div`
   .footer-link {
     font-size: 13px;
     line-height: 18px;
-    color: #ffffff;
+    color: ${globalColors.white};
     text-decoration: none;
     transition: color 0.3s;
 
     &:hover {
-      color: #ff6f3d;
+      color: ${globalColors.orangeMain};
     }
   }
 
@@ -51,7 +52,7 @@ const StyledFooterItem = styled.div`
     line-height: 18px;
     font-weight: 600;
     letter-spacing: 0.04em;
-    color: #808080;
+    color: ${globalColors.textGray};
     text-transform: uppercase;
 
     &:after {
@@ -79,7 +80,7 @@ const StyledFooterItem = styled.div`
       justify-content: space-between;
       margin-bottom: 0;
       padding: 15px 0 14px;
-      color: #ffffff;
+      color: ${globalColors.white};
       overflow: hidden;
       cursor: pointer;
     }

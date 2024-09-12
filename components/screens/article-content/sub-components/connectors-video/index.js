@@ -3,17 +3,28 @@ import StyledConnectorsVideo from "./styled-connectors-video";
 import Heading from "@components/common/heading";
 import VideoItem from "@components/screens/common/video-item";
 import Carousel from "@components/common/carousel";
-import useWindowWidth from "@utils/helpers/System/useWindowProvider";
 
 const ConnectorsVideo = ({ t, videos }) => {
+  const [firstVideo, setFirstVideo] = useState(null);
   const [filteredArray, setFilteredArray] = useState(videos);
   const [mobile, setMobile] = useState(false);
   const [videosForCarLenght, setVideosForCarLenght] = useState(2);
-  const windowWidth = useWindowWidth();
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     if (videos.length >= 2) {
       if (windowWidth > 1024) {
+        setFirstVideo(videos.slice(0, 1));
         setFilteredArray(videos.slice(1));
         setMobile(false);
         setVideosForCarLenght(2);
@@ -23,21 +34,15 @@ const ConnectorsVideo = ({ t, videos }) => {
         setVideosForCarLenght(1);
       }
     }
-  }, [videos.length]);
+  }, [videos, windowWidth]);
 
   return (
     <StyledConnectorsVideo id="watchvideo_block">
       <Heading level={4}>{t("WatchVideo")}</Heading>
       <div className={`vids ${videos.length == 1 ? "single" : ""}`}>
-        {videos?.map((item, index) =>
-          <VideoItem
-            className={`main ${videos.length == 1 ? "single" : ""}`}
-            t={t}
-            data={item}
-            isMain={true}
-            key={index}
-          />
-        )}
+        {!mobile && firstVideo && firstVideo.map((it, index) => {
+          return <VideoItem t={t} key={index} data={it} isMain={true} className={`main ${videos.length == 1 ? 'single' : ''}`} />;
+        })}
         {filteredArray.length > 1 &&
           <Carousel
             className="vids-car"

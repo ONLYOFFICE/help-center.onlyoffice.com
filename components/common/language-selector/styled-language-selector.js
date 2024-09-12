@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import arrownDown from "@public/images/icons/arrow-down.svg";
+import globalColors from "@components/utils/global-colors";
 
 const StyledLanguageSelector = styled.div`
   position: relative;
@@ -32,7 +33,7 @@ const StyledLanguageSelector = styled.div`
     display: flex;
     flex-direction: column;
     padding: 6px;
-    background-color: #ffffff;
+    background-color: ${globalColors.white};
     box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
     z-index: 100;
     list-style-type: none;
