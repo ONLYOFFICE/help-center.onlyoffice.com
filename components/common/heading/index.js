@@ -1,19 +1,19 @@
 import PropTypes from "prop-types";
 import StyledHeading from "./styled-heading";
+import { forwardRef } from "react";
 
-const Heading = ({
-  label,
-  level,
-  children,
-  ...rest
-}) => {
-
+const Heading = forwardRef(({
+    label,
+    level,
+    children,
+    ...rest
+  }, ref) => {
   return (
-    <StyledHeading as={`h${level}`} level={level} {...rest}>
-       {label || children}
+    <StyledHeading as={`h${level}`} level={level} ref={ref} {...rest}>
+      {label || children}
     </StyledHeading>
   );
-};
+});
 
 Heading.propTypes = {
   /** The heading level */

@@ -1,11 +1,12 @@
 import StyledLeftMenu from "./styled-left-menu";
+import { forwardRef } from "react";
 import { Scrollbar } from "react-scrollbars-custom";
 import InternalLink from "@components/common/internal-link";
 import SearchArea from "@components/screens/common/search-area";
 import Heading from "@components/common/heading";
 import TreeView from "@components/screens/common/left-menu/sub-components/treeview";
 
-const LeftMenu = ({
+const LeftMenu = forwardRef(({
   t,
   isArticle,
   isLevel4CategoryPage,
@@ -14,14 +15,13 @@ const LeftMenu = ({
   pageItemsLevel,
   categorySlug,
   headings,
-  activeSection,
   backBtnUrl,
   backBtnName,
   leftMenuMobile,
   setLeftMenuMobile
-}) => {
+}, ref) => {
   return (
-    <StyledLeftMenu className={`left-menu ${leftMenuMobile ? "active" : ""}`}>
+    <StyledLeftMenu ref={ref} className={`left-menu ${leftMenuMobile ? "active" : ""}`}>
       <div className="left-menu-wrapper">
         <SearchArea
           className="left-menu-search"
@@ -38,7 +38,7 @@ const LeftMenu = ({
           <ul className={`left-menu-items ${isArticle || isLevel4CategoryPage ? "left-menu-articles" : ""}`}>
             {isArticle || isLevel4CategoryPage ? (
               headings.map((item, index) => (
-                <li className={activeSection === item.id ? "active" : ""} key={index}>
+                <li className={index === 0 ? "active" : ""} key={index}>
                   <InternalLink onClick={() => setLeftMenuMobile(false)} href={`#${item.id}`} label={item.text} />
                 </li>
               ))
@@ -62,6 +62,6 @@ const LeftMenu = ({
       </div>
     </StyledLeftMenu >
   )
-}
+});
 
 export default LeftMenu;
