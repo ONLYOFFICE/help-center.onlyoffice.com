@@ -5,6 +5,7 @@ import VideoItem from "@components/screens/common/video-item";
 import Carousel from "@components/common/carousel";
 
 const ConnectorsVideo = forwardRef(({ t, videos }, ref) => {
+  const [firstVideo, setFirstVideo] = useState(null);
   const [filteredArray, setFilteredArray] = useState(videos);
   const [mobile, setMobile] = useState(false);
   const [videosForCarLenght, setVideosForCarLenght] = useState(2);
@@ -32,6 +33,8 @@ const ConnectorsVideo = forwardRef(({ t, videos }, ref) => {
         setMobile(true);
         setVideosForCarLenght(1);
       }
+    } else {
+      setFirstVideo(videos);
     }
   }, [videos, windowWidth]);
 
