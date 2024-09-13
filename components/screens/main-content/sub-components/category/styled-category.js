@@ -17,7 +17,7 @@ const StyledCategory = styled.div`
 
     &:hover {
       .category-box-title {
-        text-decoration: underline;
+        color: ${globalColors.orangeMain};
       }
     }
 

@@ -45,13 +45,13 @@ const DownloadArea = ({ t, slug, subcat, ...rest }) => {
         <div className="download-content">
           <Heading level={3} className="download-title" label={t(label)} />
           <div className="download-buttons">
-            {slug.toLowerCase() !== "mobile apps" && slug.toLowerCase() !== "workspace" ? (
+            {slug && slug.toLowerCase() !== "mobile apps" && slug.toLowerCase() !== "workspace" ? (
               <>
                 <ExternalLink className="download-button" href={`https://www.onlyoffice.com/download-${downloadHref}.aspx?from=helpcenter`} label={t("GetItNow")} />
                 <ExternalLink className="download-button" href={`https://www.onlyoffice.com/${downloadHref}-registration.aspx?from=helpcenter`} label={t("UseInTheCloud")} />
               </>
             ) : (
-              slug.toLowerCase() === "mobile apps" ? (
+              slug && slug.toLowerCase() === "mobile apps" ? (
                 subcat === "iOS" ? (
                   <ExternalLink className="download-button ios" href={downloadHref} />
                 ) : (
@@ -62,7 +62,6 @@ const DownloadArea = ({ t, slug, subcat, ...rest }) => {
               )
             )}
           </div>
-
         </div>
       </div>
     </StyledDownloadArea>

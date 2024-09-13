@@ -669,7 +669,7 @@ const RawHtmlStyle = styled.div`
     }
 
     img.width-content {
-      width: -webkit-fill-available;
+      width: 100%;
     }
 
     img.bigphoto_screen {

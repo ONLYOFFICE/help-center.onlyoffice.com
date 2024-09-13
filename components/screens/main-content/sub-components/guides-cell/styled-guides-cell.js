@@ -129,7 +129,7 @@ const StyledGuidesCell = styled.div`
 
     &[href] {
       &:hover {
-        text-decoration: underline;
+        color: ${globalColors.orangeMain};
       }
     }
   }

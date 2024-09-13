@@ -10,6 +10,8 @@ const globalColors = {
   veryLightGrey: "#aaaaaa",
   bgGray: "#F5F5F5",
   textGray: "#808080",
+  tagColor: "#efefef",
+  tagHover: "#E2E2E2",
 
   orangeMain: "#ff6f3d",
   orangeHover: "#ff865c",

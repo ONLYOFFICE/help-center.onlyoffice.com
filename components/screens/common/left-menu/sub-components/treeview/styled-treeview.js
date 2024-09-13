@@ -4,6 +4,7 @@ import globalColors from "@components/utils/global-colors";
 
 const StyledTreeView = styled.li`
   .treeview-heading {
+    color: ${globalColors.gray};
     display: flex;
     align-items: center;
     border: none;

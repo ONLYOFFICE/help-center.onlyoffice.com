@@ -5,7 +5,7 @@ import InternalLink from "@components/common/internal-link";
 
 const TreeView = ({ article, pageItemsLevel, categorySlug }) => {
   const content = useRef();
-  const [active, setActive] = useState(true);
+  const [active, setActive] = useState(false);
 
   return (
     <StyledTreeView active={active}>

@@ -36,10 +36,11 @@ const StyledWrapperContent = styled.div`
     font-size: 12px;
     line-height: 19px;
     color: ${globalColors.gray};
-    background-color: #efefef;
+    background-color: ${globalColors.tagColor};
     cursor: pointer;
 
     &:hover {
+      background-color: ${globalColors.tagHover};
       text-decoration: none;
     }
   }

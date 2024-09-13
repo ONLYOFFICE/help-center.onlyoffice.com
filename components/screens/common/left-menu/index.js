@@ -31,9 +31,8 @@ const LeftMenu = ({
         {backBtnUrl &&
           <InternalLink className="left-menu-link" href={backBtnUrl} label={backBtnName} />
         }
-
         <Scrollbar>
-          {pageName &&
+          {headings && headings.length != 0 && pageName &&
             <Heading className="left-menu-title" level={6} label={pageName} />
           }
           <ul className={`left-menu-items ${isArticle || isLevel4CategoryPage ? "left-menu-articles" : ""}`}>
