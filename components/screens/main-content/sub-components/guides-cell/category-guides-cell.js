@@ -2,8 +2,9 @@ import StyledGuidesCell from "./styled-guides-cell";
 import InternalLink from "@components/common/internal-link";
 import ReactHtmlParser from "react-html-parser";
 import Heading from "@components/common/heading";
+import Link from "next/link";
 
-const CategoryGuidesCell = ({ data, categorySlug }) => {
+const CategoryGuidesCell = ({ data, categorySlug, t }) => {
   const connectorsSlug = data.attributes.connector_img;
   const items = [...data.attributes[`level_2_${categorySlug}`]?.data ?? [], ...data.attributes[`article_${categorySlug}`]?.data ?? []];
 
@@ -15,8 +16,8 @@ const CategoryGuidesCell = ({ data, categorySlug }) => {
             <img className="guides-cell-icon" src={data.attributes.card_field_img?.data?.attributes.url} alt={data.attributes.name} />
           }
 
-          {data.attributes.url === null ? (
-            <Heading className="guides-cell-title" label={data.attributes.name} />
+          {(data.attributes.url === null || data.attributes.url_docspace) ? (
+            <Heading className="guides-cell-title" label={data.attributes.name || data.attributes.title} />
           ) : (
             <InternalLink className="guides-cell-title" label={data.attributes.name || data.attributes.title} href={data.attributes.url} />
           )}
@@ -26,6 +27,12 @@ const CategoryGuidesCell = ({ data, categorySlug }) => {
         </div>
         {data.attributes.description &&
           <div className="guides-cell-description">{ReactHtmlParser(data.attributes.description)}</div>
+        }
+        {data.attributes.url_docspace &&
+          <div className="guides-cell-int-links">
+            <InternalLink className="guides-cell-int-link docs" label={t("Docs")} href={data.attributes.url} />
+            <InternalLink className="guides-cell-int-link docspace" label={t("DocSpace")} href={data.attributes.url_docspace} />
+          </div>
         }
       </div>
       {!connectorsSlug &&

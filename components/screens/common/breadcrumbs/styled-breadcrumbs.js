@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import globalColors from "@components/utils/global-colors";
 
 const StyledBreadcrumbs = styled.ul`
   display: flex;
@@ -18,7 +19,7 @@ const StyledBreadcrumbs = styled.ul`
     align-items: center;
     display: inline-flex;
     position: relative;
-    color: #666666;
+    color: ${globalColors.grayTextInput};
     text-decoration: none;
     line-height: 18px;
 
@@ -36,7 +37,7 @@ const StyledBreadcrumbs = styled.ul`
     }
 
     &.last {
-      color: #ff6f3d;
+      color: ${globalColors.orangeMain};
       line-height: 133%;
       display: inline-flex;
 

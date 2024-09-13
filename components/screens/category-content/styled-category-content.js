@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Section from "@components/common/section";
+import globalColors from "@components/utils/global-colors";
 
 const StyledCategoryContent = styled(Section)`
   .section-page {
@@ -8,7 +9,7 @@ const StyledCategoryContent = styled(Section)`
 
   .wrapper-description {
     a {
-      color: #ff6f3d;
+      color: ${globalColors.orangeMain};
 
       &:hover {
         text-decoration: none;

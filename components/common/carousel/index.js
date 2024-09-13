@@ -26,7 +26,7 @@ const Carousel = ({
     </button>
   );
   const CustomNextArrow = ({ onClick }) => (
-    <button onClick={onClick} className={`cust-arr next ${currentSlide === settings.slidesToShow - 1 ? "disabled" : ""
+    <button onClick={onClick} className={`cust-arr next ${currentSlide === settings.slidesToShow ? "disabled" : ""
       }`}>
       <img src="https://static-helpcenter.onlyoffice.com/images/icons/slideshow_next-prev.react.svg" alt="Next" />
     </button>

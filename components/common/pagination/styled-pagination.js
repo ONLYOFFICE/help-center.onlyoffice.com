@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import globalColors from "@components/utils/global-colors";
 
 export const StyledPagination = styled.div`
   display: flex;
@@ -17,7 +18,7 @@ export const StyledPagination = styled.div`
     height: 40px;
     font-size: 16px;
     line-height: 22px;
-    color: #444444;
+    color: ${globalColors.grayMain};
     transition: border-color 0.3s, color 0.3s;
     cursor: pointer;
 
@@ -26,8 +27,8 @@ export const StyledPagination = styled.div`
     }
 
     &.active {
-      color: #FF6F3D;
-      border-color: #FF6F3D;
+      color: ${globalColors.orangeMain};
+      border-color: ${globalColors.orangeMain};
       pointer-events: none;
       user-select: none;
     }
@@ -40,8 +41,8 @@ export const StyledPagination = styled.div`
 
     &:not(.active) {
       &:hover {
-        border-color: #FF6F3D;
-        color: #FF6F3D;
+        border-color: ${globalColors.orangeMain};
+        color: ${globalColors.orangeMain};
         cursor: pointer;
       }
     }

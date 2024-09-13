@@ -21,8 +21,6 @@ const Accordion = ({ children, level, isMain }) => {
 };
 
 Accordion.propTypes = {
-  // /** The heading level */
-  // level: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
   /** Accepts CSS style */
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   /** Tab index */

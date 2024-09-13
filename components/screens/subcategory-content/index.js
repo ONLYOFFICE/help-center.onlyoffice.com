@@ -118,10 +118,19 @@ const SubCategoryContent = ({
               <div id={`${item.attributes.name.replace(/ /g, "_").toLowerCase()}_block`} className="subcat-div" key={index}>
                 <Heading level={5}>{item.attributes.name}</Heading>
                 <ul className="classic-ul">
-                  {item.attributes[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`].data.sort((a, b) => {
+                  {item.attributes[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`].data
+                  .sort((a, b) => {
                     const aValue = a.attributes.name || a.attributes.title;
                     const bValue = b.attributes.name || b.attributes.title;
-                    return aValue.localeCompare(bValue);
+                    const aIsRemoving = aValue.toLowerCase().startsWith('removing');
+                    const bIsRemoving = bValue.toLowerCase().startsWith('removing');
+                    if (aIsRemoving && !bIsRemoving) {
+                      return 1; 
+                    } else if (!aIsRemoving && bIsRemoving) {
+                      return -1; 
+                    } else {
+                      return aValue.localeCompare(bValue);
+                    }
                   }).map((item, index) => (
                     <li key={index}>
                       <InternalLink href={item.attributes.url} label={item.attributes.title} />

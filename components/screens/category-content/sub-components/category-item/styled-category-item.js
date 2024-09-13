@@ -1,17 +1,18 @@
 import styled from "styled-components";
+import globalColors from "@components/utils/global-colors";
 
 const StyledCategoryItem = styled.div`
   display: flex;
   flex-direction: column;
   margin: 24px 0 0;
   padding: 32px;
-  background: #FFFFFF;
+  background: ${globalColors.white};
   box-shadow: 0px 7px 25px rgb(85 85 85 / 15%);
   border-radius: 3px;
-  color: #333333;
+  color: ${globalColors.gray};
 
   &:hover {
-    color: #333333;
+    color: ${globalColors.gray};
     text-decoration: none;
   }
 
@@ -20,7 +21,7 @@ const StyledCategoryItem = styled.div`
     transition: color 0.3s;
 
     > span {
-      color: #333333;
+      color: ${globalColors.gray};
       font-size: 18px;
       line-height: 1.33em;
       letter-spacing: -0.02em;
@@ -30,7 +31,7 @@ const StyledCategoryItem = styled.div`
 
     &[href] {
       &:hover {
-        color: #ff6f3d;
+        color: ${globalColors.orangeMain};
       }
     }
   }
@@ -49,22 +50,22 @@ const StyledCategoryItem = styled.div`
 
     &[href] {
       &:hover {
-        color: #ff6f3d;
+        color: ${globalColors.orangeMain};
       }
     }
   }
 
   h5 {
     &:hover {
-      color: #ff6f3d;
+      color: ${globalColors.orangeMain};
       cursor: pointer;
     }
   }
 
   > span {
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    color: #666;
+    border-top: 1px solid ${globalColors.grayLight};
+    border-bottom: 1px solid ${globalColors.grayLight};
+    color: ${globalColors.grayTextInput};
     padding: 16px 0;
   }
 
@@ -115,12 +116,12 @@ const StyledCategoryItem = styled.div`
       }
 
       a {
-        color: #333333;
+        color: ${globalColors.gray};
         text-decoration: none;
         transition: color 0.3s;
 
         &:hover {
-          color: #ff6f3d;
+          color: ${globalColors.orangeMain};
         }
       }
     }

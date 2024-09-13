@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { device } from "@components/utils/devices";
+import globalColors from "@components/utils/global-colors";
 
 const StyledImagePopup = styled.div`
   height: 100%;
@@ -27,7 +28,7 @@ const StyledImagePopup = styled.div`
     position: relative;
 
     > img { 
-      background-color: #fff;
+      background-color: ${globalColors.white};
       box-shadow: 0 7px 25px rgb(0, 0, 0, 0.1);
       width: 1240px;
     }
@@ -75,7 +76,7 @@ const CloseButton = styled.div`
   width: 16px;
   height: 16px;
   margin: 0px 0 0;
-  background-color: #fff;
+  background-color: ${globalColors.white};
   border-radius: 50%;
   color: transparent;
   right: 8px;
@@ -84,7 +85,7 @@ const CloseButton = styled.div`
   &:before,
   &:after {
     content: "";
-    background-color: #333333;
+    background-color: ${globalColors.gray};
     position: absolute;
     transform: rotate(45deg);
     border-radius: 1px;

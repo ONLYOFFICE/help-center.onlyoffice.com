@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
+import globalColors from "@components/utils/global-colors";
 
 const StyledCategory = styled.div`
   display: flex;
@@ -16,7 +17,7 @@ const StyledCategory = styled.div`
 
     &:hover {
       .category-box-title {
-        text-decoration: underline;
+        color: ${globalColors.orangeMain};
       }
     }
 
@@ -44,7 +45,7 @@ const StyledCategory = styled.div`
     font-weight: 600;
     line-height: 16px;
     letter-spacing: 0.04em;
-    color: #444444;
+    color: ${globalColors.grayMain};
     text-align: center;
     text-transform: uppercase;
   }

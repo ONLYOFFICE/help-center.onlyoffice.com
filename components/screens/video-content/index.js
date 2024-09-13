@@ -67,7 +67,7 @@ const VideoContent = ({ t, videoData, leftMenuMobile, setLeftMenuMobile }) => {
         />
         <div className="wrapper" ref={contentRef}>
           {Object.entries(sortedGroupedVideos).map(([key, group]) => (
-            <div id={`${key}_block`} key={key}>
+            <div id={`${group.name.toLowerCase()}_block`} key={key}>
               <Heading level={4}>{group.name}</Heading>
               <div className="video-items">
                 {group.videos.map(video => (

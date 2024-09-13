@@ -4,14 +4,12 @@ import Items from "./data/footer-items";
 import FooterItem from "./sub-components/footer-item";
 import InternalLink from "@components/common/internal-link";
 import Text from "@components/common/text";
-import useWindowWidth from "@utils/helpers/System/useWindowProvider";
 
 const date = new Date();
 const currentYear = date.getFullYear();
 
 const Footer = ({ t, locale }) => {
   const [isClient, setIsClient] = useState(false);
-  const windowWidth = useWindowWidth();
   const onlyoffice = `https://www.onlyoffice.com${locale === "en" ? "" : `/${locale}`}`;
 
   useEffect(() => {
@@ -20,7 +18,7 @@ const Footer = ({ t, locale }) => {
 
   if (!isClient) return null;
 
-  const isMobile = windowWidth <= 1000;
+  const isMobile = window.innerWidth <= 1000;
 
   let columns;
   if (isMobile) {

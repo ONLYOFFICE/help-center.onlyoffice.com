@@ -3,7 +3,6 @@ import { device } from "@components/utils/devices";
 
 const StyledCarousel = styled.div`
   margin: 0 auto;
-  //padding: 0px;
   .slick-vertical .slick-slide {
       padding-bottom: 10px;
       &:last-child {
@@ -12,7 +11,6 @@ const StyledCarousel = styled.div`
     }
   .slick-slider {
     margin: 0 auto;
-   // padding: 0px;
     .slide {
       .carousel-image {
         width: 100%;
@@ -20,7 +18,6 @@ const StyledCarousel = styled.div`
     }
     .slick-list{
       height: 380px;
-      //margin: 12px 0;
     }
 
     ${(props) =>

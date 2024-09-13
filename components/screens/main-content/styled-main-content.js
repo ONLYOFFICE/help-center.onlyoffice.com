@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Section from "@components/common/section";
 import { device } from "@components/utils/devices";
+import globalColors from "@components/utils/global-colors";
 
 const StyledMainContent = styled(Section)`
   overflow: hidden;
@@ -8,7 +9,7 @@ const StyledMainContent = styled(Section)`
   .info-content {
     position: relative;
     padding: 102px 0 112px;
-    background-color: #f5f5f5;
+    background-color: ${globalColors.bgGray};
 
     &:before {
       content: "";
@@ -18,7 +19,7 @@ const StyledMainContent = styled(Section)`
       z-index: -1;
       width: 100vw;
       height: 100%;
-      background-color: #f5f5f5;
+      background-color: ${globalColors.bgGray};
       transform: translateX(-100%);
     }
 
@@ -30,7 +31,7 @@ const StyledMainContent = styled(Section)`
       z-index: -1;
       width: 100vw;
       height: 100%;
-      background-color: #f5f5f5;
+      background-color: ${globalColors.bgGray};
       transform: translateX(100%);
     }
     
@@ -85,12 +86,12 @@ const StyledMainContent = styled(Section)`
   }
 
   .guides-cards {
-    background-color: #ffffff;
+    background-color: ${globalColors.white};
     padding: 80px 0 112px;
 
     &.bg-gray {
       position: relative;
-      background-color: #f5f5f5;
+      background-color: ${globalColors.bgGray};
 
       &:before {
         content: "";
@@ -100,7 +101,7 @@ const StyledMainContent = styled(Section)`
         z-index: -1;
         width: 100vw;
         height: 100%;
-        background-color: #f5f5f5;
+        background-color: ${globalColors.bgGray};
         transform: translateX(-100%);
       }
 
@@ -112,7 +113,7 @@ const StyledMainContent = styled(Section)`
         z-index: -1;
         width: 100vw;
         height: 100%;
-        background-color: #f5f5f5;
+        background-color: ${globalColors.bgGray};
         transform: translateX(100%);
       }
     }
@@ -138,7 +139,7 @@ const StyledMainContent = styled(Section)`
     align-items: center;
     font-weight: 700;
     letter-spacing: 0.04em;
-    color: #333333;
+    color: ${globalColors.gray};
     text-decoration: none;
     text-transform: uppercase;
     transition: color 0.3s;
@@ -156,7 +157,7 @@ const StyledMainContent = styled(Section)`
     }
 
     &:hover {
-      color: #ff6f3d;
+      color: ${globalColors.orangeMain};
     }
   }
 

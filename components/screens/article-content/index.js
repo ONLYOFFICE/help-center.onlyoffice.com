@@ -35,7 +35,9 @@ const ArticleContent = ({
   backBtnName,
   backBtnUrl,
   leftMenuMobile,
-  setLeftMenuMobile
+  setLeftMenuMobile,
+  subCategoryName,
+  subCategoryUrl
 }) => {
   const containerRef = useRef(null);
   const lastActiveSectionRef = useRef(null);
@@ -109,6 +111,8 @@ const ArticleContent = ({
             t={t}
             categoryName={categoryName}
             categoryUrl={categoryUrl}
+            subCategoryName={subCategoryName}
+            subCategoryUrl={subCategoryUrl}
             level2CategoryName={level2CategoryName}
             level2CategoryUrl={level2CategoryUrl}
             level3CategoryName={level3CategoryName}
@@ -137,7 +141,7 @@ const ArticleContent = ({
             }
             <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</RawHtmlStyle>
           </div>
-          <DownloadArea className="download-area" t={t} />
+          <DownloadArea className="download-area" slug={categoryName} subcat={subCategoryName} t={t} />
           <ArticlePopup
             t={t}
             locale={locale}

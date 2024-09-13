@@ -58,6 +58,7 @@ const Level1CategoryContent = ({ t, locale, categoryName, categoryImg, categorie
                 data={item}
                 categorySlug={categorySlug}
                 key={index}
+                t={t}
               />
             ))}
           </Masonry>

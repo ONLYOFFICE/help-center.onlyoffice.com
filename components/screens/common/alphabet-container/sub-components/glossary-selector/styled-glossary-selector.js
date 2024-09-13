@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
+import globalColors from "@components/utils/global-colors";
 
 const StyledGlossarySelector = styled.div`
-  background-color: #f5f5f5;
+  background-color: ${globalColors.bgGray};
   border-radius: 4px;
   display: flex;
   flex-wrap: wrap;
@@ -12,10 +13,10 @@ const StyledGlossarySelector = styled.div`
 
 
   .glossary-select {
-    background-color: #ffffff;
+    background-color: ${globalColors.white};
     border: none;
     border-radius: 3px;
-    color: #444444;
+    color: ${globalColors.grayMain};
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;
@@ -27,18 +28,18 @@ const StyledGlossarySelector = styled.div`
     min-width: 41px;
 
     &.active {
-      color: #ffffff;
-      background-color: #ff6f3d;
+      color: ${globalColors.white};
+      background-color: ${globalColors.orangeMain};
     }
 
     &:disabled {
-      color: #aaaaaa;
+      color: ${globalColors.veryLightGrey};
       cursor: unset;
     }
 
     &:not(:disabled):hover {
-      background-color: #ff6f3d;
-      color: #ffffff;
+      background-color: ${globalColors.orangeMain};
+      color: ${globalColors.white};
     }
 
     @media (max-width: 608px) {

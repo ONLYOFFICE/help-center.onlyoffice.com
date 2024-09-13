@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
+import globalColors from "@components/utils/global-colors";
+import docsIcon from "@public/images/icons/16px_docs.react.svg";
+import docspaceIcon from "@public/images/icons/16px_docspace.react.svg";
 
 const StyledGuidesCell = styled.div`
   border-radius: 3px;
   width: 544px;
-  background-color: #ffffff;
+  background-color: ${globalColors.white};
   box-shadow: rgba(85, 85, 85, 0.15) 0px 7px 25px;
   margin-bottom: ${(props) => (props.isCategoryPage ? "32px" : "24px")};
 
@@ -15,7 +18,7 @@ const StyledGuidesCell = styled.div`
   .guides-cell-header {
     display: flex;
     flex-direction: column;
-    padding: 32px 32px 24px;
+    padding: 32px;
   }
 
   .guides-cell-top {
@@ -23,7 +26,7 @@ const StyledGuidesCell = styled.div`
     align-items: center;
     
     &:not(:last-child) {
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
 
     &.integration {
@@ -42,7 +45,7 @@ const StyledGuidesCell = styled.div`
   }
 
   .guides-cell-title {
-    color: #333333;
+    color: ${globalColors.gray};
     font-weight: 700;
     font-size: 18px;
     line-height: 1.33em;
@@ -51,7 +54,7 @@ const StyledGuidesCell = styled.div`
 
     &[href] {
       &:hover {
-        color: #ff6f3d;
+        color: ${globalColors.orangeMain};
       }
     }
   }
@@ -61,10 +64,34 @@ const StyledGuidesCell = styled.div`
     line-height: 1.6em;
 
     a {
-      color: #ff6f3d;
+      color: ${globalColors.orangeMain};
 
       &:hover {
         text-decoration: none;
+      }
+    }
+  }
+
+  .guides-cell-int-links {
+    display: flex;
+    gap: 32px;
+    padding-top: 32px;
+
+    .guides-cell-int-link {
+      color: ${globalColors.orangeMain};
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      &:before {
+        content: "";
+        height: 16px;
+        width: 16px;
+      }
+      &.docs:before {
+        background-image: url(${docsIcon.src});
+      }
+      &.docspace:before {
+        background-image: url(${docspaceIcon.src});
       }
     }
   }
@@ -74,7 +101,7 @@ const StyledGuidesCell = styled.div`
     grid-template-columns: 1fr 1fr;
     align-items: start;
     gap: 32px;
-    border-top: 1px solid #cccccc;
+    border-top: 1px solid ${globalColors.grayLight};
     padding: 24px 32px 32px;
   }
 
@@ -87,7 +114,7 @@ const StyledGuidesCell = styled.div`
     font-size: 14px;
     line-height: 19px;
     letter-spacing: 0.04em;
-    color: #333333;
+    color: ${globalColors.gray};
 
     @media ${device.mobile} {
       font-size: 13px;
@@ -102,7 +129,7 @@ const StyledGuidesCell = styled.div`
 
     &[href] {
       &:hover {
-        text-decoration: underline;
+        color: ${globalColors.orangeMain};
       }
     }
   }
@@ -114,7 +141,7 @@ const StyledGuidesCell = styled.div`
   @media ${device.tablet} {
     .guides-cell-columns {
       grid-template-columns: 1fr;
-      gap:  ${(props) => (props.isCategoryPage ? "24px" : "16px" )};
+      gap:  ${(props) => (props.isCategoryPage ? "24px" : "16px")};
     }
     .guides-cell-header-link {
       padding-top: ${(props) => (props.isCategoryPage ? "0px" : "16px")};
