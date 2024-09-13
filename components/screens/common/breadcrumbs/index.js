@@ -1,7 +1,8 @@
 import StyledBreadcrumbs from "./styled-breadcrumbs";
+import { forwardRef } from "react";
 import InternalLink from "../../../common/internal-link";
 
-const Breadcrumbs = ({
+const Breadcrumbs = forwardRef(({
     t,
     categoryName,
     categoryUrl,
@@ -14,9 +15,9 @@ const Breadcrumbs = ({
     level3CategoryUrl,
     level4CategoryName,
     level4CategoryUrl
-  }) => {
+  }, ref) => {
   return (
-    <StyledBreadcrumbs>
+    <StyledBreadcrumbs ref={ref}>
       <li><InternalLink className="breadcrumb-link" href="/" label={t("Home")} /></li>
       {categoryUrl &&
         <li><InternalLink className="breadcrumb-link" href={categoryUrl} label={categoryName} /></li>
@@ -36,6 +37,6 @@ const Breadcrumbs = ({
       <li><span className="breadcrumb-link last">{pageName}</span></li>
     </StyledBreadcrumbs>
   );
-};
+});
 
 export default Breadcrumbs;

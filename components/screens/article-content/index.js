@@ -40,17 +40,56 @@ const ArticleContent = ({
   subCategoryUrl
 }) => {
   const containerRef = useRef(null);
-  const lastActiveSectionRef = useRef(null);
+  const wrapperContentRef = useRef(null);
+  const leftMenuRef = useRef(null);
+  const breadcrumbsRef = useRef(null);
+  const headingRef = useRef(null);
+  const tagsRef = useRef(null);
+  const videosRef = useRef(null);
+
   const [modalActive, setModalActive] = useState(false);
   const [imageModalActive, setImageModalActive] = useState(false);
   const [bigPhotoSrc, setBigPhotoSrc] = useState(null);
   const [headings, setHeadings] = useState([]);
-  const [activeSection, setActiveSection] = useState(null);
   const [tagName, setTagName] = useState();
   const [tagItems, setTagItems] = useState();
   const [hasMoreTags, setHasMoreTags] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const cookies = new Cookies(null, { path: "/" });
+
+  useEffect(() => {
+    if (containerRef.current) {
+      tableBuilder(containerRef.current, cookies);
+    }
+
+    setHeadings(extractHeadings(wrapperContentRef.current, pageDescription, "h4"));
+
+    function getFullHeight(element) {
+      if (!element) {
+        return 0;
+      }
+
+      const offsetHeight = element.getBoundingClientRect().height;
+      const style = window.getComputedStyle(element);
+      return offsetHeight + parseFloat(style.marginTop) + parseFloat(style.marginBottom);
+    }
+
+    const breadcrumbsRefHeight = getFullHeight(breadcrumbsRef.current);
+    const tagsRefHeight = getFullHeight(tagsRef.current);
+    const headingRefHeight = getFullHeight(headingRef.current);
+    const videosRefHeight = getFullHeight(videosRef.current);
+    const offsetTop = breadcrumbsRefHeight + tagsRefHeight + headingRefHeight + videosRefHeight + 32 + 24;
+
+    const scrollHandler = () => {
+      handleArticleScroll(true, wrapperContentRef.current, leftMenuRef.current, offsetTop, "h4", setShowButton);
+    };
+
+    window.addEventListener("scroll", scrollHandler);
+
+    return () => {
+      window.removeEventListener("scroll", scrollHandler);
+    };
+  }, []);
 
   const handleTagModal = async (tagName) => {
     const data = await getTagsArticle(locale, tagName, 4, 1);
@@ -71,20 +110,6 @@ const ArticleContent = ({
     setModalActive(true);
   };
 
-  useEffect(() => {
-    if (containerRef.current) {
-      tableBuilder(containerRef.current, cookies);
-    }
-    setHeadings(extractHeadings(pageDescription, "h4", videos, t));
-    handleArticleScroll(setActiveSection, setShowButton, lastActiveSectionRef, "h4");
-    const scrollHandler = (event) => handleArticleScroll(setActiveSection, setShowButton, lastActiveSectionRef, "h4");
-
-    window.addEventListener('scroll', scrollHandler);
-    return () => {
-      window.removeEventListener('scroll', scrollHandler);
-    };
-  }, []);
-
   const handleClick = (event) => {
     handleFaqAccordionClick(event, containerRef.current);
     handleImagePopupClick(event, setBigPhotoSrc, setImageModalActive);
@@ -97,10 +122,10 @@ const ArticleContent = ({
       <StyledWrapperContent>
         <LeftMenu
           t={t}
+          ref={leftMenuRef}
           pageName={pageName}
           headings={headings}
           isArticle={true}
-          activeSection={activeSection}
           backBtnName={backBtnName}
           backBtnUrl={backBtnUrl}
           leftMenuMobile={leftMenuMobile}
@@ -109,6 +134,7 @@ const ArticleContent = ({
         <div className="wrapper">
           <Breadcrumbs
             t={t}
+            ref={breadcrumbsRef}
             categoryName={categoryName}
             categoryUrl={categoryUrl}
             subCategoryName={subCategoryName}
@@ -121,9 +147,9 @@ const ArticleContent = ({
             level4CategoryUrl={level4CategoryUrl}
             pageName={pageName}
           />
-          <Heading level={3}>{pageName}</Heading>
+          <Heading ref={headingRef} level={3}>{pageName}</Heading>
           {tags?.data &&
-            <div className="tags">
+            <div ref={tagsRef} className="tags">
               {tags?.data.map((item, index) => (
                 <div
                   onClick={() => handleTagModal(item.attributes.title)}
@@ -135,9 +161,9 @@ const ArticleContent = ({
               ))}
             </div>
           }
-          <div>
+          <div ref={wrapperContentRef}>
             {videos && videos.data.length > 0 &&
-              <ConnectorsVideo t={t} videos={videos.data} />
+              <ConnectorsVideo t={t} ref={videosRef} videos={videos.data} />
             }
             <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</RawHtmlStyle>
           </div>

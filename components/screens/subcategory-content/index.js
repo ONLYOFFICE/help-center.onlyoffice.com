@@ -30,17 +30,10 @@ const SubCategoryContent = ({
   pageDescription,
   lvlArticles
 }) => {
+  const leftMenuRef = useRef(null);
   const containerRef = useRef(null);
   const contentRef = useRef();
-  const lastActiveSectionRef = useRef(null);
-  const [activeSection, setActiveSection] = useState(null);
   const [headings, setHeadings] = useState([]);
-
-  useEffect(() => {
-    if (contentRef.current) {
-      setHeadings(extractHeadings(contentRef.current.outerHTML, "h5"));
-    }
-  }, [contentRef]);
 
   useEffect(() => {
     const firstHeader = document.querySelector('.changelog-main-header');
@@ -48,13 +41,16 @@ const SubCategoryContent = ({
       firstHeader.click();
     }
 
-    handleArticleScroll(setActiveSection, false, lastActiveSectionRef, "h5");
-    const scrollHandler = (event) => handleArticleScroll(setActiveSection, false, lastActiveSectionRef, "h5");
+    setHeadings(extractHeadings(contentRef.current, pageDescription, "h5"));
 
-    window.addEventListener('scroll', scrollHandler);
+    const scrollHandler = () => {
+      handleArticleScroll(false, contentRef.current, leftMenuRef.current, document.querySelector("header").offsetHeight + 24, "h5");
+    };
+
+    window.addEventListener("scroll", scrollHandler);
 
     return () => {
-      window.removeEventListener('scroll', scrollHandler);
+      window.removeEventListener("scroll", scrollHandler);
     };
   }, []);
 
@@ -64,15 +60,16 @@ const SubCategoryContent = ({
     handleFaqAccordionClick(event, containerRef.current);
     handleChangelogClick(event);
   };
+
   return (
     <StyledSubCategoryContent>
       <StyledWrapperContent>
         <LeftMenu
           t={t}
+          ref={leftMenuRef}
           pageName={pageName}
           isLevel4CategoryPage={true}
           headings={headings}
-          activeSection={activeSection}
           leftMenuMobile={leftMenuMobile}
           setLeftMenuMobile={setLeftMenuMobile}
           backBtnName={backBtnName}
@@ -135,23 +132,23 @@ const SubCategoryContent = ({
                     <li key={index}>
                       <InternalLink href={item.attributes.url} label={item.attributes.title} />
                     </li>
-                  )
-                  )}
+                  ))}
                 </ul>
               </div>
             )
-            )) : (<>
-              {pageItems && pageItems.sort((a, b) => {
-                const aValue = a.attributes.title;
-                const bValue = b.attributes.title;
-                return aValue.localeCompare(bValue);
-              }).map((item, index) => (
-                <div className="subcat-empty-div" key={index}>
-                  <InternalLink href={item.attributes.url} label={item.attributes.title} />
-                </div>
-              )
-              )}
-            </>)}
+            )) : (
+              <>
+                {pageItems && pageItems.sort((a, b) => {
+                  const aValue = a.attributes.title;
+                  const bValue = b.attributes.title;
+                  return aValue.localeCompare(bValue);
+                }).map((item, index) => (
+                  <div className="subcat-empty-div" key={index}>
+                    <InternalLink href={item.attributes.url} label={item.attributes.title} />
+                  </div>
+                ))}
+              </>
+            )}
           </div>
           {video?.data &&
             <VideoBlock t={t} video={video} />

@@ -56,6 +56,7 @@ const StyledWrapperContent = styled.div`
 
   .subcat-div {
     padding: 0 0 24px;
+    scroll-margin-top: 24px;
 
     h5 {
       padding: 0;
@@ -159,13 +160,25 @@ const StyledWrapperContent = styled.div`
       }
 
       .bigVideoCont {
+        position: relative;
         border: none;
         display: block;
-        padding: 24px 0 0;
+        margin-top: 24px;
+        padding-bottom: 44.445%;
+        width: 80%;
 
-        > iframe {
-          aspect-ratio: 1.8;
-          width: 80%;
+        iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        @media ${device.mobile} {
+          padding-bottom: 56.25%;
+          width: 100%;
         }
       }
 

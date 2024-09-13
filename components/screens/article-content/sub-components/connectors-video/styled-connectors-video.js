@@ -11,9 +11,6 @@ const StyledConnectorsVideo = styled.div`
     background: ${globalColors.white};
     box-shadow: 0px 7px 25px rgba(85, 85, 85, 0.15);
     border-radius: 2px;
-    max-height: 414px;
-    height: 100%;
-    aspect-ratio: 1.9;
     gap: 32px;
     padding: 32px;
 
@@ -33,12 +30,9 @@ const StyledConnectorsVideo = styled.div`
 
   @media ${device.laptop} {
     .vids {
-      aspect-ratio: 1.6;
       padding: 16px 32px;
 
       &.single {
-        aspect-ratio: 1.9;
-        max-height: fit-content;
         padding: 32px;
       }
     }

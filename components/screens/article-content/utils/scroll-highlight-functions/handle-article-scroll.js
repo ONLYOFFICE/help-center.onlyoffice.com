@@ -1,26 +1,30 @@
-const handleArticleScroll = (setActiveSection, setShowButton, lastActiveSectionRef, selector) => {
-    const scrollPosition = window.scrollY;
-    const sections = document.querySelectorAll("[id$='_block']");
-    const menuSections = Array.from(sections).filter(section => section.querySelector(selector));
+const handleArticleScroll = (articlePage, wrapperContainer, leftMenuRef, offsetHeight, selector, setShowButton) => {
+  if (wrapperContainer) {
+    let sections = Array.from(wrapperContainer?.querySelectorAll("[id$='_block']")).filter(section => section.querySelector(selector));
+    let leftMenuItems = leftMenuRef.querySelectorAll(".left-menu-items li");
+    let currentSectionIndex = 0;
 
-    let currentSection = lastActiveSectionRef.current || null;
-    menuSections.forEach(section => {
-      const sectionTop = section.getBoundingClientRect().top;
-      const sectionHeight = section.clientHeight;
-      if ((scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) || (scrollPosition > sectionTop + sectionHeight)) {
-        currentSection = section.id;
+    sections.forEach((el, i) => {
+      const offsetCondition = articlePage ? el.offsetTop + offsetHeight : el.offsetTop - offsetHeight;
+
+      if (offsetCondition - 2 <= window.scrollY) {
+        currentSectionIndex = i;
       }
     });
 
-    if (currentSection !== lastActiveSectionRef.current) {
-      lastActiveSectionRef.current = currentSection;
-      setActiveSection(currentSection);
-    } else {
-      setActiveSection(currentSection || menuSections[0]?.id);
-    }
+    let activeButton = leftMenuRef.querySelector(".left-menu-items li.active");
 
-    const scrollHeight = window.innerHeight * 2;
-    setShowButton && setShowButton(window.scrollY > scrollHeight);
-  };
+    if (!activeButton || activeButton !== leftMenuItems[currentSectionIndex]) {
+      leftMenuItems.forEach((button) => button.classList.remove("active"));
+
+      leftMenuItems[currentSectionIndex]?.classList.add("active");
+    };
+
+    if (setShowButton) {
+      const scrollHeight = window.innerHeight * 2;
+      setShowButton(window.scrollY > scrollHeight);
+    }
+  }
+};
 
 export { handleArticleScroll };

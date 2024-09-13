@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef } from "react";
 import StyledConnectorsVideo from "./styled-connectors-video";
 import Heading from "@components/common/heading";
 import VideoItem from "@components/screens/common/video-item";
 import Carousel from "@components/common/carousel";
 
-const ConnectorsVideo = ({ t, videos }) => {
-  const [firstVideo, setFirstVideo] = useState(null);
+const ConnectorsVideo = forwardRef(({ t, videos }, ref) => {
   const [filteredArray, setFilteredArray] = useState(videos);
   const [mobile, setMobile] = useState(false);
   const [videosForCarLenght, setVideosForCarLenght] = useState(2);
@@ -37,7 +36,7 @@ const ConnectorsVideo = ({ t, videos }) => {
   }, [videos, windowWidth]);
 
   return (
-    <StyledConnectorsVideo id="watchvideo_block">
+    <StyledConnectorsVideo ref={ref} id="watchvideo_block">
       <Heading level={4}>{t("WatchVideo")}</Heading>
       <div className={`vids ${videos.length == 1 ? "single" : ""}`}>
         {!mobile && firstVideo && firstVideo.map((it, index) => {
@@ -62,6 +61,6 @@ const ConnectorsVideo = ({ t, videos }) => {
       </div>
     </StyledConnectorsVideo>
   );
-};
+});
 
 export default ConnectorsVideo;

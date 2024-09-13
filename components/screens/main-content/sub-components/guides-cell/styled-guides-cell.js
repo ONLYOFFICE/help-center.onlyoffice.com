@@ -35,12 +35,16 @@ const StyledGuidesCell = styled.div`
       .guides-cell-icon {
         margin-left: 8px;
         margin-right: 0;
+        width: initial;
+        height: 24px;
       }
     }
   }
 
   .guides-cell-icon {
     margin-right: 24px;
+    width: 48px;
+    height: 48px;
     object-fit: contain;
   }
 
