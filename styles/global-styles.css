@@ -117,3 +117,9 @@ button, input, textarea {
 p {
   margin: 0;
 }
+
+@media (max-width: 592px) {
+  html {
+    scroll-padding-top: 56px;
+  }
+}
