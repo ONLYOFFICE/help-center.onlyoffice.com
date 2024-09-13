@@ -4,6 +4,20 @@ import { device } from "@components/utils/devices";
 const StyledVideoItem = styled.div`
   cursor: pointer;
 
+  .video-item-frame {
+    position: relative;
+    padding-bottom: 56.25%;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
   &.main {
     max-width: 512px;
     width: 100%;
@@ -15,7 +29,6 @@ const StyledVideoItem = styled.div`
   }
   
   iframe {
-    aspect-ratio: 1.79;
     border: none;
     min-width: 100%;
     width: 100%;
@@ -48,10 +61,6 @@ const StyledVideoItem = styled.div`
 
   &.single {
     max-width: 100%;
-
-    iframe {
-      aspect-ratio: 2.87;
-    }
   }
 
   @media ${device.laptopM} {
@@ -71,14 +80,6 @@ const StyledVideoItem = styled.div`
 
     &.main {
       display: none;
-    }
-  }
-
-  @media ${device.tablet} {
-    &.single {
-      iframe {
-        aspect-ratio: 1.79;
-      }
     }
   }
 
