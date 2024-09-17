@@ -1,5 +1,5 @@
 import StyledGuidesCell from "./styled-guides-cell";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import topSlugIdData from "../../data/top-slugid.json";
 import InternalLink from "@components/common/internal-link";
 import ExternalLink from "@components/common/external-link";
@@ -8,13 +8,17 @@ import Heading from "@components/common/heading";
 import { isExternalLink } from "@utils/helpers/System/isExternal";
 
 const GuidesCell = ({ data }) => {
+  const [isClient, setIsClient] = useState(false);
   const slugId = data.attributes.slug_id === "docs" ? "docs" : `${data.attributes.slug_id}s`;
   const connectorsSlug = data.attributes.slug_id === "integration";
   const connectorsArticles = data.attributes.articles?.data.sort((a, b) => a.attributes.title.localeCompare(b.attributes.title));
   const items = data.attributes[`category_${slugId}`]?.data
     .sort((a, b) => a.attributes.position - b.attributes?.position)
     .filter(item => !topSlugIdData.includes(item.attributes.slug_id)) || [];
-  const isClient = typeof window === "undefined";
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <StyledGuidesCell>

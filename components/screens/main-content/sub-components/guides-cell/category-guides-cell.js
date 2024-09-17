@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import StyledGuidesCell from "./styled-guides-cell";
 import InternalLink from "@components/common/internal-link";
 import ReactHtmlParser from "react-html-parser";
@@ -7,9 +7,13 @@ import ExternalLink from "@components/common/external-link";
 import { isExternalLink } from "@utils/helpers/System/isExternal";
 
 const CategoryGuidesCell = ({ data, categorySlug, t }) => {
+  const [isClient, setIsClient] = useState(false);
   const connectorsSlug = data.attributes.connector_img;
   const items = [...data.attributes[`level_2_${categorySlug}`]?.data ?? [], ...data.attributes[`article_${categorySlug}`]?.data ?? []];
-  const isClient = typeof window === "undefined";
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <StyledGuidesCell isCategoryPage={true}>
