@@ -105,9 +105,14 @@ const StyledCategoryItem = styled.div`
       &.sublink {
         padding: 0 0 16px;
 
-        &.dlw > a > span {
+        > a {
           display: flex;
           gap: 8px;
+
+          &:hover {
+            color: ${globalColors.gray};
+            text-decoration: underline;
+          }
         }
       }
 

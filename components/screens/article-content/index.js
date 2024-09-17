@@ -162,10 +162,10 @@ const ArticleContent = ({
             </div>
           }
           <div ref={wrapperContentRef}>
+            <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</RawHtmlStyle>
             {videos && videos.data.length > 0 &&
               <ConnectorsVideo t={t} ref={videosRef} videos={videos.data} />
             }
-            <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</RawHtmlStyle>
           </div>
           <DownloadArea className="download-area" slug={categoryName} subcat={subCategoryName} t={t} />
           <ArticlePopup

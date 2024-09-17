@@ -46,12 +46,9 @@ const StyledWrapperContent = styled.div`
   }
 
   h3.subcat-heading {
+    display: flex;
+    gap: 16px;
     padding: 0 0 24px;
-
-    &.dlw {
-      display: flex;
-      gap: 16px;
-    }
   }
 
   .subcat-div {
@@ -87,11 +84,9 @@ const StyledWrapperContent = styled.div`
 
       > a {
         color: ${globalColors.gray};
-        text-decoration: none;
-        transition: color 0.3s;
 
         &:hover {
-          color: ${globalColors.orangeMain};
+          text-decoration: underline;
         }
       }
     }

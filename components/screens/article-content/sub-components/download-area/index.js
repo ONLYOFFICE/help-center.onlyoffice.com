@@ -9,7 +9,7 @@ const DownloadArea = ({ t, slug, subcat, ...rest }) => {
   const [downloadHref, setDownloadHref] = useState();
 
   useEffect(() => {
-    switch (slug.toLowerCase()) {
+    switch (slug && slug.toLowerCase()) {
       case 'docspace':
         setLabel("HostOnYourOwnServerDocSpace");
         setDownloadHref("docspace");

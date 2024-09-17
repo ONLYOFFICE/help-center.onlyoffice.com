@@ -7,6 +7,7 @@ import InternalLink from "@components/common/internal-link";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import VideoBlock from "@components/screens/common/video-block";
 import ReactHtmlParser from "react-html-parser";
+import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
 import { handleFaqAccordionClick, handleChangelogClick } from "@components/screens/article-content/utils/handle-click-functions";
 import { extractHeadings, handleArticleScroll } from "../article-content/utils/scroll-highlight-functions";
 
@@ -34,6 +35,7 @@ const SubCategoryContent = ({
   const containerRef = useRef(null);
   const contentRef = useRef();
   const [headings, setHeadings] = useState([]);
+  const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
     const firstHeader = document.querySelector('.changelog-main-header');
@@ -44,7 +46,7 @@ const SubCategoryContent = ({
     setHeadings(extractHeadings(contentRef.current, pageDescription, "h5"));
 
     const scrollHandler = () => {
-      handleArticleScroll(false, contentRef.current, leftMenuRef.current, document.querySelector("header").offsetHeight + 24, "h5");
+      handleArticleScroll(false, contentRef.current, leftMenuRef.current, document.querySelector("header").offsetHeight + 24, "h5", setShowButton);
     };
 
     window.addEventListener("scroll", scrollHandler);
@@ -154,6 +156,7 @@ const SubCategoryContent = ({
             <VideoBlock t={t} video={video} />
           }
         </div>
+        <ScrollToTopButton showButton={showButton} />
       </StyledWrapperContent>
     </StyledSubCategoryContent>
   );

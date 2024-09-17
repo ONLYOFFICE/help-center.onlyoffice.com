@@ -57,6 +57,8 @@ const Level2CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             isArticle={article}
             categoryName={categorySlug === "integration" ? category.data.attributes.name : category?.data?.attributes.name}
             categoryUrl={categorySlug === "integration" ? category.data.attributes.url : category?.data?.attributes.url}
+            subCategoryName={general_category?.data?.attributes.name}
+            subCategoryUrl={general_category?.data?.attributes.url}
             pageName={title}
             pageDescription={content}
             tags={tags}

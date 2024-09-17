@@ -4,6 +4,7 @@ import InternalLink from "@components/common/internal-link";
 
 const CategoryItem = ({ data, pageItemsLevel, categorySlug }) => {
   const categorySlugMany = categorySlug === "docs" ? "docs" : `${categorySlug}s`;
+  const icon = data.attributes.icon || data.attributes.category_pic;
 
   const sublinks = [
     ...(data.attributes[`level_${pageItemsLevel}_${categorySlugMany}`]?.data || []),
@@ -17,8 +18,8 @@ const CategoryItem = ({ data, pageItemsLevel, categorySlug }) => {
   return (
     <StyledCategoryItem>
       <Heading level={4}>
-        {data.attributes.icon?.data?.attributes.url &&
-          <img src={data.attributes.icon?.data?.attributes.url} alt={data.attributes.name} />
+        {icon && icon.data?.attributes.url &&
+          <img src={icon.data?.attributes.url} alt={data.attributes.name} />
         }
         {data.attributes.url ? (
           <InternalLink href={data.attributes.url} label={data.attributes.name} />
@@ -30,8 +31,8 @@ const CategoryItem = ({ data, pageItemsLevel, categorySlug }) => {
         {sublinks.map((item, index) => (
           <li className="sublink" key={index}>
             <InternalLink href={item.attributes.url}>
-              {item.attributes.icon?.data?.attributes.url && (
-                <img src={item.attributes.icon.data.attributes.url} alt={item.attributes.name} />
+              {item.attributes.icon_small?.data?.attributes.url && (
+                <img src={item.attributes.icon_small.data.attributes.url} alt={item.attributes.name} />
               )}
               {item.attributes.name || item.attributes.title}
             </InternalLink>
