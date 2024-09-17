@@ -55,6 +55,7 @@ const ArticleContent = ({
   const [tagItems, setTagItems] = useState();
   const [hasMoreTags, setHasMoreTags] = useState(false);
   const [showButton, setShowButton] = useState(false);
+  const [videoOffsetTrigger, setVideoOffsetTrigger] = useState(0);
   const cookies = new Cookies(null, { path: "/" });
 
   useEffect(() => {
@@ -64,15 +65,12 @@ const ArticleContent = ({
 
     setHeadings(extractHeadings(wrapperContentRef.current, pageDescription, "h4"));
 
-    function getFullHeight(element) {
-      if (!element) {
-        return 0;
-      }
-
+    const getFullHeight = (element) => {
+      if (!element) return 0;
       const offsetHeight = element.getBoundingClientRect().height;
       const style = window.getComputedStyle(element);
       return offsetHeight + parseFloat(style.marginTop) + parseFloat(style.marginBottom);
-    }
+    };
 
     const breadcrumbsRefHeight = getFullHeight(breadcrumbsRef.current);
     const tagsRefHeight = getFullHeight(tagsRef.current);
@@ -89,7 +87,7 @@ const ArticleContent = ({
     return () => {
       window.removeEventListener("scroll", scrollHandler);
     };
-  }, []);
+  }, [videoOffsetTrigger]);
 
   const handleTagModal = async (tagName) => {
     const data = await getTagsArticle(locale, tagName, 4, 1);
@@ -164,7 +162,7 @@ const ArticleContent = ({
           <div ref={wrapperContentRef}>
             <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</RawHtmlStyle>
             {videos && videos.data.length > 0 &&
-              <ConnectorsVideo t={t} ref={videosRef} videos={videos.data} />
+              <ConnectorsVideo t={t} ref={videosRef} videos={videos.data} setVideoOffsetTrigger={setVideoOffsetTrigger} />
             }
           </div>
           <DownloadArea className="download-area" slug={categoryName} subcat={subCategoryName} t={t} />

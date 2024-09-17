@@ -19,9 +19,8 @@ const VideoItem = ({ data, isMain }) => {
         className={`${isMain && "main"}`}
         label={data.attributes.title}
         level={5}
-        style={{ paddingTop: isMain ? "16px" : "0px" }}
       />
-      {isMain &&
+      {isMain && data.attributes.description &&
         <Text label={data.attributes.description} />
       }
     </StyledVideoItem>
