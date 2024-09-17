@@ -2,8 +2,6 @@ import styled from "styled-components";
 import { device } from "@components/utils/devices";
 
 const StyledVideoItem = styled.div`
-  cursor: pointer;
-
   .video-item-frame {
     position: relative;
     padding-bottom: 56.25%;
@@ -12,6 +10,7 @@ const StyledVideoItem = styled.div`
       position: absolute;
       top: 0;
       left: 0;
+      border: none;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -23,18 +22,8 @@ const StyledVideoItem = styled.div`
     width: 100%;
   }
 
-  &.second {
-    min-width: 224px;
-    width: 224px;
-  }
-  
-  iframe {
-    border: none;
-    min-width: 100%;
-    width: 100%;
-  }
-
   h5 {
+    margin-top: 16px;
     font-size: 12px;
     cursor: unset;
     line-height: 1.33em;
@@ -49,7 +38,7 @@ const StyledVideoItem = styled.div`
     }
   }
 
-   span {
+  span {
     cursor: unset;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -59,10 +48,6 @@ const StyledVideoItem = styled.div`
     padding-top: 16px;
   }
 
-  &.single {
-    max-width: 100%;
-  }
-
   @media ${device.laptopM} {
     &.main {
       max-width: 100%;
@@ -70,14 +55,6 @@ const StyledVideoItem = styled.div`
   }
 
   @media ${device.laptop} {
-    &.main.single {
-      display: block;
-
-      iframe {
-        width: 100%;
-      }
-    }
-
     &.main {
       display: none;
     }
