@@ -1,10 +1,10 @@
-import { forwardRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import StyledConnectorsVideo from "./styled-connectors-video";
 import Heading from "@components/common/heading";
 import VideoItem from "@components/screens/common/video-item";
 import Carousel from "./carousel";
 
-const ConnectorsVideo = forwardRef(({ t, videos, setVideoOffsetTrigger }, ref) => {
+const ConnectorsVideo = ({ t, videos, setVideoOffsetTrigger }) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const ConnectorsVideo = forwardRef(({ t, videos, setVideoOffsetTrigger }, ref) =
   }, []);
 
   return (
-    <StyledConnectorsVideo ref={ref} id="watchvideo_block">
+    <StyledConnectorsVideo id="watchvideo_block">
       <Heading className="video-title" level={4} label={t("WatchVideo")} />
 
       <div className={`video-wrapper ${videos.length === 1 ? "single" : ""}`}>
@@ -82,6 +82,6 @@ const ConnectorsVideo = forwardRef(({ t, videos, setVideoOffsetTrigger }, ref) =
       </div>
     </StyledConnectorsVideo>
   );
-});
+};
 
 export default ConnectorsVideo;

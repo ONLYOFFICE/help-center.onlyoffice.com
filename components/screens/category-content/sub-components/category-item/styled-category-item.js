@@ -44,10 +44,6 @@ const StyledCategoryItem = styled.div`
     padding: 0 0 24px;
     transition: color 0.3s;
 
-    img {
-      height: fit-content;
-    }
-
     &[href] {
       &:hover {
         color: ${globalColors.orangeMain};
@@ -105,9 +101,14 @@ const StyledCategoryItem = styled.div`
       &.sublink {
         padding: 0 0 16px;
 
-        &.dlw > a > span {
+        > a {
           display: flex;
           gap: 8px;
+
+          &:hover {
+            color: ${globalColors.gray};
+            text-decoration: underline;
+          }
         }
       }
 

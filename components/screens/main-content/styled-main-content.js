@@ -141,7 +141,6 @@ const StyledMainContent = styled(Section)`
     letter-spacing: 0.04em;
     color: ${globalColors.gray};
     text-decoration: none;
-    text-transform: uppercase;
     transition: color 0.3s;
 
     img {

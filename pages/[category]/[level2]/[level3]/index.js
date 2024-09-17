@@ -137,7 +137,7 @@ export const getServerSideProps = async ({ locale, params, req }) => {
   const categoriesMenu = await getCategoriesMenu(locale);
   const categoryData = await getCategoryLevel3(locale, params.category, `${locale === "en" ? "" : `/${locale}`}/${params.category}/${params.level2}/${params.level3}`);
   const cookies = new Cookies(req.headers.cookie, { path: "/" });
-  if (cookies.get("neverShowTranslators") === "never") {
+  if (cookies.get("neverShowTranslators") === "never" && categoryData.data[0].attributes.content) {
     categoryData.data[0].attributes.content = categoryData.data[0].attributes.content.replace(
       /<div class="bringattention translator" id="translatorAttention_block" style="display: block;">/g,
       '<div class="bringattention translator" id="translatorAttention_block" style="display: none;">'

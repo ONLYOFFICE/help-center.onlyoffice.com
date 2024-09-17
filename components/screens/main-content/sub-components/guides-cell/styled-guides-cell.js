@@ -111,7 +111,11 @@ const StyledGuidesCell = styled.div`
 
   .guides-cell-column {
     display: grid;
-    gap: ${(props) => (props.isCategoryPage ? "24px" : "16px")};
+    gap: ${(props) => (props.isCategoryPage ? "24px" : "32px")};
+    .column {
+      display: grid;
+      gap: 16px;
+    }
   }
 
   .guides-cell-link {
@@ -119,6 +123,11 @@ const StyledGuidesCell = styled.div`
     line-height: 19px;
     letter-spacing: 0.04em;
     color: ${globalColors.gray};
+    transition: color 0.3s;
+
+    &.external-link {
+      text-decoration: none;
+    }
 
     @media ${device.mobile} {
       font-size: 13px;
@@ -145,14 +154,6 @@ const StyledGuidesCell = styled.div`
   @media ${device.tablet} {
     .guides-cell-columns {
       grid-template-columns: 1fr;
-      gap:  ${(props) => (props.isCategoryPage ? "24px" : "16px")};
-    }
-    .guides-cell-header-link {
-      padding-top: ${(props) => (props.isCategoryPage ? "0px" : "16px")};
-    }
-
-    .guides-cell-link.guides-cell-header-link:not(:first-of-type) {
-      padding-top: ${(props) => (props.isCategoryPage ? "0px" : "16px")};
     }
 
     .guides-cell-icon {

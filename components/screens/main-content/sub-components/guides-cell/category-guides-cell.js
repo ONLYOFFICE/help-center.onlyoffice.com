@@ -1,12 +1,15 @@
+import React from "react";
 import StyledGuidesCell from "./styled-guides-cell";
 import InternalLink from "@components/common/internal-link";
 import ReactHtmlParser from "react-html-parser";
 import Heading from "@components/common/heading";
-import Link from "next/link";
+import ExternalLink from "@components/common/external-link";
+import { isExternalLink } from "@utils/helpers/System/isExternal";
 
 const CategoryGuidesCell = ({ data, categorySlug, t }) => {
   const connectorsSlug = data.attributes.connector_img;
   const items = [...data.attributes[`level_2_${categorySlug}`]?.data ?? [], ...data.attributes[`article_${categorySlug}`]?.data ?? []];
+  const isClient = typeof window === "undefined";
 
   return (
     <StyledGuidesCell isCategoryPage={true}>
@@ -39,22 +42,40 @@ const CategoryGuidesCell = ({ data, categorySlug, t }) => {
         <div className="guides-cell-columns">
           <div className="guides-cell-column">
             {items?.slice(0, Math.ceil(items?.length / 2)).map((item, index) => (
-              <InternalLink
-                className="guides-cell-link guides-cell-header-link"
-                label={item.attributes?.name || item.attributes?.title}
-                href={item.attributes?.url}
-                key={index}
-              />
+              <React.Fragment key={index}>
+                {isClient && isExternalLink(item.attributes?.url) ? (
+                  <ExternalLink
+                    className="guides-cell-link guides-cell-header-link"
+                    label={item.attributes?.name || item.attributes?.title}
+                    href={item.attributes?.url}
+                  />
+                ) : (
+                  <InternalLink
+                    className="guides-cell-link guides-cell-header-link"
+                    label={item.attributes?.name || item.attributes?.title}
+                    href={item.attributes?.url}
+                  />
+                )}
+              </React.Fragment>
             ))}
           </div>
           <div className="guides-cell-column">
             {items?.slice(Math.ceil(items.length / 2), items?.length).map((item, index) => (
-              <InternalLink
-                className="guides-cell-link guides-cell-header-link"
-                label={item.attributes?.name || item.attributes?.title}
-                href={item.attributes?.url}
-                key={index}
-              />
+              <React.Fragment key={index}>
+                {isClient && isExternalLink(item.attributes?.url) ? (
+                  <ExternalLink
+                    className="guides-cell-link guides-cell-header-link"
+                    label={item.attributes?.name || item.attributes?.title}
+                    href={item.attributes?.url}
+                  />
+                ) : (
+                  <InternalLink
+                    className="guides-cell-link guides-cell-header-link"
+                    label={item.attributes?.name || item.attributes?.title}
+                    href={item.attributes?.url}
+                  />
+                )}
+              </React.Fragment>
             ))}
           </div>
         </div>

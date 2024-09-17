@@ -326,6 +326,7 @@ const RawHtmlStyle = styled.div`
     .notehelp, .note {
       border-left: 5px solid #808080;
       color: ${globalColors.grayTextInput};
+      display: flow-root;
       position: relative;
       border-radius: 3px;
       margin: 48px 0px 48px 22px;

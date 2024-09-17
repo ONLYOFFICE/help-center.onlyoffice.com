@@ -48,6 +48,7 @@ const StyledCategory = styled.div`
     color: ${globalColors.grayMain};
     text-align: center;
     text-transform: uppercase;
+    transition: color 0.3s;
   }
 
   @media ${device.laptopM} {

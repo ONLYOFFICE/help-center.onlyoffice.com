@@ -38,6 +38,7 @@ const StyledWrapperContent = styled.div`
     color: ${globalColors.gray};
     background-color: ${globalColors.tagColor};
     cursor: pointer;
+    transition: background-color 0.3s;
 
     &:hover {
       background-color: ${globalColors.tagHover};
@@ -46,12 +47,9 @@ const StyledWrapperContent = styled.div`
   }
 
   h3.subcat-heading {
+    display: flex;
+    gap: 16px;
     padding: 0 0 24px;
-
-    &.dlw {
-      display: flex;
-      gap: 16px;
-    }
   }
 
   .subcat-div {
@@ -77,6 +75,15 @@ const StyledWrapperContent = styled.div`
   }
   .subcat-empty-div {
     padding: 0 0 16px;
+      > a {
+        color: ${globalColors.gray};
+        text-decoration: none;
+        transition: color 0.3s;
+
+        &:hover {
+          color: ${globalColors.orangeMain};
+        }
+      }
   }
 
   .classic-ul {
@@ -87,11 +94,9 @@ const StyledWrapperContent = styled.div`
 
       > a {
         color: ${globalColors.gray};
-        text-decoration: none;
-        transition: color 0.3s;
 
         &:hover {
-          color: ${globalColors.orangeMain};
+          text-decoration: underline;
         }
       }
     }
