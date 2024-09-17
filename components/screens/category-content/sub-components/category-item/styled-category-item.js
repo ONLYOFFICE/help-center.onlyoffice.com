@@ -44,10 +44,6 @@ const StyledCategoryItem = styled.div`
     padding: 0 0 24px;
     transition: color 0.3s;
 
-    img {
-      height: fit-content;
-    }
-
     &[href] {
       &:hover {
         color: ${globalColors.orangeMain};

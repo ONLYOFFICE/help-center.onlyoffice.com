@@ -19,7 +19,10 @@ const CategoryItem = ({ data, pageItemsLevel, categorySlug }) => {
     <StyledCategoryItem>
       <Heading level={4}>
         {icon && icon.data?.attributes.url &&
-          <img src={icon.data?.attributes.url} alt={data.attributes.name} />
+          <img style={{
+            height: icon.data?.attributes.height,
+            width: icon.data?.attributes.width
+          }} src={icon.data?.attributes.url} alt={data.attributes.name} />
         }
         {data.attributes.url ? (
           <InternalLink href={data.attributes.url} label={data.attributes.name} />

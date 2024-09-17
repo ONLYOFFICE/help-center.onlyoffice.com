@@ -119,6 +119,7 @@ const StyledGuidesCell = styled.div`
     line-height: 19px;
     letter-spacing: 0.04em;
     color: ${globalColors.gray};
+    transition: color 0.3s;
 
     @media ${device.mobile} {
       font-size: 13px;
