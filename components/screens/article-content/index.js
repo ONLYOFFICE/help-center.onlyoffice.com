@@ -45,7 +45,6 @@ const ArticleContent = ({
   const breadcrumbsRef = useRef(null);
   const headingRef = useRef(null);
   const tagsRef = useRef(null);
-  const videosRef = useRef(null);
 
   const [modalActive, setModalActive] = useState(false);
   const [imageModalActive, setImageModalActive] = useState(false);
@@ -75,8 +74,7 @@ const ArticleContent = ({
     const breadcrumbsRefHeight = getFullHeight(breadcrumbsRef.current);
     const tagsRefHeight = getFullHeight(tagsRef.current);
     const headingRefHeight = getFullHeight(headingRef.current);
-    const videosRefHeight = getFullHeight(videosRef.current);
-    const offsetTop = breadcrumbsRefHeight + tagsRefHeight + headingRefHeight + videosRefHeight + 32 + 24;
+    const offsetTop = breadcrumbsRefHeight + tagsRefHeight + headingRefHeight + 32 + 24;
 
     const scrollHandler = () => {
       handleArticleScroll(true, wrapperContentRef.current, leftMenuRef.current, offsetTop, "h4", setShowButton);
@@ -162,7 +160,7 @@ const ArticleContent = ({
           <div ref={wrapperContentRef}>
             <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</RawHtmlStyle>
             {videos && videos.data.length > 0 &&
-              <ConnectorsVideo t={t} ref={videosRef} videos={videos.data} setVideoOffsetTrigger={setVideoOffsetTrigger} />
+              <ConnectorsVideo t={t} videos={videos.data} setVideoOffsetTrigger={setVideoOffsetTrigger} />
             }
           </div>
           <DownloadArea className="download-area" slug={categoryName} subcat={subCategoryName} t={t} />
