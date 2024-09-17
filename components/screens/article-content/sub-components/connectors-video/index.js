@@ -1,66 +1,84 @@
-import { useState, useEffect, forwardRef } from "react";
+import { forwardRef, useState, useEffect } from "react";
 import StyledConnectorsVideo from "./styled-connectors-video";
 import Heading from "@components/common/heading";
 import VideoItem from "@components/screens/common/video-item";
-import Carousel from "@components/common/carousel";
+import Carousel from "./carousel";
 
-const ConnectorsVideo = forwardRef(({ t, videos }, ref) => {
-  const [firstVideo, setFirstVideo] = useState(null);
-  const [filteredArray, setFilteredArray] = useState(videos);
-  const [mobile, setMobile] = useState(false);
-  const [videosForCarLenght, setVideosForCarLenght] = useState(2);
-  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : null);
+const ConnectorsVideo = forwardRef(({ t, videos, setVideoOffsetTrigger }, ref) => {
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (videos.length >= 2) {
-      if (windowWidth > 1024) {
-        setFirstVideo(videos.slice(0, 1));
-        setFilteredArray(videos.slice(1));
-        setMobile(false);
-        setVideosForCarLenght(2);
+      if (window.innerWidth <= 1024) {
+        setIsMobile(true);
+        setVideoOffsetTrigger(1);
       } else {
-        setFilteredArray(videos);
-        setMobile(true);
-        setVideosForCarLenght(1);
+        setIsMobile(false);
+        setVideoOffsetTrigger(2);
       }
-    } else {
-      setFirstVideo(videos);
-    }
-  }, [videos, windowWidth]);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <StyledConnectorsVideo ref={ref} id="watchvideo_block">
-      <Heading level={4}>{t("WatchVideo")}</Heading>
-      <div className={`vids ${videos.length == 1 ? "single" : ""}`}>
-        {!mobile && firstVideo && firstVideo.map((it, index) => {
-          return <VideoItem t={t} key={index} data={it} isMain={true} className={`main ${videos.length == 1 ? 'single' : ''}`} />;
-        })}
-        {filteredArray.length > 1 &&
-          <Carousel
-            className="vids-car"
-            t={t}
-            isArrows={filteredArray.length > videosForCarLenght ? true : false}
-            items={filteredArray}
-          />
-        }
-        {videos.length == 2 && !mobile &&
-          <VideoItem
-            className="second"
-            t={t}
-            data={filteredArray[0]}
-            isMain={false}
-          />
-        }
+      <Heading className="video-title" level={4} label={t("WatchVideo")} />
+
+      <div className={`video-wrapper ${videos.length === 1 ? "single" : ""}`}>
+        {videos.length === 1 ? (
+          <VideoItem data={videos[0]} isMain={true} />
+        ) : (
+          <>
+            {isMobile ? (
+              <Carousel
+                data={videos}
+                carouselParams={{
+                  slidesPerView: 1,
+                  spaceBetween: 32,
+                  onSwiper: (swiper) => {
+                    swiper.on("resize", () => {
+                      const slideHeights = Array.from(swiper.slides).map(slide => slide.children[0].offsetHeight);
+                      swiper.el.style.height = `${Math.max(...slideHeights)}px`;
+                      setVideoOffsetTrigger(3);
+                    });
+                  },
+                }}
+              />
+            ) : (
+              <>
+                {videos.length === 2 ? (
+                  videos.map((item, index) => (
+                    <VideoItem data={item} key={index} />
+                  ))
+                ) : (
+                  <>
+                    <VideoItem data={videos[0]} isMain={true} />
+                    <Carousel
+                      className="video-slider-3"
+                      data={videos.slice(1)}
+                      carouselParams={{
+                        spaceBetween: 32,
+                        slidesPerView: 2,
+                        onSwiper: (swiper) => {
+                          swiper.on("resize", () => {
+                            const slideHeights = Array.from(swiper.slides).map(slide => slide.children[0].offsetHeight);
+                            const totalHeight = slideHeights.reduce((sum, height) => sum + height, 0);
+                            swiper.el.style.height = `${totalHeight + 32}px`;
+                            setVideoOffsetTrigger(4);
+                          });
+                        }
+                      }}
+                    />
+                  </>
+                )}
+              </>
+            )}
+          </>
+        )}
       </div>
     </StyledConnectorsVideo>
   );
