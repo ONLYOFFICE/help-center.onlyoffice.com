@@ -34,7 +34,7 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
     [`level_2_${categorySlugOne}`]: level2DataArticle,
     [`level_3_${categorySlugOne}`]: level3DataArticle,
     [`level_4_${categorySlugOne}`]: level4DataArticle,
-    [`category_${categorySlugMany}`]: categoryDataArticle,
+    [`category_${categorySlug === "docs" ? "docs" : categorySlug}`]: categoryDataArticle,
     [`article_${categorySlugMany}`]: articleData
   } = categoryData.data?.[0]?.attributes;
 
