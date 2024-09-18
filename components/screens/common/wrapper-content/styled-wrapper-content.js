@@ -49,7 +49,10 @@ const StyledWrapperContent = styled.div`
   h3.subcat-heading {
     display: flex;
     gap: 16px;
-    padding: 0 0 24px;
+  }
+
+  .subcat-description {
+    margin-bottom: 24px;
   }
 
   .subcat-div {

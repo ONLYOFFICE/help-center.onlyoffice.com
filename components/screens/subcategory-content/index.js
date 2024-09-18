@@ -96,7 +96,7 @@ const SubCategoryContent = ({
             {pageName}
           </Heading>
           {pageDescription &&
-            <div onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</div>
+            <div onClick={handleClick} ref={containerRef} className="subcat-description">{ReactHtmlParser(pageDescription)}</div>
           }
           <div ref={contentRef}>
             {!pageItems && (lvlArticles && lvlArticles.sort((a, b) => {
