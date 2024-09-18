@@ -7,6 +7,17 @@ const TreeView = ({ article, pageItemsLevel, categorySlug }) => {
   const content = useRef();
   const [active, setActive] = useState(false);
 
+  const categorySlugMany = categorySlug === "docs" ? "docs" : `${categorySlug}s`;
+  const levelLinks = article.attributes[`level_${pageItemsLevel}_${categorySlugMany}`]?.data || [];
+  const articleLinks = article.attributes[`article_${categorySlugMany}`]?.data || [];
+  const sortByName = (a, b) => (a.attributes.name || a.attributes.title).localeCompare(b.attributes.name || b.attributes.title);
+
+  const treeViewItems = [
+    ...levelLinks.filter(item => item.attributes.icon_small?.data?.attributes.url).sort(sortByName),
+    ...levelLinks.filter(item => !item.attributes.icon_small?.data?.attributes.url).sort(sortByName),
+    ...articleLinks.sort(sortByName)
+  ];
+
   return (
     <StyledTreeView active={active}>
       <button
@@ -19,16 +30,7 @@ const TreeView = ({ article, pageItemsLevel, categorySlug }) => {
         ref={content}
         style={{ maxHeight: `${active ? `${content?.current?.scrollHeight}px` : "0px"}` }}
       >
-        {article.attributes[`level_${pageItemsLevel}_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`]?.data.map((item, index) => (
-          <li className="treeview-item" key={index}>
-            <InternalLink
-              className="treeview-link"
-              href={item.attributes.url}
-              label={item.attributes.name}
-            />
-          </li>
-        ))}
-        {article.attributes[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`]?.data.map((item, index) => (
+        {treeViewItems.map((item, index) => (
           <li className="treeview-item" key={index}>
             <InternalLink
               className="treeview-link"

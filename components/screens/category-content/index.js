@@ -27,6 +27,9 @@ const CategoryContent = ({
   lvlArticles
 }) => {
   const [showButton, setShowButton] = useState(false);
+  const sortPageItems = pageItems.sort((a, b) =>
+    (b.attributes.icon_small?.data?.attributes?.url ? 1 : 0) - (a.attributes.icon_small?.data?.attributes?.url ? 1 : 0) ||
+    (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || a.attributes.name.localeCompare(b.attributes.name));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,7 +50,7 @@ const CategoryContent = ({
         <LeftMenu
           t={t}
           pageName={pageName}
-          pageItems={pageItems}
+          pageItems={sortPageItems}
           pageItemsLevel={pageItemsLevel}
           categorySlug={categorySlug}
           leftMenuMobile={leftMenuMobile}
@@ -75,21 +78,15 @@ const CategoryContent = ({
             <div id={`${item.attributes.title.replace(/ /g, "_").toLowerCase()}_block`} className="subcat-empty-div" key={index}>
               <InternalLink href={item.attributes.url} label={item.attributes.title} />
             </div>
-          )
-          )}
-          {pageItems?.sort((a, b) => {
-            const aValue = a.attributes.name || a.attributes.title;
-            const bValue = b.attributes.name || b.attributes.title;
-            return aValue.localeCompare(bValue);
-          }).map((item, index) => (
+          ))}
+          {sortPageItems.map((item, index) => (
             <CategoryItem
               data={item}
               pageItemsLevel={pageItemsLevel}
               categorySlug={categorySlug}
               key={index}
             />
-          )
-          )}
+          ))}
         </div>
       </StyledWrapperContent>
       <ScrollToTopButton showButton={showButton} />

@@ -73,7 +73,7 @@ const Header = ({ t, locale, categories, isMain, leftMenuMobile, setLeftMenuMobi
         </button>
         <nav className={`nav ${menuMobile ? "open" : ""}`}>
           <ul className="nav-list">
-            {categories.data.sort((a, b) => a.attributes.position - b.attributes.position).map((item, index) => (
+            {categories.data.sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity)).map((item, index) => (
               <li className="nav-item" key={index}>
                 <InternalLink
                   className={`nav-link ${`/${router.query.category}` === item.attributes.url ? "active" : ""}`}

@@ -28,7 +28,7 @@ const MainContent = ({ t, categories, leftMenuMobile, setLeftMenuMobile, leftMen
             breakpointCols={{ default: 2, 592: 1 }}
             className="guides-cards-items"
             columnClassName="guides-cards-items-column">
-            {categories.data?.sort((a, b) => a.attributes.position - b.attributes.position).map((item, index) => (
+            {categories.data.sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity)).map((item, index) => (
               <GuidesCell
                 data={item}
                 isIntegrationCategory={isIntegrationCategory}
