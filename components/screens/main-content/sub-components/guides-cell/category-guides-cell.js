@@ -49,13 +49,13 @@ const CategoryGuidesCell = ({ data, categorySlug, t }) => {
               <React.Fragment key={index}>
                 {isClient && isExternalLink(item.attributes?.url) ? (
                   <ExternalLink
-                    className="guides-cell-link guides-cell-header-link"
+                    className="guides-cell-link"
                     label={item.attributes?.name || item.attributes?.title}
                     href={item.attributes?.url}
                   />
                 ) : (
                   <InternalLink
-                    className="guides-cell-link guides-cell-header-link"
+                    className={`guides-cell-link ${item.attributes?.name ? "guides-cell-header-link" : ""}`}
                     label={item.attributes?.name || item.attributes?.title}
                     href={item.attributes?.url}
                   />
@@ -68,13 +68,13 @@ const CategoryGuidesCell = ({ data, categorySlug, t }) => {
               <React.Fragment key={index}>
                 {isClient && isExternalLink(item.attributes?.url) ? (
                   <ExternalLink
-                    className="guides-cell-link guides-cell-header-link"
+                    className="guides-cell-link"
                     label={item.attributes?.name || item.attributes?.title}
                     href={item.attributes?.url}
                   />
                 ) : (
                   <InternalLink
-                    className="guides-cell-link guides-cell-header-link"
+                    className={`guides-cell-link ${item.attributes?.name ? "guides-cell-header-link" : ""}`}
                     label={item.attributes?.name || item.attributes?.title}
                     href={item.attributes?.url}
                   />
