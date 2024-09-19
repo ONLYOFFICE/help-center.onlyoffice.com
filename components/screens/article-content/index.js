@@ -6,7 +6,7 @@ import StyledWrapperContent from "@components/screens/common/wrapper-content/sty
 import ReactHtmlParser from "react-html-parser";
 import Heading from "@components/common/heading";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
-import { tableBuilder } from "./utils/table-builder";
+import { tableBuilder } from "@utils/helpers/TableBuilder/table-builder";
 import Tooltip from "@components/common/tooltip";
 import ImagePopup from "./sub-components/image-popup";
 import DownloadArea from "./sub-components/download-area";
@@ -14,8 +14,8 @@ import ConnectorsVideo from "./sub-components/connectors-video";
 import ArticlePopup from "../common/article-popup";
 import Cookies from "universal-cookie";
 import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
-import { handleFaqAccordionClick, handleImagePopupClick, handleTogglerClick, handleShortcutToggleClick } from "./utils/handle-click-functions";
-import { extractHeadings, handleArticleScroll } from "./utils/scroll-highlight-functions";
+import { handleFaqAccordionClick, handleImagePopupClick, handleTogglerClick, handleShortcutToggleClick } from "@utils/handle-click-functions";
+import { extractHeadings, handleArticleScroll } from "@utils/scroll-highlight-functions";
 
 const ArticleContent = ({
   t,

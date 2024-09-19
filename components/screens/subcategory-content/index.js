@@ -8,8 +8,8 @@ import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import VideoBlock from "@components/screens/common/video-block";
 import ReactHtmlParser from "react-html-parser";
 import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
-import { handleFaqAccordionClick, handleChangelogClick } from "@components/screens/article-content/utils/handle-click-functions";
-import { extractHeadings, handleArticleScroll } from "../article-content/utils/scroll-highlight-functions";
+import { handleFaqAccordionClick, handleChangelogClick } from "@utils/handle-click-functions";
+import { extractHeadings, handleArticleScroll } from "@utils/scroll-highlight-functions";
 
 const SubCategoryContent = ({
   t,

@@ -4,7 +4,7 @@ import LeftMenu from "@components/screens/common/left-menu";
 import StyledWrapperContent from "@components/screens/common/wrapper-content/styled-wrapper-content";
 import VideoItem from "@components/screens/common/video-item";
 import Heading from "@components/common/heading";
-import { extractHeadings, handleArticleScroll } from "../article-content/utils/scroll-highlight-functions";
+import { extractHeadings, handleArticleScroll } from "@utils/scroll-highlight-functions";
 
 const VideoContent = ({ t, videoData, leftMenuMobile, setLeftMenuMobile }) => {
   const [headings, setHeadings] = useState([]);
