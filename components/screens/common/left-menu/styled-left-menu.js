@@ -33,11 +33,19 @@ const StyledLeftMenu = styled.div`
     }
   }
 
+  .left-menu-search {
+    margin-bottom: 32px;
+
+    @media ${device.laptop} {
+      margin-bottom: 24px;
+    }
+  }
+
   .left-menu-link {
     position: relative;
     display: flex;
     align-items: center;
-    margin-top: 32px;
+    margin-bottom: 16px;
     font-size: 14px;
     line-height: 21px;
     transition: color 0.3s;
@@ -53,14 +61,6 @@ const StyledLeftMenu = styled.div`
     &:hover {
       color: ${globalColors.orangeMain};
     }
-
-    @media ${device.laptop} {
-      margin-top: 24px;
-    }
-  }
-
-  .left-menu-body {
-    margin-top: 16px;
   }
 
   .left-menu-title {
@@ -79,9 +79,18 @@ const StyledLeftMenu = styled.div`
   .left-menu-items {
     list-style-type: none;
 
+    li {
+      &:last-child {
+        margin-bottom: 32px;
+
+        @media ${device.laptop} {
+          margin-bottom: 24px;
+        }
+      }
+    }
+
     &.left-menu-articles {
       position: relative;
-      margin-top: 8px;
 
       &:before {
         content: "";
@@ -114,6 +123,10 @@ const StyledLeftMenu = styled.div`
             background-color: ${globalColors.orangeMain};
           }
         }
+
+        &:first-child {
+          margin-top: 8px;
+        }
       }
 
       a {
@@ -131,7 +144,7 @@ const StyledLeftMenu = styled.div`
   }
 
   .left-menu-info {
-    margin-top: 32px;
+    margin-top: 16px;
     list-style-type: none;
 
     li {
@@ -179,8 +192,8 @@ const StyledLeftMenu = styled.div`
     }
 
     @media ${device.laptop} {
-      margin-top: 24px;
-    }
+      margin-top: 8px;
+    } 
   }
 
   @media ${device.laptop} {

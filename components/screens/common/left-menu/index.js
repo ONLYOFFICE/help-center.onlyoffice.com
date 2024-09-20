@@ -32,29 +32,27 @@ const LeftMenu = forwardRef(({
           <InternalLink className="left-menu-link" href={backBtnUrl} label={backBtnName} />
         }
         <Scrollbar>
-          <div className="left-menu-body">
-            {headings && headings.length != 0 && pageName &&
-              <Heading className="left-menu-title" level={6} label={pageName} />
-            }
-            <ul className={`left-menu-items ${isArticle || isLevel4CategoryPage ? "left-menu-articles" : ""}`}>
-              {isArticle || isLevel4CategoryPage ? (
-                headings.map((item, index) => (
-                  <li className={index === 0 ? "active" : ""} key={index}>
-                    <InternalLink onClick={() => setLeftMenuMobile(false)} href={`#${item.id}`} label={item.text} />
-                  </li>
-                ))
-              ) : pageItems ? (
-                pageItems.map((article, index) => (
-                  <TreeView
-                    key={index}
-                    article={article}
-                    pageItemsLevel={pageItemsLevel}
-                    categorySlug={categorySlug}
-                  />
-                ))
-              ) : null}
-            </ul>
-          </div>
+          {headings && headings.length != 0 && pageName &&
+            <Heading className="left-menu-title" level={6} label={pageName} />
+          }
+          <ul className={`left-menu-items ${isArticle || isLevel4CategoryPage ? "left-menu-articles" : ""}`}>
+            {isArticle || isLevel4CategoryPage ? (
+              headings.map((item, index) => (
+                <li className={index === 0 ? "active" : ""} key={index}>
+                  <InternalLink onClick={() => setLeftMenuMobile(false)} href={`#${item.id}`} label={item.text} />
+                </li>
+              ))
+            ) : pageItems ? (
+              pageItems.map((article, index) => (
+                <TreeView
+                  key={index}
+                  article={article}
+                  pageItemsLevel={pageItemsLevel}
+                  categorySlug={categorySlug}
+                />
+              ))
+            ) : null}
+          </ul>
           <ul className="left-menu-info">
             <li><InternalLink href="/glossary.aspx" className="glossary" label={t("Glossary")} /></li>
             <li><InternalLink href="/video.aspx" className="video" label={t("Video")} /></li>
