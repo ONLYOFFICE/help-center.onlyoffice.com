@@ -76,7 +76,7 @@ const ArticleContent = ({
     const breadcrumbsRefHeight = getFullHeight(breadcrumbsRef.current);
     const tagsRefHeight = getFullHeight(tagsRef.current);
     const headingRefHeight = getFullHeight(headingRef.current);
-    const offsetTop = breadcrumbsRefHeight + tagsRefHeight + headingRefHeight + 32 + 24;
+    const offsetTop = breadcrumbsRefHeight + tagsRefHeight + headingRefHeight + 8;
 
     const scrollHandler = () => {
       handleArticleScroll(true, wrapperContentRef.current, leftMenuRef.current, offsetTop, "h4", setShowButton);
