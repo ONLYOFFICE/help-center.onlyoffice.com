@@ -33,19 +33,11 @@ const StyledLeftMenu = styled.div`
     }
   }
 
-  .left-menu-search {
-    margin-bottom: 32px;
-
-    @media ${device.laptop} {
-      margin-bottom: 24px;
-    }
-  }
-
   .left-menu-link {
     position: relative;
     display: flex;
     align-items: center;
-    margin-bottom: 16px;
+    margin-top: 32px;
     font-size: 14px;
     line-height: 21px;
     transition: color 0.3s;
@@ -61,6 +53,14 @@ const StyledLeftMenu = styled.div`
     &:hover {
       color: ${globalColors.orangeMain};
     }
+
+    @media ${device.laptop} {
+      margin-top: 24px;
+    }
+  }
+
+  .left-menu-body {
+    margin-top: 16px;
   }
 
   .left-menu-title {
