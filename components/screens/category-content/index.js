@@ -1,17 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import StyledCategoryContent from "./styled-category-content";
+import StyledRawHtml from "../common/raw-html/styled-raw-html";
+import ReactHtmlParser from "react-html-parser";
+import Cookies from "universal-cookie";
+import { tableBuilder } from "@utils/helpers/TableBuilder/table-builder";
+import getTagsArticle from "@lib/strapi/getTagsArticle";
+import InternalLink from "@components/common/internal-link";
+import Heading from "@components/common/heading";
+import CategoryItem from "./sub-components/category-item";
 import LeftMenu from "@components/screens/common/left-menu";
 import StyledWrapperContent from "@components/screens/common/wrapper-content/styled-wrapper-content";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
-import Heading from "@components/common/heading";
-import Text from "@components/common/text";
-import ReactHtmlParser from "react-html-parser";
-import CategoryItem from "./sub-components/category-item";
 import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
-import InternalLink from "@components/common/internal-link";
+import ArticlePopup from "@components/screens/common/article-popup";
 
 const CategoryContent = ({
   t,
+  locale,
   categoryName,
   categoryUrl,
   level2CategoryName,
@@ -24,14 +29,26 @@ const CategoryContent = ({
   leftMenuMobile,
   backBtnName,
   backBtnUrl,
-  lvlArticles
+  lvlArticles,
+  tags
 }) => {
+  const descriptionRef = useRef(null);
+  const tagsRef = useRef(null);
   const [showButton, setShowButton] = useState(false);
-  const sortPageItems = pageItems.sort((a, b) =>
+  const [modalActive, setModalActive] = useState(false);
+  const [tagName, setTagName] = useState();
+  const [tagItems, setTagItems] = useState();
+  const [hasMoreTags, setHasMoreTags] = useState(false);
+  const cookies = new Cookies(null, { path: "/" });
+  const sortPageItems = pageItems?.sort((a, b) =>
     (b.attributes.icon_small?.data?.attributes?.url ? 1 : 0) - (a.attributes.icon_small?.data?.attributes?.url ? 1 : 0) ||
     (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || a.attributes.name.localeCompare(b.attributes.name));
 
   useEffect(() => {
+    if (descriptionRef.current) {
+      tableBuilder(descriptionRef.current, cookies);
+    }
+
     const handleScroll = () => {
       const scrollHeight = window.innerHeight * 2;
       setShowButton(window.scrollY > scrollHeight);
@@ -43,6 +60,25 @@ const CategoryContent = ({
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleTagModal = async (tagName) => {
+    const data = await getTagsArticle(locale, tagName, 4, 1);
+
+    const { articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces } = data;
+    const hasMoreTags = [articles, article_desktops, article_docs, article_docspaces, article_mobiles, article_workspaces].some(({ meta: { pagination } }) => pagination.pageCount > pagination.page);
+
+    setHasMoreTags(hasMoreTags);
+    setTagItems([
+      ...articles?.data || [],
+      ...article_desktops?.data || [],
+      ...article_docs?.data || [],
+      ...article_docspaces?.data || [],
+      ...article_mobiles?.data || [],
+      ...article_workspaces?.data || [],
+    ]);
+    setTagName(tagName);
+    setModalActive(true);
+  };
 
   return (
     <StyledCategoryContent>
@@ -66,9 +102,22 @@ const CategoryContent = ({
             level2CategoryUrl={level2CategoryUrl}
             pageName={pageName}
           />
-          <Heading className="wrapper-title" level={3} label={pageName} />
+          <Heading className="wrapper-title" level={1} label={pageName} />
+          {tags?.data.length > 0 &&
+            <div ref={tagsRef} className="tags">
+              {tags?.data.map((item, index) => (
+                <div
+                  onClick={() => handleTagModal(item.attributes.title)}
+                  className="tag"
+                  key={index}
+                >
+                  {item.attributes.title}
+                </div>
+              ))}
+            </div>
+          }
           {pageDescription &&
-            <Text className="wrapper-description">{ReactHtmlParser(pageDescription)}</Text>
+            <StyledRawHtml ref={descriptionRef} className="wrapper-description">{ReactHtmlParser(pageDescription)}</StyledRawHtml>
           }
           {lvlArticles && lvlArticles.sort((a, b) => {
             const aValue = a.attributes.title;
@@ -79,7 +128,7 @@ const CategoryContent = ({
               <InternalLink href={item.attributes.url} label={item.attributes.title} />
             </div>
           ))}
-          {sortPageItems.map((item, index) => (
+          {sortPageItems?.map((item, index) => (
             <CategoryItem
               data={item}
               pageItemsLevel={pageItemsLevel}
@@ -87,6 +136,17 @@ const CategoryContent = ({
               key={index}
             />
           ))}
+          <ArticlePopup
+            t={t}
+            locale={locale}
+            tagName={tagName}
+            tagItems={tagItems}
+            modalActive={modalActive}
+            setModalActive={setModalActive}
+            hasMoreTags={hasMoreTags}
+            setHasMoreTags={setHasMoreTags}
+            setTagItems={setTagItems}
+          />
         </div>
       </StyledWrapperContent>
       <ScrollToTopButton showButton={showButton} />

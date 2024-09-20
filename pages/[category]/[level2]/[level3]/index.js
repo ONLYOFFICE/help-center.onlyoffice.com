@@ -29,6 +29,7 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
     icon,
     videos,
     description,
+    general_category,
     [`category_${categorySlugOne}`]: level1Data,
     [`level_3_${categorySlugMany}`]: level3Data,
     [`level_2_${categorySlugOne}`]: level2DataArticle,
@@ -110,18 +111,21 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
           ) : (
             <CategoryContent
               t={t}
+              locale={locale}
               categorySlug={categorySlug}
-              categoryName={level1Data?.data?.attributes.general_category?.data.attributes.name}
-              categoryUrl={level1Data?.data?.attributes.general_category?.data.attributes.url}
+              categoryName={level1Data?.data?.attributes.general_category?.data.attributes.name || general_category.data.attributes.name}
+              categoryUrl={level1Data?.data?.attributes.general_category?.data.attributes.url || general_category.data.attributes.url}
               level2CategoryName={level1Data?.data?.attributes.name}
               level2CategoryUrl={level1Data?.data?.attributes.url}
               pageName={name}
-              pageItems={level3Data.data}
+              pageItems={level3Data?.data}
               pageItemsLevel={4}
+              pageDescription={description}
               leftMenuMobile={leftMenuMobile}
-              backBtnName={level1Data?.data?.attributes.name}
-              backBtnUrl={level1Data?.data?.attributes.url}
+              backBtnName={level1Data?.data?.attributes.name || general_category.data.attributes.name}
+              backBtnUrl={level1Data?.data?.attributes.url || general_category.data.attributes.url}
               lvlArticles={articleData?.data.length > 0 ? articleData?.data : null}
+              tags={tags}
             />
           )
         )}

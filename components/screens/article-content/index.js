@@ -1,4 +1,5 @@
-import { StyledArticleContent, RawHtmlStyle } from "./styled-article-content";
+import StyledArticleContent from "./styled-article-content";
+import StyledRawHtml from "../common/raw-html/styled-raw-html";
 import { useState, useEffect, useRef } from "react";
 import getTagsArticle from "@lib/strapi/getTagsArticle";
 import LeftMenu from "@components/screens/common/left-menu";
@@ -158,7 +159,7 @@ const ArticleContent = ({
             </div>
           }
           <div ref={wrapperContentRef}>
-            <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</RawHtmlStyle>
+            <StyledRawHtml onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</StyledRawHtml>
             {videos && videos.data.length > 0 &&
               <ConnectorsVideo t={t} videos={videos.data} setVideoOffsetTrigger={setVideoOffsetTrigger} />
             }
