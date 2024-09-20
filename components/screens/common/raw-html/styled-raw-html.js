@@ -1016,6 +1016,14 @@ const StyledRawHtml = styled.div`
       &.language_tg-Cyrl-TJ:before {
         background-position: -16px -208px;
       }
+
+      &.language_ga-IE:before {
+        background-position: -16px -96px;
+      }
+
+      &.language_no-NO:before {
+        background-position: -16px -160px;
+      }
     }
 
     /* platforms */
