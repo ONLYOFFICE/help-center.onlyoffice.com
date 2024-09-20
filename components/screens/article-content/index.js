@@ -7,6 +7,7 @@ import StyledWrapperContent from "@components/screens/common/wrapper-content/sty
 import ReactHtmlParser from "react-html-parser";
 import Heading from "@components/common/heading";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
+import Tag from "@components/common/tag";
 import { tableBuilder } from "@utils/helpers/TableBuilder/table-builder";
 import Tooltip from "@components/common/tooltip";
 import ImagePopup from "./sub-components/image-popup";
@@ -145,18 +146,14 @@ const ArticleContent = ({
             pageName={pageName}
           />
           <Heading ref={headingRef} level={3}>{pageName}</Heading>
-          {tags?.data &&
-            <div ref={tagsRef} className="tags">
+          {tags?.data.length > 0 &&
+            <ul ref={tagsRef} className="tags">
               {tags?.data.map((item, index) => (
-                <div
-                  onClick={() => handleTagModal(item.attributes.title)}
-                  className="tag"
-                  key={index}
-                >
-                  {item.attributes.title}
-                </div>
+                <li key={index}>
+                  <Tag onClick={() => handleTagModal(item.attributes.title)} name={item.attributes.title} />
+                </li>
               ))}
-            </div>
+            </ul>
           }
           <div ref={wrapperContentRef}>
             <StyledRawHtml onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</StyledRawHtml>

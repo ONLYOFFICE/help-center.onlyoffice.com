@@ -7,6 +7,7 @@ import { tableBuilder } from "@utils/helpers/TableBuilder/table-builder";
 import getTagsArticle from "@lib/strapi/getTagsArticle";
 import InternalLink from "@components/common/internal-link";
 import Heading from "@components/common/heading";
+import Tag from "@components/common/tag";
 import CategoryItem from "./sub-components/category-item";
 import LeftMenu from "@components/screens/common/left-menu";
 import StyledWrapperContent from "@components/screens/common/wrapper-content/styled-wrapper-content";
@@ -104,17 +105,13 @@ const CategoryContent = ({
           />
           <Heading className="wrapper-title" level={1} label={pageName} />
           {tags?.data.length > 0 &&
-            <div ref={tagsRef} className="tags">
+            <ul ref={tagsRef} className="tags">
               {tags?.data.map((item, index) => (
-                <div
-                  onClick={() => handleTagModal(item.attributes.title)}
-                  className="tag"
-                  key={index}
-                >
-                  {item.attributes.title}
-                </div>
+                <li key={index}>
+                  <Tag onClick={() => handleTagModal(item.attributes.title)} name={item.attributes.title} />
+                </li>
               ))}
-            </div>
+            </ul>
           }
           {pageDescription &&
             <StyledRawHtml ref={descriptionRef} className="wrapper-description">{ReactHtmlParser(pageDescription)}</StyledRawHtml>

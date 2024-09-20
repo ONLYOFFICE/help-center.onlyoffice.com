@@ -26,24 +26,10 @@ const StyledWrapperContent = styled.div`
 
   .tags {
     display: flex;
-    gap: 8px;
     flex-wrap: wrap;
-  }
-
-  .tag {
-    border-radius: 2px;
-    padding: 4px 8px;
-    font-size: 12px;
-    line-height: 19px;
-    color: ${globalColors.gray};
-    background-color: ${globalColors.tagColor};
-    cursor: pointer;
-    transition: background-color 0.3s;
-
-    &:hover {
-      background-color: ${globalColors.tagHover};
-      text-decoration: none;
-    }
+    gap: 8px;
+    margin-bottom: 24px;
+    list-style-type: none;
   }
 
   h3.subcat-heading {
