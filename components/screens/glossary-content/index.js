@@ -13,6 +13,8 @@ const GlossaryContent = ({ t, glossaryData }) => {
         <LeftMenu
           t={t}
           pageName={t("Glossary")}
+          backBtnName={t("Home")}
+          backBtnUrl="/"
         />
         <div className="wrapper">
           <Breadcrumbs

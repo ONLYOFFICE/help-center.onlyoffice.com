@@ -43,6 +43,8 @@ const FaqContent = ({ t, faqData, locale }) => {
         <LeftMenu
           t={t}
           pageName={name}
+          backBtnName={t("Home")}
+          backBtnUrl="/"
         />
         <div className="wrapper">
           <Breadcrumbs
