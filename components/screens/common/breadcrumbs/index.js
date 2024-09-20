@@ -48,7 +48,7 @@ const Breadcrumbs = forwardRef(({
       {level2CategoryUrl &&
         <li><InternalLink className="breadcrumb-link" href={level2CategoryUrl} label={level2CategoryName} /></li>
       }
-      {level3CategoryUrl &&
+      {level3CategoryUrl && !level3CategoryUrl.includes("#") &&
         <li><InternalLink className="breadcrumb-link" href={level3CategoryUrl} label={level3CategoryName} /></li>
       }
       <li><span className="breadcrumb-link last">{truncateText(pageName, 32)}</span></li>
