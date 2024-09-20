@@ -15,7 +15,7 @@ const StyledRawHtml = styled.div`
     position: relative;
 
     p {
-      margin: 0;
+      margin: 8px 0;
       padding: 0;
 
       &.last_update {
@@ -273,26 +273,41 @@ const StyledRawHtml = styled.div`
       margin: 0;
     }
 
+    ul, 
     ol {
-      margin: 0px 0;
+      margin: 8px 0;
+    }
+
+    ol {
       padding: 0;
 
       > li {
         margin: 0px 0 0px 16px;
+
+        &:not(:last-child) {
+          margin: 0 0 8px 16px;
+        }
       }
 
       li::marker {
         font-weight: bold;
       }
+
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
     }
 
     ul {
       list-style-type: disc;
-      margin: 0;
 
       li {
         margin: 0 0 0 22px;
         line-height: 1.6em;
+
+        &:not(:last-child) {
+          margin: 0 0 8px 22px;
+        }
       }
             
       &.ul-category {
@@ -302,6 +317,10 @@ const StyledRawHtml = styled.div`
           list-style-type: none;
           margin: 0;
         }
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 8px;
       }
     }
 
@@ -320,9 +339,9 @@ const StyledRawHtml = styled.div`
       margin-top: 24px;
       scroll-margin-top: 24px;
       
-      &:not(:first-child) {
+      &:first-child {
         h4 {
-          margin-top: 64px;
+          margin-top: 0;
         }
       }
 
@@ -604,6 +623,7 @@ const StyledRawHtml = styled.div`
     }
 
     h4 {
+      margin: 64px 0 16px;
       font-size: 18px;
     }
 

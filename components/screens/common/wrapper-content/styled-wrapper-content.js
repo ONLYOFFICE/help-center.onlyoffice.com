@@ -24,6 +24,11 @@ const StyledWrapperContent = styled.div`
     margin-bottom: 24px;
     font-size: 24px;
     line-height: 32px;
+
+    &.subcat-heading {
+      display: flex;
+      gap: 16px;
+    }
   }
 
   .tags {
@@ -32,11 +37,6 @@ const StyledWrapperContent = styled.div`
     gap: 8px;
     margin-bottom: 24px;
     list-style-type: none;
-  }
-
-  h3.subcat-heading {
-    display: flex;
-    gap: 16px;
   }
 
   .subcat-description {
