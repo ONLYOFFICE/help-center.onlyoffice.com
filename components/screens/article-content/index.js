@@ -1,4 +1,5 @@
-import { StyledArticleContent, RawHtmlStyle } from "./styled-article-content";
+import StyledArticleContent from "./styled-article-content";
+import StyledRawHtml from "../common/raw-html/styled-raw-html";
 import { useState, useEffect, useRef } from "react";
 import getTagsArticle from "@lib/strapi/getTagsArticle";
 import LeftMenu from "@components/screens/common/left-menu";
@@ -6,7 +7,8 @@ import StyledWrapperContent from "@components/screens/common/wrapper-content/sty
 import ReactHtmlParser from "react-html-parser";
 import Heading from "@components/common/heading";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
-import { tableBuilder } from "./utils/table-builder";
+import Tag from "@components/common/tag";
+import { tableBuilder } from "@utils/helpers/TableBuilder/table-builder";
 import Tooltip from "@components/common/tooltip";
 import ImagePopup from "./sub-components/image-popup";
 import DownloadArea from "./sub-components/download-area";
@@ -14,8 +16,8 @@ import ConnectorsVideo from "./sub-components/connectors-video";
 import ArticlePopup from "../common/article-popup";
 import Cookies from "universal-cookie";
 import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
-import { handleFaqAccordionClick, handleImagePopupClick, handleTogglerClick, handleShortcutToggleClick } from "./utils/handle-click-functions";
-import { extractHeadings, handleArticleScroll } from "./utils/scroll-highlight-functions";
+import { handleFaqAccordionClick, handleImagePopupClick, handleTogglerClick, handleShortcutToggleClick } from "@utils/handle-click-functions";
+import { extractHeadings, handleArticleScroll } from "@utils/scroll-highlight-functions";
 
 const ArticleContent = ({
   t,
@@ -26,8 +28,6 @@ const ArticleContent = ({
   level2CategoryUrl,
   level3CategoryName,
   level3CategoryUrl,
-  level4CategoryName,
-  level4CategoryUrl,
   pageName,
   pageDescription,
   tags,
@@ -75,7 +75,7 @@ const ArticleContent = ({
     const breadcrumbsRefHeight = getFullHeight(breadcrumbsRef.current);
     const tagsRefHeight = getFullHeight(tagsRef.current);
     const headingRefHeight = getFullHeight(headingRef.current);
-    const offsetTop = breadcrumbsRefHeight + tagsRefHeight + headingRefHeight + 32 + 24;
+    const offsetTop = breadcrumbsRefHeight + tagsRefHeight + headingRefHeight + 8;
 
     const scrollHandler = () => {
       handleArticleScroll(true, wrapperContentRef.current, leftMenuRef.current, offsetTop, "h4", setShowButton);
@@ -140,26 +140,20 @@ const ArticleContent = ({
             level2CategoryUrl={level2CategoryUrl}
             level3CategoryName={level3CategoryName}
             level3CategoryUrl={level3CategoryUrl}
-            level4CategoryName={level4CategoryName}
-            level4CategoryUrl={level4CategoryUrl}
             pageName={pageName}
           />
-          <Heading ref={headingRef} level={3}>{pageName}</Heading>
-          {tags?.data &&
-            <div ref={tagsRef} className="tags">
+          <Heading ref={headingRef} className="wrapper-title" level={1}>{pageName}</Heading>
+          {tags?.data.length > 0 &&
+            <ul ref={tagsRef} className="tags">
               {tags?.data.map((item, index) => (
-                <div
-                  onClick={() => handleTagModal(item.attributes.title)}
-                  className="tag"
-                  key={index}
-                >
-                  {item.attributes.title}
-                </div>
+                <li key={index}>
+                  <Tag onClick={() => handleTagModal(item.attributes.title)} name={item.attributes.title} />
+                </li>
               ))}
-            </div>
+            </ul>
           }
           <div ref={wrapperContentRef}>
-            <RawHtmlStyle onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</RawHtmlStyle>
+            <StyledRawHtml onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</StyledRawHtml>
             {videos && videos.data.length > 0 &&
               <ConnectorsVideo t={t} videos={videos.data} setVideoOffsetTrigger={setVideoOffsetTrigger} />
             }

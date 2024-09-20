@@ -12,6 +12,7 @@ const extractHeadings = (wrapperContainer, description, selector) => {
       });
     }
   });
+
   return headingsArray;
 };
 

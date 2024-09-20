@@ -35,10 +35,10 @@ const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
     [`level_2_${categorySlugOne}`]: level2DataArticle,
     [`level_3_${categorySlugOne}`]: level3DataArticle,
     [`level_4_${categorySlugOne}`]: level4DataArticle,
-    [`category_${categorySlugMany}`]: categoryDataArticle,
+    [`category_${categorySlug === "docs" ? "docs" : categorySlug}`]: categoryDataArticle,
     [`article_${categorySlugMany}`]: articleData
   } = categoryData.data?.[0]?.attributes;
-  
+
   const categoryName = categoryDataArticle?.data?.attributes.general_category.data.attributes.name || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name;
   const categoryUrl = categoryDataArticle?.data?.attributes.general_category.data.attributes.url || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url;
   const level2CategoryName = categoryDataArticle?.data?.attributes.name || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.name || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`]?.data.attributes.name || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes[`level_2_${categorySlugOne}`]?.data.attributes.name;
@@ -79,8 +79,6 @@ const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             level2CategoryUrl={level2CategoryUrl}
             level3CategoryName={level3CategoryName}
             level3CategoryUrl={level3Categoryurl}
-            level4CategoryName={level4DataArticle?.data?.attributes.name}
-            level4CategoryUrl={level4DataArticle?.data?.attributes.url}
             pageName={title}
             pageDescription={content}
             tags={tags}

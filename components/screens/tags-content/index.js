@@ -48,7 +48,7 @@ const TagsContent = ({ t, locale, tagsData, leftMenuMobile }) => {
             t={t}
             pageName={t("Tags")}
           />
-          <Heading level={3}>{t("Tags")}</Heading>
+          <Heading className="wrapper-title" level={1}>{t("Tags")}</Heading>
           <AlphabetContainer
             t={t}
             data={tagsData}

@@ -3,6 +3,7 @@ import StyledFaqContent from "./styled-faq-content";
 import StyledWrapperContent from "@components/screens/common/wrapper-content/styled-wrapper-content";
 import LeftMenu from "@components/screens/common/left-menu";
 import Heading from "@components/common/heading";
+import Tag from "@components/common/tag";
 import Breadcrumbs from "../common/breadcrumbs";
 import { AccordionItem } from "@components/common/accordion";
 import ReactHtmlParser from "react-html-parser";
@@ -48,19 +49,15 @@ const FaqContent = ({ t, faqData, locale }) => {
             t={t}
             pageName={name}
           />
-          <Heading level={3} label={name} />
-          {tags?.data && 
-            <div className="tags">
+          <Heading className="wrapper-title" level={1} label={name} />
+          {tags?.data.length > 0 && 
+            <ul className="tags">
               {tags?.data.map((item, index) => (
-                <div
-                  onClick={() => handleTagModal(item.attributes.title)}
-                  className="tag"
-                  key={index}
-                >
-                  {item.attributes.title}
-                </div>
+                <li key={index}>
+                  <Tag onClick={() => handleTagModal(item.attributes.title)} name={item.attributes.title} />
+                </li>
               ))}
-            </div>
+            </ul>
           }
           <div className="switcher" onClick={() => setIsExpanded(!isExpanded)}>{isExpanded ? t("Collapse all") : t("Expand all")}</div>
           {faq_block.map((item, index) => (

@@ -13,7 +13,7 @@ const GuidesCell = ({ data }) => {
   const connectorsSlug = data.attributes.slug_id === "integration";
   const connectorsArticles = data.attributes.articles?.data.sort((a, b) => a.attributes.title.localeCompare(b.attributes.title));
   const items = data.attributes[`category_${slugId}`]?.data
-    .sort((a, b) => a.attributes.position - b.attributes?.position)
+    .sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity))
     .filter(item => !topSlugIdData.includes(item.attributes.slug_id)) || [];
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const GuidesCell = ({ data }) => {
                   <div className="guides-cell-link guides-cell-header-link">{item.attributes.name}</div>
                 )}
                 {item.attributes[`level_2_${slugId}`]?.data
-                  .sort((a, b) => a.attributes.position - b.attributes?.position)
+                  .sort((a, b) => (a.attributes.position === null) - (b.attributes.position === null) || a.attributes.position - b.attributes.position)
                   .map((itemLevel2, index) => {
                     return isClient && isExternalLink(itemLevel2?.attributes.url) ? (
                       <ExternalLink
@@ -119,7 +119,7 @@ const GuidesCell = ({ data }) => {
                   <div className="guides-cell-link guides-cell-header-link">{item.attributes.name}</div>
                 )}
                 {item.attributes[`level_2_${slugId}`]?.data
-                  .sort((a, b) => a.attributes.position - b.attributes?.position)
+                  .sort((a, b) => (a.attributes.position === null) - (b.attributes.position === null) || a.attributes.position - b.attributes.position)
                   .map((itemLevel2, index) => {
                     return isClient && isExternalLink(itemLevel2?.attributes.url) ? (
                       <ExternalLink
