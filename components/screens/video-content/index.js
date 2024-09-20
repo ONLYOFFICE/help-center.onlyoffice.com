@@ -9,8 +9,7 @@ import { extractHeadings, handleArticleScroll } from "@utils/scroll-highlight-fu
 const VideoContent = ({ t, videoData, leftMenuMobile, setLeftMenuMobile }) => {
   const [headings, setHeadings] = useState([]);
   const contentRef = useRef(null);
-  const lastActiveSectionRef = useRef(null);
-  const [activeSection, setActiveSection] = useState(null);
+  const leftMenuRef = useRef(null);
   const groupedVideos = {};
   const order = ['Docs', 'Docspace', 'Workspace', 'Connectors', 'Desktop', 'Mobile'];
 
@@ -39,12 +38,12 @@ const VideoContent = ({ t, videoData, leftMenuMobile, setLeftMenuMobile }) => {
 
   useEffect(() => {
     if (contentRef.current) {
-      setHeadings(extractHeadings(contentRef.current.outerHTML, "h4"));
+      setHeadings(extractHeadings(contentRef.current, null, "h4"));
     }
   }, [contentRef]);
 
   useEffect(() => {
-    const scrollHandler = (event) => handleArticleScroll(setActiveSection, false, lastActiveSectionRef, "h4");
+    const scrollHandler = (event) => handleArticleScroll(false, contentRef.current, leftMenuRef.current, document.querySelector("header").offsetHeight + 16, "h4");
     window.addEventListener('scroll', scrollHandler);
 
     return () => {
@@ -57,12 +56,12 @@ const VideoContent = ({ t, videoData, leftMenuMobile, setLeftMenuMobile }) => {
       <StyledWrapperContent>
         <LeftMenu
           t={t}
+          ref={leftMenuRef}
           backBtnName={t("Home")}
           backBtnUrl="/"
           leftMenuMobile={leftMenuMobile}
           headings={headings}
           isLevel4CategoryPage={true}
-          activeSection={activeSection}
           setLeftMenuMobile={setLeftMenuMobile}
         />
         <div className="wrapper" ref={contentRef}>
