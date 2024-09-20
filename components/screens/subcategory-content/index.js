@@ -89,7 +89,7 @@ const SubCategoryContent = ({
             pageName={pageName}
           />
 
-          <Heading level={3} className="subcat-heading">
+          <Heading className="wrapper-title subcat-heading" level={1}>
             {pageIcon?.data &&
               <img src={pageIcon.data?.attributes.url} alt={pageName} />
             }

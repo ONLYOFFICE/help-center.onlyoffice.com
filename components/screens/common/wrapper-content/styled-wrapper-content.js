@@ -14,14 +14,16 @@ const StyledWrapperContent = styled.div`
     width: 100%;
     max-width: 864px;
     color: ${globalColors.gray};
-
-    h3 {
-      margin-bottom: 16px;
-    }
     
     @media ${device.laptop} {
       padding: 32px 0 112px;
     }
+  }
+
+  .wrapper-title {
+    margin-bottom: 24px;
+    font-size: 24px;
+    line-height: 32px;
   }
 
   .tags {

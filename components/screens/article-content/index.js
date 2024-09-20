@@ -145,7 +145,7 @@ const ArticleContent = ({
             level4CategoryUrl={level4CategoryUrl}
             pageName={pageName}
           />
-          <Heading ref={headingRef} level={3}>{pageName}</Heading>
+          <Heading ref={headingRef} className="wrapper-title" level={1}>{pageName}</Heading>
           {tags?.data.length > 0 &&
             <ul ref={tagsRef} className="tags">
               {tags?.data.map((item, index) => (

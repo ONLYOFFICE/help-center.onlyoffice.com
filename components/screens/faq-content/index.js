@@ -49,7 +49,7 @@ const FaqContent = ({ t, faqData, locale }) => {
             t={t}
             pageName={name}
           />
-          <Heading level={3} label={name} />
+          <Heading className="wrapper-title" level={1} label={name} />
           {tags?.data.length > 0 && 
             <ul className="tags">
               {tags?.data.map((item, index) => (
