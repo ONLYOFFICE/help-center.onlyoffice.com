@@ -154,6 +154,7 @@ const StyledGuidesCell = styled.div`
   @media ${device.tablet} {
     .guides-cell-columns {
       grid-template-columns: 1fr;
+      gap: ${(props) => (props.isCategoryPage && "24px")};
     }
 
     .guides-cell-icon {

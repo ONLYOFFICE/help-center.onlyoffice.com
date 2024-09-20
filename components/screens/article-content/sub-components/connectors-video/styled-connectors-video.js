@@ -3,10 +3,11 @@ import { device } from "@components/utils/devices";
 import globalColors from "@components/utils/global-colors";
 
 const StyledConnectorsVideo = styled.div`
-  padding: 64px 0 0;
+  margin: 64px 0;
+  scroll-margin-top: 24px;
   
   .video-title {
-    margin-bottom: 16px;
+    margin-bottom: 24px;
   }
 
   .video-wrapper {
@@ -14,7 +15,7 @@ const StyledConnectorsVideo = styled.div`
     align-items: start;
     background: ${globalColors.white};
     box-shadow: 0px 7px 25px rgba(85, 85, 85, 0.15);
-    border-radius: 2px;
+    border-radius: 3px;
     gap: 32px;
     padding: 32px;
 

@@ -8,8 +8,8 @@ import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import VideoBlock from "@components/screens/common/video-block";
 import ReactHtmlParser from "react-html-parser";
 import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
-import { handleFaqAccordionClick, handleChangelogClick } from "@components/screens/article-content/utils/handle-click-functions";
-import { extractHeadings, handleArticleScroll } from "../article-content/utils/scroll-highlight-functions";
+import { handleFaqAccordionClick, handleChangelogClick } from "@utils/handle-click-functions";
+import { extractHeadings, handleArticleScroll } from "@utils/scroll-highlight-functions";
 
 const SubCategoryContent = ({
   t,
@@ -89,14 +89,14 @@ const SubCategoryContent = ({
             pageName={pageName}
           />
 
-          <Heading level={3} className="subcat-heading">
+          <Heading className="wrapper-title subcat-heading" level={1}>
             {pageIcon?.data &&
               <img src={pageIcon.data?.attributes.url} alt={pageName} />
             }
             {pageName}
           </Heading>
           {pageDescription &&
-            <div onClick={handleClick} ref={containerRef}>{ReactHtmlParser(pageDescription)}</div>
+            <div onClick={handleClick} ref={containerRef} className="subcat-description">{ReactHtmlParser(pageDescription)}</div>
           }
           <div ref={contentRef}>
             {!pageItems && (lvlArticles && lvlArticles.sort((a, b) => {

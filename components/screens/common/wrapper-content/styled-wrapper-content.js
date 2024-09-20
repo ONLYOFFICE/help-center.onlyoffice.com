@@ -14,42 +14,33 @@ const StyledWrapperContent = styled.div`
     width: 100%;
     max-width: 864px;
     color: ${globalColors.gray};
-
-    h3 {
-      margin-bottom: 16px;
-    }
     
     @media ${device.laptop} {
       padding: 32px 0 112px;
     }
   }
 
-  .tags {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
+  .wrapper-title {
+    margin-bottom: 24px;
+    font-size: 24px;
+    line-height: 32px;
 
-  .tag {
-    border-radius: 2px;
-    padding: 4px 8px;
-    font-size: 12px;
-    line-height: 19px;
-    color: ${globalColors.gray};
-    background-color: ${globalColors.tagColor};
-    cursor: pointer;
-    transition: background-color 0.3s;
-
-    &:hover {
-      background-color: ${globalColors.tagHover};
-      text-decoration: none;
+    &.subcat-heading {
+      display: flex;
+      gap: 16px;
     }
   }
 
-  h3.subcat-heading {
+  .tags {
     display: flex;
-    gap: 16px;
-    padding: 0 0 24px;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+    list-style-type: none;
+  }
+
+  .subcat-description {
+    margin-bottom: 24px;
   }
 
   .subcat-div {

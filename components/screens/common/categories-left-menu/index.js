@@ -41,7 +41,7 @@ const CategoriesLeftMenu = ({ leftMenuMobile, setLeftMenuMobile, categories }) =
       <button onClick={closeLeftMenu} className="left-menu-close-btn"></button>
       <Scrollbar>
         <ul className="left-menu-wrapper">
-          {categories.data?.sort((a, b) => a.attributes.position - b.attributes.position).map((category, index) => {
+          {categories.data.sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity)).map((category, index) => {
             const slug_id = `${category.attributes?.slug_id === "docs" ? "docs" : `${category.attributes?.slug_id}s`}`;
 
             return (
@@ -52,7 +52,7 @@ const CategoriesLeftMenu = ({ leftMenuMobile, setLeftMenuMobile, categories }) =
 
                 {category.attributes[`category_${slug_id}`]?.data.length > 0 && activeItems[`1-${index}`] ? (
                   <ul className="left-menu-level1">
-                    {category.attributes[`category_${slug_id}`]?.data.map((level1Item, level1Index) => (
+                    {category.attributes[`category_${slug_id}`]?.data.sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity)).map((level1Item, level1Index) => (
                       <li className="left-menu-level1-item" key={level1Index}>
                         {level1Item.attributes[`level_2_${slug_id}`]?.data.length > 0 ? (
                           <button

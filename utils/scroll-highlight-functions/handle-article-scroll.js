@@ -7,7 +7,7 @@ const handleArticleScroll = (articlePage, wrapperContainer, leftMenuRef, offsetH
 
     sections.forEach((el, i) => {
       const offsetCondition = isLastBlockWatchVideo && el === sections[sections.length - 1]
-        ? el.offsetTop - document.querySelector("header").offsetHeight
+        ? el.offsetTop - document.querySelector("header").offsetHeight - 24
         : articlePage
           ? el.offsetTop + offsetHeight
           : el.offsetTop - offsetHeight;

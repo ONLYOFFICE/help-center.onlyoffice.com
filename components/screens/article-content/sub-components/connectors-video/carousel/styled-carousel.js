@@ -26,9 +26,10 @@ const StyledCarousel = styled.div`
     background-repeat: no-repeat;
     background-size: contain;
     background-color: transparent;
+    cursor: pointer;
 
     &.swiper-button-disabled {
-      opacity: 0.5;
+      opacity: 0.3;
     }
 
     &.hidden {
@@ -43,10 +44,18 @@ const StyledCarousel = styled.div`
   .swiper-button-prev {
     margin-bottom: 12px;
     transform: rotate(180deg);
+
+    @media ${device.laptop} {
+      margin-bottom: 16px;
+    }
   }
 
   .swiper-button-next {
     margin-top: 12px;
+
+    @media ${device.laptop} {
+      margin-top: 16px;
+    }
   }
 `;
 

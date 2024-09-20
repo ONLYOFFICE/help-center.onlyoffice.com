@@ -10,6 +10,8 @@ const StyledBreadcrumbs = styled.ul`
   list-style-type: none;
 
   li {
+    line-height: 18px;
+
     &:not(:last-child) {
       margin-right: 31px;
     }
@@ -34,6 +36,7 @@ const StyledBreadcrumbs = styled.ul`
       background-repeat: no-repeat;
       background-size: contain;
       transform: translateY(-50%);
+      pointer-events: none;
     }
 
     &.last {

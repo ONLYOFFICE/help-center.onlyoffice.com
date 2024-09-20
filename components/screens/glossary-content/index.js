@@ -13,13 +13,15 @@ const GlossaryContent = ({ t, glossaryData }) => {
         <LeftMenu
           t={t}
           pageName={t("Glossary")}
+          backBtnName={t("Home")}
+          backBtnUrl="/"
         />
         <div className="wrapper">
           <Breadcrumbs
             t={t}
             pageName={t("Glossary")}
           />
-          <Heading level={3}>{t("Glossary")}</Heading>
+          <Heading className="wrapper-title" level={1}>{t("Glossary")}</Heading>
           <Text label={t("Here are the base terms which are used in the online office interface and documentation.")} />
           <AlphabetContainer t={t} data={glossaryData} />
         </div>

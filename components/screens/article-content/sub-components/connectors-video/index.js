@@ -38,7 +38,7 @@ const ConnectorsVideo = ({ t, videos, setVideoOffsetTrigger }) => {
                 data={videos}
                 carouselParams={{
                   slidesPerView: 1,
-                  spaceBetween: 32,
+                  spaceBetween: 12,
                   onSwiper: (swiper) => {
                     swiper.on("resize", () => {
                       const slideHeights = Array.from(swiper.slides).map(slide => slide.children[0].offsetHeight);
@@ -61,13 +61,12 @@ const ConnectorsVideo = ({ t, videos, setVideoOffsetTrigger }) => {
                       className="video-slider-3"
                       data={videos.slice(1)}
                       carouselParams={{
-                        spaceBetween: 32,
+                        spaceBetween: 12,
                         slidesPerView: 2,
                         onSwiper: (swiper) => {
                           swiper.on("resize", () => {
                             const slideHeights = Array.from(swiper.slides).map(slide => slide.children[0].offsetHeight);
-                            const totalHeight = slideHeights.reduce((sum, height) => sum + height, 0);
-                            swiper.el.style.height = `${totalHeight + 32}px`;
+                            swiper.el.style.height = `${Math.max(...slideHeights) * 2 + 12}px`;
                             setVideoOffsetTrigger(4);
                           });
                         }

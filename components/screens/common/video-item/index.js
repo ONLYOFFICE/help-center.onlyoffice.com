@@ -16,12 +16,12 @@ const VideoItem = ({ data, isMain }) => {
         />
       </div>
       <Heading
-        className={`${isMain && "main"}`}
+        className={`video-item-title ${isMain && "main"}`}
         label={data.attributes.title}
         level={5}
       />
       {isMain && data.attributes.description &&
-        <Text label={data.attributes.description} />
+        <Text className="video-item-description" label={data.attributes.description} as="p" />
       }
     </StyledVideoItem>
   );

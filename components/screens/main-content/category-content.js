@@ -53,14 +53,18 @@ const Level1CategoryContent = ({ t, locale, categoryName, categoryImg, categorie
             breakpointCols={{ default: 2, 592: 1 }}
             className="guides-cards-items"
             columnClassName="guides-cards-items-column">
-            {categories.data.filter(item => !topSlugIdData.includes(item.attributes.slug_id))?.sort((a, b) => a.attributes.position - b.attributes.position).map((item, index) => (
-              <CategoryGuidesCell
-                data={item}
-                categorySlug={categorySlug}
-                key={index}
-                t={t}
-              />
-            ))}
+            {categories.data
+              .filter(item => !topSlugIdData.includes(item.attributes.slug_id))
+              .sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.name || a.attributes.title).localeCompare(b.attributes.name || b.attributes.title))
+              .map((item, index) => (
+                <CategoryGuidesCell
+                  data={item}
+                  categorySlug={categorySlug}
+                  key={index}
+                  t={t}
+                />
+              ))
+            }
           </Masonry>
         </div>
       </StyledMainContent>
