@@ -1,6 +1,6 @@
 ﻿import { buildLargeTables, buildNewstrTable, buildMobileLargeTables, buildTableOfTranslators, dateOfTable } from "@utils/helpers/TableBuilder/language_table.js";
 
-export function BuildTable(pageTopDivID, cookies){
+export function BuildTable(pageTopDivID, cookies, jsonData){
     const sortTableByFirstColumn = (tableId) => {
         const table = document.getElementById(tableId);
         const rows = Array.from(table.rows).slice(1);
@@ -8,16 +8,16 @@ export function BuildTable(pageTopDivID, cookies){
         rows.forEach(row => table.appendChild(row));
     };
 
-    const commonActions = (id) => {
-        if (id != "languagesTable") {
-            buildNewstrTable(cookies);
+    const commonActions = (id, jsonData) => {
+        if (id !== "languagesTable") {
+            buildNewstrTable(cookies, jsonData);
             sortTableByFirstColumn('newstrList');
         }
         if (id !== "languagesiOSDocumentsTable" && id !== "languagesiOSProjectsTable") {
-            buildLargeTables(id);
+            buildLargeTables(id, jsonData);
             sortTableByFirstColumn(id);
         } else {
-            buildMobileLargeTables(pageTopDivID);
+            buildMobileLargeTables(pageTopDivID, jsonData);
             sortTableByFirstColumn(pageTopDivID);
         }
         document.getElementById('lastUpdate').innerHTML = `${dateOfTable}`;
@@ -25,8 +25,8 @@ export function BuildTable(pageTopDivID, cookies){
     
     switch (pageTopDivID) {
         case 'languagesTable':
-            buildTableOfTranslators();
-            commonActions(pageTopDivID);
+            buildTableOfTranslators(jsonData);
+            commonActions(pageTopDivID, jsonData);
             break;
         case 'languagesEditorsTable':
         case 'languagesCommunityTable':
@@ -34,7 +34,7 @@ export function BuildTable(pageTopDivID, cookies){
         case 'languagesDesktopEditorsTable':
         case 'languagesiOSDocumentsTable':
         case 'languagesiOSProjectsTable':
-            commonActions(pageTopDivID);
+            commonActions(pageTopDivID, jsonData);
             break;
     }
 }

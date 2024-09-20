@@ -792,6 +792,10 @@ const RawHtmlStyle = styled.div`
         background-position: -16px -128px;
       }
 
+      &.language_no-NO:before {
+        background-position: -16px -160px;
+      }
+
       &.language_de-DE:before {
         background-position: -80px -48px;
       }
@@ -954,6 +958,9 @@ const RawHtmlStyle = styled.div`
 
       &.language_fa-IR:before {
         background-position: -96px -96px;
+      }
+      &.language_ga-IE:before {
+        background-position: -16px -96px;
       }
 
       &.language_hi-IN:before {

@@ -3,6 +3,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 import getCategoryLevel3 from "@lib/strapi/getCategoryLevel3";
+import getJsons from "@lib/strapi/getJsons";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
 import Header from "@components/screens/header";
@@ -12,7 +13,7 @@ import ArticleContent from "@components/screens/article-content";
 import Footer from "@components/screens/footer";
 import Cookies from "universal-cookie";
 
-const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug }) => {
+const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug, jsonData }) => {
   const { t } = useTranslation();
   const [leftMenuMobile, setLeftMenuMobile] = useState(false);
   const categorySlugOne = categorySlug === "docs" ? "doc" : categorySlug;
@@ -88,6 +89,7 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             backBtnName={level1Data?.data?.attributes.name}
             backBtnUrl={level1Data?.data?.attributes.url}
             videos={videos}
+            jsonData={jsonData.data}
           />
         ) : (
           level3Data?.data[0]?.attributes[`article_${categorySlugMany}`]?.data.length > 0 ? (
@@ -135,6 +137,7 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
 
 export const getServerSideProps = async ({ locale, params, req }) => {
   const categoriesMenu = await getCategoriesMenu(locale);
+  const jsonData = await getJsons();
   const categoryData = await getCategoryLevel3(locale, params.category, `${locale === "en" ? "" : `/${locale}`}/${params.category}/${params.level2}/${params.level3}`);
   const cookies = new Cookies(req.headers.cookie, { path: "/" });
   if (cookies.get("neverShowTranslators") === "never" && categoryData.data[0].attributes.content) {
@@ -156,7 +159,8 @@ export const getServerSideProps = async ({ locale, params, req }) => {
       locale,
       categoriesMenu,
       categoryData,
-      categorySlug: params.category
+      categorySlug: params.category,
+      jsonData
     },
   };
 };

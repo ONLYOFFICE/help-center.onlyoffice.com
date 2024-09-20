@@ -5,6 +5,7 @@ import StyledTooltip from "./styled-tooltip";
 
 const Tooltip = () => {
   useEffect(() => {
+    const timer = setTimeout(async () => {
     const elements = document.querySelectorAll(".tdwttp");
 
     elements.forEach((el) => {
@@ -16,6 +17,8 @@ const Tooltip = () => {
         el.removeAttribute("title");
       }
     });
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   return (

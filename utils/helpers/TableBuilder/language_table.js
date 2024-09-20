@@ -1,9 +1,5 @@
 ﻿import { languageCorr } from "@public/data/lng.js";
 import { comingSoonLabel } from "@public/data/lng.js";
-import jsonData from "@public/data/stats.json";
-import jsonDataMobile from "@public/data/stats_mobile.json";
-import translators from "@public/data/translators.json";
-import newstr from "@public/data/newstr.json";
 import $ from "jquery";
 
 const allLanguageArray = [
@@ -112,11 +108,12 @@ let functionCalled = false;
 let functionNewstrCalled = false;
 let functionTranslatorsCalled = false;
 
-export function buildMobileLargeTables(pageTopDivID) {
+export function buildMobileLargeTables(pageTopDivID, jsonData) {
     if (functionCalled) return;
     functionCalled = true;
     let localeCode, arrayElementTitle;
-    const langArray = jsonDataMobile.rows;
+    const statsMobile = jsonData.find(item => item.attributes.name === "stats_mobile")?.attributes.json || null;
+    const langArray = statsMobile.rows;
 
     const uniqueLanguagesAndroid = new Set();
     const uniqueLanguagesiOSDocuments = new Set();
@@ -244,11 +241,12 @@ function getNewLanguageMobileMark(status) {
     return '';
 }
 
-export function buildLargeTables(pageTopDivID) {
+export function buildLargeTables(pageTopDivID, jsonData) {
     if (functionCalled) return;
     functionCalled = true;
     let localeCode, arrayElementTitle, lang1projectName;
-    const langArray = jsonData.rows;
+    const stats = jsonData.find(item => item.attributes.name === "stats")?.attributes.json || null;
+    const langArray = stats.rows;
     for (let i = 1; i < allLanguageArray.length; i += 9) {
         var modulesLangArray = [],modulesLangDesktopArray = [],langTotal=0,langDesktopTotal=0,comingSoonSaasLabel='',comingSoonServerLabel='',comingSoonDocLabel='';
         for (let x = 0; x < langArray.length; x += 1) {
@@ -506,9 +504,10 @@ export function buildLargeTables(pageTopDivID) {
     $('#totalChange').append('<b>' + engTotal.toLocaleString() + '</b>');
 }
 
-export function buildTableOfTranslators() {
+export function buildTableOfTranslators(jsonData) {
     if (functionTranslatorsCalled) return;
     functionTranslatorsCalled = true;
+    const translators = jsonData.find(item => item.attributes.name === "translators")?.attributes.json || null;
     let translatorsArray = translators.rows;
         for (var x = 0; x < translatorsArray.length; x += 1) {
             var translatorName = translatorsArray[x].authorLogin, langLocale = translatorsArray[x].cultureTitle;
@@ -571,9 +570,10 @@ export function buildTableOfTranslators() {
         }
 };
 
-export function buildNewstrTable(cookies) {
+export function buildNewstrTable(cookies, jsonData) {
     if (functionNewstrCalled) return;
     functionNewstrCalled = true;
+    const newstr = jsonData.find(item => item.attributes.name === "newstr")?.attributes.json || null;
     var newstrArray = newstr.rows;
         if (newstrArray.length == 0) {
             $('#translatorAttention_block').css('display', 'none');

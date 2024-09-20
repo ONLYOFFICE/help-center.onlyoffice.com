@@ -3,6 +3,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 import getCategoryLevel4 from "@lib/strapi/getCategoryLevel4";
+import getJsons from "@lib/strapi/getJsons";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
 import Header from "@components/screens/header";
@@ -10,7 +11,7 @@ import ArticleContent from "@components/screens/article-content";
 import SubCategoryContent from "@components/screens/subcategory-content";
 import Footer from "@components/screens/footer";
 
-const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug }) => {
+const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug, jsonData }) => {
   const { t } = useTranslation();
   const [leftMenuMobile, setLeftMenuMobile] = useState(false);
 
@@ -87,6 +88,7 @@ const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             setLeftMenuMobile={setLeftMenuMobile}
             backBtnName={level1Data?.data?.attributes.name}
             backBtnUrl={level1Data?.data?.attributes.url}
+            jsonData={jsonData.data}
           />
         ) : (
           <SubCategoryContent 
@@ -119,6 +121,7 @@ const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
 
 export const getServerSideProps = async ({ locale, params }) => {
   const categoriesMenu = await getCategoriesMenu(locale);
+  const jsonData = await getJsons();
   const categoryData = await getCategoryLevel4(locale, params.category, `${locale === "en" ? "" : `/${locale}`}/${params.category}/${params.level2}/${params.level3}/${params.level4}`);
 
   if (categoryData.data.length === 0) {
@@ -133,7 +136,8 @@ export const getServerSideProps = async ({ locale, params }) => {
       locale,
       categoriesMenu,
       categoryData,
-      categorySlug: params.category
+      categorySlug: params.category,
+      jsonData
     },
   };
 };

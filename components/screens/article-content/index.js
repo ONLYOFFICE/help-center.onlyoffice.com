@@ -37,7 +37,8 @@ const ArticleContent = ({
   leftMenuMobile,
   setLeftMenuMobile,
   subCategoryName,
-  subCategoryUrl
+  subCategoryUrl,
+  jsonData
 }) => {
   const containerRef = useRef(null);
   const wrapperContentRef = useRef(null);
@@ -59,7 +60,7 @@ const ArticleContent = ({
 
   useEffect(() => {
     if (containerRef.current) {
-      tableBuilder(containerRef.current, cookies);
+      tableBuilder(containerRef.current, cookies, jsonData);
     }
 
     setHeadings(extractHeadings(wrapperContentRef.current, pageDescription, "h4"));

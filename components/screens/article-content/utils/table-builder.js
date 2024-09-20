@@ -1,6 +1,6 @@
 import { BuildTable } from "@utils/helpers/TableBuilder/language_table_builder";
 
-const tableBuilder = (container, cookies) => {
+const tableBuilder = (container, cookies, jsonData) => {
     const mainBuscallContainer = container.querySelector(".main_buscall_container");
 
       if (mainBuscallContainer) {
@@ -9,7 +9,7 @@ const tableBuilder = (container, cookies) => {
 
         if (foundTable) {
           const tableId = foundTable.id;
-          BuildTable(tableId, cookies);
+          BuildTable(tableId, cookies, jsonData);
         }
       }
 }
