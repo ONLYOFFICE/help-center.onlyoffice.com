@@ -12,9 +12,7 @@ const Breadcrumbs = forwardRef(({
     level2CategoryName,
     level2CategoryUrl,
     level3CategoryName,
-    level3CategoryUrl,
-    level4CategoryName,
-    level4CategoryUrl
+    level3CategoryUrl
   }, ref) => {
   const truncateText = (text, maxLength) => {
     if (text.length <= maxLength) return text;
@@ -52,9 +50,6 @@ const Breadcrumbs = forwardRef(({
       }
       {level3CategoryUrl &&
         <li><InternalLink className="breadcrumb-link" href={level3CategoryUrl} label={level3CategoryName} /></li>
-      }
-      {level4CategoryUrl &&
-        <li><InternalLink className="breadcrumb-link" href={level4CategoryUrl} label={level4CategoryName} /></li>
       }
       <li><span className="breadcrumb-link last">{truncateText(pageName, 32)}</span></li>
     </StyledBreadcrumbs>

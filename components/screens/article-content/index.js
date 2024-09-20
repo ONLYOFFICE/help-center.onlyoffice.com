@@ -28,8 +28,6 @@ const ArticleContent = ({
   level2CategoryUrl,
   level3CategoryName,
   level3CategoryUrl,
-  level4CategoryName,
-  level4CategoryUrl,
   pageName,
   pageDescription,
   tags,
@@ -141,8 +139,6 @@ const ArticleContent = ({
             level2CategoryUrl={level2CategoryUrl}
             level3CategoryName={level3CategoryName}
             level3CategoryUrl={level3CategoryUrl}
-            level4CategoryName={level4CategoryName}
-            level4CategoryUrl={level4CategoryUrl}
             pageName={pageName}
           />
           <Heading ref={headingRef} className="wrapper-title" level={1}>{pageName}</Heading>
