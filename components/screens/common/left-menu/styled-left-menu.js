@@ -79,7 +79,7 @@ const StyledLeftMenu = styled.div`
   .left-menu-items {
     list-style-type: none;
 
-    li {
+    > li {
       &:last-child {
         margin-bottom: 32px;
 
