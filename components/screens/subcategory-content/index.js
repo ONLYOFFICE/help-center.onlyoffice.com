@@ -54,7 +54,7 @@ const SubCategoryContent = ({
     return () => {
       window.removeEventListener("scroll", scrollHandler);
     };
-  }, []);
+  }, [pageDescription]);
 
   const hasNameField = pageItems.some(item => item.attributes.hasOwnProperty('name'));
 

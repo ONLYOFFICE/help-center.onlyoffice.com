@@ -85,7 +85,7 @@ const ArticleContent = ({
     return () => {
       window.removeEventListener("scroll", scrollHandler);
     };
-  }, [videoOffsetTrigger]);
+  }, [videoOffsetTrigger, pageDescription]);
 
   const handleTagModal = async (tagName) => {
     const data = await getTagsArticle(locale, tagName, 4, 1);
