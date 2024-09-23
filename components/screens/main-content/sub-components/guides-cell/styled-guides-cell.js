@@ -21,10 +21,30 @@ const StyledGuidesCell = styled.div`
     padding: 32px;
   }
 
-  .guides-cell-top {
+  .guides-cell-icon {
+    margin-right: 24px;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+  }
+
+  .guides-cell-title {
     display: flex;
     align-items: center;
-    
+    color: ${globalColors.gray};
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.33em;
+    letter-spacing: -0.02em;
+    width: 100%;
+    transition: color 0.3s;
+
+    &[href] {
+      &:hover {
+        color: ${globalColors.orangeMain};
+      }
+    }
+
     &:not(:last-child) {
       margin-bottom: 32px;
     }
@@ -37,28 +57,6 @@ const StyledGuidesCell = styled.div`
         margin-right: 0;
         width: initial;
         height: 24px;
-      }
-    }
-  }
-
-  .guides-cell-icon {
-    margin-right: 24px;
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
-  }
-
-  .guides-cell-title {
-    color: ${globalColors.gray};
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 1.33em;
-    letter-spacing: -0.02em;
-    transition: color 0.3s;
-
-    &[href] {
-      &:hover {
-        color: ${globalColors.orangeMain};
       }
     }
   }
@@ -86,16 +84,23 @@ const StyledGuidesCell = styled.div`
       display: flex;
       gap: 8px;
       align-items: center;
+
       &:before {
         content: "";
         height: 16px;
         width: 16px;
       }
+
       &.docs:before {
         background-image: url(${docsIcon.src});
       }
+
       &.docspace:before {
         background-image: url(${docspaceIcon.src});
+      }
+
+      &:hover {
+        text-decoration: underline;
       }
     }
   }

@@ -23,14 +23,19 @@ const GuidesCell = ({ data }) => {
   return (
     <StyledGuidesCell>
       <div className="guides-cell-header">
-        <div className="guides-cell-top">
-          <img className="guides-cell-icon" src={data.attributes.card_field_img?.data?.attributes.url} alt={data.attributes.name} />
-          {data.attributes.url === null ? (
-            <Heading className="guides-cell-title" label={data.attributes.name} />
-          ) : (
-            <InternalLink className="guides-cell-title" label={data.attributes.name} href={data.attributes.url} />
-          )}
-        </div>
+        {data.attributes.url === null ? (
+          <>
+            <Heading className="guides-cell-title" level={4} >
+              <img className="guides-cell-icon" src={data.attributes.card_field_img?.data?.attributes.url} alt={data.attributes.name} />
+              {data.attributes.name}
+            </Heading>
+          </>
+        ) : (
+          <InternalLink className="guides-cell-title" href={data.attributes.url}>
+            <img className="guides-cell-icon" src={data.attributes.card_field_img?.data?.attributes.url} alt={data.attributes.name} />
+            {data.attributes.name}
+          </InternalLink>
+        )}
         {data.attributes.description &&
           <div className="guides-cell-description">{ReactHtmlParser(data.attributes.description)}</div>
         }

@@ -131,7 +131,13 @@ const StyledMainContent = styled(Section)`
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 48px;
     margin-bottom: 40px;
+
+    @media ${device.laptop} {
+      gap: 12px 24px;
+    }
   }
 
   .guides-cards-top-link {
@@ -149,10 +155,6 @@ const StyledMainContent = styled(Section)`
       min-width: 16px;
       height: 16px;
       object-fit: contain;
-    }
-
-    &:not(:last-child) {
-      margin-right: 48px;
     }
 
     &:hover {

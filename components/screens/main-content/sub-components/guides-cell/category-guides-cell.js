@@ -18,20 +18,29 @@ const CategoryGuidesCell = ({ data, categorySlug, t }) => {
   return (
     <StyledGuidesCell isCategoryPage={true}>
       <div className="guides-cell-header">
-        <div className={`guides-cell-top ${connectorsSlug ? "integration" : ""}`}>
-          {!connectorsSlug &&
-            <img className="guides-cell-icon" src={data.attributes.card_field_img?.data?.attributes.url} alt={data.attributes.name} />
-          }
-
-          {(data.attributes.url === null || data.attributes.url_docspace) ? (
-            <Heading className="guides-cell-title" label={data.attributes.name || data.attributes.title} />
-          ) : (
-            <InternalLink className="guides-cell-title" label={data.attributes.name || data.attributes.title} href={data.attributes.url} />
-          )}
-          {connectorsSlug &&
-            <img className="guides-cell-icon" src={data.attributes.connector_img.data?.attributes.url} alt={data.attributes.title} />
-          }
-        </div>
+        {(data.attributes.url === null || data.attributes.url_docspace) ? (
+          <>
+            <Heading className={`guides-cell-title ${connectorsSlug ? "integration" : ""}`} level={4}>
+              {!connectorsSlug &&
+                <img className="guides-cell-icon" src={data.attributes.card_field_img?.data?.attributes.url} alt={data.attributes.name} />
+              }
+              {data.attributes.name || data.attributes.title}
+              {connectorsSlug &&
+                <img className="guides-cell-icon" src={data.attributes.connector_img.data?.attributes.url} alt={data.attributes.title} />
+              }
+            </Heading>
+          </>
+        ) : (
+          <InternalLink className={`guides-cell-title ${connectorsSlug ? "integration" : ""}`} href={data.attributes.url}>
+            {!connectorsSlug &&
+              <img className="guides-cell-icon" src={data.attributes.card_field_img?.data?.attributes.url} alt={data.attributes.name} />
+            }
+            {data.attributes.name || data.attributes.title}
+            {connectorsSlug &&
+              <img className="guides-cell-icon" src={data.attributes.connector_img.data?.attributes.url} alt={data.attributes.title} />
+            }
+          </InternalLink>
+        )}
         {data.attributes.description &&
           <div className="guides-cell-description">{ReactHtmlParser(data.attributes.description)}</div>
         }
