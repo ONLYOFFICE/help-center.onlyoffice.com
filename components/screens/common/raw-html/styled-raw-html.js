@@ -13,6 +13,8 @@ const StyledRawHtml = styled.div`
   .raw-html-embed {
     z-index: 1;
     position: relative;
+    font-size: 14px;
+    line-height: 21px;
 
     p {
       margin: 8px 0;
@@ -303,7 +305,6 @@ const StyledRawHtml = styled.div`
 
       li {
         margin: 0 0 0 22px;
-        line-height: 1.6em;
 
         &:not(:last-child) {
           margin: 0 0 8px 22px;
@@ -339,6 +340,18 @@ const StyledRawHtml = styled.div`
       margin-top: 24px;
       scroll-margin-top: 24px;
       
+      h4 {
+        margin-top: 64px;
+
+        @media ${device.laptop} {
+          margin-top: 56px;
+        }
+
+        @media ${device.mobile} {
+          margin-top: 48px;
+        }
+      }
+
       &:first-child {
         h4 {
           margin-top: 0;
@@ -348,15 +361,15 @@ const StyledRawHtml = styled.div`
       &:last-child {
         border-bottom: 0px;
       }
+
+      @media ${device.mobile} {
+        margin-top: 16px;
+        scroll-margin-top: 16px;
+      }
     }
 
     .gs_submenu {
       border-bottom: 0px;
-      padding: 8px 0 0;
-
-      &.gs_content {
-        margin: 0;
-      }
     }
 
     .PortalHelp {
@@ -385,6 +398,12 @@ const StyledRawHtml = styled.div`
         font-weight: 700;
         display: block;
         padding: 0 0 8px;
+      }
+
+      @media ${device.mobile} {
+        margin: 32px 0px 32px 22px;
+        font-size: 13px;
+        line-height: 21px;
       }
     }
 
@@ -613,9 +632,13 @@ const StyledRawHtml = styled.div`
     h4,
     h5,
     h6 {
-      margin: 0 0 16px;
+      margin: 0 0 24px;
       letter-spacing: -0.02em;
       line-height: 1.33em;
+
+      @media ${device.mobile} {
+        margin: 0 0 16px;
+      }
     }
 
     h3 {
@@ -623,12 +646,19 @@ const StyledRawHtml = styled.div`
     }
 
     h4 {
-      margin: 64px 0 16px;
       font-size: 18px;
+
+      @media ${device.mobile} {
+        font-size: 16px;
+      }
     }
 
     h5 {
       font-size: 14px;
+
+      @media ${device.mobile} {
+        font-size: 13px;
+      }
     }
 
     h6 {
@@ -653,7 +683,7 @@ const StyledRawHtml = styled.div`
         white-space: pre-wrap;
         display: block;
         line-height: 18px;
-        padding: 15px;
+        padding: 14px;
         text-align: left;
         font-size: 13px;
         font-weight: 400;
@@ -684,6 +714,12 @@ const StyledRawHtml = styled.div`
           color: #008;
         }
       }
+
+      @media ${device.laptop} {
+        margin: 16px 0;
+        font-size: 13px;
+        line-height: 20px;
+      }
     }
 
     code {
@@ -698,11 +734,18 @@ const StyledRawHtml = styled.div`
     }
 
     /* images */
+    .screen_block {
+      margin: 24px 0;
+
+      @media ${device.mobile} {
+        margin: 16px 0;
+      }
+    }
+
     img.screen_guides {
       cursor: pointer;
       display: inline-block;
       height: auto;
-      margin: 24px 0;
       position: relative;
       width: 352px;
 
@@ -725,7 +768,6 @@ const StyledRawHtml = styled.div`
 
       @media ${device.laptop} {
         display: block;
-        margin: 16px 0;
         width: 100%;
       }
     }
@@ -1225,6 +1267,11 @@ const StyledRawHtml = styled.div`
         @media ${device.mobile} {
         width: 100%;
       }
+    }
+
+    @media ${device.mobile} {
+      font-size: 13px;
+      line-height: 20px;
     }
   }
 `;

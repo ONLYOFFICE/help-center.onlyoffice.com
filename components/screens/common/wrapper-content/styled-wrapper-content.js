@@ -16,7 +16,7 @@ const StyledWrapperContent = styled.div`
     color: ${globalColors.gray};
     
     @media ${device.laptop} {
-      padding: 32px 0 112px;
+      padding: 32px 0 64px;
     }
   }
 
@@ -28,6 +28,11 @@ const StyledWrapperContent = styled.div`
     &.subcat-heading {
       display: flex;
       gap: 16px;
+    }
+
+    @media ${device.mobile} {
+      font-size: 20px;
+      line-height: 27px;
     }
   }
 
