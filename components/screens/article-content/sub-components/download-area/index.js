@@ -28,7 +28,7 @@ const DownloadArea = ({ t, slug, subcat, ...rest }) => {
           setDownloadHref("https://play.google.com/store/apps/details?id=com.onlyoffice.documents");
         }
         break;
-      case 'desktop':
+      case 'desktop apps':
         setLabel("HostDesktop");
         setDownloadHref("https://www.onlyoffice.com/download-desktop.aspx?from=helpcenter");
         break;
@@ -45,7 +45,7 @@ const DownloadArea = ({ t, slug, subcat, ...rest }) => {
         <div className="download-content">
           <Heading level={3} className="download-title" label={t(label)} />
           <div className="download-buttons">
-            {slug && slug.toLowerCase() !== "mobile apps" && slug.toLowerCase() !== "workspace" ? (
+            {slug && slug.toLowerCase() !== "mobile apps" && slug.toLowerCase() !== "workspace" && slug.toLowerCase() !== "desktop apps" ? (
               <>
                 <ExternalLink className="download-button" href={`https://www.onlyoffice.com/download-${downloadHref}.aspx?from=helpcenter`} label={t("GetItNow")} />
                 <ExternalLink className="download-button" href={`https://www.onlyoffice.com/${downloadHref}-registration.aspx?from=helpcenter`} label={t("UseInTheCloud")} />

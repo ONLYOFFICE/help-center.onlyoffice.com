@@ -712,6 +712,7 @@ const StyledRawHtml = styled.div`
     }
 
     img {
+      max-width: -webkit-fill-available;
       vertical-align: middle;
       width: initial;
     }
@@ -1209,10 +1210,6 @@ const StyledRawHtml = styled.div`
           &:first-child {
             margin-top: 16px;
           }
-        }
-
-        &.active {
-          max-height: 100px;
         }
       }
 

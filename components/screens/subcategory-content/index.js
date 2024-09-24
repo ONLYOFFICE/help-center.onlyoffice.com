@@ -46,7 +46,7 @@ const SubCategoryContent = ({
     setHeadings(extractHeadings(contentRef.current, pageDescription, "h5"));
 
     const scrollHandler = () => {
-      handleArticleScroll(false, contentRef.current, leftMenuRef.current, document.querySelector("header").offsetHeight + 24, "h5", setShowButton);
+      handleArticleScroll(false, contentRef.current, contentRef.current.offsetHeight, leftMenuRef.current, document.querySelector("header").offsetHeight + 24, "h5", setShowButton);
     };
 
     window.addEventListener("scroll", scrollHandler);

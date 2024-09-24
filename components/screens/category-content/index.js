@@ -51,8 +51,9 @@ const CategoryContent = ({
     }
 
     const handleScroll = () => {
-      const scrollHeight = window.innerHeight * 2;
-      setShowButton(window.scrollY > scrollHeight);
+      if (window.innerHeight < descriptionRef.current.offsetHeight) {
+        setShowButton(window.scrollY > window.innerHeight);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);

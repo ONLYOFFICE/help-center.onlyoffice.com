@@ -128,9 +128,11 @@ const StyledMainContent = styled(Section)`
   }
 
   .guides-cards-top {
-    display: flex;
     align-items: center;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 16px 48px;
     margin-bottom: 40px;
   }
 
@@ -149,10 +151,6 @@ const StyledMainContent = styled(Section)`
       min-width: 16px;
       height: 16px;
       object-fit: contain;
-    }
-
-    &:not(:last-child) {
-      margin-right: 48px;
     }
 
     &:hover {

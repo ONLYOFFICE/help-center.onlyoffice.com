@@ -23,14 +23,13 @@ const handleChangelogClick = (event) => {
   const clickedTarget = event.target;
   if (clickedTarget.tagName === 'P' && clickedTarget.classList.contains('changelog-main-header')) {
       const switcher = clickedTarget.parentElement.querySelector('.changelog-switcher');
-      const switcherDisplay = getComputedStyle(switcher).getPropertyValue('display');
 
-      if (switcherDisplay === 'none') {
-          switcher.style.display = 'block';
-          clickedTarget.style.setProperty('--content', '"-"');
+      if (!switcher.style.maxHeight) {
+          clickedTarget.classList.add('active');
+          switcher.style.maxHeight = `${switcher.scrollHeight}px`;
       } else {
-          switcher.style.display = 'none';
-          clickedTarget.style.setProperty('--content', '"+"');
+          clickedTarget.classList.remove('active');
+          switcher.style.maxHeight = null;
       }
   }
 };

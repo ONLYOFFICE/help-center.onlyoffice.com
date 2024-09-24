@@ -1,6 +1,6 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 import getCategoryLevel1 from "@lib/strapi/getCategoryLevel1";
 import Layout from "@components/layout";
@@ -17,16 +17,9 @@ const CategoryPage = ({ locale, categories, category }) => {
   const categorySlugMany = slug_id === "docs" ? "docs" : `${slug_id}s`;
   const data = slug_id === "integration" ? articles : category.data[0].attributes[`category_${categorySlugMany}`];
 
-  slug_id === "integration" && data.data.forEach((article, index, arr) => {
-    const { url } = article.attributes;
-    const docspaceUrl = url.replace('.aspx', '-docspace.aspx');
-    const docspaceArticleIndex = arr.findIndex(a => a.attributes.url === docspaceUrl);
+  useEffect(() => {
 
-    if (docspaceArticleIndex !== -1) {
-      article.attributes.url_docspace = docspaceUrl;
-      arr.splice(docspaceArticleIndex, 1);
-    }
-  });
+  }, []);
 
   return (
     <Layout>
@@ -73,6 +66,19 @@ export const getServerSideProps = async ({ locale, params }) => {
     return {
       notFound: true
     };
+  }
+
+  if (category.data[0].attributes.slug_id === "integration") {
+    category.data[0].attributes.articles.data.forEach((article, index, arr) => {
+      const { url } = article.attributes;
+      const docspaceUrl = url.replace('.aspx', '-docspace.aspx');
+      const docspaceArticleIndex = arr.findIndex(a => a.attributes.url === docspaceUrl);
+
+      if (docspaceArticleIndex !== -1) {
+        article.attributes.url_docspace = docspaceUrl;
+        arr.splice(docspaceArticleIndex, 1);
+      }
+    });
   }
 
   return {

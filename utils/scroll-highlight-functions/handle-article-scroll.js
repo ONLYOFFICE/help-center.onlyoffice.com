@@ -1,4 +1,4 @@
-const handleArticleScroll = (articlePage, wrapperContainer, leftMenuRef, offsetHeight, selector, setShowButton) => {
+const handleArticleScroll = (articlePage, wrapperContainer, wrapperContainerHeight, leftMenuRef, offsetHeight, selector, setShowButton) => {
   if (wrapperContainer) {
     let sections = Array.from(wrapperContainer.querySelectorAll("[id$='_block']")).filter(section => section.querySelector(selector));
     let leftMenuItems = leftMenuRef.querySelectorAll(".left-menu-items li");
@@ -26,8 +26,9 @@ const handleArticleScroll = (articlePage, wrapperContainer, leftMenuRef, offsetH
     };
 
     if (setShowButton) {
-      const scrollHeight = window.innerHeight * 2;
-      setShowButton(window.scrollY > scrollHeight);
+      if (window.innerHeight < wrapperContainerHeight) {
+        setShowButton(window.scrollY > window.innerHeight);
+      }
     }
   }
 };
