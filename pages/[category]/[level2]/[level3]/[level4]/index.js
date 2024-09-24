@@ -29,8 +29,6 @@ const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
     tags,
     [`level_2_${categorySlugOne}`]: level2Data,
     [`level_4_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`]: level4Data,
-    [`category_${categorySlugOne}`]: level1Data,
-    [`level_3_${categorySlugMany}`]: level3Data,
     [`level_2_${categorySlugOne}`]: level2DataArticle,
     [`level_3_${categorySlugOne}`]: level3DataArticle,
     [`level_4_${categorySlugOne}`]: level4DataArticle,
@@ -38,14 +36,14 @@ const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
     [`article_${categorySlugMany}`]: articleData
   } = categoryData.data?.[0]?.attributes;
 
-  const categoryName = categoryDataArticle?.data?.attributes.general_category.data.attributes.name || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name;
-  const categoryUrl = categoryDataArticle?.data?.attributes.general_category.data.attributes.url || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url;
-  const level2CategoryName = categoryDataArticle?.data?.attributes.name || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.name || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`]?.data.attributes.name || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes[`level_2_${categorySlugOne}`]?.data.attributes.name;
-  const level2CategoryUrl = categoryDataArticle?.data?.attributes.url || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.url || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`]?.data.attributes.url || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes[`level_2_${categorySlugOne}`]?.data.attributes.url;
-  const level3CategoryName = level2DataArticle?.data?.attributes.name || level3DataArticle?.data?.attributes.name || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes.name;
-  const level3Categoryurl = level2DataArticle?.data?.attributes.url || level3DataArticle?.data?.attributes.url || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes.url;
-  const subCategoryName =  level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.name || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.name || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.name;
-  const subCategoryUrl = level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.url || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.url || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.url;
+  const categoryName = categoryDataArticle?.data?.attributes.general_category.data.attributes.name || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name;
+  const categoryUrl = categoryDataArticle?.data?.attributes.general_category.data.attributes.url || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url;
+  const level2CategoryName = categoryDataArticle?.data?.attributes.name || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.name || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.name || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.name;
+  const level2CategoryUrl = categoryDataArticle?.data?.attributes.url || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.url || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.url || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.url;
+  const level3CategoryName = level2DataArticle?.data?.attributes.name || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes.name || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes.name;
+  const level3CategoryUrl = level2DataArticle?.data?.attributes.url || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes.url || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes.url;
+  const level4CategoryName = level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes.name;
+  const level4CategoryUrl = level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes.url;
 
   return (
     <Layout>
@@ -72,19 +70,19 @@ const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             isArticle={article}
             categoryName={categoryName}
             categoryUrl={categoryUrl}
-            subCategoryName={subCategoryName}
-            subCategoryUrl={subCategoryUrl}
             level2CategoryName={level2CategoryName}
             level2CategoryUrl={level2CategoryUrl}
             level3CategoryName={level3CategoryName}
-            level3CategoryUrl={level3Categoryurl}
+            level3CategoryUrl={level3CategoryUrl}
+            level4CategoryName={level4CategoryName}
+            level4CategoryUrl={level4CategoryUrl}
             pageName={title}
             pageDescription={content}
             tags={tags}
             leftMenuMobile={leftMenuMobile}
             setLeftMenuMobile={setLeftMenuMobile}
-            backBtnName={level1Data?.data?.attributes.name}
-            backBtnUrl={level1Data?.data?.attributes.url}
+            backBtnName={level4CategoryName || level3CategoryName || level2CategoryName || categoryName}
+            backBtnUrl={level4CategoryUrl || level3CategoryUrl || level2CategoryUrl || categoryUrl}
           />
         ) : (
           <SubCategoryContent 

@@ -29,7 +29,8 @@ const Level2CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
     name,
     description,
     [`level_2_${categorySlugMany}`]: level2Data,
-    [`article_${categorySlugMany}`]: articleData
+    [`article_${categorySlugMany}`]: articleData,
+    [`category_${categorySlug === "docs" ? "docs" : categorySlug}`]: articleCategoryData
   } = categoryData.data?.[0]?.attributes;
 
   return (
@@ -55,18 +56,18 @@ const Level2CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             t={t}
             locale={locale}
             isArticle={article}
-            categoryName={categorySlug === "integration" ? category.data.attributes.name : category?.data?.attributes.name}
-            categoryUrl={categorySlug === "integration" ? category.data.attributes.url : category?.data?.attributes.url}
-            subCategoryName={general_category?.data?.attributes.name}
-            subCategoryUrl={general_category?.data?.attributes.url}
+            categoryName={category?.data?.attributes.name || articleCategoryData?.data?.attributes.general_category.data.attributes.name}
+            categoryUrl={category?.data?.attributes.url || articleCategoryData?.data?.attributes.general_category.data.attributes.url}
+            level2CategoryName={articleCategoryData?.data?.attributes.name}
+            level2CategoryUrl={articleCategoryData?.data?.attributes.url}
             pageName={title}
             pageDescription={content}
             tags={tags}
             videos={videos}
             leftMenuMobile={leftMenuMobile}
             setLeftMenuMobile={setLeftMenuMobile}
-            backBtnName={categorySlug === "integration" ? category.data.attributes.name : category?.data?.attributes.name}
-            backBtnUrl={categorySlug === "integration" ? category.data.attributes.url : category?.data?.attributes.url}
+            backBtnName={articleCategoryData?.data?.attributes.name || articleCategoryData?.data?.attributes.general_category.data.attributes.name || category?.data?.attributes.name}
+            backBtnUrl={articleCategoryData?.data?.attributes.url || articleCategoryData?.data?.attributes.general_category.data.attributes.url || category?.data?.attributes.url}
           />
         ) : (
           level2Data?.data?.some(item => item.attributes?.[`level_3_${categorySlugMany}`]?.data?.length > 0) ? (

@@ -6,13 +6,13 @@ const Breadcrumbs = forwardRef(({
     t,
     categoryName,
     categoryUrl,
-    subCategoryName,
-    subCategoryUrl,
     pageName,
     level2CategoryName,
     level2CategoryUrl,
     level3CategoryName,
-    level3CategoryUrl
+    level3CategoryUrl,
+    level4CategoryName,
+    level4CategoryUrl
   }, ref) => {
   return (
     <StyledBreadcrumbs ref={ref}>
@@ -20,14 +20,14 @@ const Breadcrumbs = forwardRef(({
       {categoryUrl &&
         <li><InternalLink className="breadcrumb-link" href={categoryUrl} label={categoryName} /></li>
       }
-      {subCategoryName &&
-        <li><InternalLink className="breadcrumb-link" href={subCategoryUrl} label={subCategoryName} /></li>
-      }
       {level2CategoryUrl &&
         <li><InternalLink className="breadcrumb-link" href={level2CategoryUrl} label={level2CategoryName} /></li>
       }
       {level3CategoryUrl && !level3CategoryUrl.includes("#") &&
         <li><InternalLink className="breadcrumb-link" href={level3CategoryUrl} label={level3CategoryName} /></li>
+      }
+      {level4CategoryUrl && !level4CategoryUrl.includes("#") &&
+        <li><InternalLink className="breadcrumb-link" href={level4CategoryUrl} label={level4CategoryName} /></li>
       }
       <li><span className="breadcrumb-link last">{pageName}</span></li>
     </StyledBreadcrumbs>
