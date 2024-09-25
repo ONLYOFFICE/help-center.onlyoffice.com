@@ -35,6 +35,7 @@ const CategoryContent = ({
 }) => {
   const descriptionRef = useRef(null);
   const tagsRef = useRef(null);
+  const catRef = useRef(null);
   const [showButton, setShowButton] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [tagName, setTagName] = useState();
@@ -51,10 +52,11 @@ const CategoryContent = ({
     }
 
     const handleScroll = () => {
-      if (window.innerHeight < descriptionRef.current.offsetHeight) {
+      if ((descriptionRef?.current && window.innerHeight < descriptionRef.current.offsetHeight) ||
+          (catRef?.current && window.innerHeight < catRef.current.offsetHeight)) {
         setShowButton(window.scrollY > window.innerHeight);
       }
-    };
+    };    
 
     window.addEventListener("scroll", handleScroll);
 
@@ -95,7 +97,7 @@ const CategoryContent = ({
           backBtnName={backBtnName}
           backBtnUrl={backBtnUrl}
         />
-        <div className="wrapper">
+        <div className="wrapper" ref={catRef}>
           <Breadcrumbs
             t={t}
             categoryName={categoryName}

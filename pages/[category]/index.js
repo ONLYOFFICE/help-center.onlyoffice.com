@@ -17,10 +17,6 @@ const CategoryPage = ({ locale, categories, category }) => {
   const categorySlugMany = slug_id === "docs" ? "docs" : `${slug_id}s`;
   const data = slug_id === "integration" ? articles : category.data[0].attributes[`category_${categorySlugMany}`];
 
-  useEffect(() => {
-
-  }, []);
-
   return (
     <Layout>
       <Layout.PageHead>
