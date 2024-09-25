@@ -8,8 +8,11 @@ import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import VideoBlock from "@components/screens/common/video-block";
 import ReactHtmlParser from "react-html-parser";
 import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
+import ImagePopup from "../article-content/sub-components/image-popup";
+import StyledRawHtml from "../common/raw-html/styled-raw-html";
 import { handleFaqAccordionClick, handleChangelogClick } from "@utils/handle-click-functions";
 import { extractHeadings, handleArticleScroll } from "@utils/scroll-highlight-functions";
+import { handleImagePopupClick } from "@utils/handle-click-functions";
 
 const SubCategoryContent = ({
   t,
@@ -36,6 +39,8 @@ const SubCategoryContent = ({
   const contentRef = useRef();
   const [headings, setHeadings] = useState([]);
   const [showButton, setShowButton] = useState(false);
+  const [imageModalActive, setImageModalActive] = useState(false);
+  const [bigPhotoSrc, setBigPhotoSrc] = useState(null);
 
   useEffect(() => {
     const firstHeader = document.querySelector('.changelog-main-header');
@@ -61,6 +66,7 @@ const SubCategoryContent = ({
   const handleClick = (event) => {
     handleFaqAccordionClick(event, containerRef.current);
     handleChangelogClick(event);
+    handleImagePopupClick(event, setBigPhotoSrc, setImageModalActive);
   };
 
   return (
@@ -96,7 +102,7 @@ const SubCategoryContent = ({
             {pageName}
           </Heading>
           {pageDescription &&
-            <div onClick={handleClick} ref={containerRef} className="subcat-description">{ReactHtmlParser(pageDescription)}</div>
+            <StyledRawHtml onClick={handleClick} ref={containerRef} className="subcat-description">{ReactHtmlParser(pageDescription)}</StyledRawHtml>
           }
           <div ref={contentRef}>
             {!pageItems && (lvlArticles && lvlArticles.sort((a, b) => {
@@ -156,6 +162,12 @@ const SubCategoryContent = ({
             <VideoBlock t={t} video={video} />
           }
         </div>
+        <ImagePopup
+            t={t}
+            image={bigPhotoSrc}
+            active={imageModalActive}
+            setActive={setImageModalActive}
+          />
         <ScrollToTopButton showButton={showButton} />
       </StyledWrapperContent>
     </StyledSubCategoryContent>
