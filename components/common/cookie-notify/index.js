@@ -19,6 +19,7 @@ const CookieNotify = ({ cookieValue }) => {
     nextYear.setFullYear(currentDate.getFullYear() + 1);
 
     cookies.set("cookie-notify", true, {
+      path: '/',
       expires: nextYear
     });
   };
