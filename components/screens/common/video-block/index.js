@@ -1,21 +1,11 @@
 import StyledVideoBlock from "./styled-video-block";
-import { useEffect } from "react";
 import YouTube from "react-youtube";
 import Heading from "@components/common/heading";
 import Text from "@components/common/text";
 import InternalLink from "@components/common/internal-link";
 
 const VideoBlock = ({ t, video }) => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://www.youtube.com/iframe_api";
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
+ 
   return (
     <StyledVideoBlock className="video-block">
       <Heading className="video-block-title" level={3} dangerouslySetInnerHTML={{ __html: t("VideosWithASimilarTopic") }} />
