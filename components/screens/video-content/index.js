@@ -4,10 +4,12 @@ import LeftMenu from "@components/screens/common/left-menu";
 import StyledWrapperContent from "@components/screens/common/wrapper-content/styled-wrapper-content";
 import VideoItem from "@components/screens/common/video-item";
 import Heading from "@components/common/heading";
+import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
 import { extractHeadings, handleArticleScroll } from "@utils/scroll-highlight-functions";
 
 const VideoContent = ({ t, videoData, leftMenuMobile, setLeftMenuMobile }) => {
   const [headings, setHeadings] = useState([]);
+  const [showButton, setShowButton] = useState(false);
   const contentRef = useRef(null);
   const leftMenuRef = useRef(null);
   const groupedVideos = {};
@@ -43,7 +45,7 @@ const VideoContent = ({ t, videoData, leftMenuMobile, setLeftMenuMobile }) => {
   }, [contentRef]);
 
   useEffect(() => {
-    const scrollHandler = (event) => handleArticleScroll(false, contentRef.current, leftMenuRef.current, document.querySelector("header").offsetHeight + 16, "h4");
+    const scrollHandler = (event) => handleArticleScroll(false, contentRef.current, contentRef.current.offsetHeight, leftMenuRef.current, document.querySelector("header").offsetHeight + 16, "h4", setShowButton);
     window.addEventListener('scroll', scrollHandler);
 
     return () => {
@@ -76,6 +78,7 @@ const VideoContent = ({ t, videoData, leftMenuMobile, setLeftMenuMobile }) => {
             </div>
           ))}
         </div>
+        <ScrollToTopButton showButton={showButton} />
       </StyledWrapperContent>
     </StyledVideoContent>
   );

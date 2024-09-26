@@ -128,11 +128,11 @@ const StyledMainContent = styled(Section)`
   }
 
   .guides-cards-top {
-    display: flex;
     align-items: center;
-    justify-content: center;
+    display: flex;
     flex-wrap: wrap;
-    gap: 12px 48px;
+    justify-content: center;
+    gap: 16px 48px;
     margin-bottom: 40px;
 
     @media ${device.laptop} {

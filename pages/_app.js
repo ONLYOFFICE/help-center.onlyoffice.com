@@ -21,6 +21,9 @@ MyApp.getInitialProps = async (appContext) => {
   if (req) {
     const cookies = new Cookies(req.headers.cookie);
     cookieValue = cookies.get("cookie-notify");
+  } else {
+    const cookies = new Cookies();
+    cookieValue = cookies.get("cookie-notify");
   }
 
   return { ...appProps, cookieValue };

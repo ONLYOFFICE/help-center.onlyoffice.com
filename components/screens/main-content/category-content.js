@@ -41,7 +41,9 @@ const Level1CategoryContent = ({ t, locale, categoryName, categoryImg, categorie
         <div className="guides-cards bg-gray">
           {topData.length > 0 &&
             <div className="guides-cards-top">
-              {topData?.map((item, index) => (
+              {topData
+              ?.sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.name || a.attributes.title).localeCompare(b.attributes.name || b.attributes.title))
+              ?.map((item, index) => (
                 <InternalLink className="guides-cards-top-link" href={item.attributes.url} key={index}>
                   <img src={item.attributes.card_field_img?.data?.attributes.url} alt={item.attributes.name} />
                   <div>{item.attributes.name}</div>

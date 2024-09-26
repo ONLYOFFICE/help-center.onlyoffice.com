@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import globalColors from "@components/utils/global-colors";
+import plus from "@public/images/icons/plus.svg";
+import minus from "@public/images/icons/minus.svg";
 
 const StyledWrapperContent = styled.div`
   box-sizing: border-box;
@@ -117,10 +119,17 @@ const StyledWrapperContent = styled.div`
         padding: 16px 0 0;
       }
     }
+    a {
+      color: ${globalColors.orangeMain};
+      &:hover, &:visited {
+        color: ${globalColors.orangeMain};
+      }
+    }
 
     .changelog-main-header {
       position: relative;
       cursor: pointer;
+      display: flex;
       font-size: 18px;
       font-weight: 700;
       line-height: 23.94px;
@@ -128,13 +137,19 @@ const StyledWrapperContent = styled.div`
       margin: 0;
       text-align: left;
 
-      &::before {
-        content: var(--content, '+');
+      &:before {
+        content: url(${plus.src});
         display: inline-block;
+        margin-right: 10px;
+        width: 24px;
         height: 24px;
-        padding: 0 10px 0 0;
-        width: 14px;
       }
+
+      &.active {
+          &:before {
+            content: url(${minus.src});
+          }
+        }
     }
     .changelog-release-date {
       float: right;
@@ -146,8 +161,9 @@ const StyledWrapperContent = styled.div`
     }
 
     .changelog-switcher {
-      display: none;
-      transition: 0.3s ease;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s;
 
       .changelog-subheader {
         font-size: 18px;
