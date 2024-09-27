@@ -45,12 +45,7 @@ const LanguageSelector = ({ locale }) => {
                 href={router.asPath}
                 locale={language.shortKey}
               >
-                <img
-                  src={`https://static-helpcenter.onlyoffice.com/images/flags/${language.shortKey}.react.svg`}
-                  width="24px"
-                  height="24px"
-                  alt="flag"
-                />
+                <div alt="flag" className={language.shortKey}></div>
               </InternalLink>
             </li>
           ))}
