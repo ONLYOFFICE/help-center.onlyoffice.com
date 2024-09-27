@@ -27,7 +27,7 @@ const StyledWrapperContent = styled.div`
     font-size: 24px;
     line-height: 32px;
 
-    &.subcat-heading {
+    &.subcategory-heading {
       display: flex;
       gap: 16px;
     }
@@ -44,60 +44,6 @@ const StyledWrapperContent = styled.div`
     gap: 8px;
     margin-bottom: 24px;
     list-style-type: none;
-  }
-
-  .subcat-description {
-    margin-bottom: 24px;
-  }
-
-  .subcat-div {
-    padding: 0 0 24px;
-    scroll-margin-top: 24px;
-
-    h5 {
-      padding: 0;
-    }
-
-    &.olk {
-      padding: 0 0 16px;
-
-      > a > span {
-        color: ${globalColors.gray};
-        text-decoration: none;
-
-        &:hover {
-          color: ${globalColors.orangeMain};
-        }
-      }
-    }
-  }
-  .subcat-empty-div {
-    padding: 0 0 16px;
-      > a {
-        color: ${globalColors.gray};
-        text-decoration: none;
-        transition: color 0.3s;
-
-        &:hover {
-          color: ${globalColors.orangeMain};
-        }
-      }
-  }
-
-  .classic-ul {
-    list-style-type: none;
-
-    > li {
-        padding: 16px 0 0;
-
-      > a {
-        color: ${globalColors.gray};
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
   }
 
   .reqs {
@@ -235,6 +181,20 @@ const StyledWrapperContent = styled.div`
 
   .question_answer a {
     color: ${globalColors.orangeMain};
+  }
+
+  .category-articles-item {
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+
+    a {
+      transition: color 0.3s;
+
+      &:hover {
+        color: ${globalColors.orangeMain};
+      }
+    }
   }
 `;
 

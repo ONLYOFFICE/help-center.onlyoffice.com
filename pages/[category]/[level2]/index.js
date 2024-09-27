@@ -78,12 +78,12 @@ const Level2CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
               categoryUrl={general_category.data.attributes.url}
               pageName={name}
               pageDescription={description}
-              pageItems={level2Data?.data}
-              pageItemsLevel={3}
+              categoryData={level2Data?.data}
+              leftMenuLevel={3}
               leftMenuMobile={leftMenuMobile}
               backBtnName={general_category.data.attributes.name}
               backBtnUrl={general_category.data.attributes.url}
-              lvlArticles={articleData?.data.length > 0 ? articleData?.data : null}
+              articlesData={articleData?.data}
             />
           ) : (
             <SubCategoryContent 
@@ -92,13 +92,13 @@ const Level2CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
               categoryName={general_category.data.attributes.name}
               categoryUrl={general_category.data.attributes.url}
               pageName={name}
-              pageItems={level2Data?.data.length > 0 ? level2Data?.data : articleData?.data}
+              categoryData={level2Data?.data}
+              articleData={articleData?.data}
               leftMenuMobile={leftMenuMobile}
               setLeftMenuMobile={setLeftMenuMobile}
               backBtnName={general_category.data.attributes.name}
               backBtnUrl={general_category.data.attributes.url}
               pageDescription={description}
-              lvlArticles={articleData?.data.length > 0 ? articleData?.data : null}
             />
           )
         )}

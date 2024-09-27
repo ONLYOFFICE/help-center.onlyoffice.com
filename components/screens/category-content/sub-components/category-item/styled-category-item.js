@@ -1,129 +1,105 @@
 import styled from "styled-components";
 import globalColors from "@components/utils/global-colors";
+import { device } from "@components/utils/devices";
 
 const StyledCategoryItem = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 24px 0 0;
-  padding: 32px;
-  background: ${globalColors.white};
-  box-shadow: 0px 7px 25px rgb(85 85 85 / 15%);
   border-radius: 3px;
-  color: ${globalColors.gray};
+  padding: 32px;
+  box-shadow: 0px 7px 25px 0px rgba(85, 85, 85, 0.15);
 
-  &:hover {
+  .category-item-title {
     color: ${globalColors.gray};
-    text-decoration: none;
-  }
 
-  > h4 > a {
-    display: flex;
-    transition: color 0.3s;
-
-    > span {
-      color: ${globalColors.gray};
-      font-size: 18px;
-      line-height: 1.33em;
-      letter-spacing: -0.02em;
-      font-weight: 700;
-      text-decoration: none;
+    &:not(:last-child) {
+      margin-bottom: 32px;
     }
 
-    &[href] {
-      &:hover {
-        color: ${globalColors.orangeMain};
-      }
+    img {
+      margin-right: 16px;
+      object-fit: contain;
     }
-  }
 
-  > h4 {
-    align-items: center;
-    display: flex;
-    justify-content: start;
-    gap: 16px;
-    padding: 0 0 24px;
-    transition: color 0.3s;
-
-    &[href] {
-      &:hover {
-        color: ${globalColors.orangeMain};
-      }
-    }
-  }
-
-  h5 {
-    &:hover {
-      color: ${globalColors.orangeMain};
-      cursor: pointer;
-    }
-  }
-
-  > span {
-    border-top: 1px solid ${globalColors.grayLight};
-    border-bottom: 1px solid ${globalColors.grayLight};
-    color: ${globalColors.grayTextInput};
-    padding: 16px 0;
-  }
-
-  .main_links {
-    display: flex;
-    align-items: center;
-    gap: 16px 32px;
-    flex-wrap: wrap;
-    padding: 32px 0 16px;
-
-    > div {
+    a {
       display: flex;
-      gap: 8px;
+      align-items: center;
+      transition: color 0.3s;
 
-    > a { 
-        display: flex;
-
-        > span {
-          text-decoration: none;
-        }
+      &:hover {
+        color: ${globalColors.orangeMain};
       }
     }
   }
 
-  ul {
+  .category-item-top-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px 32px;
+    border-bottom: 1px solid ${globalColors.grayLight};
+    padding-bottom: 16px;
+    margin: 0 0 16px;
     list-style-type: none;
-    padding: 16px 0 0;
 
-    &.subcategory {
-      padding: 0px;
+    img {
+      margin-right: 8px;
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
     }
 
-    li {
-      line-height: normal;
-      padding: 16px 0 16px;
+    a {
+      color: ${globalColors.orangeMain};
 
-      &.sublink {
-        padding: 0 0 16px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }  
 
-        > a {
-          display: flex;
-          gap: 8px;
+  .category-item-subtitle {
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 19px;
+  }
 
-          &:hover {
-            color: ${globalColors.gray};
-            text-decoration: underline;
-          }
-        }
+  .category-item-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+    gap: 32px;
+
+    @media ${device.mobile} {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 16px;
+    }
+  }
+
+  .category-item-list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px 32px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 19px;
+    color: ${globalColors.grayMain};
+    list-style-type: none;
+
+    a {
+      display: flex;
+      align-items: center;
+
+      img {
+        margin-right: 8px;
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
       }
 
-      &:last-child {
-        padding-bottom: 0;
-      }
-
-      a {
-        color: ${globalColors.gray};
-        text-decoration: none;
-        transition: color 0.3s;
-
-        &:hover {
-          color: ${globalColors.orangeMain};
-        }
+      &:hover {
+        text-decoration: underline;
       }
     }
   }

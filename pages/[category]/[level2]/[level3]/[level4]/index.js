@@ -42,8 +42,8 @@ const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
   const level2CategoryUrl = categoryDataArticle?.data?.attributes.url || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.url || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.url || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.url;
   const level3CategoryName = level2DataArticle?.data?.attributes.name || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes.name || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes.name;
   const level3CategoryUrl = level2DataArticle?.data?.attributes.url || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes.url || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes.url;
-  const level4CategoryName = level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes.name;
-  const level4CategoryUrl = level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes.url;
+  const level4CategoryName = level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes.name || level3DataArticle?.data?.attributes.name;
+  const level4CategoryUrl = level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes.url || level3DataArticle?.data?.attributes.url;
 
   return (
     <Layout>
@@ -96,13 +96,14 @@ const Level4CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             level3CategoryUrl={level2Data?.data?.attributes.url}
             pageName={name}
             pageIcon={icon}
-            pageItems={level4Data?.data.length > 0 ? level4Data?.data : articleData?.data}
+            categoryData={level4Data?.data}
+            articleData={articleData?.data}
             leftMenuMobile={leftMenuMobile}
             setLeftMenuMobile={setLeftMenuMobile}
             backBtnName={level2Data?.data?.attributes.name}
             backBtnUrl={level2Data?.data?.attributes.url}
             video={video}
-            lvlArticles={articleData?.data.length > 0 ? articleData?.data : null}
+            isLevel4={true}
           />
         )}
       </Layout.SectionMain>

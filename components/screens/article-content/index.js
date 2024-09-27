@@ -77,7 +77,7 @@ const ArticleContent = ({
     const offsetTop = breadcrumbsRefHeight + tagsRefHeight + headingRefHeight + 8;
 
     const scrollHandler = () => {
-      handleArticleScroll(true, wrapperContentRef.current, wrapperContentRef.current.offsetHeight, leftMenuRef.current, offsetTop, "h4", setShowButton);
+      handleArticleScroll(true, wrapperContentRef.current, wrapperContentRef.current?.offsetHeight, leftMenuRef.current, offsetTop, "h4", setShowButton);
     };
 
     window.addEventListener("scroll", scrollHandler);

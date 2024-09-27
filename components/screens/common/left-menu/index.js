@@ -11,8 +11,8 @@ const LeftMenu = forwardRef(({
   isArticle,
   isLevel4CategoryPage,
   pageName,
-  pageItems,
-  pageItemsLevel,
+  categoryData,
+  leftMenuLevel,
   categorySlug,
   headings,
   backBtnUrl,
@@ -42,12 +42,12 @@ const LeftMenu = forwardRef(({
                   <InternalLink onClick={() => setLeftMenuMobile(false)} href={`#${item.id}`} label={item.text} />
                 </li>
               ))
-            ) : pageItems ? (
-              pageItems.map((article, index) => (
+            ) : categoryData ? (
+              categoryData.map((article, index) => (
                 <TreeView
                   key={index}
                   article={article}
-                  pageItemsLevel={pageItemsLevel}
+                  leftMenuLevel={leftMenuLevel}
                   categorySlug={categorySlug}
                 />
               ))

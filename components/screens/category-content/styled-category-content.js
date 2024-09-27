@@ -16,6 +16,16 @@ const StyledCategoryContent = styled(Section)`
       }
     }
   }
+
+  .category-items {
+    margin: 24px 0 0 0;
+
+    .category-item {
+      &:not(:last-child) {
+        margin-bottom: 24px;
+      }
+    }
+  }
 `;
 
 export default StyledCategoryContent;

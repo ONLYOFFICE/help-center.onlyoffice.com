@@ -3,12 +3,12 @@ import StyledTreeView from "./styled-treeview";
 import { useState, useRef } from "react";
 import InternalLink from "@components/common/internal-link";
 
-const TreeView = ({ article, pageItemsLevel, categorySlug }) => {
+const TreeView = ({ article, leftMenuLevel, categorySlug }) => {
   const content = useRef();
   const [active, setActive] = useState(false);
 
   const categorySlugMany = categorySlug === "docs" ? "docs" : `${categorySlug}s`;
-  const levelLinks = article.attributes[`level_${pageItemsLevel}_${categorySlugMany}`]?.data || [];
+  const levelLinks = article.attributes[`level_${leftMenuLevel}_${categorySlugMany}`]?.data || [];
   const articleLinks = article.attributes[`article_${categorySlugMany}`]?.data || [];
   const sortByName = (a, b) => (a.attributes.name || a.attributes.title).localeCompare(b.attributes.name || b.attributes.title);
 

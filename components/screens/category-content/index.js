@@ -24,13 +24,13 @@ const CategoryContent = ({
   level2CategoryUrl,
   pageName,
   pageDescription,
-  pageItems,
-  pageItemsLevel,
+  categoryData,
+  articlesData,
+  leftMenuLevel,
   categorySlug,
   leftMenuMobile,
   backBtnName,
   backBtnUrl,
-  lvlArticles,
   tags
 }) => {
   const descriptionRef = useRef(null);
@@ -42,7 +42,7 @@ const CategoryContent = ({
   const [tagItems, setTagItems] = useState();
   const [hasMoreTags, setHasMoreTags] = useState(false);
   const cookies = new Cookies(null, { path: "/" });
-  const sortPageItems = pageItems?.sort((a, b) =>
+  const sortPageItems = categoryData?.sort((a, b) =>
     (b.attributes.icon_small?.data?.attributes?.url ? 1 : 0) - (a.attributes.icon_small?.data?.attributes?.url ? 1 : 0) ||
     (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || a.attributes.name.localeCompare(b.attributes.name));
 
@@ -90,8 +90,8 @@ const CategoryContent = ({
         <LeftMenu
           t={t}
           pageName={pageName}
-          pageItems={sortPageItems}
-          pageItemsLevel={pageItemsLevel}
+          categoryData={sortPageItems}
+          leftMenuLevel={leftMenuLevel}
           categorySlug={categorySlug}
           leftMenuMobile={leftMenuMobile}
           backBtnName={backBtnName}
@@ -119,23 +119,31 @@ const CategoryContent = ({
           {pageDescription &&
             <StyledRawHtml ref={descriptionRef} className="wrapper-description">{ReactHtmlParser(pageDescription)}</StyledRawHtml>
           }
-          {lvlArticles && lvlArticles.sort((a, b) => {
-            const aValue = a.attributes.title;
-            const bValue = b.attributes.title;
-            return aValue.localeCompare(bValue);
-          }).map((item, index) => (
-            <div id={`${item.attributes.title.replace(/ /g, "_").toLowerCase()}_block`} className="subcat-empty-div" key={index}>
-              <InternalLink href={item.attributes.url} label={item.attributes.title} />
+          {articlesData.length > 0 && (
+            <div className="category-articles">
+              {articlesData.sort((a, b) => {
+                const aValue = a.attributes.title;
+                const bValue = b.attributes.title;
+                return aValue.localeCompare(bValue);
+              }).map((item, index) => (
+                <div id={`${item.attributes.title.replace(/ /g, "_").toLowerCase()}_block`} className="category-articles-item" key={index}>
+                  <InternalLink href={item.attributes.url} label={item.attributes.title} />
+                </div>
+              ))}
             </div>
-          ))}
-          {sortPageItems?.map((item, index) => (
-            <CategoryItem
-              data={item}
-              pageItemsLevel={pageItemsLevel}
-              categorySlug={categorySlug}
-              key={index}
-            />
-          ))}
+          )}
+          {sortPageItems?.length > 0 && (
+            <div className="category-items">
+              {sortPageItems?.map((item, index) => (
+                <CategoryItem
+                  data={item}
+                  leftMenuLevel={leftMenuLevel}
+                  categorySlug={categorySlug}
+                  key={index}
+                />
+              ))}
+            </div>
+          )}
           <ArticlePopup
             t={t}
             locale={locale}
