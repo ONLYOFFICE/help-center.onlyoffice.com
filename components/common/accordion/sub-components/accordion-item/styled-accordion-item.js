@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
+import globalColors from "@components/utils/global-colors";
 
 const StyledAccordionItem = styled.div`
   position: relative;
@@ -47,6 +48,14 @@ const StyledAccordionItem = styled.div`
 
     > ul {
       padding-left: 16px;
+    }
+
+    a {
+      color: ${globalColors.orangeMain};
+
+      &:hover {
+        text-decoration: none;
+      }
     }
 
     @media ${device.mobile} {

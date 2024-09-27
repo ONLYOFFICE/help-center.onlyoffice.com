@@ -6,8 +6,12 @@ const StyledFaqContent = styled(Section)`
   .switcher {
     color: ${globalColors.orangeMain};
     cursor: pointer;
-    padding: 24px 0;
+    margin: 24px 0;
     text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 `;
 

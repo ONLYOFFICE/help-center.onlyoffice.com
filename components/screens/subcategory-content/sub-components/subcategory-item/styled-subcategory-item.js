@@ -50,6 +50,7 @@ const StyledSubCategoryItem = styled.div`
       display: block;
       width: 100%;
       color: ${globalColors.grayMain};
+      text-decoration: none;
 
       &:hover {
         text-decoration: underline;
