@@ -1,6 +1,7 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
+import { useRouter } from "next/router";
 import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 import getCategoryLevel3 from "@lib/strapi/getCategoryLevel3";
 import Layout from "@components/layout";
@@ -14,6 +15,7 @@ import Cookies from "universal-cookie";
 
 const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug }) => {
   const { t } = useTranslation();
+  const router = useRouter();
   const [leftMenuMobile, setLeftMenuMobile] = useState(false);
   const categorySlugOne = categorySlug === "docs" ? "doc" : categorySlug;
   const categorySlugMany = categorySlug === "docs" ? "docs" : `${categorySlug}s`;
@@ -89,7 +91,7 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             videos={videos}
           />
         ) : (
-          level3Data?.data?.some(item => item.attributes?.icon?.data?.attributes.url) ? (
+          !level3Data?.data?.some(item => item.attributes?.url.split("#")[0] === router.asPath) ? (
             <CategoryContent
               t={t}
               locale={locale}
