@@ -1,6 +1,6 @@
 const handleArticleScroll = (articlePage, wrapperContainer, wrapperContainerHeight, leftMenuRef, offsetHeight, selector, setShowButton) => {
   if (wrapperContainer) {
-    let sections = Array.from(wrapperContainer.querySelectorAll("[id$='_block']")).filter(section => section.querySelector(selector));
+    let sections = Array.from(wrapperContainer?.querySelectorAll("[id$='_block']")).filter(section => section.querySelector(selector));
     let leftMenuItems = leftMenuRef.querySelectorAll(".left-menu-items li");
     let currentSectionIndex = 0;
     const isLastBlockWatchVideo = sections.length > 0 && sections[sections.length - 1].id === "watchvideo_block";
