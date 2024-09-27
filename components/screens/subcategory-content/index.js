@@ -138,7 +138,7 @@ const SubCategoryContent = ({
               categoryData.sort(sortItems).map((item, index) => (
                 <SubCategoryItem
                   headingName={item.attributes.name}
-                  headingIcon={item.attributes.icon?.data?.attributes.url}
+                  headingIcon={item.attributes.icon?.data?.attributes.url || item.attributes.category_pic?.data?.attributes.url}
                   id={`${item.attributes.name.replace(/ /g, "_").toLowerCase()}_block`}
                   links={[
                     ...(item.attributes[`level_4_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`]?.data || []),
