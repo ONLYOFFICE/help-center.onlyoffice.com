@@ -3,7 +3,7 @@ const extractHeadings = (wrapperContainer, description, selector) => {
   div.innerHTML = description;
   const headingsArray = [];
 
-  wrapperContainer.querySelectorAll("[id$='_block']").forEach(block => {
+  wrapperContainer?.querySelectorAll("[id$='_block']").forEach(block => {
     const firstHeading = block.querySelector(selector);
     if (firstHeading) {
       headingsArray.push({

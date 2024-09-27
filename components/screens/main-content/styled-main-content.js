@@ -134,6 +134,10 @@ const StyledMainContent = styled(Section)`
     justify-content: center;
     gap: 16px 48px;
     margin-bottom: 40px;
+
+    @media ${device.laptop} {
+      gap: 12px 24px;
+    }
   }
 
   .guides-cards-top-link {

@@ -28,6 +28,8 @@ const ArticleContent = ({
   level2CategoryUrl,
   level3CategoryName,
   level3CategoryUrl,
+  level4CategoryName,
+  level4CategoryUrl,
   pageName,
   pageDescription,
   tags,
@@ -35,9 +37,7 @@ const ArticleContent = ({
   backBtnName,
   backBtnUrl,
   leftMenuMobile,
-  setLeftMenuMobile,
-  subCategoryName,
-  subCategoryUrl
+  setLeftMenuMobile
 }) => {
   const containerRef = useRef(null);
   const wrapperContentRef = useRef(null);
@@ -77,7 +77,7 @@ const ArticleContent = ({
     const offsetTop = breadcrumbsRefHeight + tagsRefHeight + headingRefHeight + 8;
 
     const scrollHandler = () => {
-      handleArticleScroll(true, wrapperContentRef.current, wrapperContentRef.current.offsetHeight, leftMenuRef.current, offsetTop, "h4", setShowButton);
+      handleArticleScroll(true, wrapperContentRef.current, wrapperContentRef.current?.offsetHeight, leftMenuRef.current, offsetTop, "h4", setShowButton);
     };
 
     window.addEventListener("scroll", scrollHandler);
@@ -85,7 +85,7 @@ const ArticleContent = ({
     return () => {
       window.removeEventListener("scroll", scrollHandler);
     };
-  }, [videoOffsetTrigger]);
+  }, [videoOffsetTrigger, pageDescription]);
 
   const handleTagModal = async (tagName) => {
     const data = await getTagsArticle(locale, tagName, 4, 1);
@@ -133,12 +133,12 @@ const ArticleContent = ({
             ref={breadcrumbsRef}
             categoryName={categoryName}
             categoryUrl={categoryUrl}
-            subCategoryName={subCategoryName}
-            subCategoryUrl={subCategoryUrl}
             level2CategoryName={level2CategoryName}
             level2CategoryUrl={level2CategoryUrl}
             level3CategoryName={level3CategoryName}
             level3CategoryUrl={level3CategoryUrl}
+            level4CategoryName={level4CategoryName}
+            level4CategoryUrl={level4CategoryUrl}
             pageName={pageName}
           />
           <Heading ref={headingRef} className="wrapper-title" level={1}>{pageName}</Heading>
@@ -157,7 +157,7 @@ const ArticleContent = ({
               <ConnectorsVideo t={t} videos={videos.data} setVideoOffsetTrigger={setVideoOffsetTrigger} />
             }
           </div>
-          <DownloadArea className="download-area" slug={categoryName} subcat={subCategoryName} t={t} />
+          <DownloadArea className="download-area" slug={categoryName} subcat={level2CategoryName} t={t} />
           <ArticlePopup
             t={t}
             locale={locale}

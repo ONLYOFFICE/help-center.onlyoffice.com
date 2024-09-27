@@ -5,9 +5,27 @@ import globalColors from "@components/utils/global-colors";
 const StyledConnectorsVideo = styled.div`
   margin: 64px 0;
   scroll-margin-top: 24px;
+
+  &:last-child {
+    margin: 64px 0 0 0;
+
+    @media ${device.laptop} {
+      margin: 56px 0 0 0;
+    }
+
+    @media ${device.mobile} {
+      margin: 48px 0 0 0;
+    }
+  }
   
   .video-title {
     margin-bottom: 24px;
+
+    @media ${device.mobile} {
+      margin-bottom: 16px;
+      font-size: 16px;
+      line-height: 22px;
+    }
   }
 
   .video-wrapper {
@@ -45,6 +63,14 @@ const StyledConnectorsVideo = styled.div`
       width: 100%;
       min-width: 100%;
     }
+  }
+
+  @media ${device.laptop} {
+    margin: 56px 0;
+  }
+
+  @media ${device.mobile} {
+    margin: 48px 0;
   }
 `;
 

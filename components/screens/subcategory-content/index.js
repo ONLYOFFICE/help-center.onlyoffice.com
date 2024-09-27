@@ -1,5 +1,6 @@
 import StyledSubCategoryContent from "./styled-subcategory-content";
 import { useRef, useState, useEffect } from "react";
+import SubCategoryItem from "./sub-components/subcategory-item";
 import LeftMenu from "@components/screens/common/left-menu";
 import StyledWrapperContent from "@components/screens/common/wrapper-content/styled-wrapper-content";
 import Heading from "@components/common/heading";
@@ -18,7 +19,8 @@ const SubCategoryContent = ({
   t,
   pageName,
   pageIcon,
-  pageItems,
+  categoryData,
+  articleData,
   categorySlug,
   categoryName,
   categoryUrl,
@@ -32,7 +34,7 @@ const SubCategoryContent = ({
   backBtnUrl,
   video,
   pageDescription,
-  lvlArticles
+  isLevel4
 }) => {
   const leftMenuRef = useRef(null);
   const containerRef = useRef(null);
@@ -41,6 +43,7 @@ const SubCategoryContent = ({
   const [showButton, setShowButton] = useState(false);
   const [imageModalActive, setImageModalActive] = useState(false);
   const [bigPhotoSrc, setBigPhotoSrc] = useState(null);
+  const sortItems = (a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.name || a.attributes.title).localeCompare(b.attributes.name || b.attributes.title);
 
   useEffect(() => {
     const firstHeader = document.querySelector('.changelog-main-header');
@@ -51,7 +54,7 @@ const SubCategoryContent = ({
     setHeadings(extractHeadings(contentRef.current, pageDescription, "h5"));
 
     const scrollHandler = () => {
-      handleArticleScroll(false, contentRef.current, contentRef.current.offsetHeight, leftMenuRef.current, document.querySelector("header").offsetHeight + 24, "h5", setShowButton);
+      handleArticleScroll(false, contentRef.current, contentRef.current?.offsetHeight, leftMenuRef.current, document.querySelector("header").offsetHeight + 24, "h5", setShowButton);
     };
 
     window.addEventListener("scroll", scrollHandler);
@@ -59,9 +62,7 @@ const SubCategoryContent = ({
     return () => {
       window.removeEventListener("scroll", scrollHandler);
     };
-  }, []);
-
-  const hasNameField = pageItems.some(item => item.attributes.hasOwnProperty('name'));
+  }, [pageDescription]);
 
   const handleClick = (event) => {
     handleFaqAccordionClick(event, containerRef.current);
@@ -94,68 +95,62 @@ const SubCategoryContent = ({
             level3CategoryUrl={level3CategoryUrl}
             pageName={pageName}
           />
-
-          <Heading className="wrapper-title subcat-heading" level={1}>
+          <Heading className="wrapper-title subcategory-heading" level={1}>
             {pageIcon?.data &&
               <img src={pageIcon.data?.attributes.url} alt={pageName} />
             }
             {pageName}
           </Heading>
           {pageDescription &&
-            <StyledRawHtml onClick={handleClick} ref={containerRef} className="subcat-description">{ReactHtmlParser(pageDescription)}</StyledRawHtml>
+            <StyledRawHtml onClick={handleClick} ref={containerRef} className="subcategory-description">{ReactHtmlParser(pageDescription)}</StyledRawHtml>
           }
           <div ref={contentRef}>
-            {!pageItems && (lvlArticles && lvlArticles.sort((a, b) => {
-              const aValue = a.attributes.title;
-              const bValue = b.attributes.title;
-              return aValue.localeCompare(bValue);
-            }).map((item, index) => (
-              <div id={`${item.attributes.title.replace(/ /g, "_").toLowerCase()}_block`} className="subcat-empty-div" key={index}>
-                <InternalLink href={item.attributes.url} label={item.attributes.title} />
-              </div>
-            )
-            ))}
-            {hasNameField === true ? (pageItems && pageItems.sort((a, b) => {
-              const aValue = a.attributes.name || a.attributes.title;
-              const bValue = b.attributes.name || b.attributes.title;
-              return aValue.localeCompare(bValue);
-            }).map((item, index) => (
-              <div id={`${item.attributes.name.replace(/ /g, "_").toLowerCase()}_block`} className="subcat-div" key={index}>
-                <Heading level={5}>{item.attributes.name}</Heading>
-                <ul className="classic-ul">
-                  {item.attributes[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`].data
-                  .sort((a, b) => {
-                    const aValue = a.attributes.name || a.attributes.title;
-                    const bValue = b.attributes.name || b.attributes.title;
-                    const aIsRemoving = aValue.toLowerCase().startsWith('removing');
-                    const bIsRemoving = bValue.toLowerCase().startsWith('removing');
-                    if (aIsRemoving && !bIsRemoving) {
-                      return 1; 
-                    } else if (!aIsRemoving && bIsRemoving) {
-                      return -1; 
-                    } else {
-                      return aValue.localeCompare(bValue);
-                    }
-                  }).map((item, index) => (
-                    <li key={index}>
-                      <InternalLink href={item.attributes.url} label={item.attributes.title} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )
-            )) : (
+            {isLevel4 ? (
               <>
-                {pageItems && pageItems.sort((a, b) => {
-                  const aValue = a.attributes.title;
-                  const bValue = b.attributes.title;
-                  return aValue.localeCompare(bValue);
-                }).map((item, index) => (
-                  <div className="subcat-empty-div" key={index}>
-                    <InternalLink href={item.attributes.url} label={item.attributes.title} />
+                {articleData.length > 0 && (
+                  <ul className="subcategory-articles">
+                    {articleData.sort(sortItems).map((item, index) => (
+                      <li key={index}>
+                        <InternalLink href={item.attributes.url}>
+                          {item.attributes.icon?.data?.attributes.url && (
+                            <img src={item.attributes.icon?.data?.attributes.url} alt={item.attributes.title} />
+                          )}
+                          {item.attributes.title}
+                        </InternalLink>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {categoryData.sort(sortItems).map((item, index) => (
+                  <div id={`${item.attributes.name.replace(/ /g, "_").toLowerCase()}_block`} className="subcategory-block" key={index}>
+                    <Heading className="subcategory-block-title" level={5} label={item.attributes.name} />
+                    <ul className="subcategory-block-list">
+                      {item.attributes[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`].data.sort(sortItems).map((item, index) => (
+                        <li key={index}>
+                          <InternalLink href={item.attributes.url} label={item.attributes.title} />
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </>
+            ) : categoryData.some(item => item.attributes.hasOwnProperty("name")) ? (
+              categoryData.sort(sortItems).map((item, index) => (
+                <SubCategoryItem
+                  headingName={item.attributes.name}
+                  headingIcon={item.icon_small?.data?.attributes.url}
+                  id={`${item.attributes.name.replace(/ /g, "_").toLowerCase()}_block`}
+                  links={[
+                    ...(item.attributes[`level_4_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`]?.data || []),
+                    ...(item.attributes[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`]?.data || [])
+                  ]}
+                  categorySlug={categorySlug}
+                  sortItems={sortItems}
+                  key={index}
+                />
+              ))
+            ) : (
+              <SubCategoryItem links={articleData} />
             )}
           </div>
           {video?.data &&
@@ -163,11 +158,11 @@ const SubCategoryContent = ({
           }
         </div>
         <ImagePopup
-            t={t}
-            image={bigPhotoSrc}
-            active={imageModalActive}
-            setActive={setImageModalActive}
-          />
+          t={t}
+          image={bigPhotoSrc}
+          active={imageModalActive}
+          setActive={setImageModalActive}
+        />
         <ScrollToTopButton showButton={showButton} />
       </StyledWrapperContent>
     </StyledSubCategoryContent>

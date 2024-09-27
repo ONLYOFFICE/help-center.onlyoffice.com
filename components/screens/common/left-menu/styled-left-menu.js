@@ -6,7 +6,7 @@ const StyledLeftMenu = styled.div`
   box-sizing: border-box;
   position: relative;
   border-right: 1px solid #EFEFEF;
-  padding: 32px 28px 32px 0;
+  padding: 32px 24px 32px 0;
   width: 256px;
   min-width: 256px;
   background-color: ${globalColors.bgGray};

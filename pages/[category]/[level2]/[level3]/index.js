@@ -39,14 +39,14 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
     [`article_${categorySlugMany}`]: articleData
   } = categoryData.data?.[0]?.attributes;
 
-  const categoryName = categoryDataArticle?.data?.attributes.general_category.data.attributes.name || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name;
-  const categoryUrl = categoryDataArticle?.data?.attributes.general_category.data.attributes.url || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url;
-  const level2CategoryName = categoryDataArticle?.data?.attributes.name || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.name || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`]?.data.attributes.name || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes[`level_2_${categorySlugOne}`]?.data.attributes.name;
-  const level2CategoryUrl = categoryDataArticle?.data?.attributes.url || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.url || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`]?.data.attributes.url || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes[`level_2_${categorySlugOne}`]?.data.attributes.url;
-  const level3CategoryName = level2DataArticle?.data?.attributes.name || level3DataArticle?.data?.attributes.name || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes.name;
-  const level3Categoryurl = level2DataArticle?.data?.attributes.url || level3DataArticle?.data?.attributes.url || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes.url;
-  const subCategoryName =  level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.name || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.name;
-  const subCategoryUrl = level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.url || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`]?.data.attributes[`level_2_${categorySlugOne}`]?.data.attributes[`category_${categorySlugOne}`].data.attributes.url;
+  const categoryName = categoryDataArticle?.data?.attributes.general_category.data.attributes.name || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name;
+  const categoryUrl = categoryDataArticle?.data?.attributes.general_category.data.attributes.url || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url;
+  const level2CategoryName = categoryDataArticle?.data?.attributes.name || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.name || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.name || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.name;
+  const level2CategoryUrl = categoryDataArticle?.data?.attributes.url || level2DataArticle?.data?.attributes[`category_${categorySlugOne}`].data.attributes.url || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.url || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.url;
+  const level3CategoryName = level2DataArticle?.data?.attributes.name || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes.name || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes.name;
+  const level3CategoryUrl = level2DataArticle?.data?.attributes.url || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes.url || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes.url;
+  const level4CategoryName = level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes.name || level3DataArticle?.data?.attributes.name;
+  const level4CategoryUrl = level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes.url || level3DataArticle?.data?.attributes.url;
 
   return (
     <Layout>
@@ -73,40 +73,23 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             isArticle={article}
             categoryName={categoryName}
             categoryUrl={categoryUrl}
-            subCategoryName={subCategoryName}
-            subCategoryUrl={subCategoryUrl}
             level2CategoryName={level2CategoryName}
             level2CategoryUrl={level2CategoryUrl}
             level3CategoryName={level3CategoryName}
-            level3CategoryUrl={level3Categoryurl}
+            level3CategoryUrl={level3CategoryUrl}
+            level4CategoryName={level4CategoryName}
+            level4CategoryUrl={level4CategoryUrl}
             pageName={title}
             pageDescription={content}
             tags={tags}
             leftMenuMobile={leftMenuMobile}
             setLeftMenuMobile={setLeftMenuMobile}
-            backBtnName={level1Data?.data?.attributes.name}
-            backBtnUrl={level1Data?.data?.attributes.url}
+            backBtnName={level4CategoryName || level3CategoryName || level2CategoryName || categoryName}
+            backBtnUrl={level4CategoryUrl || level3CategoryUrl || level2CategoryUrl || categoryUrl}
             videos={videos}
           />
         ) : (
-          level3Data?.data[0]?.attributes[`article_${categorySlugMany}`]?.data.length > 0 ? (
-            <SubCategoryContent
-              t={t}
-              categorySlug={categorySlug}
-              categoryName={level1Data?.data?.attributes.general_category?.data.attributes.name}
-              categoryUrl={level1Data?.data?.attributes.general_category?.data.attributes.url}
-              level2CategoryName={level1Data?.data?.attributes.name}
-              level2CategoryUrl={level1Data?.data?.attributes.url}
-              pageName={name}
-              pageIcon={icon}
-              pageItems={level3Data?.data.length > 0 ? level3Data?.data : articleData?.data}
-              leftMenuMobile={leftMenuMobile}
-              setLeftMenuMobile={setLeftMenuMobile}
-              backBtnName={level1Data?.data?.attributes.name}
-              backBtnUrl={level1Data?.data?.attributes.url}
-              pageDescription={description}
-            />
-          ) : (
+          level3Data?.data?.some(item => item.attributes?.icon?.data?.attributes.url) ? (
             <CategoryContent
               t={t}
               locale={locale}
@@ -116,14 +99,32 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
               level2CategoryName={level1Data?.data?.attributes.name}
               level2CategoryUrl={level1Data?.data?.attributes.url}
               pageName={title || name}
-              pageItems={level3Data?.data}
-              pageItemsLevel={4}
+              categoryData={level3Data?.data}
+              leftMenuLevel={4}
               pageDescription={description}
               leftMenuMobile={leftMenuMobile}
               backBtnName={level1Data?.data?.attributes.name || general_category.data.attributes.name}
               backBtnUrl={level1Data?.data?.attributes.url || general_category.data.attributes.url}
-              lvlArticles={articleData?.data.length > 0 ? articleData?.data : null}
+              articlesData={articleData?.data}
               tags={tags}
+            />
+          ) : (
+            <SubCategoryContent
+              t={t}
+              categorySlug={categorySlug}
+              categoryName={level1Data?.data?.attributes.general_category?.data.attributes.name}
+              categoryUrl={level1Data?.data?.attributes.general_category?.data.attributes.url}
+              level2CategoryName={level1Data?.data?.attributes.name}
+              level2CategoryUrl={level1Data?.data?.attributes.url}
+              pageName={name}
+              pageIcon={icon}
+              categoryData={level3Data?.data}
+              articleData={articleData?.data}
+              leftMenuMobile={leftMenuMobile}
+              setLeftMenuMobile={setLeftMenuMobile}
+              backBtnName={level1Data?.data?.attributes.name}
+              backBtnUrl={level1Data?.data?.attributes.url}
+              pageDescription={description}
             />
           )
         )}
