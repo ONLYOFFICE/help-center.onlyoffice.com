@@ -8,7 +8,9 @@ const MyApp = ({ Component, pageProps, cookieValue }) => {
   return (
     <>
       <Component {...pageProps} />
-      <CookieNotify cookieValue={cookieValue} />
+      {!cookieValue &&
+        <CookieNotify />
+      }
     </>
   );
 };

@@ -3,12 +3,10 @@ import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import Cookies from "universal-cookie";
 
-const CookieNotify = ({ cookieValue }) => {
+const CookieNotify = () => {
   const { t } = useTranslation();
   const [isShow, setIsShow] = useState(true);
   const cookies = new Cookies();
-
-  if (cookieValue) return null;
 
   const hideCookieNotify = () => {
     setIsShow(false);
