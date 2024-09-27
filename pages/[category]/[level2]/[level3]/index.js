@@ -86,8 +86,8 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             tags={tags}
             leftMenuMobile={leftMenuMobile}
             setLeftMenuMobile={setLeftMenuMobile}
-            backBtnName={level4CategoryName || level3CategoryName || level2CategoryName || categoryName}
-            backBtnUrl={level4CategoryUrl || level3CategoryUrl || level2CategoryUrl || categoryUrl}
+            backBtnName={!level4CategoryUrl?.includes("#") && level4CategoryName || !level3CategoryUrl?.includes("#") && level3CategoryName || level2CategoryName || categoryName}
+            backBtnUrl={!level4CategoryUrl?.includes("#") && level4CategoryUrl || !level3CategoryUrl?.includes("#") && level3CategoryUrl || level2CategoryUrl || categoryUrl}
             videos={videos}
           />
         ) : (
