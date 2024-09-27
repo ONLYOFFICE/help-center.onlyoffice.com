@@ -91,7 +91,7 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             videos={videos}
           />
         ) : (
-          !level3Data?.data?.some(item => item.attributes?.url.split("#")[0] === router.asPath) ? (
+          level3Data?.data?.some(item => item.attributes?.url.split("#")[0] !== router.asPath) ? (
             <CategoryContent
               t={t}
               locale={locale}
