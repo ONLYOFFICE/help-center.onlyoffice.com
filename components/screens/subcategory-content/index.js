@@ -149,9 +149,9 @@ const SubCategoryContent = ({
                   key={index}
                 />
               ))
-            ) : (
+            ) : articleData.length !== 0 ? (
               <SubCategoryItem links={articleData} />
-            )}
+            ) : (<></>)}
           </div>
           {video?.data &&
             <VideoBlock t={t} video={video} />
