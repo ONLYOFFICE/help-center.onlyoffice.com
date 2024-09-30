@@ -54,7 +54,7 @@ const CategoryGuidesCell = ({ data, categorySlug, t }) => {
       {!connectorsSlug &&
         <div className="guides-cell-columns">
           <div className="guides-cell-column">
-            {items?.slice(0, Math.ceil(items?.length / 2)).map((item, index) => (
+            {items?.sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity)).slice(0, Math.ceil(items?.length / 2)).map((item, index) => (
               <React.Fragment key={index}>
                 {isClient && isExternalLink(item.attributes?.url) ? (
                   <ExternalLink
@@ -73,7 +73,7 @@ const CategoryGuidesCell = ({ data, categorySlug, t }) => {
             ))}
           </div>
           <div className="guides-cell-column">
-            {items?.slice(Math.ceil(items.length / 2), items?.length).map((item, index) => (
+            {items?.sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity)).slice(Math.ceil(items.length / 2), items?.length).map((item, index) => (
               <React.Fragment key={index}>
                 {isClient && isExternalLink(item.attributes?.url) ? (
                   <ExternalLink
