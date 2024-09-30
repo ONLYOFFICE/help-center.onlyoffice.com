@@ -1,7 +1,6 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
-import { useRouter } from "next/router";
 import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
 import getCategoryLevel3 from "@lib/strapi/getCategoryLevel3";
 import Layout from "@components/layout";
@@ -15,7 +14,6 @@ import Cookies from "universal-cookie";
 
 const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug }) => {
   const { t } = useTranslation();
-  const router = useRouter();
   const [leftMenuMobile, setLeftMenuMobile] = useState(false);
   const categorySlugOne = categorySlug === "docs" ? "doc" : categorySlug;
   const categorySlugMany = categorySlug === "docs" ? "docs" : `${categorySlug}s`;
@@ -49,6 +47,7 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
   const level3CategoryUrl = level2DataArticle?.data?.attributes.url || level3DataArticle?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes.url || level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes.url;
   const level4CategoryName = level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes.name || level3DataArticle?.data?.attributes.name;
   const level4CategoryUrl = level4DataArticle?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes.url || level3DataArticle?.data?.attributes.url;
+  const level4DataLength = level3Data.data.map(item => item.attributes[`level_4_${categorySlugMany}`].data.length);
 
   return (
     <Layout>
@@ -91,7 +90,7 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             videos={videos}
           />
         ) : (
-          level3Data?.data?.some(item => item.attributes?.url.split("#")[0] !== router.asPath) ? (
+          level4DataLength.filter(item => item !== 0).length > level4DataLength.filter(item => item === 0).length ? (
             <CategoryContent
               t={t}
               locale={locale}
