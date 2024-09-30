@@ -90,7 +90,7 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             videos={videos}
           />
         ) : (
-          !level4DataLength.every(item => item === undefined) && level4DataLength?.filter(item => item !== 0).length > level4DataLength?.filter(item => item === 0).length ? (
+          !level4DataLength?.every(item => item === undefined) && level4DataLength?.filter(item => item !== 0).length > level4DataLength?.filter(item => item === 0).length ? (
             <CategoryContent
               t={t}
               locale={locale}
