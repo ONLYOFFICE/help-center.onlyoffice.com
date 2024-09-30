@@ -12,7 +12,7 @@ const SubCategoryItem = ({ categorySlug, sortItems, id, headingName, headingIcon
     setIsClient(true);
   }, []);
 
-  const checkTitleLength = !links.some(item => {
+  const checkTitleLength = !links?.some(item => {
     const title = item.attributes.title;
     return title && title.replace(/\s/g, "").length > 40;
   });
@@ -27,7 +27,7 @@ const SubCategoryItem = ({ categorySlug, sortItems, id, headingName, headingIcon
           {headingName}
         </Heading>
       )}
-      {links.length > 0 && (
+      {links?.length > 0 && (
         checkTitleLength && links.length > 6 ? (
           <div className="subcategory-item-wrapper">
             <ul className="subcategory-item-list">

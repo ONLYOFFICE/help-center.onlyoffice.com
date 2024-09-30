@@ -86,8 +86,8 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             tags={tags}
             leftMenuMobile={leftMenuMobile}
             setLeftMenuMobile={setLeftMenuMobile}
-            backBtnName={!level4CategoryUrl?.includes("#") && level4CategoryName || !level3CategoryUrl?.includes("#") && level3CategoryName || level2CategoryName || categoryName}
-            backBtnUrl={!level4CategoryUrl?.includes("#") && level4CategoryUrl || !level3CategoryUrl?.includes("#") && level3CategoryUrl || level2CategoryUrl || categoryUrl}
+            backBtnName={!level4CategoryUrl?.includes("#") && level4CategoryName || !level3CategoryUrl?.includes("#") && level3CategoryName || level2CategoryUrl && level2CategoryName || categoryName}
+            backBtnUrl={!level4CategoryUrl?.includes("#") && level4CategoryUrl || !level3CategoryUrl?.includes("#") && level3CategoryUrl || level2CategoryUrl && level2CategoryUrl || categoryUrl}
             videos={videos}
           />
         ) : (
@@ -114,8 +114,8 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
             <SubCategoryContent
               t={t}
               categorySlug={categorySlug}
-              categoryName={level1Data?.data?.attributes.general_category?.data.attributes.name}
-              categoryUrl={level1Data?.data?.attributes.general_category?.data.attributes.url}
+              categoryName={level1Data?.data?.attributes.general_category?.data.attributes.name || general_category.data.attributes.name}
+              categoryUrl={level1Data?.data?.attributes.general_category?.data.attributes.url || general_category.data.attributes.url}
               level2CategoryName={level1Data?.data?.attributes.name}
               level2CategoryUrl={level1Data?.data?.attributes.url}
               pageName={name}
@@ -124,8 +124,8 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
               articleData={articleData?.data}
               leftMenuMobile={leftMenuMobile}
               setLeftMenuMobile={setLeftMenuMobile}
-              backBtnName={level1Data?.data?.attributes.name}
-              backBtnUrl={level1Data?.data?.attributes.url}
+              backBtnName={level1Data?.data?.attributes.name || general_category.data.attributes.name}
+              backBtnUrl={level1Data?.data?.attributes.url || general_category.data.attributes.url}
               pageDescription={description}
             />
           )
