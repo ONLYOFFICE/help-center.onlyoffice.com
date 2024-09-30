@@ -79,5 +79,12 @@ const StyledSearchArea = styled.div`
       `}
     }
   }
+
+  .error {
+    color: red;
+    font-size: 12px;
+    line-height: 1em;
+    position: absolute;
+  }
 `;
 export default StyledSearchArea;

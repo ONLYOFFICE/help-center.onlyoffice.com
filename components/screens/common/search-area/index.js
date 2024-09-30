@@ -3,36 +3,27 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 const SearchArea = ({ query, className, placeholder, isLeftMenu }) => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(query || "");
+  const [error, setError] = useState("");
   const router = useRouter();
 
   useEffect(() => {
-    if (router.pathname === "/searchresult") {
-      setInputValue(query || "");
-    }
-  }, [query]);
+    setError(inputValue.length > 0 && inputValue.length < 3 ? "Search term must be at least 3 characters long." : "");
+  }, [inputValue]);
 
   const onKeyDownHandle = async (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && !error) {
       router.push({
         pathname: "/searchresult",
-        query: { query: inputValue }
+        query: { query: inputValue },
       });
     }
   };
 
-  const handleSearchInput = (e) => {
-    e.preventDefault();
-    setInputValue(e.target.value);
-  };
-
   return (
-    <StyledSearchArea
-      isLeftMenu={isLeftMenu}
-      className={`search-area ${className ? className : ""}`}
-    >
+    <StyledSearchArea isLeftMenu={isLeftMenu} className={`search-area ${className || ""}`}>
       <input
-        onChange={handleSearchInput}
+        onChange={(e) => setInputValue(e.target.value)}
         onKeyDown={onKeyDownHandle}
         className="search-input"
         placeholder={placeholder}
@@ -44,6 +35,7 @@ const SearchArea = ({ query, className, placeholder, isLeftMenu }) => {
       ) : (
         <div className="search-icon search"></div>
       )}
+      {error && <div className="error">{error}</div>}
     </StyledSearchArea>
   );
 };
