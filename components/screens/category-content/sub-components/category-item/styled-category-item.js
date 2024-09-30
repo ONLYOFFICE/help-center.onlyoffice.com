@@ -50,6 +50,8 @@ const StyledCategoryItem = styled.div`
     }
 
     a {
+      display: flex;
+      align-items: center;
       color: ${globalColors.orangeMain};
 
       &:hover {
