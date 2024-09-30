@@ -107,19 +107,23 @@ const SubCategoryContent = ({
           <div ref={contentRef}>
             {isLevel4 ? (
               <>
-                {articleData.length > 0 && (
-                  <ul className="subcategory-articles">
-                    {articleData.sort(sortItems).map((item, index) => (
-                      <li key={index}>
-                        <InternalLink href={item.attributes.url}>
-                          {item.attributes.icon?.data?.attributes.url && (
-                            <img src={item.attributes.icon?.data?.attributes.url} alt={item.attributes.title} />
-                          )}
-                          {item.attributes.title}
-                        </InternalLink>
-                      </li>
-                    ))}
-                  </ul>
+                {categoryData.length > 0 ? (
+                  articleData.length > 0 && (
+                    <ul className="subcategory-articles">
+                      {articleData.sort(sortItems).map((item, index) => (
+                        <li key={index}>
+                          <InternalLink href={item.attributes.url}>
+                            {item.attributes.icon?.data?.attributes.url && (
+                              <img src={item.attributes.icon?.data?.attributes.url} alt={item.attributes.title} />
+                            )}
+                            {item.attributes.title}
+                          </InternalLink>
+                        </li>
+                      ))}
+                    </ul>
+                  )
+                ) : (
+                  <SubCategoryItem links={articleData} />
                 )}
                 {categoryData.sort(sortItems).map((item, index) => (
                   <div id={`${item.attributes.name.replace(/ /g, "_").toLowerCase()}_block`} className="subcategory-block" key={index}>
@@ -134,7 +138,7 @@ const SubCategoryContent = ({
                   </div>
                 ))}
               </>
-            ) : categoryData.some(item => item.attributes.hasOwnProperty("name")) ? (
+            ) : categoryData?.some(item => item.attributes.hasOwnProperty("name")) ? (
               categoryData.sort(sortItems).map((item, index) => (
                 <SubCategoryItem
                   headingName={item.attributes.name}

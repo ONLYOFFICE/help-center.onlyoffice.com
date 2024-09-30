@@ -14,7 +14,6 @@ import StyledWrapperContent from "@components/screens/common/wrapper-content/sty
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
 import ArticlePopup from "@components/screens/common/article-popup";
-import SubCategoryItem from "../subcategory-content/sub-components/subcategory-item";
 
 const CategoryContent = ({
   t,
@@ -120,22 +119,18 @@ const CategoryContent = ({
           {pageDescription &&
             <StyledRawHtml ref={descriptionRef} className="wrapper-description">{ReactHtmlParser(pageDescription)}</StyledRawHtml>
           }
-          {categoryData?.length ? (
-            articlesData.length > 0 && (
-              <div className="category-articles">
-                {articlesData.sort((a, b) => {
-                  const aValue = a.attributes.title;
-                  const bValue = b.attributes.title;
-                  return aValue.localeCompare(bValue);
-                }).map((item, index) => (
-                  <div id={`${item.attributes.title.replace(/ /g, "_").toLowerCase()}_block`} className="category-articles-item" key={index}>
-                    <InternalLink href={item.attributes.url} label={item.attributes.title} />
-                  </div>
-                ))}
-              </div>
-            )
-          ) : (
-            <SubCategoryItem links={articlesData} />
+          {articlesData.length > 0 && (
+            <div className="category-articles">
+              {articlesData.sort((a, b) => {
+                const aValue = a.attributes.title;
+                const bValue = b.attributes.title;
+                return aValue.localeCompare(bValue);
+              }).map((item, index) => (
+                <div id={`${item.attributes.title.replace(/ /g, "_").toLowerCase()}_block`} className="category-articles-item" key={index}>
+                  <InternalLink href={item.attributes.url} label={item.attributes.title} />
+                </div>
+              ))}
+            </div>
           )}
           {sortPageItems?.length > 0 && (
             <div className="category-items">

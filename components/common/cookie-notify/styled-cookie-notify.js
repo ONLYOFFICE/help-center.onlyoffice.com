@@ -8,16 +8,12 @@ const StyledCookieNotify = styled.div`
   width: 100%;
   z-index: 100000;
   text-align: center;
-  pointer-events: none;
-  transition: opacity 0.3s, visibility 0.3s;
-  opacity: ${(props) => (props.isShow ? 1 : 0)};
 
   .cookie-notify {
     display: inline-flex;
     align-items: center;
     padding: 10px 10px 10px 20px;
     background-color: rgb(255 102 46 / 80%);
-    pointer-events: initial;
   }
 
   .cookie-text {
