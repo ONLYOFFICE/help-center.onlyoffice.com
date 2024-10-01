@@ -10,11 +10,12 @@ const CategoryItem = ({ data, leftMenuLevel, categorySlug }) => {
   const levelLinks = data.attributes[`level_${leftMenuLevel}_${categorySlugMany}`]?.data || [];
   const articleLinks = data.attributes[`article_${categorySlugMany}`]?.data || [];
 
-  const sortByName = (a, b) => (a.attributes.name || a.attributes.title).localeCompare(b.attributes.name || b.attributes.title);
+
+  const sortItems = (a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.name || a.attributes.title).localeCompare(b.attributes.name || b.attributes.title);
   const sublinks = [
-    ...levelLinks.filter(item => item.attributes.icon_small?.data?.attributes.url).sort(sortByName),
-    ...levelLinks.filter(item => !item.attributes.icon_small?.data?.attributes.url).sort(sortByName),
-    ...articleLinks.sort(sortByName)
+    ...levelLinks.filter(item => item.attributes.icon_small?.data?.attributes.url).sort(sortItems),
+    ...levelLinks.filter(item => !item.attributes.icon_small?.data?.attributes.url).sort(sortItems),
+    ...articleLinks.sort(sortItems)
   ];
   const topPositionSubLinks = sublinks.filter(item => item.attributes.position_top);
   const filteredSubLinks = sublinks.filter(item => !item.attributes.position_top);
