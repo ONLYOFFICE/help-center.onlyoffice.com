@@ -60,9 +60,9 @@ const CategoryItem = ({ data, leftMenuLevel, categorySlug }) => {
             <li key={index}>
               <InternalLink href={item.attributes.url}>
                 {item.attributes.icon_small?.data?.attributes.url && (
-                  <img src={item.attributes.icon_small.data.attributes.url} alt={item.attributes.name || item.attributes.title} />
+                  <img src={item.attributes.icon_small.data.attributes.url} alt={item.attributes.name || item.attributes.level_4_title || item.attributes.title} />
                 )}
-                {item.attributes.name || item.attributes.title}
+                {item.attributes.name || item.attributes.level_4_title || item.attributes.title}
               </InternalLink>
             </li>
           ))}
@@ -80,9 +80,9 @@ const CategoryItem = ({ data, leftMenuLevel, categorySlug }) => {
                   <li key={index}>
                     <InternalLink href={item.attributes.url}>
                       {item.attributes.icon_small?.data?.attributes.url && (
-                        <img src={item.attributes.icon_small.data.attributes.url} alt={item.attributes.name || item.attributes.title} />
+                        <img src={item.attributes.icon_small.data.attributes.url} alt={item.attributes.name || item.attributes.level_4_title || item.attributes.title} />
                       )}
-                      {item.attributes.name || item.attributes.title}
+                      {item.attributes.name || item.attributes.level_4_title || item.attributes.title}
                     </InternalLink>
                   </li>
                 ))}
@@ -92,9 +92,9 @@ const CategoryItem = ({ data, leftMenuLevel, categorySlug }) => {
                   <li key={index}>
                     <InternalLink href={item.attributes.url}>
                       {item.attributes.icon_small?.data?.attributes.url && (
-                        <img src={item.attributes.icon_small.data.attributes.url} alt={item.attributes.name || item.attributes.title} />
+                        <img src={item.attributes.icon_small.data.attributes.url} alt={item.attributes.name || item.attributes.level_4_title || item.attributes.title} />
                       )}
-                      {item.attributes.name || item.attributes.title}
+                      {item.attributes.name || item.attributes.level_4_title || item.attributes.title}
                     </InternalLink>
                   </li>
                 ))}
@@ -106,9 +106,9 @@ const CategoryItem = ({ data, leftMenuLevel, categorySlug }) => {
                 <li key={index}>
                   <InternalLink href={item.attributes.url}>
                     {item.attributes.icon_small?.data?.attributes.url && (
-                      <img src={item.attributes.icon_small.data.attributes.url} alt={item.attributes.name || item.attributes.title} />
+                      <img src={item.attributes.icon_small.data.attributes.url} alt={item.attributes.name || item.attributes.level_4_title || item.attributes.title} />
                     )}
-                    {item.attributes.name || item.attributes.title}
+                    {item.attributes.name || item.attributes.level_4_title || item.attributes.title}
                   </InternalLink>
                 </li>
               ))}
