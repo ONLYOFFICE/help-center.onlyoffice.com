@@ -114,9 +114,9 @@ const SubCategoryContent = ({
                         <li key={index}>
                           <InternalLink href={item.attributes.url}>
                             {item.attributes.icon?.data?.attributes.url && (
-                              <img src={item.attributes.icon?.data?.attributes.url} alt={item.attributes.title} />
+                              <img src={item.attributes.icon?.data?.attributes.url} alt={item.attributes.level_4_title || item.attributes.title} />
                             )}
-                            {item.attributes.title}
+                            {item.attributes.level_4_title || item.attributes.title}
                           </InternalLink>
                         </li>
                       ))}
