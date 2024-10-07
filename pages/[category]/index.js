@@ -65,6 +65,9 @@ export const getServerSideProps = async ({ locale, params }) => {
   }
 
   if (category.data[0].attributes.slug_id === "integration") {
+    const updatedArticles = [];
+    const indxToRemove = new Set();
+
     category.data[0].attributes.articles.data.forEach((article, index, arr) => {
       const { url } = article.attributes;
       const docspaceUrl = url.replace('.aspx', '-docspace.aspx');
@@ -72,9 +75,12 @@ export const getServerSideProps = async ({ locale, params }) => {
 
       if (docspaceArticleIndex !== -1) {
         article.attributes.url_docspace = docspaceUrl;
-        arr.splice(docspaceArticleIndex, 1);
+        indxToRemove.add(docspaceArticleIndex);
       }
+      updatedArticles.push(article);
     });
+
+    category.data[0].attributes.articles.data = updatedArticles.filter((_, index) => !indxToRemove.has(index));
   }
 
   return {
