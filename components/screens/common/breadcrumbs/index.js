@@ -1,6 +1,6 @@
 import StyledBreadcrumbs from "./styled-breadcrumbs";
 import { forwardRef } from "react";
-import InternalLink from "../../../common/internal-link";
+import InternalLink from "@components/common/internal-link";
 
 const Breadcrumbs = forwardRef(({
     t,

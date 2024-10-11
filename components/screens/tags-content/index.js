@@ -3,12 +3,12 @@ import { useState } from "react";
 import getTagsArticle from "@lib/strapi/getTagsArticle";
 import LeftMenu from "@components/screens/common/left-menu";
 import StyledWrapperContent from "@components/screens/common/wrapper-content/styled-wrapper-content";
-import ArticlePopup from "../common/article-popup";
-import AlphabetContainer from "../common/alphabet-container";
-import Breadcrumbs from "../common/breadcrumbs";
+import ArticlePopup from "@components/screens/common/article-popup";
+import AlphabetContainer from "@components/screens/common/alphabet-container";
+import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import Heading from "@components/common/heading";
 
-const TagsContent = ({ t, locale, tagsData, leftMenuMobile }) => {
+const TagsContent = ({ t, locale, tagsData, leftMenuData, leftMenuIsOpen }) => {
   const [modalActive, setModalActive] = useState(false);
   const [tagName, setTagName] = useState();
   const [tagItems, setTagItems] = useState();
@@ -39,15 +39,11 @@ const TagsContent = ({ t, locale, tagsData, leftMenuMobile }) => {
       <StyledWrapperContent>
         <LeftMenu
           t={t}
-          backBtnName={t("Home")}
-          backBtnUrl="/"
-          leftMenuMobile={leftMenuMobile}
+          leftMenuData={leftMenuData}
+          leftMenuIsOpen={leftMenuIsOpen}
         />
         <div className="wrapper">
-          <Breadcrumbs
-            t={t}
-            pageName={t("Tags")}
-          />
+          <Breadcrumbs t={t} pageName={t("Tags")} />
           <Heading className="wrapper-title" level={1}>{t("Tags")}</Heading>
           <AlphabetContainer
             t={t}

@@ -2,16 +2,16 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 import getGlossary from "@lib/strapi/getGlossary";
-import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
+import getLeftMenu from "@lib/strapi/getLeftMenu";
 import Layout from "@components/layout";
 import Header from "@components/screens/header";
 import Footer from "@components/screens/footer";
 import HeadSEO from "@components/screens/head";
 import GlossaryContent from "@components/screens/glossary-content";
 
-const GlossaryPage = ({ locale, categoriesMenu, glossaryData }) => {
+const GlossaryPage = ({ locale, data, glossaryData }) => {
   const { t } = useTranslation();
-  const [leftMenuMobile, setLeftMenuMobile] = useState(false);
+  const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
 
   return (
     <Layout>
@@ -25,17 +25,18 @@ const GlossaryPage = ({ locale, categoriesMenu, glossaryData }) => {
         <Header
           t={t}
           locale={locale}
-          categories={categoriesMenu}
-          leftMenuMobile={leftMenuMobile}
-          setLeftMenuMobile={setLeftMenuMobile}
+          data={data}
+          leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <GlossaryContent
           t={t}
           locale={locale}
+          leftMenuData={data}
           glossaryData={glossaryData}
-          leftMenuMobile={leftMenuMobile}
+          leftMenuIsOpen={leftMenuIsOpen}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>
@@ -46,7 +47,7 @@ const GlossaryPage = ({ locale, categoriesMenu, glossaryData }) => {
 };
 
 export const getServerSideProps = async ({ locale }) => {
-  const categoriesMenu = await getCategoriesMenu(locale);
+  const data = await getLeftMenu(locale);
   const glossaryData = await getGlossary(locale);
 
   if (glossaryData.data === null || glossaryData.data.length === 0) {
@@ -59,7 +60,7 @@ export const getServerSideProps = async ({ locale }) => {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      categoriesMenu,
+      data,
       glossaryData
     },
   };

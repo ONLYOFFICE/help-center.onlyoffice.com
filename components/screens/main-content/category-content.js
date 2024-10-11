@@ -1,34 +1,49 @@
 import StyledMainContent from "./styled-main-content";
-import { useEffect, useState } from "react";
-import getCategoryLevel1 from "@lib/strapi/getCategoryLevel1";
+import { useState, useEffect } from "react";
+import getLeftMenu from "@lib/strapi/getLeftMenu";
 import topSlugIdData from "./data/top-slugid.json";
-import CategoriesLeftMenu from "@components/screens/common/categories-left-menu";
+import LeftMenu from "@components/screens/common/left-menu";
 import SearchArea from "@components/screens/common/search-area";
 import InternalLink from "@components/common/internal-link";
 import Heading from "@components/common/heading";
 import Masonry from "react-masonry-css";
 import CategoryGuidesCell from "./sub-components/guides-cell/category-guides-cell";
 
-const Level1CategoryContent = ({ t, locale, categoryName, categoryImg, categories, categorySlug, leftMenuMobile, setLeftMenuMobile, leftMenuCategories }) => {
-  const topData = categories.data.filter(item => topSlugIdData.includes(item.attributes.slug_id));
-  const [categoriesLeftMenu, setCategoriesLeftMenu] = useState(leftMenuCategories);
+const Level1CategoryContent = ({ t, locale, categoriesMenuData, categoryName, categoryImg, data, categorySlug, leftMenuIsOpen }) => {
+  const [leftMenuData, setLeftMenuData] = useState(categoriesMenuData);
+  const [showLeftMenu, setShowLeftMenu] = useState(false);
+  const topData = data.data.filter(item => topSlugIdData.includes(item.attributes.slug_id));
 
   useEffect(() => {
-    const getCategoriesLeftMenuData = async () => {
-      const data = await getCategoryLevel1(locale);
-      setCategoriesLeftMenu(data);
-    }
+    const loadData = async () => {
+      const data = await getLeftMenu(locale);
+      setLeftMenuData(data);
+    };
 
-    getCategoriesLeftMenuData();
-  }, []);
+    loadData();
+
+    const handleResize = () => {
+      setShowLeftMenu(window.innerWidth <= 1024);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [locale]);
 
   return (
     <>
-      <CategoriesLeftMenu
-        leftMenuMobile={leftMenuMobile}
-        categories={categoriesLeftMenu}
-        setLeftMenuMobile={setLeftMenuMobile}
-      />
+      {showLeftMenu && (
+        <LeftMenu
+          t={t}
+          leftMenuData={leftMenuData}
+          leftMenuIsOpen={leftMenuIsOpen}
+        />
+      )}
       <StyledMainContent>
         <div className="info-content category-content">
           <div className="info-content-header">
@@ -55,7 +70,7 @@ const Level1CategoryContent = ({ t, locale, categoryName, categoryImg, categorie
             breakpointCols={{ default: 2, 592: 1 }}
             className="guides-cards-items"
             columnClassName="guides-cards-items-column">
-            {categories.data
+            {data.data
               .filter(item => !topSlugIdData.includes(item.attributes.slug_id))
               .sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.name || a.attributes.title).localeCompare(b.attributes.name || b.attributes.title))
               .map((item, index) => (

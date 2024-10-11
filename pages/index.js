@@ -1,7 +1,7 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
-import getCategories from "@lib/strapi/getCategories";
+import getMainPageData from "@lib/strapi/getMainPageData";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
 import Header from "@components/screens/header";
@@ -9,9 +9,9 @@ import MainContent from "@components/screens/main-content";
 import Accordion from "@components/screens/common/accordion";
 import Footer from "@components/screens/footer";
 
-const MainPage = ({ locale, categories }) => {
+const MainPage = ({ locale, data }) => {
   const { t } = useTranslation();
-  const [leftMenuMobile, setLeftMenuMobile] = useState(false);
+  const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
 
   return (
     <Layout>
@@ -25,19 +25,19 @@ const MainPage = ({ locale, categories }) => {
         <Header
           t={t}
           locale={locale}
-          categories={categories}
+          data={data}
           isMain={true}
-          leftMenuMobile={leftMenuMobile}
-          setLeftMenuMobile={setLeftMenuMobile}
+          leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <MainContent
           t={t}
-          categories={categories}
-          leftMenuCategories={categories}
-          leftMenuMobile={leftMenuMobile}
-          setLeftMenuMobile={setLeftMenuMobile}
+          locale={locale}
+          data={data}
+          leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
         <Accordion t={t} locale={locale} isMain={true} />
       </Layout.SectionMain>
@@ -49,13 +49,13 @@ const MainPage = ({ locale, categories }) => {
 };
 
 export const getServerSideProps = async ({ locale }) => {
-  const categories = await getCategories(locale, true);
+  const data = await getMainPageData(locale, true);
 
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      categories
+      data
     },
   };
 };

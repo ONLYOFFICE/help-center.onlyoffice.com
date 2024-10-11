@@ -1,25 +1,39 @@
 import StyledSearchResultsContent from "./styled-search-results-content";
 import { useEffect, useState } from "react";
-import getCategories from "@lib/strapi/getCategories";
+import getLeftMenu from "@lib/strapi/getLeftMenu";
 import Highlighter from "react-highlight-words";
 import SearchArea from "@components/screens/common/search-area";
-import CategoriesLeftMenu from "@components/screens/common/categories-left-menu";
+import LeftMenu from "@components/screens/common/left-menu";
 import InternalLink from "@components/common/internal-link";
 import Heading from "@components/common/heading";
 import Pagination from "@components/common/pagination";
 
-const SearchResultsContent = ({ t, leftMenuMobile, setLeftMenuMobile, leftMenuCategories, page, searchResults, locale, sort, query }) => {
+const SearchResultsContent = ({ t, categoriesMenuData, leftMenuIsOpen, page, searchResults, locale, sort, query }) => {
   const countPage = searchResults.meta?.pagination.pageCount;
   const [pageLimit, setPageLimit] = useState(countPage > 7 ? 7 : countPage);
-  const [categoriesLeftMenu, setCategoriesLeftMenu] = useState(leftMenuCategories);
-  useEffect(() => {
-    const getCategoriesLeftMenuData = async () => {
-      const data = await getCategories(locale, false);
-      setCategoriesLeftMenu(data);
-    }
+  const [leftMenuData, setLeftMenuData] = useState(categoriesMenuData);
+  const [showLeftMenu, setShowLeftMenu] = useState(false);
 
-    getCategoriesLeftMenuData();
-  }, []);
+  useEffect(() => {
+    const loadData = async () => {
+      const data = await getLeftMenu(locale);
+      setLeftMenuData(data);
+    };
+
+    loadData();
+
+    const handleResize = () => {
+      setShowLeftMenu(window.innerWidth <= 1024);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [locale]);
 
   const arrayStart = [...Array(countPage).keys()].map(i => i + 1)
     .filter(item => item % pageLimit === 0)
@@ -39,8 +53,8 @@ const SearchResultsContent = ({ t, leftMenuMobile, setLeftMenuMobile, leftMenuCa
         break;
       }
     }
-    return countPage > pageLimit ? 
-      new Array(countPage - start < pageLimit ? countPage - start + 1 : pageLimit).fill().map((_, idx) => start === 0 ? start + idx + 1 : start + idx) : 
+    return countPage > pageLimit ?
+      new Array(countPage - start < pageLimit ? countPage - start + 1 : pageLimit).fill().map((_, idx) => start === 0 ? start + idx + 1 : start + idx) :
       new Array(countPage).fill().map((_, idx) => idx + 1);
   };
 
@@ -59,11 +73,13 @@ const SearchResultsContent = ({ t, leftMenuMobile, setLeftMenuMobile, leftMenuCa
 
   return (
     <>
-      <CategoriesLeftMenu
-        leftMenuMobile={leftMenuMobile}
-        categories={categoriesLeftMenu}
-        setLeftMenuMobile={setLeftMenuMobile}
-      />
+      {showLeftMenu && (
+        <LeftMenu
+          t={t}
+          leftMenuData={leftMenuData}
+          leftMenuIsOpen={leftMenuIsOpen}
+        />
+      )}
       <StyledSearchResultsContent>
         <div className="search-results-header">
           <SearchArea placeholder={t("HowCanWeHelp?")} query={query} />
@@ -79,19 +95,18 @@ const SearchResultsContent = ({ t, leftMenuMobile, setLeftMenuMobile, leftMenuCa
                     <Highlighter className="search-results-query" searchWords={[query]} textToHighlight={item?.attributes?.title} />
                   </InternalLink>
                   <p className="search-results-description">
-                  <Highlighter className="search-results-query" searchWords={[query]} textToHighlight={item?.attributes?.description?.replace(/<[^>]*>/g, "") || item?.attributes?.content.replace(/<[^>]*>/g, '')} />
-                  </p>                
+                    <Highlighter className="search-results-query" searchWords={[query]} textToHighlight={item?.attributes?.description?.replace(/<[^>]*>/g, "") || item?.attributes?.content.replace(/<[^>]*>/g, '')} />
+                  </p>
                 </div>
               ))}
             </div>
             {countPage !== 0 && countPage !== 1 &&
-            <Pagination          
-              countPage={countPage}
-              getPaginationGroup={getPaginationGroup()}
-              locale={locale}
-              sort={sort}
-              page={Number(page)}
-            />
+              <Pagination
+                countPage={countPage}
+                getPaginationGroup={getPaginationGroup()}
+                sort={sort}
+                page={Number(page)}
+              />
             }
           </div>
         ) : (

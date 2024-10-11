@@ -9,9 +9,9 @@ import HeadSEO from "@components/screens/head";
 import Header from "@components/screens/header";
 import Footer from "@components/screens/footer";
 
-const SearchResult = ({ locale, categories, searchResults, query, page }) => {
+const SearchResult = ({ locale, categoriesMenuData, searchResults, query, page }) => {
   const { t } = useTranslation("common");
-  const [leftMenuMobile, setLeftMenuMobile] = useState(false);
+  const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
 
   return (
     <Layout>
@@ -25,19 +25,17 @@ const SearchResult = ({ locale, categories, searchResults, query, page }) => {
         <Header 
           t={t}
           locale={locale}
-          categories={categories}
-          isMain={true}
-          leftMenuMobile={leftMenuMobile}
-          setLeftMenuMobile={setLeftMenuMobile}
+          data={categoriesMenuData}
+          leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <SearchResultsContent
           t={t}
           locale={locale}
-          leftMenuMobile={leftMenuMobile}
-          setLeftMenuMobile={setLeftMenuMobile}
-          leftMenuCategories={categories}
+          leftMenuIsOpen={leftMenuIsOpen}
+          categoriesMenuData={categoriesMenuData}
           searchResults={searchResults}
           query={query}
           page={page}
@@ -53,14 +51,14 @@ const SearchResult = ({ locale, categories, searchResults, query, page }) => {
 export const getServerSideProps = async ({ locale, query }) => {
   const page = query.page || 1;
   const pageSize = query.pageSize || 12;
-  const categories = await getCategoriesMenu(locale);
+  const categoriesMenuData = await getCategoriesMenu(locale);
   const searchResults = await getSearchResults(locale, query.query, page, pageSize);
 
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      categories,
+      categoriesMenuData,
       searchResults,
       page,
       query: query.query

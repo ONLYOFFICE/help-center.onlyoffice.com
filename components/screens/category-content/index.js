@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import StyledCategoryContent from "./styled-category-content";
-import StyledRawHtml from "../common/raw-html/styled-raw-html";
+import StyledRawHtml from "@components/screens/common/raw-html/styled-raw-html";
 import ReactHtmlParser from "react-html-parser";
 import Cookies from "universal-cookie";
 import { tableBuilder } from "@utils/helpers/TableBuilder/table-builder";
@@ -25,13 +25,12 @@ const CategoryContent = ({
   pageName,
   pageDescription,
   categoryData,
-  articlesData,
+  articleData,
   leftMenuLevel,
   categorySlug,
-  leftMenuMobile,
-  backBtnName,
-  backBtnUrl,
-  tags
+  leftMenuIsOpen,
+  tags,
+  leftMenuData
 }) => {
   const descriptionRef = useRef(null);
   const tagsRef = useRef(null);
@@ -89,13 +88,8 @@ const CategoryContent = ({
       <StyledWrapperContent>
         <LeftMenu
           t={t}
-          pageName={pageName}
-          categoryData={sortPageItems}
-          leftMenuLevel={leftMenuLevel}
-          categorySlug={categorySlug}
-          leftMenuMobile={leftMenuMobile}
-          backBtnName={backBtnName}
-          backBtnUrl={backBtnUrl}
+          leftMenuData={leftMenuData}
+          leftMenuIsOpen={leftMenuIsOpen}
         />
         <div className="wrapper" ref={catRef}>
           <Breadcrumbs
@@ -107,7 +101,7 @@ const CategoryContent = ({
             pageName={pageName}
           />
           <Heading className="wrapper-title" level={1} label={pageName} />
-          {tags?.data.length > 0 &&
+          {tags?.data?.length > 0 &&
             <ul ref={tagsRef} className="tags">
               {tags?.data.map((item, index) => (
                 <li key={index}>
@@ -119,9 +113,9 @@ const CategoryContent = ({
           {pageDescription &&
             <StyledRawHtml ref={descriptionRef} className="wrapper-description">{ReactHtmlParser(pageDescription)}</StyledRawHtml>
           }
-          {articlesData.length > 0 && (
+          {articleData?.length > 0 && (
             <div className="category-articles">
-              {articlesData.sort((a, b) => {
+              {articleData.sort((a, b) => {
                 const aValue = a.attributes.title;
                 const bValue = b.attributes.title;
                 return aValue.localeCompare(bValue);

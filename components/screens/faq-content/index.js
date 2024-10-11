@@ -4,13 +4,13 @@ import StyledWrapperContent from "@components/screens/common/wrapper-content/sty
 import LeftMenu from "@components/screens/common/left-menu";
 import Heading from "@components/common/heading";
 import Tag from "@components/common/tag";
-import Breadcrumbs from "../common/breadcrumbs";
+import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import { AccordionItem } from "@components/common/accordion";
 import ReactHtmlParser from "react-html-parser";
 import getTagsArticle from "@lib/strapi/getTagsArticle";
-import ArticlePopup from "../common/article-popup";
+import ArticlePopup from "@components/screens/common/article-popup";
 
-const FaqContent = ({ t, faqData, locale }) => {
+const FaqContent = ({ t, faqData, locale, leftMenuData, leftMenuIsOpen }) => {
   const { name, faq_block, tags } = faqData.data[0].attributes;
   const [isExpanded, setIsExpanded] = useState(false);
   const [tagName, setTagName] = useState();
@@ -43,14 +43,11 @@ const FaqContent = ({ t, faqData, locale }) => {
         <LeftMenu
           t={t}
           pageName={name}
-          backBtnName={t("Home")}
-          backBtnUrl="/"
+          leftMenuData={leftMenuData}
+          leftMenuIsOpen={leftMenuIsOpen}
         />
         <div className="wrapper">
-          <Breadcrumbs
-            t={t}
-            pageName={name}
-          />
+          <Breadcrumbs t={t} pageName={name} />
           <Heading className="wrapper-title" level={1} label={name} />
           {tags?.data.length > 0 && 
             <ul className="tags">

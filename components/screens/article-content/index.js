@@ -1,5 +1,5 @@
 import StyledArticleContent from "./styled-article-content";
-import StyledRawHtml from "../common/raw-html/styled-raw-html";
+import StyledRawHtml from "@components/screens/common/raw-html/styled-raw-html";
 import { useState, useEffect, useRef } from "react";
 import getTagsArticle from "@lib/strapi/getTagsArticle";
 import LeftMenu from "@components/screens/common/left-menu";
@@ -13,7 +13,7 @@ import Tooltip from "@components/common/tooltip";
 import ImagePopup from "./sub-components/image-popup";
 import DownloadArea from "./sub-components/download-area";
 import ConnectorsVideo from "./sub-components/connectors-video";
-import ArticlePopup from "../common/article-popup";
+import ArticlePopup from "@components/screens/common/article-popup";
 import Cookies from "universal-cookie";
 import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
 import { handleFaqAccordionClick, handleImagePopupClick, handleTogglerClick, handleShortcutToggleClick } from "@utils/handle-click-functions";
@@ -34,10 +34,9 @@ const ArticleContent = ({
   pageDescription,
   tags,
   videos,
-  backBtnName,
-  backBtnUrl,
-  leftMenuMobile,
-  setLeftMenuMobile
+  leftMenuIsOpen,
+  setLeftMenuIsOpen,
+  leftMenuData
 }) => {
   const containerRef = useRef(null);
   const wrapperContentRef = useRef(null);
@@ -120,12 +119,10 @@ const ArticleContent = ({
           t={t}
           ref={leftMenuRef}
           pageName={pageName}
-          headings={headings}
-          isArticle={true}
-          backBtnName={backBtnName}
-          backBtnUrl={backBtnUrl}
-          leftMenuMobile={leftMenuMobile}
-          setLeftMenuMobile={setLeftMenuMobile}
+          headings={headings ? headings : []}
+          leftMenuData={leftMenuData ? leftMenuData : []}
+          leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
         <div className="wrapper">
           <Breadcrumbs

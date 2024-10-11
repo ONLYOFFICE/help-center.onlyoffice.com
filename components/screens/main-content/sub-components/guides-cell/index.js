@@ -13,7 +13,7 @@ const GuidesCell = ({ data }) => {
   const connectorsSlug = data.attributes.slug_id === "integration";
   const connectorsArticles = data.attributes.articles?.data.sort((a, b) => a.attributes.title.localeCompare(b.attributes.title));
   const items = data.attributes[`category_${slugId}`]?.data
-    .sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity))
+    .sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || a.attributes.name.localeCompare(b.attributes.name))
     .filter(item => !topSlugIdData.includes(item.attributes.slug_id)) || [];
 
   useEffect(() => {
