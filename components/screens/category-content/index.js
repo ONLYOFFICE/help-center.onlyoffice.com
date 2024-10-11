@@ -53,10 +53,10 @@ const CategoryContent = ({
 
     const handleScroll = () => {
       if ((descriptionRef?.current && window.innerHeight < descriptionRef.current.offsetHeight) ||
-          (catRef?.current && window.innerHeight < catRef.current.offsetHeight)) {
+        (catRef?.current && window.innerHeight < catRef.current.offsetHeight)) {
         setShowButton(window.scrollY > window.innerHeight);
       }
-    };    
+    };
 
     window.addEventListener("scroll", handleScroll);
 
@@ -122,12 +122,13 @@ const CategoryContent = ({
           {articlesData.length > 0 && (
             <div className="category-articles">
               {articlesData.sort((a, b) => {
-                const aValue = a.attributes.title;
-                const bValue = b.attributes.title;
-                return aValue.localeCompare(bValue);
+                (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || a.attributes.title.localeCompare(b.attributes.title)
               }).map((item, index) => (
                 <div id={`${item.attributes.title.replace(/ /g, "_").toLowerCase()}_block`} className="category-articles-item" key={index}>
-                  <InternalLink href={item.attributes.url} label={item.attributes.title} />
+                  {item.attributes.icon?.data?.attributes.url && (
+                    <img src={item.attributes.icon.data.attributes.url} alt={item.attributes.name || item.attributes.level_4_title || item.attributes.title} />
+                  )}
+                  <InternalLink href={item.attributes.url} label={item.attributes.level_4_title || item.attributes.title} />
                 </div>
               ))}
             </div>

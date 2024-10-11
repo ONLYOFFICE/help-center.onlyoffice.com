@@ -44,6 +44,8 @@ const StyledSubCategoryContent = styled(Section)`
   }
 
   .subcategory-block-title {
+    display: flex;
+    gap: 8px;
     &:not(:last-child) {
       margin-bottom: 16px;
     }

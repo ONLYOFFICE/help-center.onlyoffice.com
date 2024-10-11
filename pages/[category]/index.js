@@ -21,7 +21,7 @@ const CategoryPage = ({ locale, categories, category }) => {
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={seo_title}
+          title={seo_title ? seo_title : `Help Center - ONLYOFFICE`}
           description={seo_description}
         />
       </Layout.PageHead>

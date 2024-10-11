@@ -37,7 +37,7 @@ const Level2CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={seo_title}
+          title={seo_title ? seo_title : name ? `${name} - ONLYOFFICE` : title ? `${title} - ONLYOFFICE` : `Help Center - ONLYOFFICE`}
           description={seo_description}
         />
       </Layout.PageHead>

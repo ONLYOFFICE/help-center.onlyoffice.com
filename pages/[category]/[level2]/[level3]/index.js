@@ -53,8 +53,8 @@ const Level3CategoryPage = ({ locale, categoriesMenu, categoryData, categorySlug
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={seo_title}
-          description={seo_description}
+          title={seo_title ? seo_title : name ? `${name} - ONLYOFFICE` : title ? `${title} - ONLYOFFICE` : `Help Center - ONLYOFFICE`}
+          description={seo_description ? seo_description : t("metaDescriptionOgIndexPage")}
         />
       </Layout.PageHead>
       <Layout.PageHeader>

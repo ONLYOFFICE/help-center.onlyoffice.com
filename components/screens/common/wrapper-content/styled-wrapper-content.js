@@ -28,6 +28,7 @@ const StyledWrapperContent = styled.div`
     line-height: 32px;
 
     &.subcategory-heading {
+      align-items: center;
       display: flex;
       gap: 16px;
     }
@@ -184,12 +185,16 @@ const StyledWrapperContent = styled.div`
   }
 
   .category-articles-item {
+    display: flex;
+    gap: 8px;
     &:not(:last-child) {
       margin-bottom: 16px;
     }
 
     a {
+      color: ${globalColors.orangeMain};
       transition: color 0.3s;
+      text-decoration: underline;
 
       &:hover {
         color: ${globalColors.orangeMain};
