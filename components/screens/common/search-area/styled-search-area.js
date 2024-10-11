@@ -12,11 +12,11 @@ const StyledSearchArea = styled.div`
     box-sizing: border-box;
     border: 1px solid ${globalColors.grayLight};
     border-radius: ${(props) => (props.isLeftMenu ? "24px" : "32px")};
-    padding: ${(props) => (props.isLeftMenu ? "12px 16px 12px 40px" : "20px 64px 20px 28px")};
+    padding: ${(props) => (props.isLeftMenu ? "14px 16px 14px 48px" : "20px 64px 20px 28px")};
     font-size: ${(props) => (props.isLeftMenu ? "14px" : "16px")};
-    line-height: ${(props) => (props.isLeftMenu ? "21px" : "24px")};
+    line-height: ${(props) => (props.isLeftMenu ? "20px" : "24px")};
     width: 100%;
-    height: ${(props) => (props.isLeftMenu ? "45px" : "64px")};
+    height: ${(props) => (props.isLeftMenu ? "48px" : "64px")};
     outline: none;
 
     &::placeholder {
@@ -49,8 +49,8 @@ const StyledSearchArea = styled.div`
     ${(props) => (props.isLeftMenu ? "left: 16px;" : "right: 24px;")};
     border: none;
     padding: 0;
-    width: 16px;
-    height: 16px;
+    width: ${(props) => (props.isLeftMenu ? "24px" : "16px")};
+    height: ${(props) => (props.isLeftMenu ? "24px" : "16px")};
     background-repeat: no-repeat;
     background-size: contain;
     background-color: transparent;

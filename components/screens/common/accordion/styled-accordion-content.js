@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Section from "../../../common/section";
+import Section from "@components/common/section";
 import { device } from "@components/utils/devices";
 
 const StyledAccordionContent = styled(Section)`

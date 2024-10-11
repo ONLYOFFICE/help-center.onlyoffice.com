@@ -41,28 +41,6 @@ const StyledLeftMenu = styled.div`
     }
   }
 
-  .left-menu-link {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
-    font-size: 14px;
-    line-height: 21px;
-    transition: color 0.3s;
-
-    &:before {
-      content: url("https://static-helpcenter.onlyoffice.com/images/icons/16px_back_arrow.react.svg");
-      display: inline-flex;
-      margin-right: 8px;
-      width: 16px;
-      height: 16px;
-    }
-
-    &:hover {
-      color: ${globalColors.orangeMain};
-    }
-  }
-
   .left-menu-title {
     padding: 8px 0;
     font-size: 14px;
@@ -76,7 +54,12 @@ const StyledLeftMenu = styled.div`
     }
   }
 
+  .left-menu-treeview {
+    margin-bottom: 32px;
+  }
+
   .left-menu-items {
+    margin-bottom: 32px;
     list-style-type: none;
 
     > li {
@@ -144,7 +127,6 @@ const StyledLeftMenu = styled.div`
   }
 
   .left-menu-info {
-    margin-top: 16px;
     list-style-type: none;
 
     li {
@@ -190,10 +172,6 @@ const StyledLeftMenu = styled.div`
         padding: 4px 0;
       }
     }
-
-    @media ${device.laptop} {
-      margin-top: 8px;
-    } 
   }
 
   @media ${device.laptop} {
@@ -219,21 +197,42 @@ const StyledLeftMenu = styled.div`
   .ScrollbarsCustom {
     height: calc(100vh - 253px) !important;
 
-    @media ${device.laptop} {
-      height: calc(100vh - 147px) !important;
+    &.scroll-visible {
+      .ScrollbarsCustom-Track.ScrollbarsCustom-TrackY {
+        opacity: 1;
+        visibility: visible;
+      }
     }
+
+    @media ${device.laptop} {
+      height: calc(100vh - 120px) !important;
+    }
+  }
+
+  .ScrollbarsCustom-Wrapper {
+    inset: 0 !important;
   }
 
   .ScrollbarsCustom-Track.ScrollbarsCustom-TrackY {
     border-radius: 2px !important;
+    top: 0 !important;
+    right: -12px !important;
     width: 4px !important;
+    height: 100% !important;
     background-color: #E2E2E2 !important;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+
+    @media ${device.laptop} {
+      right: -20px !important;
+    }
   }
 
   .ScrollbarsCustom-Thumb.ScrollbarsCustom-ThumbY {
     border-radius: 2px !important;
     width: 4px !important;
-    background-color: ${globalColors.orangeMain} !important;
+    background-color: #AAAAAA !important;
   }
 `;
 

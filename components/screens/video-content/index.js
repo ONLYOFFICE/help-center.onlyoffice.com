@@ -3,11 +3,12 @@ import StyledVideoContent from "./styled-video-content";
 import LeftMenu from "@components/screens/common/left-menu";
 import StyledWrapperContent from "@components/screens/common/wrapper-content/styled-wrapper-content";
 import VideoItem from "@components/screens/common/video-item";
+import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import Heading from "@components/common/heading";
 import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
 import { extractHeadings, handleArticleScroll } from "@utils/scroll-highlight-functions";
 
-const VideoContent = ({ t, videoData, leftMenuMobile, setLeftMenuMobile }) => {
+const VideoContent = ({ t, videoData, leftMenuIsOpen, setLeftMenuIsOpen }) => {
   const [headings, setHeadings] = useState([]);
   const [showButton, setShowButton] = useState(false);
   const contentRef = useRef(null);
@@ -59,14 +60,12 @@ const VideoContent = ({ t, videoData, leftMenuMobile, setLeftMenuMobile }) => {
         <LeftMenu
           t={t}
           ref={leftMenuRef}
-          backBtnName={t("Home")}
-          backBtnUrl="/"
-          leftMenuMobile={leftMenuMobile}
           headings={headings}
-          isLevel4CategoryPage={true}
-          setLeftMenuMobile={setLeftMenuMobile}
+          leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
         <div className="wrapper" ref={contentRef}>
+          <Breadcrumbs t={t} pageName={t("Video")} />
           {Object.entries(sortedGroupedVideos).map(([key, group]) => (
             <div id={`${group.name.toLowerCase()}_block`} key={key}>
               <Heading level={4}>{group.name}</Heading>

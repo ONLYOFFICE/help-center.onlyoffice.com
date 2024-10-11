@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import StyledCategoryContent from "./styled-category-content";
-import StyledRawHtml from "../common/raw-html/styled-raw-html";
+import StyledRawHtml from "@components/screens/common/raw-html/styled-raw-html";
 import ReactHtmlParser from "react-html-parser";
 import Cookies from "universal-cookie";
 import { tableBuilder } from "@utils/helpers/TableBuilder/table-builder";
@@ -25,13 +25,12 @@ const CategoryContent = ({
   pageName,
   pageDescription,
   categoryData,
-  articlesData,
+  articleData,
   leftMenuLevel,
   categorySlug,
-  leftMenuMobile,
-  backBtnName,
-  backBtnUrl,
-  tags
+  leftMenuIsOpen,
+  tags,
+  leftMenuData
 }) => {
   const descriptionRef = useRef(null);
   const tagsRef = useRef(null);
@@ -53,10 +52,10 @@ const CategoryContent = ({
 
     const handleScroll = () => {
       if ((descriptionRef?.current && window.innerHeight < descriptionRef.current.offsetHeight) ||
-          (catRef?.current && window.innerHeight < catRef.current.offsetHeight)) {
+        (catRef?.current && window.innerHeight < catRef.current.offsetHeight)) {
         setShowButton(window.scrollY > window.innerHeight);
       }
-    };    
+    };
 
     window.addEventListener("scroll", handleScroll);
 
@@ -89,13 +88,8 @@ const CategoryContent = ({
       <StyledWrapperContent>
         <LeftMenu
           t={t}
-          pageName={pageName}
-          categoryData={sortPageItems}
-          leftMenuLevel={leftMenuLevel}
-          categorySlug={categorySlug}
-          leftMenuMobile={leftMenuMobile}
-          backBtnName={backBtnName}
-          backBtnUrl={backBtnUrl}
+          leftMenuData={leftMenuData}
+          leftMenuIsOpen={leftMenuIsOpen}
         />
         <div className="wrapper" ref={catRef}>
           <Breadcrumbs
@@ -107,7 +101,7 @@ const CategoryContent = ({
             pageName={pageName}
           />
           <Heading className="wrapper-title" level={1} label={pageName} />
-          {tags?.data.length > 0 &&
+          {tags?.data?.length > 0 &&
             <ul ref={tagsRef} className="tags">
               {tags?.data.map((item, index) => (
                 <li key={index}>
@@ -119,15 +113,16 @@ const CategoryContent = ({
           {pageDescription &&
             <StyledRawHtml ref={descriptionRef} className="wrapper-description">{ReactHtmlParser(pageDescription)}</StyledRawHtml>
           }
-          {articlesData.length > 0 && (
+          {articleData?.length > 0 && (
             <div className="category-articles">
-              {articlesData.sort((a, b) => {
-                const aValue = a.attributes.title;
-                const bValue = b.attributes.title;
-                return aValue.localeCompare(bValue);
+              {articleData.sort((a, b) => {
+                (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || a.attributes.title.localeCompare(b.attributes.title)
               }).map((item, index) => (
                 <div id={`${item.attributes.title.replace(/ /g, "_").toLowerCase()}_block`} className="category-articles-item" key={index}>
-                  <InternalLink href={item.attributes.url} label={item.attributes.title} />
+                  {item.attributes.icon?.data?.attributes.url && (
+                    <img src={item.attributes.icon.data.attributes.url} alt={item.attributes.name || item.attributes.level_4_title || item.attributes.title} />
+                  )}
+                  <InternalLink href={item.attributes.url} label={item.attributes.level_4_title || item.attributes.title} />
                 </div>
               ))}
             </div>

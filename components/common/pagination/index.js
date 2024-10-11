@@ -1,10 +1,9 @@
-import { useState, useEffect, use } from "react";
 import StyledPagination from './styled-pagination'
 import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 import InternalLink from "../internal-link";
 
-const Pagination = ({ searchResults, locale, getPaginationGroup, sort, page, countPage }) => {
+const Pagination = ({ getPaginationGroup, sort, page, countPage }) => {
   const router = useRouter();
 
   return (
@@ -49,7 +48,6 @@ Pagination.propTypes = {
   page: PropTypes.number,
   countPage: PropTypes.number,
   getPaginationGroup: PropTypes.arrayOf(PropTypes.number),
-  locale: PropTypes.string,
   sort: PropTypes.string
 };
 

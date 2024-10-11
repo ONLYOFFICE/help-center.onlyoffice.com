@@ -11,7 +11,7 @@ import VideoContent from "@components/screens/video-content";
 
 const VideoPage = ({ locale, categoriesMenu, videoData }) => {
   const { t } = useTranslation();
-  const [leftMenuMobile, setLeftMenuMobile] = useState(false);
+  const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
 
   return (
     <Layout>
@@ -25,9 +25,9 @@ const VideoPage = ({ locale, categoriesMenu, videoData }) => {
         <Header
           t={t}
           locale={locale}
-          categories={categoriesMenu}
-          leftMenuMobile={leftMenuMobile}
-          setLeftMenuMobile={setLeftMenuMobile}
+          data={categoriesMenu}
+          leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
@@ -35,8 +35,8 @@ const VideoPage = ({ locale, categoriesMenu, videoData }) => {
           t={t}
           locale={locale}
           videoData={videoData}
-          leftMenuMobile={leftMenuMobile}
-          setLeftMenuMobile={setLeftMenuMobile}
+          leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>

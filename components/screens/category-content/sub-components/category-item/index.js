@@ -10,7 +10,6 @@ const CategoryItem = ({ data, leftMenuLevel, categorySlug }) => {
   const levelLinks = data.attributes[`level_${leftMenuLevel}_${categorySlugMany}`]?.data || [];
   const articleLinks = data.attributes[`article_${categorySlugMany}`]?.data || [];
 
-
   const sortItems = (a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.name || a.attributes.title).localeCompare(b.attributes.name || b.attributes.title);
   const sublinks = [
     ...levelLinks.filter(item => item.attributes.icon_small?.data?.attributes.url).sort(sortItems),

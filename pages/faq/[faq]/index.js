@@ -1,7 +1,7 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
-import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
+import getLeftMenu from "@lib/strapi/getLeftMenu";
 import getFaq from "@lib/strapi/getFaq";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
@@ -9,9 +9,9 @@ import Header from "@components/screens/header";
 import Footer from "@components/screens/footer";
 import FaqContent from "@components/screens/faq-content";
 
-const FaqPage = ({ locale, categoriesMenu, faqData }) => {
+const FaqPage = ({ locale, data, faqData }) => {
   const { t } = useTranslation();
-  const [leftMenuMobile, setLeftMenuMobile] = useState(false);
+  const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
 
   const { seo_title, seo_description, name } = faqData.data[0].attributes;
   const seoTitle = seo_title ? seo_title : `${name} - ONLYOFFICE`;
@@ -29,16 +29,17 @@ const FaqPage = ({ locale, categoriesMenu, faqData }) => {
         <Header
           t={t}
           locale={locale}
-          categories={categoriesMenu}
-          leftMenuMobile={leftMenuMobile}
-          setLeftMenuMobile={setLeftMenuMobile}
+          data={data}
+          leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <FaqContent
           t={t}
           faqData={faqData}
-          leftMenuMobile={leftMenuMobile}
+          leftMenuData={data}
+          leftMenuIsOpen={leftMenuIsOpen}
           locale={locale}
         />
       </Layout.SectionMain>
@@ -50,7 +51,7 @@ const FaqPage = ({ locale, categoriesMenu, faqData }) => {
 };
 
 export async function getServerSideProps({ locale, params }) {
-  const categoriesMenu = await getCategoriesMenu(locale);
+  const data = await getLeftMenu(locale);
   const faqData = await getFaq(locale, `/faq/${params.faq}`);
 
   if (faqData.data === null || faqData.data.length === 0) {
@@ -63,7 +64,7 @@ export async function getServerSideProps({ locale, params }) {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      categoriesMenu,
+      data,
       faqData
     },
   };

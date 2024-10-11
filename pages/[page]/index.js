@@ -1,27 +1,26 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
-import getCategoryLevel1 from "@lib/strapi/getCategoryLevel1";
+import getLevel1Data from "@lib/strapi/getLevel1Data";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
 import Header from "@components/screens/header";
 import CategoryContent from "@components/screens/main-content/category-content";
 import Footer from "@components/screens/footer";
 
-const CategoryPage = ({ locale, categories, category }) => {
+const Level1Page = ({ locale, categoriesMenuData, data }) => {
   const { t } = useTranslation();
-  const [leftMenuMobile, setLeftMenuMobile] = useState(false);
+  const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
 
-  const { slug_id, articles, seo_title, seo_description } = category.data[0].attributes;
+  const { slug_id, articles, seo_title, seo_description, name, card_field_img } = data.data[0].attributes;
   const categorySlugMany = slug_id === "docs" ? "docs" : `${slug_id}s`;
-  const data = slug_id === "integration" ? articles : category.data[0].attributes[`category_${categorySlugMany}`];
 
   return (
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={seo_title}
+          title={seo_title ? seo_title : `Help Center - ONLYOFFICE`}
           description={seo_description}
         />
       </Layout.PageHead>
@@ -29,22 +28,22 @@ const CategoryPage = ({ locale, categories, category }) => {
         <Header
           t={t}
           locale={locale}
-          categories={categories}
-          leftMenuMobile={leftMenuMobile}
-          setLeftMenuMobile={setLeftMenuMobile}
+          data={categoriesMenuData}
+          leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <CategoryContent
           t={t}
           locale={locale}
-          categoryName={category.data[0].attributes.name}
-          categoryImg={category.data[0].attributes.card_field_img?.data?.attributes.url}
-          categories={data}
+          categoriesMenuData={categoriesMenuData}
+          categoryName={name}
+          categoryImg={card_field_img?.data?.attributes.url}
+          data={slug_id === "integration" ? articles : data.data[0].attributes[`category_${categorySlugMany}`]}
           categorySlug={categorySlugMany}
-          leftMenuCategories={categories}
-          leftMenuMobile={leftMenuMobile}
-          setLeftMenuMobile={setLeftMenuMobile}
+          leftMenuCategories={categoriesMenuData}
+          leftMenuIsOpen={leftMenuIsOpen}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>
@@ -55,20 +54,20 @@ const CategoryPage = ({ locale, categories, category }) => {
 };
 
 export const getServerSideProps = async ({ locale, params }) => {
-  const categories = await getCategoriesMenu(locale);
-  const category = await getCategoryLevel1(locale, params.category, true);
+  const categoriesMenuData = await getCategoriesMenu(locale);
+  const data = await getLevel1Data(locale, params.page);
 
-  if (!category.data || category.data.length === 0) {
+  if (data.data.length === 0) {
     return {
       notFound: true
     };
   }
 
-  if (category.data[0].attributes.slug_id === "integration") {
+  if (data.data[0].attributes.slug_id === "integration") {
     const updatedArticles = [];
     const indxToRemove = new Set();
 
-    category.data[0].attributes.articles.data.forEach((article, index, arr) => {
+    data.data[0].attributes.articles.data.forEach((article, index, arr) => {
       const { url } = article.attributes;
       const docspaceUrl = url.replace('.aspx', '-docspace.aspx');
       const docspaceArticleIndex = arr.findIndex(a => a.attributes.url === docspaceUrl);
@@ -80,17 +79,17 @@ export const getServerSideProps = async ({ locale, params }) => {
       updatedArticles.push(article);
     });
 
-    category.data[0].attributes.articles.data = updatedArticles.filter((_, index) => !indxToRemove.has(index));
+    data.data[0].attributes.articles.data = updatedArticles.filter((_, index) => !indxToRemove.has(index));
   }
 
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      categories,
-      category
+      categoriesMenuData,
+      data
     },
   };
 };
 
-export default CategoryPage;
+export default Level1Page;
