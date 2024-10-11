@@ -1,5 +1,6 @@
 import StyledLeftMenu from "./styled-left-menu";
 import { forwardRef, useState, useEffect, useRef, useCallback } from "react";
+import { useRouter } from "next/router";
 import { Scrollbar } from "react-scrollbars-custom";
 import InternalLink from "@components/common/internal-link";
 import SearchArea from "@components/screens/common/search-area";
@@ -14,6 +15,7 @@ const LeftMenu = forwardRef(({
   setLeftMenuIsOpen,
   leftMenuData
 }, ref) => {
+  const router = useRouter();
   const [scrollVisible, setScrollVisible] = useState(false);
   const timeoutRef = useRef(null);
 
@@ -67,9 +69,9 @@ const LeftMenu = forwardRef(({
               <TreeView data={leftMenuData} />
             ): null}
             <ul className="left-menu-info">
-              <li><InternalLink href="/glossary.aspx" className="glossary" label={t("Glossary")} /></li>
-              <li><InternalLink href="/video.aspx" className="video" label={t("Video")} /></li>
-              <li><InternalLink href="/faq/faq.aspx" className="faq" label={t("FAQ")} /></li>
+              <li><InternalLink href="/glossary.aspx" className={`glossary ${router.pathname === "/glossary.aspx" ? "active" : ""}`} label={t("Glossary")} /></li>
+              <li><InternalLink href="/video.aspx" className={`video ${router.pathname === "/video.aspx" ? "active" : ""}`} label={t("Video")} /></li>
+              <li><InternalLink href="/faq/faq.aspx" className={`faq ${`/faq/${router.query.faq}` === "/faq/faq.aspx" ? "active" : ""}`} label={t("FAQ")} /></li>
             </ul>
           </Scrollbar>
         </div>

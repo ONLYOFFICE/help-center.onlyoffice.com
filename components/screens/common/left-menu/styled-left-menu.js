@@ -164,6 +164,10 @@ const StyledLeftMenu = styled.div`
         }
       }
 
+      &.active {
+        color: ${globalColors.orangeMain};
+      }
+
       &:hover {
         color: ${globalColors.orangeMain};
       }

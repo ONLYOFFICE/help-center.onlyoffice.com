@@ -56,7 +56,7 @@ const TreeViewItems = ({ level1Item, level1Index, slug_id, levelIndex, pathName,
                                         <ul>
                                           {level4Item.attributes[`article_${slug_id}`]?.data?.sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.title).localeCompare(b.attributes.title)).map((articleItem, articleIndex) => (
                                             <li key={articleIndex}>
-                                              <InternalLink className="left-menu-level-link left-menu-level-4-link" href={articleItem.attributes.url} label={articleItem.attributes.title} />
+                                              <InternalLink className="left-menu-level-link left-menu-level-4-article-link" href={articleItem.attributes.url} label={articleItem.attributes.title} />
                                             </li>
                                           ))}
                                         </ul>
@@ -71,7 +71,7 @@ const TreeViewItems = ({ level1Item, level1Index, slug_id, levelIndex, pathName,
                             </li>
                           ))}
                           {level2Item.attributes[`article_${slug_id}`]?.data?.sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.name || a.attributes.title).localeCompare(b.attributes.name || b.attributes.title)).map((level3Item, level3Index) => (
-                            <InternalLink key={level3Index} className={`left-menu-level-link left-menu-level-3-link ${pathName === level3Item.attributes.url ? "active" : ""}`} href={level3Item.attributes.url} label={level3Item.attributes.name || level3Item.attributes.title} />
+                            <InternalLink key={level3Index} className={`left-menu-level-link left-menu-level-3-link ${pathName === level3Item.attributes.url ? "active" : ""}`} href={level3Item.attributes.url} label={level3Item.attributes.name || level3Item.attributes.level_4_title || level3Item.attributes.title} />
                           ))}
                         </ul>
                       )}
