@@ -55,17 +55,17 @@ const LeftMenu = forwardRef(({
             {headings && headings.length != 0 && pageName &&
               <Heading className="left-menu-title" level={6} label={pageName} />
             }
-            <ul className={`left-menu-items ${headings?.length > 0 ? "left-menu-articles" : ""}`}>
-              {headings?.length > 0 ? (
-                headings.map((item, index) => (
+            {headings?.length > 0 ? (
+              <ul className="left-menu-items left-menu-articles">
+                {headings.map((item, index) => (
                   <li className={index === 0 ? "active" : ""} key={index}>
                     <InternalLink onClick={() => setLeftMenuIsOpen(false)} href={`#${item.id}`} label={item.text} />
                   </li>
-                ))
-              ) : leftMenuData ? (
-                <TreeView data={leftMenuData} />
-              ) : null}
-            </ul>
+                ))}
+              </ul>
+            ) : leftMenuData.data?.length > 0 ? (
+              <TreeView data={leftMenuData} />
+            ): null}
             <ul className="left-menu-info">
               <li><InternalLink href="/glossary.aspx" className="glossary" label={t("Glossary")} /></li>
               <li><InternalLink href="/video.aspx" className="video" label={t("Video")} /></li>

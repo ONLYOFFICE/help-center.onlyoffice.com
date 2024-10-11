@@ -43,7 +43,7 @@ const TreeView = ({ data }) => {
   };
 
   return (
-    <StyledTreeView>
+    <StyledTreeView className="left-menu-treeview">
       <ul className="left-menu-wrapper">
         {data?.data?.sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.name || a.attributes.title).localeCompare(b.attributes.name || b.attributes.title)).map((item, index) => {
           const slug_id = `${item.attributes?.slug_id === "docs" ? "docs" : `${item.attributes?.slug_id}s`}`;

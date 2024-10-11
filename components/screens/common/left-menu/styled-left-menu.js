@@ -54,7 +54,12 @@ const StyledLeftMenu = styled.div`
     }
   }
 
+  .left-menu-treeview {
+    margin-bottom: 32px;
+  }
+
   .left-menu-items {
+    margin-bottom: 32px;
     list-style-type: none;
 
     > li {
@@ -122,7 +127,6 @@ const StyledLeftMenu = styled.div`
   }
 
   .left-menu-info {
-    margin-top: 32px;
     list-style-type: none;
 
     li {
