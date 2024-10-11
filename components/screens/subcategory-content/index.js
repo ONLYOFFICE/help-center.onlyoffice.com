@@ -134,7 +134,7 @@ const SubCategoryContent = ({
             <StyledRawHtml onClick={handleClick} ref={containerRef} className="subcategory-description">{ReactHtmlParser(pageDescription)}</StyledRawHtml>
           }
           <div ref={contentRef}>
-            {(isLevel4 || (categoryData.length > 0 && articleData.length > 0)) ? (
+            {(isLevel4 || (categoryData?.length > 0 && articleData?.length > 0)) ? (
               <>
                 {categoryData?.length > 0 ? (
                   articleData?.length > 0 && (
