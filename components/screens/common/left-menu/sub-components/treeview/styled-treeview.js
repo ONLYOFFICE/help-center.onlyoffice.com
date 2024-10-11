@@ -114,7 +114,11 @@ const StyledTreeView = styled.div`
     }
 
     &.left-menu-level-4-link {
-      padding-left: 42px;
+      padding-left: 43px;
+    }
+
+    &.left-menu-level-4-article-link {
+      padding-left: 57px;
     }
   }
 `
