@@ -63,7 +63,7 @@ const LeftMenu = forwardRef(({
                   </li>
                 ))}
               </ul>
-            ) : leftMenuData.data?.length > 0 ? (
+            ) : leftMenuData?.data?.length > 0 ? (
               <TreeView data={leftMenuData} />
             ): null}
             <ul className="left-menu-info">
