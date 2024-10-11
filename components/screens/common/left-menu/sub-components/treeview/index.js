@@ -52,7 +52,7 @@ const TreeView = ({ data }) => {
             <li className="left-menu-category-item" key={index}>
               <button
                 onClick={() => toggleCategoryAccordion(slug_id)}
-                className={`left-menu-category-btn ${categoryIndex[slug_id] ? "active" : ""}`}
+                className={`left-menu-category-btn ${categoryIndex[slug_id] || `/${router.query.page}` === item.attributes.url ? "active" : ""}`}
               >
                 {item.attributes.name}
               </button>
