@@ -27,7 +27,7 @@ const Level4Page = ({ locale, categoriesMenuData, data, currentCategoryData }) =
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={articleData.seo_title || currentCategoryData?.seo_title}
+          title={articleData.seo_title || categoryData.seo_title || (currentCategoryData.name ? `${currentCategoryData.name} - ONLYOFFICE` : articleData.title ? `${articleData.title} - ONLYOFFICE` : `Help Center - ONLYOFFICE`)}
           description={articleData.seo_description || currentCategoryData?.seo_description}
         />
       </Layout.PageHead>

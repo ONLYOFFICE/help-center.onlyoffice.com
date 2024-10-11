@@ -134,7 +134,7 @@ const SubCategoryContent = ({
             <StyledRawHtml onClick={handleClick} ref={containerRef} className="subcategory-description">{ReactHtmlParser(pageDescription)}</StyledRawHtml>
           }
           <div ref={contentRef}>
-            {isLevel4 ? (
+            {(isLevel4 || (categoryData.length > 0 && articleData.length > 0)) ? (
               <>
                 {categoryData?.length > 0 ? (
                   articleData?.length > 0 && (
@@ -156,7 +156,12 @@ const SubCategoryContent = ({
                 )}
                 {categoryData?.sort(sortItems).map((item, index) => (
                   <div id={`${item.attributes.name.replace(/ /g, "_").toLowerCase()}_block`} className="subcategory-block" key={index}>
-                    <Heading className="subcategory-block-title" level={5} label={item.attributes.name} />
+                    <Heading className="subcategory-block-title" level={5}>
+                      {item.attributes.icon?.data?.attributes.url && (
+                        <img src={item.attributes.icon.data.attributes.url} alt={item.attributes.level_4_title || item.attributes.name} />
+                      )}
+                      {item.attributes.name}
+                    </Heading>
                     <ul className="subcategory-block-list">
                       {item.attributes[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`]?.data.sort(sortItems).map((item, index) => (
                         <li key={index}>
