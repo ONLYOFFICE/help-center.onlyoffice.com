@@ -30,8 +30,8 @@ const LanguageSelector = ({ locale }) => {
         <img
           className="flag-image"
           src={`https://static-helpcenter.onlyoffice.com/images/flags/${locale}.react.svg`}
-          width="24px"
-          height="24px"
+          width="24"
+          height="24"
           alt="flag"
         />
       </button>
