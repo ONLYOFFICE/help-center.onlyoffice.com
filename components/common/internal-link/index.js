@@ -57,7 +57,6 @@ InternalLink.defaultProps = {
   href: undefined,
   title: undefined,
   rel: "noopener noreferrer",
-  tabIndex: -1,
 };
 
 export default InternalLink;

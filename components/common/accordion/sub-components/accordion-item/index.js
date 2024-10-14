@@ -20,10 +20,10 @@ const AccordionItem = ({
   }, [isExpanded]);
   return (
     <StyledAccordionItem isMain={isMain} {...rest}>
-      <div className="accordion" onClick={() => setActive(!active)}>
+      <button className="accordion" onClick={() => setActive(!active)}>
         <div className="accordion-icon">{!isMobMenu && (!active ? "+" : "−")}</div>
         <Heading className="accordion-heading" level={4} label={heading} />
-      </div>
+      </button>
       <div
         ref={content}
         style={{

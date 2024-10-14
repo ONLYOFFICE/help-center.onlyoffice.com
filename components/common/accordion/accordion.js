@@ -33,7 +33,6 @@ Accordion.propTypes = {
 
 Accordion.defaultProps = {
   level: 4,
-  tabIndex: -1,
 };
 
 export default Accordion;

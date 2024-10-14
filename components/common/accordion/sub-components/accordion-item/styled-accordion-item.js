@@ -17,10 +17,12 @@ const StyledAccordionItem = styled.div`
   .accordion {
     display: flex;
     justify-content: flex-start;
+    border: none;
     cursor: pointer;
-    outline: none;
     align-items: center;
     gap: ${(props) => (props.isMain ? "16px" : "10px")};
+    width: 100%;
+    background-color: transparent;
   }
 
   .accordion-icon {

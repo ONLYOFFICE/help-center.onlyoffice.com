@@ -5,15 +5,12 @@ const StyledButton = styled.button`
   overflow: ${(props) => props.theme.button.overflow};
   text-overflow: ${(props) => props.theme.button.textOverflow};
   white-space: ${(props) => props.theme.button.whiteSpace};
-  outline: ${(props) => props.theme.button.outline};
   box-sizing: ${(props) => props.theme.button.boxSizing};
   margin: ${(props) => props.theme.button.margin};
   display: ${(props) => props.theme.button.display};
   text-align: ${(props) => props.theme.button.textAlign};
   text-decoration: ${(props) => props.theme.button.textDecoration};
 
-  outline: none;
-  outline-color: none;
   -webkit-tap-highlight-color: transparent;
 
   letter-spacing: normal;
