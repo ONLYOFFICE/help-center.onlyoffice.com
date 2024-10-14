@@ -2,6 +2,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Cookies from "universal-cookie";
 import getLevel4Data from "@lib/strapi/getLevel4Data";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
@@ -88,7 +89,7 @@ const Level4Page = ({ locale, categoriesMenuData, data, currentCategoryData }) =
   );
 };
 
-export const getServerSideProps = async ({ locale, params }) => {
+export const getServerSideProps = async ({ locale, params, req }) => {
   const pathUrl = `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}`;
   const data = await getLevel4Data(locale, params.page, pathUrl);
   const currentCategoryData = data.data.filter(item => item.attributes.slug_id === params.page)[0]?.attributes?.[`category_${params.page === "docs" ? "docs" : `${params.page}s`}`]?.data.map(categoryItem => categoryItem?.attributes?.[`level_2_${params.page === "docs" ? "docs" : `${params.page}s`}`]?.data.find(level2Item => level2Item.attributes.url === `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}`)?.attributes?.[`level_3_${params.page === "docs" ? "docs" : `${params.page}s`}`]?.data.find(level3Item => level3Item.attributes.url === pathUrl)).find(Boolean);
@@ -97,6 +98,14 @@ export const getServerSideProps = async ({ locale, params }) => {
     return {
       notFound: true
     };
+  }
+
+  const cookies = new Cookies(req.headers.cookie, { path: "/" });
+  if (cookies.get("neverShowTranslators") === "never" && data.data[0]?.attributes.content) {
+    data.data[0].attributes.content = data.data[0].attributes.content.replace(
+      /<div class="bringattention translator" id="translatorAttention_block" style="display: block;">/g,
+      '<div class="bringattention translator" id="translatorAttention_block" style="display: none;">'
+    );
   }
 
   return {
