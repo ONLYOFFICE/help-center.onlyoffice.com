@@ -167,7 +167,7 @@ const SubCategoryContent = ({
                 ))}
               </>
             ) : articleData?.length > 0 ? (
-              <SubCategoryItem links={articleData} />
+              <SubCategoryItem links={articleData} sortItems={sortItems} />
             ) : (
               <></>
             )}
