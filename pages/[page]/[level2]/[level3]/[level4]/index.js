@@ -78,7 +78,6 @@ const Level4Page = ({ locale, categoriesMenuData, data, currentCategoryData }) =
             leftMenuIsOpen={leftMenuIsOpen}
             setLeftMenuIsOpen={setLeftMenuIsOpen}
             video={currentCategoryData?.video}
-            isLevel4={true}
           />
         )}
       </Layout.SectionMain>
