@@ -2,6 +2,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Cookies from "universal-cookie";
 import getLevel4Data from "@lib/strapi/getLevel4Data";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
@@ -20,7 +21,7 @@ const Level4Page = ({ locale, categoriesMenuData, data, currentCategoryData }) =
   const categorySlugMany = categorySlug === "docs" ? "docs" : `${categorySlug}s`;
   const articleData = data.data?.[0]?.attributes;
   const categoryData = data.data.filter(item => item.attributes.slug_id === categorySlug)[0]?.attributes;
-  const categoryLevel2Data = categoryData?.[`category_${categorySlugMany}`]?.data.filter(item => item.attributes.url === `/${router.query.page}/${router.query.level2}`)[0].attributes;
+  const categoryLevel2Data = categoryData?.[`category_${categorySlugMany}`]?.data.filter(item => item.attributes.url === `/${router.query.page}/${router.query.level2}`)[0]?.attributes;
   const categoryLevel3Data = categoryData?.[`category_${categorySlugMany}`]?.data.map(categoryItem => categoryItem?.attributes?.[`level_2_${categorySlugMany}`]?.data.find(categoryLevel2Item => categoryLevel2Item.attributes.url === `/${router.query.page}/${router.query.level2}/${router.query.level3}`)).find(Boolean)?.attributes;
 
   return (
@@ -75,8 +76,8 @@ const Level4Page = ({ locale, categoriesMenuData, data, currentCategoryData }) =
             articleData={currentCategoryData?.[`article_${categorySlugMany}`]?.data}
             leftMenuData={data}
             leftMenuIsOpen={leftMenuIsOpen}
+            setLeftMenuIsOpen={setLeftMenuIsOpen}
             video={currentCategoryData?.video}
-            isLevel4={true}
           />
         )}
       </Layout.SectionMain>
@@ -87,7 +88,7 @@ const Level4Page = ({ locale, categoriesMenuData, data, currentCategoryData }) =
   );
 };
 
-export const getServerSideProps = async ({ locale, params }) => {
+export const getServerSideProps = async ({ locale, params, req }) => {
   const pathUrl = `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}`;
   const data = await getLevel4Data(locale, params.page, pathUrl);
   const currentCategoryData = data.data.filter(item => item.attributes.slug_id === params.page)[0]?.attributes?.[`category_${params.page === "docs" ? "docs" : `${params.page}s`}`]?.data.map(categoryItem => categoryItem?.attributes?.[`level_2_${params.page === "docs" ? "docs" : `${params.page}s`}`]?.data.find(level2Item => level2Item.attributes.url === `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}`)?.attributes?.[`level_3_${params.page === "docs" ? "docs" : `${params.page}s`}`]?.data.find(level3Item => level3Item.attributes.url === pathUrl)).find(Boolean);
@@ -96,6 +97,14 @@ export const getServerSideProps = async ({ locale, params }) => {
     return {
       notFound: true
     };
+  }
+
+  const cookies = new Cookies(req.headers.cookie, { path: "/" });
+  if (cookies.get("neverShowTranslators") === "never" && data.data[0]?.attributes.content) {
+    data.data[0].attributes.content = data.data[0].attributes.content.replace(
+      /<div class="bringattention translator" id="translatorAttention_block" style="display: block;">/g,
+      '<div class="bringattention translator" id="translatorAttention_block" style="display: none;">'
+    );
   }
 
   return {

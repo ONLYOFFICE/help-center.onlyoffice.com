@@ -2,14 +2,12 @@ import styled from "styled-components";
 import globalColors from "@components/utils/global-colors";
 
 const StyledBreadcrumbs = styled.ul`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
   font-size: 13px;
   margin: 0 0 24px;
   list-style-type: none;
 
   li {
+    display: inline;
     line-height: 18px;
 
     &:not(:last-child) {
@@ -18,8 +16,7 @@ const StyledBreadcrumbs = styled.ul`
   }
 
   .breadcrumb-link {
-    align-items: center;
-    display: inline-flex;
+    display: inline-block;
     position: relative;
     color: ${globalColors.grayTextInput};
     text-decoration: none;
@@ -40,9 +37,9 @@ const StyledBreadcrumbs = styled.ul`
     }
 
     &.last {
+      display: inline;
       color: ${globalColors.orangeMain};
       line-height: 133%;
-      display: inline-flex;
 
       &:after {
         display: none;

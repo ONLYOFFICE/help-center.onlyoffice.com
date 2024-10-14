@@ -27,8 +27,4 @@ ScrollToTopButton.propTypes = {
   className: PropTypes.string,
 };
 
-ScrollToTopButton.defaultProps = {
-  tabIndex: -1,
-};
-
 export default ScrollToTopButton;

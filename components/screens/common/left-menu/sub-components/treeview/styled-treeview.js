@@ -106,7 +106,7 @@ const StyledTreeView = styled.div`
     }
 
     &.left-menu-level-2-link {
-      padding-left: 29px;
+      padding-left: 14px;
     }
 
     &.left-menu-level-3-link {

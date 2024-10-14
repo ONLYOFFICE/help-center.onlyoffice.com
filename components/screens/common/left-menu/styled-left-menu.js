@@ -42,6 +42,7 @@ const StyledLeftMenu = styled.div`
   }
 
   .left-menu-title {
+    margin-bottom: 8px;
     padding: 8px 0;
     font-size: 14px;
     font-weight: 700;

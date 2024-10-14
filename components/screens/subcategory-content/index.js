@@ -32,9 +32,9 @@ const SubCategoryContent = ({
   level3CategoryName,
   level3CategoryUrl,
   leftMenuIsOpen,
+  setLeftMenuIsOpen,
   video,
   pageDescription,
-  isLevel4,
   leftMenuData,
   tags
 }) => {
@@ -103,6 +103,7 @@ const SubCategoryContent = ({
           ref={leftMenuRef}
           leftMenuData={leftMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
         <div className="wrapper">
           <Breadcrumbs
@@ -134,61 +135,39 @@ const SubCategoryContent = ({
             <StyledRawHtml onClick={handleClick} ref={containerRef} className="subcategory-description">{ReactHtmlParser(pageDescription)}</StyledRawHtml>
           }
           <div ref={contentRef}>
-            {(isLevel4 || (categoryData?.length > 0 && articleData?.length > 0)) ? (
+            {categoryData?.length > 0 ? (
               <>
-                {categoryData?.length > 0 ? (
-                  articleData?.length > 0 && (
-                    <ul className="subcategory-articles">
-                      {articleData.sort(sortItems).map((item, index) => (
-                        <li key={index}>
-                          <InternalLink href={item.attributes.url}>
-                            {item.attributes.icon?.data?.attributes.url && (
-                              <img src={item.attributes.icon?.data?.attributes.url} alt={item.attributes.level_4_title || item.attributes.title} />
-                            )}
-                            {item.attributes.level_4_title || item.attributes.title}
-                          </InternalLink>
-                        </li>
-                      ))}
-                    </ul>
-                  )
-                ) : (
-                  <SubCategoryItem links={articleData} />
+                {articleData?.length > 0 && (
+                  <ul className="subcategory-articles">
+                    {articleData.sort(sortItems).map((item, index) => (
+                      <li key={index}>
+                        <InternalLink href={item.attributes.url}>
+                          {item.attributes.icon?.data?.attributes.url && (
+                            <img src={item.attributes.icon?.data?.attributes.url} alt={item.attributes.level_4_title || item.attributes.title} />
+                          )}
+                          {item.attributes.level_4_title || item.attributes.title}
+                        </InternalLink>
+                      </li>
+                    ))}
+                  </ul>
                 )}
-                {categoryData?.sort(sortItems).map((item, index) => (
-                  <div id={`${item.attributes.name.replace(/ /g, "_").toLowerCase()}_block`} className="subcategory-block" key={index}>
-                    <Heading className="subcategory-block-title" level={5}>
-                      {item.attributes.icon?.data?.attributes.url && (
-                        <img src={item.attributes.icon.data.attributes.url} alt={item.attributes.level_4_title || item.attributes.name} />
-                      )}
-                      {item.attributes.name}
-                    </Heading>
-                    <ul className="subcategory-block-list">
-                      {item.attributes[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`]?.data.sort(sortItems).map((item, index) => (
-                        <li key={index}>
-                          <InternalLink href={item.attributes.url} label={item.attributes.title} />
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                {categoryData.sort(sortItems).map((item, index) => (
+                  <SubCategoryItem
+                    headingName={item.attributes.name}
+                    headingIcon={item.attributes.icon?.data?.attributes.url || item.attributes.category_pic?.data?.attributes.url}
+                    id={`${item.attributes.name.replace(/ /g, "_").toLowerCase()}_block`}
+                    links={[
+                      ...(item.attributes[`level_4_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`]?.data || []),
+                      ...(item.attributes[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`]?.data || [])
+                    ]}
+                    categorySlug={categorySlug}
+                    sortItems={sortItems}
+                    key={index}
+                  />
                 ))}
               </>
-            ) : categoryData?.some(item => item.attributes.hasOwnProperty("name")) ? (
-              categoryData.sort(sortItems).map((item, index) => (
-                <SubCategoryItem
-                  headingName={item.attributes.name}
-                  headingIcon={item.attributes.icon?.data?.attributes.url || item.attributes.category_pic?.data?.attributes.url}
-                  id={`${item.attributes.name.replace(/ /g, "_").toLowerCase()}_block`}
-                  links={[
-                    ...(item.attributes[`level_4_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`]?.data || []),
-                    ...(item.attributes[`article_${categorySlug === "docs" ? "docs" : `${categorySlug}s`}`]?.data || [])
-                  ]}
-                  categorySlug={categorySlug}
-                  sortItems={sortItems}
-                  key={index}
-                />
-              ))
             ) : articleData?.length > 0 ? (
-              <SubCategoryItem links={articleData} />
+              <SubCategoryItem links={articleData} sortItems={sortItems} />
             ) : (
               <></>
             )}

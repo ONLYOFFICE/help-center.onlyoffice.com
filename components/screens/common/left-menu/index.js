@@ -57,7 +57,7 @@ const LeftMenu = forwardRef(({
             {headings && headings.length != 0 && pageName &&
               <Heading className="left-menu-title" level={6} label={pageName} />
             }
-            {headings?.length > 0 ? (
+            {headings?.length > 1 ? (
               <ul className="left-menu-items left-menu-articles">
                 {headings.map((item, index) => (
                   <li className={index === 0 ? "active" : ""} key={index}>
@@ -66,7 +66,7 @@ const LeftMenu = forwardRef(({
                 ))}
               </ul>
             ) : leftMenuData?.data?.length > 0 ? (
-              <TreeView data={leftMenuData} />
+              <TreeView data={leftMenuData} setLeftMenuIsOpen={setLeftMenuIsOpen} />
             ): null}
             <ul className="left-menu-info">
               <li><InternalLink href="/glossary.aspx" className={`glossary ${router.pathname === "/glossary.aspx" ? "active" : ""}`} label={t("Glossary")} /></li>

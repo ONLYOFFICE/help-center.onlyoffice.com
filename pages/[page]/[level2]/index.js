@@ -21,8 +21,8 @@ const Level2Page = ({ locale, data, categoriesMenuData, categorySlug, currentCat
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={articleData.seo_title || categoryData.seo_title || (categoryData.name ? `${categoryData.name} - ONLYOFFICE` : articleData.title ? `${articleData.title} - ONLYOFFICE` : `Help Center - ONLYOFFICE`)}
-          description={articleData.seo_description || categoryData.seo_description || t("metaDescriptionOgIndexPage")}
+          title={articleData.seo_title || currentCategoryData.seo_title || (currentCategoryData.name ? `${currentCategoryData.name} - ONLYOFFICE` : articleData.title ? `${articleData.title} - ONLYOFFICE` : `Help Center - ONLYOFFICE`)}
+          description={articleData.seo_description || currentCategoryData.seo_description || t("metaDescriptionOgIndexPage")}
         />
       </Layout.PageHead>
       <Layout.PageHeader>
@@ -61,6 +61,7 @@ const Level2Page = ({ locale, data, categoriesMenuData, categorySlug, currentCat
               leftMenuData={data}
               leftMenuLevel={3}
               leftMenuIsOpen={leftMenuIsOpen}
+              setLeftMenuIsOpen={setLeftMenuIsOpen}
               articleData={currentCategoryData?.[`article_${categorySlugMany}`].data}
             />
           ) : (
@@ -75,6 +76,7 @@ const Level2Page = ({ locale, data, categoriesMenuData, categorySlug, currentCat
               leftMenuData={data}
               leftMenuIsOpen={leftMenuIsOpen}
               pageDescription={currentCategoryData?.description}
+              setLeftMenuIsOpen={setLeftMenuIsOpen}
             />
           )
         )}

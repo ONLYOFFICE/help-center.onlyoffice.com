@@ -23,11 +23,9 @@ const Header = ({ t, locale, data, isMain, leftMenuIsOpen, setLeftMenuIsOpen }) 
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (menuMobile || leftMenuIsOpen) {
-        if (!event.target.closest(".nav") && !event.target.closest(".left-menu") && !event.target.closest(".header-mobile-toggle-btn") && !event.target.closest(".header-mobile-menu-btn")) {
-          setMenuMobile(false);
-          setLeftMenuIsOpen(false);
-        }
+      if (!event.target.closest(".nav, .left-menu, .header-mobile-toggle-btn, .header-mobile-menu-btn")) {
+        setMenuMobile(false);
+        setLeftMenuIsOpen(false);
       }
     };
 
@@ -60,7 +58,10 @@ const Header = ({ t, locale, data, isMain, leftMenuIsOpen, setLeftMenuIsOpen }) 
     <StyledHeader locale={locale}>
       <div className="header-container">
         <button
-          onClick={() => setLeftMenuIsOpen(true)}
+          onClick={() => {
+            setLeftMenuIsOpen(true)
+            setMenuMobile(false)
+          }}
           className={`header-mobile-toggle-btn ${isMain ? "is-main" : ""}`}
         >
         </button>
