@@ -66,7 +66,7 @@ const LeftMenu = forwardRef(({
                 ))}
               </ul>
             ) : leftMenuData?.data?.length > 0 ? (
-              <TreeView data={leftMenuData} />
+              <TreeView data={leftMenuData} setLeftMenuIsOpen={setLeftMenuIsOpen} />
             ): null}
             <ul className="left-menu-info">
               <li><InternalLink href="/glossary.aspx" className={`glossary ${router.pathname === "/glossary.aspx" ? "active" : ""}`} label={t("Glossary")} /></li>

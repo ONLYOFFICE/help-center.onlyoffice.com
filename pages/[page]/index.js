@@ -44,6 +44,7 @@ const Level1Page = ({ locale, categoriesMenuData, data }) => {
           categorySlug={categorySlugMany}
           leftMenuCategories={categoriesMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>

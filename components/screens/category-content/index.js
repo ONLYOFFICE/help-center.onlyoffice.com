@@ -29,6 +29,7 @@ const CategoryContent = ({
   leftMenuLevel,
   categorySlug,
   leftMenuIsOpen,
+  setLeftMenuIsOpen,
   tags,
   leftMenuData
 }) => {
@@ -90,6 +91,7 @@ const CategoryContent = ({
           t={t}
           leftMenuData={leftMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
         <div className="wrapper" ref={catRef}>
           <Breadcrumbs

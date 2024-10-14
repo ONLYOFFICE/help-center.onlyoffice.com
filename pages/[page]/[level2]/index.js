@@ -61,6 +61,7 @@ const Level2Page = ({ locale, data, categoriesMenuData, categorySlug, currentCat
               leftMenuData={data}
               leftMenuLevel={3}
               leftMenuIsOpen={leftMenuIsOpen}
+              setLeftMenuIsOpen={setLeftMenuIsOpen}
               articleData={currentCategoryData?.[`article_${categorySlugMany}`].data}
             />
           ) : (
@@ -75,6 +76,7 @@ const Level2Page = ({ locale, data, categoriesMenuData, categorySlug, currentCat
               leftMenuData={data}
               leftMenuIsOpen={leftMenuIsOpen}
               pageDescription={currentCategoryData?.description}
+              setLeftMenuIsOpen={setLeftMenuIsOpen}
             />
           )
         )}

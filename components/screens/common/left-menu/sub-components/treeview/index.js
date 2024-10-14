@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import InternalLink from "@components/common/internal-link";
 import TreeViewItems from "./sub-components/treeview-items";
 
-const TreeView = ({ data }) => {
+const TreeView = ({ data, setLeftMenuIsOpen }) => {
   const router = useRouter();
   const [pathName, setPathName] = useState("");
   const [categoryIndex, setCategoryIndex] = useState({
@@ -19,6 +19,10 @@ const TreeView = ({ data }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       setPathName(`${window.location.pathname}${window.location.hash}`);
+    }
+
+    if (window.innerWidth <= 1024) {
+      setLeftMenuIsOpen(false);
     }
   }, [router]);
 

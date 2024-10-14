@@ -75,6 +75,7 @@ const Level4Page = ({ locale, categoriesMenuData, data, currentCategoryData }) =
             articleData={currentCategoryData?.[`article_${categorySlugMany}`]?.data}
             leftMenuData={data}
             leftMenuIsOpen={leftMenuIsOpen}
+            setLeftMenuIsOpen={setLeftMenuIsOpen}
             video={currentCategoryData?.video}
             isLevel4={true}
           />

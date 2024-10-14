@@ -32,6 +32,7 @@ const SubCategoryContent = ({
   level3CategoryName,
   level3CategoryUrl,
   leftMenuIsOpen,
+  setLeftMenuIsOpen,
   video,
   pageDescription,
   isLevel4,
@@ -103,6 +104,7 @@ const SubCategoryContent = ({
           ref={leftMenuRef}
           leftMenuData={leftMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
         <div className="wrapper">
           <Breadcrumbs

@@ -78,6 +78,7 @@ const Level3Page = ({ locale, categoriesMenuData, data, categoryLevel3Data, cate
               leftMenuLevel={4}
               pageDescription={categoryLevel3Data.description}
               leftMenuIsOpen={leftMenuIsOpen}
+              setLeftMenuIsOpen={setLeftMenuIsOpen}
               articleData={categoryLevel3Data[`article_${categorySlugMany}`]?.data}
               tags={categoryLevel2Data?.tags}
             />
@@ -96,6 +97,7 @@ const Level3Page = ({ locale, categoriesMenuData, data, categoryLevel3Data, cate
               leftMenuData={data}
               articleData={categoryLevel3Data?.[`article_${categorySlugMany}`]?.data}
               leftMenuIsOpen={leftMenuIsOpen}
+              setLeftMenuIsOpen={setLeftMenuIsOpen}
               pageDescription={categoryLevel3Data?.description || categoryArticleData?.description}
               tags={categoryArticleData?.tags}
             />
