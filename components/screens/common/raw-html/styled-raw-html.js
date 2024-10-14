@@ -15,6 +15,7 @@ const StyledRawHtml = styled.div`
     position: relative;
     font-size: 14px;
     line-height: 21px;
+    word-break: break-word;
 
     p {
       margin: 8px 0;
