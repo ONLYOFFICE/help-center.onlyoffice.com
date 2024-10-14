@@ -45,7 +45,6 @@ const HeadSEO = ({
             />
           );
         })}
-        <meta name="theme-light" />
       </Head>
       <Script
         id="googletagmanager"
