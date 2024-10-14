@@ -20,7 +20,7 @@ const Level1Page = ({ locale, categoriesMenuData, data }) => {
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={seo_title ? seo_title : `Help Center - ONLYOFFICE`}
+          title={seo_title ? seo_title : `${name} - ONLYOFFICE`}
           description={seo_description || t("metaDescriptionOgIndexPage")}
         />
       </Layout.PageHead>
