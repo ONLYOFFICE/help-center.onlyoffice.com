@@ -20,7 +20,7 @@ const Level4Page = ({ locale, categoriesMenuData, data, currentCategoryData }) =
   const categorySlugMany = categorySlug === "docs" ? "docs" : `${categorySlug}s`;
   const articleData = data.data?.[0]?.attributes;
   const categoryData = data.data.filter(item => item.attributes.slug_id === categorySlug)[0]?.attributes;
-  const categoryLevel2Data = categoryData?.[`category_${categorySlugMany}`]?.data.filter(item => item.attributes.url === `/${router.query.page}/${router.query.level2}`)[0].attributes;
+  const categoryLevel2Data = categoryData?.[`category_${categorySlugMany}`]?.data.filter(item => item.attributes.url === `/${router.query.page}/${router.query.level2}`)[0]?.attributes;
   const categoryLevel3Data = categoryData?.[`category_${categorySlugMany}`]?.data.map(categoryItem => categoryItem?.attributes?.[`level_2_${categorySlugMany}`]?.data.find(categoryLevel2Item => categoryLevel2Item.attributes.url === `/${router.query.page}/${router.query.level2}/${router.query.level3}`)).find(Boolean)?.attributes;
 
   return (

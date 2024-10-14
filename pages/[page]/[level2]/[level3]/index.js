@@ -68,18 +68,18 @@ const Level3Page = ({ locale, categoriesMenuData, data, categoryLevel3Data, cate
               t={t}
               locale={locale}
               categorySlug={categorySlug}
-              categoryName={categoryData.name}
-              categoryUrl={categoryData.url}
-              level2CategoryName={categoryLevel2Data.name}
-              level2CategoryUrl={categoryLevel2Data.url}
-              pageName={categoryLevel3Data.name}
+              categoryName={categoryData?.name}
+              categoryUrl={categoryData?.url}
+              level2CategoryName={categoryLevel2Data?.name}
+              level2CategoryUrl={categoryLevel2Data?.url}
+              pageName={categoryLevel3Data?.name}
               categoryData={categoryLevel3Data[`level_3_${categorySlugMany}`]?.data}
               leftMenuData={data}
               leftMenuLevel={4}
-              pageDescription={categoryLevel3Data.description}
+              pageDescription={categoryLevel3Data?.description}
               leftMenuIsOpen={leftMenuIsOpen}
               setLeftMenuIsOpen={setLeftMenuIsOpen}
-              articleData={categoryLevel3Data[`article_${categorySlugMany}`]?.data}
+              articleData={categoryLevel3Data?.[`article_${categorySlugMany}`]?.data}
               tags={categoryLevel2Data?.tags}
             />
           ) : (
