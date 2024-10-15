@@ -65,7 +65,7 @@ const Level4Page = ({ locale, categoriesMenuData, data, currentCategoryData }) =
             t={t}
             categorySlug={categorySlug}
             categoryName={categoryData?.name}
-            categoryUrl={categoryData?.name}
+            categoryUrl={categoryData?.url}
             level2CategoryName={categoryLevel2Data?.name}
             level2CategoryUrl={categoryLevel2Data?.url}
             level3CategoryName={categoryLevel3Data?.name}
