@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Base } from "@components/themes";
+import globalColors from "@components/utils/global-colors";
 
 const StyledButton = styled.button`
   overflow: ${(props) => props.theme.button.overflow};
@@ -37,7 +38,7 @@ const StyledButton = styled.button`
       : props.typeButton === "secondary"
       ? props.theme.button.textColorSecondaryType
       : props.typeButton === "white"
-      ? "#444444"
+      ? `${globalColors.grayMain}`
       : props.theme.button.textColor};
 
   padding: ${(props) => (props.padding ? props.padding : "0 20px")};
@@ -52,7 +53,7 @@ const StyledButton = styled.button`
       : props.typeButton === "transparent"
       ? "transparent"
       : props.typeButton === "white"
-      ? "#FFFFFF"
+      ? `${globalColors.white}`
       : props.theme.button.backgroundColorSecondary};
   opacity: ${(props) => (props.typeButton === "white" ? 0.9 : 1)};
 
@@ -65,7 +66,7 @@ const StyledButton = styled.button`
         : props.typeButton === "transparent"
         ? "transparent"
         : props.typeButton === "white"
-        ? "#FFFFFF"
+        ? `${globalColors.white}`
         : props.theme.button.backgroundColorSecondaryHover)};
     border-color: ${(props) =>
       props.borderColorHover
@@ -79,7 +80,7 @@ const StyledButton = styled.button`
         : props.typeButton === "secondary"
         ? props.theme.button.textColorSecondaryType
         : props.typeButton === "white"
-        ? "#444444"
+        ? `${globalColors.grayMain}`
         : props.theme.button.textColor)};
     opacity: ${(props) => (props.typeButton === "white" ? 1 : 1)};
   }

@@ -21,8 +21,8 @@ const Level2Page = ({ locale, data, categoriesMenuData, categorySlug, currentCat
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={articleData.seo_title || currentCategoryData.seo_title || (currentCategoryData.name ? `${currentCategoryData.name} - ONLYOFFICE` : articleData.title ? `${articleData.title} - ONLYOFFICE` : `Help Center - ONLYOFFICE`)}
-          description={articleData.seo_description || currentCategoryData.seo_description || t("metaDescriptionOgIndexPage")}
+          title={articleData.seo_title || currentCategoryData.seo_title || (currentCategoryData.name ? `${currentCategoryData.name} - ONLYOFFICE` : articleData.title ? `${articleData.title} - ONLYOFFICE` : `${t('HelpCenter')} - ONLYOFFICE`)}
+          description={articleData.seo_description || currentCategoryData.seo_description || t("ONLYOFFICEMeta")}
         />
       </Layout.PageHead>
       <Layout.PageHeader>

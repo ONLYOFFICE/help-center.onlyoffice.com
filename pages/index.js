@@ -18,7 +18,7 @@ const MainPage = ({ locale, data }) => {
       <Layout.PageHead>
         <HeadSEO
           title={t("titleIndexPage")}
-          description={"ONLYOFFICEMeta"}
+          description={t("ONLYOFFICEMeta")}
         />
       </Layout.PageHead>
       <Layout.PageHeader>

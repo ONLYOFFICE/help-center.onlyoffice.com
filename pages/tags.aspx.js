@@ -17,7 +17,7 @@ const TagsPage = ({ locale, data, tagsData }) => {
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={t("Tags - ONLYOFFICE")}
+          title={`${t('Tags')} - ONLYOFFICE`}
           description={""}
         />
       </Layout.PageHead>

@@ -59,7 +59,7 @@ const StyledDownloadArea = styled.div`
 
     &.android {
       background-color: transparent;
-      background-image: url("/images/buttons/googleplay.react.svg");
+      background-image: url("https://static-helpcenter.onlyoffice.com/images/buttons/googleplay.react.svg");
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -68,7 +68,7 @@ const StyledDownloadArea = styled.div`
     }
     &.ios {
       background-color: transparent;
-      background-image: url("/images/buttons/appstore.react.svg");
+      background-image: url("https://static-helpcenter.onlyoffice.com/images/buttons/appstore.react.svg");
       background-repeat: no-repeat;
       height: 42px;
       width: 120px;

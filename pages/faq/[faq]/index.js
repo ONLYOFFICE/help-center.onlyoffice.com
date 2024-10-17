@@ -15,7 +15,7 @@ const FaqPage = ({ locale, data, faqData }) => {
 
   const { seo_title, seo_description, name } = faqData.data[0].attributes;
   const seoTitle = seo_title ? seo_title : `${name} - ONLYOFFICE`;
-  const seoDescription = seo_description ? seo_description : t("metaDescriptionOgIndexPage");
+  const seoDescription = seo_description ? seo_description : t("ONLYOFFICEMeta");
 
   return (
     <Layout>

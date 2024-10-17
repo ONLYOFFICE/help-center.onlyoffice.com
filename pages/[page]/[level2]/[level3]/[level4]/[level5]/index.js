@@ -20,8 +20,8 @@ const Level5Page = ({ locale, data, categoriesMenuData, categorySlug }) => {
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={articleData.seo_title || articleData.title ? `${articleData.title} - ONLYOFFICE` : "Help Center - ONLYOFFICE"}
-          description={articleData.seo_description || t("metaDescriptionOgIndexPage")}
+          title={articleData.seo_title || articleData.title ? `${articleData.title} - ONLYOFFICE` : `${t('HelpCenter')} - ONLYOFFICE`}
+          description={articleData.seo_description || t("ONLYOFFICEMeta")}
         />
       </Layout.PageHead>
       <Layout.PageHeader>

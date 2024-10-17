@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 import { device } from "@components/utils/devices";
-import search from "@public/images/icons/search.svg";
 import globalColors from "@components/utils/global-colors";
 
 const StyledSearchArea = styled.div`
@@ -20,7 +19,7 @@ const StyledSearchArea = styled.div`
     outline: none;
 
     &::placeholder {
-      color: ${(props) => (props.isLeftMenu ? globalColors.grayLight : "#808080")};
+      color: ${(props) => (props.isLeftMenu ? globalColors.grayLight : globalColors.textGray)};
     }
 
     @media ${device.laptop} {
@@ -63,7 +62,7 @@ const StyledSearchArea = styled.div`
     }
 
     &.search {
-      background-image: url(${search.src});
+      background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/search.react.svg");
     }
 
     @media ${device.laptop} {

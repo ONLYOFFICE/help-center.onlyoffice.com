@@ -11,7 +11,7 @@ export const StyledPagination = styled.div`
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #E2E2E2;
+    border: 1px solid ${globalColors.tagHover};
     border-radius: 3px;
     padding: 9px 2px;
     min-width: 36px;

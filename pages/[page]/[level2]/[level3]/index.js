@@ -29,8 +29,8 @@ const Level3Page = ({ locale, categoriesMenuData, data, categoryLevel3Data, cate
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={articleData.seo_title || categoryLevel3Data?.seo_title || categoryArticleData?.seo_title || (categoryLevel3Data.name ? `${categoryLevel3Data.name} - ONLYOFFICE` : articleData.title || categoryArticleData ? `${articleData.title || categoryArticleData} - ONLYOFFICE` : `Help Center - ONLYOFFICE`)}
-          description={articleData.seo_description || categoryLevel3Data?.seo_description || categoryArticleData?.seo_description || t("metaDescriptionOgIndexPage")}
+          title={articleData.seo_title || categoryLevel3Data?.seo_title || categoryArticleData?.seo_title || (categoryLevel3Data.name ? `${categoryLevel3Data.name} - ONLYOFFICE` : articleData.title || categoryArticleData ? `${articleData.title || categoryArticleData} - ONLYOFFICE` : `${t('HelpCenter')} - ONLYOFFICE`)}
+          description={articleData.seo_description || categoryLevel3Data?.seo_description || categoryArticleData?.seo_description || t("ONLYOFFICEMeta")}
         />
       </Layout.PageHead>
       <Layout.PageHeader>

@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import globalColors from "@components/utils/global-colors";
-import docsIcon from "@public/images/icons/16px_docs.react.svg";
-import docspaceIcon from "@public/images/icons/16px_docspace.react.svg";
 
 const StyledGuidesCell = styled.div`
   border-radius: 3px;
@@ -92,11 +90,11 @@ const StyledGuidesCell = styled.div`
       }
 
       &.docs:before {
-        background-image: url(${docsIcon.src});
+        background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/16px_docs.react.svg");
       }
 
       &.docspace:before {
-        background-image: url(${docspaceIcon.src});
+        background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/16px_docspace.react.svg");
       }
 
       &:hover {

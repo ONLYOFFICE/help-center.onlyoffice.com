@@ -5,7 +5,7 @@ import globalColors from "@components/utils/global-colors";
 const StyledLeftMenu = styled.div`
   box-sizing: border-box;
   position: relative;
-  border-right: 1px solid #EFEFEF;
+  border-right: 1px solid ${globalColors.tagColor};
   padding: 32px 24px 32px 0;
   width: 256px;
   min-width: 256px;
@@ -84,7 +84,7 @@ const StyledLeftMenu = styled.div`
         border-radius: 2px;
         width: 4px;
         height: 100%;
-        background-color: #E2E2E2;
+        background-color: ${globalColors.tagHover};
       }
 
       li {
@@ -224,7 +224,7 @@ const StyledLeftMenu = styled.div`
     right: -12px !important;
     width: 4px !important;
     height: 100% !important;
-    background-color: #E2E2E2 !important;
+    background-color: ${globalColors.tagHover} !important;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s, visibility 0.3s;
@@ -237,7 +237,7 @@ const StyledLeftMenu = styled.div`
   .ScrollbarsCustom-Thumb.ScrollbarsCustom-ThumbY {
     border-radius: 2px !important;
     width: 4px !important;
-    background-color: #AAAAAA !important;
+    background-color: ${globalColors.veryLightGrey} !important;
   }
 `;
 

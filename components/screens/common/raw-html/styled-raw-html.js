@@ -1,13 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import globalColors from "@components/utils/global-colors";
-import plus from "@public/images/icons/plus.svg";
-import minus from "@public/images/icons/minus.svg";
-import faqCheckIcons from "@public/images/icons/faq_check_icons.svg";
-import flags from "@public/images/flags/flags_all.png";
-import windows from "@public/images/icons/16px_windows.react.svg";
-import linux from "@public/images/icons/16px_linux.react.svg";
-import mac from "@public/images/icons/24px_mac.react.svg";
 
 const StyledRawHtml = styled.div`
   .raw-html-embed {
@@ -250,6 +243,8 @@ const StyledRawHtml = styled.div`
         font-weight: 600;
         padding: 8px;
         vertical-align: middle;
+        word-break: keep-all;
+        white-space: normal;
       }
   
       th.table_empty_cell {
@@ -501,7 +496,7 @@ const StyledRawHtml = styled.div`
 
     /* spans */
     span.yes {
-      background-image: url(${faqCheckIcons.src});
+      background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/faq_check_icons.react.svg");
       background-repeat: no-repeat;
       background-position: 100% 0;
       content: "";
@@ -514,7 +509,7 @@ const StyledRawHtml = styled.div`
     }
 
     span.no {
-      background-image: url(${faqCheckIcons.src});
+      background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/faq_check_icons.react.svg");
       background-repeat: no-repeat;
       background-position: -48px 0;
       content: "";
@@ -551,6 +546,7 @@ const StyledRawHtml = styled.div`
       font-size: 9px;
       content: "soon";
       background-color: #999;
+      white-space: nowrap;
     }
 
     span.iptoggler, span.toggler {
@@ -830,7 +826,7 @@ const StyledRawHtml = styled.div`
         content: "";
         width: 16px;
         height: 16px;
-        background-image: url(${flags.src});
+        background-image: url("https://static-helpcenter.onlyoffice.com/images/flags/flags_all.png");
         background-repeat: no-repeat;
         background-size: 256px 240px;
         vertical-align: middle;
@@ -1082,60 +1078,6 @@ const StyledRawHtml = styled.div`
       }
     }
 
-    /* platforms */
-    .languages_list_table {
-      .windows, .linux, .macos {
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        background-repeat: no-repeat;
-        background-size: 24px 24px;
-        background-position-y: 50%;
-        background-position-x: 50%;
-
-        a {
-          display: block;
-          width: 100%;
-          height: 24px;
-        }
-      }
-
-      .windows, .linux, .macos {
-        background-image: url(${windows.src});
-      }
-
-      .linux {
-        background-image: url(${linux.src});
-      }
-
-      .macos {
-        background-image: url(${mac.src});
-      }
-
-      .windows.linux, .windows.macos, .linux.macos {
-        width: 50px;
-        background-position-x: 0%, 100%
-      }
-
-      .windows.linux {
-        background-image: url(${windows.src}), url(${linux.src});
-      }
-
-      .windows.macos {
-        background-image: url(${windows.src}), url(${mac.src});
-      }
-
-      .linux.macos {
-        background-image: url(${linux.src}), url(${mac.src});
-      }
-
-      .windows.linux.macos {
-        width: 78px;
-        background-position-x: 0%, 50%, 100%;
-        background-image: url(${windows.src}), url(${linux.src}), url(${mac.src});
-      }
-    }
-
     /* styles classes */
     .without_padding {
       padding: 0 !important;
@@ -1224,7 +1166,7 @@ const StyledRawHtml = styled.div`
         cursor: pointer;
 
         &:before {
-          content: url(${plus.src});
+          content: url("https://static-helpcenter.onlyoffice.com/images/icons/plus.react.svg");
           display: inline-block;
           margin-right: 10px;
           width: 24px;
@@ -1233,7 +1175,7 @@ const StyledRawHtml = styled.div`
 
         &.active {
           &:before {
-            content: url(${minus.src});
+            content: url("https://static-helpcenter.onlyoffice.com/images/icons/minus.react.svg");
           }
         }
 

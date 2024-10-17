@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import StyledText from "./styled-text";
+import globalColors from "@components/utils/global-colors";
 
 const Text = ({ as, label, children, ...rest }) => {
   return (
@@ -79,7 +80,7 @@ Text.propTypes = {
 };
 
 Text.defaultProps = {
-  color: "#333333",
+  color: globalColors.gray,
   fontSize: "14px",
   isInline: true,
   isHoverText: false,

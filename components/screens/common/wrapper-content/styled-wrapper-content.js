@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import globalColors from "@components/utils/global-colors";
-import plus from "@public/images/icons/plus.svg";
-import minus from "@public/images/icons/minus.svg";
 
 const StyledWrapperContent = styled.div`
   box-sizing: border-box;
@@ -85,7 +83,7 @@ const StyledWrapperContent = styled.div`
       text-align: left;
 
       &:before {
-        content: url(${plus.src});
+        content: url("https://static-helpcenter.onlyoffice.com/images/icons/plus.react.svg");
         display: inline-block;
         margin-right: 10px;
         width: 24px;
@@ -94,7 +92,7 @@ const StyledWrapperContent = styled.div`
 
       &.active {
           &:before {
-            content: url(${minus.src});
+            content: url("https://static-helpcenter.onlyoffice.com/images/icons/minus.react.svg");
           }
         }
     }
@@ -163,7 +161,7 @@ const StyledWrapperContent = styled.div`
     }
 
     .changelog-version-block {
-      border-bottom: 1px solid #f5f5f5;
+      border-bottom: 1px solid ${globalColors.bgGray};
       padding: 32px 0;
     }
   }

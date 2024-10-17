@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 import { device } from "@components/utils/devices";
 import globalColors from "@components/utils/global-colors";
-import chevronRight from "@public/images/icons/chevron-right-white.svg";
 
 const StyledFooterItem = styled.div`
   position: relative;
@@ -61,7 +60,7 @@ const StyledFooterItem = styled.div`
         display: inline-flex;
         width: 11px;
         height: 11px;
-        background-image: url(${chevronRight.src});
+        background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/chevron-right-white.react.svg");
         background-repeat: no-repeat;
       }
     }

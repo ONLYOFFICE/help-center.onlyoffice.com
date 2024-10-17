@@ -16,7 +16,7 @@ import ConnectorsVideo from "./sub-components/connectors-video";
 import ArticlePopup from "@components/screens/common/article-popup";
 import Cookies from "universal-cookie";
 import ScrollToTopButton from "@components/screens/common/scroll-to-top-button";
-import { handleFaqAccordionClick, handleImagePopupClick, handleTogglerClick, handleShortcutToggleClick } from "@utils/handle-click-functions";
+import { handleFaqAccordionClick, handleImagePopupClick, handleTogglerClick, handleShortcutToggleClick, handleChangelogClick } from "@utils/handle-click-functions";
 import { extractHeadings, handleArticleScroll } from "@utils/scroll-highlight-functions";
 
 const ArticleContent = ({
@@ -110,6 +110,7 @@ const ArticleContent = ({
     handleImagePopupClick(event, setBigPhotoSrc, setImageModalActive);
     handleTogglerClick(event);
     handleShortcutToggleClick(event);
+    handleChangelogClick(event);
   };
 
   return (

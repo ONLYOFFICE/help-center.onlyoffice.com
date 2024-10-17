@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import arrownDown from "@public/images/icons/arrow-down.svg";
 import globalColors from "@components/utils/global-colors";
 
 const StyledLanguageSelector = styled.div`
@@ -20,7 +19,7 @@ const StyledLanguageSelector = styled.div`
       margin-left: 4px;
       width: 8px;
       height: 6px;
-      background-image: url(${arrownDown.src});
+      background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/arrow-down.react.svg");
       background-repeat: no-repeat;
       transform: ${(props) => (props.isOpen ? "rotate(180deg)" : "")};
     }
@@ -45,7 +44,7 @@ const StyledLanguageSelector = styled.div`
     }
 
     > a > div {
-      background-image: url("/images/flags/flags_site.react.svg");
+      background-image: url("https://static-helpcenter.onlyoffice.com/images/flags/flags_site.react.svg");
       display: block;
       content: " ";
       width: 24px;

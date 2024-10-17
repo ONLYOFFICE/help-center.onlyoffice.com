@@ -19,7 +19,7 @@ const GlossaryContent = ({ t, glossaryData, leftMenuData, leftMenuIsOpen }) => {
         <div className="wrapper">
           <Breadcrumbs t={t} pageName={t("Glossary")} />
           <Heading className="wrapper-title" level={1}>{t("Glossary")}</Heading>
-          <Text label={t("Here are the base terms which are used in the online office interface and documentation.")} />
+          <Text label={t("HereAreTheBaseTerms")} />
           <AlphabetContainer t={t} data={glossaryData} />
         </div>
       </StyledWrapperContent>

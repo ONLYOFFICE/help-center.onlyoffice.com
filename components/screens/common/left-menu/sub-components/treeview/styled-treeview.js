@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { device } from "@components/utils/devices";
-import arrowGrayDown from "@public/images/icons/arrow-gray-down.svg";
+import globalColors from "@components/utils/global-colors";
 
 const StyledTreeView = styled.div`
   box-sizing: border-box;
@@ -21,7 +20,7 @@ const StyledTreeView = styled.div`
     }
 
     &:not(:last-child) {
-      border-bottom: 1px solid #CCCCCC;
+      border-bottom: 1px solid ${globalColors.grayLight};
     }
   }
 
@@ -32,7 +31,7 @@ const StyledTreeView = styled.div`
     font-weight: 700;
     line-height: 16px;
     width: 100%;
-    color: #333333;
+    color: ${globalColors.gray};
     background-color: transparent;
     text-align: initial;
     text-transform: uppercase;
@@ -40,7 +39,7 @@ const StyledTreeView = styled.div`
     cursor: pointer;
 
     &.active {
-      color: #FF6F3D;
+      color: ${globalColors.orangeMain};
     }
   }
 
@@ -52,7 +51,7 @@ const StyledTreeView = styled.div`
     width: 11px;
     min-width: 11px;
     height: 11px;
-    background-image: url(${arrowGrayDown.src});
+    background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/arrow-gray-down.react.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-color: transparent;
@@ -87,14 +86,14 @@ const StyledTreeView = styled.div`
     font-size: 14px;
     line-height: 21px;
     width: 100%;
-    color: #333333;
+    color: ${globalColors.gray};
 
     &:hover {
       text-decoration: underline;
     }
 
     &.active {
-      color: #FF6F3D;
+      color: ${globalColors.orangeMain};
     }
 
     &.left-menu-category-link {

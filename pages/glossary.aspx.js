@@ -17,7 +17,7 @@ const GlossaryPage = ({ locale, data, glossaryData }) => {
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={t("Glossary - ONLYOFFICE")}
+          title={`${t('Glossary')} - ONLYOFFICE`}
           description={""}
         />
       </Layout.PageHead>

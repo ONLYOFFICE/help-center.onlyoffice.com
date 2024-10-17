@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import globalColors from "@components/utils/global-colors";
-import chevronRightIcon from "@public/images/icons/chevron-right.svg";
 
 const StyledHeader = styled.div`
   display: flex;
@@ -223,7 +222,7 @@ const StyledHeader = styled.div`
         margin-left: 8px;
         width: 11px;
         height: 11px;
-        background-image: url(${chevronRightIcon.src});
+        background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/chevron-right.react.svg");
         background-repeat: no-repeat;
       }
 

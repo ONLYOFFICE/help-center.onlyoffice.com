@@ -1,7 +1,7 @@
 const Items = [
   {
     className: "products",
-    heading: "Get it now",
+    heading: "GetItNow",
     link: [
       {
         localize: true,
@@ -25,33 +25,33 @@ const Items = [
       },
       {
         localize: true,
-        label: "Desktop apps",
+        label: "DesktopApps",
         href: "/download-desktop.aspx",
       },
       {
         localize: true,
-        label: "Mobile apps",
+        label: "MobileApps",
         href: "/download-desktop.aspx#mobile",
       },
     ],
   },
   {
     className: "collaborate",
-    heading: "collaborate",
+    heading: "Collaborate",
     link: [
       {
         localize: true,
-        label: "For contributors",
+        label: "ForContributors",
         href: "/contribute.aspx",
       },
       {
         localize: false,
-        label: "For translators",
+        label: "ForTranslators",
         href: "/become-translator.aspx",
       },
       {
         localize: true,
-        label: "For influencers",
+        label: "ForInfluencers",
         href: "/influencer-program.aspx",
       },
       {
@@ -63,7 +63,7 @@ const Items = [
   },
   {
     className: "get_news",
-    heading: "Get news",
+    heading: "GetNews",
     link: [
       {
         localize: true,
@@ -74,7 +74,7 @@ const Items = [
   },
   {
     className: "get_help",
-    heading: "get help",
+    heading: "GetHelp",
     link: [
       {
         localize: false,
@@ -83,7 +83,7 @@ const Items = [
       },
       {
         localize: true,
-        label: "Training courses",
+        label: "TrainingCourses",
         href: "/training-courses.aspx",
       },
       {
@@ -93,46 +93,46 @@ const Items = [
       },
       {
         localize: true,
-        label: "White papers",
+        label: "WhitePapers",
         href: "/whitepapers.aspx",
       },
       {
         localize: true,
-        label: "Support contact form",
+        label: "SupportContactForm",
         href: "/support-contact-form.aspx",
       },
       {
         localize: true,
-        label: "Order demo",
+        label: "OrderDemo",
         href: "/demo-order.aspx",
       },
     ],
   },
   {
     className: "contacts",
-    heading: "Contact us",
+    heading: "ContactUs",
     link: [
       {
-        label: "Sales Questions",
+        label: "SalesQuestions",
         mail: "sales@onlyoffice.com",
         href: "mailto:sales@onlyoffice.com",
         isContact: true,
       },
       {
-        label: "Partner Inquiries",
+        label: "PartnerInquiries",
         mail: "partners@onlyoffice.com",
         href: "mailto:partners@onlyoffice.com",
         isContact: true,
       },
       {
-        label: "Press Inquiries",
+        label: "PressInquiries",
         mail: "press@onlyoffice.com",
         href: "mailto:press@onlyoffice.com",
         isContact: true,
       },
       {
         localize: true,
-        label: "Request a Call",
+        label: "RequestACall",
         href: "/call-back-form.aspx",
       }
     ],

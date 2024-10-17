@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import globalColors from "@components/utils/global-colors";
-import arrowWhite from "@public/images/icons/arrow-white.react.svg";
 
 const StyledScrollToTopButton = styled.div`
   box-sizing: border-box;
@@ -48,7 +47,7 @@ const StyledScrollToTopButton = styled.div`
       width: 40px;
       height: 40px;
       background-color: rgba(128, 128, 128, 0.32);
-      background-image: url(${arrowWhite.src});
+      background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/arrow-white.react.svg");
       transform: rotate(0);
     }
   }

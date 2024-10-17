@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Section from "@components/common/section";
-import bgError from "@public/images/icons/bg-errors.react.svg";
 import globalColors from "@components/utils/global-colors";
 
 const StyledSearchResultsContent = styled(Section)`
@@ -119,7 +118,7 @@ const StyledSearchResultsContent = styled(Section)`
   .search-results-not-found-img {
     width: 100%;
     height: 340px;
-    background-image: url(${bgError.src});
+    background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/bg-errors.react.svg");
     background-size: contain;
     background-position: 50% 50%;
     background-repeat: no-repeat;

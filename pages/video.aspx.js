@@ -17,7 +17,7 @@ const VideoPage = ({ locale, categoriesMenu, videoData }) => {
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={t("Video - ONLYOFFICE")}
+          title={`${t('Video')} - ONLYOFFICE`}
           description={t("VideoPageDescription")}
         />
       </Layout.PageHead>
