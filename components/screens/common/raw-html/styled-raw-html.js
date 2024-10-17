@@ -840,6 +840,9 @@ const StyledRawHtml = styled.div`
       &.language_en-US:before {
         background-position: -223px -208px;
       }
+      &.language_en-UK:before {
+        background-position: -159px -64px;
+      }
 
       &.language_vi-VN:before {
         background-position: -96px -224px;
