@@ -27,13 +27,7 @@ const LanguageSelector = ({ locale }) => {
   return (
     <StyledLanguageSelector isOpen={isOpen} className="language-selector">
       <button onClick={() => setIsOpen(!isOpen)} className="language-button">
-        <img
-          className="flag-image"
-          src={`https://static-helpcenter.onlyoffice.com/images/flags/${locale}.react.svg`}
-          width="24"
-          height="24"
-          alt="flag"
-        />
+        <span className={`language-link ${locale}`}></span>
       </button>
       {isOpen &&
         <ul className="language-list">
@@ -41,12 +35,10 @@ const LanguageSelector = ({ locale }) => {
             <li className="language-item" key={language.key}>
               <InternalLink
                 onClick={() => setIsOpen(false)}
-                className="language-link"
+                className={`language-link ${language.shortKey}`}
                 href={router.asPath}
                 locale={language.shortKey}
-              >
-                <div alt="flag" className={language.shortKey}></div>
-              </InternalLink>
+              />
             </li>
           ))}
         </ul>

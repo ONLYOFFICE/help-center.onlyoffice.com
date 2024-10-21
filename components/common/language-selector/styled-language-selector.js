@@ -42,39 +42,41 @@ const StyledLanguageSelector = styled.div`
     &:not(:last-child) {
       margin-bottom: 12px;
     }
-
-    > a > div {
-      background-image: url("https://static-helpcenter.onlyoffice.com/images/flags/flags_site.react.svg");
-      display: block;
-      content: " ";
-      width: 24px;
-      height: 24px;
-      &.de {
-        background-position-x: 0px;
-      }
-      &.fr {
-        background-position-x: -96px;
-      }
-      &.ru {
-        background-position-x: -160px;
-      }
-      &.zh {
-        background-position-x: 24px;
-      }
-      &.it {
-        background-position-x: -128px;
-      }
-      &.es {
-        background-position-x: -64px;
-      }
-      &.en {
-        background-position-x: -32px;
-      }
-    }
   }
 
   .language-link {
     display: flex;
+    width: 24px;
+    height: 24px;
+    background-image: url("/images/flags/flags_site.react.svg");
+
+    &.en {
+      background-position-x: -32px;
+    }
+
+    &.de {
+      background-position-x: 0px;
+    }
+
+    &.fr {
+      background-position-x: -96px;
+    }
+
+    &.es {
+      background-position-x: -64px;
+    }
+
+    &.it {
+      background-position-x: -128px;
+    }
+
+    &.zh {
+      background-position-x: 24px;
+    }
+
+    &.ru {
+      background-position-x: -160px;
+    }
   }
 `;
 
