@@ -6,15 +6,30 @@ const TreeViewItems = ({ level1Item, level1Index, slug_id, levelIndex, pathName,
       {[...level1Item.attributes[`level_2_${slug_id}`]?.data ?? [], ...level1Item.attributes[`article_${slug_id}`]?.data ?? []].length > 0 ? (
         <>
           <div className="left-menu-level-item">
-            <button
-              onClick={() => toggleLevelAccordion(level1Item.attributes.url)}
-              className={`left-menu-arrow-btn ${levelIndex[level1Item.attributes.url] ? "active" : ""}`}
-            >
-            </button>
-            <InternalLink className={`left-menu-level-link left-menu-level-1-link ${pathName === level1Item.attributes.url ? "active" : ""}`} href={level1Item.attributes.url} label={level1Item.attributes.name || level1Item.attributes.title} />
+            {level1Item.attributes.url ? (
+              <>
+                <button
+                  onClick={() => toggleLevelAccordion(level1Item.attributes.url)}
+                  className={`left-menu-arrow-btn ${levelIndex[level1Item.attributes.url] ? "active" : ""}`}
+                >
+                </button>
+                <InternalLink
+                  className={`left-menu-level-link left-menu-level-1-link ${pathName === level1Item.attributes.url ? "active" : ""}`}
+                  href={level1Item.attributes.url}
+                  label={level1Item.attributes.name || level1Item.attributes.title}
+                />
+              </>
+            ) : (
+              <button
+                onClick={() => toggleLevelAccordion(level1Item.attributes.name)}
+                className={`left-menu-level-btn ${levelIndex[level1Item.attributes.name] ? "active" : ""}`}
+              >
+                {level1Item.attributes.name || level1Item.attributes.title}
+              </button>
+            )}
           </div>
 
-          {levelIndex[level1Item.attributes.url] && (
+          {levelIndex[level1Item.attributes.url ? level1Item.attributes.url : level1Item.attributes.name] && (
             <ul>
               {[...level1Item.attributes[`level_2_${slug_id}`]?.data ?? [], ...level1Item.attributes[`article_${slug_id}`]?.data ?? []]?.sort((a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.name || a.attributes.title).localeCompare(b.attributes.name || b.attributes.title)).map((level2Item, level2Index) => (
                 <li key={level2Index}>

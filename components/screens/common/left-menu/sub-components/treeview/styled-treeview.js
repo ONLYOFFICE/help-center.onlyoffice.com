@@ -120,6 +120,48 @@ const StyledTreeView = styled.div`
       padding-left: 57px;
     }
   }
+
+  .left-menu-level-btn {
+    position: relative;
+    display: block;
+    border: none;
+    padding: 8px 0 8px 15px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    color: ${globalColors.gray};
+    width: 100%;
+    text-align: initial;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 13px;
+      left: 0;
+      display: inline-flex;
+      width: 11px;
+      min-width: 11px;
+      height: 11px;
+      background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/arrow-gray-down.react.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: transparent;
+      transform: rotate(-90deg);
+      cursor: pointer;
+    }
+
+    &.active {
+      &:before {
+        transform: rotate(0);
+      }
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `
 
 export default StyledTreeView;
