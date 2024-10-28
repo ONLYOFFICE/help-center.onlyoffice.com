@@ -6,7 +6,7 @@ import Text from "@components/common/text";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import Heading from "@components/common/heading";
 
-const GlossaryContent = ({ t, glossaryData, leftMenuData, leftMenuIsOpen }) => {
+const GlossaryContent = ({ t, glossaryData, leftMenuData, leftMenuIsOpen, locale }) => {
   return (
     <StyledGlossaryContent>
       <StyledWrapperContent>
@@ -19,8 +19,11 @@ const GlossaryContent = ({ t, glossaryData, leftMenuData, leftMenuIsOpen }) => {
         <div className="wrapper">
           <Breadcrumbs t={t} pageName={t("Glossary")} />
           <Heading className="wrapper-title" level={1}>{t("Glossary")}</Heading>
+          {locale === "it" && <div className="attention-banner">
+            <Text label={t("TranslationOutOfDate")} />
+          </div>}
           <Text label={t("HereAreTheBaseTerms")} />
-          <AlphabetContainer t={t} data={glossaryData} />
+          <AlphabetContainer t={t} data={glossaryData} locale={locale} />
         </div>
       </StyledWrapperContent>
     </StyledGlossaryContent>

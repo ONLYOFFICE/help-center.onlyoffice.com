@@ -9,7 +9,7 @@ const StyledDictionary = styled(StyledText)`
   > p {
     display: initial;
 
-    > a {
+    a {
       color: ${globalColors.orangeLetters};
       display: inline;
       font-size: 14px;
@@ -25,6 +25,9 @@ const StyledDictionary = styled(StyledText)`
 
   ol {
     padding: 0 0 0 20px;
+    li a {
+      color: ${globalColors.orangeLetters};
+    }
   }
 
   .int_link {

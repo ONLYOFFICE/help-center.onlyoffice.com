@@ -8,7 +8,8 @@ const AlphabetContainer = ({
     t,
     data,
     handleTagModal,
-    isTagPage
+    isTagPage,
+    locale
   }) => {
   const titleStartLetters = new Set(data.data?.map((item) => item.attributes.title[0].toLowerCase()));
   const filteredAlphabet = t("Alphabet").split("").filter((letter) => titleStartLetters.has(letter));
@@ -54,6 +55,7 @@ const AlphabetContainer = ({
                     title={item.attributes.title}
                     subtitle={item.attributes.subtitle}
                     definition={item.attributes.definition}
+                    locale={locale}
                   />
                 ))
               )}

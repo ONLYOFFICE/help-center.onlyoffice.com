@@ -1,7 +1,7 @@
 import StyledDictionary from "./styled-dictionary";
 import ReactHtmlParser from "react-html-parser";
 
-const Dictionary = ({ t, title, subtitle, definition, ...rest }) => {
+const Dictionary = ({ t, title, subtitle, definition, locale, ...rest }) => {
   const isMultiply = Array.isArray(definition);
   return (
     <StyledDictionary id={title.replace(/ /g, "")}>
@@ -14,7 +14,9 @@ const Dictionary = ({ t, title, subtitle, definition, ...rest }) => {
             ))}
           </ol>
         ) : (
-          <>&nbsp;–&nbsp; {ReactHtmlParser(definition)}</>
+          <>
+          {locale !== "es" && locale !== "it" ? <>&nbsp;–&nbsp;</> : <>&nbsp;</>}
+          {ReactHtmlParser(definition)}</>
         )}
     </StyledDictionary>
   );
