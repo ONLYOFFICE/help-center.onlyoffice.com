@@ -8,7 +8,7 @@ const DownloadArea = ({ t, slug, subcat, ...rest }) => {
       case 'docspace':
         return { label: "HostOnYourOwnServerDocSpace", downloadHref: "docspace" };
       case 'workspace':
-        return { label: "HostOnYourOwnServer", downloadHref: "https://www.onlyoffice.com/download-workspace.aspx?from=helpcenter" };
+        return { label: "HostOnYourOwnServerWorkspace", downloadHref: "https://www.onlyoffice.com/download-workspace.aspx?from=helpcenter" };
       case 'mobile apps':
         if (subcat === "iOS") {
           return { label: "HostiOS", downloadHref: "https://itunes.apple.com/us/app/onlyoffice-documents/id944896972" };
