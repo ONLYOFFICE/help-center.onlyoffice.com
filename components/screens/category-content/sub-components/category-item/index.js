@@ -41,9 +41,9 @@ const CategoryItem = ({ data, leftMenuLevel, categorySlug }) => {
   };
 
   return (
-    <StyledCategoryItem className="category-item">
+    <StyledCategoryItem className="category-item" id={data.attributes.url.split("#")[1]?.length !== 0 ? data.attributes.url.split("#")[1] : ''}>
       <Heading className="category-item-title" level={4}>
-        {data.attributes.url && data.attributes.url.split("#")[0] !== router.asPath ? (
+        {data.attributes.url && data.attributes.url.split("#")[1]?.length == 0 ? (
           <InternalLink href={data.attributes.url}>
             {renderIcon()}
             {data.attributes.name}
