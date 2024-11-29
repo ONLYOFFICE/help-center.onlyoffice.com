@@ -2,5 +2,9 @@
     "/index.aspx": {
       "destination": "/",
       "permanent": true
+    },
+    "/guides/become-translator.aspx": {
+      "destination": "/docs/contribution/become-translator.aspx",
+      "permanent": true
     }
 }

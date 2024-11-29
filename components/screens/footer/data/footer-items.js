@@ -47,7 +47,7 @@ const Items = [
       {
         localize: false,
         label: "ForTranslators",
-        href: "/become-translator.aspx",
+        href: "/docs/contribution/become-translator.aspx",
       },
       {
         localize: true,
