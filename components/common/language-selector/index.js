@@ -29,7 +29,7 @@ const LanguageSelector = ({ locale }) => {
       <button onClick={() => setIsOpen(!isOpen)} className="language-button">
         <span className={`language-link ${locale}`}></span>
       </button>
-      {isOpen &&
+      {/* {isOpen &&
         <ul className="language-list">
           {languages.map((language) => (
             <li className="language-item" key={language.key}>
@@ -42,7 +42,7 @@ const LanguageSelector = ({ locale }) => {
             </li>
           ))}
         </ul>
-      }
+      } */}
     </StyledLanguageSelector>
   );
 };

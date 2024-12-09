@@ -11,9 +11,9 @@ const StyledLanguageSelector = styled.div`
     border: none;
     padding: 0;
     background-color: transparent;
-    cursor: pointer;
+    /* cursor: pointer; */
 
-    &:after {
+    /* &:after {
       content: "";
       display: inline-flex;
       margin-left: 4px;
@@ -22,7 +22,7 @@ const StyledLanguageSelector = styled.div`
       background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/arrow-down.react.svg");
       background-repeat: no-repeat;
       transform: ${(props) => (props.isOpen ? "rotate(180deg)" : "")};
-    }
+    } */
   }
 
   .language-list {
