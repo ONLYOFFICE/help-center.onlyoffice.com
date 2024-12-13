@@ -10,6 +10,8 @@ const StyledCategoryItem = styled.div`
   box-shadow: 0px 7px 25px 0px rgba(85, 85, 85, 0.15);
 
   .category-item-title {
+    display: flex;
+    align-items: center;
     color: ${globalColors.gray};
 
     &:not(:last-child) {
