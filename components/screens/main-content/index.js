@@ -44,6 +44,7 @@ const MainContent = ({ t, locale, data, leftMenuIsOpen, setLeftMenuIsOpen }) => 
           t={t}
           leftMenuData={leftMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
       )}
       <StyledMainContent>
