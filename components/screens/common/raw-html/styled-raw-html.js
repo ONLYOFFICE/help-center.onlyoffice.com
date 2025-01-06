@@ -10,6 +10,10 @@ const StyledRawHtml = styled.div`
     line-height: 21px;
     word-break: break-word;
 
+    div[id] {
+      scroll-margin-top: 24px;
+    }
+
     p {
       margin: 8px 0;
       padding: 0;
