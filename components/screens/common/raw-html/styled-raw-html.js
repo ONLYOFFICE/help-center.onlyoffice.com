@@ -59,6 +59,10 @@ const StyledRawHtml = styled.div`
 
       &.table_parameters {
         text-align: left;
+
+        td {
+          width: 40%;
+        }
       }
   
       &.sticky_table {
