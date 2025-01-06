@@ -7,9 +7,7 @@ const AccordionItem = ({
   children,
   onClick,
   isExpanded,
-  isMain,
   isMenu,
-  isMobMenu,
   ...rest
 }) => {
   const content = useRef();
@@ -18,16 +16,17 @@ const AccordionItem = ({
   useEffect(() => {
     isExpanded ? setActive(true) : setActive(false)
   }, [isExpanded]);
+
   return (
-    <StyledAccordionItem isMain={isMain} {...rest}>
-      <button className="accordion" onClick={() => setActive(!active)}>
-        <div className="accordion-icon">{!isMobMenu && (!active ? "+" : "−")}</div>
+    <StyledAccordionItem className="accordion-item" {...rest}>
+      <button className="accordion-btn" onClick={() => setActive(!active)}>
+        <div className="accordion-icon">{!active ? "+" : "−"}</div>
         <Heading className="accordion-heading" level={4} label={heading} />
       </button>
       <div
         ref={content}
         style={{
-          maxHeight: `${isMenu && !isMobMenu ? "fit-content" : (active ? `${content.current.scrollHeight}px` : "0px")}`,
+          maxHeight: `${isMenu ? "fit-content" : (active ? `${content.current.scrollHeight}px` : "0px")}`,
         }}
         className="accordion-content"
       >

@@ -39,7 +39,7 @@ const MainPage = ({ locale, data }) => {
           leftMenuIsOpen={leftMenuIsOpen}
           setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
-        <Accordion t={t} locale={locale} isMain={true} />
+        <Accordion t={t} locale={locale} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} locale={locale} />

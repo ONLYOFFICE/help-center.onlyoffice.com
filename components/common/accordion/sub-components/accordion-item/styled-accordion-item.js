@@ -5,22 +5,23 @@ import globalColors from "@components/utils/global-colors";
 const StyledAccordionItem = styled.div`
   position: relative;
   border-top: 1px solid #E5E5E5;
-  padding: ${(props) => (props.isMain ? "16px 0" : "32px 0")};
+  padding: 32px 0;
+
   @media ${device.mobile} {
-    padding: ${(props) => (props.isMain ? "16px 0" : "24px 0")};
-    }
+    padding: 24px 0;
+  }
 
   &:last-child {
     border-bottom: 1px solid #E5E5E5;
   }
 
-  .accordion {
+  .accordion-btn {
     display: flex;
     justify-content: flex-start;
     border: none;
     cursor: pointer;
     align-items: center;
-    gap: ${(props) => (props.isMain ? "16px" : "10px")};
+    gap: 10px;
     width: 100%;
     background-color: transparent;
   }
@@ -46,7 +47,7 @@ const StyledAccordionItem = styled.div`
     font-size: 14px;
     line-height: 22px;
     padding-top: 16px;
-    padding-left: ${(props) => (props.isMain ? "40px" : "34px")};
+    padding-left: 34px;
 
     > ul {
       padding-left: 16px;

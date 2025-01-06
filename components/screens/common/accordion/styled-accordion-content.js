@@ -5,18 +5,22 @@ import { device } from "@components/utils/devices";
 const StyledAccordionContent = styled(Section)`
   padding: 0 0 112px;
 
-  .text-trans-accordion {
-    display: initial;
-    vertical-align: bottom;
+  .accordion-item {
+    padding: 16px 0;
 
-    .link-trans-acc {
-      display: inline-flex;
-      text-decoration: underline;
+    @media ${device.mobile} {
+      padding: 16px 0;
     }
   }
 
+  .accordion-btn {
+    gap: 16px;
+  }
+
   .accordion-text {
-    .link-trans-acc {
+    padding-left: 40px;
+
+    a {
       display: initial;
       text-decoration: underline;
     }
