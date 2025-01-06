@@ -8,6 +8,10 @@ const StyledCategoryContent = styled(Section)`
   }
 
   .wrapper-description {
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+
     a {
       color: ${globalColors.orangeMain};
 
@@ -23,6 +27,35 @@ const StyledCategoryContent = styled(Section)`
     .category-item {
       &:not(:last-child) {
         margin-bottom: 24px;
+      }
+    }
+  }
+
+  .category-articles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 32px;
+    list-style-type: none;
+
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      color: ${globalColors.orangeMain};
+      text-decoration: underline;
+
+      img {
+        margin-right: 8px;
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
+      }
+
+      &:hover {
+        text-decoration: none;
       }
     }
   }
