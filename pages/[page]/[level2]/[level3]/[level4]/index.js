@@ -1,9 +1,10 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState } from "react";
-import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 import Cookies from "universal-cookie";
 import getLevel4Data from "@lib/strapi/getLevel4Data";
+import getCategoriesMenu from "@lib/strapi/getCategoriesMenu";
+import getLeftMenu from "@lib/strapi/getLeftMenu";
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head";
 import Header from "@components/screens/header";
@@ -11,52 +12,59 @@ import ArticleContent from "@components/screens/article-content";
 import SubCategoryContent from "@components/screens/subcategory-content";
 import Footer from "@components/screens/footer";
 
-const Level4Page = ({ locale, categoriesMenuData, data, currentCategoryData }) => {
+const Level4Page = ({ locale, data, menuData, categorySlug }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
-  const router = useRouter();
+  const [leftMenuData, setLeftMenuData] = useState(menuData);
 
-  const categorySlug = router.query.page;
-  const categorySlugOne = categorySlug === "docs" ? "doc" : categorySlug;
-  const categorySlugMany = categorySlug === "docs" ? "docs" : `${categorySlug}s`;
-  const articleData = data.data?.[0]?.attributes;
-  const categoryData = data.data.filter(item => item.attributes.slug_id === categorySlug)[0]?.attributes;
-  const categoryLevel2Data = categoryData?.[`category_${categorySlugMany}`]?.data.filter(item => item.attributes.url === `/${router.query.page}/${router.query.level2}`)[0]?.attributes;
-  const categoryLevel3Data = categoryData?.[`category_${categorySlugMany}`]?.data.map(categoryItem => categoryItem?.attributes?.[`level_2_${categorySlugMany}`]?.data.find(categoryLevel2Item => categoryLevel2Item.attributes.url === `/${router.query.page}/${router.query.level2}/${router.query.level3}`)).find(Boolean)?.attributes;
+  const categorySlugSingular = categorySlug === "docs" ? "doc" : categorySlug;
+  const categorySlugPlural = categorySlug === "docs" ? "docs" : `${categorySlug}s`;
+  const dataAttr = data.data?.[0]?.attributes;
+
+  useEffect(() => {
+    if (!dataAttr.article) {
+      const loadData = async () => {
+        const data = await getLeftMenu(locale);
+        setLeftMenuData(data);
+      };
+  
+      loadData();
+    }
+  }, []);
 
   return (
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={articleData.seo_title || categoryData.seo_title || (currentCategoryData.name ? `${currentCategoryData.name} - ONLYOFFICE` : articleData.title ? `${articleData.title} - ONLYOFFICE` : `${t('HelpCenter')} - ONLYOFFICE`)}
-          description={articleData.seo_description || currentCategoryData?.seo_description || t("ONLYOFFICEMeta")}
+          title={dataAttr.seo_title || (dataAttr.name || dataAttr.title ? `${dataAttr.name || dataAttr.title} - ONLYOFFICE` : `${t("HelpCenter")} - ONLYOFFICE`)}
+          description={dataAttr.seo_description || t("ONLYOFFICEMeta")}
         />
       </Layout.PageHead>
       <Layout.PageHeader>
         <Header
           t={t}
           locale={locale}
-          data={categoriesMenuData ? categoriesMenuData : data}
+          data={menuData}
           leftMenuIsOpen={leftMenuIsOpen}
           setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        {articleData.article ? (
+        {dataAttr.article ? (
           <ArticleContent
             t={t}
             locale={locale}
-            categoryName={articleData[`category_${categorySlug}`]?.data?.attributes?.general_category.data.attributes.name || articleData[`level_2_${categorySlugOne}`]?.data?.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name || articleData[`level_3_${categorySlugOne}`]?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name || articleData[`level_4_${categorySlugOne}`]?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.name}
-            categoryUrl={articleData[`category_${categorySlug}`]?.data?.attributes?.general_category.data.attributes.url || articleData[`level_2_${categorySlugOne}`]?.data?.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url || articleData[`level_3_${categorySlugOne}`]?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url || articleData[`level_4_${categorySlugOne}`]?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.general_category.data.attributes.url}
-            level2CategoryName={articleData[`category_${categorySlug}`]?.data?.attributes?.name || articleData[`level_2_${categorySlugOne}`]?.data?.attributes[`category_${categorySlugOne}`].data.attributes.name || articleData[`level_3_${categorySlugOne}`]?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.name || articleData[`level_4_${categorySlugOne}`]?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.name}
-            level2CategoryUrl={articleData[`category_${categorySlug}`]?.data?.attributes?.url || articleData[`level_2_${categorySlugOne}`]?.data?.attributes[`category_${categorySlugOne}`].data.attributes.url || articleData[`level_3_${categorySlugOne}`]?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.url || articleData[`level_4_${categorySlugOne}`]?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes[`category_${categorySlugOne}`].data.attributes.url}
-            level3CategoryName={articleData[`level_2_${categorySlugOne}`]?.data?.attributes?.name || articleData[`level_3_${categorySlugOne}`]?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes.name || articleData[`level_4_${categorySlugOne}`]?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes.name}
-            level3CategoryUrl={articleData[`level_2_${categorySlugOne}`]?.data?.attributes?.url || articleData[`level_3_${categorySlugOne}`]?.data?.attributes[`level_2_${categorySlugOne}`].data.attributes.url || articleData[`level_4_${categorySlugOne}`]?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes[`level_2_${categorySlugOne}`].data.attributes.url}
-            level4CategoryName={articleData[`level_4_${categorySlugOne}`]?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes?.name || articleData[`level_3_${categorySlugOne}`]?.data?.attributes.name}
-            level4CategoryUrl={articleData[`level_4_${categorySlugOne}`]?.data?.attributes[`level_3_${categorySlugOne}`].data.attributes?.url || articleData[`level_3_${categorySlugOne}`]?.data?.attributes.url}
-            pageName={articleData?.title}
-            pageDescription={articleData?.content}
-            tags={articleData?.tags}
+            categoryName={dataAttr[`category_${categorySlug}`]?.data?.attributes?.general_category.data.attributes.name || dataAttr[`level_2_${categorySlugSingular}`]?.data?.attributes[`category_${categorySlugSingular}`].data.attributes.general_category.data.attributes.name || dataAttr[`level_3_${categorySlugSingular}`]?.data?.attributes[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.general_category.data.attributes.name || dataAttr[`level_4_${categorySlugSingular}`]?.data?.attributes[`level_3_${categorySlugSingular}`].data.attributes[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.general_category.data.attributes.name}
+            categoryUrl={dataAttr[`category_${categorySlug}`]?.data?.attributes?.general_category.data.attributes.url || dataAttr[`level_2_${categorySlugSingular}`]?.data?.attributes[`category_${categorySlugSingular}`].data.attributes.general_category.data.attributes.url || dataAttr[`level_3_${categorySlugSingular}`]?.data?.attributes[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.general_category.data.attributes.url || dataAttr[`level_4_${categorySlugSingular}`]?.data?.attributes[`level_3_${categorySlugSingular}`].data.attributes[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.general_category.data.attributes.url}
+            level2CategoryName={dataAttr[`category_${categorySlug}`]?.data?.attributes?.name || dataAttr[`level_2_${categorySlugSingular}`]?.data?.attributes[`category_${categorySlugSingular}`].data.attributes.name || dataAttr[`level_3_${categorySlugSingular}`]?.data?.attributes[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.name || dataAttr[`level_4_${categorySlugSingular}`]?.data?.attributes[`level_3_${categorySlugSingular}`].data.attributes[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.name}
+            level2CategoryUrl={dataAttr[`category_${categorySlug}`]?.data?.attributes?.url || dataAttr[`level_2_${categorySlugSingular}`]?.data?.attributes[`category_${categorySlugSingular}`].data.attributes.url || dataAttr[`level_3_${categorySlugSingular}`]?.data?.attributes[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.url || dataAttr[`level_4_${categorySlugSingular}`]?.data?.attributes[`level_3_${categorySlugSingular}`].data.attributes[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.url}
+            level3CategoryName={dataAttr[`level_2_${categorySlugSingular}`]?.data?.attributes?.name || dataAttr[`level_3_${categorySlugSingular}`]?.data?.attributes[`level_2_${categorySlugSingular}`].data.attributes.name || dataAttr[`level_4_${categorySlugSingular}`]?.data?.attributes[`level_3_${categorySlugSingular}`].data.attributes[`level_2_${categorySlugSingular}`].data.attributes.name}
+            level3CategoryUrl={dataAttr[`level_2_${categorySlugSingular}`]?.data?.attributes?.url || dataAttr[`level_3_${categorySlugSingular}`]?.data?.attributes[`level_2_${categorySlugSingular}`].data.attributes.url || dataAttr[`level_4_${categorySlugSingular}`]?.data?.attributes[`level_3_${categorySlugSingular}`].data.attributes[`level_2_${categorySlugSingular}`].data.attributes.url}
+            level4CategoryName={dataAttr[`level_4_${categorySlugSingular}`]?.data?.attributes[`level_3_${categorySlugSingular}`].data.attributes?.name || dataAttr[`level_3_${categorySlugSingular}`]?.data?.attributes.name}
+            level4CategoryUrl={dataAttr[`level_4_${categorySlugSingular}`]?.data?.attributes[`level_3_${categorySlugSingular}`].data.attributes?.url || dataAttr[`level_3_${categorySlugSingular}`]?.data?.attributes.url}
+            pageName={dataAttr?.title}
+            pageDescription={dataAttr?.content}
+            tags={dataAttr?.tags}
             leftMenuIsOpen={leftMenuIsOpen}
             setLeftMenuIsOpen={setLeftMenuIsOpen}
           />
@@ -64,20 +72,20 @@ const Level4Page = ({ locale, categoriesMenuData, data, currentCategoryData }) =
           <SubCategoryContent 
             t={t}
             categorySlug={categorySlug}
-            categoryName={categoryData?.name}
-            categoryUrl={categoryData?.url}
-            level2CategoryName={categoryLevel2Data?.name}
-            level2CategoryUrl={categoryLevel2Data?.url}
-            level3CategoryName={categoryLevel3Data?.name}
-            level3CategoryUrl={categoryLevel3Data?.url}
-            pageName={currentCategoryData?.name}
-            pageIcon={currentCategoryData?.icon}
-            categoryData={currentCategoryData?.[`level_4_${categorySlugMany}`]?.data}
-            articleData={currentCategoryData?.[`article_${categorySlugMany}`]?.data}
-            leftMenuData={data}
+            categoryName={dataAttr[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.general_category.data.attributes.name}
+            categoryUrl={dataAttr[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.general_category.data.attributes.url}
+            level2CategoryName={dataAttr[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.name}
+            level2CategoryUrl={dataAttr[`level_2_${categorySlugSingular}`].data.attributes[`category_${categorySlugSingular}`].data.attributes.url}
+            level3CategoryName={dataAttr[`level_2_${categorySlugSingular}`].data.attributes.name}
+            level3CategoryUrl={dataAttr[`level_2_${categorySlugSingular}`].data.attributes.url}
+            pageName={dataAttr.name}
+            pageIcon={dataAttr?.icon}
+            categoryData={dataAttr?.[`level_4_${categorySlugPlural}`]?.data}
+            articleData={dataAttr?.[`article_${categorySlugPlural}`]?.data}
+            leftMenuData={leftMenuData}
             leftMenuIsOpen={leftMenuIsOpen}
             setLeftMenuIsOpen={setLeftMenuIsOpen}
-            video={currentCategoryData?.video}
+            video={dataAttr?.video}
           />
         )}
       </Layout.SectionMain>
@@ -91,14 +99,14 @@ const Level4Page = ({ locale, categoriesMenuData, data, currentCategoryData }) =
 export const getServerSideProps = async ({ locale, params, req }) => {
   const pathUrl = `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}/${params.level4}`;
   const data = await getLevel4Data(locale, params.page, pathUrl);
-  const currentCategoryData = data.data.filter(item => item.attributes.slug_id === params.page)[0]?.attributes?.[`category_${params.page === "docs" ? "docs" : `${params.page}s`}`]?.data.map(categoryItem => categoryItem?.attributes?.[`level_2_${params.page === "docs" ? "docs" : `${params.page}s`}`]?.data.find(level2Item => level2Item.attributes.url === `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}`)?.attributes?.[`level_3_${params.page === "docs" ? "docs" : `${params.page}s`}`]?.data.find(level3Item => level3Item.attributes.url === pathUrl)).find(Boolean);
 
-  if (data.data?.[0]?.attributes.article === true ? !data.data : !currentCategoryData) {
+  if (data.data.length === 0) {
     return {
       notFound: true
     };
   }
 
+  const menuData = data.data[0]?.attributes.article ? await getCategoriesMenu(locale) : await getLeftMenu(locale, params.page);
   const cookies = new Cookies(req.headers.cookie, { path: "/" });
   if (cookies.get("neverShowTranslators") === "never" && data.data[0]?.attributes.content) {
     data.data[0].attributes.content = data.data[0].attributes.content.replace(
@@ -112,8 +120,8 @@ export const getServerSideProps = async ({ locale, params, req }) => {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       data,
-      categoriesMenuData: data?.categoriesMenuData || null,
-      currentCategoryData: currentCategoryData?.attributes || null
+      menuData,
+      categorySlug: params.page
     },
   };
 };

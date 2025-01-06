@@ -1,14 +1,12 @@
 import StyledCategoryItem from "./styled-category-item";
-import { useRouter } from "next/router";
 import Heading from "@components/common/heading";
 import InternalLink from "@components/common/internal-link";
 
 const CategoryItem = ({ data, leftMenuLevel, categorySlug }) => {
-  const router = useRouter();
-  const categorySlugMany = categorySlug === "docs" ? "docs" : `${categorySlug}s`;
+  const categorySlugPlural = categorySlug === "docs" ? "docs" : `${categorySlug}s`;
   const icon = data.attributes.icon || data.attributes.category_pic;
-  const levelLinks = data.attributes[`level_${leftMenuLevel}_${categorySlugMany}`]?.data || [];
-  const articleLinks = data.attributes[`article_${categorySlugMany}`]?.data || [];
+  const levelLinks = data.attributes[`level_${leftMenuLevel}_${categorySlugPlural}`]?.data || [];
+  const articleLinks = data.attributes[`article_${categorySlugPlural}`]?.data || [];
 
   const sortItems = (a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.name || a.attributes.title).localeCompare(b.attributes.name || b.attributes.title);
   const sublinks = [
