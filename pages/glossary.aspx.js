@@ -47,6 +47,7 @@ const GlossaryPage = ({ locale, menuData, glossaryData }) => {
           leftMenuData={leftMenuData}
           glossaryData={glossaryData}
           leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>

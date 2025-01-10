@@ -50,6 +50,7 @@ const FaqPage = ({ locale, menuData, faqData }) => {
           faqData={faqData}
           leftMenuData={leftMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
           locale={locale}
         />
       </Layout.SectionMain>
