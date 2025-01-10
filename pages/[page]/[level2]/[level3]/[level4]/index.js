@@ -30,7 +30,7 @@ const Level4Page = ({ locale, data, menuData, categorySlug }) => {
   
       loadData();
     }
-  }, []);
+  }, [data]);
 
   return (
     <Layout>

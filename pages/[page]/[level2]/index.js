@@ -28,7 +28,7 @@ const Level2Page = ({ locale, data, menuData, categorySlug }) => {
   
       loadData();
     }
-  }, []);
+  }, [data]);
 
   return (
     <Layout>

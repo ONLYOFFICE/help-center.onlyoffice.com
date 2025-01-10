@@ -31,7 +31,7 @@ const Level3Page = ({ locale, menuData, data, categorySlug }) => {
   
       loadData();
     }
-  }, []);
+  }, [data]);
 
   return (
     <Layout>
@@ -95,10 +95,10 @@ const Level3Page = ({ locale, menuData, data, categorySlug }) => {
               t={t}
               locale={locale}
               categorySlug={categorySlug}
-              categoryName={dataAttr[`category_${categorySlugSingular}`]?.data.attributes.general_category.data.attributes.name ?? dataAttr.general_category.data.attributes.name}
-              categoryUrl={dataAttr[`category_${categorySlugSingular}`]?.data.attributes.general_category.data.attributes.url ?? dataAttr.general_category.data.attributes.url}
-              level2CategoryName={dataAttr[`category_${categorySlugSingular}`]?.data.attributes.name}
-              level2CategoryUrl={dataAttr[`category_${categorySlugSingular}`]?.data.attributes?.url}
+              categoryName={dataAttr[`category_${categorySlugSingular}`]?.data?.attributes.general_category.data.attributes.name ?? dataAttr.general_category?.data.attributes.name}
+              categoryUrl={dataAttr[`category_${categorySlugSingular}`]?.data?.attributes.general_category.data.attributes.url ?? dataAttr.general_category?.data.attributes.url}
+              level2CategoryName={dataAttr[`category_${categorySlugSingular}`]?.data?.attributes.name}
+              level2CategoryUrl={dataAttr[`category_${categorySlugSingular}`]?.data?.attributes?.url}
               pageName={dataAttr?.name}
               pageIcon={dataAttr?.icon}
               categoryData={dataAttr?.[`level_3_${categorySlugPlural}`]?.data}
