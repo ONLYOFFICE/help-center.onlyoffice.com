@@ -39,7 +39,7 @@ const StyledMainContent = styled(Section)`
       padding: 72px 0 0;
 
       @media ${device.mobile} {
-        padding: 56px 0;
+        padding: 56px 0 0;
       }
     }
 
@@ -135,8 +135,9 @@ const StyledMainContent = styled(Section)`
     gap: 16px 48px;
     margin-bottom: 40px;
 
-    @media ${device.laptop} {
-      gap: 12px 24px;
+    @media ${device.mobile} {
+      margin-bottom: 48px;
+      gap: 24px 32px;
     }
   }
 
