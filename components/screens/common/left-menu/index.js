@@ -34,6 +34,10 @@ const LeftMenu = forwardRef(({
   }, [clearTimeoutRef]);
 
   useEffect(() => {
+    if (window.innerWidth <= 1024) {
+      setLeftMenuIsOpen(false);
+    }
+
     return () => {
       clearTimeoutRef();
     };
@@ -66,7 +70,7 @@ const LeftMenu = forwardRef(({
                 ))}
               </ul>
             ) : leftMenuData?.data?.length > 0 ? (
-              <TreeView data={leftMenuData} setLeftMenuIsOpen={setLeftMenuIsOpen} />
+              <TreeView data={leftMenuData} />
             ): null}
             <ul className="left-menu-info">
               <li><InternalLink href="/glossary.aspx" className={`glossary ${router.pathname === "/glossary.aspx" ? "active" : ""}`} label={t("Glossary")} /></li>
