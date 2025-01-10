@@ -1,6 +1,6 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import getLeftMenu from "@lib/strapi/getLeftMenu";
 import getFunctions from "@lib/strapi/getFunctions";
 import Layout from "@components/layout";
@@ -9,10 +9,20 @@ import Footer from "@components/screens/footer";
 import HeadSEO from "@components/screens/head";
 import ArticleContent from "@components/screens/article-content";
 
-const FunctionsPage = ({ locale, data, functions }) => {
+const FunctionsPage = ({ locale, menuData, functions }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
+  const [leftMenuData, setLeftMenuData] = useState(menuData);
   const { title, content, tags } = functions.data[0].attributes;
+
+  useEffect(() => {
+    const loadData = async () => {
+      const data = await getLeftMenu(locale);
+      setLeftMenuData(data);
+    };
+
+    loadData();
+  }, []);
 
   return (
     <Layout>
@@ -26,7 +36,7 @@ const FunctionsPage = ({ locale, data, functions }) => {
         <Header
           t={t}
           locale={locale}
-          data={data}
+          data={menuData}
           leftMenuIsOpen={leftMenuIsOpen}
           setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
@@ -39,7 +49,7 @@ const FunctionsPage = ({ locale, data, functions }) => {
           tags={tags}
           leftMenuIsOpen={leftMenuIsOpen}
           pageName={title}
-          leftMenuData={data}
+          leftMenuData={leftMenuData}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>
@@ -50,7 +60,7 @@ const FunctionsPage = ({ locale, data, functions }) => {
 };
 
 export async function getServerSideProps({ locale, params }) {
-  const data = await getLeftMenu(locale);
+  const menuData = await getLeftMenu(locale, true);
   const functions = await getFunctions(locale, `functions/${params.functions}`);
 
   if (functions.data.length === 0) {
@@ -63,7 +73,7 @@ export async function getServerSideProps({ locale, params }) {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      data,
+      menuData,
       functions
     },
   };

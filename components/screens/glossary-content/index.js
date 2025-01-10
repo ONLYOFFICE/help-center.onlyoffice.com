@@ -6,7 +6,7 @@ import Text from "@components/common/text";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import Heading from "@components/common/heading";
 
-const GlossaryContent = ({ t, glossaryData, leftMenuData, leftMenuIsOpen, locale }) => {
+const GlossaryContent = ({ t, glossaryData, leftMenuData, leftMenuIsOpen, setLeftMenuIsOpen, locale }) => {
   return (
     <StyledGlossaryContent>
       <StyledWrapperContent>
@@ -15,6 +15,7 @@ const GlossaryContent = ({ t, glossaryData, leftMenuData, leftMenuIsOpen, locale
           pageName={t("Glossary")}
           leftMenuData={leftMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
         <div className="wrapper">
           <Breadcrumbs t={t} pageName={t("Glossary")} />

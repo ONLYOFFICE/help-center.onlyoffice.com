@@ -5,11 +5,12 @@ import { device } from "@components/utils/devices";
 const StyledSubCategoryItem = styled.div`
   padding: 32px;
   box-shadow: 0px 7px 25px 0px rgba(85, 85, 85, 0.15);
+  scroll-margin-top: 24px;
 
   .subcategory-item-title {
     display: flex;
     align-items: center;
-    
+
     &:not(:last-child) {
       margin-bottom: 16px;
     }

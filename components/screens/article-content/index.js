@@ -59,6 +59,24 @@ const ArticleContent = ({
   useEffect(() => {
     if (containerRef.current) {
       tableBuilder(containerRef.current, cookies);
+
+      if (containerRef.current.querySelectorAll("pre code")) {
+        containerRef.current.querySelectorAll("pre code").forEach((element) => {
+          const button = document.createElement("button");
+          button.className = "copy-code-btn";
+          button.addEventListener("click", () => {
+            navigator.clipboard.writeText(element.textContent)
+
+            const range = document.createRange();
+            range.selectNodeContents(element);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+          });
+
+          element.appendChild(button);
+        });
+      }
     }
 
     setHeadings(extractHeadings(wrapperContentRef.current, pageDescription, "h4"));

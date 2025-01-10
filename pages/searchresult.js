@@ -35,6 +35,7 @@ const SearchResult = ({ locale, categoriesMenuData, searchResults, query, page }
           t={t}
           locale={locale}
           leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
           categoriesMenuData={categoriesMenuData}
           searchResults={searchResults}
           query={query}

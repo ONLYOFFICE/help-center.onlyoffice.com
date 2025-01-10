@@ -10,7 +10,7 @@ import ReactHtmlParser from "react-html-parser";
 import getTagsArticle from "@lib/strapi/getTagsArticle";
 import ArticlePopup from "@components/screens/common/article-popup";
 
-const FaqContent = ({ t, faqData, locale, leftMenuData, leftMenuIsOpen }) => {
+const FaqContent = ({ t, faqData, locale, leftMenuData, leftMenuIsOpen, setLeftMenuIsOpen }) => {
   const { name, faq_block, tags } = faqData.data[0].attributes;
   const [isExpanded, setIsExpanded] = useState(false);
   const [tagName, setTagName] = useState();
@@ -45,6 +45,7 @@ const FaqContent = ({ t, faqData, locale, leftMenuData, leftMenuIsOpen }) => {
           pageName={name}
           leftMenuData={leftMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
         <div className="wrapper">
           <Breadcrumbs t={t} pageName={name} />

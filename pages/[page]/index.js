@@ -14,7 +14,7 @@ const Level1Page = ({ locale, categoriesMenuData, data }) => {
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
 
   const { slug_id, articles, seo_title, seo_description, name, card_field_img } = data.data[0].attributes;
-  const categorySlugMany = slug_id === "docs" ? "docs" : `${slug_id}s`;
+  const categorySlugPlural = slug_id === "docs" ? "docs" : `${slug_id}s`;
 
   return (
     <Layout>
@@ -40,8 +40,8 @@ const Level1Page = ({ locale, categoriesMenuData, data }) => {
           categoriesMenuData={categoriesMenuData}
           categoryName={name}
           categoryImg={card_field_img?.data?.attributes.url}
-          data={slug_id === "integration" ? articles : data.data[0].attributes[`category_${categorySlugMany}`]}
-          categorySlug={categorySlugMany}
+          data={slug_id === "integration" ? articles : data.data[0].attributes[`category_${categorySlugPlural}`]}
+          categorySlug={categorySlugPlural}
           leftMenuCategories={categoriesMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
           setLeftMenuIsOpen={setLeftMenuIsOpen}

@@ -1,6 +1,6 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import getTags from "@lib/strapi/getTags";
 import getLeftMenu from "@lib/strapi/getLeftMenu";
 import Layout from "@components/layout";
@@ -9,9 +9,19 @@ import Footer from "@components/screens/footer";
 import HeadSEO from "@components/screens/head";
 import TagsContent from "@components/screens/tags-content";
 
-const TagsPage = ({ locale, data, tagsData }) => {
+const TagsPage = ({ locale, menuData, tagsData }) => {
   const { t } = useTranslation();
   const [leftMenuIsOpen, setLeftMenuIsOpen] = useState(false);
+  const [leftMenuData, setLeftMenuData] = useState(menuData);
+
+  useEffect(() => {
+    const loadData = async () => {
+      const data = await getLeftMenu(locale);
+      setLeftMenuData(data);
+    };
+
+    loadData();
+  }, []);
 
   return (
     <Layout>
@@ -25,7 +35,7 @@ const TagsPage = ({ locale, data, tagsData }) => {
         <Header
           t={t}
           locale={locale}
-          data={data}
+          data={menuData}
           leftMenuIsOpen={leftMenuIsOpen}
           setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
@@ -35,7 +45,7 @@ const TagsPage = ({ locale, data, tagsData }) => {
           t={t}
           locale={locale}
           tagsData={tagsData}
-          leftMenuData={data}
+          leftMenuData={leftMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
         />
       </Layout.SectionMain>
@@ -47,7 +57,7 @@ const TagsPage = ({ locale, data, tagsData }) => {
 };
 
 export const getServerSideProps = async ({ locale }) => {
-  const data = await getLeftMenu(locale);
+  const menuData = await getLeftMenu(locale, true);
   const tagsData = await getTags(locale);
 
   if (tagsData.data === null || tagsData.data.length === 0) {
@@ -60,7 +70,7 @@ export const getServerSideProps = async ({ locale }) => {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      data,
+      menuData,
       tagsData
     },
   };

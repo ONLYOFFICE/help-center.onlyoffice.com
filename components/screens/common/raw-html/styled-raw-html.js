@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import globalColors from "@components/utils/global-colors";
+import copyIcon from "@public/images/icons/copy.svg";
 
 const StyledRawHtml = styled.div`
   .raw-html-embed {
@@ -9,6 +10,10 @@ const StyledRawHtml = styled.div`
     font-size: 14px;
     line-height: 21px;
     word-break: break-word;
+
+    div[id] {
+      scroll-margin-top: 24px;
+    }
 
     p {
       margin: 8px 0;
@@ -54,6 +59,10 @@ const StyledRawHtml = styled.div`
 
       &.table_parameters {
         text-align: left;
+
+        td {
+          width: 40%;
+        }
       }
   
       &.sticky_table {
@@ -677,14 +686,31 @@ const StyledRawHtml = styled.div`
       overflow: auto;
 
       > code {
+        position: relative;
         white-space: pre-wrap;
         display: block;
         line-height: 18px;
-        padding: 14px;
+        padding: 14px 24px 14px 14px;
         text-align: left;
         font-size: 13px;
         font-weight: 400;
         background: #f4f4f4;
+
+        .copy-code-btn {
+          position: absolute;
+          top: 0;
+          right: 0;
+          border: none;
+          padding: 0;
+          width: 24px;
+          height: 24px;
+          background-image: url(${copyIcon.src});
+          background-repeat: no-repeat;
+          background-size: 12px 12px;
+          background-position: center;
+          background-color: transparent;
+          cursor: pointer;
+        }
 
         span {
           margin: 0;

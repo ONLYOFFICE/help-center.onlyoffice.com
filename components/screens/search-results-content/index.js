@@ -8,7 +8,7 @@ import InternalLink from "@components/common/internal-link";
 import Heading from "@components/common/heading";
 import Pagination from "@components/common/pagination";
 
-const SearchResultsContent = ({ t, categoriesMenuData, leftMenuIsOpen, page, searchResults, locale, sort, query }) => {
+const SearchResultsContent = ({ t, categoriesMenuData, leftMenuIsOpen, setLeftMenuIsOpen, page, searchResults, locale, sort, query }) => {
   const countPage = searchResults.meta?.pagination.pageCount;
   const [pageLimit, setPageLimit] = useState(countPage > 7 ? 7 : countPage);
   const [leftMenuData, setLeftMenuData] = useState(categoriesMenuData);
@@ -78,6 +78,7 @@ const SearchResultsContent = ({ t, categoriesMenuData, leftMenuIsOpen, page, sea
           t={t}
           leftMenuData={leftMenuData}
           leftMenuIsOpen={leftMenuIsOpen}
+          setLeftMenuIsOpen={setLeftMenuIsOpen}
         />
       )}
       <StyledSearchResultsContent>
