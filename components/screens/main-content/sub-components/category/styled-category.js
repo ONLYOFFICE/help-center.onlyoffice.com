@@ -3,7 +3,8 @@ import { device } from "@components/utils/devices";
 import globalColors from "@components/utils/global-colors";
 
 const StyledCategory = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   gap: 32px;
   margin: 0 auto;
   max-width: 880px;
@@ -51,10 +52,12 @@ const StyledCategory = styled.div`
     transition: color 0.3s;
   }
 
-  @media ${device.laptopM} {
-    max-width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
+  @media ${device.laptop} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media ${device.mobileL} {
+    grid-template-columns: repeat(2, 1fr);
   }
 `;
 
