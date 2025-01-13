@@ -8,6 +8,80 @@ const StyledTreeView = styled.div`
     list-style-type: none;
   }
 
+  .external-link {
+    text-decoration: none;
+  }
+
+  .left-menu-wrapper {
+    > li {
+      > ul {
+        > li {
+          > .left-menu-level-item {
+            .left-menu-level-link {
+              font-weight: 700;
+            }
+          }
+
+          > ul {
+            > li {
+              .left-menu-level-item {
+                padding-left: 14px;
+
+                .left-menu-level-link {
+                  padding-left: 0;
+                }
+              }
+
+              .left-menu-level-link {
+                padding-left: 14px;
+              }
+
+              > ul {
+                > li {
+                  .left-menu-level-item {
+                    padding-left: 28px;
+
+                    .left-menu-level-link {
+                      padding-left: 0;
+                    }
+                  }
+
+                  .left-menu-level-link {
+                    padding-left: 29px;
+                  }
+
+                  > ul {
+                    > li {
+                      .left-menu-level-item {
+                        padding-left: 42px;
+
+                        .left-menu-level-link {
+                          padding-left: 0;
+                        }
+                      }
+
+                      .left-menu-level-link {
+                        padding-left: 43px;
+                      }
+
+                      > ul {
+                        > li {
+                          .left-menu-level-link {
+                            padding-left: 57px;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   .left-menu-category-item {
     padding: 12px 0;
 
@@ -65,18 +139,6 @@ const StyledTreeView = styled.div`
 
   .left-menu-level-item {
     display: flex;
-
-    &.left-menu-level-2-item {
-      padding-left: 14px;
-    }
-
-    &.left-menu-level-3-item {
-      padding-left: 28px;
-    }
-
-    &.left-menu-level-4-item {
-      padding-left: 42px;
-    }
   }
 
   .left-menu-level-link {
@@ -94,30 +156,6 @@ const StyledTreeView = styled.div`
 
     &.active {
       color: ${globalColors.orangeMain};
-    }
-
-    &.left-menu-category-link {
-      line-height: 19px;
-    }
-
-    &.left-menu-level-1-link {
-      font-weight: 700;
-    }
-
-    &.left-menu-level-2-link {
-      padding-left: 14px;
-    }
-
-    &.left-menu-level-3-link {
-      padding-left: 29px;
-    }
-
-    &.left-menu-level-4-link {
-      padding-left: 43px;
-    }
-
-    &.left-menu-level-4-article-link {
-      padding-left: 57px;
     }
   }
 
