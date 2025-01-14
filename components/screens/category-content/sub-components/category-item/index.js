@@ -8,15 +8,11 @@ const CategoryItem = ({ data, leftMenuLevel, categorySlug }) => {
   const levelLinks = data.attributes[`level_${leftMenuLevel}_${categorySlugPlural}`]?.data || [];
   const articleLinks = data.attributes[`article_${categorySlugPlural}`]?.data || [];
 
-  const sortItems = (a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.name || a.attributes.title).localeCompare(b.attributes.name || b.attributes.title);
-  const sublinks = [
-    ...levelLinks.filter(item => item.attributes.icon_small?.data?.attributes.url),
-    ...levelLinks.filter(item => !item.attributes.icon_small?.data?.attributes.url),
-    ...articleLinks
-    
-  ];
-  const topPositionSubLinks = sublinks.filter(item => item.attributes.position_top);
-  const filteredSubLinks = sublinks.filter(item => !item.attributes.position_top).sort(sortItems);
+  const sortByIconOrPositionOrName = (a, b) => (b.attributes.icon_small?.data?.attributes?.url ? 1 : 0) - (a.attributes.icon_small?.data?.attributes?.url ? 1 : 0) || (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.name).localeCompare(b.attributes.name);
+  const sortByPositionOrTitle = (a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.title).localeCompare(b.attributes.title);
+
+  const topPositionSubLinks = levelLinks.filter(item => item.attributes.position_top);
+  const filteredSubLinks = [...levelLinks.filter(item => !item.attributes.position_top).sort(sortByIconOrPositionOrName), ...articleLinks.sort(sortByPositionOrTitle)];
 
   const checkTitleLength = !filteredSubLinks.some(item => {
     const title = item.attributes.title;

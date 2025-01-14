@@ -45,6 +45,7 @@ const Items = [
         href: "/contribute.aspx",
       },
       {
+        isInternal: true,
         localize: false,
         label: "ForTranslators",
         href: "/docs/contribution/become-translator.aspx",

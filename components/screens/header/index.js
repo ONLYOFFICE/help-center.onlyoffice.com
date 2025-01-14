@@ -86,7 +86,6 @@ const Header = ({ t, locale, data, isMain, leftMenuIsOpen, setLeftMenuIsOpen }) 
           </ul>
         </nav>
         <LanguageSelector locale={locale} />
-        <div className={`overlay ${leftMenuIsOpen ? "active" : ""}`}></div>
       </div>
     </StyledHeader>
   );

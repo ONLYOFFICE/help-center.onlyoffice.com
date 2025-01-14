@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import StyledFooter from "./styled-footer";
 import Items from "./data/footer-items";
 import FooterItem from "./sub-components/footer-item";
+import ExternalLink from "@components/common/external-link";
 import InternalLink from "@components/common/internal-link";
 import Text from "@components/common/text";
 
@@ -61,17 +62,29 @@ const Footer = ({ t, locale }) => {
                       />
                     </Text>
                   ) : (
-                    <InternalLink
-                      className="footer-link"
-                      label={t(item_link.label)}
-                      alt={item_link.label}
-                      href={
-                        item_link.localize
-                          ? onlyoffice + item_link.href
-                          : item_link.href
-                      }
-                      key={`${item_link.label}-${idx_link}`}
-                    />
+                    item_link.isInternal ? (
+                      <InternalLink
+                        className="footer-link"
+                        label={t(item_link.label)}
+                        href={
+                          item_link.localize
+                            ? onlyoffice + item_link.href
+                            : item_link.href
+                        }
+                        key={`${item_link.label}-${idx_link}`}
+                      />
+                    ) : (
+                      <ExternalLink
+                        className="footer-link"
+                        label={t(item_link.label)}
+                        href={
+                          item_link.localize
+                            ? onlyoffice + item_link.href
+                            : item_link.href
+                        }
+                        key={`${item_link.label}-${idx_link}`}
+                      />
+                    )
                   )
                 )}
               </FooterItem>
@@ -80,7 +93,7 @@ const Footer = ({ t, locale }) => {
         ))}
       </div>
       <div className="footer-copyright-block">
-        <InternalLink href={onlyoffice} label="onlyoffice.com" />
+        <ExternalLink href={onlyoffice} label="onlyoffice.com" />
         <Text className="footer-copyright" label={t("FooterCopyright", { currentYear })} />
       </div>
     </StyledFooter>

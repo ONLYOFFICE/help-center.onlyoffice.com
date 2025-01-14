@@ -8,6 +8,7 @@ const StyledCategoryItem = styled.div`
   border-radius: 3px;
   padding: 32px;
   box-shadow: 0px 7px 25px 0px rgba(85, 85, 85, 0.15);
+  scroll-margin-top: 24px;
 
   .category-item-title {
     display: flex;

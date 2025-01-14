@@ -1,4 +1,4 @@
-import StyledLeftMenu from "./styled-left-menu";
+import { StyledLeftMenu, StyledOverlay } from "./styled-left-menu";
 import { forwardRef, useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/router";
 import { Scrollbar } from "react-scrollbars-custom";
@@ -17,31 +17,38 @@ const LeftMenu = forwardRef(({
 }, ref) => {
   const router = useRouter();
   const [scrollVisible, setScrollVisible] = useState(false);
+  const [isTransition, setIsTransition] = useState(false);
   const timeoutRef = useRef(null);
+  const transitionTimeoutRef = useRef(null);
 
   const clearTimeoutRef = useCallback(() => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
   }, []);
 
   const handleVisibility = useCallback(() => {
     setScrollVisible(true);
     clearTimeoutRef();
-    timeoutRef.current = setTimeout(() => {
-      setScrollVisible(false);
-    }, 2000);
+    timeoutRef.current = setTimeout(() => setScrollVisible(false), 2000);
   }, [clearTimeoutRef]);
 
   useEffect(() => {
-    if (window.innerWidth <= 1024) {
-      setLeftMenuIsOpen(false);
+    const handleResize = () => {
+      if (window.innerWidth <= 1024) {
+        clearTimeout(transitionTimeoutRef.current);
+        transitionTimeoutRef.current = setTimeout(() => setIsTransition(true), 50);
+        setLeftMenuIsOpen(false);
+      }
     }
 
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
     return () => {
-      clearTimeoutRef();
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(transitionTimeoutRef.current);
     };
-  }, [clearTimeoutRef]);
+  }, [router.asPath]);
 
   return (
     <>
@@ -49,6 +56,7 @@ const LeftMenu = forwardRef(({
         ref={ref}
         onMouseEnter={handleVisibility}
         onMouseLeave={() => setScrollVisible(false)}
+        isTransition={isTransition}
         className={`left-menu ${leftMenuIsOpen ? "active" : ""}`}
       >
         <div className="left-menu-wrapper">
@@ -70,8 +78,8 @@ const LeftMenu = forwardRef(({
                 ))}
               </ul>
             ) : leftMenuData?.data?.length > 0 ? (
-              <TreeView data={leftMenuData} />
-            ): null}
+              <TreeView data={leftMenuData} setIsTransition={setIsTransition} />
+            ) : null}
             <ul className="left-menu-info">
               <li><InternalLink href="/glossary.aspx" className={`glossary ${router.pathname === "/glossary.aspx" ? "active" : ""}`} label={t("Glossary")} /></li>
               <li><InternalLink href="/video.aspx" className={`video ${router.pathname === "/video.aspx" ? "active" : ""}`} label={t("Video")} /></li>
@@ -80,6 +88,7 @@ const LeftMenu = forwardRef(({
           </Scrollbar>
         </div>
       </StyledLeftMenu>
+      <StyledOverlay leftMenuIsOpen={leftMenuIsOpen} isTransition={isTransition} />
     </>
   )
 });
