@@ -83,24 +83,6 @@ const StyledHeader = styled.div`
     }
   }
 
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(51, 51, 51, 0.24);
-    z-index: 10;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
-
-    &.active {
-      opacity: 1;
-      visibility: visible;
-    }
-  }
-
   .header-mobile-menu-btn {
     display: none;
     align-items: center;

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ExternalLink from "@components/common/external-link";
 import InternalLink from "@components/common/internal-link";
 
-const TreeNode = ({ node, levelIndex, toggleLevelAccordion, routerPath, routerPathWithoutQuery }) => {
+const TreeViewNode = ({ node, levelIndex, toggleLevelTreeview, routerPath, routerPathWithoutQuery, setIsTransition }) => {
   const [externalUrl, setExternalUrl] = useState(false);
 
   useEffect(() => {
@@ -19,11 +19,12 @@ const TreeNode = ({ node, levelIndex, toggleLevelAccordion, routerPath, routerPa
           {node.url ? (
             <div className="left-menu-level-item">
               <button
-                onClick={() => toggleLevelAccordion(node.url)}
+                onClick={() => toggleLevelTreeview(node.url)}
                 className={`left-menu-arrow-btn ${levelIndex[node.url] ? "active" : ""}`}
               >
               </button>
               <InternalLink
+                onClick={() => window.innerWidth < 1024 && setIsTransition(false)}
                 className={`left-menu-level-link ${routerPathWithoutQuery === node.url ? "active" : ""}`}
                 href={node.url}
                 label={node.name || node.title}
@@ -31,7 +32,7 @@ const TreeNode = ({ node, levelIndex, toggleLevelAccordion, routerPath, routerPa
             </div>
           ) : (
             <button
-              onClick={() => toggleLevelAccordion(node.name)}
+              onClick={() => toggleLevelTreeview(node.name)}
               className="left-menu-level-btn"
             >
               {node.name || node.title}
@@ -40,13 +41,14 @@ const TreeNode = ({ node, levelIndex, toggleLevelAccordion, routerPath, routerPa
 
           {levelIndex[node.url ? node.url : node.name] && (
             <ul>
-              {node.children?.map((child, index) => (
-                <TreeNode
-                  node={child}
-                  key={index}
+              {node.children?.map((node, indexIndex) => (
+                <TreeViewNode
+                  node={node}
+                  key={indexIndex}
                   levelIndex={levelIndex}
-                  toggleLevelAccordion={toggleLevelAccordion}
+                  toggleLevelTreeview={toggleLevelTreeview}
                   routerPathWithoutQuery={routerPathWithoutQuery}
+                  setIsTransition={setIsTransition}
                 />
               ))}
             </ul>
@@ -61,6 +63,7 @@ const TreeNode = ({ node, levelIndex, toggleLevelAccordion, routerPath, routerPa
           />
         ) : (
           <InternalLink
+            onClick={() => window.innerWidth < 1024 && setIsTransition(false)}
             className={`left-menu-level-link ${routerPath === node?.url ? "active" : ""}`}
             href={node?.url}
             label={node?.name || node?.title}
@@ -71,4 +74,4 @@ const TreeNode = ({ node, levelIndex, toggleLevelAccordion, routerPath, routerPa
   );
 };
 
-export default TreeNode;
+export default TreeViewNode;

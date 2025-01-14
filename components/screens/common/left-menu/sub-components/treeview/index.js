@@ -1,10 +1,10 @@
 import StyledTreeView from "./styled-treeview";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import GenerateTreeData from "./tree-data";
-import TreeNode from "./tree-node";
+import GenerateTreeViewData from "./treeview-data";
+import TreeViewNode from "./treeview-node";
 
-const TreeView = ({ data }) => {
+const TreeView = ({ data, setIsTransition }) => {
   const router = useRouter();
   const { page, level2, level3, level4 } = router.query;
   const routerPathHash = router.asPath.split("#")[1];
@@ -18,25 +18,20 @@ const TreeView = ({ data }) => {
     level4 && router.asPath.includes(routerPathHash) && { [`/${page}/${level2}/${level3}/${level4}#${routerPathHash}`]: true }
   );
 
-  const [categoryIndex, setCategoryIndex] = useState(router.query.page);
+  const [categoryIndex, setCategoryIndex] = useState(page);
   const [levelIndex, setLevelIndex] = useState(levelObjectData);
 
   useEffect(() => {
     const levelIndexSession = JSON.parse(sessionStorage.getItem(`${window.history.state.as}-${window.history.state.key}`));
-
-    if (levelIndexSession) {
-      setLevelIndex(levelIndexSession);
-    } else {
-      setLevelIndex(levelObjectData);
-    }
+    setLevelIndex(levelIndexSession ?? levelObjectData);
   }, [router.asPath]);
 
-  const toggleCategoryTree = (slug) => {
+  const toggleCategoryTreeview = (slug) => {
     setLevelIndex({});
     setCategoryIndex((prev) => (prev === slug ? null : slug));
   };
 
-  const toggleLevelAccordion = (slug_id) => {
+  const toggleLevelTreeview = (slug_id) => {
     setLevelIndex((prev) => {
       const newLevelIndex = {
         ...prev,
@@ -51,11 +46,11 @@ const TreeView = ({ data }) => {
 
   return (
     <StyledTreeView className="left-menu-treeview">
-      <ul className="left-menu-wrapper">
-        {GenerateTreeData(data).children.map((item, index) => (
+      <ul>
+        {GenerateTreeViewData(data).children.map((item, index) => (
           <li className="left-menu-category-item" key={index}>
             <button
-              onClick={() => toggleCategoryTree(item.slug_id)}
+              onClick={() => toggleCategoryTreeview(item.slug_id)}
               className="left-menu-category-btn"
             >
               {item.name}
@@ -63,14 +58,15 @@ const TreeView = ({ data }) => {
 
             {categoryIndex === item.slug_id && (
               <ul>
-                {item.children?.map((item2, index2) => (
-                  <TreeNode
-                    key={index2}
-                    node={item2}
+                {item.children?.map((node, nodeIndex) => (
+                  <TreeViewNode
+                    key={nodeIndex}
+                    node={node}
                     levelIndex={levelIndex}
-                    toggleLevelAccordion={toggleLevelAccordion}
+                    toggleLevelTreeview={toggleLevelTreeview}
                     routerPath={router.asPath.split("?")[0].split("#")[0]}
                     routerPathWithoutQuery={router.asPath.split("?")[0]}
+                    setIsTransition={setIsTransition}
                   />
                 ))}
               </ul>

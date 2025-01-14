@@ -191,7 +191,7 @@ const StyledLeftMenu = styled.div`
     z-index: 1000;
     transform: translateX(-100%);
     visibility: hidden;
-    transition: transform 0.3s, visibility 0.3s;
+    transition: ${(props) => props.isTransition && "transform 0.3s, visibility 0.3s"};
 
     &.active {
       transform: translateX(0);
@@ -241,4 +241,17 @@ const StyledLeftMenu = styled.div`
   }
 `;
 
-export default StyledLeftMenu;
+const StyledOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(51, 51, 51, 0.24);
+  z-index: 10;
+  opacity: ${(props) => props.leftMenuIsOpen ? 1 : 0};
+  visibility: ${(props) => props.leftMenuIsOpen ? "visible" : "hidden"};
+  transition: ${(props) => props.isTransition && "opacity 0.3s, visibility 0.3s"};
+`;
+
+export { StyledLeftMenu, StyledOverlay };

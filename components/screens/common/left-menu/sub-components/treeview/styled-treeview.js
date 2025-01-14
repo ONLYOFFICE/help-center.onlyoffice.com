@@ -12,76 +12,6 @@ const StyledTreeView = styled.div`
     text-decoration: none;
   }
 
-  .left-menu-wrapper {
-    > li {
-      > ul {
-        > li {
-          > .left-menu-level-item {
-            .left-menu-level-link {
-              font-weight: 700;
-            }
-          }
-
-          > ul {
-            > li {
-              .left-menu-level-item {
-                padding-left: 14px;
-
-                .left-menu-level-link {
-                  padding-left: 0;
-                }
-              }
-
-              .left-menu-level-link {
-                padding-left: 14px;
-              }
-
-              > ul {
-                > li {
-                  .left-menu-level-item {
-                    padding-left: 28px;
-
-                    .left-menu-level-link {
-                      padding-left: 0;
-                    }
-                  }
-
-                  .left-menu-level-link {
-                    padding-left: 29px;
-                  }
-
-                  > ul {
-                    > li {
-                      .left-menu-level-item {
-                        padding-left: 42px;
-
-                        .left-menu-level-link {
-                          padding-left: 0;
-                        }
-                      }
-
-                      .left-menu-level-link {
-                        padding-left: 43px;
-                      }
-
-                      > ul {
-                        > li {
-                          .left-menu-level-link {
-                            padding-left: 57px;
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
   .left-menu-category-item {
     padding: 12px 0;
 
@@ -95,6 +25,72 @@ const StyledTreeView = styled.div`
 
     &:not(:last-child) {
       border-bottom: 1px solid ${globalColors.grayLight};
+    }
+
+    > ul {
+      > li {
+        > .left-menu-level-item {
+          .left-menu-level-link {
+            font-weight: 700;
+          }
+        }
+
+        > ul {
+          > li {
+            .left-menu-level-item {
+              padding-left: 14px;
+
+              .left-menu-level-link {
+                padding-left: 0;
+              }
+            }
+
+            .left-menu-level-link {
+              padding-left: 14px;
+            }
+
+            > ul {
+              > li {
+                .left-menu-level-item {
+                  padding-left: 28px;
+
+                  .left-menu-level-link {
+                    padding-left: 0;
+                  }
+                }
+
+                .left-menu-level-link {
+                  padding-left: 29px;
+                }
+
+                > ul {
+                  > li {
+                    .left-menu-level-item {
+                      padding-left: 42px;
+
+                      .left-menu-level-link {
+                        padding-left: 0;
+                      }
+                    }
+
+                    .left-menu-level-link {
+                      padding-left: 43px;
+                    }
+
+                    > ul {
+                      > li {
+                        .left-menu-level-link {
+                          padding-left: 57px;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 
