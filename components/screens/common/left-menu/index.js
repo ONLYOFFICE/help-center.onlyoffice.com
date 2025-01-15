@@ -20,6 +20,7 @@ const LeftMenu = forwardRef(({
   const transitionTimeoutRef = useRef(null);
   const scrollTopTimeoutRef = useRef(null);
   const treeViewRef = useRef(null);
+  const shouldObserve = useRef(true);
   const [scrollVisible, setScrollVisible] = useState(false);
   const [isTransition, setIsTransition] = useState(false);
   const [scrollTopHeight, setScrollTopHeight] = useState(undefined);
@@ -44,6 +45,8 @@ const LeftMenu = forwardRef(({
     window.addEventListener("resize", handleResize);
 
     const calculateOffsetTop = () => {
+      if (!shouldObserve.current) return;
+
       if (treeViewRef.current) {
         const activeLink = treeViewRef.current.querySelector(".left-menu-level-link.active");
 
@@ -56,7 +59,7 @@ const LeftMenu = forwardRef(({
     };
 
     const observer = new MutationObserver(() => {
-      calculateOffsetTop();
+      if (shouldObserve.current) calculateOffsetTop();
     });
 
     if (treeViewRef.current) {
@@ -106,7 +109,12 @@ const LeftMenu = forwardRef(({
                 ))}
               </ul>
             ) : leftMenuData?.data?.length > 0 ? (
-              <TreeView ref={treeViewRef} data={leftMenuData} setIsTransition={setIsTransition} />
+              <TreeView
+                ref={treeViewRef}
+                data={leftMenuData}
+                setIsTransition={setIsTransition}
+                shouldObserve={shouldObserve}
+              />
             ) : null}
             <ul className="left-menu-info">
               <li><InternalLink href="/glossary.aspx" className={`glossary ${router.pathname === "/glossary.aspx" ? "active" : ""}`} label={t("Glossary")} /></li>

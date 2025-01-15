@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import GenerateTreeViewData from "./treeview-data";
 import TreeViewNode from "./treeview-node";
 
-const TreeView = forwardRef(({ data, setIsTransition }, ref) => {
+const TreeView = forwardRef(({ data, setIsTransition, shouldObserve }, ref) => {
   const router = useRouter();
   const { page, level2, level3, level4 } = router.query;
   const routerPathHash = router.asPath.split("#")[1];
@@ -67,6 +67,7 @@ const TreeView = forwardRef(({ data, setIsTransition }, ref) => {
                     routerPath={router.asPath.split("?")[0].split("#")[0]}
                     routerPathWithoutQuery={router.asPath.split("?")[0]}
                     setIsTransition={setIsTransition}
+                    shouldObserve={shouldObserve}
                   />
                 ))}
               </ul>

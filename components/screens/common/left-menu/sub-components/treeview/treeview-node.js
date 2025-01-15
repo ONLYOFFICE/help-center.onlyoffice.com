@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ExternalLink from "@components/common/external-link";
 import InternalLink from "@components/common/internal-link";
 
-const TreeViewNode = ({ node, levelIndex, toggleLevelTreeview, routerPath, routerPathWithoutQuery, setIsTransition }) => {
+const TreeViewNode = ({ node, levelIndex, toggleLevelTreeview, routerPath, routerPathWithoutQuery, setIsTransition, shouldObserve }) => {
   const [externalUrl, setExternalUrl] = useState(false);
 
   useEffect(() => {
@@ -12,6 +12,14 @@ const TreeViewNode = ({ node, levelIndex, toggleLevelTreeview, routerPath, route
     }
   }, []);
 
+  const enableObserver = () => {
+    shouldObserve.current = true;
+  };
+  
+  const disableObserver = () => {
+    shouldObserve.current = false;
+  };
+
   return (
     <li>
       {node?.children?.length > 0 ? (
@@ -19,12 +27,18 @@ const TreeViewNode = ({ node, levelIndex, toggleLevelTreeview, routerPath, route
           {node.url ? (
             <div className="left-menu-level-item">
               <button
-                onClick={() => toggleLevelTreeview(node.url)}
+                onClick={() => {
+                  toggleLevelTreeview(node.url);
+                  disableObserver();
+                }}
                 className={`left-menu-arrow-btn ${levelIndex[node.url] ? "active" : ""}`}
               >
               </button>
               <InternalLink
-                onClick={() => window.innerWidth <= 1024 && setIsTransition(false)}
+                onClick={() => {
+                  window.innerWidth <= 1024 && setIsTransition(false);
+                  enableObserver();
+                }}
                 className={`left-menu-level-link ${routerPathWithoutQuery === node.url ? "active" : ""}`}
                 href={node.url}
                 label={node.name || node.title}
@@ -32,8 +46,11 @@ const TreeViewNode = ({ node, levelIndex, toggleLevelTreeview, routerPath, route
             </div>
           ) : (
             <button
-              onClick={() => toggleLevelTreeview(node.name)}
-              className="left-menu-level-btn"
+              onClick={() => {
+                toggleLevelTreeview(node.name);
+                disableObserver();
+              }}
+              className={`left-menu-level-btn ${levelIndex[node.url ? node.url : node.name] ? "active" : ""}`}
             >
               {node.name || node.title}
             </button>
@@ -49,6 +66,7 @@ const TreeViewNode = ({ node, levelIndex, toggleLevelTreeview, routerPath, route
                   toggleLevelTreeview={toggleLevelTreeview}
                   routerPathWithoutQuery={routerPathWithoutQuery}
                   setIsTransition={setIsTransition}
+                  shouldObserve={shouldObserve}
                 />
               ))}
             </ul>
@@ -63,7 +81,10 @@ const TreeViewNode = ({ node, levelIndex, toggleLevelTreeview, routerPath, route
           />
         ) : (
           <InternalLink
-            onClick={() => window.innerWidth <= 1024 && setIsTransition(false)}
+            onClick={() => {
+              window.innerWidth <= 1024 && setIsTransition(false);
+              enableObserver();
+            }}
             className={`left-menu-level-link ${routerPath === node?.url ? "active" : ""}`}
             href={node?.url}
             label={node?.name || node?.title}
