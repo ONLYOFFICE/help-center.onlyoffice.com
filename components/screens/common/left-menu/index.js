@@ -48,7 +48,7 @@ const LeftMenu = forwardRef(({
         const activeLink = treeViewRef.current.querySelector(".left-menu-level-link.active");
 
         if (activeLink) {
-          setScrollTopHeight(activeLink.offsetTop - window.innerHeight / 6);
+          setScrollTopHeight(activeLink.offsetTop - window.innerHeight / 5);
           clearTimeout(scrollTopTimeoutRef.current);
           scrollTopTimeoutRef.current = setTimeout(() => setScrollTopHeight(undefined), 50);
         }
