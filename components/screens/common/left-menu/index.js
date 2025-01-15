@@ -43,17 +43,38 @@ const LeftMenu = forwardRef(({
 
     window.addEventListener("resize", handleResize);
 
-    if (treeViewRef.current) {
-      const offsetTop = treeViewRef.current.querySelector(".left-menu-level-link.active")?.offsetTop - treeViewRef.current.offsetTop;
-      setScrollTopHeight(offsetTop - window.innerHeight / 5);
-      clearTimeout(scrollTopTimeoutRef.current);
-      scrollTopTimeoutRef.current = setTimeout(() => setScrollTopHeight(undefined), 50);
+    const calculateOffsetTop = () => {
+      if (treeViewRef.current) {
+        const activeLink = treeViewRef.current.querySelector(".left-menu-level-link.active");
+
+        if (activeLink) {
+          setScrollTopHeight(activeLink.offsetTop - window.innerHeight / 6);
+          clearTimeout(scrollTopTimeoutRef.current);
+          scrollTopTimeoutRef.current = setTimeout(() => setScrollTopHeight(undefined), 50);
+        }
+      }
     };
+
+    const observer = new MutationObserver(() => {
+      calculateOffsetTop();
+    });
+
+    if (treeViewRef.current) {
+      observer.observe(treeViewRef.current, {
+        childList: true,
+        subtree: true,
+      });
+    };
+
+    calculateOffsetTop();
 
     return () => {
       window.removeEventListener("resize", handleResize);
       clearTimeout(transitionTimeoutRef.current);
       clearTimeout(scrollTopTimeoutRef.current);
+      if (treeViewRef.current) {
+        observer.disconnect();
+      }
     };
   }, [router.asPath]);
 
