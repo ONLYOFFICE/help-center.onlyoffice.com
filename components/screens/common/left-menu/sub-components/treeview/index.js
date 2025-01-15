@@ -1,10 +1,10 @@
 import StyledTreeView from "./styled-treeview";
-import { useState, useEffect } from "react";
+import { forwardRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import GenerateTreeViewData from "./treeview-data";
 import TreeViewNode from "./treeview-node";
 
-const TreeView = ({ data, setIsTransition }) => {
+const TreeView = forwardRef(({ data, setIsTransition }, ref) => {
   const router = useRouter();
   const { page, level2, level3, level4 } = router.query;
   const routerPathHash = router.asPath.split("#")[1];
@@ -45,7 +45,7 @@ const TreeView = ({ data, setIsTransition }) => {
   };
 
   return (
-    <StyledTreeView className="left-menu-treeview">
+    <StyledTreeView ref={ref} className="left-menu-treeview">
       <ul>
         {GenerateTreeViewData(data).children.map((item, index) => (
           <li className="left-menu-category-item" key={index}>
@@ -76,6 +76,6 @@ const TreeView = ({ data, setIsTransition }) => {
       </ul>
     </StyledTreeView>
   );
-};
+});
 
 export default TreeView;

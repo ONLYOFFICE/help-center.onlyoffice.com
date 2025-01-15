@@ -1,5 +1,5 @@
 import { StyledLeftMenu, StyledOverlay } from "./styled-left-menu";
-import { forwardRef, useState, useEffect, useRef, useCallback } from "react";
+import { forwardRef, useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { Scrollbar } from "react-scrollbars-custom";
 import InternalLink from "@components/common/internal-link";
@@ -16,20 +16,19 @@ const LeftMenu = forwardRef(({
   leftMenuData
 }, ref) => {
   const router = useRouter();
-  const [scrollVisible, setScrollVisible] = useState(false);
-  const [isTransition, setIsTransition] = useState(false);
   const timeoutRef = useRef(null);
   const transitionTimeoutRef = useRef(null);
+  const scrollTopTimeoutRef = useRef(null);
+  const treeViewRef = useRef(null);
+  const [scrollVisible, setScrollVisible] = useState(false);
+  const [isTransition, setIsTransition] = useState(false);
+  const [scrollTopHeight, setScrollTopHeight] = useState(undefined);
 
-  const clearTimeoutRef = useCallback(() => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-  }, []);
-
-  const handleVisibility = useCallback(() => {
+  const handleVisibility = () => {
     setScrollVisible(true);
-    clearTimeoutRef();
+    clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => setScrollVisible(false), 2000);
-  }, [clearTimeoutRef]);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -38,15 +37,23 @@ const LeftMenu = forwardRef(({
         transitionTimeoutRef.current = setTimeout(() => setIsTransition(true), 50);
         setLeftMenuIsOpen(false);
       }
-    }
+    };
 
     handleResize();
 
     window.addEventListener("resize", handleResize);
 
+    if (treeViewRef.current) {
+      const offsetTop = treeViewRef.current.querySelector(".left-menu-level-link.active")?.offsetTop - treeViewRef.current.offsetTop;
+      setScrollTopHeight(offsetTop - window.innerHeight / 5);
+      clearTimeout(scrollTopTimeoutRef.current);
+      scrollTopTimeoutRef.current = setTimeout(() => setScrollTopHeight(undefined), 50);
+    };
+
     return () => {
       window.removeEventListener("resize", handleResize);
       clearTimeout(transitionTimeoutRef.current);
+      clearTimeout(scrollTopTimeoutRef.current);
     };
   }, [router.asPath]);
 
@@ -65,10 +72,10 @@ const LeftMenu = forwardRef(({
             placeholder={t("Search in Help Center")}
             isLeftMenu={true}
           />
-          <Scrollbar onScroll={handleVisibility} className={scrollVisible ? "scroll-visible" : ""}>
-            {headings && headings.length != 0 && pageName &&
+          <Scrollbar scrollTop={scrollTopHeight} onScroll={handleVisibility} className={scrollVisible ? "scroll-visible" : ""}>
+            {headings && headings.length !== 0 && pageName && (
               <Heading className="left-menu-title" level={6} label={pageName} />
-            }
+            )}
             {headings?.length > 1 ? (
               <ul className="left-menu-items left-menu-articles">
                 {headings.map((item, index) => (
@@ -78,7 +85,7 @@ const LeftMenu = forwardRef(({
                 ))}
               </ul>
             ) : leftMenuData?.data?.length > 0 ? (
-              <TreeView data={leftMenuData} setIsTransition={setIsTransition} />
+              <TreeView ref={treeViewRef} data={leftMenuData} setIsTransition={setIsTransition} />
             ) : null}
             <ul className="left-menu-info">
               <li><InternalLink href="/glossary.aspx" className={`glossary ${router.pathname === "/glossary.aspx" ? "active" : ""}`} label={t("Glossary")} /></li>
@@ -90,7 +97,7 @@ const LeftMenu = forwardRef(({
       </StyledLeftMenu>
       <StyledOverlay leftMenuIsOpen={leftMenuIsOpen} isTransition={isTransition} />
     </>
-  )
+  );
 });
 
 export default LeftMenu;

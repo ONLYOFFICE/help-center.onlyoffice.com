@@ -24,7 +24,7 @@ const TreeViewNode = ({ node, levelIndex, toggleLevelTreeview, routerPath, route
               >
               </button>
               <InternalLink
-                onClick={() => window.innerWidth < 1024 && setIsTransition(false)}
+                onClick={() => window.innerWidth <= 1024 && setIsTransition(false)}
                 className={`left-menu-level-link ${routerPathWithoutQuery === node.url ? "active" : ""}`}
                 href={node.url}
                 label={node.name || node.title}
@@ -63,7 +63,7 @@ const TreeViewNode = ({ node, levelIndex, toggleLevelTreeview, routerPath, route
           />
         ) : (
           <InternalLink
-            onClick={() => window.innerWidth < 1024 && setIsTransition(false)}
+            onClick={() => window.innerWidth <= 1024 && setIsTransition(false)}
             className={`left-menu-level-link ${routerPath === node?.url ? "active" : ""}`}
             href={node?.url}
             label={node?.name || node?.title}
