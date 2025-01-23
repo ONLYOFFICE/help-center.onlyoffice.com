@@ -187,7 +187,7 @@ const StyledWrapperContent = styled.div`
     gap: 8px;
 
     &:not(:last-child) {
-      margin-bottom: 16px;
+      //margin-bottom: 16px;
     }
 
     a {

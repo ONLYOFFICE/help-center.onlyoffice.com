@@ -586,6 +586,14 @@ const StyledRawHtml = styled.div`
       }
     }
 
+    summary {
+      cursor: pointer;
+      ::marker {
+        color: ${globalColors.orangeMain};
+        cursor: pointer;
+      }
+    }
+
     /* links */
     a {
       display: inline-flex;
