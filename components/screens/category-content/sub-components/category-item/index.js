@@ -1,12 +1,14 @@
 import StyledCategoryItem from "./styled-category-item";
 import Heading from "@components/common/heading";
 import InternalLink from "@components/common/internal-link";
+import { useRouter } from "next/router";
 
 const CategoryItem = ({ data, leftMenuLevel, categorySlug }) => {
   const categorySlugPlural = categorySlug === "docs" ? "docs" : `${categorySlug}s`;
   const icon = data.attributes.icon || data.attributes.category_pic;
   const levelLinks = data.attributes[`level_${leftMenuLevel}_${categorySlugPlural}`]?.data || [];
   const articleLinks = data.attributes[`article_${categorySlugPlural}`]?.data || [];
+  const router = useRouter();
 
   const sortByIconOrPositionOrName = (a, b) => (b.attributes.icon_small?.data?.attributes?.url ? 1 : 0) - (a.attributes.icon_small?.data?.attributes?.url ? 1 : 0) || (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.name).localeCompare(b.attributes.name);
   const sortByPositionOrTitle = (a, b) => (a.attributes.position ?? Infinity) - (b.attributes.position ?? Infinity) || (a.attributes.title).localeCompare(b.attributes.title);
@@ -37,7 +39,7 @@ const CategoryItem = ({ data, leftMenuLevel, categorySlug }) => {
   return (
     <StyledCategoryItem className="category-item" id={data.attributes.url.split("#")[1]?.length !== 0 ? data.attributes.url.split("#")[1] : ''}>
       <Heading className="category-item-title" level={4}>
-        {data.attributes.url && data.attributes.url.split("#")[1]?.length == 0 ? (
+        {data.attributes.url && data.attributes.url.split("#")[0] !== router.asPath ? (
           <InternalLink href={data.attributes.url}>
             {renderIcon()}
             {data.attributes.name}

@@ -4,11 +4,13 @@ import InternalLink from "@components/common/internal-link";
 
 const TreeViewNode = ({ node, levelIndex, toggleLevelTreeview, routerPath, routerPathWithoutQuery, setIsTransition, shouldObserve }) => {
   const [externalUrl, setExternalUrl] = useState(false);
-
+  const [isRendered, setIsRendered] = useState(false);
+  
   useEffect(() => {
     if (typeof window !== "undefined") {
       const linkUrl = new URL(node.url, window.location.origin);
       setExternalUrl(linkUrl.origin !== window.location.origin);
+      setIsRendered(true);
     }
   }, []);
 
@@ -31,7 +33,7 @@ const TreeViewNode = ({ node, levelIndex, toggleLevelTreeview, routerPath, route
                   toggleLevelTreeview(node.url);
                   disableObserver();
                 }}
-                className={`left-menu-arrow-btn ${levelIndex[node.url] ? "active" : ""}`}
+                className={`left-menu-arrow-btn ${isRendered && levelIndex[node.url] ? "active" : ""}`}
               >
               </button>
               <InternalLink
@@ -39,7 +41,7 @@ const TreeViewNode = ({ node, levelIndex, toggleLevelTreeview, routerPath, route
                   window.innerWidth <= 1024 && setIsTransition(false);
                   enableObserver();
                 }}
-                className={`left-menu-level-link ${routerPathWithoutQuery === node.url ? "active" : ""}`}
+                className={`left-menu-level-link ${isRendered && routerPathWithoutQuery === node.url ? "active" : ""}`}
                 href={node.url}
                 label={node.name || node.title}
               />
@@ -50,13 +52,13 @@ const TreeViewNode = ({ node, levelIndex, toggleLevelTreeview, routerPath, route
                 toggleLevelTreeview(node.name);
                 disableObserver();
               }}
-              className={`left-menu-level-btn ${levelIndex[node.url ? node.url : node.name] ? "active" : ""}`}
+              className={`left-menu-level-btn ${isRendered && levelIndex[node.url ? node.url : node.name] ? "active" : ""}`}
             >
               {node.name || node.title}
             </button>
           )}
 
-          {levelIndex[node.url ? node.url : node.name] && (
+          {levelIndex[isRendered && node.url ? node.url : node.name] && (
             <ul>
               {node.children?.map((node, indexIndex) => (
                 <TreeViewNode
@@ -75,7 +77,7 @@ const TreeViewNode = ({ node, levelIndex, toggleLevelTreeview, routerPath, route
       ) : (
         externalUrl ? (
           <ExternalLink
-            className={`left-menu-level-link ${routerPath === node?.url ? "active" : ""}`}
+            className={`left-menu-level-link ${isRendered && routerPath === node?.url ? "active" : ""}`}
             href={node?.url}
             label={node?.name || node?.title}
           />
@@ -85,7 +87,7 @@ const TreeViewNode = ({ node, levelIndex, toggleLevelTreeview, routerPath, route
               window.innerWidth <= 1024 && setIsTransition(false);
               enableObserver();
             }}
-            className={`left-menu-level-link ${routerPath === node?.url ? "active" : ""}`}
+            className={`left-menu-level-link ${isRendered && routerPath === node?.url ? "active" : ""}`}
             href={node?.url}
             label={node?.name || node?.title}
           />
