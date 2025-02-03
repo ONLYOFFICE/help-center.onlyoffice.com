@@ -29,20 +29,21 @@ const LanguageSelector = ({ locale }) => {
       <button onClick={() => setIsOpen(!isOpen)} className="language-button">
         <span className={`language-link ${locale}`}></span>
       </button>
-      {/* {isOpen &&
+      {isOpen &&
         <ul className="language-list">
           {languages.map((language) => (
             <li className="language-item" key={language.key}>
               <InternalLink
                 onClick={() => setIsOpen(false)}
                 className={`language-link ${language.shortKey}`}
-                href={router.asPath}
-                locale={language.shortKey}
+                //href={router.asPath}
+                href={language.href}
+                //locale={language.shortKey}
               />
             </li>
           ))}
         </ul>
-      } */}
+      }
     </StyledLanguageSelector>
   );
 };

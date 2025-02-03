@@ -1,6 +1,17 @@
 [
   {
     "key": "en-US",
-    "shortKey": "en"
+    "shortKey": "en",
+    "href": "/"
+  },
+  {
+    "key": "de-DE",
+    "shortKey": "de",
+    "href": "https://helpcenter.onlyoffice.com/de"
+  },
+  {
+    "key": "fr-FR",
+    "shortKey": "fr",
+    "href": "https://helpcenter.onlyoffice.com/fr"
   }
 ]
