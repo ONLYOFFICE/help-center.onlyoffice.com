@@ -41,20 +41,16 @@ const nextConfig = {
       };
     }).concat([
       {
-        source: '/fr',
-        destination: 'https://helpcenter.onlyoffice.com/fr',
+        source: '/:lang(fr|de|it|es|ru)/:path*',
+        destination: 'https://guides.onlyoffice.com/:lang/:path*',
         permanent: true,
       },
       {
-        source: '/de',
-        destination: 'https://helpcenter.onlyoffice.com/de',
+        source: '/:lang(fr|de|it|es|ru)',
+        destination: 'https://guides.onlyoffice.com/:lang',
         permanent: true,
       },
-      {
-        source: '/:lang(de|fr)/:path*',
-        destination: '/:path*',
-        permanent: false,
-      },
+      
     ]);
   },
 };
