@@ -31,19 +31,9 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          {/* <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="true"
-          />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap"
-          /> */}
-          {/* <style data-href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" /> */}
+        <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5NW47TX" height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript>
         </Head>
         <body>
-        {/* <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5NW47TX" height="0" width="0" style="display:none;visibility:hidden"></iframe>`}}></noscript> */}
           <Main />
           <NextScript />
         </body>
