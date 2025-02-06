@@ -144,7 +144,7 @@ const StyledMainContent = styled(Section)`
   .guides-cards-top-link {
     display: flex;
     align-items: center;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.04em;
     color: ${globalColors.gray};
     text-decoration: none;

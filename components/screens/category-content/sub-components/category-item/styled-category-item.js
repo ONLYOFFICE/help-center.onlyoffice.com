@@ -66,7 +66,7 @@ const StyledCategoryItem = styled.div`
   .category-item-subtitle {
     margin-bottom: 16px;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 19px;
   }
 

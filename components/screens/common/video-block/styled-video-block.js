@@ -12,7 +12,7 @@ const StyledVideoBlock = styled.div`
   h3.video-block-title {
     margin-bottom: 40px;
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 32px;
     letter-spacing: -0.02em;
     color: ${globalColors.gray};

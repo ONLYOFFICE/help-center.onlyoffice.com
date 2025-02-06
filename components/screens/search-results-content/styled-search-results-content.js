@@ -108,7 +108,7 @@ const StyledSearchResultsContent = styled(Section)`
   .search-results-not-found-title {
     margin-bottom: 40px;
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.3em;
     letter-spacing: -0.02em;
     text-align: center;

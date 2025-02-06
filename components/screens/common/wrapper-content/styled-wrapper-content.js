@@ -76,7 +76,7 @@ const StyledWrapperContent = styled.div`
       cursor: pointer;
       display: flex;
       font-size: 18px;
-      font-weight: 700;
+      font-weight: 600;
       line-height: 23.94px;
       letter-spacing: -0.02em;
       margin: 0;
@@ -170,7 +170,7 @@ const StyledWrapperContent = styled.div`
     color: ${globalColors.orangeLetters};
     display: inline-block;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 600;
     margin: 0 8px 0 0;
 
     &.answer {
