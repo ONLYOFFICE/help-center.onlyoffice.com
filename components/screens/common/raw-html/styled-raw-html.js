@@ -646,6 +646,7 @@ const StyledRawHtml = styled.div`
     h4,
     h5,
     h6 {
+      font-weight: 600;
       margin: 0 0 24px;
       letter-spacing: -0.02em;
       line-height: 1.33em;
