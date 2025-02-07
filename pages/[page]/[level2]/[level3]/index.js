@@ -119,7 +119,7 @@ const Level3Page = ({ locale, menuData, data, categorySlug }) => {
   );
 };
 
-export const getServerSideProps = async ({ locale, params, req }) => {
+export const getServerSideProps = async ({ locale, params, req, res }) => {
   const pathUrl = `${locale === "en" ? "" : `/${locale}`}/${params.page}/${params.level2}/${params.level3}`;
   const data = await getLevel3Data(locale, params.page, pathUrl);
 
@@ -136,6 +136,9 @@ export const getServerSideProps = async ({ locale, params, req }) => {
       /<div class="bringattention translator" id="translatorAttention_block" style="display: block;">/g,
       '<div class="bringattention translator" id="translatorAttention_block" style="display: none;">'
     );
+  }
+  if (pathUrl === "/docs/installation/multitenancy.aspx") {
+    res.setHeader("X-Robots-Tag", "noindex, nofollow");
   }
 
   return {
