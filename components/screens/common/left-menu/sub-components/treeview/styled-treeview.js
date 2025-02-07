@@ -31,7 +31,7 @@ const StyledTreeView = styled.div`
       > li {
         > .left-menu-level-item {
           .left-menu-level-link {
-            font-weight: 700;
+            font-weight: 600;
           }
         }
 
@@ -98,7 +98,7 @@ const StyledTreeView = styled.div`
     border: none;
     padding: 8px 0;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 16px;
     width: 100%;
     color: ${globalColors.gray};
@@ -161,7 +161,7 @@ const StyledTreeView = styled.div`
     border: none;
     padding: 8px 0 8px 15px;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 21px;
     color: ${globalColors.gray};
     width: 100%;

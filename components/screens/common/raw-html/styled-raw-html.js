@@ -400,7 +400,7 @@ const StyledRawHtml = styled.div`
 
       > .important_notice_label {
         color: ${globalColors.orangeMain};
-        font-weight: 700;
+        font-weight: 600;
         display: block;
         padding: 0 0 8px;
       }
@@ -447,7 +447,7 @@ const StyledRawHtml = styled.div`
 
     .sysreq_title {
       display: inline;
-      font-weight: 700;
+      font-weight: 600;
       padding-right: 4px;
 
       &:after {
@@ -627,7 +627,7 @@ const StyledRawHtml = styled.div`
       }
 
       &.bold {
-        font-weight: 700;
+        font-weight: 600;
       }
 
       &:hover {
@@ -646,6 +646,7 @@ const StyledRawHtml = styled.div`
     h4,
     h5,
     h6 {
+      font-weight: 600;
       margin: 0 0 24px;
       letter-spacing: -0.02em;
       line-height: 1.33em;

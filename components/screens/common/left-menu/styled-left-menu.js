@@ -45,7 +45,7 @@ const StyledLeftMenu = styled.div`
     margin-bottom: 8px;
     padding: 8px 0;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 19px;
     color: ${globalColors.gray};
     text-transform: uppercase;
@@ -92,7 +92,7 @@ const StyledLeftMenu = styled.div`
           position: relative;
 
           a {
-            font-weight: 700;
+            font-weight: 600;
             color: ${globalColors.orangeMain};
           }
 

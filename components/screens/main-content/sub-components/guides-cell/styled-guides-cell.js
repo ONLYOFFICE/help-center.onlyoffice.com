@@ -30,7 +30,7 @@ const StyledGuidesCell = styled.div`
     display: flex;
     align-items: center;
     color: ${globalColors.gray};
-    font-weight: 700;
+    font-weight: 600;
     font-size: 18px;
     line-height: 1.33em;
     letter-spacing: -0.02em;
@@ -138,7 +138,7 @@ const StyledGuidesCell = styled.div`
 
     &.guides-cell-header-link {
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 600;
       line-height: 16px;
       text-transform: uppercase;
     }

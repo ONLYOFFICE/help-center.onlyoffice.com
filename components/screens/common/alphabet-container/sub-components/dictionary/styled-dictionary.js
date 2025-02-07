@@ -19,7 +19,7 @@ const StyledDictionary = styled(StyledText)`
 
     > strong {
       color: ${globalColors.textGray};
-      font-weight: 700;
+      font-weight: 600;
     }
   }
 
