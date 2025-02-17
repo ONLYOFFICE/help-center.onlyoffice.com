@@ -6,6 +6,7 @@ import InternalLink from "../internal-link";
 
 const LanguageSelector = ({ locale }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [lang, setLang] = useState("en");
   const router = useRouter();
 
   useEffect(() => {
@@ -34,12 +35,13 @@ const LanguageSelector = ({ locale }) => {
           {languages.map((language) => (
             <li className="language-item" key={language.key}>
               <InternalLink
-                onClick={() => setIsOpen(false)}
-                className={`language-link ${language.shortKey}`}
+                onClick={() => { setIsOpen(false); setLang(language.shortKey) }}
+                className={`language-item-link ${lang === language.shortKey ? "active" : ""}`}
                 //href={router.asPath}
-                href={language.href}
-                //locale={language.shortKey}
-              />
+                href={language.href}>
+                <b>{language.shortKey}</b>
+                <p>{language.name}</p>
+              </InternalLink>
             </li>
           ))}
         </ul>

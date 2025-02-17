@@ -13,25 +13,38 @@ const StyledLanguageSelector = styled.div`
     background-color: transparent;
     cursor: pointer;
 
+    &:hover {
+      .language-link {
+        background-position-y: -40px;
+      }
+
+      &:after {
+        background-position-y: -32px;
+      }
+    }
+
     &:after {
       content: "";
       display: inline-flex;
       margin-left: 4px;
       width: 8px;
       height: 6px;
-      background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/arrow-down.react.svg");
+      background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/arrow-drop-down.react.svg");
       background-repeat: no-repeat;
+      background-position-x: -8px;
+      background-position-y: ${(props) => (props.isOpen ? "-32px" : "-8px")};
       transform: ${(props) => (props.isOpen ? "rotate(180deg)" : "")};
+      transition: 0.3s;
     }
   }
 
   .language-list {
     position: absolute;
     top: 40px;
-    left: 0;
+    left: -55px;
     display: flex;
     flex-direction: column;
-    padding: 6px;
+    padding: 24px;
     background-color: ${globalColors.white};
     box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;
     z-index: 100;
@@ -40,7 +53,26 @@ const StyledLanguageSelector = styled.div`
 
   .language-item {
     &:not(:last-child) {
-      margin-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .language-item-link {
+      display: flex;
+      gap: 8px;
+
+      > b {
+        color: ${globalColors.grayMain};
+        text-transform: uppercase;
+        width: 21px;
+      }
+
+      &.active {
+        color: ${globalColors.orangeMain};
+
+        > b {
+          color: ${globalColors.orangeMain};
+        }
+      }
     }
   }
 
@@ -48,35 +80,9 @@ const StyledLanguageSelector = styled.div`
     display: flex;
     width: 24px;
     height: 24px;
-    background-image: url("/images/flags/flags_site.react.svg");
-
-    &.en {
-      background-position-x: -32px;
-    }
-
-    &.de {
-      background-position-x: 0px;
-    }
-
-    &.fr {
-      background-position-x: -96px;
-    }
-
-    &.es {
-      background-position-x: -64px;
-    }
-
-    &.it {
-      background-position-x: -128px;
-    }
-
-    &.zh {
-      background-position-x: 24px;
-    }
-
-    &.ru {
-      background-position-x: -160px;
-    }
+    background-image: url("https://static-helpcenter.onlyoffice.com/images/icons/globe.react.svg");
+    background-repeat: no-repeat;
+    background-position-y: ${(props) => (props.isOpen ? "-40px" : "0px")};
   }
 `;
 
