@@ -65,6 +65,7 @@ const Level4Page = ({ locale, data, menuData, categorySlug }) => {
             pageName={dataAttr?.title}
             pageDescription={dataAttr?.content}
             tags={dataAttr?.tags}
+            videos={dataAttr?.videos}
             leftMenuIsOpen={leftMenuIsOpen}
             setLeftMenuIsOpen={setLeftMenuIsOpen}
           />

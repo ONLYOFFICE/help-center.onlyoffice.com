@@ -2,16 +2,19 @@
   {
     "key": "en-US",
     "shortKey": "en",
-    "href": "/"
+    "href": "/",
+    "name": "English"
   },
   {
     "key": "de-DE",
     "shortKey": "de",
-    "href": "https://guides.onlyoffice.com/de"
+    "href": "https://guides.onlyoffice.com/de",
+    "name": "Deutsch"
   },
   {
     "key": "fr-FR",
     "shortKey": "fr",
-    "href": "https://guides.onlyoffice.com/fr"
+    "href": "https://guides.onlyoffice.com/fr",
+    "name": "Français"
   }
 ]
